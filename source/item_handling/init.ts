@@ -12,50 +12,57 @@ const creative_mode: boolean = core.settings.get_bool("creative_mode") || false
 //? Survival.
 
 
-if not creative_mode then
-	function core.handle_node_drops(pos, drops, digger)
-		meta = digger:get_wielded_item():get_meta()
+if (! creative_mode) {
+	 core.handle_node_drops = (pos: Vec3, drops: (string | ItemStackObject)[], digger: ObjectRef) => {
+		const meta: MetaRef = digger.get_wielded_item().get_meta()
 		//careful = meta:get_int("careful")
-		fortune = 1//meta:get_int("fortune") + 1
-		autorepair = meta:get_int("autorepair")
+        // todo: why is the fortune enchant disabled?
+		const fortune: number = 1//meta:get_int("fortune") + 1
+		const autorepair: number = meta.get_int("autorepair")
+        // todo: why is careful enchant disabled?
 		//if careful > 0 then
 		//	drops = {core.get_node(pos).name}
 		//end
-		for i = 1,fortune do
-			for _,item in ipairs(drops) do
 
-				if type(item) == "string" then
+        let count: number = 0;
+        let name: string | null = null;
+
+		for (let i = 1; i <= fortune; i++) {
+			for (const [_,item] of ipairs(drops)) {
+
+				if (typeof item == "string") {
 					count = 1
 					name = item
-				else
-					count = item:get_count()
-					name = item:get_name()
-				end
-				for i=1,count do
-					object = core.add_item(pos, name)
-					if object ~= nil then
-						object:set_velocity({
-							x=math.random(-2,2)*math.random(), 
-							y=math.random(2,5), 
-							z=math.random(-2,2)*math.random()
-						})
-					end
-				end
-			end
+                } else {
+					count = item.get_count()
+					name = item.get_name()
+                }
+
+				for (let i=1; i <= count; i++) {
+					const object: ObjectRef | null = core.add_item(pos, name)
+					if (object != null) {
+						object.set_velocity(vector.create3d({
+							x:math.random(-2,2)*math.random(), 
+							y:math.random(2,5), 
+							z:math.random(-2,2)*math.random()
+						}))
+                    }
+                }
+            }
 	        local experience_amount = core.get_item_group(core.get_node(pos).name,"experience")
 	        if experience_amount > 0 then
 	            core.throw_experience(pos, experience_amount)
 	        end
-		end
+        }
 		//auto repair the item
 		if autorepair > 0 and math.random(0,1000) < autorepair then
 			local itemstack = digger:get_wielded_item()
 			itemstack:add_wear(autorepair*-100)
 			digger:set_wielded_item(itemstack)
 		end
-	end
+}
 //creative
-else
+                    }else{
 	function core.handle_node_drops(pos, drops, digger)
 	end
 	core.register_on_dignode(function(pos, oldnode, digger)
@@ -70,7 +77,7 @@ else
 	core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
 		return(itemstack:get_name())
 	end)
-end
+                    }
 
 // local stack
 // local object
