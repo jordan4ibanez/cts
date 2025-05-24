@@ -66,7 +66,7 @@ namespace item_handling {
 	// 						entity.collected = true
 
 	// 					end
-                    } else if (object:get_luaentity() and object:get_luaentity().name == "experience:orb") {
+                    } else if (object:get_luaentity().name == "experience:orb") {
 	// 						entity.collector = player:get_player_name()
 	// 						entity.collected = true
                     }
