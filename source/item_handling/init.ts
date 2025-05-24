@@ -210,7 +210,7 @@ namespace item_handling {
 	export class CrafterItemEntity extends types.Entity {
 		name: string = ":__builtin:item";
 		itemstring: string = "";
-		collector: string = "";
+		collector: string | null = null;
 		dropped_by: string = "";
 		moving_state = true;
 		slippery_state = false;
@@ -323,19 +323,17 @@ namespace item_handling {
 
     on_step (dtime: number, moveresult: MoveResult): void {
 		const pos: Vec3 = this.object.get_pos()
-		if (!pos) then
-			return
-		end
+		
 
-	// 	//if item set to be collected then only execute go to player
-	// 	if this.collected == true then
-	// 		if not this.collector then
-	// 			this.object:remove()
-	// 			return
-	// 		end
+		// If item set to be collected then only execute go to player.
+		if (this.collected == true) {
+			if ( this.collector == null) {
+				this.object.remove()
+				return
+            }
 
-	// 		collector = core.get_player_by_name(this.collector)
-	// 		if collector then
+			const collector: ObjectRef | null = core.get_player_by_name(this.collector)
+			if (collector!= null) {
 	// 			this.magnet_timer = this.magnet_timer + dtime
 
 	// 			disable_physics(self)
@@ -363,12 +361,12 @@ namespace item_handling {
 	// 			this.old_magnet_distance = distance
 
 	// 			return
-	// 		else
+            }else{
 	// 			// the collector doesn't exist
 	// 			this.object:remove()
 	// 			return
-	// 		end
-	// 	end
+            }
+        }
 
 	// 	//allow entity to be collected after timer
 	// 	if this.collectable == false and this.collection_timer >= 2.5 then
