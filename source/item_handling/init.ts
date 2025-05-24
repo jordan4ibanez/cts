@@ -320,31 +320,8 @@ namespace item_handling {
 				this.object.set_acceleration(vector.zero());
 			}
 		}
-	}
 
-	// local collector
-	// local pos
-	// local pos2
-	// local player_velocity
-	// local direction
-	// local distance
-	// local multiplier
-	// local velocity
-	// local node
-	// local is_stuck
-	// local snode
-	// local shootdir
-	// local cnode
-	// local cdef
-	// local fpos
-	// local vel
-	// local def
-	// local slip_factor
-	// local change
-	// local slippery
-	// local i_node
-	// local flow_dir
-	// local item_step = function(self, dtime, moveresult)
+        	// local item_step = function(self, dtime, moveresult)
 	// 	pos = self.object:get_pos()
 	// 	if not pos then
 	// 		return
@@ -551,6 +528,31 @@ namespace item_handling {
 	// 		self.poll_timer = 0.5
 	// 	end
 	// end
+	}
+
+	// local collector
+	// local pos
+	// local pos2
+	// local player_velocity
+	// local direction
+	// local distance
+	// local multiplier
+	// local velocity
+	// local node
+	// local is_stuck
+	// local snode
+	// local shootdir
+	// local cnode
+	// local cdef
+	// local fpos
+	// local vel
+	// local def
+	// local slip_factor
+	// local change
+	// local slippery
+	// local i_node
+	// local flow_dir
+
 
     //! ENDS HERE
 
