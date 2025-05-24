@@ -321,7 +321,7 @@ namespace item_handling {
 			}
 		}
 
-        	// local item_step = function(self, dtime, moveresult)
+    on_step (dtime: number, moveresult: MoveResult): void {
 	// 	pos = self.object:get_pos()
 	// 	if not pos then
 	// 		return
@@ -527,7 +527,7 @@ namespace item_handling {
 	// 	if change == false and self.poll_timer == 0 then
 	// 		self.poll_timer = 0.5
 	// 	end
-	// end
+    }
 	}
 
 	// local collector
