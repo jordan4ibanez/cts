@@ -247,26 +247,21 @@ namespace item_handling {
 				glow: def && def.light_source,
 			});
 		}
+		get_staticdata = (): string => {
+			return core.serialize({
+				itemstring: this.itemstring,
+				age: this.age,
+				dropped_by: this.dropped_by,
+				collection_timer: this.collection_timer,
+				collectable: this.collectable,
+				try_timer: this.try_timer,
+				collected: this.collected,
+				delete_timer: this.delete_timer,
+				collector: this.collector,
+				magnet_timer: this.magnet_timer,
+			});
+		};
 	}
-
-	// local stack
-	// local itemname
-	// local def
-
-	// local get_staticdata = function(self)
-	// 	return core.serialize({
-	// 		itemstring = self.itemstring,
-	// 		age = self.age,
-	// 		dropped_by = self.dropped_by,
-	// 		collection_timer = self.collection_timer,
-	// 		collectable = self.collectable,
-	// 		try_timer = self.try_timer,
-	// 		collected = self.collected,
-	// 		delete_timer = self.delete_timer,
-	// 		collector = self.collector,
-	// 		magnet_timer = self.magnet_timer,
-	// 	})
-	// end
 
 	// local data
 	// local on_activate = function(self, staticdata, dtime_s)
