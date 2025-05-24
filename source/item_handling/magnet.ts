@@ -87,10 +87,10 @@ namespace item_handling {
 		}
 	}
 
-	// core.register_globalstep(function(dtime)
-	// 	tick = not tick
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		magnet(player)
-	// 	end
-	// end)
+	core.register_globalstep((delta: number) => {
+		tick = ! tick;
+		for (const [_,player] of ipairs(core.get_connected_players())) {
+			magnet(player)
+        }
+    })
 }
