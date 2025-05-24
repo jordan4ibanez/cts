@@ -269,7 +269,7 @@ interface core {
 		entityName: string,
 		staticData?: string
 	): ObjectRef | null;
-	add_item(position: Vec3, item: ItemStackObject | string): ObjectRef;
+	add_item(position: Vec3, item: ItemStackObject | string): ObjectRef | null;
 	get_player_by_name(playerName: string): ObjectRef | null;
 	get_objects_inside_radius(position: Vec3, radius: number): ObjectRef[];
 	get_objects_in_area(pos1: Vec3, pos2: Vec3): ObjectRef[];
@@ -415,7 +415,7 @@ interface core {
 	get_all_craft_recipes(
 		queryItem: string | NodeTable
 	): CraftRecipeDefinition[] | void;
-	handle_node_drops(position: Vec3, drops: string[], digger: ObjectRef): void;
+	handle_node_drops(position: Vec3, drops: string[] | ItemStackObject[], digger: ObjectRef): void;
 	itemstring_with_palette(
 		item: ItemStackObject,
 		paletteIndex: number
