@@ -297,16 +297,16 @@ namespace item_handling {
 				);
 			}
 		}
-	}
 
-	// local disable_physics = function(self)
-	// 	if self.physical_state then
-	// 		self.physical_state = false
-	// 		self.object:set_properties({physical = false})
-	// 		self.object:set_velocity({x=0, y=0, z=0})
-	// 		self.object:set_acceleration({x=0, y=0, z=0})
-	// 	end
-	// end
+		disable_physics(): void {
+			if (this.physical_state) {
+				this.physical_state = false;
+				this.object.set_properties({ physical: false });
+				this.object.set_velocity(vector.zero());
+				this.object.set_acceleration(vector.zero());
+			}
+		}
+	}
 
 	// local burn_nodes = {
 	// 	["fire:fire"]       = true,
