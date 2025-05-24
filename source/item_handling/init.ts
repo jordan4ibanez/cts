@@ -156,7 +156,6 @@ namespace item_handling {
 				})
 			);
 		}
-		//return obj
 	}
 
 	// //override drops
