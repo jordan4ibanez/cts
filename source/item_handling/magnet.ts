@@ -47,7 +47,7 @@ namespace item_handling {
                     continue
                 }
                 let __entity: LuaEntity = object.get_luaentity()
-                if (__entity.name != "__builtin:item") {
+                if (__entity == null || __entity.name != "__builtin:item") {
                     continue;
                 }
 
