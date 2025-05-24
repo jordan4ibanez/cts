@@ -167,37 +167,51 @@ namespace item_handling {
 	// local item
 	// local object
 	// local dir
-	// function core.item_drop(itemstack, dropper, pos)
-	// 	dropper_is_player = dropper and dropper:is_player()
-	// 	c_pos = table.copy(pos)
-	// 	if dropper_is_player then
-	// 		sneak = dropper:get_player_control().sneak
-	// 		c_pos.y = c_pos.y + 1.2
-	// 		if not sneak then
-	// 			count = itemstack:get_count()
-	// 		else
-	// 			count = 1
-	// 		end
-	// 	else
-	// 		count = itemstack:get_count()
-	// 	end
+	core.item_drop = (
+		itemstack: ItemStackObject,
+		dropper: ObjectRef,
+		pos: Vec3
+	): [ItemStackObject, ObjectRef] | null => {
+		const dropper_is_player: boolean =
+			(dropper && dropper.is_player()) || false;
+		const c_pos: Vec3 = vector.copy(pos);
+		let count: number = 0;
 
-	// 	item = itemstack:take_item(count)
-	// 	object = core.add_item(c_pos, item)
-	// 	if object then
-	// 		if dropper_is_player then
-	// 			dir = dropper:get_look_dir()
-	// 			dir.x = dir.x * 2.9
-	// 			dir.y = dir.y * 2.9 + 2
-	// 			dir.z = dir.z * 2.9
-	// 			dir = vector.add(dir,dropper:get_player_velocity())
-	// 			object:set_velocity(dir)
-	// 			object:get_luaentity().dropped_by = dropper:get_player_name()
-	// 			object:get_luaentity().collection_timer = 0
-	// 		end
-	// 		return itemstack
-	// 	end
-	// end
+		if (dropper_is_player) {
+			const sneak: boolean = dropper.get_player_control().sneak;
+			c_pos.y = c_pos.y + 1.2;
+			if (!sneak) {
+				count = itemstack.get_count();
+			} else {
+				count = 1;
+			}
+		} else {
+			count = itemstack.get_count();
+		}
+
+		const item: ItemStackObject = itemstack.take_item(count);
+		const object: ObjectRef | null = core.add_item(c_pos, item);
+
+		if (!object) {
+			print(`Warning: Failed to drop item at [${pos}]`);
+			return null;
+		}
+
+		if (dropper_is_player) {
+			let dir: Vec3 = dropper.get_look_dir();
+			dir.x = dir.x * 2.9;
+			dir.y = dir.y * 2.9 + 2;
+			dir.z = dir.z * 2.9;
+			dir = vector.add(dir, dropper.get_velocity());
+
+			object.set_velocity(dir);
+
+			(object.get_luaentity() as CrafterItemEntity).dropped_by =
+				dropper.get_player_name();
+			(object.get_luaentity() as CrafterItemEntity).collection_timer = 0;
+		}
+		return [itemstack, object];
+	};
 
 	// local stack
 	// local itemname
