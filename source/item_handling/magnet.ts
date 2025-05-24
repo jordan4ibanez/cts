@@ -53,11 +53,10 @@ namespace item_handling {
 
                 const entity: CrafterItemEntity = __entity as CrafterItemEntity;
 
-
                 
 
 					
-					// if (entity.collectable == true and object:get_luaentity().collected == false) then
+					if (entity.collectable == true && entity.collected == false) {
 	// 					pos2 = object:get_pos()
 	// 					diff = vector.subtract(pos2,pos).y
 	// 					if diff >= 0 and inv:room_for_item("main", entity.itemstring) then
@@ -67,10 +66,10 @@ namespace item_handling {
 	// 						entity.collected = true
 
 	// 					end
-	// 				elseif not object:is_player() and object:get_luaentity() and object:get_luaentity().name == "experience:orb" then
+                    } else if (not object:is_player() and object:get_luaentity() and object:get_luaentity().name == "experience:orb") {
 	// 						entity.collector = player:get_player_name()
 	// 						entity.collected = true
-	// 				end
+                    }
                 
         }
 	
