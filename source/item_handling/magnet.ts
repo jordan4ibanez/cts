@@ -88,9 +88,9 @@ namespace item_handling {
 	}
 
 	core.register_globalstep((delta: number) => {
-		tick = ! tick;
-		for (const [_,player] of ipairs(core.get_connected_players())) {
-			magnet(player)
-        }
-    })
+		tick = !tick;
+		for (const [_, player] of ipairs(core.get_connected_players())) {
+			magnet(player);
+		}
+	});
 }
