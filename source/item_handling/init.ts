@@ -200,10 +200,12 @@ namespace item_handling {
 		"main:lava": true,
 		"main:lavaflow": true,
 	};
-	// local order = {
-	// 	{x=1, y=0, z=0}, {x=-1, y=0, z= 0},
-	// 	{x=0, y=0, z=1}, {x= 0, y=0, z=-1},
-	// }
+	const order: Vec3[] = [
+		vector.create3d({ x: 1, y: 0, z: 0 }),
+		vector.create3d({ x: -1, y: 0, z: 0 }),
+		vector.create3d({ x: 0, y: 0, z: 1 }),
+		vector.create3d({ x: 0, y: 0, z: -1 }),
+	];
 
 	export class CrafterItemEntity extends types.Entity {
 		name: string = ":__builtin:item";
