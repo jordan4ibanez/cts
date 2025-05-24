@@ -1,11 +1,11 @@
 // local minetest,math,vector,ipairs = minetest,math,vector,ipairs
 
 namespace item_handling {
-	const pool: any = {};
+	const pool = new Map<string, number>();
 
 	// local name
 	core.register_on_joinplayer((player: ObjectRef) => {
-		pool[player.get_player_name()] = 0;
+		pool.set(player.get_player_name(), 0);
 	});
 
 	// local name
