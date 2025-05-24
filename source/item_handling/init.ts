@@ -49,10 +49,12 @@ if (! creative_mode) {
                     }
                 }
             }
-	        local experience_amount = core.get_item_group(core.get_node(pos).name,"experience")
-	        if experience_amount > 0 then
-	            core.throw_experience(pos, experience_amount)
-	        end
+
+	        const experience_amount: number = core.get_item_group(core.get_node(pos).name,"experience")
+	        if (experience_amount > 0) {
+                // todo: fix this when this is added below.
+	            // core.throw_experience(pos, experience_amount)
+            }
         }
 		//auto repair the item
 		if autorepair > 0 and math.random(0,1000) < autorepair then
