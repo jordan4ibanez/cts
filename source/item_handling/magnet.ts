@@ -46,8 +46,18 @@ namespace item_handling {
 				if (object.is_player()) {
                     continue
                 }
-	// 				entity = object:get_luaentity()
-	// 				if entity.name == "__builtin:item" and entity.collectable == true and object:get_luaentity().collected == false then
+                let __entity: LuaEntity = object.get_luaentity()
+                if (__entity.name != "__builtin:item") {
+                    continue;
+                }
+
+                const entity: CrafterItemEntity = __entity as CrafterItemEntity;
+
+
+                
+
+					
+					// if (entity.collectable == true and object:get_luaentity().collected == false) then
 	// 					pos2 = object:get_pos()
 	// 					diff = vector.subtract(pos2,pos).y
 	// 					if diff >= 0 and inv:room_for_item("main", entity.itemstring) then
