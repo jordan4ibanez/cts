@@ -104,6 +104,7 @@ namespace item_handling {
 		collectable: boolean = false;
 		collected: boolean = false;
 		itemstring: string = "";
+        collector: string = "";
 	}
 
 	// local stack
