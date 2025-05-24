@@ -18,10 +18,15 @@ namespace item_handling {
 	function magnet(player: ObjectRef): void {
 		// Don't magnetize to dead players.
 		const name: string = player.get_player_name()
-	// 	if player:get_hp() > 0 then
-	// 		pos = player:get_pos()
-	// 		inv = player:get_inventory()
-	// 		if tick == true and pool[name] > 0 then
+		if (player.get_hp() <= 0) {
+            pool.set(name, 0)
+        }
+
+			const pos: Vec3 = player.get_pos()
+			const inv: InvRef = player.get_inventory()
+
+
+			if (tick == true and pool[name] > 0) then
 	// 			core.sound_play("pickup", {
 	// 				to_player = player:get_player_name(),
 	// 				gain = 0.4,
@@ -32,7 +37,8 @@ namespace item_handling {
 	// 			else
 	// 				pool[name] = pool[name] - 1
 	// 			end
-	// 		end
+			end
+
 	// 		--radial detection
 	// 		for _,object in ipairs(core.get_objects_inside_radius({x=pos.x,y=pos.y+0.5,z=pos.z}, 2)) do
 	// 			if not object:is_player() then
@@ -53,9 +59,7 @@ namespace item_handling {
 	// 				end
 	// 			end
 	// 		end
-	// 	else
-	// 		pool[name] = 0
-	// 	end
+	
     }
 
 	// core.register_globalstep(function(dtime)
