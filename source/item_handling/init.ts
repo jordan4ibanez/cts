@@ -193,6 +193,18 @@ namespace item_handling {
 		return [itemstack, object];
 	};
 
+	const burn_nodes: { [id: string]: boolean } = {
+		"fire:fire": true,
+		"nether:lava": true,
+		"nether:lavaflow": true,
+		"main:lava": true,
+		"main:lavaflow": true,
+	};
+	// local order = {
+	// 	{x=1, y=0, z=0}, {x=-1, y=0, z= 0},
+	// 	{x=0, y=0, z=1}, {x= 0, y=0, z=-1},
+	// }
+
 	export class CrafterItemEntity extends types.Entity {
 		name: string = ":__builtin:item";
 		itemstring: string = "";
@@ -308,17 +320,6 @@ namespace item_handling {
 		}
 	}
 
-	// local burn_nodes = {
-	// 	["fire:fire"]       = true,
-	// 	["nether:lava"]     = true,
-	// 	["nether:lavaflow"] = true,
-	// 	["main:lava"]       = true,
-	// 	["main:lavaflow"]   = true
-	// }
-	// local order = {
-	// 	{x=1, y=0, z=0}, {x=-1, y=0, z= 0},
-	// 	{x=0, y=0, z=1}, {x= 0, y=0, z=-1},
-	// }
 	// local collector
 	// local pos
 	// local pos2
