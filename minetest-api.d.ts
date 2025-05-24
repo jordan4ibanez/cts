@@ -417,7 +417,11 @@ interface core {
 	get_all_craft_recipes(
 		queryItem: string | NodeTable
 	): CraftRecipeDefinition[] | void;
-	handle_node_drops(position: Vec3, drops: string[] | ItemStackObject[], digger: ObjectRef): void;
+	handle_node_drops(
+		position: Vec3,
+		drops: string[] | ItemStackObject[],
+		digger: ObjectRef
+	): void;
 	itemstring_with_palette(
 		item: ItemStackObject,
 		paletteIndex: number
