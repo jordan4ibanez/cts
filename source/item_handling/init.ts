@@ -261,7 +261,6 @@ namespace item_handling {
 				magnet_timer: this.magnet_timer,
 			});
 		};
-
 		on_activate = (staticdata: string, dtime_s: number): void => {
 			if (string.sub(staticdata, 1, string.len("return")) == "return") {
 				const data: any = core.deserialize(staticdata);
@@ -289,7 +288,6 @@ namespace item_handling {
 		};
 	}
 
-	// local data
 
 	// local enable_physics = function(self)
 	// 	if not self.physical_state then
