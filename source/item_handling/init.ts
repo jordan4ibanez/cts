@@ -286,17 +286,18 @@ namespace item_handling {
 			);
 			this.set_item(this.itemstring);
 		};
+
+		enable_physics(): void {
+			if (!this.physical_state) {
+				this.physical_state = true;
+				this.object.set_properties({ physical: true });
+				this.object.set_velocity(vector.zero());
+				this.object.set_acceleration(
+					vector.create3d({ x: 0, y: -9.81, z: 0 })
+				);
+			}
+		}
 	}
-
-
-	// local enable_physics = function(self)
-	// 	if not self.physical_state then
-	// 		self.physical_state = true
-	// 		self.object:set_properties({physical = true})
-	// 		self.object:set_velocity({x=0, y=0, z=0})
-	// 		self.object:set_acceleration({x=0, y=-9.81, z=0})
-	// 	end
-	// end
 
 	// local disable_physics = function(self)
 	// 	if self.physical_state then
