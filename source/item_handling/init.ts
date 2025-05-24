@@ -352,21 +352,21 @@ namespace item_handling {
 					return
                 }
 
-	// 			direction = vector.normalize(vector.subtract(pos2,pos))
+				const direction: Vec3 = vector.normalize(vector.subtract(pos2,pos))
 
-	// 			multiplier = 10 - distance // changed
+				const multiplier: number = 10 - distance // changed
 
-	// 			velocity = vector.add(player_velocity,vector.multiply(direction,multiplier))
+				const velocity: Vec3 = vector.add(player_velocity,vector.multiply(direction,multiplier))
 
-	// 			this.object:set_velocity(velocity)
+				this.object.set_velocity(velocity)
 
-	// 			this.old_magnet_distance = distance
+				this.old_magnet_distance = distance
 
-	// 			return
+				return
             }else{
-	// 			// the collector doesn't exist
-	// 			this.object:remove()
-	// 			return
+				// The collector doesn't exist.
+				this.object.remove()
+				return
             }
         }
 
