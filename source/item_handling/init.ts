@@ -98,6 +98,11 @@ namespace item_handling {
 		);
 	}
 
+    // fixme: //! this needs to be replaced with the new implementation below this!
+    export class CrafterItemEntity extends types.Entity {
+        name: string = ":__builtin:item";
+    }
+
 	// local stack
 	// local object
 	// function core.throw_item(pos, item)
