@@ -25,23 +25,24 @@ namespace item_handling {
 			const pos: Vec3 = player.get_pos()
 			const inv: InvRef = player.get_inventory()
 
-            const curVal = pool.get(name) || (() => {throw new Error("what")})()
+            const curVal = pool.get(name) 
+            if (curVal == null) {throw new Error("what")}
 
-			if (tick == true and pool[name] > 0) then
-	// 			core.sound_play("pickup", {
-	// 				to_player = player:get_player_name(),
-	// 				gain = 0.4,
-	// 				pitch = math.random(60,100)/100
-	// 			})
-	// 			if pool[name] > 6 then
-	// 				pool[name] = 6
-	// 			else
-	// 				pool[name] = pool[name] - 1
-	// 			end
-			end
+			if (tick == true && curVal > 0) {
+				core.sound_play("pickup", {
+					to_player : player.get_player_name(),
+					gain : 0.4,
+					pitch : math.random(60,100)/100
+				})
+				if (curVal > 6) {
+					pool.set(name,  6)
+                } else {
+					pool.set(name,  curVal - 1)
+                }
+            }
 
-	// 		--radial detection
-	// 		for _,object in ipairs(core.get_objects_inside_radius({x=pos.x,y=pos.y+0.5,z=pos.z}, 2)) do
+			// Radial detection.
+			for (const [_,object] of ipairs(core.get_objects_inside_radius(vector.create3d({x:pos.x,y:pos.y+0.5,z:pos.z}), 2))) {
 	// 			if not object:is_player() then
 	// 				entity = object:get_luaentity()
 	// 				if entity.name == "__builtin:item" and entity.collectable == true and object:get_luaentity().collected == false then
@@ -59,7 +60,7 @@ namespace item_handling {
 	// 						entity.collected = true
 	// 				end
 	// 			end
-	// 		end
+        }
 	
     }
 
