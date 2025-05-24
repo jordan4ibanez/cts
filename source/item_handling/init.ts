@@ -552,6 +552,8 @@ namespace item_handling {
 	// 	end
 	// end
 
+    //! ENDS HERE
+
 	// core.register_entity(":__builtin:item", {
 
 	// 	set_item = set_item,
