@@ -370,12 +370,12 @@ namespace item_handling {
             }
         }
 
-	// 	//allow entity to be collected after timer
-	// 	if this.collectable == false and this.collection_timer >= 2.5 then
-	// 		this.collectable = true
-	// 	elseif this.collectable == false then
-	// 		this.collection_timer = this.collection_timer + dtime
-	// 	end
+		// Allow entity to be collected after timer.
+		if (this.collectable == false && this.collection_timer >= 2.5) {
+			this.collectable = true
+        } else if (this.collectable == false) {
+			this.collection_timer  += dtime
+		}
 
 	// 	this.age = this.age + dtime
 	// 	if this.age > 300 then
