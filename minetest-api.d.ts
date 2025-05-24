@@ -4,6 +4,8 @@ export {};
 
 //? Everything was just dumped in as I looked down the lua_api.md
 
+// todo: crafter custom stuff needs to be dumped into a custom type.
+
 /** @noSelf **/
 interface core {
 	get_current_modname(): string;
