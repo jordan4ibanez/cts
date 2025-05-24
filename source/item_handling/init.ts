@@ -228,30 +228,30 @@ namespace item_handling {
 			selectionbox: [-0.21, -0.21, -0.21, 0.21, 0.21, 0.21],
 			visual_size: vector.create2d(0.21, 0.21),
 		};
-		set_item(input: string | ItemStackObject) {}
+		set_item(item: string | ItemStackObject) {
+			const stack = ItemStack(item || this.itemstring);
+			this.itemstring = stack.to_string();
+			if (this.itemstring == "") {
+				// Item not yet known.
+				return;
+			}
+
+			const itemname: string =
+				(stack.is_known() && stack.get_name()) || "unknown";
+
+			const def: ItemDefinition = core.registered_items[itemname];
+
+			this.object.set_properties({
+				textures: [itemname],
+				wield_item: this.itemstring,
+				glow: def && def.light_source,
+			});
+		}
 	}
 
 	// local stack
 	// local itemname
 	// local def
-	// local set_item = function(self, item)
-	// 	stack = ItemStack(item or self.itemstring)
-	// 	self.itemstring = stack:to_string()
-	// 	if self.itemstring == "" then
-	// 		// item not yet known
-	// 		return
-	// 	end
-
-	// 	itemname = stack:is_known() and stack:get_name() or "unknown"
-
-	// 	def = core.registered_nodes[itemname]
-
-	// 	self.object:set_properties({
-	// 		textures = {itemname},
-	// 		wield_item = self.itemstring,
-	// 		glow = def and def.light_source,
-	// 	})
-	// end
 
 	// local get_staticdata = function(self)
 	// 	return core.serialize({
