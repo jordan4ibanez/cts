@@ -3,16 +3,13 @@
 namespace item_handling {
 	const pool = new Map<string, number>();
 
-	// local name
 	core.register_on_joinplayer((player: ObjectRef) => {
 		pool.set(player.get_player_name(), 0);
 	});
 
-	// local name
-	// core.register_on_leaveplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = nil
-	// end)
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		pool.delete(player.get_player_name());
+	});
 
 	// --The item collection magnet
 	// local name
