@@ -43,7 +43,7 @@ namespace item_handling {
 
 			// Radial detection.
 			for (const [_,object] of ipairs(core.get_objects_inside_radius(vector.create3d({x:pos.x,y:pos.y+0.5,z:pos.z}), 2))) {
-	// 			if not object:is_player() then
+				if (!object.is_player()) {
 	// 				entity = object:get_luaentity()
 	// 				if entity.name == "__builtin:item" and entity.collectable == true and object:get_luaentity().collected == false then
 	// 					pos2 = object:get_pos()
@@ -59,7 +59,7 @@ namespace item_handling {
 	// 						entity.collector = player:get_player_name()
 	// 						entity.collected = true
 	// 				end
-	// 			end
+                }
         }
 	
     }
