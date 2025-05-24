@@ -105,6 +105,8 @@ namespace item_handling {
 		collected: boolean = false;
 		itemstring: string = "";
 		collector: string = "";
+		dropped_by: string = "";
+		collection_timer: number = 0;
 		set_item(input: string | ItemStackObject) {}
 	}
 
