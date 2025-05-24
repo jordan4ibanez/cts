@@ -98,13 +98,13 @@ namespace item_handling {
 		);
 	}
 
-    // fixme: //! this needs to be replaced with the new implementation below this!
-    export class CrafterItemEntity extends types.Entity {
-        name: string = ":__builtin:item";
-        collectable: boolean = false;
-        collected: boolean = false;
-        
-    }
+	// fixme: //! this needs to be replaced with the new implementation below this!
+	export class CrafterItemEntity extends types.Entity {
+		name: string = ":__builtin:item";
+		collectable: boolean = false;
+		collected: boolean = false;
+		itemstring: string = "";
+	}
 
 	// local stack
 	// local object
