@@ -61,7 +61,7 @@ namespace item_handling {
 					"experience"
 				);
 				if (experience_amount > 0) {
-					throw_experience(pos, experience_amount)
+					throw_experience(pos, experience_amount);
 				}
 			}
 			// Auto repair the item.
@@ -195,12 +195,26 @@ namespace item_handling {
 
 	export class CrafterItemEntity extends types.Entity {
 		name: string = ":__builtin:item";
-		collectable: boolean = false;
-		collected: boolean = false;
 		itemstring: string = "";
 		collector: string = "";
 		dropped_by: string = "";
-		collection_timer: number = 0;
+		moving_state = true;
+		slippery_state = false;
+		physical_state = true;
+		// Item expiry
+		age = 0;
+		// Pushing item out of solid nodes
+		force_out = null;
+		force_out_start = null;
+		// Collection Variables
+		collection_timer = 2;
+		collectable = false;
+		try_timer = 0;
+		collected = false;
+		delete_timer = 0;
+		// Used for server delay
+		magnet_timer = 0;
+		poll_timer = 0;
 		set_item(input: string | ItemStackObject) {}
 	}
 
