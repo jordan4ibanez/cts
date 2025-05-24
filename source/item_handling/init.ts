@@ -215,6 +215,19 @@ namespace item_handling {
 		// Used for server delay
 		magnet_timer = 0;
 		poll_timer = 0;
+		initial_properties = {
+			hp_max: 1,
+			visual: EntityVisual.wielditem,
+			physical: true,
+			textures: [""],
+			automatic_rotate: 1.5,
+			is_visible: true,
+			pointable: false,
+			collide_with_objects: false,
+			collisionbox: [-0.21, -0.21, -0.21, 0.21, 0.21, 0.21],
+			selectionbox: [-0.21, -0.21, -0.21, 0.21, 0.21, 0.21],
+			visual_size: vector.create2d(0.21, 0.21),
+		};
 		set_item(input: string | ItemStackObject) {}
 	}
 
@@ -540,38 +553,6 @@ namespace item_handling {
 	// end
 
 	// core.register_entity(":__builtin:item", {
-	// 	initial_properties = {
-	// 		hp_max           = 1,
-	// 		visual           = "wielditem",
-	// 		physical         = true,
-	// 		textures         = {""},
-	// 		automatic_rotate = 1.5,
-	// 		is_visible       = true,
-	// 		pointable        = false,
-
-	// 		collide_with_objects = false,
-	// 		collisionbox = {-0.21, -0.21, -0.21, 0.21, 0.21, 0.21},
-	// 		selectionbox = {-0.21, -0.21, -0.21, 0.21, 0.21, 0.21},
-	// 		visual_size  = {x = 0.21, y = 0.21},
-	// 	},
-	// 	itemstring = "",
-	// 	moving_state = true,
-	// 	slippery_state = false,
-	// 	physical_state = true,
-	// 	// Item expiry
-	// 	age = 0,
-	// 	// Pushing item out of solid nodes
-	// 	force_out       = nil,
-	// 	force_out_start = nil,
-	// 	// Collection Variables
-	// 	collection_timer = 2,
-	// 	collectable      = false,
-	// 	try_timer        = 0,
-	// 	collected        = false,
-	// 	delete_timer     = 0,
-	// 	// Used for server delay
-	// 	magnet_timer = 0,
-	// 	poll_timer = 0,
 
 	// 	set_item = set_item,
 
