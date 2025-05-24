@@ -377,11 +377,11 @@ namespace item_handling {
 			this.collection_timer  += dtime
 		}
 
-	// 	this.age = this.age + dtime
-	// 	if this.age > 300 then
-	// 		this.object:remove()
-	// 		return
-	// 	end
+		this.age  += dtime
+		if (this.age > 300) {
+			this.object.remove()
+			return
+        }
 	// 	// polling eases the server load
 	// 	if this.poll_timer > 0 then
 	// 		this.poll_timer = this.poll_timer - dtime
