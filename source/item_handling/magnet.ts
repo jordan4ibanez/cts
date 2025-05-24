@@ -11,15 +11,10 @@ namespace item_handling {
 		pool.delete(player.get_player_name());
 	});
 
-	// --The item collection magnet
-	// local name
-	// local pos
-	// local pos2
-	// local diff
-	// local inv
-	// local entity
-	// local tick = false
-	// local function magnet(player)
+	// The item collection magnet.
+	
+	let tick: boolean = false
+	function magnet(player: ObjectRef): void {
 	// 	--don't magnetize to dead players
 	// 	name = player:get_player_name()
 	// 	if player:get_hp() > 0 then
@@ -60,7 +55,7 @@ namespace item_handling {
 	// 	else
 	// 		pool[name] = 0
 	// 	end
-	// end
+    }
 
 	// core.register_globalstep(function(dtime)
 	// 	tick = not tick
