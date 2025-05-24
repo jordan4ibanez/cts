@@ -261,32 +261,35 @@ namespace item_handling {
 				magnet_timer: this.magnet_timer,
 			});
 		};
+
+		on_activate = (staticdata: string, dtime_s: number): void => {
+			if (string.sub(staticdata, 1, string.len("return")) == "return") {
+				const data: any = core.deserialize(staticdata);
+				if (data && type(data) == "table") {
+					this.itemstring = data.itemstring;
+					this.age = (data.age || 0) + dtime_s;
+					this.dropped_by = data.dropped_by;
+					this.magnet_timer = data.magnet_timer;
+					this.collection_timer = data.collection_timer;
+					this.collectable = data.collectable;
+					this.try_timer = data.try_timer;
+					this.collected = data.collected;
+					this.delete_timer = data.delete_timer;
+					this.collector = data.collector;
+				}
+			} else {
+				this.itemstring = staticdata;
+			}
+			this.object.set_armor_groups({ immortal: 1 });
+			this.object.set_velocity(vector.create3d({ x: 0, y: 2, z: 0 }));
+			this.object.set_acceleration(
+				vector.create3d({ x: 0, y: -9.81, z: 0 })
+			);
+			this.set_item(this.itemstring);
+		};
 	}
 
 	// local data
-	// local on_activate = function(self, staticdata, dtime_s)
-	// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
-	// 		data = core.deserialize(staticdata)
-	// 		if data and type(data) == "table" then
-	// 			self.itemstring = data.itemstring
-	// 			self.age = (data.age or 0) + dtime_s
-	// 			self.dropped_by = data.dropped_by
-	// 			self.magnet_timer = data.magnet_timer
-	// 			self.collection_timer = data.collection_timer
-	// 			self.collectable = data.collectable
-	// 			self.try_timer = data.try_timer
-	// 			self.collected = data.collected
-	// 			self.delete_timer = data.delete_timer
-	// 			self.collector = data.collector
-	// 		end
-	// 	else
-	// 		self.itemstring = staticdata
-	// 	end
-	// 	self.object:set_armor_groups({immortal = 1})
-	// 	self.object:set_velocity({x = 0, y = 2, z = 0})
-	// 	self.object:set_acceleration({x = 0, y = -9.81, z = 0})
-	// 	set_item(self,self.itemstring)
-	// end
 
 	// local enable_physics = function(self)
 	// 	if not self.physical_state then
