@@ -16,8 +16,8 @@ namespace item_handling {
 	let tick: boolean = false
     
 	function magnet(player: ObjectRef): void {
-	// 	--don't magnetize to dead players
-	// 	name = player:get_player_name()
+		// Don't magnetize to dead players.
+		const name: string = player.get_player_name()
 	// 	if player:get_hp() > 0 then
 	// 		pos = player:get_pos()
 	// 		inv = player:get_inventory()
