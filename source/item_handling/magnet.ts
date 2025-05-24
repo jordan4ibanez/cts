@@ -11,9 +11,10 @@ namespace item_handling {
 		pool.delete(player.get_player_name());
 	});
 
+
 	// The item collection magnet.
-	
 	let tick: boolean = false
+    
 	function magnet(player: ObjectRef): void {
 	// 	--don't magnetize to dead players
 	// 	name = player:get_player_name()
