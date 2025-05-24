@@ -98,18 +98,6 @@ namespace item_handling {
 		);
 	}
 
-	// fixme: //! this needs to be replaced with the new implementation below this!
-	export class CrafterItemEntity extends types.Entity {
-		name: string = ":__builtin:item";
-		collectable: boolean = false;
-		collected: boolean = false;
-		itemstring: string = "";
-		collector: string = "";
-		dropped_by: string = "";
-		collection_timer: number = 0;
-		set_item(input: string | ItemStackObject) {}
-	}
-
 	export function throw_item(
 		pos: Vec3,
 		item: string | ItemStackObject
@@ -159,14 +147,7 @@ namespace item_handling {
 		}
 	}
 
-	// //override drops
-	// local dropper_is_player
-	// local c_pos
-	// local count
-	// local sneak
-	// local item
-	// local object
-	// local dir
+	// Override drops.
 	core.item_drop = (
 		itemstack: ItemStackObject,
 		dropper: ObjectRef,
@@ -212,6 +193,17 @@ namespace item_handling {
 		}
 		return [itemstack, object];
 	};
+
+	export class CrafterItemEntity extends types.Entity {
+		name: string = ":__builtin:item";
+		collectable: boolean = false;
+		collected: boolean = false;
+		itemstring: string = "";
+		collector: string = "";
+		dropped_by: string = "";
+		collection_timer: number = 0;
+		set_item(input: string | ItemStackObject) {}
+	}
 
 	// local stack
 	// local itemname
