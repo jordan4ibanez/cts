@@ -4,13 +4,13 @@ namespace item_handling {
 	const pool: any = {};
 
 	// local name
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name] = 0
 	// end)
 
 	// local name
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name] = nil
 	// end)
@@ -30,7 +30,7 @@ namespace item_handling {
 	// 		pos = player:get_pos()
 	// 		inv = player:get_inventory()
 	// 		if tick == true and pool[name] > 0 then
-	// 			minetest.sound_play("pickup", {
+	// 			core.sound_play("pickup", {
 	// 				to_player = player:get_player_name(),
 	// 				gain = 0.4,
 	// 				pitch = math.random(60,100)/100
@@ -42,7 +42,7 @@ namespace item_handling {
 	// 			end
 	// 		end
 	// 		--radial detection
-	// 		for _,object in ipairs(minetest.get_objects_inside_radius({x=pos.x,y=pos.y+0.5,z=pos.z}, 2)) do
+	// 		for _,object in ipairs(core.get_objects_inside_radius({x=pos.x,y=pos.y+0.5,z=pos.z}, 2)) do
 	// 			if not object:is_player() then
 	// 				entity = object:get_luaentity()
 	// 				if entity.name == "__builtin:item" and entity.collectable == true and object:get_luaentity().collected == false then
@@ -66,9 +66,9 @@ namespace item_handling {
 	// 	end
 	// end
 
-	// minetest.register_globalstep(function(dtime)
+	// core.register_globalstep(function(dtime)
 	// 	tick = not tick
-	// 	for _,player in ipairs(minetest.get_connected_players()) do
+	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		magnet(player)
 	// 	end
 	// end)
