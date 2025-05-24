@@ -322,21 +322,21 @@ namespace item_handling {
 		}
 
     on_step (dtime: number, moveresult: MoveResult): void {
-	// 	pos = self.object:get_pos()
+		const pos: Vec3 = this.object.get_pos()
 	// 	if not pos then
 	// 		return
 	// 	end
 
 	// 	//if item set to be collected then only execute go to player
-	// 	if self.collected == true then
-	// 		if not self.collector then
-	// 			self.object:remove()
+	// 	if this.collected == true then
+	// 		if not this.collector then
+	// 			this.object:remove()
 	// 			return
 	// 		end
 
-	// 		collector = core.get_player_by_name(self.collector)
+	// 		collector = core.get_player_by_name(this.collector)
 	// 		if collector then
-	// 			self.magnet_timer = self.magnet_timer + dtime
+	// 			this.magnet_timer = this.magnet_timer + dtime
 
 	// 			disable_physics(self)
 
@@ -347,8 +347,8 @@ namespace item_handling {
 
 	// 			distance = vector.distance(pos2,pos)
 
-	// 			if distance > 2 or distance < 0.3 or self.magnet_timer > 0.2 or self.old_magnet_distance and self.old_magnet_distance < distance then
-	// 				self.object:remove()
+	// 			if distance > 2 or distance < 0.3 or this.magnet_timer > 0.2 or this.old_magnet_distance and this.old_magnet_distance < distance then
+	// 				this.object:remove()
 	// 				return
 	// 			end
 
@@ -358,35 +358,35 @@ namespace item_handling {
 
 	// 			velocity = vector.add(player_velocity,vector.multiply(direction,multiplier))
 
-	// 			self.object:set_velocity(velocity)
+	// 			this.object:set_velocity(velocity)
 
-	// 			self.old_magnet_distance = distance
+	// 			this.old_magnet_distance = distance
 
 	// 			return
 	// 		else
 	// 			// the collector doesn't exist
-	// 			self.object:remove()
+	// 			this.object:remove()
 	// 			return
 	// 		end
 	// 	end
 
 	// 	//allow entity to be collected after timer
-	// 	if self.collectable == false and self.collection_timer >= 2.5 then
-	// 		self.collectable = true
-	// 	elseif self.collectable == false then
-	// 		self.collection_timer = self.collection_timer + dtime
+	// 	if this.collectable == false and this.collection_timer >= 2.5 then
+	// 		this.collectable = true
+	// 	elseif this.collectable == false then
+	// 		this.collection_timer = this.collection_timer + dtime
 	// 	end
 
-	// 	self.age = self.age + dtime
-	// 	if self.age > 300 then
-	// 		self.object:remove()
+	// 	this.age = this.age + dtime
+	// 	if this.age > 300 then
+	// 		this.object:remove()
 	// 		return
 	// 	end
 	// 	// polling eases the server load
-	// 	if self.poll_timer > 0 then
-	// 		self.poll_timer = self.poll_timer - dtime
-	// 		if self.poll_timer <= 0 then
-	// 			self.poll_timer = 0
+	// 	if this.poll_timer > 0 then
+	// 		this.poll_timer = this.poll_timer - dtime
+	// 		if this.poll_timer <= 0 then
+	// 			this.poll_timer = 0
 	// 		end
 	// 		return
 	// 	end
@@ -402,7 +402,7 @@ namespace item_handling {
 	// 	// Remove nodes in 'ignore' and burns items
 	// 	if i_node then
 	// 		if i_node.name == "ignore" then
-	// 			self.object:remove()
+	// 			this.object:remove()
 	// 			return
 	// 		elseif i_node and burn_nodes[i_node.name] then
 	// 			core.add_particlespawner({
@@ -423,7 +423,7 @@ namespace item_handling {
 	// 				texture = "smoke.png",
 	// 			})
 	// 			core.sound_play("fire_extinguish", {pos=pos,gain=0.3,pitch=math.random(80,100)/100})
-	// 			self.object:remove()
+	// 			this.object:remove()
 	// 			return
 	// 		end
 	// 	end
@@ -464,13 +464,13 @@ namespace item_handling {
 	// 			fpos = vector.round(pos)
 	// 			if shootdir.x ~= 0 then
 	// 				shootdir = vector.multiply(shootdir,0.74)
-	// 				self.object:move_to(vector.new(fpos.x+shootdir.x,pos.y,pos.z))
+	// 				this.object:move_to(vector.new(fpos.x+shootdir.x,pos.y,pos.z))
 	// 			elseif shootdir.y ~= 0 then
 	// 				shootdir = vector.multiply(shootdir,0.72)
-	// 				self.object:move_to(vector.new(pos.x,fpos.y+shootdir.y,pos.z))
+	// 				this.object:move_to(vector.new(pos.x,fpos.y+shootdir.y,pos.z))
 	// 			elseif shootdir.z ~= 0 then
 	// 				shootdir = vector.multiply(shootdir,0.74)
-	// 				self.object:move_to(vector.new(pos.x,pos.y,fpos.z+shootdir.z))
+	// 				this.object:move_to(vector.new(pos.x,pos.y,fpos.z+shootdir.z))
 	// 			end
 	// 			return
 	// 		end
@@ -480,52 +480,52 @@ namespace item_handling {
 
 	// 	if flow_dir then
 	// 		flow_dir = vector.multiply(flow_dir,10)
-	// 		local vel = self.object:get_velocity()
+	// 		local vel = this.object:get_velocity()
 	// 		local acceleration = vector.new(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
 	// 		acceleration = vector.multiply(acceleration, 0.01)
-	// 		self.object:add_velocity(acceleration)
+	// 		this.object:add_velocity(acceleration)
 	// 		return
 	// 	end
 
 	// 	change = false
 	// 	// Slide on slippery nodes
 	// 	def = node and core.registered_nodes[node.name]
-	// 	vel = self.object:get_velocity()
+	// 	vel = this.object:get_velocity()
 	// 	if def and def.walkable then
 	// 		slippery = core.get_item_group(node.name, "slippery")
 	// 		if slippery ~= 0 then
 	// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
 	// 				// Horizontal deceleration
 	// 				slip_factor = 4.0 / (slippery + 4)
-	// 				self.object:set_acceleration({
+	// 				this.object:set_acceleration({
 	// 					x = -vel.x * slip_factor,
 	// 					y = -9.81,
 	// 					z = -vel.z * slip_factor
 	// 				})
 	// 				change = true
 	// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
-	// 				self.object:set_velocity(vector.new(0,vel.y,0))
-	// 				self.object:set_acceleration(vector.new(0,-9.81,0))
+	// 				this.object:set_velocity(vector.new(0,vel.y,0))
+	// 				this.object:set_acceleration(vector.new(0,-9.81,0))
 	// 			end
 	// 		elseif node then
 	// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
-	// 				self.object:add_velocity({
+	// 				this.object:add_velocity({
 	// 					x = -vel.x * 0.15,
 	// 					y = 0,
 	// 					z = -vel.z * 0.15
 	// 				})
 	// 				change = true
 	// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
-	// 				self.object:set_velocity(vector.new(0,vel.y,0))
-	// 				self.object:set_acceleration(vector.new(0,-9.81,0))
+	// 				this.object:set_velocity(vector.new(0,vel.y,0))
+	// 				this.object:set_acceleration(vector.new(0,-9.81,0))
 	// 			end
 	// 		end
 	// 	elseif vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0 then
 	// 		change = true
 	// 	end
 
-	// 	if change == false and self.poll_timer == 0 then
-	// 		self.poll_timer = 0.5
+	// 	if change == false and this.poll_timer == 0 then
+	// 		this.poll_timer = 0.5
 	// 	end
     }
 	}
