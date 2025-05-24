@@ -135,7 +135,6 @@ namespace item_handling {
 		return object;
 	}
 
-	// local object
 	export function throw_experience(pos: Vec3, amount: number): void {
 		for (let i = 1; i <= amount; i++) {
 			const object: ObjectRef | null = core.add_entity(
