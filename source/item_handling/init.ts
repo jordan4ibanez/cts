@@ -247,7 +247,7 @@ namespace item_handling {
 				glow: def && def.light_source,
 			});
 		}
-		get_staticdata = (): string => {
+		get_staticdata(): string {
 			return core.serialize({
 				itemstring: this.itemstring,
 				age: this.age,
@@ -260,8 +260,8 @@ namespace item_handling {
 				collector: this.collector,
 				magnet_timer: this.magnet_timer,
 			});
-		};
-		on_activate = (staticdata: string, dtime_s: number): void => {
+		}
+		on_activate(staticdata: string, dtime_s: number): void {
 			if (string.sub(staticdata, 1, string.len("return")) == "return") {
 				const data: any = core.deserialize(staticdata);
 				if (data && type(data) == "table") {
@@ -285,7 +285,7 @@ namespace item_handling {
 				vector.create3d({ x: 0, y: -9.81, z: 0 })
 			);
 			this.set_item(this.itemstring);
-		};
+		}
 
 		enable_physics(): void {
 			if (!this.physical_state) {
