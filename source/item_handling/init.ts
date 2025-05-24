@@ -104,25 +104,34 @@ namespace item_handling {
 		collectable: boolean = false;
 		collected: boolean = false;
 		itemstring: string = "";
-        collector: string = "";
+		collector: string = "";
+		set_item(input: string | ItemStackObject) {}
 	}
 
-	// local stack
-	// local object
-	// function core.throw_item(pos, item)
-	// 	// Take item in any format
-	// 	stack = item
-	// 	object = core.add_entity(pos, "__builtin:item")
-	// 	if object then
-	// 		object:get_luaentity():set_item(stack)
-	// 		object:set_velocity({
-	// 			x=math.random(-2,2)*math.random(),
-	// 			y=math.random(2,5),
-	// 			z=math.random(-2,2)*math.random()
-	// 		})
-	// 	end
-	// 	return object
-	// end
+	export function throw_item(
+		pos: Vec3,
+		item: string | ItemStackObject
+	): ObjectRef | null {
+		// Take item in any format
+		const stack = item;
+		const object: ObjectRef | null = core.add_entity(pos, "__builtin:item");
+		if (object == null) {
+			return null;
+		}
+		const entity = object.get_luaentity() as CrafterItemEntity;
+
+		entity.set_item(stack);
+
+		object.set_velocity(
+			vector.create3d({
+				x: math.random(-2, 2) * math.random(),
+				y: math.random(2, 5),
+				z: math.random(-2, 2) * math.random(),
+			})
+		);
+
+		return object;
+	}
 
 	// local object
 	// function core.throw_experience(pos, amount)
