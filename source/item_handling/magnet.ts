@@ -11,71 +11,81 @@ namespace item_handling {
 		pool.delete(player.get_player_name());
 	});
 
-
 	// The item collection magnet.
-	let tick: boolean = false
-    
+	let tick: boolean = false;
+
 	function magnet(player: ObjectRef): void {
 		// Don't magnetize to dead players.
-		const name: string = player.get_player_name()
+		const name: string = player.get_player_name();
 		if (player.get_hp() <= 0) {
-            pool.set(name, 0)
-        }
+			pool.set(name, 0);
+		}
 
-			const pos: Vec3 = player.get_pos()
-			const inv: InvRef = player.get_inventory()
+		const pos: Vec3 = player.get_pos();
+		const inv: InvRef = player.get_inventory();
 
-            let curVal = pool.get(name) 
-            if (curVal == null) {throw new Error("what")}
+		let curVal = pool.get(name);
+		if (curVal == null) {
+			throw new Error("what");
+		}
 
-			if (tick == true && curVal > 0) {
-				core.sound_play("pickup", {
-					to_player : player.get_player_name(),
-					gain : 0.4,
-					pitch : math.random(60,100)/100
-				})
-				if (curVal > 6) {
-                    curVal = 6
-					pool.set(name,  curVal)
-                } else {
-                    curVal -= 1
-					pool.set(name,  curVal )
-                }
-            }
+		if (tick == true && curVal > 0) {
+			core.sound_play("pickup", {
+				to_player: player.get_player_name(),
+				gain: 0.4,
+				pitch: math.random(60, 100) / 100,
+			});
+			if (curVal > 6) {
+				curVal = 6;
+				pool.set(name, curVal);
+			} else {
+				curVal -= 1;
+				pool.set(name, curVal);
+			}
+		}
 
-			// Radial detection.
-			for (const [_,object] of ipairs(core.get_objects_inside_radius(vector.create3d({x:pos.x,y:pos.y+0.5,z:pos.z}), 2))) {
-				if (object.is_player()) {
-                    continue
-                }
-                let __entity: LuaEntity = object.get_luaentity()
-                if (__entity == null || (__entity.name != "__builtin:item" && __entity.name != "experience:orb")) {
-                    continue;
-                }
+		// Radial detection.
+		for (const [_, object] of ipairs(
+			core.get_objects_inside_radius(
+				vector.create3d({ x: pos.x, y: pos.y + 0.5, z: pos.z }),
+				2
+			)
+		)) {
+			if (object.is_player()) {
+				continue;
+			}
+			let __entity: LuaEntity = object.get_luaentity();
+			if (
+				__entity == null ||
+				(__entity.name != "__builtin:item" &&
+					__entity.name != "experience:orb")
+			) {
+				continue;
+			}
 
-                const entity: CrafterItemEntity = __entity as CrafterItemEntity;
+			const entity: CrafterItemEntity = __entity as CrafterItemEntity;
 
+			if (
+				entity.name == "__builtin:item" &&
+				entity.collectable == true &&
+				entity.collected == false
+			) {
+				const pos2: Vec3 = object.get_pos();
+				const diff: number = vector.subtract(pos2, pos).y;
+				if (diff >= 0 && inv.room_for_item("main", entity.itemstring)) {
+					curVal += 1;
+					pool.set(name, curVal);
 
-					
-					if (entity.name == "__builtin:item" && entity.collectable == true && entity.collected == false) {
-						const pos2: Vec3 = object.get_pos()
-						const diff: number = vector.subtract(pos2,pos).y
-						if (diff >= 0 && inv.room_for_item("main", entity.itemstring)) {
-							curVal += 1
-                            pool.set(name, curVal)
-
-							inv.add_item("main", entity.itemstring)
-							entity.collector = player.get_player_name()
-							entity.collected = true
-                        }
-                    } else if (entity.name == "experience:orb") {
-							entity.collector = player.get_player_name()
-							entity.collected = true
-                    }
-                
-        }
-	
-    }
+					inv.add_item("main", entity.itemstring);
+					entity.collector = player.get_player_name();
+					entity.collected = true;
+				}
+			} else if (entity.name == "experience:orb") {
+				entity.collector = player.get_player_name();
+				entity.collected = true;
+			}
+		}
+	}
 
 	// core.register_globalstep(function(dtime)
 	// 	tick = not tick
