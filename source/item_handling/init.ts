@@ -56,18 +56,19 @@ if (! creative_mode) {
 	            // core.throw_experience(pos, experience_amount)
             }
         }
-		//auto repair the item
-		if autorepair > 0 and math.random(0,1000) < autorepair then
-			local itemstack = digger:get_wielded_item()
-			itemstack:add_wear(autorepair*-100)
-			digger:set_wielded_item(itemstack)
-		end
+		// Auto repair the item.
+		if (autorepair > 0 && math.random(0,1000) < autorepair) {
+			const itemstack: ItemStackObject = digger.get_wielded_item()
+			itemstack.add_wear(autorepair*-100)
+			digger.set_wielded_item(itemstack)
+        }
 }
 //creative
                     }else{
-	function core.handle_node_drops(pos, drops, digger)
-	end
-	core.register_on_dignode(function(pos, oldnode, digger)
+	 core.handle_node_drops = (pos, drops, digger) => {
+     }
+	core.register_on_dignode((pos, oldnode, digger) => {
+        // todo: if the inventory doesn't contain this item and the wielded item is nothing, set the wielded item.
 		
 		//if digger and digger:is_player() then
 		//	local inv = digger:get_inventory()
@@ -75,10 +76,10 @@ if (! creative_mode) {
 		//		inv:add_item("main", oldnode)
 		//	end
 		//end
-	end)
-	core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
-		return(itemstack:get_name())
-	end)
+                    })
+	core.register_on_placenode((pos: Vec3, newnode: NodeTable, placer: ObjectRef, oldnode: NodeTable, itemstack: ItemStackObject, pointed_thing: PointedThing) => {
+		return(itemstack.get_name())
+                    })
                     }
 
 // local stack
