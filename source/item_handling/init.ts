@@ -323,9 +323,9 @@ namespace item_handling {
 
     on_step (dtime: number, moveresult: MoveResult): void {
 		const pos: Vec3 = this.object.get_pos()
-	// 	if not pos then
-	// 		return
-	// 	end
+		if (!pos) then
+			return
+		end
 
 	// 	//if item set to be collected then only execute go to player
 	// 	if this.collected == true then
