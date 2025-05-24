@@ -466,7 +466,7 @@ interface core {
 		itemStack: ItemStackObject,
 		dropper: ObjectRef | null,
 		position: Vec3
-	): ItemStackObject;
+	): [ItemStackObject, ObjectRef] | null;
 	item_eat(hpChange: number, replaceWithItem: string): void;
 	node_punch(
 		position: Vec3,
