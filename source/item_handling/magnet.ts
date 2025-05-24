@@ -25,6 +25,7 @@ namespace item_handling {
 			const pos: Vec3 = player.get_pos()
 			const inv: InvRef = player.get_inventory()
 
+            const curVal = pool.get(name) || (() => {throw new Error("what")})()
 
 			if (tick == true and pool[name] > 0) then
 	// 			core.sound_play("pickup", {
