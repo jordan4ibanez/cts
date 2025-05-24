@@ -212,23 +212,25 @@ namespace item_handling {
 		itemstring: string = "";
 		collector: string | null = null;
 		dropped_by: string = "";
-		moving_state = true;
-		slippery_state = false;
-		physical_state = true;
+		moving_state: boolean = true;
+		slippery_state: boolean = false;
+		physical_state: boolean = true;
 		// Item expiry
-		age = 0;
+		age: number = 0;
 		// Pushing item out of solid nodes
+        // fixme: what are these two values?!
 		force_out = null;
 		force_out_start = null;
 		// Collection Variables
-		collection_timer = 2;
-		collectable = false;
-		try_timer = 0;
-		collected = false;
-		delete_timer = 0;
+		collection_timer: number = 2;
+		collectable: boolean = false;
+		try_timer: number = 0;
+		collected: boolean = false;
+		delete_timer: number = 0;
 		// Used for server delay
-		magnet_timer = 0;
-		poll_timer = 0;
+		magnet_timer: number = 0;
+        old_magnet_distance: number = 0;
+		poll_timer: number = 0;
 		initial_properties = {
 			hp_max: 1,
 			visual: EntityVisual.wielditem,
@@ -346,7 +348,7 @@ namespace item_handling {
 				const distance: number = vector.distance(pos2,pos);
 
 				if (distance > 2 || distance < 0.3 || this.magnet_timer > 0.2 || this.old_magnet_distance && this.old_magnet_distance < distance) {
-					this.object:remove()
+					this.object.remove()
 					return
                 }
 
