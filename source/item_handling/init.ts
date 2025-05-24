@@ -134,19 +134,30 @@ namespace item_handling {
 	}
 
 	// local object
-	// function core.throw_experience(pos, amount)
-	//     for i = 1,amount do
-	//         object = core.add_entity(pos, "experience:orb")
-	//         if object then
-	//             object:set_velocity({
-	// 				x=math.random(-2,2)*math.random(),
-	// 				y=math.random(2,5),
-	// 				z=math.random(-2,2)*math.random()
-	// 			})
-	//         end
-	//     end
-	// 	//return obj
-	// end
+	export function throw_experience(pos: Vec3, amount: number): void {
+		for (let i = 1; i <= amount; i++) {
+			const object: ObjectRef | null = core.add_entity(
+				pos,
+				"experience:orb"
+			);
+			if (object == null) {
+				print(
+					`warning: failed to add experience. [${core.pos_to_string(
+						pos
+					)}]`
+				);
+				continue;
+			}
+			object.set_velocity(
+				vector.create3d({
+					x: math.random(-2, 2) * math.random(),
+					y: math.random(2, 5),
+					z: math.random(-2, 2) * math.random(),
+				})
+			);
+		}
+		//return obj
+	}
 
 	// //override drops
 	// local dropper_is_player
