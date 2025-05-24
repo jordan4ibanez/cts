@@ -332,23 +332,23 @@ namespace item_handling {
 				return
             }
 
-			const collector: ObjectRef | null = core.get_player_by_name(this.collector)
+			const collector: ObjectRef | null = core.get_player_by_name(this.collector);
 			if (collector!= null) {
-	// 			this.magnet_timer = this.magnet_timer + dtime
+				this.magnet_timer  += dtime;
 
-	// 			disable_physics(self)
+				this.disable_physics();
 
-	// 			//get the variables
-	// 			pos2 = collector:get_pos()
-	// 			player_velocity = collector:get_player_velocity()
-	// 			pos2.y = pos2.y + 0.5
+				// Get the variables.
+				const pos2: Vec3 = collector.get_pos();
+				const player_velocity: Vec3 = collector.get_velocity();
+				pos2.y += 0.5;
 
-	// 			distance = vector.distance(pos2,pos)
+				const distance: number = vector.distance(pos2,pos);
 
-	// 			if distance > 2 or distance < 0.3 or this.magnet_timer > 0.2 or this.old_magnet_distance and this.old_magnet_distance < distance then
-	// 				this.object:remove()
-	// 				return
-	// 			end
+				if (distance > 2 || distance < 0.3 || this.magnet_timer > 0.2 || this.old_magnet_distance && this.old_magnet_distance < distance) {
+					this.object:remove()
+					return
+                }
 
 	// 			direction = vector.normalize(vector.subtract(pos2,pos))
 
