@@ -25,7 +25,7 @@ namespace item_handling {
 			const pos: Vec3 = player.get_pos()
 			const inv: InvRef = player.get_inventory()
 
-            const curVal = pool.get(name) 
+            let curVal = pool.get(name) 
             if (curVal == null) {throw new Error("what")}
 
 			if (tick == true && curVal > 0) {
@@ -35,9 +35,11 @@ namespace item_handling {
 					pitch : math.random(60,100)/100
 				})
 				if (curVal > 6) {
-					pool.set(name,  6)
+                    curVal = 6
+					pool.set(name,  curVal)
                 } else {
-					pool.set(name,  curVal - 1)
+                    curVal -= 1
+					pool.set(name,  curVal )
                 }
             }
 
@@ -53,22 +55,22 @@ namespace item_handling {
 
                 const entity: CrafterItemEntity = __entity as CrafterItemEntity;
 
-                
 
 					
-					if (entity.collectable == true && entity.collected == false) {
-	// 					pos2 = object:get_pos()
-	// 					diff = vector.subtract(pos2,pos).y
-	// 					if diff >= 0 and inv:room_for_item("main", entity.itemstring) then
-	// 						pool[name] = pool[name] + 1
-	// 						inv:add_item("main", entity.itemstring)
-	// 						entity.collector = player:get_player_name()
-	// 						entity.collected = true
+					if (entity.name == "__builtin:item" && entity.collectable == true && entity.collected == false) {
+						const pos2: Vec3 = object.get_pos()
+						const diff: number = vector.subtract(pos2,pos).y
+						if (diff >= 0 && inv.room_for_item("main", entity.itemstring)) {
+							curVal += 1
+                            pool.set(name, curVal)
 
-	// 					end
-                    } else if (object:get_luaentity().name == "experience:orb") {
-	// 						entity.collector = player:get_player_name()
-	// 						entity.collected = true
+							inv.add_item("main", entity.itemstring)
+							entity.collector = player.get_player_name()
+							entity.collected = true
+                        }
+                    } else if (entity.name == "experience:orb") {
+							entity.collector = player.get_player_name()
+							entity.collected = true
                     }
                 
         }
