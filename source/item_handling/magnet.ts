@@ -4,10 +4,9 @@ namespace item_handling {
 	const pool: any = {};
 
 	// local name
-	// core.register_on_joinplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = 0
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		pool[player.get_player_name()] = 0;
+	});
 
 	// local name
 	// core.register_on_leaveplayer(function(player)
