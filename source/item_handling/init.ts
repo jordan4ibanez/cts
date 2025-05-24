@@ -61,8 +61,7 @@ namespace item_handling {
 					"experience"
 				);
 				if (experience_amount > 0) {
-					// todo: fix this when this is added below.
-					// core.throw_experience(pos, experience_amount)
+					throw_experience(pos, experience_amount)
 				}
 			}
 			// Auto repair the item.
