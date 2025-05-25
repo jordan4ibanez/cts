@@ -1661,21 +1661,6 @@ declare global {
 		): void;
 	}
 
-	interface LuantiSettingsObject {
-		get(key: string): any;
-		get_bool(key: string, defaul?: boolean): boolean | null;
-		get_np_group(key: string): NoiseParams;
-		get_flags(key: string): { string: boolean };
-		set(key: string, value: string): void;
-		set_bool(key: string, value: boolean): void;
-		set_np_group(key: string, value: NoiseParams): void;
-		remove(key: string): boolean;
-		get_names(): string[];
-		has(key: string): boolean;
-		write(): boolean;
-		to_table(): Map<string, any>;
-	}
-
 	/** @noSelf **/ interface NametagAttributes {
 		text: string;
 		color: RGBA;
@@ -2446,6 +2431,21 @@ declare global {
 		to_file(fileName: string): void;
 		from_string(str: string): [boolean, string] | void;
 		from_file(fileName: string): [boolean, string] | void;
+	}
+
+	interface LuantiSettingsObject {
+		get(key: string): any;
+		get_bool(key: string, defaul?: boolean): boolean | null;
+		get_np_group(key: string): NoiseParams;
+		get_flags(key: string): { string: boolean };
+		set(key: string, value: string): void;
+		set_bool(key: string, value: boolean): void;
+		set_np_group(key: string, value: NoiseParams): void;
+		remove(key: string): boolean;
+		get_names(): string[];
+		has(key: string): boolean;
+		write(): boolean;
+		to_table(): Map<string, any>;
 	}
 }
 
