@@ -4,6 +4,8 @@ export {};
 
 //? Everything was just dumped in as I looked down the lua_api.md
 
+//! If you don't have your mod depend on the utility library, this will just blow up when you try to use it.
+
 // todo: crafter custom stuff needs to be dumped into a custom type.
 
 /** @noSelf **/
@@ -2363,8 +2365,9 @@ declare global {
 	}
 }
 
-// Very annoying enums.
-//! If you don't have your mod depend on the utility library, this will just blow up when you try to use it.
+
+
+
 
 /** @noSelf **/
 declare global {
