@@ -346,7 +346,7 @@ namespace item_handling {
 					// Get the variables.
 					const pos2: Vec3 = collector.get_pos();
 					const player_velocity: Vec3 = collector.get_velocity();
-					pos2.y += 0.5;
+					pos2.y += 1;
 
 					const distance: number = vector.distance(pos2, pos);
 
