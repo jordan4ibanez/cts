@@ -1757,13 +1757,13 @@ declare global {
 		to_table(): Map<string, any>;
 	}
 
-	interface NametagAttributes {
+	/** @noSelf **/ interface NametagAttributes {
 		text: string;
 		color: RGBA;
 		bgcolor: RGBA;
 	}
 
-	interface AttachRef {
+	/** @noSelf **/ interface AttachRef {
 		parent: ObjectRef;
 		bone: string;
 		position: Vec3;
@@ -1771,14 +1771,14 @@ declare global {
 		forced_visible: boolean;
 	}
 
-	interface BoneOverrideProperty {
+	/** @noSelf **/ interface BoneOverrideProperty {
 		vec: Vec3;
 		interpolation: number;
 		/** If set to false, it's relative to the animated property. */
 		absolute: boolean;
 	}
 
-	interface BoneOverride {
+	/** @noSelf **/ interface BoneOverride {
 		position?: BoneOverrideProperty;
 		rotation?: BoneOverrideProperty;
 		scale?: BoneOverrideProperty;
