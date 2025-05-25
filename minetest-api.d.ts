@@ -2066,10 +2066,6 @@ declare global {
 
 	function dump2(object: any, dumped?: any[]): string;
 
-	interface Translator {
-		__call(...string: string[]): string;
-	}
-
 	// You can just bolt onto namespaces apparently!
 	namespace math {
 		function hypot(x: number, y: number): number;
@@ -2431,6 +2427,10 @@ declare global {
 		get_timeout(): number;
 		get_elapsed(): number;
 		is_started(): boolean;
+	}
+
+	interface Translator {
+		__call(...string: string[]): string;
 	}
 }
 
