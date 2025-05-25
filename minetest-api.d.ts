@@ -1661,39 +1661,6 @@ declare global {
 		): void;
 	}
 
-	interface AreaStoreObject {
-		get_area(
-			id: number,
-			includeCorners: boolean,
-			includeData: boolean
-		): Array<AreaStoreArea | boolean> | void;
-		get_areas_for_pos(
-			pos: Vec3,
-			includeCorners: boolean,
-			includeData: boolean
-		): Array<AreaStoreArea | boolean> | void;
-		get_areas_in_area(
-			corner1: Vec3,
-			corner2: Vec3,
-			acceptOverlap: boolean,
-			includeCorners: boolean,
-			includeData: boolean
-		): Array<AreaStoreArea | boolean> | void;
-		insert_area(
-			corner1: Vec3,
-			corner2: Vec3,
-			data: string,
-			id: number
-		): number;
-		reserve(count: number): void;
-		remove_area(id: number): boolean;
-		set_cache_params(params: AreaStoreCacheDefinition): void;
-		to_string(): string;
-		to_file(fileName: string): void;
-		from_string(str: string): [boolean, string] | void;
-		from_file(fileName: string): [boolean, string] | void;
-	}
-
 	interface LuantiSettingsObject {
 		get(key: string): any;
 		get_bool(key: string, defaul?: boolean): boolean | null;
@@ -2446,6 +2413,39 @@ declare global {
 
 	interface SecureRandomObject {
 		next_bytes(count: number): string;
+	}
+
+	interface AreaStoreObject {
+		get_area(
+			id: number,
+			includeCorners: boolean,
+			includeData: boolean
+		): Array<AreaStoreArea | boolean> | void;
+		get_areas_for_pos(
+			pos: Vec3,
+			includeCorners: boolean,
+			includeData: boolean
+		): Array<AreaStoreArea | boolean> | void;
+		get_areas_in_area(
+			corner1: Vec3,
+			corner2: Vec3,
+			acceptOverlap: boolean,
+			includeCorners: boolean,
+			includeData: boolean
+		): Array<AreaStoreArea | boolean> | void;
+		insert_area(
+			corner1: Vec3,
+			corner2: Vec3,
+			data: string,
+			id: number
+		): number;
+		reserve(count: number): void;
+		remove_area(id: number): boolean;
+		set_cache_params(params: AreaStoreCacheDefinition): void;
+		to_string(): string;
+		to_file(fileName: string): void;
+		from_string(str: string): [boolean, string] | void;
+		from_file(fileName: string): [boolean, string] | void;
 	}
 }
 
