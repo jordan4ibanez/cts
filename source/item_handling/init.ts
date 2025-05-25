@@ -615,7 +615,6 @@ namespace item_handling {
 			"Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
 		privs: { server: true },
 		func(name: string): void {
-			print(this);
 			const player = core.get_player_by_name(name);
 			if (!player) {
 				core.log(
