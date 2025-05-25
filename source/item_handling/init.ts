@@ -349,6 +349,10 @@ namespace item_handling {
 					pos2.y += 1;
 
 					const distance: number = vector.distance(pos2, pos);
+					if (this.magnet_trigger) {
+						this.old_magnet_distance = distance;
+						this.magnet_trigger = false;
+					}
 
 					if (
 						distance > 2 ||
