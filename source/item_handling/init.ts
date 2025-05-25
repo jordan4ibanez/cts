@@ -602,7 +602,7 @@ namespace item_handling {
 		}
 	}
 
-    utility.registerTSEntity(CrafterItemEntity);
+	utility.registerTSEntity(CrafterItemEntity);
 
 	// core.register_entity(":__builtin:item", {
 
