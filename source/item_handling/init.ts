@@ -602,31 +602,6 @@ namespace item_handling {
 		}
 	}
 
-	// local collector
-	// local pos
-	// local pos2
-	// local player_velocity
-	// local direction
-	// local distance
-	// local multiplier
-	// local velocity
-	// local node
-	// local is_stuck
-	// local snode
-	// local shootdir
-	// local cnode
-	// local cdef
-	// local fpos
-	// local vel
-	// local def
-	// local slip_factor
-	// local change
-	// local slippery
-	// local i_node
-	// local flow_dir
-
-	//! ENDS HERE
-
 	// core.register_entity(":__builtin:item", {
 
 	// 	set_item = set_item,
