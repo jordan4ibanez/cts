@@ -1777,6 +1777,7 @@ declare global {
 	}
 
 	interface ObjectRef {
+		is_valid(): boolean;
 		get_pos(): Vec3;
 		set_pos(position: Vec3): void;
 		get_velocity(): Vec3;
