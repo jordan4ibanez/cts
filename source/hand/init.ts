@@ -105,7 +105,7 @@ core.register_node("crafter_hand:player", {
 	range: def.range,
 });
 
-core.register_node("hand:creative", {
+core.register_node("crafter_hand:creative", {
 	description: "",
 	tiles: ["player.png"],
 	visual_scale: 1,
