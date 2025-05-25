@@ -2033,17 +2033,6 @@ declare global {
 		limit: number;
 	}
 
-	interface Vec3 extends Vec2 {
-		__eq(other: Vec3): boolean;
-		__unm(): Vec3;
-		__add(other: Vec3): Vec3;
-		__sub(other: Vec3): Vec3;
-		__mul(other: Vec3): Vec3;
-		__div(other: Vec3): Vec3;
-
-		z: number;
-	}
-
 	/** @noSelf **/ interface Vec3RangeBias {
 		min: Vec3;
 		max: Vec3;
@@ -2431,6 +2420,17 @@ declare global {
 	interface Vec2 {
 		x: number;
 		y: number;
+	}
+
+	interface Vec3 extends Vec2 {
+		__eq(other: Vec3): boolean;
+		__unm(): Vec3;
+		__add(other: Vec3): Vec3;
+		__sub(other: Vec3): Vec3;
+		__mul(other: Vec3): Vec3;
+		__div(other: Vec3): Vec3;
+
+		z: number;
 	}
 }
 
