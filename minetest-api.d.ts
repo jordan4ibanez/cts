@@ -1692,7 +1692,7 @@ declare global {
 		[key: string]: number | boolean;
 	}
 
-	interface PlayerControlObject extends Dictionary {
+	/** @noSelf **/ interface PlayerControlObject extends Dictionary {
 		up: boolean;
 		down: boolean;
 		left: boolean;
