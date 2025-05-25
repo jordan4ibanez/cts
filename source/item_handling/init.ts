@@ -609,18 +609,27 @@ namespace item_handling {
 
 	utility.registerTSEntity(CrafterItemEntity);
 
-	// core.register_chatcommand("gimme", {
-	// 	params = "nil",
-	// 	description = "Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
-	// 	privs = {server=true},
-	// 	func = function(name)
-	// 		local player = core.get_player_by_name(name)
-	// 		local pos = player:get_pos()
-	// 		pos.y = pos.y + 5
-	// 		pos.x = pos.x + 8
-	// 		for i = 1,1000 do
-	// 			core.throw_item(pos, "main:dirt")
-	// 		end
-	// 	end,
-	// })
+	core.register_chatcommand("gimme", {
+		params: "nil",
+		description:
+			"Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
+		privs: { server: true },
+		func(name: string): void {
+			print(this);
+			const player = core.get_player_by_name(name);
+			if (!player) {
+				core.log(
+					LogLevel.warning,
+					`Player [${name}] ran a command and they don't exist.`
+				);
+				return;
+			}
+			const pos: Vec3 = player.get_pos();
+			pos.y = pos.y + 5;
+			pos.x = pos.x + 8;
+			for (let i = 1; i <= 1000; i++) {
+				item_handling.throw_item(pos, "crafter:dirt");
+			}
+		},
+	});
 }
