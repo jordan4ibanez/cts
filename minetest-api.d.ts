@@ -2442,10 +2442,7 @@ declare global {
 			randomFunc: () => number
 		): LuaTable;
 	}
-}
 
-/** @noSelf **/
-declare global {
 	const core: core;
 
 	//? Enums below this.
