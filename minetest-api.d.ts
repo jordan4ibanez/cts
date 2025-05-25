@@ -1709,12 +1709,6 @@ declare global {
 		movement_y: number;
 	}
 
-	interface PcgRandomObject {
-		next(): number;
-		next(min: number, max: number): number;
-		rand_normal_dist(min: number, max: number, trials: number): number;
-	}
-
 	interface PerlinNoiseObject {
 		get_2d(position: Vec2): number;
 		get_3d(position: Vec3): number;
@@ -2431,6 +2425,12 @@ declare global {
 		set_lighting(definition: LightingDefinition): void;
 		get_lighting(): LightingDefinition;
 		respawn(): void;
+	}
+
+	interface PcgRandomObject {
+		next(): number;
+		next(min: number, max: number): number;
+		rand_normal_dist(min: number, max: number, trials: number): number;
 	}
 }
 
