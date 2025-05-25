@@ -197,8 +197,8 @@ namespace item_handling {
 		"fire:fire": true,
 		"nether:lava": true,
 		"nether:lavaflow": true,
-		"main:lava": true,
-		"main:lavaflow": true,
+		"crafter:lava": true,
+		"crafter:lavaflow": true,
 	};
 	const order: Vec3[] = [
 		vector.create3d({ x: 1, y: 0, z: 0 }),
