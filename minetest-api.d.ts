@@ -1612,28 +1612,6 @@ declare global {
 		MaxEdge: Vec3;
 	}
 
-	interface VoxelAreaObject {
-		ystride: number;
-		zstride: number;
-		new (init: VoxelAreaInitializer): VoxelAreaObject;
-		getExtent(): Vec3;
-		index(x: number, y: number, z: number): number;
-		indexp(p: Vec3): number;
-		position(i: number): Vec3;
-		contains(x: number, y: number, z: number): boolean;
-		containsp(p: Vec3): boolean;
-		containsi(i: number): boolean;
-		iter(
-			minX: number,
-			minY: number,
-			minZ: number,
-			maxX: number,
-			maxY: number,
-			maxZ: number
-		): Iterator<number>;
-		iterp(minp: Vec3, maxp: Vec3): Iterator<number>;
-	}
-
 	interface RaycastObject extends LuaIterable<PointedThing> {}
 
 	interface SecureRandomObject {
@@ -2446,6 +2424,28 @@ declare global {
 		update_liquids(): void;
 		was_modified(): boolean;
 		get_emerged_area(): [Vec3, Vec3];
+	}
+
+	interface VoxelAreaObject {
+		ystride: number;
+		zstride: number;
+		new (init: VoxelAreaInitializer): VoxelAreaObject;
+		getExtent(): Vec3;
+		index(x: number, y: number, z: number): number;
+		indexp(p: Vec3): number;
+		position(i: number): Vec3;
+		contains(x: number, y: number, z: number): boolean;
+		containsp(p: Vec3): boolean;
+		containsi(i: number): boolean;
+		iter(
+			minX: number,
+			minY: number,
+			minZ: number,
+			maxX: number,
+			maxY: number,
+			maxZ: number
+		): Iterator<number>;
+		iterp(minp: Vec3, maxp: Vec3): Iterator<number>;
 	}
 }
 
