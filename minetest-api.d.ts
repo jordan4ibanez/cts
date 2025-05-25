@@ -1993,7 +1993,7 @@ declare global {
 		next(min: number, max: number): number;
 	}
 
-	interface PhysicsOverride {
+	/** @noSelf **/ interface PhysicsOverride {
 		speed?: number;
 		jump?: number;
 		gravity?: number;
@@ -2009,7 +2009,7 @@ declare global {
 		new_move?: boolean;
 	}
 
-	interface SkyParametersColor {
+	/** @noSelf **/ interface SkyParametersColor {
 		day_sky: DynamicColorSpec;
 		day_horizon: DynamicColorSpec;
 		dawn_sky: DynamicColorSpec;
@@ -2022,12 +2022,12 @@ declare global {
 		fog_tint_type: SkyParametersFogTintType;
 	}
 
-	interface SkyParametersFog {
+	/** @noSelf **/ interface SkyParametersFog {
 		fog_distance: number;
 		fog_start: number;
 	}
 
-	interface SkyParameters {
+	/** @noSelf **/ interface SkyParameters {
 		base_color: DynamicColorSpec;
 		body_orbit_tilt: number;
 		type: SkyParametersType;
@@ -2037,7 +2037,7 @@ declare global {
 		fog: SkyParametersFog;
 	}
 
-	interface SunParameters {
+	/** @noSelf **/ interface SunParameters {
 		visible: boolean;
 		texture: string;
 		tonemap: string;
@@ -2046,14 +2046,14 @@ declare global {
 		scale: number;
 	}
 
-	interface MoonParameters {
+	/** @noSelf **/ interface MoonParameters {
 		visible: boolean;
 		texture: string;
 		tonemap: string;
 		scale: number;
 	}
 
-	interface StarParameters {
+	/** @noSelf **/ interface StarParameters {
 		visible: boolean;
 		day_opacity: number;
 		count: number;
@@ -2061,7 +2061,7 @@ declare global {
 		scale: number;
 	}
 
-	interface CloudParameters {
+	/** @noSelf **/ interface CloudParameters {
 		density: number;
 		color: DynamicColorSpec;
 		ambient: DynamicColorSpec;
@@ -2070,11 +2070,11 @@ declare global {
 		speed: Vec2;
 	}
 
-	interface LightShadowsSpec {
+	/** @noSelf **/ interface LightShadowsSpec {
 		intensity: number;
 	}
 
-	interface LightExposureSpec {
+	/** @noSelf **/ interface LightExposureSpec {
 		luminance_min: number;
 		luminance_max: number;
 		exposure_correction: number;
@@ -2083,7 +2083,7 @@ declare global {
 		center_weight_power: number;
 	}
 
-	interface LightingDefinition {
+	/** @noSelf **/ interface LightingDefinition {
 		saturation?: number;
 		shadows?: LightShadowsSpec;
 		exposure?: LightExposureSpec;
@@ -2091,7 +2091,7 @@ declare global {
 
 	type CollisionBox = Array<number>;
 
-	interface ObjectProperties {
+	/** @noSelf **/ interface ObjectProperties {
 		hp_max?: number;
 		breath_max?: number;
 		zoom_fov?: number;
