@@ -216,11 +216,7 @@ namespace item_handling {
 		slippery_state: boolean = false;
 		physical_state: boolean = true;
 		// Item expiry
-		age: number = 0;
-		// Pushing item out of solid nodes
-		// fixme: what are these two values?!
-		force_out = null;
-		force_out_start = null;
+		age: number = 0;		
 		// Collection Variables
 		collection_timer: number = 2;
 		collectable: boolean = false;
