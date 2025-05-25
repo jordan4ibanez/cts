@@ -527,11 +527,11 @@ namespace item_handling {
 				// 	return
                 // }
 
-			// 	change = false
-			// 	// Slide on slippery nodes
-			// 	def = node and core.registered_nodes[node.name]
-			// 	vel = this.object:get_velocity()
-			// 	if def and def.walkable then
+				let change: boolean = false
+				// Slide on slippery nodes
+				const def: NodeDefinition | null = node && core.registered_nodes[node.name]
+				const vel = this.object.get_velocity();
+				if (def && def.walkable) {
 			// 		slippery = core.get_item_group(node.name, "slippery")
 			// 		if slippery ~= 0 then
 			// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
@@ -560,9 +560,9 @@ namespace item_handling {
 			// 				this.object:set_acceleration(vector.new(0,-9.81,0))
 			// 			end
 			// 		end
-			// 	elseif vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0 then
-			// 		change = true
-			// 	end
+                } else if (vel.x != 0 || vel.y != 0 || vel.z != 0) {
+					change = true
+                }
 
 			// 	if change == false and this.poll_timer == 0 then
 			// 		this.poll_timer = 0.5
