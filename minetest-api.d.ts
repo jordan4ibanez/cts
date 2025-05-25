@@ -674,19 +674,19 @@ interface core {
 	spawn_item(pos: Vec3, item: ItemStackObject | string): ObjectRef | null;
 }
 
-// interface HeightMapObject {
+// /** @noSelf **/ interface HeightMapObject {
 
 // }
 
-// interface BiomeMapObject {
+// /** @noSelf **/ interface BiomeMapObject {
 
 // }
 
-// interface HeatMapObject {
+// /** @noSelf **/ interface HeatMapObject {
 
 // }
 
-// interface HumidityMapObject {
+// /** @noSelf **/ interface HumidityMapObject {
 
 // }
 
@@ -694,7 +694,7 @@ interface core {
 declare global {
 	const core: core;
 
-	interface ItemStackObject {
+	/** @noSelf **/ interface ItemStackObject {
 		name: string;
 		// count: number
 		wear: number;
@@ -728,13 +728,13 @@ declare global {
 		equals(other: ItemStackObject): boolean;
 	}
 
-	interface InvRefLocation {
+	/** @noSelf **/ interface InvRefLocation {
 		type: string;
 		name: string;
 		pos: Vec3;
 	}
 
-	interface InvRef {
+	/** @noSelf **/ interface InvRef {
 		is_empty(listName: string): boolean;
 		get_size(listName: string): number;
 		set_size(listName: string, size: number): boolean;
@@ -770,7 +770,7 @@ declare global {
 		get_location(): InvRefLocation;
 	}
 
-	interface TreeDefinition {
+	/** @noSelf **/ interface TreeDefinition {
 		axiom: string;
 		rules_a: string;
 		rules_b: string;
@@ -792,7 +792,7 @@ declare global {
 
 	type GenNotifyObject = Map<string, Vec3[]>;
 
-	interface SimpleSoundSpec {
+	/** @noSelf **/ interface SimpleSoundSpec {
 		name?: string;
 		gain?: number;
 		pitch?: number;
@@ -802,13 +802,13 @@ declare global {
 	/**
 	 * I'm sure this can be used for something.
 	 */
-	interface ComplexSoundSpec extends SimpleSoundSpec {
+	/** @noSelf **/ interface ComplexSoundSpec extends SimpleSoundSpec {
 		randomizePitch?: boolean;
 		min?: number;
 		max?: number;
 	}
 
-	interface SoundParameterTable extends SimpleSoundSpec {
+	/** @noSelf **/ interface SoundParameterTable extends SimpleSoundSpec {
 		start_time?: number;
 		loop?: boolean;
 		pos?: Vec3;
@@ -817,7 +817,7 @@ declare global {
 		max_hear_distance?: number;
 	}
 
-	interface NodeBox {
+	/** @noSelf **/ interface NodeBox {
 		type: Nodeboxtype;
 		fixed?: box | boxTable;
 		wall_top?: box | boxTable;
@@ -845,14 +845,14 @@ declare global {
 
 	type itemstring = string;
 
-	interface GameInfo {
+	/** @noSelf **/ interface GameInfo {
 		id: string;
 		title: string;
 		author: string;
 		path: string;
 	}
 
-	interface LuantiFeatures {
+	/** @noSelf **/ interface LuantiFeatures {
 		glasslike_framed: boolean;
 		nodebox_as_selectionbox: boolean;
 		get_all_craft_recipes_works: boolean;
@@ -881,7 +881,7 @@ declare global {
 		compress_zstd: boolean;
 	}
 
-	interface PlayerInformation {
+	/** @noSelf **/ interface PlayerInformation {
 		address: string;
 		ip_version: number;
 		connection_uptime: number;
@@ -896,14 +896,14 @@ declare global {
 		avg_jitter: number;
 	}
 
-	interface WindowInformation {
+	/** @noSelf **/ interface WindowInformation {
 		size: Vec2;
 		max_formspec_size: Vec2;
 		real_gui_scaling: number;
 		real_hud_scaling: number;
 	}
 
-	interface LuantiInfo {
+	/** @noSelf **/ interface LuantiInfo {
 		project: string;
 		string: string;
 		proto_min: string;
@@ -912,14 +912,14 @@ declare global {
 		is_dev: boolean;
 	}
 
-	interface ColorSpec {
+	/** @noSelf **/ interface ColorSpec {
 		a: number;
 		r: number;
 		g: number;
 		b: number;
 	}
 
-	interface NodeSoundSpec {
+	/** @noSelf **/ interface NodeSoundSpec {
 		footstep?: SimpleSoundSpec | string;
 		dig?: SimpleSoundSpec | string;
 		dug?: SimpleSoundSpec | string;
@@ -932,7 +932,7 @@ declare global {
 		placing?: SimpleSoundSpec | string;
 	}
 
-	interface ItemDropSpec {
+	/** @noSelf **/ interface ItemDropSpec {
 		tools?: string[];
 		rarity?: number;
 		items?: string[];
@@ -940,33 +940,33 @@ declare global {
 		tool_groups?: string[] | string[][];
 	}
 
-	interface NodeDropSpec {
+	/** @noSelf **/ interface NodeDropSpec {
 		max_items?: number;
 		items: ItemDropSpec[];
 	}
 
-	interface MapNode {
+	/** @noSelf **/ interface MapNode {
 		name: string;
 		prob: number;
 		param2: number;
 		force_place: boolean;
 	}
 
-	interface NodeTable {
+	/** @noSelf **/ interface NodeTable {
 		name: string;
 		param1?: number;
 		param2?: number;
 		level?: number;
 	}
 
-	interface PointedThing {
+	/** @noSelf **/ interface PointedThing {
 		type: string;
 		under: Vec3;
 		above: Vec3;
 		ref: ObjectRef;
 	}
 
-	interface GroupCap {
+	/** @noSelf **/ interface GroupCap {
 		// Allow the end programmer to do it their way.
 		times: number[] | { [id: number]: number };
 		uses?: number;
@@ -975,7 +975,7 @@ declare global {
 		maxdrop?: number;
 	}
 
-	interface ToolCapabilities {
+	/** @noSelf **/ interface ToolCapabilities {
 		full_punch_interval?: number;
 		max_drop_level?: number;
 		groupcaps?: { [id: string]: GroupCap };
@@ -983,14 +983,14 @@ declare global {
 		punch_attack_uses?: number;
 	}
 
-	interface ItemSounds {
+	/** @noSelf **/ interface ItemSounds {
 		breaks: SimpleSoundSpec | string;
 		eat: SimpleSoundSpec | string;
 		punch_use: SimpleSoundSpec | string;
 		punch_use_air: SimpleSoundSpec | string;
 	}
 
-	interface Collision {
+	/** @noSelf **/ interface Collision {
 		type: string;
 		axis: string;
 		node_pos: Vec3;
@@ -999,7 +999,7 @@ declare global {
 		new_velocity: Vec3;
 	}
 
-	interface MoveResult {
+	/** @noSelf **/ interface MoveResult {
 		touching_ground: boolean;
 		collides: boolean;
 		standing_on_object: boolean;
