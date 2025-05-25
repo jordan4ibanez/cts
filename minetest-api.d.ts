@@ -2444,9 +2444,12 @@ declare global {
 			randomFunc: () => number
 		): LuaTable;
 	}
+}
 
-	//? Enums below this.
+//? Enums below this.
 
+/** @noSelf **/
+declare global {
 	enum SchematicRotation {
 		zero,
 		ninety,
