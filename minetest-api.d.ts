@@ -1782,7 +1782,7 @@ declare global {
 		set_pos(position: Vec3): void;
 		get_velocity(): Vec3;
 		add_velocity(velocity: Vec3): void;
-		move_to(newPos: Vec3, continuous: boolean): void;
+		move_to(newPos: Vec3, continuous?: boolean): void;
 		punch(
 			puncher: ObjectRef,
 			timeFromLastPunch: number,
