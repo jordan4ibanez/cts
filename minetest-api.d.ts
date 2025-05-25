@@ -1450,7 +1450,7 @@ declare global {
 	interface ChatCommandDefinition {
 		params: string;
 		description: string;
-		privs: string[];
+		privs: { [id: string]: boolean };
 		func(name: string, param: string): [boolean, string];
 	}
 
