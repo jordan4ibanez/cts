@@ -2211,19 +2211,19 @@ declare global {
 		cancel(): void;
 	}
 
-	interface DynamicAddMediaOptions {
+	/** @noSelf **/ interface DynamicAddMediaOptions {
 		filepath: string;
 		to_player: string;
 		ephemeral: boolean;
 	}
 
-	interface ParticleBounceDefinition {
+	/** @noSelf **/ interface ParticleBounceDefinition {
 		min: number;
 		max: number;
 		bias: number;
 	}
 
-	interface ParticleDefinition {
+	/** @noSelf **/ interface ParticleDefinition {
 		pos: Vec3;
 		velocity: Vec3;
 		acceleration: Vec3;
@@ -2243,7 +2243,7 @@ declare global {
 		bounce: ParticleBounceDefinition;
 	}
 
-	interface ParticleSpawnerTweenDefinition
+	/** @noSelf **/ interface ParticleSpawnerTweenDefinition
 		extends Array<number | ParticleSpawnerRangeDefinition> {
 		// {number | ParticleSpawnerRangeDefinition}
 		style: ParticleSpawnerTweenStyle;
@@ -2251,7 +2251,7 @@ declare global {
 		start: number;
 	}
 
-	interface ParticleSpawnerRangeDefinition {
+	/** @noSelf **/ interface ParticleSpawnerRangeDefinition {
 		min: Vec3;
 		max: Vec3;
 		bias: number;
@@ -2263,7 +2263,7 @@ declare global {
 
 	type ParticleSpawnerTextureScaleTween = Array<Vec2>;
 
-	interface ParticleSpawnerTextureDefinition {
+	/** @noSelf **/ interface ParticleSpawnerTextureDefinition {
 		name: string;
 		alpha: number;
 		alpha_tween: number[];
@@ -2273,12 +2273,12 @@ declare global {
 		animation: TileAnimationDefinition;
 	}
 
-	interface TexturePoolComponentTweenDefinition extends Array<number> {
+	/** @noSelf **/ interface TexturePoolComponentTweenDefinition extends Array<number> {
 		style: ParticleSpawnerTweenStyle;
 		reps: number;
 	}
 
-	interface TexturePoolComponentDefinition {
+	/** @noSelf **/ interface TexturePoolComponentDefinition {
 		name: string;
 		fade: TexturePoolComponentFade;
 		alpha: number;
@@ -2291,7 +2291,7 @@ declare global {
 		string | TexturePoolComponentDefinition
 	>;
 
-	interface ParticleSpawnerAttractionDefinition {
+	/** @noSelf **/ interface ParticleSpawnerAttractionDefinition {
 		kind: ParticleSpawnerAttractionType;
 		strength: Vec2;
 		origin: Vec3;
@@ -2301,7 +2301,7 @@ declare global {
 		die_on_contact: boolean;
 	}
 
-	interface ParticleSpawnerDefinition {
+	/** @noSelf **/ interface ParticleSpawnerDefinition {
 		amount?: number;
 		time?: number;
 		maxpos?: Vec3;
@@ -2331,13 +2331,13 @@ declare global {
 		texpool?: ParticleSpawnerTexturePoolDefinition;
 	}
 
-	interface AreaStoreArea {
+	/** @noSelf **/ interface AreaStoreArea {
 		min: Vec3;
 		max: Vec3;
 		data: string;
 	}
 
-	interface AreaStoreCacheDefinition {
+	/** @noSelf **/ interface AreaStoreCacheDefinition {
 		enabled: boolean;
 		block_radius: number;
 		limit: number;
@@ -2359,20 +2359,20 @@ declare global {
 		z: number;
 	}
 
-	interface Vec3RangeBias {
+	/** @noSelf **/ interface Vec3RangeBias {
 		min: Vec3;
 		max: Vec3;
 		bias: Vec3;
 	}
 
-	interface RGBA {
+	/** @noSelf **/ interface RGBA {
 		r: number;
 		g: number;
 		b: number;
 		a: number;
 	}
 
-	interface DigParamsReturn {
+	/** @noSelf **/ interface DigParamsReturn {
 		diggable: boolean;
 		time: number;
 		wear: number;
@@ -2380,7 +2380,7 @@ declare global {
 		tool_capabilities: ToolCapabilities;
 	}
 
-	interface HitParamsReturn {
+	/** @noSelf **/ interface HitParamsReturn {
 		hp: number;
 		wear: number;
 		groups: string[];
