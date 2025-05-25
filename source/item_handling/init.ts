@@ -410,7 +410,7 @@ namespace item_handling {
 				moveresult.touching_ground &&
 				moveresult.collisions.length > 0
 			) {
-				node = core.get_node_or_nil(moveresult.collisions[1].node_pos);
+				node = core.get_node_or_nil(moveresult.collisions[0].node_pos);
 			}
 
 			const i_node: NodeTable | null = core.get_node_or_nil(pos);
