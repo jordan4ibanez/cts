@@ -690,7 +690,7 @@ interface core {
 
 // }
 
-//~ Has self parameter implicitly!
+/** @noSelf **/
 declare global {
 	interface ItemStackObject {
 		name: string;
