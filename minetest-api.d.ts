@@ -1688,149 +1688,6 @@ declare global {
 		scale?: BoneOverrideProperty;
 	}
 
-	interface ObjectRef {
-		is_valid(): boolean;
-		get_pos(): Vec3;
-		set_pos(position: Vec3): void;
-		get_velocity(): Vec3;
-		add_velocity(velocity: Vec3): void;
-		move_to(newPos: Vec3, continuous?: boolean): void;
-		punch(
-			puncher: ObjectRef,
-			timeFromLastPunch: number,
-			toolCapabilities: ToolCapabilities,
-			dir: Vec3
-		): void;
-		right_click(clicker: ObjectRef): void;
-		get_hp(): number;
-		set_hp(hp: number, reason?: HPChangeReasonType): void;
-		get_inventory(): InvRef;
-		get_wield_list(): string;
-		get_wield_index(): number;
-		get_wielded_item(): ItemStackObject;
-		set_wielded_item(item: ItemStackObject): boolean;
-		get_armor_groups(): { string: number };
-		set_armor_groups(groups: { [id: string]: number }): void;
-		get_animation(): Array<Vec2 | number>;
-		set_animation(
-			frameRange: Vec2,
-			frameSpeed: number,
-			frameBlend: number,
-			loop: boolean
-		): void;
-		set_animation_frame_speed(speed: number): void;
-		set_attach(
-			parent: ObjectRef,
-			bone: string,
-			position: Vec3,
-			rotation: Vec3,
-			forcedVisible: boolean
-		): void;
-		get_attach(): AttachRef | void;
-		get_children(): ObjectRef[];
-		set_detach(): void;
-		set_bone_override(bone: string, property: BoneOverride | null): void;
-		get_bone_override(bone: string): BoneOverride;
-		get_bone_overrides(): { [key: string]: BoneOverride };
-		set_properties(objectPropertiesTable: ObjectProperties): void;
-		get_properties(): ObjectProperties;
-		is_player(): boolean;
-		get_nametag_attributes(): NametagAttributes;
-		set_nametag_attributes(attributes: NametagAttributes): void;
-		remove(): void;
-		set_velocity(velocity: Vec3): void;
-		set_acceleration(acceleration: Vec3): void;
-		get_acceleration(): Vec3;
-		set_rotation(rotation: Vec3): void;
-		get_rotation(): Vec3;
-		set_yaw(yaw: number): void;
-		get_yaw(): number;
-		set_texture_mod(mod: string): void;
-		get_texture_mod(): string;
-		set_sprite(
-			startFrame: Vec2,
-			numberOfFrames: number,
-			frameLength: number,
-			selectXByCamera: boolean
-		): void;
-		name: string;
-		get_luaentity(): LuaEntity;
-		//! NOTE:
-		//! From what I read in the api.md, it seems like these are just all no-ops for non-players.
-		//! This can be broken out into a different interface that extends if this causes too many problems.
-		//! IE: PlayerObjectRef extends ObjectRef.
-		get_player_name(): string;
-		get_look_dir(): Vec3;
-		get_look_vertical(): number;
-		get_look_horizontal(): number;
-		set_look_vertical(radians: number): void;
-		set_look_horizontal(radians: number): void;
-		get_look_pitch(): number;
-		get_look_yaw(): number;
-		set_look_pitch(radians: number): void;
-		set_look_yaw(radians: number): void;
-		get_breath(): number;
-		set_breath(value: number): void;
-		set_fov(
-			fov: number,
-			isMultiplier: boolean,
-			transitionTime: number
-		): void;
-		get_fov(): number;
-		get_meta(): MetaRef;
-		set_inventory_formspec(formSpec: string): void;
-		get_inventory_formspec(): string;
-		set_formspec_prepend(formSpec: string): void;
-		get_formspec_prepend(): string;
-		get_player_control(): PlayerControlObject;
-		get_player_control_bits(): number;
-		set_physics_override(override: PhysicsOverride): void;
-		get_physics_override(): PhysicsOverride;
-		hud_add(definition: HudDefinition): number;
-		hud_remove(id: number): void;
-		hud_change(id: number, stat: HudElementType, value: any): void;
-		hud_get(id: number): HudDefinition;
-		hud_set_flags(flags: HudFlags): void;
-		hud_get_flags(): HudFlags;
-		hud_set_hotbar_itemcount(count: number): void;
-		hud_get_hotbar_itemcount(): number;
-		hud_set_hotbar_image(textureName: string): void;
-		hud_get_hotbar_image(): string;
-		hud_set_hotbar_selected_image(textureName: string): void;
-		hud_get_hotbar_selected_image(): string;
-		set_minimap_modes(mode: MinimapModes, selectedMode: number): void;
-		set_sky(parameters: SkyParameters): void;
-		get_sky(asTable: true): SkyParameters;
-		set_sun(parameters: SunParameters): void;
-		get_sun(): SunParameters;
-		set_moon(parameters: MoonParameters): void;
-		get_moon(): MoonParameters;
-		set_stars(parameters: StarParameters): void;
-		get_stars(): StarParameters;
-		set_clouds(parameters: CloudParameters): void;
-		get_clouds(): CloudParameters;
-		override_day_night_ratio(ratio: number | void): void;
-		get_day_night_ratio(): number | void;
-		set_local_animation(
-			idle: Vec2,
-			walk: Vec2,
-			dig: Vec2,
-			walkWhileDig: Vec2,
-			frameSpeed: number
-		): void;
-		get_local_animation(): [Vec2, Vec2, Vec2, Vec2, number];
-		set_eye_offset(
-			firstPerson: Vec3,
-			thirdPersonBack: Vec3,
-			thirdPersonFront: Vec3
-		): void;
-		get_eye_offset(): [Vec3, Vec3, Vec3];
-		send_mapblock(blockPos: Vec3): boolean;
-		set_lighting(definition: LightingDefinition): void;
-		get_lighting(): LightingDefinition;
-		respawn(): void;
-	}
-
 	interface Dictionary {
 		[key: string]: number | boolean;
 	}
@@ -2446,6 +2303,149 @@ declare global {
 		has(key: string): boolean;
 		write(): boolean;
 		to_table(): Map<string, any>;
+	}
+
+	interface ObjectRef {
+		is_valid(): boolean;
+		get_pos(): Vec3;
+		set_pos(position: Vec3): void;
+		get_velocity(): Vec3;
+		add_velocity(velocity: Vec3): void;
+		move_to(newPos: Vec3, continuous?: boolean): void;
+		punch(
+			puncher: ObjectRef,
+			timeFromLastPunch: number,
+			toolCapabilities: ToolCapabilities,
+			dir: Vec3
+		): void;
+		right_click(clicker: ObjectRef): void;
+		get_hp(): number;
+		set_hp(hp: number, reason?: HPChangeReasonType): void;
+		get_inventory(): InvRef;
+		get_wield_list(): string;
+		get_wield_index(): number;
+		get_wielded_item(): ItemStackObject;
+		set_wielded_item(item: ItemStackObject): boolean;
+		get_armor_groups(): { string: number };
+		set_armor_groups(groups: { [id: string]: number }): void;
+		get_animation(): Array<Vec2 | number>;
+		set_animation(
+			frameRange: Vec2,
+			frameSpeed: number,
+			frameBlend: number,
+			loop: boolean
+		): void;
+		set_animation_frame_speed(speed: number): void;
+		set_attach(
+			parent: ObjectRef,
+			bone: string,
+			position: Vec3,
+			rotation: Vec3,
+			forcedVisible: boolean
+		): void;
+		get_attach(): AttachRef | void;
+		get_children(): ObjectRef[];
+		set_detach(): void;
+		set_bone_override(bone: string, property: BoneOverride | null): void;
+		get_bone_override(bone: string): BoneOverride;
+		get_bone_overrides(): { [key: string]: BoneOverride };
+		set_properties(objectPropertiesTable: ObjectProperties): void;
+		get_properties(): ObjectProperties;
+		is_player(): boolean;
+		get_nametag_attributes(): NametagAttributes;
+		set_nametag_attributes(attributes: NametagAttributes): void;
+		remove(): void;
+		set_velocity(velocity: Vec3): void;
+		set_acceleration(acceleration: Vec3): void;
+		get_acceleration(): Vec3;
+		set_rotation(rotation: Vec3): void;
+		get_rotation(): Vec3;
+		set_yaw(yaw: number): void;
+		get_yaw(): number;
+		set_texture_mod(mod: string): void;
+		get_texture_mod(): string;
+		set_sprite(
+			startFrame: Vec2,
+			numberOfFrames: number,
+			frameLength: number,
+			selectXByCamera: boolean
+		): void;
+		name: string;
+		get_luaentity(): LuaEntity;
+		//! NOTE:
+		//! From what I read in the api.md, it seems like these are just all no-ops for non-players.
+		//! This can be broken out into a different interface that extends if this causes too many problems.
+		//! IE: PlayerObjectRef extends ObjectRef.
+		get_player_name(): string;
+		get_look_dir(): Vec3;
+		get_look_vertical(): number;
+		get_look_horizontal(): number;
+		set_look_vertical(radians: number): void;
+		set_look_horizontal(radians: number): void;
+		get_look_pitch(): number;
+		get_look_yaw(): number;
+		set_look_pitch(radians: number): void;
+		set_look_yaw(radians: number): void;
+		get_breath(): number;
+		set_breath(value: number): void;
+		set_fov(
+			fov: number,
+			isMultiplier: boolean,
+			transitionTime: number
+		): void;
+		get_fov(): number;
+		get_meta(): MetaRef;
+		set_inventory_formspec(formSpec: string): void;
+		get_inventory_formspec(): string;
+		set_formspec_prepend(formSpec: string): void;
+		get_formspec_prepend(): string;
+		get_player_control(): PlayerControlObject;
+		get_player_control_bits(): number;
+		set_physics_override(override: PhysicsOverride): void;
+		get_physics_override(): PhysicsOverride;
+		hud_add(definition: HudDefinition): number;
+		hud_remove(id: number): void;
+		hud_change(id: number, stat: HudElementType, value: any): void;
+		hud_get(id: number): HudDefinition;
+		hud_set_flags(flags: HudFlags): void;
+		hud_get_flags(): HudFlags;
+		hud_set_hotbar_itemcount(count: number): void;
+		hud_get_hotbar_itemcount(): number;
+		hud_set_hotbar_image(textureName: string): void;
+		hud_get_hotbar_image(): string;
+		hud_set_hotbar_selected_image(textureName: string): void;
+		hud_get_hotbar_selected_image(): string;
+		set_minimap_modes(mode: MinimapModes, selectedMode: number): void;
+		set_sky(parameters: SkyParameters): void;
+		get_sky(asTable: true): SkyParameters;
+		set_sun(parameters: SunParameters): void;
+		get_sun(): SunParameters;
+		set_moon(parameters: MoonParameters): void;
+		get_moon(): MoonParameters;
+		set_stars(parameters: StarParameters): void;
+		get_stars(): StarParameters;
+		set_clouds(parameters: CloudParameters): void;
+		get_clouds(): CloudParameters;
+		override_day_night_ratio(ratio: number | void): void;
+		get_day_night_ratio(): number | void;
+		set_local_animation(
+			idle: Vec2,
+			walk: Vec2,
+			dig: Vec2,
+			walkWhileDig: Vec2,
+			frameSpeed: number
+		): void;
+		get_local_animation(): [Vec2, Vec2, Vec2, Vec2, number];
+		set_eye_offset(
+			firstPerson: Vec3,
+			thirdPersonBack: Vec3,
+			thirdPersonFront: Vec3
+		): void;
+		get_eye_offset(): [Vec3, Vec3, Vec3];
+		send_mapblock(blockPos: Vec3): boolean;
+		set_lighting(definition: LightingDefinition): void;
+		get_lighting(): LightingDefinition;
+		respawn(): void;
 	}
 }
 
