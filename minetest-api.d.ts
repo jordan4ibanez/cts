@@ -1688,10 +1688,6 @@ declare global {
 		scale?: BoneOverrideProperty;
 	}
 
-	interface Dictionary {
-		[key: string]: number | boolean;
-	}
-
 	interface PlayerControlObject extends Dictionary {
 		up: boolean;
 		down: boolean;
@@ -2446,6 +2442,10 @@ declare global {
 		set_lighting(definition: LightingDefinition): void;
 		get_lighting(): LightingDefinition;
 		respawn(): void;
+	}
+
+	interface Dictionary {
+		[key: string]: number | boolean;
 	}
 }
 
