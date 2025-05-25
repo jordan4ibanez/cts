@@ -690,6 +690,8 @@ interface core {
 
 // }
 
+//~ Structs. (Plain Old Data: NO implicit self [this is null]) ===============================================
+
 /** @noSelf **/
 declare global {
 	const core: core;
@@ -2107,7 +2109,7 @@ declare global {
 	}
 }
 
-//? Classes (Objects with implicit self [this]) ===============================================
+//? Classes. (Objects with implicit self [this]) ===============================================
 
 declare global {
 	interface VoxelManipObject {
