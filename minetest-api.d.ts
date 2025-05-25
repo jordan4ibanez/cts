@@ -2062,15 +2062,6 @@ declare global {
 		time_from_last_punch: number;
 	}
 
-	interface NodeTimerObject {
-		set(timeOut: number, elapsed: number): void;
-		start(timeOut: number): void;
-		stop(): void;
-		get_timeout(): number;
-		get_elapsed(): number;
-		is_started(): boolean;
-	}
-
 	function dump(object: any, name?: string, dumped?: any[]): string;
 
 	function dump2(object: any, dumped?: any[]): string;
@@ -2431,6 +2422,15 @@ declare global {
 		__div(other: Vec3): Vec3;
 
 		z: number;
+	}
+
+	interface NodeTimerObject {
+		set(timeOut: number, elapsed: number): void;
+		start(timeOut: number): void;
+		stop(): void;
+		get_timeout(): number;
+		get_elapsed(): number;
+		is_started(): boolean;
 	}
 }
 
