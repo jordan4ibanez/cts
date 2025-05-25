@@ -448,21 +448,28 @@ namespace item_handling {
 				}
 			}
 
-				let is_stuck: boolean = false
-				const snode: NodeTable | null = core.get_node_or_nil(pos);
-				if (snode && snode.name != "air") {
-					const snodeDef = core.registered_nodes[snode.name] || null
+			let is_stuck: boolean = false;
+			const snode: NodeTable | null = core.get_node_or_nil(pos);
+			if (snode && snode.name != "air") {
+				const snodeDef = core.registered_nodes[snode.name] || null;
 
-                    if (snodeDef == null) {
-                        core.log(LogLevel.warning, `Node is stuck in unknown at ${core.pos_to_string(pos)}`);
-                        is_stuck = true;
-                    } else {
-
-					is_stuck = (snodeDef.walkable == null || snodeDef.walkable == true)
-						&& (snodeDef.collision_box == null || snodeDef.collision_box.type == Nodeboxtype.regular)
-						&& (snodeDef.node_box == null || snodeDef.node_box.type == Nodeboxtype.regular)
-                    }
-                }
+				if (snodeDef == null) {
+					core.log(
+						LogLevel.warning,
+						`Node is stuck in unknown at ${core.pos_to_string(pos)}`
+					);
+					is_stuck = true;
+				} else {
+					is_stuck =
+						(snodeDef.walkable == null ||
+							snodeDef.walkable == true) &&
+						(snodeDef.collision_box == null ||
+							snodeDef.collision_box.type ==
+								Nodeboxtype.regular) &&
+						(snodeDef.node_box == null ||
+							snodeDef.node_box.type == Nodeboxtype.regular);
+				}
+			}
 
 			// 	// Push item out when stuck inside solid node
 			// 	if is_stuck then
