@@ -2067,7 +2067,7 @@ declare global {
 	function dump2(object: any, dumped?: any[]): string;
 
 	// You can just bolt onto namespaces apparently!
-	namespace math {
+	/** @noSelf **/ namespace math {
 		function hypot(x: number, y: number): number;
 		function sign(x: number, tolerance: number): number;
 		function factorial(x: number): number;
@@ -2083,7 +2083,7 @@ declare global {
 		function safeAsin(r: number): number;
 	}
 
-	namespace string {
+	/** @noSelf **/ namespace string {
 		function split(
 			str: string,
 			separator: string,
@@ -2093,7 +2093,7 @@ declare global {
 		): string;
 		function trim(str: string): string;
 	}
-	namespace table {
+	/** @noSelf **/ namespace table {
 		function copy(table: LuaTable): LuaTable;
 		function indexof(list: LuaTable, val: any): number;
 		function insert_all(table: LuaTable, otherTable: LuaTable): LuaTable;
