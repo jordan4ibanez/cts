@@ -2446,6 +2446,11 @@ declare global {
 	}
 }
 
+//? Classes (Objects with implicit self [this]) ===============================================
+declare global {
+
+}
+
 //? Enums below this.
 
 /** @noSelf **/
