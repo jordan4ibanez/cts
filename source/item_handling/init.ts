@@ -246,7 +246,7 @@ namespace item_handling {
 			this.magnet_trigger = true;
 		}
 
-		set_item(item: string | ItemStackObject) {
+		set_item(item: string | ItemStackObject | null) {
 			const stack = ItemStack(item || this.itemstring);
 			this.itemstring = stack.to_string();
 			if (this.itemstring == "") {
@@ -302,6 +302,7 @@ namespace item_handling {
 			this.object.set_acceleration(
 				vector.create3d({ x: 0, y: -9.81, z: 0 })
 			);
+
 			this.set_item(this.itemstring);
 		}
 
