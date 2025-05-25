@@ -703,42 +703,6 @@ declare global {
 		pos: Vec3;
 	}
 
-	/** @noSelf **/ interface InvRef {
-		is_empty(listName: string): boolean;
-		get_size(listName: string): number;
-		set_size(listName: string, size: number): boolean;
-		get_width(listName: string): number;
-		set_width(listName: string, size: number): void;
-		get_stack(listName: string, i: number): ItemStackObject;
-		set_stack(
-			listName: string,
-			i: number,
-			stack: ItemStackObject | string
-		): void;
-		get_list(listName: string): ItemStackObject[];
-		set_list(listName: string, list: ItemStackObject[]): void;
-		get_lists(): string[];
-		set_lists(lists: ItemStackObject[]): void;
-		add_item(
-			listName: string,
-			stack: ItemStackObject | string
-		): ItemStackObject;
-		room_for_item(
-			listName: string,
-			stack: ItemStackObject | string
-		): boolean;
-		contains_item(
-			listName: string,
-			stack: ItemStackObject | string,
-			matchMeta?: boolean
-		): boolean;
-		remove_item(
-			listName: string,
-			stack: ItemStackObject | string
-		): ItemStackObject[];
-		get_location(): InvRefLocation;
-	}
-
 	/** @noSelf **/ interface TreeDefinition {
 		axiom: string;
 		rules_a: string;
@@ -2079,6 +2043,42 @@ declare global {
 //? Classes. (Objects with implicit self [this]) ===============================================
 
 declare global {
+	interface InvRef {
+		is_empty(listName: string): boolean;
+		get_size(listName: string): number;
+		set_size(listName: string, size: number): boolean;
+		get_width(listName: string): number;
+		set_width(listName: string, size: number): void;
+		get_stack(listName: string, i: number): ItemStackObject;
+		set_stack(
+			listName: string,
+			i: number,
+			stack: ItemStackObject | string
+		): void;
+		get_list(listName: string): ItemStackObject[];
+		set_list(listName: string, list: ItemStackObject[]): void;
+		get_lists(): string[];
+		set_lists(lists: ItemStackObject[]): void;
+		add_item(
+			listName: string,
+			stack: ItemStackObject | string
+		): ItemStackObject;
+		room_for_item(
+			listName: string,
+			stack: ItemStackObject | string
+		): boolean;
+		contains_item(
+			listName: string,
+			stack: ItemStackObject | string,
+			matchMeta?: boolean
+		): boolean;
+		remove_item(
+			listName: string,
+			stack: ItemStackObject | string
+		): ItemStackObject[];
+		get_location(): InvRefLocation;
+	}
+
 	interface ItemStackObject {
 		name: string;
 		// count: number
