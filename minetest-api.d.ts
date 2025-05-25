@@ -1709,21 +1709,6 @@ declare global {
 		movement_y: number;
 	}
 
-	enum InputKeys {
-		up = "up",
-		down = "down",
-		left = "left",
-		right = "right",
-		jump = "jump",
-		aux1 = "aux1",
-		sneak = "sneak",
-		dig = "dig",
-		place = "place",
-		LMB = "LMB",
-		RMB = "RMB",
-		zoom = "zoom",
-	}
-
 	interface PcgRandomObject {
 		next(): number;
 		next(min: number, max: number): number;
@@ -2453,6 +2438,21 @@ declare global {
 
 /** @noSelf **/
 declare global {
+	enum InputKeys {
+		up = "up",
+		down = "down",
+		left = "left",
+		right = "right",
+		jump = "jump",
+		aux1 = "aux1",
+		sneak = "sneak",
+		dig = "dig",
+		place = "place",
+		LMB = "LMB",
+		RMB = "RMB",
+		zoom = "zoom",
+	}
+
 	enum SchematicRotation {
 		zero,
 		ninety,
