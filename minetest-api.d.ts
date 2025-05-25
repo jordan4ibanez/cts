@@ -1709,20 +1709,6 @@ declare global {
 		movement_y: number;
 	}
 
-	interface PerlinNoiseMapObject {
-		get_2d_map(pos: Vec2): number[][];
-		get_3d_map(pos: Vec3): number[][][];
-		get_2d_map_flat(pos: Vec2, buffer: number[]): number[];
-		get_3d_map_flat(pos: Vec3, buffer: number[]): number[];
-		calc_2d_map(pos: Vec2): void;
-		calc_3d_map(pos: Vec3): void;
-		get_map_slice(
-			sliceOffset: Vec3,
-			sliceSize: Vec3,
-			buffer: number[]
-		): number[];
-	}
-
 	interface PseudoRandomObject {
 		next(): number;
 		next(min: number, max: number): number;
@@ -2431,6 +2417,20 @@ declare global {
 	interface PerlinNoiseObject {
 		get_2d(position: Vec2): number;
 		get_3d(position: Vec3): number;
+	}
+
+	interface PerlinNoiseMapObject {
+		get_2d_map(pos: Vec2): number[][];
+		get_3d_map(pos: Vec3): number[][][];
+		get_2d_map_flat(pos: Vec2, buffer: number[]): number[];
+		get_3d_map_flat(pos: Vec3, buffer: number[]): number[];
+		calc_2d_map(pos: Vec2): void;
+		calc_3d_map(pos: Vec3): void;
+		get_map_slice(
+			sliceOffset: Vec3,
+			sliceSize: Vec3,
+			buffer: number[]
+		): number[];
 	}
 }
 
