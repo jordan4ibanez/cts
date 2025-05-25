@@ -448,14 +448,14 @@ namespace item_handling {
 				}
 			}
 
-			// 	is_stuck = false
-			// 	snode = core.get_node_or_nil(pos)
-			// 	if snode and snode ~= "air" then
-			// 		snode = core.registered_nodes[snode.name] or {}
-			// 		is_stuck = (snode.walkable == nil or snode.walkable == true)
-			// 			and (snode.collision_box == nil or snode.collision_box.type == "regular")
-			// 			and (snode.node_box == nil or snode.node_box.type == "regular")
-			// 	end
+				let is_stuck: boolean = false
+				const snode: NodeTable | null = core.get_node_or_nil(pos);
+				if (snode && snode != "air") {
+					// snode = core.registered_nodes[snode.name] or {}
+					// is_stuck = (snode.walkable == nil or snode.walkable == true)
+					// 	and (snode.collision_box == nil or snode.collision_box.type == "regular")
+					// 	and (snode.node_box == nil or snode.node_box.type == "regular")
+                }
 
 			// 	// Push item out when stuck inside solid node
 			// 	if is_stuck then
