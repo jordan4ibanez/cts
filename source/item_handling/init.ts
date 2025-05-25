@@ -609,22 +609,6 @@ namespace item_handling {
 
 	utility.registerTSEntity(CrafterItemEntity);
 
-	// core.register_entity(":__builtin:item", {
-
-	// 	set_item = set_item,
-
-	// 	get_staticdata = function(self)
-	// 		return(get_staticdata(self))
-	// 	end,
-	// 	on_activate    = function(self, staticdata, dtime_s)
-	// 		on_activate(self, staticdata, dtime_s)
-	// 	end,
-
-	// 	on_step = function(self, dtime, moveresult)
-	// 		item_step(self, dtime, moveresult)
-	// 	end,
-	// })
-
 	// core.register_chatcommand("gimme", {
 	// 	params = "nil",
 	// 	description = "Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
