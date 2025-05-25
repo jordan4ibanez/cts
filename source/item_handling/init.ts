@@ -397,36 +397,39 @@ namespace item_handling {
 			node = core.get_node_or_nil(moveresult.collisions[1].node_pos)
         }
 
-	// 	i_node = core.get_node_or_nil(pos)
+        
+        
 
-	// 	// Remove nodes in 'ignore' and burns items
-	// 	if i_node then
-	// 		if i_node.name == "ignore" then
-	// 			this.object:remove()
-	// 			return
-	// 		elseif i_node and burn_nodes[i_node.name] then
-	// 			core.add_particlespawner({
-	// 				amount = 6,
-	// 				time = 0.001,
-	// 				minpos = pos,
-	// 				maxpos = pos,
-	// 				minvel = vector.new(-1,0.5,-1),
-	// 				maxvel = vector.new(1,1,1),
-	// 				minacc = {x=0, y=1, z=0},
-	// 				maxacc = {x=0, y=2, z=0},
-	// 				minexptime = 1.1,
-	// 				maxexptime = 1.5,
-	// 				minsize = 1,
-	// 				maxsize = 2,
-	// 				collisiondetection = false,
-	// 				vertical = false,
-	// 				texture = "smoke.png",
-	// 			})
-	// 			core.sound_play("fire_extinguish", {pos=pos,gain=0.3,pitch=math.random(80,100)/100})
-	// 			this.object:remove()
-	// 			return
-	// 		end
-	// 	end
+		const i_node: NodeTable | null = core.get_node_or_nil(pos)
+
+		// Remove nodes in 'ignore' and burns items.
+		if (i_node != null) {
+			if (i_node.name == "ignore") {
+				this.object.remove()
+				return
+        } else if (i_node && burn_nodes[i_node.name]) {
+				core.add_particlespawner({
+					amount : 6,
+					time : 0.001,
+					minpos : pos,
+					maxpos : pos,
+					minvel : vector.create3d(-1,0.5,-1),
+					maxvel : vector.create3d(1,1,1),
+					minacc : vector.create3d({x:0, y:1, z:0}),
+					maxacc : vector.create3d({x:0, y:2, z:0}),
+					minexptime : 1.1,
+					maxexptime : 1.5,
+					minsize : 1,
+					maxsize : 2,
+					collisiondetection : false,
+					vertical : false,
+					texture : "smoke.png",
+				})
+				core.sound_play("fire_extinguish", {pos:pos,gain:0.3,pitch:math.random(80,100)/100})
+				this.object.remove()
+				return
+        }
+    }
 
 	// 	is_stuck = false
 	// 	snode = core.get_node_or_nil(pos)
