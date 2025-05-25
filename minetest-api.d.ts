@@ -2152,7 +2152,7 @@ declare global {
 		get_staticdata?(): string;
 	}
 
-	interface MinimapModes {
+	/** @noSelf **/ interface MinimapModes {
 		type: MinimapType;
 		label: string;
 		size: number;
@@ -2160,7 +2160,7 @@ declare global {
 		scale: number;
 	}
 
-	interface HudFlags {
+	/** @noSelf **/ interface HudFlags {
 		hotbar: boolean;
 		healthbar: boolean;
 		crosshair: boolean;
@@ -2171,7 +2171,7 @@ declare global {
 		basic_debug: boolean;
 	}
 
-	interface HudDefinition {
+	/** @noSelf **/ interface HudDefinition {
 		hud_elem_type: HudElementType;
 		position: Vec2;
 		name: string;
@@ -2189,7 +2189,7 @@ declare global {
 		style: number;
 	}
 
-	interface TileAnimationDefinition {
+	/** @noSelf **/ interface TileAnimationDefinition {
 		type?: TileAnimationType;
 		aspect_w?: number;
 		aspect_h?: number;
@@ -2199,7 +2199,7 @@ declare global {
 		frame_length?: number;
 	}
 
-	interface Rollback {
+	/** @noSelf **/ interface Rollback {
 		actor: string;
 		pos: Vec3;
 		time: number;
