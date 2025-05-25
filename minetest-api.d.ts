@@ -1607,25 +1607,7 @@ declare global {
 		function distance2d(vec1: Vec3, vec2: Vec3): number;
 	}
 
-	interface VoxelManipObject {
-		read_from_map(pos1: Vec3, pos2: Vec3): [Vec3, Vec3];
-		write_to_map(light: boolean): void;
-		get_node_at(position: Vec3): MapNode;
-		set_node_at(position: Vec3, node: MapNode): void;
-		get_data(buffer?: number[]): number[];
-		set_data(buffer?: number[]): number[];
-		set_lighting(light: number, p1: Vec3, p2: Vec3): void;
-		get_light_data(buffer: number[]): number[];
-		set_light_data(lightData: number[]): void;
-		get_param2_data(buffer: number[]): number[];
-		set_param2_data(param2Data: number[]): void;
-		calc_lighting(p1: Vec3, p2: Vec3, propagateShadows: boolean): void;
-		update_liquids(): void;
-		was_modified(): boolean;
-		get_emerged_area(): [Vec3, Vec3];
-	}
-
-	interface VoxelAreaInitializer {
+	/** @noSelf **/ interface VoxelAreaInitializer {
 		MinEdge: Vec3;
 		MaxEdge: Vec3;
 	}
@@ -2446,9 +2428,28 @@ declare global {
 }
 
 //? Classes (Objects with implicit self [this]) ===============================================
-declare global {}
 
-//? Enums below this.
+declare global {
+	interface VoxelManipObject {
+		read_from_map(pos1: Vec3, pos2: Vec3): [Vec3, Vec3];
+		write_to_map(light: boolean): void;
+		get_node_at(position: Vec3): MapNode;
+		set_node_at(position: Vec3, node: MapNode): void;
+		get_data(buffer?: number[]): number[];
+		set_data(buffer?: number[]): number[];
+		set_lighting(light: number, p1: Vec3, p2: Vec3): void;
+		get_light_data(buffer: number[]): number[];
+		set_light_data(lightData: number[]): void;
+		get_param2_data(buffer: number[]): number[];
+		set_param2_data(param2Data: number[]): void;
+		calc_lighting(p1: Vec3, p2: Vec3, propagateShadows: boolean): void;
+		update_liquids(): void;
+		was_modified(): boolean;
+		get_emerged_area(): [Vec3, Vec3];
+	}
+}
+
+//! Enums below this. =========================================================================
 
 /** @noSelf **/
 declare global {
