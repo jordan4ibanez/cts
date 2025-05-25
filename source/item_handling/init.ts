@@ -596,9 +596,9 @@ namespace item_handling {
 				change = true;
 			}
 
-			// 	if change == false and this.poll_timer == 0 then
-			// 		this.poll_timer = 0.5
-			// 	end
+			if (change == false && this.poll_timer == 0) {
+				this.poll_timer = 0.5;
+			}
 		}
 	}
 
