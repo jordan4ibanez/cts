@@ -382,14 +382,14 @@ namespace item_handling {
 			this.object.remove()
 			return
         }
-	// 	// polling eases the server load
-	// 	if this.poll_timer > 0 then
-	// 		this.poll_timer = this.poll_timer - dtime
-	// 		if this.poll_timer <= 0 then
-	// 			this.poll_timer = 0
-	// 		end
-	// 		return
-	// 	end
+		// Polling eases the server load.
+		if (this.poll_timer > 0) {
+			this.poll_timer -= dtime;
+			if (this.poll_timer <= 0) {
+				this.poll_timer = 0
+            }
+			return
+        }
 
 	// 	if moveresult and moveresult.touching_ground and table.getn(moveresult.collisions) > 0 then
 	// 		node = core.get_node_or_nil(moveresult.collisions[1].node_pos)
