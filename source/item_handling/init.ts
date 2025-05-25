@@ -391,11 +391,11 @@ namespace item_handling {
 			return
         }
 
-	// 	if moveresult and moveresult.touching_ground and table.getn(moveresult.collisions) > 0 then
-	// 		node = core.get_node_or_nil(moveresult.collisions[1].node_pos)
-	// 	else
-	// 		node = nil
-	// 	end
+        let node: NodeTable | null = null;
+
+		if (moveresult && moveresult.touching_ground && moveresult.collisions.length > 0) {
+			node = core.get_node_or_nil(moveresult.collisions[1].node_pos)
+        }
 
 	// 	i_node = core.get_node_or_nil(pos)
 
