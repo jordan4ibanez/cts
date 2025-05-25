@@ -241,6 +241,11 @@ namespace item_handling {
 			selectionbox: [-0.21, -0.21, -0.21, 0.21, 0.21, 0.21],
 			visual_size: vector.create2d(0.21, 0.21),
 		};
+
+		trigger_collection_calculation(): void {
+			this.magnet_trigger = true;
+		}
+
 		set_item(item: string | ItemStackObject) {
 			const stack = ItemStack(item || this.itemstring);
 			this.itemstring = stack.to_string();
