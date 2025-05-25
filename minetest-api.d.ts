@@ -1900,10 +1900,6 @@ declare global {
 		newnode: string;
 	}
 
-	interface Job {
-		cancel(): void;
-	}
-
 	/** @noSelf **/ interface DynamicAddMediaOptions {
 		filepath: string;
 		to_player: string;
@@ -2431,6 +2427,10 @@ declare global {
 	interface PseudoRandomObject {
 		next(): number;
 		next(min: number, max: number): number;
+	}
+
+	interface Job {
+		cancel(): void;
 	}
 }
 
