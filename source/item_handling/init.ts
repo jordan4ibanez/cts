@@ -450,7 +450,7 @@ namespace item_handling {
 
 				let is_stuck: boolean = false
 				const snode: NodeTable | null = core.get_node_or_nil(pos);
-				if (snode && snode != "air") {
+				if (snode && snode.name != "air") {
 					// snode = core.registered_nodes[snode.name] or {}
 					// is_stuck = (snode.walkable == nil or snode.walkable == true)
 					// 	and (snode.collision_box == nil or snode.collision_box.type == "regular")
