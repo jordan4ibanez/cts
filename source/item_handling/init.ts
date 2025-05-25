@@ -354,8 +354,7 @@ namespace item_handling {
 						distance > 2 ||
 						distance < 0.3 ||
 						this.magnet_timer > 0.2 ||
-						(this.old_magnet_distance &&
-							this.old_magnet_distance < distance)
+						this.old_magnet_distance < distance
 					) {
 						this.object.remove();
 						return;
