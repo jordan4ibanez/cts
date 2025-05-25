@@ -1709,11 +1709,6 @@ declare global {
 		movement_y: number;
 	}
 
-	interface PerlinNoiseObject {
-		get_2d(position: Vec2): number;
-		get_3d(position: Vec3): number;
-	}
-
 	interface PerlinNoiseMapObject {
 		get_2d_map(pos: Vec2): number[][];
 		get_3d_map(pos: Vec3): number[][][];
@@ -2431,6 +2426,11 @@ declare global {
 		next(): number;
 		next(min: number, max: number): number;
 		rand_normal_dist(min: number, max: number, trials: number): number;
+	}
+
+	interface PerlinNoiseObject {
+		get_2d(position: Vec2): number;
+		get_3d(position: Vec3): number;
 	}
 }
 
