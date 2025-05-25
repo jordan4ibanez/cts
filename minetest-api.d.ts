@@ -6,7 +6,8 @@ export {};
 
 //! If you don't have your mod depend on the utility library, this will just blow up when you try to use it.
 
-// todo: crafter custom stuff needs to be dumped into a custom type.
+// todo: crafter custom stuff needs to be dumped into a custom class instead of polluting this.
+// todo: Other people (may) want to try to use this and will get random invalid data.
 
 /** @noSelf **/
 interface core {
