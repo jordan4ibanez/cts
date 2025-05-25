@@ -697,40 +697,6 @@ interface core {
 declare global {
 	const core: core;
 
-	/** @noSelf **/ interface ItemStackObject {
-		name: string;
-		// count: number
-		wear: number;
-		metadata: string;
-
-		is_empty(): boolean;
-		get_name(): string;
-		set_name(name: string): boolean;
-		get_count(): number;
-		set_count(count: number): boolean;
-		get_wear(): number;
-		set_wear(wear: number): boolean;
-		get_meta(): MetaRef;
-		get_description(): string;
-		get_short_description(): string;
-		clear(): void;
-		replace(item: ItemStackObject | string): void;
-		to_string(): string;
-		to_table(): any[];
-		get_stack_max(): number;
-		get_free_space(): number;
-		is_known(): boolean;
-		get_definition(): ItemDefinition;
-		get_tool_capabilities(): ToolCapabilities;
-		add_wear(wear: number): void;
-		add_wear_by_uses(maxUses: number): void;
-		add_item(item: ItemStackObject): ItemStackObject;
-		item_fits(item: ItemStackObject): boolean;
-		take_item(n: number): ItemStackObject;
-		peek_item(n: number): ItemStackObject;
-		equals(other: ItemStackObject): boolean;
-	}
-
 	/** @noSelf **/ interface InvRefLocation {
 		type: string;
 		name: string;
@@ -2113,6 +2079,40 @@ declare global {
 //? Classes. (Objects with implicit self [this]) ===============================================
 
 declare global {
+	interface ItemStackObject {
+		name: string;
+		// count: number
+		wear: number;
+		metadata: string;
+
+		is_empty(): boolean;
+		get_name(): string;
+		set_name(name: string): boolean;
+		get_count(): number;
+		set_count(count: number): boolean;
+		get_wear(): number;
+		set_wear(wear: number): boolean;
+		get_meta(): MetaRef;
+		get_description(): string;
+		get_short_description(): string;
+		clear(): void;
+		replace(item: ItemStackObject | string): void;
+		to_string(): string;
+		to_table(): any[];
+		get_stack_max(): number;
+		get_free_space(): number;
+		is_known(): boolean;
+		get_definition(): ItemDefinition;
+		get_tool_capabilities(): ToolCapabilities;
+		add_wear(wear: number): void;
+		add_wear_by_uses(maxUses: number): void;
+		add_item(item: ItemStackObject): ItemStackObject;
+		item_fits(item: ItemStackObject): boolean;
+		take_item(n: number): ItemStackObject;
+		peek_item(n: number): ItemStackObject;
+		equals(other: ItemStackObject): boolean;
+	}
+
 	interface VoxelManipObject {
 		read_from_map(pos1: Vec3, pos2: Vec3): [Vec3, Vec3];
 		write_to_map(light: boolean): void;
