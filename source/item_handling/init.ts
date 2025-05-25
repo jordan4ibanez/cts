@@ -218,7 +218,7 @@ namespace item_handling {
 		// Item expiry
 		age: number = 0;
 		// Pushing item out of solid nodes
-        // fixme: what are these two values?!
+		// fixme: what are these two values?!
 		force_out = null;
 		force_out_start = null;
 		// Collection Variables
@@ -229,7 +229,7 @@ namespace item_handling {
 		delete_timer: number = 0;
 		// Used for server delay
 		magnet_timer: number = 0;
-        old_magnet_distance: number = 0;
+		old_magnet_distance: number = 0;
 		poll_timer: number = 0;
 		initial_properties = {
 			hp_max: 1,
@@ -323,214 +323,231 @@ namespace item_handling {
 			}
 		}
 
-    on_step (dtime: number, moveresult: MoveResult): void {
-		const pos: Vec3 = this.object.get_pos()
-		
+		on_step(dtime: number, moveresult: MoveResult): void {
+			const pos: Vec3 = this.object.get_pos();
 
-		// If item set to be collected then only execute go to player.
-		if (this.collected == true) {
-			if ( this.collector == null) {
-				this.object.remove()
-				return
-            }
+			// If item set to be collected then only execute go to player.
+			if (this.collected == true) {
+				if (this.collector == null) {
+					this.object.remove();
+					return;
+				}
 
-			const collector: ObjectRef | null = core.get_player_by_name(this.collector);
-			if (collector!= null) {
-				this.magnet_timer  += dtime;
+				const collector: ObjectRef | null = core.get_player_by_name(
+					this.collector
+				);
+				if (collector != null) {
+					this.magnet_timer += dtime;
 
-				this.disable_physics();
+					this.disable_physics();
 
-				// Get the variables.
-				const pos2: Vec3 = collector.get_pos();
-				const player_velocity: Vec3 = collector.get_velocity();
-				pos2.y += 0.5;
+					// Get the variables.
+					const pos2: Vec3 = collector.get_pos();
+					const player_velocity: Vec3 = collector.get_velocity();
+					pos2.y += 0.5;
 
-				const distance: number = vector.distance(pos2,pos);
+					const distance: number = vector.distance(pos2, pos);
 
-				if (distance > 2 || distance < 0.3 || this.magnet_timer > 0.2 || this.old_magnet_distance && this.old_magnet_distance < distance) {
-					this.object.remove()
-					return
-                }
+					if (
+						distance > 2 ||
+						distance < 0.3 ||
+						this.magnet_timer > 0.2 ||
+						(this.old_magnet_distance &&
+							this.old_magnet_distance < distance)
+					) {
+						this.object.remove();
+						return;
+					}
 
-				const direction: Vec3 = vector.normalize(vector.subtract(pos2,pos))
+					const direction: Vec3 = vector.normalize(
+						vector.subtract(pos2, pos)
+					);
 
-				const multiplier: number = 10 - distance // changed
+					const multiplier: number = 10 - distance; // changed
 
-				const velocity: Vec3 = vector.add(player_velocity,vector.multiply(direction,multiplier))
+					const velocity: Vec3 = vector.add(
+						player_velocity,
+						vector.multiply(direction, multiplier)
+					);
 
-				this.object.set_velocity(velocity)
+					this.object.set_velocity(velocity);
 
-				this.old_magnet_distance = distance
+					this.old_magnet_distance = distance;
 
-				return
-            }else{
-				// The collector doesn't exist.
-				this.object.remove()
-				return
-            }
-        }
+					return;
+				} else {
+					// The collector doesn't exist.
+					this.object.remove();
+					return;
+				}
+			}
 
-		// Allow entity to be collected after timer.
-		if (this.collectable == false && this.collection_timer >= 2.5) {
-			this.collectable = true
-        } else if (this.collectable == false) {
-			this.collection_timer  += dtime
+			// Allow entity to be collected after timer.
+			if (this.collectable == false && this.collection_timer >= 2.5) {
+				this.collectable = true;
+			} else if (this.collectable == false) {
+				this.collection_timer += dtime;
+			}
+
+			this.age += dtime;
+			if (this.age > 300) {
+				this.object.remove();
+				return;
+			}
+			// Polling eases the server load.
+			if (this.poll_timer > 0) {
+				this.poll_timer -= dtime;
+				if (this.poll_timer <= 0) {
+					this.poll_timer = 0;
+				}
+				return;
+			}
+
+			let node: NodeTable | null = null;
+
+			if (
+				moveresult &&
+				moveresult.touching_ground &&
+				moveresult.collisions.length > 0
+			) {
+				node = core.get_node_or_nil(moveresult.collisions[1].node_pos);
+			}
+
+			const i_node: NodeTable | null = core.get_node_or_nil(pos);
+
+			// Remove nodes in 'ignore' and burns items.
+			if (i_node != null) {
+				if (i_node.name == "ignore") {
+					this.object.remove();
+					return;
+				} else if (i_node && burn_nodes[i_node.name]) {
+					core.add_particlespawner({
+						amount: 6,
+						time: 0.001,
+						minpos: pos,
+						maxpos: pos,
+						minvel: vector.create3d(-1, 0.5, -1),
+						maxvel: vector.create3d(1, 1, 1),
+						minacc: vector.create3d({ x: 0, y: 1, z: 0 }),
+						maxacc: vector.create3d({ x: 0, y: 2, z: 0 }),
+						minexptime: 1.1,
+						maxexptime: 1.5,
+						minsize: 1,
+						maxsize: 2,
+						collisiondetection: false,
+						vertical: false,
+						texture: "smoke.png",
+					});
+					core.sound_play("fire_extinguish", {
+						pos: pos,
+						gain: 0.3,
+						pitch: math.random(80, 100) / 100,
+					});
+					this.object.remove();
+					return;
+				}
+			}
+
+			// 	is_stuck = false
+			// 	snode = core.get_node_or_nil(pos)
+			// 	if snode and snode ~= "air" then
+			// 		snode = core.registered_nodes[snode.name] or {}
+			// 		is_stuck = (snode.walkable == nil or snode.walkable == true)
+			// 			and (snode.collision_box == nil or snode.collision_box.type == "regular")
+			// 			and (snode.node_box == nil or snode.node_box.type == "regular")
+			// 	end
+
+			// 	// Push item out when stuck inside solid node
+			// 	if is_stuck then
+			// 		shootdir = nil
+			// 		// Check which one of the 4 sides is free
+			// 		for o = 1, #order do
+			// 			cnode = core.get_node(vector.add(pos, order[o])).name
+			// 			cdef = core.registered_nodes[cnode] or {}
+			// 			if cnode ~= "ignore" and cdef.walkable == false then
+			// 				shootdir = order[o]
+			// 				break
+			// 			end
+			// 		end
+
+			// 		// If none of the 4 sides is free, check upwards
+			// 		if not shootdir then
+			// 			shootdir = {x=0, y=1, z=0}
+			// 			cnode = core.get_node(vector.add(pos, shootdir)).name
+			// 			if cnode == "ignore" then
+			// 				shootdir = nil // Do not push into ignore
+			// 			end
+			// 		end
+
+			// 		if shootdir then
+			// 			// shove that thing outta there
+			// 			fpos = vector.round(pos)
+			// 			if shootdir.x ~= 0 then
+			// 				shootdir = vector.multiply(shootdir,0.74)
+			// 				this.object:move_to(vector.new(fpos.x+shootdir.x,pos.y,pos.z))
+			// 			elseif shootdir.y ~= 0 then
+			// 				shootdir = vector.multiply(shootdir,0.72)
+			// 				this.object:move_to(vector.new(pos.x,fpos.y+shootdir.y,pos.z))
+			// 			elseif shootdir.z ~= 0 then
+			// 				shootdir = vector.multiply(shootdir,0.74)
+			// 				this.object:move_to(vector.new(pos.x,pos.y,fpos.z+shootdir.z))
+			// 			end
+			// 			return
+			// 		end
+			// 	end
+
+			// 	flow_dir = flow(pos)
+
+			// 	if flow_dir then
+			// 		flow_dir = vector.multiply(flow_dir,10)
+			// 		local vel = this.object:get_velocity()
+			// 		local acceleration = vector.new(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
+			// 		acceleration = vector.multiply(acceleration, 0.01)
+			// 		this.object:add_velocity(acceleration)
+			// 		return
+			// 	end
+
+			// 	change = false
+			// 	// Slide on slippery nodes
+			// 	def = node and core.registered_nodes[node.name]
+			// 	vel = this.object:get_velocity()
+			// 	if def and def.walkable then
+			// 		slippery = core.get_item_group(node.name, "slippery")
+			// 		if slippery ~= 0 then
+			// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
+			// 				// Horizontal deceleration
+			// 				slip_factor = 4.0 / (slippery + 4)
+			// 				this.object:set_acceleration({
+			// 					x = -vel.x * slip_factor,
+			// 					y = -9.81,
+			// 					z = -vel.z * slip_factor
+			// 				})
+			// 				change = true
+			// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
+			// 				this.object:set_velocity(vector.new(0,vel.y,0))
+			// 				this.object:set_acceleration(vector.new(0,-9.81,0))
+			// 			end
+			// 		elseif node then
+			// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
+			// 				this.object:add_velocity({
+			// 					x = -vel.x * 0.15,
+			// 					y = 0,
+			// 					z = -vel.z * 0.15
+			// 				})
+			// 				change = true
+			// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
+			// 				this.object:set_velocity(vector.new(0,vel.y,0))
+			// 				this.object:set_acceleration(vector.new(0,-9.81,0))
+			// 			end
+			// 		end
+			// 	elseif vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0 then
+			// 		change = true
+			// 	end
+
+			// 	if change == false and this.poll_timer == 0 then
+			// 		this.poll_timer = 0.5
+			// 	end
 		}
-
-		this.age  += dtime
-		if (this.age > 300) {
-			this.object.remove()
-			return
-        }
-		// Polling eases the server load.
-		if (this.poll_timer > 0) {
-			this.poll_timer -= dtime;
-			if (this.poll_timer <= 0) {
-				this.poll_timer = 0
-            }
-			return
-        }
-
-        let node: NodeTable | null = null;
-
-		if (moveresult && moveresult.touching_ground && moveresult.collisions.length > 0) {
-			node = core.get_node_or_nil(moveresult.collisions[1].node_pos)
-        }
-
-        
-        
-
-		const i_node: NodeTable | null = core.get_node_or_nil(pos)
-
-		// Remove nodes in 'ignore' and burns items.
-		if (i_node != null) {
-			if (i_node.name == "ignore") {
-				this.object.remove()
-				return
-        } else if (i_node && burn_nodes[i_node.name]) {
-				core.add_particlespawner({
-					amount : 6,
-					time : 0.001,
-					minpos : pos,
-					maxpos : pos,
-					minvel : vector.create3d(-1,0.5,-1),
-					maxvel : vector.create3d(1,1,1),
-					minacc : vector.create3d({x:0, y:1, z:0}),
-					maxacc : vector.create3d({x:0, y:2, z:0}),
-					minexptime : 1.1,
-					maxexptime : 1.5,
-					minsize : 1,
-					maxsize : 2,
-					collisiondetection : false,
-					vertical : false,
-					texture : "smoke.png",
-				})
-				core.sound_play("fire_extinguish", {pos:pos,gain:0.3,pitch:math.random(80,100)/100})
-				this.object.remove()
-				return
-        }
-    }
-
-	// 	is_stuck = false
-	// 	snode = core.get_node_or_nil(pos)
-	// 	if snode and snode ~= "air" then
-	// 		snode = core.registered_nodes[snode.name] or {}
-	// 		is_stuck = (snode.walkable == nil or snode.walkable == true)
-	// 			and (snode.collision_box == nil or snode.collision_box.type == "regular")
-	// 			and (snode.node_box == nil or snode.node_box.type == "regular")
-	// 	end
-
-	// 	// Push item out when stuck inside solid node
-	// 	if is_stuck then
-	// 		shootdir = nil
-	// 		// Check which one of the 4 sides is free
-	// 		for o = 1, #order do
-	// 			cnode = core.get_node(vector.add(pos, order[o])).name
-	// 			cdef = core.registered_nodes[cnode] or {}
-	// 			if cnode ~= "ignore" and cdef.walkable == false then
-	// 				shootdir = order[o]
-	// 				break
-	// 			end
-	// 		end
-
-	// 		// If none of the 4 sides is free, check upwards
-	// 		if not shootdir then
-	// 			shootdir = {x=0, y=1, z=0}
-	// 			cnode = core.get_node(vector.add(pos, shootdir)).name
-	// 			if cnode == "ignore" then
-	// 				shootdir = nil // Do not push into ignore
-	// 			end
-	// 		end
-
-	// 		if shootdir then
-	// 			// shove that thing outta there
-	// 			fpos = vector.round(pos)
-	// 			if shootdir.x ~= 0 then
-	// 				shootdir = vector.multiply(shootdir,0.74)
-	// 				this.object:move_to(vector.new(fpos.x+shootdir.x,pos.y,pos.z))
-	// 			elseif shootdir.y ~= 0 then
-	// 				shootdir = vector.multiply(shootdir,0.72)
-	// 				this.object:move_to(vector.new(pos.x,fpos.y+shootdir.y,pos.z))
-	// 			elseif shootdir.z ~= 0 then
-	// 				shootdir = vector.multiply(shootdir,0.74)
-	// 				this.object:move_to(vector.new(pos.x,pos.y,fpos.z+shootdir.z))
-	// 			end
-	// 			return
-	// 		end
-	// 	end
-
-	// 	flow_dir = flow(pos)
-
-	// 	if flow_dir then
-	// 		flow_dir = vector.multiply(flow_dir,10)
-	// 		local vel = this.object:get_velocity()
-	// 		local acceleration = vector.new(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
-	// 		acceleration = vector.multiply(acceleration, 0.01)
-	// 		this.object:add_velocity(acceleration)
-	// 		return
-	// 	end
-
-	// 	change = false
-	// 	// Slide on slippery nodes
-	// 	def = node and core.registered_nodes[node.name]
-	// 	vel = this.object:get_velocity()
-	// 	if def and def.walkable then
-	// 		slippery = core.get_item_group(node.name, "slippery")
-	// 		if slippery ~= 0 then
-	// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
-	// 				// Horizontal deceleration
-	// 				slip_factor = 4.0 / (slippery + 4)
-	// 				this.object:set_acceleration({
-	// 					x = -vel.x * slip_factor,
-	// 					y = -9.81,
-	// 					z = -vel.z * slip_factor
-	// 				})
-	// 				change = true
-	// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
-	// 				this.object:set_velocity(vector.new(0,vel.y,0))
-	// 				this.object:set_acceleration(vector.new(0,-9.81,0))
-	// 			end
-	// 		elseif node then
-	// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
-	// 				this.object:add_velocity({
-	// 					x = -vel.x * 0.15,
-	// 					y = 0,
-	// 					z = -vel.z * 0.15
-	// 				})
-	// 				change = true
-	// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
-	// 				this.object:set_velocity(vector.new(0,vel.y,0))
-	// 				this.object:set_acceleration(vector.new(0,-9.81,0))
-	// 			end
-	// 		end
-	// 	elseif vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0 then
-	// 		change = true
-	// 	end
-
-	// 	if change == false and this.poll_timer == 0 then
-	// 		this.poll_timer = 0.5
-	// 	end
-    }
 	}
 
 	// local collector
@@ -556,8 +573,7 @@ namespace item_handling {
 	// local i_node
 	// local flow_dir
 
-
-    //! ENDS HERE
+	//! ENDS HERE
 
 	// core.register_entity(":__builtin:item", {
 
