@@ -527,39 +527,41 @@ namespace item_handling {
 				// 	return
                 // }
 
+                
+
 				let change: boolean = false
 				// Slide on slippery nodes
 				const def: NodeDefinition | null = node && core.registered_nodes[node.name]
 				const vel = this.object.get_velocity();
-				if (def && def.walkable) {
-			// 		slippery = core.get_item_group(node.name, "slippery")
-			// 		if slippery ~= 0 then
-			// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
-			// 				// Horizontal deceleration
-			// 				slip_factor = 4.0 / (slippery + 4)
-			// 				this.object:set_acceleration({
-			// 					x = -vel.x * slip_factor,
-			// 					y = -9.81,
-			// 					z = -vel.z * slip_factor
-			// 				})
-			// 				change = true
-			// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
-			// 				this.object:set_velocity(vector.new(0,vel.y,0))
-			// 				this.object:set_acceleration(vector.new(0,-9.81,0))
-			// 			end
-			// 		elseif node then
-			// 			if math.abs(vel.x) > 0.2 or math.abs(vel.z) > 0.2 then
-			// 				this.object:add_velocity({
-			// 					x = -vel.x * 0.15,
-			// 					y = 0,
-			// 					z = -vel.z * 0.15
-			// 				})
-			// 				change = true
-			// 			elseif (vel.x ~= 0 or vel.z ~= 0) and math.abs(vel.x) <= 0.2 and math.abs(vel.z) <= 0.2 then
-			// 				this.object:set_velocity(vector.new(0,vel.y,0))
-			// 				this.object:set_acceleration(vector.new(0,-9.81,0))
-			// 			end
-			// 		end
+				if (node && def && def.walkable) {
+					const slippery: number = core.get_item_group(node.name, "slippery")
+					if (slippery != 0) {
+						if (math.abs(vel.x) > 0.2 || math.abs(vel.z) > 0.2) {
+							// Horizontal deceleration
+							const slip_factor: number = 4.0 / (slippery + 4)
+							this.object.set_acceleration(vector.create3d({
+								x : -vel.x * slip_factor,
+								y : -9.81,
+								z : -vel.z * slip_factor
+							}))
+							change = true
+                        } else if ((vel.x != 0 || vel.z != 0) && math.abs(vel.x) <= 0.2 && math.abs(vel.z) <= 0.2) {
+							this.object.set_velocity(vector.create3d(0,vel.y,0))
+							this.object.set_acceleration(vector.create3d(0,-9.81,0))
+                        }
+                    } else {
+						if (math.abs(vel.x) > 0.2 || math.abs(vel.z) > 0.2) {
+							this.object.add_velocity(vector.create3d({
+								x : -vel.x * 0.15,
+								y : 0,
+								z : -vel.z * 0.15
+							}));
+							change = true;
+                        } else if ((vel.x != 0 || vel.z != 0) && math.abs(vel.x) <= 0.2 && math.abs(vel.z) <= 0.2) {
+							this.object.set_velocity(vector.create3d(0,vel.y,0))
+							this.object.set_acceleration(vector.create3d(0,-9.81,0))
+                        }
+                        }
                 } else if (vel.x != 0 || vel.y != 0 || vel.z != 0) {
 					change = true
                 }
