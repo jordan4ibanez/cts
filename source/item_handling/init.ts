@@ -471,44 +471,48 @@ namespace item_handling {
 				}
 			}
 
-			// 	// Push item out when stuck inside solid node
-			// 	if is_stuck then
-			// 		shootdir = nil
-			// 		// Check which one of the 4 sides is free
-			// 		for o = 1, #order do
-			// 			cnode = core.get_node(vector.add(pos, order[o])).name
-			// 			cdef = core.registered_nodes[cnode] or {}
-			// 			if cnode ~= "ignore" and cdef.walkable == false then
-			// 				shootdir = order[o]
-			// 				break
-			// 			end
-			// 		end
+				// Push item out when stuck inside solid node.
+				if (is_stuck) {
+					let shootdir: Vec3 | null = null
+					// Check which one of the 4 sides is free
+					for (let o = 1; o <= order.length; o++) {
+						const cnode: string = core.get_node(vector.add(pos, order[o])).name
+						const cdef: NodeDefinition = core.registered_nodes[cnode] || null
+                        if (cdef == null) {
+                            core.log(LogLevel.warning, `got a null node def for ${cnode}`);
+                        }
+						else if (cnode != "ignore" && cdef.walkable == false) {
+							shootdir = order[o]
+							break
+                        }
+                    }
 
-			// 		// If none of the 4 sides is free, check upwards
-			// 		if not shootdir then
-			// 			shootdir = {x=0, y=1, z=0}
-			// 			cnode = core.get_node(vector.add(pos, shootdir)).name
-			// 			if cnode == "ignore" then
-			// 				shootdir = nil // Do not push into ignore
-			// 			end
-			// 		end
+					// If none of the 4 sides is free, check upwards.
+					if (shootdir == null) {
+						shootdir = vector.create3d({x:0, y:1, z:0})
+						const cnode: string = core.get_node(vector.add(pos, shootdir)).name
+						if (cnode == "ignore") {
+                            // Do not push into ignore.
+							shootdir = null; 
+                        }
+                    }
 
-			// 		if shootdir then
-			// 			// shove that thing outta there
-			// 			fpos = vector.round(pos)
-			// 			if shootdir.x ~= 0 then
-			// 				shootdir = vector.multiply(shootdir,0.74)
-			// 				this.object:move_to(vector.new(fpos.x+shootdir.x,pos.y,pos.z))
-			// 			elseif shootdir.y ~= 0 then
-			// 				shootdir = vector.multiply(shootdir,0.72)
-			// 				this.object:move_to(vector.new(pos.x,fpos.y+shootdir.y,pos.z))
-			// 			elseif shootdir.z ~= 0 then
-			// 				shootdir = vector.multiply(shootdir,0.74)
-			// 				this.object:move_to(vector.new(pos.x,pos.y,fpos.z+shootdir.z))
-			// 			end
-			// 			return
-			// 		end
-			// 	end
+					if (shootdir != null) {
+						// Shove that thing outta there.
+						const fpos: Vec3 = vector.round(pos)
+						if (shootdir.x != 0) {
+							shootdir = vector.multiply(shootdir,0.74)
+							this.object.move_to(vector.create3d(fpos.x+shootdir.x,pos.y,pos.z))
+						} else if (shootdir.y != 0) {
+							shootdir = vector.multiply(shootdir,0.72)
+							this.object.move_to(vector.create3d(pos.x,fpos.y+shootdir.y,pos.z))
+						} else if (shootdir.z != 0) {
+							shootdir = vector.multiply(shootdir,0.74)
+							this.object.move_to(vector.create3d(pos.x,pos.y,fpos.z+shootdir.z))
+                        }
+						return
+                    }
+                }
 
 			// 	flow_dir = flow(pos)
 
