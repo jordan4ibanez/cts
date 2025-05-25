@@ -1451,7 +1451,7 @@ declare global {
 		params: string;
 		description: string;
 		privs: { [id: string]: boolean };
-		func(name: string, param: string): [boolean, string];
+		func(name: string, param: string): LuaMultiReturn<[boolean, string]>;
 	}
 
 	interface PrivilegeDefinition {
