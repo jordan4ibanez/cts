@@ -227,6 +227,7 @@ namespace item_handling {
 		magnet_timer: number = 0;
 		old_magnet_distance: number = 0;
 		poll_timer: number = 0;
+		magnet_trigger: boolean = false;
 		initial_properties = {
 			hp_max: 1,
 			visual: EntityVisual.wielditem,

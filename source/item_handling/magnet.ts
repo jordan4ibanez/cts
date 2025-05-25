@@ -79,6 +79,7 @@ namespace item_handling {
 					inv.add_item("main", entity.itemstring);
 					entity.collector = player.get_player_name();
 					entity.collected = true;
+					entity.trigger_collection_calculation();
 				}
 			} else if (entity.name == "experience:orb") {
 				entity.collector = player.get_player_name();
