@@ -1452,6 +1452,84 @@ declare global {
 		items: ItemStackObject[];
 	}
 
+	interface ChatCommandDefinition {
+		params: string;
+		description: string;
+		privs: { [id: string]: boolean };
+		func(
+			name: string,
+			param: string
+		): LuaMultiReturn<[boolean, string]> | void;
+	}
+
+	interface PrivilegeDefinition {
+		description: string;
+		give_to_singleplayer: boolean;
+		give_to_admin: boolean;
+		on_grant(name: string, granterName: string): void;
+		on_revoke(name: string, revokerName: string): void;
+	}
+
+	interface AuthenticationHandlerDefinition {
+		get_auth(name: string): void;
+		create_auth(name: string, password: string): void;
+		delete_auth(name: string): void;
+		set_password(name: string, password: string): void;
+		set_privileges(name: string, privileges: Map<any, any>): void; // ! fixme: this needs to be checked.
+		reload(): void;
+		record_login(name: string): void;
+		iterate(): void;
+	}
+
+	interface HPChangeReasonDefinition {
+		type: HPChangeReasonType;
+		node: string;
+		node_pos: Vec3;
+		object: ObjectRef;
+		from: string;
+	}
+
+	interface ActionDefinition {
+		from_list: string;
+		to_list: string;
+		from_index: number;
+		to_index: number;
+		count: number;
+		listname: string;
+		index: number;
+		stack: ItemStackObject;
+	}
+
+	interface CheatDefinition {
+		type: CheatType;
+	}
+
+	type EmergeAreaCallback = (
+		blockPos: Vec3,
+		action: any,
+		callsRemaining: number,
+		param: any
+	) => void; // ! FIXME: figure out what core.EMERGE_CANCELLED EVEN IS!
+
+	interface BiomeDataDefinition {
+		biome: number;
+		heat: number;
+		humidity: number;
+	}
+
+	interface MapGenSettingsDefinition {
+		mgname: string;
+		seed: number;
+		chunksize: number;
+		water_level: number;
+		flags: string;
+	}
+
+	interface MetaData {
+		fields: { string: any };
+		inventory: { string: [string | ItemStackObject] };
+	}
+
 	function ItemStack(
 		stringOrObject: ItemStackObject | string
 	): ItemStackObject;
@@ -1529,84 +1607,6 @@ declare global {
 			maxZ: number
 		): Vec3;
 		function distance2d(vec1: Vec3, vec2: Vec3): number;
-	}
-
-	interface ChatCommandDefinition {
-		params: string;
-		description: string;
-		privs: { [id: string]: boolean };
-		func(
-			name: string,
-			param: string
-		): LuaMultiReturn<[boolean, string]> | void;
-	}
-
-	interface PrivilegeDefinition {
-		description: string;
-		give_to_singleplayer: boolean;
-		give_to_admin: boolean;
-		on_grant(name: string, granterName: string): void;
-		on_revoke(name: string, revokerName: string): void;
-	}
-
-	interface AuthenticationHandlerDefinition {
-		get_auth(name: string): void;
-		create_auth(name: string, password: string): void;
-		delete_auth(name: string): void;
-		set_password(name: string, password: string): void;
-		set_privileges(name: string, privileges: Map<any, any>): void; // ! fixme: this needs to be checked.
-		reload(): void;
-		record_login(name: string): void;
-		iterate(): void;
-	}
-
-	interface HPChangeReasonDefinition {
-		type: HPChangeReasonType;
-		node: string;
-		node_pos: Vec3;
-		object: ObjectRef;
-		from: string;
-	}
-
-	interface ActionDefinition {
-		from_list: string;
-		to_list: string;
-		from_index: number;
-		to_index: number;
-		count: number;
-		listname: string;
-		index: number;
-		stack: ItemStackObject;
-	}
-
-	interface CheatDefinition {
-		type: CheatType;
-	}
-
-	type EmergeAreaCallback = (
-		blockPos: Vec3,
-		action: any,
-		callsRemaining: number,
-		param: any
-	) => void; // ! FIXME: figure out what core.EMERGE_CANCELLED EVEN IS!
-
-	interface BiomeDataDefinition {
-		biome: number;
-		heat: number;
-		humidity: number;
-	}
-
-	interface MapGenSettingsDefinition {
-		mgname: string;
-		seed: number;
-		chunksize: number;
-		water_level: number;
-		flags: string;
-	}
-
-	interface MetaData {
-		fields: { string: any };
-		inventory: { string: [string | ItemStackObject] };
 	}
 
 	interface VoxelManipObject {
