@@ -1845,29 +1845,6 @@ declare global {
 		show_on_minimap?: boolean;
 	}
 
-	interface LuaEntity {
-		__index?: LuaEntity;
-		initial_properties?: ObjectProperties;
-		name: string;
-		object: ObjectRef;
-		on_activate?(staticData: string, delta: number): void;
-		on_deactivate?(removal: boolean): void;
-		on_step?(delta: number, moveResult: MoveResult | null): void;
-		on_punch?(
-			puncher: ObjectRef,
-			timeFromLastPunch: number,
-			toolCapabilities: ToolCapabilities,
-			dir: Vec3,
-			damage: number
-		): void;
-		on_death?(killer: ObjectRef): void;
-		on_rightclick?(clicker: ObjectRef): void;
-		on_attach_child?(child: ObjectRef): void;
-		on_detach_child?(child: ObjectRef): void;
-		on_detach?(parent: ObjectRef): void;
-		get_staticdata?(): string;
-	}
-
 	/** @noSelf **/ interface MinimapModes {
 		type: MinimapType;
 		label: string;
@@ -2258,6 +2235,29 @@ declare global {
 		has(key: string): boolean;
 		write(): boolean;
 		to_table(): Map<string, any>;
+	}
+
+	interface LuaEntity {
+		__index?: LuaEntity;
+		initial_properties?: ObjectProperties;
+		name: string;
+		object: ObjectRef;
+		on_activate?(staticData: string, delta: number): void;
+		on_deactivate?(removal: boolean): void;
+		on_step?(delta: number, moveResult: MoveResult | null): void;
+		on_punch?(
+			puncher: ObjectRef,
+			timeFromLastPunch: number,
+			toolCapabilities: ToolCapabilities,
+			dir: Vec3,
+			damage: number
+		): void;
+		on_death?(killer: ObjectRef): void;
+		on_rightclick?(clicker: ObjectRef): void;
+		on_attach_child?(child: ObjectRef): void;
+		on_detach_child?(child: ObjectRef): void;
+		on_detach?(parent: ObjectRef): void;
+		get_staticdata?(): string;
 	}
 
 	interface ObjectRef {
