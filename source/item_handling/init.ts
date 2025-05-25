@@ -471,100 +471,130 @@ namespace item_handling {
 				}
 			}
 
-				// Push item out when stuck inside solid node.
-				if (is_stuck) {
-					let shootdir: Vec3 | null = null
-					// Check which one of the 4 sides is free
-					for (let o = 1; o <= order.length; o++) {
-						const cnode: string = core.get_node(vector.add(pos, order[o])).name
-						const cdef: NodeDefinition = core.registered_nodes[cnode] || null
-                        if (cdef == null) {
-                            core.log(LogLevel.warning, `got a null node def for ${cnode}`);
-                        }
-						else if (cnode != "ignore" && cdef.walkable == false) {
-							shootdir = order[o]
-							break
-                        }
-                    }
+			// Push item out when stuck inside solid node.
+			if (is_stuck) {
+				let shootdir: Vec3 | null = null;
+				// Check which one of the 4 sides is free
+				for (let o = 1; o <= order.length; o++) {
+					const cnode: string = core.get_node(
+						vector.add(pos, order[o])
+					).name;
+					const cdef: NodeDefinition =
+						core.registered_nodes[cnode] || null;
+					if (cdef == null) {
+						core.log(
+							LogLevel.warning,
+							`got a null node def for ${cnode}`
+						);
+					} else if (cnode != "ignore" && cdef.walkable == false) {
+						shootdir = order[o];
+						break;
+					}
+				}
 
-					// If none of the 4 sides is free, check upwards.
-					if (shootdir == null) {
-						shootdir = vector.create3d({x:0, y:1, z:0})
-						const cnode: string = core.get_node(vector.add(pos, shootdir)).name
-						if (cnode == "ignore") {
-                            // Do not push into ignore.
-							shootdir = null; 
-                        }
-                    }
+				// If none of the 4 sides is free, check upwards.
+				if (shootdir == null) {
+					shootdir = vector.create3d({ x: 0, y: 1, z: 0 });
+					const cnode: string = core.get_node(
+						vector.add(pos, shootdir)
+					).name;
+					if (cnode == "ignore") {
+						// Do not push into ignore.
+						shootdir = null;
+					}
+				}
 
-					if (shootdir != null) {
-						// Shove that thing outta there.
-						const fpos: Vec3 = vector.round(pos)
-						if (shootdir.x != 0) {
-							shootdir = vector.multiply(shootdir,0.74)
-							this.object.move_to(vector.create3d(fpos.x+shootdir.x,pos.y,pos.z))
-						} else if (shootdir.y != 0) {
-							shootdir = vector.multiply(shootdir,0.72)
-							this.object.move_to(vector.create3d(pos.x,fpos.y+shootdir.y,pos.z))
-						} else if (shootdir.z != 0) {
-							shootdir = vector.multiply(shootdir,0.74)
-							this.object.move_to(vector.create3d(pos.x,pos.y,fpos.z+shootdir.z))
-                        }
-						return
-                    }
-                }
+				if (shootdir != null) {
+					// Shove that thing outta there.
+					const fpos: Vec3 = vector.round(pos);
+					if (shootdir.x != 0) {
+						shootdir = vector.multiply(shootdir, 0.74);
+						this.object.move_to(
+							vector.create3d(fpos.x + shootdir.x, pos.y, pos.z)
+						);
+					} else if (shootdir.y != 0) {
+						shootdir = vector.multiply(shootdir, 0.72);
+						this.object.move_to(
+							vector.create3d(pos.x, fpos.y + shootdir.y, pos.z)
+						);
+					} else if (shootdir.z != 0) {
+						shootdir = vector.multiply(shootdir, 0.74);
+						this.object.move_to(
+							vector.create3d(pos.x, pos.y, fpos.z + shootdir.z)
+						);
+					}
+					return;
+				}
+			}
 
+			// fixme: this was using the flow library mod.
+			// let flow_dir: Vec3 | null = flow(pos)
 
-                // fixme: this was using the flow library mod.
-				// let flow_dir: Vec3 | null = flow(pos)
+			// if (flow_dir != null) {
+			// 	flow_dir = vector.multiply(flow_dir,10)
+			// 	const vel: Vec3 = this.object.get_velocity();
+			// 	let acceleration: Vec3 = vector.create3d(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
+			// 	acceleration = vector.multiply(acceleration, 0.01)
+			// 	this.object.add_velocity(acceleration)
+			// 	return
+			// }
 
-				// if (flow_dir != null) {
-				// 	flow_dir = vector.multiply(flow_dir,10)
-				// 	const vel: Vec3 = this.object.get_velocity();
-				// 	let acceleration: Vec3 = vector.create3d(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
-				// 	acceleration = vector.multiply(acceleration, 0.01)
-				// 	this.object.add_velocity(acceleration)
-				// 	return
-                // }
-
-                
-
-				let change: boolean = false
-				// Slide on slippery nodes
-				const def: NodeDefinition | null = node && core.registered_nodes[node.name]
-				const vel = this.object.get_velocity();
-				if (node && def && def.walkable) {
-					const slippery: number = core.get_item_group(node.name, "slippery")
-					if (slippery != 0) {
-						if (math.abs(vel.x) > 0.2 || math.abs(vel.z) > 0.2) {
-							// Horizontal deceleration
-							const slip_factor: number = 4.0 / (slippery + 4)
-							this.object.set_acceleration(vector.create3d({
-								x : -vel.x * slip_factor,
-								y : -9.81,
-								z : -vel.z * slip_factor
-							}))
-							change = true
-                        } else if ((vel.x != 0 || vel.z != 0) && math.abs(vel.x) <= 0.2 && math.abs(vel.z) <= 0.2) {
-							this.object.set_velocity(vector.create3d(0,vel.y,0))
-							this.object.set_acceleration(vector.create3d(0,-9.81,0))
-                        }
-                    } else {
-						if (math.abs(vel.x) > 0.2 || math.abs(vel.z) > 0.2) {
-							this.object.add_velocity(vector.create3d({
-								x : -vel.x * 0.15,
-								y : 0,
-								z : -vel.z * 0.15
-							}));
-							change = true;
-                        } else if ((vel.x != 0 || vel.z != 0) && math.abs(vel.x) <= 0.2 && math.abs(vel.z) <= 0.2) {
-							this.object.set_velocity(vector.create3d(0,vel.y,0))
-							this.object.set_acceleration(vector.create3d(0,-9.81,0))
-                        }
-                        }
-                } else if (vel.x != 0 || vel.y != 0 || vel.z != 0) {
-					change = true
-                }
+			let change: boolean = false;
+			// Slide on slippery nodes
+			const def: NodeDefinition | null =
+				node && core.registered_nodes[node.name];
+			const vel = this.object.get_velocity();
+			if (node && def && def.walkable) {
+				const slippery: number = core.get_item_group(
+					node.name,
+					"slippery"
+				);
+				if (slippery != 0) {
+					if (math.abs(vel.x) > 0.2 || math.abs(vel.z) > 0.2) {
+						// Horizontal deceleration
+						const slip_factor: number = 4.0 / (slippery + 4);
+						this.object.set_acceleration(
+							vector.create3d({
+								x: -vel.x * slip_factor,
+								y: -9.81,
+								z: -vel.z * slip_factor,
+							})
+						);
+						change = true;
+					} else if (
+						(vel.x != 0 || vel.z != 0) &&
+						math.abs(vel.x) <= 0.2 &&
+						math.abs(vel.z) <= 0.2
+					) {
+						this.object.set_velocity(vector.create3d(0, vel.y, 0));
+						this.object.set_acceleration(
+							vector.create3d(0, -9.81, 0)
+						);
+					}
+				} else {
+					if (math.abs(vel.x) > 0.2 || math.abs(vel.z) > 0.2) {
+						this.object.add_velocity(
+							vector.create3d({
+								x: -vel.x * 0.15,
+								y: 0,
+								z: -vel.z * 0.15,
+							})
+						);
+						change = true;
+					} else if (
+						(vel.x != 0 || vel.z != 0) &&
+						math.abs(vel.x) <= 0.2 &&
+						math.abs(vel.z) <= 0.2
+					) {
+						this.object.set_velocity(vector.create3d(0, vel.y, 0));
+						this.object.set_acceleration(
+							vector.create3d(0, -9.81, 0)
+						);
+					}
+				}
+			} else if (vel.x != 0 || vel.y != 0 || vel.z != 0) {
+				change = true;
+			}
 
 			// 	if change == false and this.poll_timer == 0 then
 			// 		this.poll_timer = 0.5
