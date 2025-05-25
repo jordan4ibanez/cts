@@ -2033,11 +2033,6 @@ declare global {
 		limit: number;
 	}
 
-	interface Vec2 {
-		x: number;
-		y: number;
-	}
-
 	interface Vec3 extends Vec2 {
 		__eq(other: Vec3): boolean;
 		__unm(): Vec3;
@@ -2431,6 +2426,11 @@ declare global {
 
 	interface Job {
 		cancel(): void;
+	}
+
+	interface Vec2 {
+		x: number;
+		y: number;
 	}
 }
 
