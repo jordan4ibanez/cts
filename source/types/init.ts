@@ -437,7 +437,7 @@ namespace types {
 		initial_properties?: ObjectProperties | undefined;
 		on_activate?(staticData: string, delta: number): void;
 		on_deactivate?(removal: boolean): void;
-        // Note: moveResult: only available if physical=true
+		// Note: moveResult: only available if physical=true
 		on_step?(delta: number, moveResult: MoveResult | null): void;
 		on_punch?(
 			puncher: ObjectRef,
