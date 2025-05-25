@@ -1709,11 +1709,6 @@ declare global {
 		movement_y: number;
 	}
 
-	interface PseudoRandomObject {
-		next(): number;
-		next(min: number, max: number): number;
-	}
-
 	/** @noSelf **/ interface PhysicsOverride {
 		speed?: number;
 		jump?: number;
@@ -2431,6 +2426,11 @@ declare global {
 			sliceSize: Vec3,
 			buffer: number[]
 		): number[];
+	}
+
+	interface PseudoRandomObject {
+		next(): number;
+		next(min: number, max: number): number;
 	}
 }
 
