@@ -690,6 +690,8 @@ interface core {
 
 // }
 
+//? SELF =====================================================================
+
 //~ Has self parameter implicitly!
 declare global {
 	interface ItemStackObject {
@@ -726,12 +728,6 @@ declare global {
 		equals(other: ItemStackObject): boolean;
 	}
 
-	interface InvRefLocation {
-		type: string;
-		name: string;
-		pos: Vec3;
-	}
-
 	interface InvRef {
 		is_empty(listName: string): boolean;
 		get_size(listName: string): number;
@@ -766,614 +762,6 @@ declare global {
 			stack: ItemStackObject | string
 		): ItemStackObject[];
 		get_location(): InvRefLocation;
-	}
-
-	interface TreeDefinition {
-		axiom: string;
-		rules_a: string;
-		rules_b: string;
-		rules_c: string;
-		rules_d: string;
-		trunk: string;
-		leaves: string;
-		leaves2: string;
-		leaves2_chance: number;
-		angle: number;
-		iterations: number;
-		random_level: number;
-		trunk_type: string;
-		thin_branches: boolean;
-		fruit: string;
-		fruit_chance: number;
-		seed: number;
-	}
-
-	type GenNotifyObject = Map<string, Vec3[]>;
-
-	interface SimpleSoundSpec {
-		name?: string;
-		gain?: number;
-		pitch?: number;
-		fade?: number;
-	}
-
-	/**
-	 * I'm sure this can be used for something.
-	 */
-	interface ComplexSoundSpec extends SimpleSoundSpec {
-		randomizePitch?: boolean;
-		min?: number;
-		max?: number;
-	}
-
-	interface SoundParameterTable extends SimpleSoundSpec {
-		start_time?: number;
-		loop?: boolean;
-		pos?: Vec3;
-		object?: ObjectRef;
-		to_player?: string;
-		max_hear_distance?: number;
-	}
-
-	interface NodeBox {
-		type: Nodeboxtype;
-		fixed?: box | boxTable;
-		wall_top?: box | boxTable;
-		wall_bottom?: box | boxTable;
-		wall_side?: box | boxTable;
-		connect_top?: box | boxTable;
-		connect_bottom?: box | boxTable;
-		connect_front?: box | boxTable;
-		connect_left?: box | boxTable;
-		connect_back?: box | boxTable;
-		connect_right?: box | boxTable;
-		disconnected_top?: box | boxTable;
-		disconnected_bottom?: box | boxTable;
-		disconnected_front?: box | boxTable;
-		disconnected_left?: box | boxTable;
-		disconnected_back?: box | boxTable;
-		disconnected_right?: box | boxTable;
-		disconnected?: box | boxTable;
-		disconnected_sides?: box | boxTable;
-	}
-
-	type box = number[];
-
-	type boxTable = box[];
-
-	type itemstring = string;
-
-	interface GameInfo {
-		id: string;
-		title: string;
-		author: string;
-		path: string;
-	}
-
-	interface LuantiFeatures {
-		glasslike_framed: boolean;
-		nodebox_as_selectionbox: boolean;
-		get_all_craft_recipes_works: boolean;
-		use_texture_alpha: boolean;
-		no_legacy_abms: boolean;
-		texture_names_parens: boolean;
-		area_store_custom_ids: boolean;
-		add_entity_with_staticdata: boolean;
-		no_chat_message_prediction: boolean;
-		object_use_texture_alpha: boolean;
-		object_independent_selectionbox: boolean;
-		httpfetch_binary_data: boolean;
-		formspec_version_element: boolean;
-		area_store_persistent_ids: boolean;
-		pathfinder_works: boolean;
-		object_step_has_moveresult: boolean;
-		direct_velocity_on_players: boolean;
-		use_texture_alpha_string_modes: boolean;
-		degrotate_240_steps: boolean;
-		abm_min_max_y: boolean;
-		dynamic_add_media_table: boolean;
-		particlespawner_tweenable: boolean;
-		get_sky_as_table: boolean;
-		get_light_data_buffer: boolean;
-		mod_storage_on_disk: boolean;
-		compress_zstd: boolean;
-	}
-
-	interface PlayerInformation {
-		address: string;
-		ip_version: number;
-		connection_uptime: number;
-		protocol_version: number;
-		formspec_version: number;
-		lang_code: string;
-		min_rtt: number;
-		max_rtt: number;
-		avg_rtt: number;
-		min_jitter: number;
-		max_jitter: number;
-		avg_jitter: number;
-	}
-
-	interface WindowInformation {
-		size: Vec2;
-		max_formspec_size: Vec2;
-		real_gui_scaling: number;
-		real_hud_scaling: number;
-	}
-
-	interface LuantiInfo {
-		project: string;
-		string: string;
-		proto_min: string;
-		proto_max: string;
-		hash: string;
-		is_dev: boolean;
-	}
-
-	interface ColorSpec {
-		a: number;
-		r: number;
-		g: number;
-		b: number;
-	}
-
-	interface NodeSoundSpec {
-		footstep?: SimpleSoundSpec | string;
-		dig?: SimpleSoundSpec | string;
-		dug?: SimpleSoundSpec | string;
-		// place?: SimpleSoundSpec | string;
-		place_failed?: SimpleSoundSpec | string;
-		fall?: SimpleSoundSpec | string;
-		// break?: SimpleSoundSpec | string;
-		placed?: SimpleSoundSpec | string;
-		//* Crafter custom.
-		placing?: SimpleSoundSpec | string;
-	}
-
-	interface ItemDropSpec {
-		tools?: string[];
-		rarity?: number;
-		items?: string[];
-		inherit_color?: boolean;
-		tool_groups?: string[] | string[][];
-	}
-
-	interface NodeDropSpec {
-		max_items?: number;
-		items: ItemDropSpec[];
-	}
-
-	interface MapNode {
-		name: string;
-		prob: number;
-		param2: number;
-		force_place: boolean;
-	}
-
-	interface NodeTable {
-		name: string;
-		param1?: number;
-		param2?: number;
-		level?: number;
-	}
-
-	interface PointedThing {
-		type: string;
-		under: Vec3;
-		above: Vec3;
-		ref: ObjectRef;
-	}
-
-	interface GroupCap {
-		// Allow the end programmer to do it their way.
-		times: number[] | { [id: number]: number };
-		uses?: number;
-		maxlevel?: number;
-		// This is a bolt on specifically for Forgotten Lands. You can still use it though, but it won't do anything without implementation.
-		maxdrop?: number;
-	}
-
-	interface ToolCapabilities {
-		full_punch_interval?: number;
-		max_drop_level?: number;
-		groupcaps?: { [id: string]: GroupCap };
-		damage_groups?: { [id: string]: number };
-		punch_attack_uses?: number;
-	}
-
-	interface ItemSounds {
-		breaks: SimpleSoundSpec | string;
-		eat: SimpleSoundSpec | string;
-		punch_use: SimpleSoundSpec | string;
-		punch_use_air: SimpleSoundSpec | string;
-	}
-
-	interface Collision {
-		type: string;
-		axis: string;
-		node_pos: Vec3;
-		object: ObjectRef;
-		old_velocity: Vec3;
-		new_velocity: Vec3;
-	}
-
-	interface MoveResult {
-		touching_ground: boolean;
-		collides: boolean;
-		standing_on_object: boolean;
-		collisions: Collision[];
-	}
-
-	type DynamicColorSpec = ColorSpec | string;
-
-	interface ItemDefinition {
-		type?: string;
-		description?: string;
-		short_description?: string;
-		groups?: { [id: string]: number };
-		//! Note: crafter custom.
-		mob_hit_wear?: number;
-		inventory_image?: string;
-		inventory_overlay?: string;
-		wield_image?: string;
-		wield_overlay?: string;
-		wield_scale?: Vec3;
-		palette?: string;
-		color?: DynamicColorSpec;
-		stack_max?: number;
-		range?: number;
-		liquids_pointable?: boolean;
-		light_source?: number;
-		tool_capabilities?: ToolCapabilities;
-		node_placement_prediction?: string;
-		node_dig_prediction?: string;
-		sound?: {
-			breaks?: SimpleSoundSpec | string;
-			eat?: SimpleSoundSpec | string;
-			punch_use?: SimpleSoundSpec | string;
-			punch_use_air?: SimpleSoundSpec | string;
-		};
-		// todo: Not sure if these are actually void
-		on_place?(
-			itemStack: ItemStackObject,
-			placer: ObjectRef,
-			pointedThing: PointedThing
-		): void;
-		on_secondary_use?(
-			itemStack: ItemStackObject,
-			user: ObjectRef,
-			pointedThing: PointedThing
-		): void;
-		on_drop?(
-			itemStack: ItemStackObject,
-			dropper: ObjectRef,
-			position: Vec3
-		): void;
-		on_pickup?(
-			itemStack: ItemStackObject,
-			picker: ObjectRef,
-			pointedThing: PointedThing,
-			timeFromLastPunch: number,
-			...any: any
-		): void;
-		on_use?(
-			itemStack: ItemStackObject,
-			user: ObjectRef,
-			pointedThing: PointedThing
-		): void;
-		after_use?(
-			itemStack: ItemStackObject,
-			user: ObjectRef,
-			nodeTable: NodeTable,
-			digParams: { string: any }
-		): void;
-	}
-
-	/** @noSelf */
-	interface TileDefinition {
-		name: string;
-		backface_culling?: boolean;
-		animation: TileAnimationDefinition;
-	}
-
-	/** @noSelf **/
-	interface NodeDefinition extends ItemDefinition {
-		// -- <all fields allowed in item definitions>
-		description?: string;
-		drawtype?: Drawtype;
-		visual_scale?: number;
-		tiles?: string[] | TileDefinition[];
-		inventory_image?: string;
-		wield_image?: string;
-		node_placement_prediction?: string;
-		on_place?(
-			itemStack: ItemStackObject,
-			placer: ObjectRef,
-			pointedThing: PointedThing
-		): void;
-		overlay_tiles?: string[];
-		special_tiles?: string[] | TileDefinition[];
-		wield_scale?: Vec3;
-		color?: DynamicColorSpec;
-		light_source?: number;
-		use_texture_alpha?: TextureAlpha;
-		palette?: string;
-		post_effect_color?: DynamicColorSpec;
-		post_effect_color_shaded?: boolean;
-		paramtype?: ParamType1;
-		//! Note: this is deprecated.
-		// alpha?: number;
-		paramtype2?: ParamType2;
-		place_param2?: number;
-		is_ground_content?: boolean;
-		sunlight_propagates?: boolean;
-		walkable?: boolean;
-		groups?: { [id: string]: number };
-		pointable?: boolean;
-		diggable?: boolean;
-		climbable?: boolean;
-		move_resistance?: number;
-		buildable_to?: boolean;
-		floodable?: boolean;
-		liquidtype?: LiquidType;
-		liquid_alternative_flowing?: string;
-		liquid_alternative_source?: string;
-		liquid_viscosity?: number;
-		liquid_renewable?: boolean;
-		liquid_move_physics?: boolean;
-		leveled?: number;
-		leveled_max?: number;
-		liquid_range?: number;
-		drowning?: number;
-		damage_per_second?: number;
-		node_box?: NodeBox;
-		connects_to?: string[];
-		connect_sides?: NodeBoxConnections;
-		mesh?: string;
-		selection_box?: NodeBox;
-		collision_box?: NodeBox;
-		legacy_facedir_simple?: boolean;
-		legacy_wallmounted?: boolean;
-		waving?: number;
-		sounds?: NodeSoundSpec;
-		drop?: NodeDropSpec | string;
-		on_construct?(position: Vec3): void;
-		on_destruct?(position: Vec3): void;
-		after_destruct?(position: Vec3, oldNode: MapNode): void;
-		on_flood?(position: Vec3, oldNode: NodeTable, newNode: NodeTable): void;
-		preserve_metadata?(
-			position: Vec3,
-			oldNode: NodeTable,
-			oldMeta: NodeTable,
-			drops: ItemStackObject[]
-		): void;
-		after_place_node?(
-			position: Vec3,
-			placer: ObjectRef,
-			itemStack: ItemStackObject,
-			pointedThing: PointedThing
-		): void;
-		after_dig_node?(
-			position: Vec3,
-			oldNode: NodeTable,
-			oldMeta: string,
-			digger: ObjectRef
-		): void;
-		can_dig?(position: Vec3, canDig: ObjectRef): boolean;
-		on_punch?(
-			position: Vec3,
-			node: NodeTable,
-			puncher: ObjectRef,
-			pointedThing: PointedThing
-		): void;
-		on_rightclick?(
-			position: Vec3,
-			node: NodeTable,
-			clicker: ObjectRef,
-			itemStack: ItemStackObject,
-			pointedThing: PointedThing
-		): void;
-		on_dig?(position: Vec3, node: NodeTable, digger: ObjectRef): void;
-		on_timer?(position: Vec3, elapsed: number): void;
-		on_receive_fields?(
-			position: Vec3,
-			formName: string,
-			fields: { [id: string]: any },
-			sender: ObjectRef
-		): void;
-		allow_metadata_inventory_move?(
-			position: Vec3,
-			fromList: string,
-			fromIndex: number,
-			toList: string,
-			toIndex: number,
-			count: number,
-			player: ObjectRef
-		): void;
-		allow_metadata_inventory_put?(
-			position: Vec3,
-			listName: string,
-			index: number,
-			stack: ItemStackObject,
-			player: ObjectRef
-		): number;
-		allow_metadata_inventory_take?(
-			position: Vec3,
-			listName: string,
-			index: number,
-			stack: ItemStackObject,
-			player: ObjectRef
-		): number;
-		on_metadata_inventory_move?(
-			position: Vec3,
-			fromList: string,
-			fromIndex: number,
-			toList: string,
-			toIndex: number,
-			count: number,
-			player: ObjectRef
-		): void;
-		on_metadata_inventory_put?(
-			position: Vec3,
-			listName: string,
-			index: number,
-			stack: ItemStackObject,
-			player: ObjectRef
-		): void;
-		on_metadata_inventory_take?(
-			position: Vec3,
-			listName: string,
-			index: number,
-			stack: ItemStackObject,
-			player: ObjectRef
-		): void;
-		on_blast?(position: Vec3, intensity: number): void;
-		mod_origin?: string;
-	}
-
-	interface MetaRef {
-		set_tool_capabilities(toolCapabilities: ToolCapabilities): void;
-		contains(key: string): boolean;
-		get(key: string): string;
-		set_string(key: string, value: string): void;
-		get_string(key: string): string;
-		set_int(key: string, value: number): void;
-		get_int(key: string): number;
-		set_float(key: string, value: number): void;
-		get_float(key: string): number;
-		get_keys(): string[];
-		to_table(): MetaData | null;
-		from_table(data: MetaData): boolean;
-		equals(other: MetaRef): boolean;
-		//! FIXME: USE INHERITANCE!
-		// node
-		get_inventory(): InvRef;
-		mark_as_private(nameOrArray: string | string[]): void;
-		// timer
-		set(timeOut: number, elapsed: number): void;
-		start(timeOut: number): void;
-		stop(): void;
-		get_timeout(): number;
-		get_elapsed(): number;
-		is_started(): boolean;
-	}
-
-	interface ABMDefinition {
-		label: string;
-		nodenames: string[];
-		neighbors: string[];
-		interval: number;
-		chance: number;
-		min_y?: number;
-		max_y?: number;
-		catch_up?: boolean;
-		action(
-			pos: Vec3,
-			node: NodeTable,
-			activeObjectCount: number,
-			activeObjectCountWider: number
-		): void;
-	}
-
-	interface LBMDefinition {
-		label: string;
-		name: string;
-		nodenames: string[];
-		run_at_every_load: boolean;
-		action(pos: Vec3, node: NodeTable, delta: number): void;
-	}
-
-	interface SchematicReadOptionYSlice {
-		write_yslice_prob: SchematicReadOptionYSliceOption;
-	}
-
-	interface SchematicData {
-		name: string;
-		prob?: number;
-		param1?: number;
-		param2?: number;
-		force_place?: boolean;
-	}
-
-	interface SchematicProbability {
-		pos: Vec3;
-		prob: number;
-	}
-
-	interface SchematicSliceProbability {
-		ypos: number;
-		prob: number;
-	}
-
-	interface SchematicDefinition {
-		size: Vec3;
-		data: SchematicData[];
-		yslice_prob?: number[][];
-	}
-
-	interface HTTPrequestDefinition {
-		url: string;
-		timeout: number;
-		method: HTTPRequestMethod;
-		data: string | { string: string };
-		user_agent: string;
-		extra_headers: string[];
-		multipart: boolean;
-		post_data: string | { string: string };
-	}
-
-	interface HTTPRequestResult {
-		completed: boolean;
-		succeeded: boolean;
-		timeout: boolean;
-		code: number;
-		data: string;
-	}
-
-	interface HTTPApi {
-		fetch(
-			req: HTTPrequestDefinition,
-			callback: (res: HTTPRequestResult) => void
-		): void;
-		fetch_async(req: HTTPrequestDefinition): number;
-		fetch_async_get(handle: number): HTTPRequestResult;
-	}
-
-	interface NoiseParams {
-		offset?: number;
-		scale?: number;
-		spread?: Vec3;
-		seed?: number;
-		octaves?: number;
-		// These two have the same effect.
-		persistence?: number;
-		persist?: number;
-		lacunarity?: number;
-		flags?: NoiseFlags;
-	}
-
-	interface OreDefinition {
-		ore_type: OreType;
-		ore: string;
-		ore_param2?: number;
-		wherein: string | string[];
-		clust_scarcity?: number;
-		clust_num_ores?: number;
-		clust_size?: number;
-		y_min: number;
-		y_max: number;
-		flags?: OreFlags;
-		noise_threshold?: number;
-		noise_params?: NoiseParams;
-		biomes?: string[];
-		column_height_min?: number;
-		column_height_max?: number;
-		column_midpoint_factor?: number;
-		np_puff_top?: NoiseParams;
-		np_puff_bottom?: NoiseParams;
-		random_factor?: number;
-		np_stratum_thickness?: NoiseParams;
-		stratum_thickness?: number;
 	}
 
 	interface BiomeDefinition {
@@ -2366,13 +1754,623 @@ declare global {
 	}
 }
 
-
-
-
+//! NO SELF =====================================================================
 
 /** @noSelf **/
 declare global {
 	const core: core;
+
+	interface OreDefinition {
+		ore_type: OreType;
+		ore: string;
+		ore_param2?: number;
+		wherein: string | string[];
+		clust_scarcity?: number;
+		clust_num_ores?: number;
+		clust_size?: number;
+		y_min: number;
+		y_max: number;
+		flags?: OreFlags;
+		noise_threshold?: number;
+		noise_params?: NoiseParams;
+		biomes?: string[];
+		column_height_min?: number;
+		column_height_max?: number;
+		column_midpoint_factor?: number;
+		np_puff_top?: NoiseParams;
+		np_puff_bottom?: NoiseParams;
+		random_factor?: number;
+		np_stratum_thickness?: NoiseParams;
+		stratum_thickness?: number;
+	}
+
+	interface NoiseParams {
+		offset?: number;
+		scale?: number;
+		spread?: Vec3;
+		seed?: number;
+		octaves?: number;
+		// These two have the same effect.
+		persistence?: number;
+		persist?: number;
+		lacunarity?: number;
+		flags?: NoiseFlags;
+	}
+
+	interface HTTPrequestDefinition {
+		url: string;
+		timeout: number;
+		method: HTTPRequestMethod;
+		data: string | { string: string };
+		user_agent: string;
+		extra_headers: string[];
+		multipart: boolean;
+		post_data: string | { string: string };
+	}
+
+	interface HTTPRequestResult {
+		completed: boolean;
+		succeeded: boolean;
+		timeout: boolean;
+		code: number;
+		data: string;
+	}
+
+	interface HTTPApi {
+		fetch(
+			req: HTTPrequestDefinition,
+			callback: (res: HTTPRequestResult) => void
+		): void;
+		fetch_async(req: HTTPrequestDefinition): number;
+		fetch_async_get(handle: number): HTTPRequestResult;
+	}
+
+	interface SchematicReadOptionYSlice {
+		write_yslice_prob: SchematicReadOptionYSliceOption;
+	}
+
+	interface SchematicData {
+		name: string;
+		prob?: number;
+		param1?: number;
+		param2?: number;
+		force_place?: boolean;
+	}
+
+	interface SchematicProbability {
+		pos: Vec3;
+		prob: number;
+	}
+
+	interface SchematicSliceProbability {
+		ypos: number;
+		prob: number;
+	}
+
+	interface SchematicDefinition {
+		size: Vec3;
+		data: SchematicData[];
+		yslice_prob?: number[][];
+	}
+
+	interface MetaRef {
+		set_tool_capabilities(toolCapabilities: ToolCapabilities): void;
+		contains(key: string): boolean;
+		get(key: string): string;
+		set_string(key: string, value: string): void;
+		get_string(key: string): string;
+		set_int(key: string, value: number): void;
+		get_int(key: string): number;
+		set_float(key: string, value: number): void;
+		get_float(key: string): number;
+		get_keys(): string[];
+		to_table(): MetaData | null;
+		from_table(data: MetaData): boolean;
+		equals(other: MetaRef): boolean;
+		//! FIXME: USE INHERITANCE!
+		// node
+		get_inventory(): InvRef;
+		mark_as_private(nameOrArray: string | string[]): void;
+		// timer
+		set(timeOut: number, elapsed: number): void;
+		start(timeOut: number): void;
+		stop(): void;
+		get_timeout(): number;
+		get_elapsed(): number;
+		is_started(): boolean;
+	}
+
+	interface ABMDefinition {
+		label: string;
+		nodenames: string[];
+		neighbors: string[];
+		interval: number;
+		chance: number;
+		min_y?: number;
+		max_y?: number;
+		catch_up?: boolean;
+		action(
+			pos: Vec3,
+			node: NodeTable,
+			activeObjectCount: number,
+			activeObjectCountWider: number
+		): void;
+	}
+
+	interface LBMDefinition {
+		label: string;
+		name: string;
+		nodenames: string[];
+		run_at_every_load: boolean;
+		action(pos: Vec3, node: NodeTable, delta: number): void;
+	}
+
+	type DynamicColorSpec = ColorSpec | string;
+
+	interface ItemDefinition {
+		type?: string;
+		description?: string;
+		short_description?: string;
+		groups?: { [id: string]: number };
+		//! Note: crafter custom.
+		mob_hit_wear?: number;
+		inventory_image?: string;
+		inventory_overlay?: string;
+		wield_image?: string;
+		wield_overlay?: string;
+		wield_scale?: Vec3;
+		palette?: string;
+		color?: DynamicColorSpec;
+		stack_max?: number;
+		range?: number;
+		liquids_pointable?: boolean;
+		light_source?: number;
+		tool_capabilities?: ToolCapabilities;
+		node_placement_prediction?: string;
+		node_dig_prediction?: string;
+		sound?: {
+			breaks?: SimpleSoundSpec | string;
+			eat?: SimpleSoundSpec | string;
+			punch_use?: SimpleSoundSpec | string;
+			punch_use_air?: SimpleSoundSpec | string;
+		};
+		// todo: Not sure if these are actually void
+		on_place?(
+			itemStack: ItemStackObject,
+			placer: ObjectRef,
+			pointedThing: PointedThing
+		): void;
+		on_secondary_use?(
+			itemStack: ItemStackObject,
+			user: ObjectRef,
+			pointedThing: PointedThing
+		): void;
+		on_drop?(
+			itemStack: ItemStackObject,
+			dropper: ObjectRef,
+			position: Vec3
+		): void;
+		on_pickup?(
+			itemStack: ItemStackObject,
+			picker: ObjectRef,
+			pointedThing: PointedThing,
+			timeFromLastPunch: number,
+			...any: any
+		): void;
+		on_use?(
+			itemStack: ItemStackObject,
+			user: ObjectRef,
+			pointedThing: PointedThing
+		): void;
+		after_use?(
+			itemStack: ItemStackObject,
+			user: ObjectRef,
+			nodeTable: NodeTable,
+			digParams: { string: any }
+		): void;
+	}
+
+	interface NodeDefinition extends ItemDefinition {
+		// -- <all fields allowed in item definitions>
+		description?: string;
+		drawtype?: Drawtype;
+		visual_scale?: number;
+		tiles?: string[] | TileDefinition[];
+		inventory_image?: string;
+		wield_image?: string;
+		node_placement_prediction?: string;
+		on_place?(
+			itemStack: ItemStackObject,
+			placer: ObjectRef,
+			pointedThing: PointedThing
+		): void;
+		overlay_tiles?: string[];
+		special_tiles?: string[] | TileDefinition[];
+		wield_scale?: Vec3;
+		color?: DynamicColorSpec;
+		light_source?: number;
+		use_texture_alpha?: TextureAlpha;
+		palette?: string;
+		post_effect_color?: DynamicColorSpec;
+		post_effect_color_shaded?: boolean;
+		paramtype?: ParamType1;
+		//! Note: this is deprecated.
+		// alpha?: number;
+		paramtype2?: ParamType2;
+		place_param2?: number;
+		is_ground_content?: boolean;
+		sunlight_propagates?: boolean;
+		walkable?: boolean;
+		groups?: { [id: string]: number };
+		pointable?: boolean;
+		diggable?: boolean;
+		climbable?: boolean;
+		move_resistance?: number;
+		buildable_to?: boolean;
+		floodable?: boolean;
+		liquidtype?: LiquidType;
+		liquid_alternative_flowing?: string;
+		liquid_alternative_source?: string;
+		liquid_viscosity?: number;
+		liquid_renewable?: boolean;
+		liquid_move_physics?: boolean;
+		leveled?: number;
+		leveled_max?: number;
+		liquid_range?: number;
+		drowning?: number;
+		damage_per_second?: number;
+		node_box?: NodeBox;
+		connects_to?: string[];
+		connect_sides?: NodeBoxConnections;
+		mesh?: string;
+		selection_box?: NodeBox;
+		collision_box?: NodeBox;
+		legacy_facedir_simple?: boolean;
+		legacy_wallmounted?: boolean;
+		waving?: number;
+		sounds?: NodeSoundSpec;
+		drop?: NodeDropSpec | string;
+		on_construct?(position: Vec3): void;
+		on_destruct?(position: Vec3): void;
+		after_destruct?(position: Vec3, oldNode: MapNode): void;
+		on_flood?(position: Vec3, oldNode: NodeTable, newNode: NodeTable): void;
+		preserve_metadata?(
+			position: Vec3,
+			oldNode: NodeTable,
+			oldMeta: NodeTable,
+			drops: ItemStackObject[]
+		): void;
+		after_place_node?(
+			position: Vec3,
+			placer: ObjectRef,
+			itemStack: ItemStackObject,
+			pointedThing: PointedThing
+		): void;
+		after_dig_node?(
+			position: Vec3,
+			oldNode: NodeTable,
+			oldMeta: string,
+			digger: ObjectRef
+		): void;
+		can_dig?(position: Vec3, canDig: ObjectRef): boolean;
+		on_punch?(
+			position: Vec3,
+			node: NodeTable,
+			puncher: ObjectRef,
+			pointedThing: PointedThing
+		): void;
+		on_rightclick?(
+			position: Vec3,
+			node: NodeTable,
+			clicker: ObjectRef,
+			itemStack: ItemStackObject,
+			pointedThing: PointedThing
+		): void;
+		on_dig?(position: Vec3, node: NodeTable, digger: ObjectRef): void;
+		on_timer?(position: Vec3, elapsed: number): void;
+		on_receive_fields?(
+			position: Vec3,
+			formName: string,
+			fields: { [id: string]: any },
+			sender: ObjectRef
+		): void;
+		allow_metadata_inventory_move?(
+			position: Vec3,
+			fromList: string,
+			fromIndex: number,
+			toList: string,
+			toIndex: number,
+			count: number,
+			player: ObjectRef
+		): void;
+		allow_metadata_inventory_put?(
+			position: Vec3,
+			listName: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
+		): number;
+		allow_metadata_inventory_take?(
+			position: Vec3,
+			listName: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
+		): number;
+		on_metadata_inventory_move?(
+			position: Vec3,
+			fromList: string,
+			fromIndex: number,
+			toList: string,
+			toIndex: number,
+			count: number,
+			player: ObjectRef
+		): void;
+		on_metadata_inventory_put?(
+			position: Vec3,
+			listName: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
+		): void;
+		on_metadata_inventory_take?(
+			position: Vec3,
+			listName: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
+		): void;
+		on_blast?(position: Vec3, intensity: number): void;
+		mod_origin?: string;
+	}
+
+	interface TileDefinition {
+		name: string;
+		backface_culling?: boolean;
+		animation: TileAnimationDefinition;
+	}
+
+	interface GroupCap {
+		// Allow the end programmer to do it their way.
+		times: number[] | { [id: number]: number };
+		uses?: number;
+		maxlevel?: number;
+		// This is a bolt on specifically for Forgotten Lands. You can still use it though, but it won't do anything without implementation.
+		maxdrop?: number;
+	}
+
+	interface ToolCapabilities {
+		full_punch_interval?: number;
+		max_drop_level?: number;
+		groupcaps?: { [id: string]: GroupCap };
+		damage_groups?: { [id: string]: number };
+		punch_attack_uses?: number;
+	}
+
+	interface ItemSounds {
+		breaks: SimpleSoundSpec | string;
+		eat: SimpleSoundSpec | string;
+		punch_use: SimpleSoundSpec | string;
+		punch_use_air: SimpleSoundSpec | string;
+	}
+
+	interface Collision {
+		type: string;
+		axis: string;
+		node_pos: Vec3;
+		object: ObjectRef;
+		old_velocity: Vec3;
+		new_velocity: Vec3;
+	}
+
+	interface MoveResult {
+		touching_ground: boolean;
+		collides: boolean;
+		standing_on_object: boolean;
+		collisions: Collision[];
+	}
+
+	type GenNotifyObject = Map<string, Vec3[]>;
+
+	interface NodeSoundSpec {
+		footstep?: SimpleSoundSpec | string;
+		dig?: SimpleSoundSpec | string;
+		dug?: SimpleSoundSpec | string;
+		// place?: SimpleSoundSpec | string;
+		place_failed?: SimpleSoundSpec | string;
+		fall?: SimpleSoundSpec | string;
+		// break?: SimpleSoundSpec | string;
+		placed?: SimpleSoundSpec | string;
+		//* Crafter custom.
+		placing?: SimpleSoundSpec | string;
+	}
+
+	interface ItemDropSpec {
+		tools?: string[];
+		rarity?: number;
+		items?: string[];
+		inherit_color?: boolean;
+		tool_groups?: string[] | string[][];
+	}
+
+	interface NodeDropSpec {
+		max_items?: number;
+		items: ItemDropSpec[];
+	}
+
+	interface MapNode {
+		name: string;
+		prob: number;
+		param2: number;
+		force_place: boolean;
+	}
+
+	interface NodeTable {
+		name: string;
+		param1?: number;
+		param2?: number;
+		level?: number;
+	}
+
+	interface PointedThing {
+		type: string;
+		under: Vec3;
+		above: Vec3;
+		ref: ObjectRef;
+	}
+
+	interface SimpleSoundSpec {
+		name?: string;
+		gain?: number;
+		pitch?: number;
+		fade?: number;
+	}
+
+	interface PlayerInformation {
+		address: string;
+		ip_version: number;
+		connection_uptime: number;
+		protocol_version: number;
+		formspec_version: number;
+		lang_code: string;
+		min_rtt: number;
+		max_rtt: number;
+		avg_rtt: number;
+		min_jitter: number;
+		max_jitter: number;
+		avg_jitter: number;
+	}
+
+	interface WindowInformation {
+		size: Vec2;
+		max_formspec_size: Vec2;
+		real_gui_scaling: number;
+		real_hud_scaling: number;
+	}
+
+	interface LuantiInfo {
+		project: string;
+		string: string;
+		proto_min: string;
+		proto_max: string;
+		hash: string;
+		is_dev: boolean;
+	}
+
+	interface ColorSpec {
+		a: number;
+		r: number;
+		g: number;
+		b: number;
+	}
+
+	interface LuantiFeatures {
+		glasslike_framed: boolean;
+		nodebox_as_selectionbox: boolean;
+		get_all_craft_recipes_works: boolean;
+		use_texture_alpha: boolean;
+		no_legacy_abms: boolean;
+		texture_names_parens: boolean;
+		area_store_custom_ids: boolean;
+		add_entity_with_staticdata: boolean;
+		no_chat_message_prediction: boolean;
+		object_use_texture_alpha: boolean;
+		object_independent_selectionbox: boolean;
+		httpfetch_binary_data: boolean;
+		formspec_version_element: boolean;
+		area_store_persistent_ids: boolean;
+		pathfinder_works: boolean;
+		object_step_has_moveresult: boolean;
+		direct_velocity_on_players: boolean;
+		use_texture_alpha_string_modes: boolean;
+		degrotate_240_steps: boolean;
+		abm_min_max_y: boolean;
+		dynamic_add_media_table: boolean;
+		particlespawner_tweenable: boolean;
+		get_sky_as_table: boolean;
+		get_light_data_buffer: boolean;
+		mod_storage_on_disk: boolean;
+		compress_zstd: boolean;
+	}
+
+	type box = number[];
+
+	type boxTable = box[];
+
+	type itemstring = string;
+
+	interface GameInfo {
+		id: string;
+		title: string;
+		author: string;
+		path: string;
+	}
+
+	interface NodeBox {
+		type: Nodeboxtype;
+		fixed?: box | boxTable;
+		wall_top?: box | boxTable;
+		wall_bottom?: box | boxTable;
+		wall_side?: box | boxTable;
+		connect_top?: box | boxTable;
+		connect_bottom?: box | boxTable;
+		connect_front?: box | boxTable;
+		connect_left?: box | boxTable;
+		connect_back?: box | boxTable;
+		connect_right?: box | boxTable;
+		disconnected_top?: box | boxTable;
+		disconnected_bottom?: box | boxTable;
+		disconnected_front?: box | boxTable;
+		disconnected_left?: box | boxTable;
+		disconnected_back?: box | boxTable;
+		disconnected_right?: box | boxTable;
+		disconnected?: box | boxTable;
+		disconnected_sides?: box | boxTable;
+	}
+
+	/**
+	 * I'm sure this can be used for something.
+	 */
+	interface ComplexSoundSpec extends SimpleSoundSpec {
+		randomizePitch?: boolean;
+		min?: number;
+		max?: number;
+	}
+
+	interface SoundParameterTable extends SimpleSoundSpec {
+		start_time?: number;
+		loop?: boolean;
+		pos?: Vec3;
+		object?: ObjectRef;
+		to_player?: string;
+		max_hear_distance?: number;
+	}
+
+	interface TreeDefinition {
+		axiom: string;
+		rules_a: string;
+		rules_b: string;
+		rules_c: string;
+		rules_d: string;
+		trunk: string;
+		leaves: string;
+		leaves2: string;
+		leaves2_chance: number;
+		angle: number;
+		iterations: number;
+		random_level: number;
+		trunk_type: string;
+		thin_branches: boolean;
+		fruit: string;
+		fruit_chance: number;
+		seed: number;
+	}
+
+	interface InvRefLocation {
+		type: string;
+		name: string;
+		pos: Vec3;
+	}
 
 	interface ChatCommandDefinition {
 		params: string;
