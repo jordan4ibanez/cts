@@ -692,6 +692,8 @@ interface core {
 
 /** @noSelf **/
 declare global {
+	const core: core;
+
 	interface ItemStackObject {
 		name: string;
 		// count: number
@@ -2442,8 +2444,6 @@ declare global {
 			randomFunc: () => number
 		): LuaTable;
 	}
-
-	const core: core;
 
 	//? Enums below this.
 
