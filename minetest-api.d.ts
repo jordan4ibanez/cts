@@ -1008,7 +1008,7 @@ declare global {
 
 	type DynamicColorSpec = ColorSpec | string;
 
-	interface ItemDefinition {
+	/** @noSelf **/ interface ItemDefinition {
 		type?: string;
 		description?: string;
 		short_description?: string;
@@ -1071,15 +1071,15 @@ declare global {
 		): void;
 	}
 
-	/** @noSelf */
-	interface TileDefinition {
+	
+	/** @noSelf **/ interface TileDefinition {
 		name: string;
 		backface_culling?: boolean;
 		animation: TileAnimationDefinition;
 	}
 
-	/** @noSelf **/
-	interface NodeDefinition extends ItemDefinition {
+	
+	/** @noSelf **/ interface NodeDefinition extends ItemDefinition {
 		// -- <all fields allowed in item definitions>
 		description?: string;
 		drawtype?: Drawtype;
@@ -1233,7 +1233,7 @@ declare global {
 		mod_origin?: string;
 	}
 
-	interface MetaRef {
+	/** @noSelf **/ interface MetaRef {
 		set_tool_capabilities(toolCapabilities: ToolCapabilities): void;
 		contains(key: string): boolean;
 		get(key: string): string;
@@ -1260,7 +1260,7 @@ declare global {
 		is_started(): boolean;
 	}
 
-	interface ABMDefinition {
+	/** @noSelf **/ interface ABMDefinition {
 		label: string;
 		nodenames: string[];
 		neighbors: string[];
@@ -1277,7 +1277,7 @@ declare global {
 		): void;
 	}
 
-	interface LBMDefinition {
+	/** @noSelf **/ interface LBMDefinition {
 		label: string;
 		name: string;
 		nodenames: string[];
@@ -1285,11 +1285,11 @@ declare global {
 		action(pos: Vec3, node: NodeTable, delta: number): void;
 	}
 
-	interface SchematicReadOptionYSlice {
+	/** @noSelf **/ interface SchematicReadOptionYSlice {
 		write_yslice_prob: SchematicReadOptionYSliceOption;
 	}
 
-	interface SchematicData {
+	/** @noSelf **/ interface SchematicData {
 		name: string;
 		prob?: number;
 		param1?: number;
@@ -1297,23 +1297,23 @@ declare global {
 		force_place?: boolean;
 	}
 
-	interface SchematicProbability {
+	/** @noSelf **/ interface SchematicProbability {
 		pos: Vec3;
 		prob: number;
 	}
 
-	interface SchematicSliceProbability {
+	/** @noSelf **/ interface SchematicSliceProbability {
 		ypos: number;
 		prob: number;
 	}
 
-	interface SchematicDefinition {
+	/** @noSelf **/ interface SchematicDefinition {
 		size: Vec3;
 		data: SchematicData[];
 		yslice_prob?: number[][];
 	}
 
-	interface HTTPrequestDefinition {
+	/** @noSelf **/ interface HTTPrequestDefinition {
 		url: string;
 		timeout: number;
 		method: HTTPRequestMethod;
@@ -1324,7 +1324,7 @@ declare global {
 		post_data: string | { string: string };
 	}
 
-	interface HTTPRequestResult {
+	/** @noSelf **/ interface HTTPRequestResult {
 		completed: boolean;
 		succeeded: boolean;
 		timeout: boolean;
@@ -1332,7 +1332,7 @@ declare global {
 		data: string;
 	}
 
-	interface HTTPApi {
+	/** @noSelf **/ interface HTTPApi {
 		fetch(
 			req: HTTPrequestDefinition,
 			callback: (res: HTTPRequestResult) => void
@@ -1341,7 +1341,7 @@ declare global {
 		fetch_async_get(handle: number): HTTPRequestResult;
 	}
 
-	interface NoiseParams {
+	/** @noSelf **/ interface NoiseParams {
 		offset?: number;
 		scale?: number;
 		spread?: Vec3;
@@ -1354,7 +1354,7 @@ declare global {
 		flags?: NoiseFlags;
 	}
 
-	interface OreDefinition {
+	/** @noSelf **/ interface OreDefinition {
 		ore_type: OreType;
 		ore: string;
 		ore_param2?: number;
@@ -1378,7 +1378,7 @@ declare global {
 		stratum_thickness?: number;
 	}
 
-	interface BiomeDefinition {
+	/** @noSelf **/ interface BiomeDefinition {
 		name: string;
 		node_dust?: string;
 		node_top?: string;
@@ -1405,7 +1405,7 @@ declare global {
 		humidity_point?: number;
 	}
 
-	interface DecorationDefinition {
+	/** @noSelf **/ interface DecorationDefinition {
 		name: string;
 		deco_type?: DecorationType;
 		place_on?: string | string[];
@@ -1430,7 +1430,7 @@ declare global {
 		rotation?: string;
 	}
 
-	interface CraftRecipeDefinition {
+	/** @noSelf **/ interface CraftRecipeDefinition {
 		type?: CraftRecipeType;
 		output?: string;
 		recipe?: string[][] | string[] | string;
@@ -1440,19 +1440,19 @@ declare global {
 		burntime?: number;
 	}
 
-	interface CraftResultObject {
+	/** @noSelf **/ interface CraftResultObject {
 		item: ItemStackObject;
 		time: number;
 		replacements: ItemStackObject[];
 	}
 
-	interface CraftRecipeCheckDefinition {
+	/** @noSelf **/ interface CraftRecipeCheckDefinition {
 		method: CraftCheckType;
 		width: number;
 		items: ItemStackObject[];
 	}
 
-	interface ChatCommandDefinition {
+	/** @noSelf **/ interface ChatCommandDefinition {
 		params: string;
 		description: string;
 		privs: { [id: string]: boolean };
@@ -1462,7 +1462,7 @@ declare global {
 		): LuaMultiReturn<[boolean, string]> | void;
 	}
 
-	interface PrivilegeDefinition {
+	/** @noSelf **/ interface PrivilegeDefinition {
 		description: string;
 		give_to_singleplayer: boolean;
 		give_to_admin: boolean;
@@ -1470,7 +1470,7 @@ declare global {
 		on_revoke(name: string, revokerName: string): void;
 	}
 
-	interface AuthenticationHandlerDefinition {
+	/** @noSelf **/ interface AuthenticationHandlerDefinition {
 		get_auth(name: string): void;
 		create_auth(name: string, password: string): void;
 		delete_auth(name: string): void;
@@ -1481,7 +1481,7 @@ declare global {
 		iterate(): void;
 	}
 
-	interface HPChangeReasonDefinition {
+	/** @noSelf **/ interface HPChangeReasonDefinition {
 		type: HPChangeReasonType;
 		node: string;
 		node_pos: Vec3;
@@ -1489,7 +1489,7 @@ declare global {
 		from: string;
 	}
 
-	interface ActionDefinition {
+	/** @noSelf **/ interface ActionDefinition {
 		from_list: string;
 		to_list: string;
 		from_index: number;
@@ -1500,7 +1500,7 @@ declare global {
 		stack: ItemStackObject;
 	}
 
-	interface CheatDefinition {
+	/** @noSelf **/ interface CheatDefinition {
 		type: CheatType;
 	}
 
@@ -1511,13 +1511,13 @@ declare global {
 		param: any
 	) => void; // ! FIXME: figure out what core.EMERGE_CANCELLED EVEN IS!
 
-	interface BiomeDataDefinition {
+	/** @noSelf **/ interface BiomeDataDefinition {
 		biome: number;
 		heat: number;
 		humidity: number;
 	}
 
-	interface MapGenSettingsDefinition {
+	/** @noSelf **/ interface MapGenSettingsDefinition {
 		mgname: string;
 		seed: number;
 		chunksize: number;
@@ -1525,7 +1525,7 @@ declare global {
 		flags: string;
 	}
 
-	interface MetaData {
+	/** @noSelf **/ interface MetaData {
 		fields: { string: any };
 		inventory: { string: [string | ItemStackObject] };
 	}
@@ -1660,7 +1660,7 @@ declare global {
 		next_bytes(count: number): string;
 	}
 
-	interface DetachedInventoryCallbacks {
+	/** @noSelf **/ interface DetachedInventoryCallbacks {
 		allow_move(
 			inv: InvRef,
 			fromList: string,
