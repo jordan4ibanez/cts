@@ -1071,14 +1071,12 @@ declare global {
 		): void;
 	}
 
-	
 	/** @noSelf **/ interface TileDefinition {
 		name: string;
 		backface_culling?: boolean;
 		animation: TileAnimationDefinition;
 	}
 
-	
 	/** @noSelf **/ interface NodeDefinition extends ItemDefinition {
 		// -- <all fields allowed in item definitions>
 		description?: string;
@@ -2273,7 +2271,8 @@ declare global {
 		animation: TileAnimationDefinition;
 	}
 
-	/** @noSelf **/ interface TexturePoolComponentTweenDefinition extends Array<number> {
+	/** @noSelf **/ interface TexturePoolComponentTweenDefinition
+		extends Array<number> {
 		style: ParticleSpawnerTweenStyle;
 		reps: number;
 	}
@@ -2447,9 +2446,7 @@ declare global {
 }
 
 //? Classes (Objects with implicit self [this]) ===============================================
-declare global {
-
-}
+declare global {}
 
 //? Enums below this.
 
