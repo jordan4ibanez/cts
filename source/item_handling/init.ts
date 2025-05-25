@@ -602,6 +602,8 @@ namespace item_handling {
 		}
 	}
 
+    utility.registerTSEntity(CrafterItemEntity);
+
 	// core.register_entity(":__builtin:item", {
 
 	// 	set_item = set_item,
