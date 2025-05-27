@@ -1404,7 +1404,7 @@ declare global {
 		action: any,
 		callsRemaining: number,
 		param: any
-	) => void; // ! FIXME: figure out what core.EMERGE_CANCELLED EVEN IS!
+	) => void; // todo: figure out what core.EMERGE_CANCELLED EVEN IS!
 
 	/** @noSelf **/ interface BiomeDataDefinition {
 		biome: number;
