@@ -1963,7 +1963,6 @@ declare global {
 
 	function dump2(object: any, dumped?: any[]): string;
 
-	// You can just bolt onto namespaces apparently!
 	/** @noSelf **/ namespace math {
 		function hypot(x: number, y: number): number;
 		function sign(x: number, tolerance: number): number;
