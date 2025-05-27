@@ -1164,33 +1164,6 @@ declare global {
 		mod_origin?: string;
 	}
 
-	/** @noSelf **/ interface MetaRef {
-		set_tool_capabilities(toolCapabilities: ToolCapabilities): void;
-		contains(key: string): boolean;
-		get(key: string): string;
-		set_string(key: string, value: string): void;
-		get_string(key: string): string;
-		set_int(key: string, value: number): void;
-		get_int(key: string): number;
-		set_float(key: string, value: number): void;
-		get_float(key: string): number;
-		get_keys(): string[];
-		to_table(): MetaData | null;
-		from_table(data: MetaData): boolean;
-		equals(other: MetaRef): boolean;
-		//! FIXME: USE INHERITANCE!
-		// node
-		get_inventory(): InvRef;
-		mark_as_private(nameOrArray: string | string[]): void;
-		// timer
-		set(timeOut: number, elapsed: number): void;
-		start(timeOut: number): void;
-		stop(): void;
-		get_timeout(): number;
-		get_elapsed(): number;
-		is_started(): boolean;
-	}
-
 	/** @noSelf **/ interface ABMDefinition {
 		label: string;
 		nodenames: string[];
@@ -2043,6 +2016,33 @@ declare global {
 //? Classes. (Objects with implicit self [this]) ===============================================
 
 declare global {
+	interface MetaRef {
+		set_tool_capabilities(toolCapabilities: ToolCapabilities): void;
+		contains(key: string): boolean;
+		get(key: string): string;
+		set_string(key: string, value: string): void;
+		get_string(key: string): string;
+		set_int(key: string, value: number): void;
+		get_int(key: string): number;
+		set_float(key: string, value: number): void;
+		get_float(key: string): number;
+		get_keys(): string[];
+		to_table(): MetaData | null;
+		from_table(data: MetaData): boolean;
+		equals(other: MetaRef): boolean;
+		//! FIXME: USE INHERITANCE!
+		// node
+		get_inventory(): InvRef;
+		mark_as_private(nameOrArray: string | string[]): void;
+		// timer
+		set(timeOut: number, elapsed: number): void;
+		start(timeOut: number): void;
+		stop(): void;
+		get_timeout(): number;
+		get_elapsed(): number;
+		is_started(): boolean;
+	}
+
 	interface InvRef {
 		is_empty(listName: string): boolean;
 		get_size(listName: string): number;
