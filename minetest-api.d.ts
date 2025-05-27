@@ -1236,15 +1236,6 @@ declare global {
 		data: string;
 	}
 
-	/** @noSelf **/ interface HTTPApi {
-		fetch(
-			req: HTTPrequestDefinition,
-			callback: (res: HTTPRequestResult) => void
-		): void;
-		fetch_async(req: HTTPrequestDefinition): number;
-		fetch_async_get(handle: number): HTTPRequestResult;
-	}
-
 	/** @noSelf **/ interface NoiseParams {
 		offset?: number;
 		scale?: number;
@@ -2016,6 +2007,15 @@ declare global {
 //? Classes. (Objects with implicit self [this]) ===============================================
 
 declare global {
+	interface HTTPApi {
+		fetch(
+			req: HTTPrequestDefinition,
+			callback: (res: HTTPRequestResult) => void
+		): void;
+		fetch_async(req: HTTPrequestDefinition): number;
+		fetch_async_get(handle: number): HTTPRequestResult;
+	}
+
 	interface MetaRef {
 		set_tool_capabilities(toolCapabilities: ToolCapabilities): void;
 		contains(key: string): boolean;
