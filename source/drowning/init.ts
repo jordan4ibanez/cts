@@ -6,7 +6,6 @@ namespace drowning {
 
 	// updates bubble bar
 	function update_breath_bar(player: ObjectRef, breath: number) {
-		// todo: finish this
 		if (breath > 20) {
 			if (hudManager.hud_exists(player, "breath_bg")) {
 				hudManager.remove_hud(player, "breath_bg");
