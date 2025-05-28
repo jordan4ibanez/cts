@@ -50,7 +50,7 @@ namespace drowning {
 		}
 	}
 
-	// // loads data from mod storage
+	// Loads data from mod storage.
 	// local name
 	// local temp_pool
 	// local load_data = function(player)
