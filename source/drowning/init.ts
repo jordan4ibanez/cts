@@ -72,21 +72,21 @@ namespace drowning {
 		pool.set(name, data);
 	}
 
-	// // saves data to be utilized on next login
+	// Saves data to be utilized on next login.
 	// local temp_pool
-	// local save_data = function(name)
-	// 	if type(name) ~= "string" and name:is_player() then
-	// 		name = name:get_player_name()
-	// 	end
-	// 	temp_pool = pool[name]
+	function save_data  (name: ObjectRef): void {
+		if type(name) ~= "string" and name:is_player() then
+			name = name:get_player_name()
+		end
+		temp_pool = pool[name]
 
-	// 	mod_storage:set_float(name.."breath",        temp_pool.breath)
-	// 	mod_storage:set_float(name.."breath_ticker", temp_pool.ticker)
-	// 	mod_storage:set_float(name.."drowning",      temp_pool.drowning)
-	// 	mod_storage:set_int("crafter_drown_"..name.."_save", 1)
+		mod_storage:set_float(name.."breath",        temp_pool.breath)
+		mod_storage:set_float(name.."breath_ticker", temp_pool.ticker)
+		mod_storage:set_float(name.."drowning",      temp_pool.drowning)
+		mod_storage:set_int("crafter_drown_"..name.."_save", 1)
 
-	// 	pool[name] = nil
-	// end
+		pool[name] = nil
+    }
 
 	// // is used for shutdowns to save all data
 	// local save_all = function()
