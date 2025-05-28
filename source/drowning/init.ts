@@ -2,7 +2,7 @@
 
 namespace drowning {
 
-local mod_storage = minetest.get_mod_storage()
+local mod_storage = core.get_mod_storage()
 local pool = {}
 
 -- updates bubble bar
@@ -90,7 +90,7 @@ end
 
 
 -- remove stock health bar
-minetest.hud_replace_builtin("breath",{
+core.hud_replace_builtin("breath",{
 	hud_elem_type = "statbar",
 	position = {x = 0, y = 0},
 	text = "nothing.png",
@@ -100,18 +100,18 @@ minetest.hud_replace_builtin("breath",{
 	offset = {x = 0, y= 0},
 })
 
-minetest.register_on_joinplayer(function(player)
+core.register_on_joinplayer(function(player)
 	load_data(player)
 	player:hud_set_flags({breathbar=false})
 end)
 
 -- saves specific users data for when they relog
-minetest.register_on_leaveplayer(function(player)
+core.register_on_leaveplayer(function(player)
 	save_data(player)
 end)
 
 -- save all data to mod storage on shutdown
-minetest.register_on_shutdown(function()
+core.register_on_shutdown(function()
 	save_all()
 end)
 
@@ -124,7 +124,7 @@ end
 -- reset the player's data
 local name
 local temp_pool
-minetest.register_on_respawnplayer(function(player)
+core.register_on_respawnplayer(function(player)
 	name = player:get_player_name()
 	temp_pool = pool[name]
 	temp_pool.breath   = 21
@@ -146,7 +146,7 @@ local handle_breath = function(player,dtime)
 	if hp <= 0 then
 		return
 	end
-	if minetest.get_item_group(head, "drowning") > 0 then
+	if core.get_item_group(head, "drowning") > 0 then
 
 		temp_pool.ticker = temp_pool.ticker + dtime
 		
@@ -191,8 +191,8 @@ local handle_breath = function(player,dtime)
 end
 
 -- inject into main loop
-minetest.register_globalstep(function(dtime)
-	for _,player in ipairs(minetest.get_connected_players()) do
+core.register_globalstep(function(dtime)
+	for _,player in ipairs(core.get_connected_players()) do
 		handle_breath(player,dtime)
 	end
 end)
