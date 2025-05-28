@@ -73,6 +73,8 @@ namespace drowning {
 			data.ticker = 0;
 			data.drowning = 0;
 		}
+
+		pool.set(name, data);
 	}
 
 	// // saves data to be utilized on next login
