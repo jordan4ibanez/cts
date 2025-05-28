@@ -1,4 +1,6 @@
-local minetest,vector,hud_manager = minetest,vector,hud_manager
+// local minetest,vector,hud_manager = minetest,vector,hud_manager
+
+namespace drowning {
 
 local mod_storage = minetest.get_mod_storage()
 local pool = {}
@@ -194,3 +196,5 @@ minetest.register_globalstep(function(dtime)
 		handle_breath(player,dtime)
 	end
 end)
+
+}
