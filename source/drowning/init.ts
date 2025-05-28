@@ -7,44 +7,45 @@ const pool = new Map<string, any>();
 
 // updates bubble bar
 function update_breath_bar (player: ObjectRef,breath: number) {
-	if breath > 20 then
-		if hud_manager.hud_exists(player,"breath_bg") then
-			hud_manager.remove_hud(player,"breath_bg")
-		end
-		if hud_manager.hud_exists(player,"breath") then
-			hud_manager.remove_hud(player,"breath")
-		end
-	else
-		if not hud_manager.hud_exists(player,"breath_bg") then
-			hud_manager.add_hud(player,"breath_bg",{
-				hud_elem_type = "statbar",
-				position = {x = 0.5, y = 1},
-				text = "bubble_bg.png",
-				number = 20,
-				direction = 1,
-				size = {x = 24, y = 24},
-				offset = {x = 24*10, y= -(48 + 52 + 39)},
-			})
-		end
-		if not hud_manager.hud_exists(player,"breath") then
-			hud_manager.add_hud(player,"breath",{
-				hud_elem_type = "statbar",
-				position = {x = 0.5, y = 1},
-				text = "bubble.png",
-				number = breath,
-				direction = 1,
-				size = {x = 24, y = 24},
-				offset = {x = 24*10, y= -(48 + 52 + 39)},
-			})
-		end
+    // todo: finish this
+	if (breath > 20) {
+		// if hud_manager.hud_exists(player,"breath_bg") then
+		// 	hud_manager.remove_hud(player,"breath_bg")
+		// end
+		// if hud_manager.hud_exists(player,"breath") then
+		// 	hud_manager.remove_hud(player,"breath")
+		// end
+    }else{
+		// if not hud_manager.hud_exists(player,"breath_bg") then
+		// 	hud_manager.add_hud(player,"breath_bg",{
+		// 		hud_elem_type = "statbar",
+		// 		position = {x = 0.5, y = 1},
+		// 		text = "bubble_bg.png",
+		// 		number = 20,
+		// 		direction = 1,
+		// 		size = {x = 24, y = 24},
+		// 		offset = {x = 24*10, y= -(48 + 52 + 39)},
+		// 	})
+		// end
+		// if not hud_manager.hud_exists(player,"breath") then
+		// 	hud_manager.add_hud(player,"breath",{
+		// 		hud_elem_type = "statbar",
+		// 		position = {x = 0.5, y = 1},
+		// 		text = "bubble.png",
+		// 		number = breath,
+		// 		direction = 1,
+		// 		size = {x = 24, y = 24},
+		// 		offset = {x = 24*10, y= -(48 + 52 + 39)},
+		// 	})
+		// end
 
-		hud_manager.change_hud({
-			player    =  player ,
-			hud_name  = "breath",
-			element   = "number",
-			data      =  breath
-		})
-	end
+		// hud_manager.change_hud({
+		// 	player    =  player ,
+		// 	hud_name  = "breath",
+		// 	element   = "number",
+		// 	data      =  breath
+		// })
+    }
 }
 
 // // loads data from mod storage
