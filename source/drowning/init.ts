@@ -124,16 +124,20 @@ namespace drowning {
 		save_data(player.get_player_name());
 	});
 
-	// // save all data to mod storage on shutdown
-	// core.register_on_shutdown(function()
-	// 	save_all()
-	// end)
+	// Save all data to mod storage on shutdown.
+	core.register_on_shutdown(() => {
+		save_all();
+	});
 
-	// local name
-	// is_player_drowning = function(player)
-	// 	name = player:get_player_name()
-	// 	return(pool[name].drowning)
-	// end
+	export function is_player_drowning(player: ObjectRef) {
+		const name = player.get_player_name();
+		const data = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] has no drowning data.`);
+		}
+
+		return data.drowning;
+	}
 
 	// // reset the player's data
 	// local name
