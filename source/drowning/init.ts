@@ -88,7 +88,7 @@ namespace drowning {
 	// 	mod_storage:set_float(name.."breath",        temp_pool.breath)
 	// 	mod_storage:set_float(name.."breath_ticker", temp_pool.ticker)
 	// 	mod_storage:set_float(name.."drowning",      temp_pool.drowning)
-	// 	mod_storage:set_int(name.."d_save", 1)
+	// 	mod_storage:set_int("crafter_drown_"..name.."_save", 1)
 
 	// 	pool[name] = nil
 	// end
