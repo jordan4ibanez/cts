@@ -3,7 +3,7 @@ namespace drowning {
 	const pool = new Map<string, any>();
 
 	// updates bubble bar
-	function update_breath_bar(player: ObjectRef, breath: number) {
+	function update_breath_bar(player: ObjectRef, breath: number): void {
 		if (breath > 20) {
 			if (hudManager.hud_exists(player, "breath_bg")) {
 				hudManager.remove_hud(player, "breath_bg");
