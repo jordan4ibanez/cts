@@ -53,20 +53,28 @@ namespace drowning {
 	// Loads data from mod storage.
 	// local name
 	// local temp_pool
-	// local load_data = function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = {}
-	// 	temp_pool = pool[name]
-	// 	if mod_storage:get_int(name.."d_save") > 0 then
-	// 		temp_pool.breath   = mod_storage:get_float(name.."breath"       )
-	// 		temp_pool.ticker   = mod_storage:get_float(name.."breath_ticker")
-	// 		temp_pool.drowning = mod_storage:get_float(name.."drowning"     )
-	// 	else
-	// 		temp_pool.breath        = 21
-	// 		temp_pool.ticker = 0
-	// 		temp_pool.drowning      = 0
-	// 	end
-	// end
+	function load_data(player: ObjectRef): void {
+		const name: string = player.get_player_name()
+
+        const data: DrownData = {
+            breath : 0,
+            ticker: 0,
+            drowning: 0
+        };
+
+		// pool[name] = {}
+		// temp_pool = pool[name]
+
+		if (mod_storage.get_int(name+"d_save") > 0) {
+			data.breath   = mod_storage.get_float(name+"breath"       )
+			data.ticker   = mod_storage.get_float(name+"breath_ticker")
+			data.drowning = mod_storage.get_float(name+"drowning"     )
+        } else {
+			data.breath        = 21
+			data.ticker = 0
+			data.drowning      = 0
+        }
+    }
 
 	// // saves data to be utilized on next login
 	// local temp_pool
