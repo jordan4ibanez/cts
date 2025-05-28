@@ -1,4 +1,4 @@
-local minetest = minetest
+namespace hudManager {
 
 local player_huds = {} -- the list of players hud lists (3d array)
 hud_manager = {}       -- hud manager class
@@ -57,3 +57,4 @@ hud_manager.hud_exists = function(player,hud_name)
         return(false)
     end
 end
+}
