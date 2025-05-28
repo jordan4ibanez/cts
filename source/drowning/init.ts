@@ -15,17 +15,17 @@ namespace drowning {
 				hudManager.remove_hud(player, "breath");
 			}
 		} else {
-			// if not hud_manager.hud_exists(player,"breath_bg") then
-			// 	hud_manager.add_hud(player,"breath_bg",{
-			// 		hud_elem_type = "statbar",
-			// 		position = {x = 0.5, y = 1},
-			// 		text = "bubble_bg.png",
-			// 		number = 20,
-			// 		direction = 1,
-			// 		size = {x = 24, y = 24},
-			// 		offset = {x = 24*10, y= -(48 + 52 + 39)},
-			// 	})
-			// end
+			if (!hudManager.hud_exists(player, "breath_bg")) {
+				// 	hud_manager.add_hud(player,"breath_bg",{
+				// 		hud_elem_type = "statbar",
+				// 		position = {x = 0.5, y = 1},
+				// 		text = "bubble_bg.png",
+				// 		number = 20,
+				// 		direction = 1,
+				// 		size = {x = 24, y = 24},
+				// 		offset = {x = 24*10, y= -(48 + 52 + 39)},
+				// 	})
+			}
 			// if not hud_manager.hud_exists(player,"breath") then
 			// 	hud_manager.add_hud(player,"breath",{
 			// 		hud_elem_type = "statbar",
