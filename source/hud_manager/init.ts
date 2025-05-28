@@ -70,17 +70,17 @@ namespace hudManager {
 		}
 	}
 
-    export interface HudChange {
-        player: ObjectRef;
-        hudName: string;
-    }
+	export interface HudChange {
+		player: ObjectRef;
+		hudName: string;
+	}
 
 	// change element of hud
-    // todo: make this NOT any.
+	// todo: make this NOT any.
 	export function change_hud(hudChangeData: HudChange): void {
-	    const name = hudChangeData.player.get_player_name();
+		const name = hudChangeData.player.get_player_name();
 
-        const data: Map<string, number> | undefined = player_huds.get(name);
+		const data: Map<string, number> | undefined = player_huds.get(name);
 
 		if (!data) {
 			throw new Error(
