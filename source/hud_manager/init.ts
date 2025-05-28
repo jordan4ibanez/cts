@@ -2,6 +2,10 @@ namespace hudManager {
 	// The list of players hud lists (3d array).
 	const player_huds = new Map<string, Map<string, number>>();
 
+	core.register_on_joinplayer((player: ObjectRef) => {
+		player_huds.set(player.get_player_name(), new Map<string, number>());
+	});
+
 	// Terminate the player's list on leave.
 	core.register_on_leaveplayer((player: ObjectRef) => {
 		player_huds.delete(player.get_player_name());
@@ -24,11 +28,6 @@ namespace hudManager {
 			size: def.size,
 			offset: def.offset,
 		});
-
-		// Create new 3d array here.
-		if (!player_huds.has(name)) {
-			player_huds.set(name, new Map<string, number>());
-		}
 
 		const data: Map<string, number> | undefined = player_huds.get(name);
 
