@@ -39,20 +39,20 @@ namespace hudManager {
 	}
 
 	// delete instance of hud
-	export function remove_hud (player: ObjectRef,hud_name: string): void {
-	    const name: string = player.get_player_name()
+	export function remove_hud(player: ObjectRef, hud_name: string): void {
+		const name: string = player.get_player_name();
 
-        const data: Map<string, number> | undefined = player_huds.get(name);
+		const data: Map<string, number> | undefined = player_huds.get(name);
 
-        if (!data) {
-            throw new Error()
-        }
+		if (!data) {
+			throw new Error();
+		}
 
-	    // if player_huds[name] and player_huds[name][hud_name] then
-	    //     player:hud_remove(player_huds[name][hud_name])
-	    //     player_huds[name][hud_name] = nil
-	    // end
-    }
+		// if player_huds[name] and player_huds[name][hud_name] then
+		//     player:hud_remove(player_huds[name][hud_name])
+		//     player_huds[name][hud_name] = nil
+		// end
+	}
 
 	// // change element of hud
 	// hud_manager.change_hud = function(data)
