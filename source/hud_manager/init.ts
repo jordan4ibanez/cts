@@ -34,7 +34,7 @@ namespace hudManager {
         }
 
 
-	    // player_huds.set(name, [hud_name] = local_hud
+	    data.set(hud_name , local_hud)
     }
 
 	// // delete instance of hud
