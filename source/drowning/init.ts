@@ -129,14 +129,14 @@ namespace drowning {
 		save_all();
 	});
 
-	export function is_player_drowning(player: ObjectRef) {
+	export function is_player_drowning(player: ObjectRef): boolean {
 		const name = player.get_player_name();
 		const data = pool.get(name);
 		if (data == null) {
 			throw new Error(`Player [${name}] has no drowning data.`);
 		}
 
-		return data.drowning;
+		return data.drowning > 0;
 	}
 
 	// // reset the player's data
