@@ -1,41 +1,43 @@
 namespace hudManager {
-    // The list of players hud lists (3d array).
-	const player_huds = new Map<string, Map<string, number>>(); 
+	// The list of players hud lists (3d array).
+	const player_huds = new Map<string, Map<string, number>>();
 
 	// Terminate the player's list on leave.
 	core.register_on_leaveplayer((player: ObjectRef) => {
-	    player_huds.delete(player.get_player_name())
-	})
+		player_huds.delete(player.get_player_name());
+	});
 
 	// create instance of new hud
-	export function add_hud(player: ObjectRef,hud_name: string,def: HudDefinition) {
+	export function add_hud(
+		player: ObjectRef,
+		hud_name: string,
+		def: HudDefinition
+	) {
+		const name: string = player.get_player_name();
 
-	    const name: string = player.get_player_name();
+		const local_hud: number = player.hud_add({
+			hud_elem_type: def.hud_elem_type,
+			position: def.position,
+			text: def.text,
+			number: def.number,
+			direction: def.direction,
+			size: def.size,
+			offset: def.offset,
+		});
 
-	    const local_hud: number = player.hud_add({
-			hud_elem_type : def.hud_elem_type,
-			position      : def.position,
-			text          : def.text,
-			number        : def.number,
-			direction     : def.direction,
-			size          : def.size,
-			offset        : def.offset,
-	    })
+		// Create new 3d array here.
+		if (!player_huds.has(name)) {
+			player_huds.set(name, new Map<string, number>());
+		}
 
-	    // Create new 3d array here.
-        if (!player_huds.has(name)) {
-            player_huds.set(name, new Map<string, number>());
-        }
+		const data: Map<string, number> | undefined = player_huds.get(name);
 
-        const data: Map<string,number> | undefined = player_huds.get(name);
+		if (!data) {
+			throw new Error("This was just created, how is it null? Error");
+		}
 
-        if (!data) {
-            throw new Error("This was just created, how is it null? Error")
-        }
-
-
-	    data.set(hud_name , local_hud)
-    }
+		data.set(hud_name, local_hud);
+	}
 
 	// // delete instance of hud
 	// hud_manager.remove_hud = function(player,hud_name)
