@@ -97,8 +97,8 @@ namespace drowning {
 
 	// // is used for shutdowns to save all data
 	function save_all(): void {
-		for (const [name, _] of pairs(pool)) {
-			save_data(name as string);
+		for (const [name, _] of pool) {
+			save_data(name);
 		}
 	}
 
