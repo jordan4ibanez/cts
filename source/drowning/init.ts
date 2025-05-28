@@ -1,4 +1,11 @@
 namespace drowning {
+
+    export interface DrownData {
+        breath: number;
+        ticker: number;
+        drowning: number;
+    }
+
 	const mod_storage: MetaRef = core.get_mod_storage();
 	const pool = new Map<string, any>();
 
