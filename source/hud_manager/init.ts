@@ -27,7 +27,14 @@ namespace hudManager {
             player_huds.set(name, new Map<string, number>());
         }
 
-	    player_huds.set(name, [hud_name] = local_hud
+        const data: Map<string,number> | undefined = player_huds.get(name);
+
+        if (!data) {
+            throw new Error("This was just created, how is it null? Error")
+        }
+
+
+	    // player_huds.set(name, [hud_name] = local_hud
     }
 
 	// // delete instance of hud
