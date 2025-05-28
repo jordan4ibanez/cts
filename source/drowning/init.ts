@@ -95,7 +95,7 @@ namespace drowning {
 		pool.delete(name);
 	}
 
-	// // is used for shutdowns to save all data
+	// Is used for shutdowns to save all data.
 	function save_all(): void {
 		for (const [name, _] of pool) {
 			save_data(name);
