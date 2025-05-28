@@ -1,10 +1,9 @@
 namespace drowning {
-
-    export interface DrownData {
-        breath: number;
-        ticker: number;
-        drowning: number;
-    }
+	export interface DrownData {
+		breath: number;
+		ticker: number;
+		drowning: number;
+	}
 
 	const mod_storage: MetaRef = core.get_mod_storage();
 	const pool = new Map<string, DrownData>();
@@ -54,27 +53,27 @@ namespace drowning {
 	// local name
 	// local temp_pool
 	function load_data(player: ObjectRef): void {
-		const name: string = player.get_player_name()
+		const name: string = player.get_player_name();
 
-        const data: DrownData = {
-            breath : 0,
-            ticker: 0,
-            drowning: 0
-        };
+		const data: DrownData = {
+			breath: 0,
+			ticker: 0,
+			drowning: 0,
+		};
 
 		// pool[name] = {}
 		// temp_pool = pool[name]
 
-		if (mod_storage.get_int(name+"d_save") > 0) {
-			data.breath   = mod_storage.get_float(name+"breath"       )
-			data.ticker   = mod_storage.get_float(name+"breath_ticker")
-			data.drowning = mod_storage.get_float(name+"drowning"     )
-        } else {
-			data.breath        = 21
-			data.ticker = 0
-			data.drowning      = 0
-        }
-    }
+		if (mod_storage.get_int(name + "d_save") > 0) {
+			data.breath = mod_storage.get_float(name + "breath");
+			data.ticker = mod_storage.get_float(name + "breath_ticker");
+			data.drowning = mod_storage.get_float(name + "drowning");
+		} else {
+			data.breath = 21;
+			data.ticker = 0;
+			data.drowning = 0;
+		}
+	}
 
 	// // saves data to be utilized on next login
 	// local temp_pool
