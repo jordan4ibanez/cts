@@ -50,8 +50,6 @@ namespace drowning {
 	}
 
 	// Loads data from mod storage.
-	// local name
-	// local temp_pool
 	function load_data(player: ObjectRef): void {
 		const name: string = player.get_player_name();
 
