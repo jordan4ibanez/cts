@@ -2330,7 +2330,8 @@ declare global {
 		get_physics_override(): PhysicsOverride;
 		hud_add(definition: HudDefinition): number;
 		hud_remove(id: number): void;
-		hud_change(id: number, stat: HudElementType, value: any): void;
+		// stat supports the same keys as in the hud definition table except for "type" (or the deprecated "hud_elem_type").
+		hud_change(id: number, stat: keyof HudDefinition, value: any): void;
 		hud_get(id: number): HudDefinition;
 		hud_set_flags(flags: HudFlags): void;
 		hud_get_flags(): HudFlags;
