@@ -1751,14 +1751,14 @@ declare global {
 	}
 
 	/** @noSelf **/ interface HudFlags {
-		hotbar: boolean;
-		healthbar: boolean;
-		crosshair: boolean;
-		wielditem: boolean;
-		breathbar: boolean;
-		minimap: boolean;
-		minimap_radar: boolean;
-		basic_debug: boolean;
+		hotbar?: boolean;
+		healthbar?: boolean;
+		crosshair?: boolean;
+		wielditem?: boolean;
+		breathbar?: boolean;
+		minimap?: boolean;
+		minimap_radar?: boolean;
+		basic_debug?: boolean;
 	}
 
 	/** @noSelf **/ interface HudDefinition {
