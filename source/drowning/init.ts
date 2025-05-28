@@ -140,7 +140,6 @@ namespace drowning {
 	}
 
 	// Reset the player's data.
-
 	core.register_on_respawnplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 		const data: DrownData | undefined = pool.get(name);
