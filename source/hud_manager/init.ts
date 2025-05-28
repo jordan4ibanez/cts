@@ -70,13 +70,30 @@ namespace hudManager {
 		}
 	}
 
-	// // change element of hud
-	// hud_manager.change_hud = function(data)
-	//     local name = data.player:get_player_name()
-	//     if player_huds[name] and player_huds[name][data.hud_name] then
-	//         data.player:hud_change(player_huds[name][data.hud_name], data.element, data.data)
-	//     end
-	// end
+    export interface HudChange {
+        player: ObjectRef;
+        hudName: string;
+    }
+
+	// change element of hud
+    // todo: make this NOT any.
+	export function change_hud(hudChangeData: HudChange): void {
+	    const name = hudChangeData.player.get_player_name();
+
+        const data: Map<string, number> | undefined = player_huds.get(name);
+
+		if (!data) {
+			throw new Error(
+				`Player [${name}]'s hud element was never created.`
+			);
+		}
+
+        const thisHud: number | undefined = data.get(hudChangeData.hudName) 
+        
+	    // if player_huds[name] and player_huds[name][data.hud_name] then
+	    //     data.player:hud_change(player_huds[name][data.hud_name], data.element, data.data)
+	    // end
+    }
 
 	// // gets if hud exists
 	// hud_manager.hud_exists = function(player,hud_name)
