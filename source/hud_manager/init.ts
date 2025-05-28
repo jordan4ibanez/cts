@@ -1,11 +1,11 @@
 namespace hudManager {
-	const player_huds = {}; // the list of players hud lists (3d array)
+    // The list of players hud lists (3d array).
+	const player_huds = new Map<string, any>(); 
 
-	// // terminate the player's list on leave
-	// core.register_on_leaveplayer((player: ObjectRef) => {
-	//     const name = player:get_player_name()
-	//     player_huds[name] = nil
-	// })
+	// Terminate the player's list on leave.
+	core.register_on_leaveplayer((player: ObjectRef) => {
+	    player_huds.delete(player.get_player_name())
+	})
 
 	// // create instance of new hud
 	// hud_manager.add_hud = function(player,hud_name,def)
