@@ -52,10 +52,20 @@ namespace hudManager {
 		const data: Map<string, number> | undefined = player_huds.get(name);
 
 		if (!data) {
-			throw new Error();
+			throw new Error(
+				`Player [${name}]'s hud element was never created.`
+			);
 		}
 
-		// if player_huds[name] and player_huds[name][hud_name] then
+		if (data.has(hud_name)) {
+		} else {
+			core.log(
+				LogLevel.warning,
+				`Warning: Player [${name}]'s hud [${hud_name}] doesn't exist. No-op.`
+			);
+		}
+
+		// if and player_huds[name][hud_name] then
 		//     player:hud_remove(player_huds[name][hud_name])
 		//     player_huds[name][hud_name] = nil
 		// end
