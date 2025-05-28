@@ -61,9 +61,6 @@ namespace drowning {
 			drowning: 0,
 		};
 
-		// pool[name] = {}
-		// temp_pool = pool[name]
-
 		if (mod_storage.get_int("crafter_drown_" + name + "_save") > 0) {
 			data.breath = mod_storage.get_float(name + "breath");
 			data.ticker = mod_storage.get_float(name + "breath_ticker");
