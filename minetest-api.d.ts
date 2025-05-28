@@ -1763,20 +1763,20 @@ declare global {
 
 	/** @noSelf **/ interface HudDefinition {
 		hud_elem_type: HudElementType;
-		position: Vec2;
-		name: string;
-		scale: Vec2;
-		text: string;
-		text2: string;
-		number: number;
-		item: number;
-		direction: number;
-		alignment: Vec2;
-		offset: Vec2;
-		world_pos: Vec3;
-		size: Vec2;
-		z_index: number;
-		style: number;
+		position?: Vec2;
+		name?: string;
+		scale?: Vec2;
+		text?: string;
+		text2?: string;
+		number?: number;
+		item?: number;
+		direction?: number;
+		alignment?: Vec2;
+		offset?: Vec2;
+		world_pos?: Vec3;
+		size?: Vec2;
+		z_index?: number;
+		style?: number;
 	}
 
 	/** @noSelf **/ interface TileAnimationDefinition {
