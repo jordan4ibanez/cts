@@ -102,16 +102,17 @@ namespace drowning {
 		}
 	}
 
-	// // remove stock health bar
-	// core.hud_replace_builtin("breath",{
-	// 	hud_elem_type = "statbar",
-	// 	position = {x = 0, y = 0},
-	// 	text = "nothing.png",
-	// 	number = 0,
-	// 	direction = 0,
-	// 	size = {x = 0, y = 0},
-	// 	offset = {x = 0, y= 0},
-	// })
+	// Remove stock health bar.
+
+	core.hud_replace_builtin(HudReplaceBuiltinOption.breath, {
+		hud_elem_type: HudElementType.statbar,
+		position: { x: 0, y: 0 },
+		text: "nothing.png",
+		number: 0,
+		direction: 0,
+		size: { x: 0, y: 0 },
+		offset: { x: 0, y: 0 },
+	});
 
 	// core.register_on_joinplayer(function(player)
 	// 	load_data(player)
