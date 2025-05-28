@@ -104,13 +104,18 @@ namespace hudManager {
 		);
 	}
 
-	// // gets if hud exists
-	// hud_manager.hud_exists = function(player,hud_name)
-	//     local name = player:get_player_name()
-	//     if player_huds[name] and player_huds[name][hud_name] then
-	//         return(true)
-	//     else
-	//         return(false)
-	//     end
-	// end
+	// Gets if hud exists.
+	export function hud_exists(player: ObjectRef, hud_name: string): boolean {
+		const name = player.get_player_name();
+
+		const data: Map<string, number> | undefined = player_huds.get(name);
+
+		if (!data) {
+			throw new Error(
+				`Player [${name}]'s hud element was never created.`
+			);
+		}
+
+		return data.has(hud_name);
+	}
 }
