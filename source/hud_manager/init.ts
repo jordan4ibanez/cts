@@ -57,7 +57,11 @@ namespace hudManager {
 			);
 		}
 
-		if (data.has(hud_name)) {
+		const thisHud: number | undefined = data.get(hud_name);
+
+		if (thisHud != null) {
+			player.hud_remove(thisHud);
+			data.delete(hud_name);
 		} else {
 			core.log(
 				LogLevel.warning,
@@ -66,8 +70,6 @@ namespace hudManager {
 		}
 
 		// if and player_huds[name][hud_name] then
-		//     player:hud_remove(player_huds[name][hud_name])
-		//     player_huds[name][hud_name] = nil
 		// end
 	}
 
