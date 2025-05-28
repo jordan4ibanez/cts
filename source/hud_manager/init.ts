@@ -66,7 +66,7 @@ namespace hudManager {
 	export interface HudChange {
 		player: ObjectRef;
 		hudName: string;
-		element: HudElementType;
+		element: keyof HudDefinition;
 		data: any;
 	}
 
