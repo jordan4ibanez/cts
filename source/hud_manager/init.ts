@@ -29,10 +29,19 @@ namespace hudManager {
 			offset: def.offset,
 		});
 
-		const data: Map<string, number> | undefined = player_huds.get(name);
+		let data: Map<string, number> | undefined = player_huds.get(name);
 
 		if (!data) {
-			throw new Error("How did this become null? Error");
+			player_huds.set(name, new Map<string, number>());
+			data = player_huds.get(name);
+			core.log(
+				LogLevel.warning,
+				`Warning: Player [${name}] hud was null.`
+			);
+			// Now if it's still null, something went seriously wrong.
+			if (!data) {
+				throw new Error("How did this become null? Error");
+			}
 		}
 
 		data.set(hud_name, local_hud);
