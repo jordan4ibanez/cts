@@ -1,6 +1,6 @@
 namespace hudManager {
     // The list of players hud lists (3d array).
-	const player_huds = new Map<string, any>(); 
+	const player_huds = new Map<string, Set<number>>(); 
 
 	// Terminate the player's list on leave.
 	core.register_on_leaveplayer((player: ObjectRef) => {
@@ -12,7 +12,7 @@ namespace hudManager {
 
 	    const name: string = player.get_player_name();
 
-	    const local_hud = player.hud_add({
+	    const local_hud: number = player.hud_add({
 			hud_elem_type : def.hud_elem_type,
 			position      : def.position,
 			text          : def.text,
@@ -22,9 +22,10 @@ namespace hudManager {
 			offset        : def.offset,
 	    })
 	    // Create new 3d array here.
-	    if not player_huds[name] then
-	        player_huds[name] = {}
-	    end
+        if (!player_huds.has(name)) {
+            player_huds.set(name, new Set());
+        }
+	        
 
 	    player_huds[name][hud_name] = local_hud
     }
