@@ -5,7 +5,7 @@ namespace drowning {
 local mod_storage = core.get_mod_storage()
 local pool = {}
 
--- updates bubble bar
+// updates bubble bar
 local update_breath_bar = function(player,breath)
 	if breath > 20 then
 		if hud_manager.hud_exists(player,"breath_bg") then
@@ -47,7 +47,7 @@ local update_breath_bar = function(player,breath)
 	end
 end
 
--- loads data from mod storage
+// loads data from mod storage
 local name
 local temp_pool
 local load_data = function(player)
@@ -65,7 +65,7 @@ local load_data = function(player)
 	end
 end
 
--- saves data to be utilized on next login
+// saves data to be utilized on next login
 local temp_pool
 local save_data = function(name)
 	if type(name) ~= "string" and name:is_player() then
@@ -81,7 +81,7 @@ local save_data = function(name)
 	pool[name] = nil
 end
 
--- is used for shutdowns to save all data
+// is used for shutdowns to save all data
 local save_all = function()
 	for name,_ in pairs(pool) do
 		save_data(name)
@@ -89,7 +89,7 @@ local save_all = function()
 end
 
 
--- remove stock health bar
+// remove stock health bar
 core.hud_replace_builtin("breath",{
 	hud_elem_type = "statbar",
 	position = {x = 0, y = 0},
@@ -105,12 +105,12 @@ core.register_on_joinplayer(function(player)
 	player:hud_set_flags({breathbar=false})
 end)
 
--- saves specific users data for when they relog
+// saves specific users data for when they relog
 core.register_on_leaveplayer(function(player)
 	save_data(player)
 end)
 
--- save all data to mod storage on shutdown
+// save all data to mod storage on shutdown
 core.register_on_shutdown(function()
 	save_all()
 end)
@@ -121,7 +121,7 @@ is_player_drowning = function(player)
 	return(pool[name].drowning)
 end
 
--- reset the player's data
+// reset the player's data
 local name
 local temp_pool
 core.register_on_respawnplayer(function(player)
@@ -133,7 +133,7 @@ core.register_on_respawnplayer(function(player)
 	update_breath_bar(player,temp_pool.breath)
 end)
 
---handle the breath bar
+//handle the breath bar
 local name
 local temp_pool
 local head
@@ -190,7 +190,7 @@ local handle_breath = function(player,dtime)
 	end
 end
 
--- inject into main loop
+// inject into main loop
 core.register_globalstep(function(dtime)
 	for _,player in ipairs(core.get_connected_players()) do
 		handle_breath(player,dtime)
