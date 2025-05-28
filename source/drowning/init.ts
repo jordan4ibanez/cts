@@ -73,23 +73,28 @@ namespace drowning {
 	}
 
 	// Saves data to be utilized on next login.
-	function save_data  (player: ObjectRef): void {
-        const name: string = player.get_player_name()
+	function save_data(player: ObjectRef): void {
+		const name: string = player.get_player_name();
 
-	
-        const data: DrownData | undefined = pool.get(name);
+		const data: DrownData | undefined = pool.get(name);
 
-        if (data == null) {
-            throw new Error(`Player [${name}] drown data does not exist.`)
-        }
+		if (data == null) {
+			throw new Error(`Player [${name}] drown data does not exist.`);
+		}
 
-		mod_storage.set_float("crafter_drown_"+name+"breath",        data.breath)
-		mod_storage.set_float("crafter_drown_"+name+"breath_ticker", data.ticker)
-		mod_storage.set_float("crafter_drown_"+name+"drowning",      data.drowning)
-		mod_storage.set_int("crafter_drown_"+name+"_save", 1)
+		mod_storage.set_float("crafter_drown_" + name + "breath", data.breath);
+		mod_storage.set_float(
+			"crafter_drown_" + name + "breath_ticker",
+			data.ticker
+		);
+		mod_storage.set_float(
+			"crafter_drown_" + name + "drowning",
+			data.drowning
+		);
+		mod_storage.set_int("crafter_drown_" + name + "_save", 1);
 
-        pool.delete(name);
-    }
+		pool.delete(name);
+	}
 
 	// // is used for shutdowns to save all data
 	// local save_all = function()
