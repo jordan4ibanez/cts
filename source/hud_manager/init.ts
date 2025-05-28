@@ -32,7 +32,7 @@ namespace hudManager {
 			data = player_huds.get(name);
 			// Now if it's still null, something went seriously wrong.
 			if (!data) {
-				throw new Error("How did this become null? Error");
+				throw new Error("How did this become null? It was just created. Error");
 			}
 		}
 
