@@ -77,8 +77,7 @@ namespace hudManager {
 		data: any;
 	}
 
-	// change element of hud
-	// todo: make this NOT any.
+	// Change element of hud.
 	export function change_hud(hudChangeData: HudChange): void {
 		const name = hudChangeData.player.get_player_name();
 
