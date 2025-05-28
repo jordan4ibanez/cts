@@ -139,17 +139,20 @@ namespace drowning {
 		return data.drowning > 0;
 	}
 
-	// // reset the player's data
-	// local name
-	// local temp_pool
-	// core.register_on_respawnplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	temp_pool.breath   = 21
-	// 	temp_pool.ticker   = 0
-	// 	temp_pool.drowning = 0
-	// 	update_breath_bar(player,temp_pool.breath)
-	// end)
+	// Reset the player's data.
+
+	core.register_on_respawnplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		const data: DrownData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] has no drowning data.`);
+		}
+
+		data.breath = 21;
+		data.ticker = 0;
+		data.drowning = 0;
+		update_breath_bar(player, data.breath);
+	});
 
 	// //handle the breath bar
 	// local name
