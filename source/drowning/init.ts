@@ -7,7 +7,7 @@ namespace drowning {
     }
 
 	const mod_storage: MetaRef = core.get_mod_storage();
-	const pool = new Map<string, any>();
+	const pool = new Map<string, DrownData>();
 
 	// updates bubble bar
 	function update_breath_bar(player: ObjectRef, breath: number): void {
