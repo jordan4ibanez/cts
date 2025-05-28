@@ -2,11 +2,11 @@
 
 namespace drowning {
 
-local mod_storage = core.get_mod_storage()
-local pool = {}
+const mod_storage: MetaRef = core.get_mod_storage()
+const pool = new Map<string, any>();
 
 // updates bubble bar
-local update_breath_bar = function(player,breath)
+function update_breath_bar (player: ObjectRef,breath: number) {
 	if breath > 20 then
 		if hud_manager.hud_exists(player,"breath_bg") then
 			hud_manager.remove_hud(player,"breath_bg")
@@ -45,7 +45,7 @@ local update_breath_bar = function(player,breath)
 			data      =  breath
 		})
 	end
-end
+}
 
 // // loads data from mod storage
 // local name
