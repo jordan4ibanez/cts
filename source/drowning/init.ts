@@ -27,15 +27,15 @@ namespace drowning {
 				});
 			}
 			if (!hudManager.hud_exists(player, "breath")) {
-				// 	hud_manager.add_hud(player,"breath",{
-				// 		hud_elem_type = "statbar",
-				// 		position = {x = 0.5, y = 1},
-				// 		text = "bubble.png",
-				// 		number = breath,
-				// 		direction = 1,
-				// 		size = {x = 24, y = 24},
-				// 		offset = {x = 24*10, y= -(48 + 52 + 39)},
-				// 	})
+				hudManager.add_hud(player, "breath", {
+					hud_elem_type: HudElementType.statbar,
+					position: { x: 0.5, y: 1 },
+					text: "bubble.png",
+					number: breath,
+					direction: 1,
+					size: { x: 24, y: 24 },
+					offset: { x: 24 * 10, y: -(48 + 52 + 39) },
+				});
 			}
 			hudManager.change_hud({
 				player: player,
