@@ -33,7 +33,7 @@ namespace hudManager {
 		const data: Map<string, number> | undefined = player_huds.get(name);
 
 		if (!data) {
-			throw new Error("This was just created, how is it null? Error");
+			throw new Error("How did this become null? Error");
 		}
 
 		data.set(hud_name, local_hud);
