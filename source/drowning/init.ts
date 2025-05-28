@@ -130,8 +130,8 @@ namespace drowning {
 	});
 
 	export function is_player_drowning(player: ObjectRef): boolean {
-		const name = player.get_player_name();
-		const data = pool.get(name);
+		const name: string = player.get_player_name();
+		const data: DrownData | undefined = pool.get(name);
 		if (data == null) {
 			throw new Error(`Player [${name}] has no drowning data.`);
 		}
