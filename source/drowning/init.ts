@@ -37,12 +37,12 @@ namespace drowning {
 				// 		offset = {x = 24*10, y= -(48 + 52 + 39)},
 				// 	})
 			}
-			// hud_manager.change_hud({
-			// 	player    =  player ,
-			// 	hud_name  = "breath",
-			// 	element   = "number",
-			// 	data      =  breath
-			// })
+			hudManager.change_hud({
+				player: player,
+				hudName: "breath",
+				element: "number",
+				data: breath,
+			});
 		}
 	}
 
