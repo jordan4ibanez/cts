@@ -10,10 +10,10 @@ function update_breath_bar (player: ObjectRef,breath: number) {
     // todo: finish this
 	if (breath > 20) {
 		if (hudManager.hud_exists(player,"breath_bg")) {
-		// 	hud_manager.remove_hud(player,"breath_bg")
-		// end
-		// if hud_manager.hud_exists(player,"breath") then
-		// 	hud_manager.remove_hud(player,"breath")
+			hudManager.remove_hud(player,"breath_bg")
+        }
+		if (hudManager.hud_exists(player,"breath")) {
+			hudManager.remove_hud(player,"breath")
         }
     }else{
 		// if not hud_manager.hud_exists(player,"breath_bg") then
