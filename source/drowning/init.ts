@@ -9,12 +9,12 @@ const pool = new Map<string, any>();
 function update_breath_bar (player: ObjectRef,breath: number) {
     // todo: finish this
 	if (breath > 20) {
-		// if hud_manager.hud_exists(player,"breath_bg") then
+		if (hudManager.hud_exists(player,"breath_bg")) {
 		// 	hud_manager.remove_hud(player,"breath_bg")
 		// end
 		// if hud_manager.hud_exists(player,"breath") then
 		// 	hud_manager.remove_hud(player,"breath")
-		// end
+        }
     }else{
 		// if not hud_manager.hud_exists(player,"breath_bg") then
 		// 	hud_manager.add_hud(player,"breath_bg",{
