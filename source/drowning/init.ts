@@ -96,11 +96,11 @@ namespace drowning {
 	}
 
 	// // is used for shutdowns to save all data
-	// local save_all = function()
-	// 	for name,_ in pairs(pool) do
-	// 		save_data(name)
-	// 	end
-	// end
+	function save_all(): void {
+		for (const [name, _] of pairs(pool)) {
+			save_data(name as string);
+		}
+	}
 
 	// // remove stock health bar
 	// core.hud_replace_builtin("breath",{
