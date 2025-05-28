@@ -68,9 +68,6 @@ namespace hudManager {
 				`Warning: Player [${name}]'s hud [${hud_name}] doesn't exist. No-op.`
 			);
 		}
-
-		// if and player_huds[name][hud_name] then
-		// end
 	}
 
 	// // change element of hud
