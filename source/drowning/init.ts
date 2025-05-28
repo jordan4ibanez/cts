@@ -1,5 +1,3 @@
-// local minetest,vector,hud_manager = minetest,vector,hud_manager
-
 namespace drowning {
 	const mod_storage: MetaRef = core.get_mod_storage();
 	const pool = new Map<string, any>();
