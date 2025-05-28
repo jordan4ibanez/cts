@@ -12,7 +12,7 @@ namespace hudManager {
 		player: ObjectRef,
 		hud_name: string,
 		def: HudDefinition
-	) {
+	): void {
 		const name: string = player.get_player_name();
 
 		const local_hud: number = player.hud_add({
