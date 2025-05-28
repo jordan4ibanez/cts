@@ -73,6 +73,8 @@ namespace hudManager {
 	export interface HudChange {
 		player: ObjectRef;
 		hudName: string;
+		element: HudElementType;
+		data: any;
 	}
 
 	// change element of hud
@@ -96,9 +98,11 @@ namespace hudManager {
 			);
 		}
 
-		// if player_huds[name] and player_huds[name][data.hud_name] then
-		//     data.player:hud_change(player_huds[name][data.hud_name], data.element, data.data)
-		// end
+		hudChangeData.player.hud_change(
+			thisHud,
+			hudChangeData.element,
+			hudChangeData.data
+		);
 	}
 
 	// // gets if hud exists
