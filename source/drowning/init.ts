@@ -74,9 +74,7 @@ namespace drowning {
 
 	// Saves data to be utilized on next login.
 	// todo: this needs to be renamed to finalSave
-	function save_data(player: ObjectRef): void {
-		const name: string = player.get_player_name();
-
+	function save_data(name: string): void {
 		const data: DrownData | undefined = pool.get(name);
 
 		if (data == null) {
