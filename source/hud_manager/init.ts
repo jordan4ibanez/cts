@@ -22,8 +22,6 @@ namespace hudManager {
 			offset        : def.offset,
 	    })
 	    // Create new 3d array here.
-	    // depends.txt is not needed
-	    // with it here
 	    if not player_huds[name] then
 	        player_huds[name] = {}
 	    end
