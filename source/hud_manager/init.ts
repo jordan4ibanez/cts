@@ -88,12 +88,18 @@ namespace hudManager {
 			);
 		}
 
-        const thisHud: number | undefined = data.get(hudChangeData.hudName) 
-        
-	    // if player_huds[name] and player_huds[name][data.hud_name] then
-	    //     data.player:hud_change(player_huds[name][data.hud_name], data.element, data.data)
-	    // end
-    }
+		const thisHud: number | undefined = data.get(hudChangeData.hudName);
+
+		if (thisHud == null) {
+			throw new Error(
+				`Error. Player [${name}] hud [${hudChangeData.hudName}] does not exist in memory.`
+			);
+		}
+
+		// if player_huds[name] and player_huds[name][data.hud_name] then
+		//     data.player:hud_change(player_huds[name][data.hud_name], data.element, data.data)
+		// end
+	}
 
 	// // gets if hud exists
 	// hud_manager.hud_exists = function(player,hud_name)
