@@ -114,10 +114,10 @@ namespace drowning {
 		offset: { x: 0, y: 0 },
 	});
 
-	// core.register_on_joinplayer(function(player)
-	// 	load_data(player)
-	// 	player:hud_set_flags({breathbar=false})
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		load_data(player);
+		player.hud_set_flags({ breathbar: false });
+	});
 
 	// // saves specific users data for when they relog
 	// core.register_on_leaveplayer(function(player)
