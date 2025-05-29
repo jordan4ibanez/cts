@@ -89,22 +89,26 @@ namespace fireworks {
 
 	utility.registerTSEntity(FireworksEntity);
 
-	// core.register_craftitem("fireworks:rocket", {
-	// 	description = "Fireworks",
-	// 	inventory_image = "fireworks.png",
-	// 	wield_image = "fireworks.png",
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		if not pointed_thing.type == "node" then
-	// 			return
-	// 		end
+	core.register_craftitem("crafter_fireworks:rocket", {
+		description: "Fireworks",
+		inventory_image: "fireworks.png",
+		wield_image: "fireworks.png",
+		on_place: function (
+			itemstack: ItemStackObject,
+			placer: ObjectRef,
+			pointed_thing: PointedThing
+		) {
+			if (pointed_thing.type != "node") {
+				return;
+			}
 
-	// 		core.add_entity(pointed_thing.above, "fireworks:rocket")
+			core.add_entity(pointed_thing.above, "fireworks:rocket");
 
-	// 		itemstack:take_item()
+			itemstack.take_item();
 
-	// 		return itemstack
-	// 	end,
-	// })
+			return itemstack;
+		},
+	});
 
 	// core.register_craft({
 	// 	type = "shapeless",
