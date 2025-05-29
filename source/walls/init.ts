@@ -1,3 +1,4 @@
+namespace walls {
 local fence_collision_extra = 4/8
 
 --create fences for all solid nodes
@@ -152,6 +153,4 @@ minetest.register_craft({
 	}
 })
 
-
-
-
+}
