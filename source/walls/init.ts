@@ -46,16 +46,17 @@ namespace walls {
 				],
 			};
 
-			// 	def2.collision_box = {
-			// 		type = "connected",
-			// 		fixed = {-1/8, -1/2, -1/8, 1/8, 1/2 + fence_collision_extra, 1/8},
-			// 		// connect_top =
-			// 		// connect_bottom =
-			// 		connect_front = {-1/8, -1/2, -1/2,  1/8, 1/2 + fence_collision_extra, -1/8},
-			// 		connect_left =  {-1/2, -1/2, -1/8, -1/8, 1/2 + fence_collision_extra,  1/8},
-			// 		connect_back =  {-1/8, -1/2,  1/8,  1/8, 1/2 + fence_collision_extra,  1/2},
-			// 		connect_right = { 1/8, -1/2, -1/8,  1/2, 1/2 + fence_collision_extra,  1/8}
-			// 	}
+				def2.collision_box = {
+					type : Nodeboxtype.connected,
+					fixed : [-1/8, -1/2, -1/8, 1/8, 1/2 + fence_collision_extra, 1/8],
+					// connect_top =
+					// connect_bottom =
+					connect_front : [-1/8, -1/2, -1/2,  1/8, 1/2 + fence_collision_extra, -1/8],
+					connect_left :  [-1/2, -1/2, -1/8, -1/8, 1/2 + fence_collision_extra,  1/8],
+					connect_back :  [-1/8, -1/2,  1/8,  1/8, 1/2 + fence_collision_extra,  1/2],
+					connect_right : [ 1/8, -1/2, -1/8,  1/2, 1/2 + fence_collision_extra,  1/8]
+				}
+
 			// 	def2.connects_to = {"group:fence", "group:wood", "group:tree", "group:wall", "group:stone", "group:sand"}
 			// 	def2.sunlight_propagates = true
 			// 	core.register_node(newname,def2)
