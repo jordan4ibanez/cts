@@ -43,14 +43,14 @@ namespace flowLib {
 
 	function get_flowing_dir(pos: Vec3) {
 
-		c_node = minetest.get_node(pos).name
+		const c_node = core.get_node(pos).name
 
 		if c_node ~= "main:waterflow" and c_node ~= "main:water" then
 			return nil
 		end
 
 		// data = get_nodes(pos)
-		// param2 = minetest.get_node(pos).param2
+		// param2 = core.get_node(pos).param2
 		// if param2 > 7 then
 		// 	return nil
 		// end
@@ -88,7 +88,7 @@ namespace flowLib {
 		// 	nd = i[2]
 		// 	name = nd.name
 		// 	par2 = nd.param2
-		// 	tmp = minetest.registered_nodes[name]
+		// 	tmp = core.registered_nodes[name]
 		// 	if tmp and not tmp.walkable and name ~= "main:waterflow" and name ~= "main:water" then
 		// 		return(vector.subtract(i[1],pos))
 		// 	end
