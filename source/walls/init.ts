@@ -231,13 +231,12 @@ namespace walls {
 		throw new Error("Glass is undefined.");
 	}
 
-	//set up wall
-	// local def2 = table.copy(def)
-	// local newname = "walls:window"
-	// def2.description = "Window"
-	// def2.mod_origin = "walls"
-	// def2.name = newname
-	// def2.drop = ""
+	// Set up wall.
+	const def2: NodeDefinition = table.copy(def as LuaTable) as NodeDefinition;
+	const newname: string = "walls:window";
+	def2.description = "Window"
+	def2.mod_origin = "walls"
+	def2.drop = ""
 	// def2.paramtype = "light"
 	// def2.drawtype = "nodebox"
 	// def2.on_dig = nil
