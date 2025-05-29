@@ -156,7 +156,7 @@ namespace drowning {
 	function handle_breath(player: ObjectRef, dtime: number): void {
 		const name: string = player.get_player_name();
 
-		const head: string | null = newFunctions.get_player_head_env(player);
+		const head: string | null = utility.get_player_head_env(player);
 
 		const data: DrownData | undefined = pool.get(name);
 
