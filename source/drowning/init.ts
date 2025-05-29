@@ -176,12 +176,12 @@ namespace drowning {
 		if (head != null && core.get_item_group(head, "drowning") > 0) {
 			data.ticker += dtime;
 			if (data.breath > 0 && data.ticker >= 1.3) {
-				// 		if temp_pool.breath == 21 then
-				// 			temp_pool.breath = 20
-				// 		end
-				// 		temp_pool.breath = temp_pool.breath - 2
-				// 		temp_pool.drowning = 0
-				// 		update_breath_bar(player,temp_pool.breath)
+				if (data.breath == 21) {
+					data.breath = 20;
+				}
+				data.breath -= 2;
+				data.drowning = 0;
+				update_breath_bar(player, data.breath);
 			} else if (data.breath <= 0 && data.ticker >= 1.3) {
 				data.drowning = 1;
 				if (hp > 0) {
