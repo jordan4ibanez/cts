@@ -48,7 +48,7 @@ namespace door {
 				// 	set_node(pos2,{name="door:top_"..material.."_closed",param2=param2})
 				// end
 
-				//open the door
+				// Open the door.
 			} else if (closed > 0) {
 				play_sound("door_open", {
 					pos: pos,
