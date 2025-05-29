@@ -20,7 +20,7 @@ namespace hudManager {
 		const name: string = player.get_player_name();
 
 		const local_hud: number = player.hud_add({
-			hud_elem_type: def.hud_elem_type,
+			type: def.type,
 			position: def.position,
 			text: def.text,
 			number: def.number,
