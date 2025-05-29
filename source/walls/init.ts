@@ -112,59 +112,61 @@ namespace walls {
 		}
 	}
 
-	// //create wall posts
-	// for name,def in pairs(core.registered_nodes) do
-	// 	if def.drawtype == "normal" and string.match(name, "main:") then
+	// Create wall posts.
+	for (const [name, def] of pairs(core.registered_nodes)) {
+		if (typeof name == "number") {
+			core.log(LogLevel.warning, "iterator had a number?");
+			continue;
+		}
 
-	// 		//set up wall
-	// 		local def2 = table.copy(def)
-	// 		local newname = "walls:"..string.gsub(name, "main:", "").."_wall_post"
-	// 		def2.description = def.description.." Wall"
-	// 		def2.mod_origin = "walls"
-	// 		def2.name = newname
-	// 		def2.drop = newname
-	// 		def2.paramtype = "light"
-	// 		def2.drawtype = "nodebox"
-	// 		def2.on_dig = nil
-	// 		//def2.on_place = function(itemstack, placer, pointed_thing)
-	// 		//	core.item_place(itemstack, placer, pointed_thing)
-	// 		//	wall_placing(pointed_thing.above,newname)
-	// 		//end
-	// 		def2.node_box = {
-	// 			type = "connected",
-	// 			disconnected_sides  = {-4/16, -1/2, -4/16, 4/16, 9/16, 4/16},
-	// 			// connect_top =
-	// 			// connect_bottom =
-	// 			connect_front = {-2/16,  -1/2, -1/2,   2/16,  1/2, 2/16 },
-	// 			connect_left =  {-1/2,   -1/2, -2/16, 2/16,   1/2,  2/16},
-	// 			connect_back =  {-2/16,  -1/2,  -2/16,   2/16,  1/2,  1/2 },
-	// 			connect_right = { -2/16,   -1/2, -2/16,  1/2,   1/2,  2/16},
-	// 		}
-	// 		def2.collision_box = {
-	// 			type = "connected",
-	// 			fixed = {-1/8, -1/2, -1/8, 1/8, 1/2 + fence_collision_extra, 1/8},
-	// 			// connect_top =
-	// 			// connect_bottom =
-	// 			connect_front = {-2/16,  -1/2, -1/2,   2/16,1/2 + fence_collision_extra, 2/16 },
-	// 			connect_left =  {-1/2,   -1/2, -2/16, 2/16,    1/2 + fence_collision_extra,  2/16},
-	// 			connect_back =  {-2/16,  -1/2,  -2/16,   2/16,  1/2 + fence_collision_extra,  1/2 },
-	// 			connect_right = {-2/16,   -1/2, -2/16,  1/2,   1/2 + fence_collision_extra,  2/16},
-	// 		}
-	// 		def2.groups["fence"] = 1
-	// 		def2.connects_to = {"group:fence", "group:wood", "group:tree", "group:wall", "group:stone", "group:sand"}
-	// 		def2.sunlight_propagates = true
-	// 		core.register_node(newname,def2)
-
-	// 		core.register_craft({
-	// 			output = newname .. " 16",
-	// 			recipe = {
-	// 				{ name, 'main:iron', name },
-	// 				{ name, name       , name },
-	// 			}
-	// 		})
-
-	// 	end
-	// end
+		if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
+			// 		//set up wall
+			// 		local def2 = table.copy(def)
+			// 		local newname = "walls:"..string.gsub(name, "main:", "").."_wall_post"
+			// 		def2.description = def.description.." Wall"
+			// 		def2.mod_origin = "walls"
+			// 		def2.name = newname
+			// 		def2.drop = newname
+			// 		def2.paramtype = "light"
+			// 		def2.drawtype = "nodebox"
+			// 		def2.on_dig = nil
+			// 		//def2.on_place = function(itemstack, placer, pointed_thing)
+			// 		//	core.item_place(itemstack, placer, pointed_thing)
+			// 		//	wall_placing(pointed_thing.above,newname)
+			// 		//end
+			// 		def2.node_box = {
+			// 			type = "connected",
+			// 			disconnected_sides  = {-4/16, -1/2, -4/16, 4/16, 9/16, 4/16},
+			// 			// connect_top =
+			// 			// connect_bottom =
+			// 			connect_front = {-2/16,  -1/2, -1/2,   2/16,  1/2, 2/16 },
+			// 			connect_left =  {-1/2,   -1/2, -2/16, 2/16,   1/2,  2/16},
+			// 			connect_back =  {-2/16,  -1/2,  -2/16,   2/16,  1/2,  1/2 },
+			// 			connect_right = { -2/16,   -1/2, -2/16,  1/2,   1/2,  2/16},
+			// 		}
+			// 		def2.collision_box = {
+			// 			type = "connected",
+			// 			fixed = {-1/8, -1/2, -1/8, 1/8, 1/2 + fence_collision_extra, 1/8},
+			// 			// connect_top =
+			// 			// connect_bottom =
+			// 			connect_front = {-2/16,  -1/2, -1/2,   2/16,1/2 + fence_collision_extra, 2/16 },
+			// 			connect_left =  {-1/2,   -1/2, -2/16, 2/16,    1/2 + fence_collision_extra,  2/16},
+			// 			connect_back =  {-2/16,  -1/2,  -2/16,   2/16,  1/2 + fence_collision_extra,  1/2 },
+			// 			connect_right = {-2/16,   -1/2, -2/16,  1/2,   1/2 + fence_collision_extra,  2/16},
+			// 		}
+			// 		def2.groups["fence"] = 1
+			// 		def2.connects_to = {"group:fence", "group:wood", "group:tree", "group:wall", "group:stone", "group:sand"}
+			// 		def2.sunlight_propagates = true
+			// 		core.register_node(newname,def2)
+			// 		core.register_craft({
+			// 			output = newname .. " 16",
+			// 			recipe = {
+			// 				{ name, 'main:iron', name },
+			// 				{ name, name       , name },
+			// 			}
+			// 		})
+		}
+	}
 
 	// //create window
 	// local def = core.registered_nodes["main:glass"]
