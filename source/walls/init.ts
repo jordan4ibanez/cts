@@ -10,7 +10,7 @@ namespace walls {
 
 		if (
 			def.drawtype != Drawtype.normal ||
-			string.match(name, "crafter:").length <= 0
+			string.match(name, "crafter:")[0] == null
 		) {
 			continue;
 		}
