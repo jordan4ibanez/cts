@@ -29,6 +29,7 @@ namespace crafter {
 	for (const [level_id, material] of ipairs(__materials)) {
 		let damage: number = 0;
 		for (const [id, tool] of ipairs(__tools)) {
+			print(tool);
 			// print(id,tool,level,material)
 			let groupcaps2: { [id: string]: GroupCap } | null = null;
 			let wear: number = 0;
@@ -1406,80 +1407,81 @@ namespace crafter {
 					damage = 16;
 					wear = 10;
 				}
-
-				if (typeof material != "string") {
-					throw new Error("material is not a string.");
-				}
-				if (groupcaps2 == null) {
-					throw new Error("groupcaps is null");
-				}
-
-				core.register_tool("crafter:" + material + tool, {
-					description:
-						string.gsub(material, "^%l", string.upper) +
-						" " +
-						string.gsub(tool, "^%l", string.upper),
-					inventory_image: material + tool + ".png",
-					tool_capabilities: {
-						full_punch_interval: 0,
-						//max_drop_level=0,
-						groupcaps: groupcaps2,
-						damage_groups: { damage: damage },
-					},
-					sound: { breaks: { name: "tool_break", gain: 0.4 } }, // change this //todo: figure out what to change this to lol
-					groups: { flammable: 2, tool: 1 },
-					mob_hit_wear: wear,
-					// torch rightclick - hacked in since api doesn't call on_place correctly // todo: is this true?!
-					on_place: (
-						itemstack: ItemStackObject,
-						placer: ObjectRef,
-						pointed_thing: PointedThing
-					) => {
-						const inv: InvRef = placer.get_inventory();
-						const torch = inv.contains_item("main", "torch:torch");
-						const is_air: boolean =
-							core.get_node(pointed_thing.above).name == "air";
-						const dir: Vec3 = vector.subtract(
-							pointed_thing.under,
-							pointed_thing.above
-						);
-						const diff: number = dir.y;
-						const noddef: NodeDefinition =
-							core.registered_nodes[
-								core.get_node(pointed_thing.under).name
-							];
-						const walkable: boolean = noddef.walkable || false;
-						const sneak: boolean =
-							placer.get_player_control().sneak;
-						if (!sneak && noddef.on_rightclick) {
-							core.item_place(itemstack, placer, pointed_thing);
-							return;
-						}
-						if (!torch || !is_air || !walkable) {
-							return;
-						}
-						if (diff == 0) {
-							const param2: number = core.dir_to_wallmounted(dir);
-							core.set_node(pointed_thing.above, {
-								name: "torch:wall",
-								param2: param2,
-							});
-							core.sound_play("wood", {
-								pos: pointed_thing.above,
-								gain: 1.0,
-							});
-						} else if (diff == -1) {
-							core.place_node(pointed_thing.above, {
-								name: "torch:floor",
-							});
-						}
-						//take item
-						if (diff == 0 || diff == -1) {
-							inv.remove_item("main", "torch:torch");
-						}
-					},
-				});
 			}
+
+			if (typeof material != "string") {
+				throw new Error("material is not a string.");
+			}
+			if (groupcaps2 == null) {
+				throw new Error("groupcaps is null");
+			}
+
+			print("crafter:" + material + tool);
+
+			core.register_tool("crafter:" + material + tool, {
+				description:
+					string.gsub(material, "^%l", string.upper) +
+					" " +
+					string.gsub(tool, "^%l", string.upper),
+				inventory_image: material + tool + ".png",
+				tool_capabilities: {
+					full_punch_interval: 0,
+					//max_drop_level=0,
+					groupcaps: groupcaps2,
+					damage_groups: { damage: damage },
+				},
+				sound: { breaks: { name: "tool_break", gain: 0.4 } }, // change this //todo: figure out what to change this to lol
+				groups: { flammable: 2, tool: 1 },
+				mob_hit_wear: wear,
+				// torch rightclick - hacked in since api doesn't call on_place correctly // todo: is this true?!
+				on_place: (
+					itemstack: ItemStackObject,
+					placer: ObjectRef,
+					pointed_thing: PointedThing
+				) => {
+					const inv: InvRef = placer.get_inventory();
+					const torch = inv.contains_item("main", "torch:torch");
+					const is_air: boolean =
+						core.get_node(pointed_thing.above).name == "air";
+					const dir: Vec3 = vector.subtract(
+						pointed_thing.under,
+						pointed_thing.above
+					);
+					const diff: number = dir.y;
+					const noddef: NodeDefinition =
+						core.registered_nodes[
+							core.get_node(pointed_thing.under).name
+						];
+					const walkable: boolean = noddef.walkable || false;
+					const sneak: boolean = placer.get_player_control().sneak;
+					if (!sneak && noddef.on_rightclick) {
+						core.item_place(itemstack, placer, pointed_thing);
+						return;
+					}
+					if (!torch || !is_air || !walkable) {
+						return;
+					}
+					if (diff == 0) {
+						const param2: number = core.dir_to_wallmounted(dir);
+						core.set_node(pointed_thing.above, {
+							name: "torch:wall",
+							param2: param2,
+						});
+						core.sound_play("wood", {
+							pos: pointed_thing.above,
+							gain: 1.0,
+						});
+					} else if (diff == -1) {
+						core.place_node(pointed_thing.above, {
+							name: "torch:floor",
+						});
+					}
+					//take item
+					if (diff == 0 || diff == -1) {
+						inv.remove_item("main", "torch:torch");
+					}
+				},
+			});
 		}
 
 		let wear: number = 0;
