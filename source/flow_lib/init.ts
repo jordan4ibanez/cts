@@ -70,14 +70,14 @@ namespace flowLib {
 			}
 		}
 
-		// for _,i in pairs(data) do
-		// 	nd = i[2]
-		// 	name = nd.name
-		// 	par2 = nd.param2
-		// 	if name == "main:waterflow" and par2 < param2 then
-		// 		return(vector.subtract(i[1],pos))
-		// 	end
-		// end
+		for _,i in pairs(data) do
+			nd = i[2]
+			name = nd.name
+			par2 = nd.param2
+			if name == "main:waterflow" and par2 < param2 then
+				return(vector.subtract(i[1],pos))
+			end
+		end
 
 		// for _,i in pairs(data) do
 		// 	nd = i[2]
