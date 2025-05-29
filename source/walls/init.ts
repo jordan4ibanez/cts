@@ -8,14 +8,14 @@ namespace walls {
 			continue;
 		}
 
-		if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
+		if (def.drawtype == Drawtype.normal && string.match(name, "crafter:")) {
 			// Set up fence.
 			const def2: NodeDefinition = table.copy(
 				def as LuaTable
 			) as NodeDefinition;
 
 			const newname: string =
-				"walls:" + string.gsub(name, "main:", "") + "_fence";
+				"walls:" + string.gsub(name, "crafter:", "") + "_fence";
 			def2.mod_origin = "walls";
 
 			// def2.name = newname
@@ -107,8 +107,8 @@ namespace walls {
 			core.register_craft({
 				output: newname + " 16",
 				recipe: [
-					[name, "main:stick", name],
-					[name, "main:stick", name],
+					[name, "crafter:stick", name],
+					[name, "crafter:stick", name],
 				],
 			});
 		}
@@ -121,13 +121,13 @@ namespace walls {
 			continue;
 		}
 
-		if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
+		if (def.drawtype == Drawtype.normal && string.match(name, "crafter:")) {
 			//set up wall
 			const def2: NodeDefinition = table.copy(
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"walls:" + string.gsub(name, "main:", "") + "_wall_post";
+				"walls:" + string.gsub(name, "crafter:", "") + "_wall_post";
 			def2.description = def.description + " Wall";
 			def2.mod_origin = "walls";
 			// def2.name = newname
@@ -217,7 +217,7 @@ namespace walls {
 			core.register_craft({
 				output: newname + " 16",
 				recipe: [
-					[name, "main:iron", name],
+					[name, "crafter:iron", name],
 					[name, name, name],
 				],
 			});
@@ -226,7 +226,7 @@ namespace walls {
 
 	// Create window.
 
-	const def: NodeDefinition | null = core.registered_nodes["main:glass"];
+	const def: NodeDefinition | null = core.registered_nodes["crafter:glass"];
 	if (!def) {
 		throw new Error("Glass is undefined.");
 	}
@@ -273,8 +273,8 @@ namespace walls {
 	core.register_craft({
 		output: newname + " 16",
 		recipe: [
-			["main:glass", "main:glass"],
-			["main:glass", "main:glass"],
+			["crafter:glass", "crafter:glass"],
+			["crafter:glass", "crafter:glass"],
 		],
 	});
 }
