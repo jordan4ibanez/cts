@@ -94,12 +94,12 @@ namespace door {
 		// This is where the top and bottom of the door are created.
 		for (const door of ["top","bottom"]) {
 				for (const state of  ["open","closed"]) {
-		// 			local door_node_box = {}
-		// 			if state == "closed" then
-		// 				door_node_box = {-0.5, -0.5,  -0.5, 0.5,  0.5, -0.3}
-		// 			elseif state == "open" then
-		// 				door_node_box = {5/16, -0.5,  -0.5, 0.5,  0.5, 0.5}
-		// 			end
+					let door_node_box: number[]= []
+					if (state == "closed") {
+						door_node_box = [-0.5, -0.5,  -0.5, 0.5,  0.5, -0.3]
+                    } else if (state == "open") {
+						door_node_box = [5/16, -0.5,  -0.5, 0.5,  0.5, 0.5]
+                    }
 
 		// 			local tiles
 		// 			local groups
