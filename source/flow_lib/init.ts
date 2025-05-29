@@ -29,7 +29,7 @@ namespace flowLib {
 	export function flow(pos: Vec3): Vec3 | null {
 		const c_node = core.get_node(pos).name;
 
-		if (c_node != "main:waterflow" && c_node != "main:water") {
+		if (c_node != "crafter:waterflow" && c_node != "crafter:water") {
 			return null;
 		}
 
@@ -45,12 +45,12 @@ namespace flowLib {
 			return null;
 		}
 
-		if (c_node == "main:water") {
+		if (c_node == "crafter:water") {
 			for (const i of data) {
 				const par2: number | undefined = i.node.param2;
 
 				if (
-					i.node.name == "main:waterflow" &&
+					i.node.name == "crafter:waterflow" &&
 					par2 != null &&
 					par2 == 7
 				) {
@@ -62,7 +62,7 @@ namespace flowLib {
 		for (const i of data) {
 			const par2: number | undefined = i.node.param2;
 			if (
-				i.node.name == "main:waterflow" &&
+				i.node.name == "crafter:waterflow" &&
 				par2 != null &&
 				par2 < param2
 			) {
@@ -72,7 +72,7 @@ namespace flowLib {
 
 		for (const i of data) {
 			const par2: number | undefined = i.node.param2;
-			if (i.node.name == "main:waterflow" && par2 != null && par2 >= 11) {
+			if (i.node.name == "crafter:waterflow" && par2 != null && par2 >= 11) {
 				return vector.subtract(i.pos, pos);
 			}
 		}
@@ -83,8 +83,8 @@ namespace flowLib {
 			if (
 				tmp != null &&
 				!tmp.walkable &&
-				name != "main:waterflow" &&
-				name != "main:water"
+				name != "crafter:waterflow" &&
+				name != "crafter:water"
 			) {
 				return vector.subtract(i.pos, pos);
 			}
