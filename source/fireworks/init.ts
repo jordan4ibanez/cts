@@ -36,8 +36,9 @@ namespace fireworks {
 		name = "fireworks:rocket";
 
 		timer: number = 0;
+		sound_played: boolean = false;
 
-		initial_properties = {
+		initial_properties: ObjectProperties = {
 			hp_max: 1,
 			physical: true,
 			collide_with_objects: false,
@@ -78,7 +79,6 @@ namespace fireworks {
 		}
 	}
 
-	// 	sound_played = false,
 	// 	on_step = function(self, dtime)
 	//         self.timer = self.timer + dtime
 	//         if self.timer >= 1 then
