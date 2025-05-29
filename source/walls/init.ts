@@ -126,109 +126,112 @@ namespace walls {
 			continue;
 		}
 
-		if (def.drawtype == Drawtype.normal && string.match(name, "crafter:")) {
-			//set up wall
-			const def2: NodeDefinition = table.copy(
-				def as LuaTable
-			) as NodeDefinition;
-			const newname: string =
-				"crafter_walls:" +
-				string.gsub(name, "crafter:", "") +
-				"_wall_post";
-			def2.description = def.description + " Wall";
-			def2.mod_origin = "walls";
-			// def2.name = newname
-			def2.drop = newname;
-			def2.paramtype = ParamType1.light;
-			def2.drawtype = Drawtype.nodebox;
-
-			//def2.on_place = function(itemstack, placer, pointed_thing)
-			//	core.item_place(itemstack, placer, pointed_thing)
-			//	wall_placing(pointed_thing.above,newname)
-			//end
-
-			def2.node_box = {
-				type: Nodeboxtype.connected,
-				disconnected_sides: [
-					-4 / 16,
-					-1 / 2,
-					-4 / 16,
-					4 / 16,
-					9 / 16,
-					4 / 16,
-				],
-				connect_front: [-2 / 16, -1 / 2, -1 / 2, 2 / 16, 1 / 2, 2 / 16],
-				connect_left: [-1 / 2, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 2 / 16],
-				connect_back: [-2 / 16, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 1 / 2],
-				connect_right: [-2 / 16, -1 / 2, -2 / 16, 1 / 2, 1 / 2, 2 / 16],
-			};
-			def2.collision_box = {
-				type: Nodeboxtype.connected,
-				fixed: [
-					-1 / 8,
-					-1 / 2,
-					-1 / 8,
-					1 / 8,
-					1 / 2 + fence_collision_extra,
-					1 / 8,
-				],
-				// connect_top =
-				// connect_bottom =
-				connect_front: [
-					-2 / 16,
-					-1 / 2,
-					-1 / 2,
-					2 / 16,
-					1 / 2 + fence_collision_extra,
-					2 / 16,
-				],
-				connect_left: [
-					-1 / 2,
-					-1 / 2,
-					-2 / 16,
-					2 / 16,
-					1 / 2 + fence_collision_extra,
-					2 / 16,
-				],
-				connect_back: [
-					-2 / 16,
-					-1 / 2,
-					-2 / 16,
-					2 / 16,
-					1 / 2 + fence_collision_extra,
-					1 / 2,
-				],
-				connect_right: [
-					-2 / 16,
-					-1 / 2,
-					-2 / 16,
-					1 / 2,
-					1 / 2 + fence_collision_extra,
-					2 / 16,
-				],
-			};
-			if (def2.groups == null) {
-				def2.groups = {};
-			}
-			def2.groups["fence"] = 1;
-			def2.connects_to = [
-				"group:fence",
-				"group:wood",
-				"group:tree",
-				"group:wall",
-				"group:stone",
-				"group:sand",
-			];
-			def2.sunlight_propagates = true;
-			core.register_node(newname, def2);
-			core.register_craft({
-				output: newname + " 16",
-				recipe: [
-					[name, "crafter:iron", name],
-					[name, name, name],
-				],
-			});
+		if (
+			def.drawtype != Drawtype.normal ||
+			string.match(name, "crafter:")[0] == null
+		) {
+			continue;
 		}
+
+		//set up wall
+		const def2: NodeDefinition = table.copy(
+			def as LuaTable
+		) as NodeDefinition;
+		const newname: string =
+			"crafter_walls:" + string.gsub(name, "crafter:", "") + "_wall_post";
+		def2.description = def.description + " Wall";
+		def2.mod_origin = "walls";
+		// def2.name = newname
+		def2.drop = newname;
+		def2.paramtype = ParamType1.light;
+		def2.drawtype = Drawtype.nodebox;
+
+		//def2.on_place = function(itemstack, placer, pointed_thing)
+		//	core.item_place(itemstack, placer, pointed_thing)
+		//	wall_placing(pointed_thing.above,newname)
+		//end
+
+		def2.node_box = {
+			type: Nodeboxtype.connected,
+			disconnected_sides: [
+				-4 / 16,
+				-1 / 2,
+				-4 / 16,
+				4 / 16,
+				9 / 16,
+				4 / 16,
+			],
+			connect_front: [-2 / 16, -1 / 2, -1 / 2, 2 / 16, 1 / 2, 2 / 16],
+			connect_left: [-1 / 2, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 2 / 16],
+			connect_back: [-2 / 16, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 1 / 2],
+			connect_right: [-2 / 16, -1 / 2, -2 / 16, 1 / 2, 1 / 2, 2 / 16],
+		};
+		def2.collision_box = {
+			type: Nodeboxtype.connected,
+			fixed: [
+				-1 / 8,
+				-1 / 2,
+				-1 / 8,
+				1 / 8,
+				1 / 2 + fence_collision_extra,
+				1 / 8,
+			],
+			// connect_top =
+			// connect_bottom =
+			connect_front: [
+				-2 / 16,
+				-1 / 2,
+				-1 / 2,
+				2 / 16,
+				1 / 2 + fence_collision_extra,
+				2 / 16,
+			],
+			connect_left: [
+				-1 / 2,
+				-1 / 2,
+				-2 / 16,
+				2 / 16,
+				1 / 2 + fence_collision_extra,
+				2 / 16,
+			],
+			connect_back: [
+				-2 / 16,
+				-1 / 2,
+				-2 / 16,
+				2 / 16,
+				1 / 2 + fence_collision_extra,
+				1 / 2,
+			],
+			connect_right: [
+				-2 / 16,
+				-1 / 2,
+				-2 / 16,
+				1 / 2,
+				1 / 2 + fence_collision_extra,
+				2 / 16,
+			],
+		};
+		if (def2.groups == null) {
+			def2.groups = {};
+		}
+		def2.groups["fence"] = 1;
+		def2.connects_to = [
+			"group:fence",
+			"group:wood",
+			"group:tree",
+			"group:wall",
+			"group:stone",
+			"group:sand",
+		];
+		def2.sunlight_propagates = true;
+		core.register_node(newname, def2);
+		core.register_craft({
+			output: newname + " 16",
+			recipe: [
+				[name, "crafter:iron", name],
+				[name, name, name],
+			],
+		});
 	}
 
 	// Create window.
