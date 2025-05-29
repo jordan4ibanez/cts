@@ -82,14 +82,13 @@ namespace flowLib {
 			}
 		}
 
-		// for _,i in pairs(data) do
-		// 	nd = i[2]
-		// 	name = nd.name
-		// 	par2 = nd.param2
-		// 	if name == "main:waterflow" and par2 >= 11 then
-		// 		return(vector.subtract(i[1],pos))
-		// 	end
-		// end
+		for (const i of data) {
+			const name: string = i.node.name;
+			const par2: number | undefined = i.node.param2;
+			if (name == "main:waterflow" && par2 != null && par2 >= 11) {
+				return vector.subtract(i.pos, pos);
+			}
+		}
 
 		// for _,i in pairs(data) do
 		// 	nd = i[2]
