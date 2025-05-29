@@ -6,21 +6,35 @@
 
 namespace flowLib {
 
-local tab
-local n
-local function get_nodes(pos)
-	tab,n = {},1
-	for i = -1,1,2 do
-		for _,p in pairs({
-			{x=pos.x+i, y=pos.y, z=pos.z},
-			{x=pos.x, y=pos.y, z=pos.z+i}
-		}) do
-			tab[n] = {p, minetest.get_node(p)}
-			n = n+1
-		end
-	end
+// local tab
+// local n
+
+    interface FlowNode {
+        pos: Vec3,
+        node: NodeTable
+    }
+
+ function get_nodes(pos: Vec3) {
+	const tab: FlowNode[] = []
+    const n: number = 1
+
+	for (let i = -1; i <= 1; i+= 2) {
+        const data = [
+			vector.create3d({x:pos.x+i, y:pos.y, z:pos.z}),
+			vector.create3d({x:pos.x, y:pos.y, z:pos.z+i})
+		];
+        
+		for (const p of data) {
+            tab.push({
+                pos: p,
+                node: core.get_node(p),
+            })
+			
+        }
+    }
+
 	return tab
-end
+}
 
 
 // local data
