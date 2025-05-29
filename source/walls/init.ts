@@ -237,9 +237,9 @@ namespace walls {
 	def2.description = "Window";
 	def2.mod_origin = "walls";
 	def2.drop = "";
-	// def2.paramtype = "light"
-	// def2.drawtype = "nodebox"
-	// def2.on_dig = nil
+	def2.paramtype = ParamType1.light;
+	def2.drawtype = Drawtype.nodebox;
+
 	// //def2.on_place = function(itemstack, placer, pointed_thing)
 	// //	core.item_place(itemstack, placer, pointed_thing)
 	// //	wall_placing(pointed_thing.above,newname)
