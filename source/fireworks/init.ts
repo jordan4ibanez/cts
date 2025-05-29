@@ -101,11 +101,8 @@ namespace fireworks {
 			if (pointed_thing.type != "node") {
 				return;
 			}
-
 			core.add_entity(pointed_thing.above, "fireworks:rocket");
-
 			itemstack.take_item();
-
 			return itemstack;
 		},
 	});
