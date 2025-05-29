@@ -12,8 +12,8 @@ namespace vignette {
 				type: HudElementType.image,
 				position: { x: 0.5, y: 0.5 },
 				scale: {
-					x: -50.5,
-					y: -50.5,
+					x: -100.5,
+					y: -100.5,
 				},
 				z_index: -400,
 				text: "vignette.png",
