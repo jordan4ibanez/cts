@@ -1889,6 +1889,8 @@ declare global {
 	}
 
 	/** @noSelf **/ interface ParticleSpawnerDefinition {
+		collision_removal?: boolean;
+		glow?: number;
 		amount?: number;
 		time?: number;
 		maxpos?: Vec3;
