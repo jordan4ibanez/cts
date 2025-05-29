@@ -29,7 +29,6 @@ namespace crafter {
 	for (const [level_id, material] of ipairs(__materials)) {
 		let damage: number = 0;
 		for (const [id, tool] of ipairs(__tools)) {
-			print(tool);
 			// print(id,tool,level,material)
 			let groupcaps2: { [id: string]: GroupCap } | null = null;
 			let wear: number = 0;
@@ -1415,8 +1414,6 @@ namespace crafter {
 			if (groupcaps2 == null) {
 				throw new Error("groupcaps is null");
 			}
-
-			print("crafter:" + material + tool);
 
 			core.register_tool("crafter:" + material + tool, {
 				description:
