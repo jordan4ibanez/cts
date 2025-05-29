@@ -1,16 +1,21 @@
 namespace vignette {
-function joinplayer (player)
-  player:hud_add({
-    hud_elem_type = "image",
-    position = {x = 0.5, y = 0.5},
-    scale = {
-	x = -100.5,
-	y = -100.5
-    },
-    text = "vignette.png"
-  })
-end
+	core.register_on_joinplayer((player: ObjectRef) => {
+		for (let i = 0; i < 10; i++) {
+			print(i);
+			hudManager.add_hud(
+				player,
+				"vignette",
 
-minetest.register_on_joinplayer(joinplayer)
-	
+				{
+					hud_elem_type: HudElementType.image,
+					position: { x: 0.5, y: 0.5 },
+					scale: {
+						x: -100.5,
+						y: -100.5,
+					},
+					text: "vignette.png",
+				}
+			);
+		}
+	});
 }
