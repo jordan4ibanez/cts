@@ -34,20 +34,18 @@ namespace fireworks {
 
 	class FireworksEntity extends types.Entity {
 		name = "fireworks:rocket";
+		initial_properties = {
+			hp_max: 1,
+			physical: true,
+			collide_with_objects: false,
+			collisionbox: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
+			visual: EntityVisual.sprite,
+			visual_size: { x: 1, y: 1 },
+			textures: ["fireworks.png"],
+			is_visible: true,
+			pointable: true,
+		};
 	}
-
-	// core.register_entity(, {
-	// 	initial_properties = {
-	// 		hp_max = 1,
-	// 		physical = true,
-	// 		collide_with_objects = false,
-	// 		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	// 		visual = "sprite",
-	// 		visual_size = {x = 1, y = 1},
-	// 		textures = {"fireworks.png"},
-	// 		is_visible = true,
-	// 		pointable = true,
-	// 	},
 
 	//     timer = 0,
 
