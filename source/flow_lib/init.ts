@@ -42,12 +42,11 @@ namespace flowLib {
 	// local c_node
 
 	function get_flowing_dir(pos: Vec3) {
+		const c_node = core.get_node(pos).name;
 
-		const c_node = core.get_node(pos).name
-
-		if c_node ~= "main:waterflow" and c_node ~= "main:water" then
-			return nil
-		end
+		if (c_node != "main:waterflow" && c_node != "main:water") {
+			return null;
+		}
 
 		// data = get_nodes(pos)
 		// param2 = core.get_node(pos).param2
@@ -95,7 +94,7 @@ namespace flowLib {
 		// end
 
 		// return nil
-    }
+	}
 
 	// function flow(pos)
 	// 	return(get_flowing_dir(pos))
