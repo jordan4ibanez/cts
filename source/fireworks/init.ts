@@ -1,13 +1,13 @@
 namespace fireworks {
-local colors ={
+const colors: string[] =[
     "red",
     "white",
     "blue"
-}
-local colors_halloween ={
+]
+const colors_halloween: string[] =[
     "orange",
     "black"
-}
+]
 
 
 // local function fireworks_pop(pos)
