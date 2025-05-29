@@ -155,16 +155,51 @@ namespace walls {
 				connect_back: [-2 / 16, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 1 / 2],
 				connect_right: [-2 / 16, -1 / 2, -2 / 16, 1 / 2, 1 / 2, 2 / 16],
 			};
-			// 		def2.collision_box = {
-			// 			type = "connected",
-			// 			fixed = {-1/8, -1/2, -1/8, 1/8, 1/2 + fence_collision_extra, 1/8},
-			// 			// connect_top =
-			// 			// connect_bottom =
-			// 			connect_front = {-2/16,  -1/2, -1/2,   2/16,1/2 + fence_collision_extra, 2/16 },
-			// 			connect_left =  {-1/2,   -1/2, -2/16, 2/16,    1/2 + fence_collision_extra,  2/16},
-			// 			connect_back =  {-2/16,  -1/2,  -2/16,   2/16,  1/2 + fence_collision_extra,  1/2 },
-			// 			connect_right = {-2/16,   -1/2, -2/16,  1/2,   1/2 + fence_collision_extra,  2/16},
-			// 		}
+			def2.collision_box = {
+				type: Nodeboxtype.connected,
+				fixed: [
+					-1 / 8,
+					-1 / 2,
+					-1 / 8,
+					1 / 8,
+					1 / 2 + fence_collision_extra,
+					1 / 8,
+				],
+				// connect_top =
+				// connect_bottom =
+				connect_front: [
+					-2 / 16,
+					-1 / 2,
+					-1 / 2,
+					2 / 16,
+					1 / 2 + fence_collision_extra,
+					2 / 16,
+				],
+				connect_left: [
+					-1 / 2,
+					-1 / 2,
+					-2 / 16,
+					2 / 16,
+					1 / 2 + fence_collision_extra,
+					2 / 16,
+				],
+				connect_back: [
+					-2 / 16,
+					-1 / 2,
+					-2 / 16,
+					2 / 16,
+					1 / 2 + fence_collision_extra,
+					1 / 2,
+				],
+				connect_right: [
+					-2 / 16,
+					-1 / 2,
+					-2 / 16,
+					1 / 2,
+					1 / 2 + fence_collision_extra,
+					2 / 16,
+				],
+			};
 			// 		def2.groups["fence"] = 1
 			// 		def2.connects_to = {"group:fence", "group:wood", "group:tree", "group:wall", "group:stone", "group:sand"}
 			// 		def2.sunlight_propagates = true
