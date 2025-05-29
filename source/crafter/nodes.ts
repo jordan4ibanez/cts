@@ -252,6 +252,7 @@ core.register_node("crafter:glass", {
 	paramtype: ParamType1.light,
 	sunlight_propagates: true,
 	is_ground_content: false,
+	use_texture_alpha: TextureAlpha.clip,
 	groups: { glass: 1, pathable: 1 },
 	sounds: crafter.stoneSound({
 		footstep: { name: "glass_footstep", gain: 0.4 },
