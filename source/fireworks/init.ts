@@ -77,15 +77,16 @@ namespace fireworks {
 				pitch: math.random(80, 100) / 100,
 			});
 		}
+
+		on_step(dtime: number): void {
+			this.timer += dtime;
+			if (this.timer >= 1) {
+				fireworks_pop(this.object.get_pos());
+				this.object.remove();
+			}
+		}
 	}
 
-	// 	on_step = function(self, dtime)
-	//         self.timer = self.timer + dtime
-	//         if self.timer >= 1 then
-	//             fireworks_pop(self.object:get_pos())
-	//             self.object:remove()
-	//         end
-	// 	end,
 	// })
 
 	// core.register_craftitem("fireworks:rocket", {
