@@ -2,30 +2,30 @@ namespace fireworks {
 	const colors: string[] = ["red", "white", "blue"];
 	const colors_halloween: string[] = ["orange", "black"];
 
-	// local function fireworks_pop(pos)
-	//     for _,color in pairs(colors) do
-	//         minetest.add_particlespawner({
-	//             amount = 15,
-	//             time = 0.001,
-	//             minpos = pos,
-	//             maxpos = pos,
-	//             minvel = vector.new(-16,-16,-16),
-	//             maxvel = vector.new(16,16,16),
-	//             minacc = {x=0, y=0, z=0},
-	//             maxacc = {x=0, y=0, z=0},
-	//             minexptime = 1.1,
-	//             maxexptime = 1.5,
-	//             minsize = 1,
-	//             maxsize = 2,
-	//             collisiondetection = false,
-	//             collision_removal = false,
-	//             vertical = false,
-	//             texture = "smoke.png^[colorize:"..color..":255",
-	//             glow = 14,
-	//         })
-	//     end
-	//     minetest.sound_play("fireworks_pop",{pos=pos,pitch=math.random(80,100)/100,gain=6.0,max_hear_distance = 128})
-	// end
+	 function fireworks_pop(pos: Vec3): void {
+	    for (const [_,color] of ipairs(colors)) {
+	        minetest.add_particlespawner({
+	            amount = 15,
+	            time = 0.001,
+	            minpos = pos,
+	            maxpos = pos,
+	            minvel = vector.new(-16,-16,-16),
+	            maxvel = vector.new(16,16,16),
+	            minacc = {x=0, y=0, z=0},
+	            maxacc = {x=0, y=0, z=0},
+	            minexptime = 1.1,
+	            maxexptime = 1.5,
+	            minsize = 1,
+	            maxsize = 2,
+	            collisiondetection = false,
+	            collision_removal = false,
+	            vertical = false,
+	            texture = "smoke.png^[colorize:"..color..":255",
+	            glow = 14,
+	        })
+        }
+	    core.sound_play("fireworks_pop",{pos=pos,pitch=math.random(80,100)/100,gain=6.0,max_hear_distance = 128})
+        }
 
 	// minetest.register_entity("fireworks:rocket", {
 	// 	initial_properties = {
