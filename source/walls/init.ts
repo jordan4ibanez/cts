@@ -259,15 +259,22 @@ namespace walls {
 		connect_right: [-1 / 16, -1 / 2, -1 / 16, 1 / 2, 1 / 2, 1 / 16],
 	};
 
-	// def2.connects_to = {"group:fence", "group:wood", "group:wall", "group:stone", "group:sand","group:glass"}
-	// def2.sunlight_propagates = true
-	// core.register_node(newname,def2)
+	def2.connects_to = [
+		"group:fence",
+		"group:wood",
+		"group:wall",
+		"group:stone",
+		"group:sand",
+		"group:glass",
+	];
+	def2.sunlight_propagates = true;
+	core.register_node(newname, def2);
 
-	// core.register_craft({
-	// 	output = newname .. " 16",
-	// 	recipe = {
-	// 		{ "main:glass", "main:glass" },
-	// 		{ "main:glass", "main:glass" },
-	// 	}
-	// })
+	core.register_craft({
+		output: newname + " 16",
+		recipe: [
+			["main:glass", "main:glass"],
+			["main:glass", "main:glass"],
+		],
+	});
 }
