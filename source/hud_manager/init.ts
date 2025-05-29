@@ -37,6 +37,12 @@ namespace hudManager {
 			style: def.style,
 		});
 
+		if (local_hud == 0) {
+			throw new Error(
+				`Failed to add hud [${hud_name}] to player [${name}]`
+			);
+		}
+
 		let data: Map<string, number> | undefined = player_huds.get(name);
 
 		if (!data) {
