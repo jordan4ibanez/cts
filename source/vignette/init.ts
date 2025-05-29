@@ -7,7 +7,6 @@ namespace vignette {
 				x: -100.5,
 				y: -100.5,
 			},
-			z_index: -400,
 			text: "vignette.png",
 		});
 	});
