@@ -35,6 +35,12 @@ namespace hudManager {
 			throw new Error("Player's hud entry was never created. Error");
 		}
 
+		if (data.has(hud_name)) {
+			throw new Error(
+				`Tried to overwrite hud [${hud_name}] for player [${name}]`
+			);
+		}
+
 		data.set(hud_name, local_hud);
 	}
 
