@@ -41,7 +41,7 @@ namespace flowLib {
 	// local tmp
 	// local c_node
 
-	function get_flowing_dir(pos: Vec3)
+	function get_flowing_dir(pos: Vec3) {
 		c_node = minetest.get_node(pos).name
 		if c_node ~= "main:waterflow" and c_node ~= "main:water" then
 			return nil
@@ -88,7 +88,7 @@ namespace flowLib {
 		end
 
 		return nil
-	end
+    }
 
 	// function flow(pos)
 	// 	return(get_flowing_dir(pos))
