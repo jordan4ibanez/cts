@@ -152,11 +152,7 @@ namespace drowning {
 		update_breath_bar(player, data.breath);
 	});
 
-	// //handle the breath bar
-	// local name
-	// local temp_pool
-	// local head
-	// local hp
+	// Handle the breath bar.
 	function handle_breath(player: ObjectRef, dtime: number): void {
 		const name: string = player.get_player_name();
 
