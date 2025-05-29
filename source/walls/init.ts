@@ -273,7 +273,10 @@ namespace walls {
 		connect_back: [-1 / 16, -1 / 2, -1 / 16, 1 / 16, 1 / 2, 1 / 2],
 		connect_right: [-1 / 16, -1 / 2, -1 / 16, 1 / 2, 1 / 2, 1 / 16],
 	};
-
+	if (def2.groups == null) {
+		def2.groups = {};
+	}
+	def2.groups["fence"] = 1;
 	def2.connects_to = [
 		"group:fence",
 		"group:wood",
