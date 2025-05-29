@@ -20,7 +20,7 @@ namespace drowning {
 		} else {
 			if (!hudManager.hud_exists(player, "breath_bg")) {
 				hudManager.add_hud(player, "breath_bg", {
-					hud_elem_type: HudElementType.statbar,
+					type: HudElementType.statbar,
 					position: { x: 0.5, y: 1 },
 					text: "bubble_bg.png",
 					number: 20,
@@ -31,7 +31,7 @@ namespace drowning {
 			}
 			if (!hudManager.hud_exists(player, "breath")) {
 				hudManager.add_hud(player, "breath", {
-					hud_elem_type: HudElementType.statbar,
+					type: HudElementType.statbar,
 					position: { x: 0.5, y: 1 },
 					text: "bubble.png",
 					number: breath,
@@ -104,7 +104,7 @@ namespace drowning {
 	// Remove stock health bar.
 
 	core.hud_replace_builtin(HudReplaceBuiltinOption.breath, {
-		hud_elem_type: HudElementType.statbar,
+		type: HudElementType.statbar,
 		position: { x: 0, y: 0 },
 		text: "nothing.png",
 		number: 0,
