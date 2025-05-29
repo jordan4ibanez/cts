@@ -92,15 +92,15 @@ namespace flowLib {
 			}
 		}
 
-		// for _,i in pairs(data) do
-		// 	nd = i[2]
-		// 	name = nd.name
-		// 	par2 = nd.param2
-		// 	tmp = core.registered_nodes[name]
-		// 	if tmp and not tmp.walkable and name ~= "main:waterflow" and name ~= "main:water" then
-		// 		return(vector.subtract(i[1],pos))
-		// 	end
-		// end
+		for _,i in pairs(data) do
+			nd = i[2]
+			name = nd.name
+			par2 = nd.param2
+			tmp = core.registered_nodes[name]
+			if tmp and not tmp.walkable and name ~= "main:waterflow" and name ~= "main:water" then
+				return(vector.subtract(i[1],pos))
+			end
+		end
 
 		// return nil
 	}
