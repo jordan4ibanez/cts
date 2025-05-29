@@ -30,10 +30,10 @@ function door_rightclick (pos: Vec3) {
 	const name: string = node.name
 	const opened: number = get_item_group(name, "door_open")
 	const closed: number = get_item_group(name, "door_closed")
-	top = get_item_group(name, "top")
-	bottom = get_item_group(name, "bottom")
-	param2 = node.param2
-	pos2 = t_copy(pos)
+	const top: number = get_item_group(name, "top")
+	const bottom: number = get_item_group(name, "bottom")
+	const param2: number | undefined = node.param2
+	const pos2: Vec3 = vector.create3d(pos)
 	
 	// //close the door
 	// if opened > 0 then
