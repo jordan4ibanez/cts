@@ -91,7 +91,7 @@ namespace door {
 			}
 		}
 
-		// //this is where the top and bottom of the door are created
+		// This is where the top and bottom of the door are created.
 		// for _,door in pairs({"top","bottom"}) do
 		// 		for _,state in pairs({"open","closed"}) do
 		// 			local door_node_box = {}
