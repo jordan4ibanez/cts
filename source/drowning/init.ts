@@ -174,20 +174,20 @@ namespace drowning {
 		}
 
 		if (head != null && core.get_item_group(head, "drowning") > 0) {
-			// 	temp_pool.ticker = temp_pool.ticker + dtime
-			// 	if temp_pool.breath > 0 and temp_pool.ticker >= 1.3 then
-			// 		if temp_pool.breath == 21 then
-			// 			temp_pool.breath = 20
-			// 		end
-			// 		temp_pool.breath = temp_pool.breath - 2
-			// 		temp_pool.drowning = 0
-			// 		update_breath_bar(player,temp_pool.breath)
-			// 	elseif temp_pool.breath <= 0 and temp_pool.ticker >= 1.3 then
-			// 		temp_pool.drowning = 1
-			// 		if hp > 0 then
-			// 			player:set_hp( hp - 2 )
-			// 		end
-			// 	end
+			data.ticker += dtime;
+			if (data.breath > 0 && data.ticker >= 1.3) {
+				// 		if temp_pool.breath == 21 then
+				// 			temp_pool.breath = 20
+				// 		end
+				// 		temp_pool.breath = temp_pool.breath - 2
+				// 		temp_pool.drowning = 0
+				// 		update_breath_bar(player,temp_pool.breath)
+			} else if (data.breath <= 0 && data.ticker >= 1.3) {
+				data.drowning = 1;
+				if (hp > 0) {
+					player.set_hp(hp - 2);
+				}
+			}
 			// 	if temp_pool.ticker >= 1.3 then
 			// 		temp_pool.ticker = 0
 			// 	end
