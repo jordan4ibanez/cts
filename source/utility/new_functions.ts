@@ -1,6 +1,7 @@
 // const minetest,math,vector,table = minetest,math,vector,table
 
-namespace newFunctions {
+// todo: fix this disaster, why is this monolithic?
+namespace utility {
 	interface PType {
 		head: string;
 		legs: string;
