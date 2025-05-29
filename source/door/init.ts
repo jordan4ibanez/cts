@@ -93,7 +93,7 @@ namespace door {
 
 		// This is where the top and bottom of the door are created.
 		for (const door of ["top","bottom"]) {
-		// 		for _,state in pairs({"open","closed"}) do
+				for (const state of  ["open","closed"]) {
 		// 			local door_node_box = {}
 		// 			if state == "closed" then
 		// 				door_node_box = {-0.5, -0.5,  -0.5, 0.5,  0.5, -0.3}
@@ -200,7 +200,7 @@ namespace door {
 		// 					end
 		// 				end,
 		// 			})
-		// 		end
+                }
         }
 		// core.register_craft({
 		// 	output = "door:bottom_"..material.."_closed",
