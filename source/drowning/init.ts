@@ -188,9 +188,9 @@ namespace drowning {
 					player.set_hp(hp - 2);
 				}
 			}
-			// 	if temp_pool.ticker >= 1.3 then
-			// 		temp_pool.ticker = 0
-			// 	end
+			if (data.ticker >= 1.3) {
+				data.ticker = 0;
+			}
 		} else {
 			data.ticker += dtime;
 			if (data.breath < 21 && data.ticker >= 0.25) {
