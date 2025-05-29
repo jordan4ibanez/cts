@@ -101,15 +101,15 @@ namespace fireworks {
 			if (pointed_thing.type != "node") {
 				return;
 			}
-			core.add_entity(pointed_thing.above, "fireworks:rocket");
+			core.add_entity(pointed_thing.above, "crafter_fireworks:rocket");
 			itemstack.take_item();
 			return itemstack;
 		},
 	});
 
-	// core.register_craft({
-	// 	type = "shapeless",
-	// 	output = "fireworks:rocket",
-	// 	recipe = {"main:paper","mob:gunpowder"},
-	// })
+	core.register_craft({
+		type: CraftRecipeType.shapeless,
+		output: "fireworks:rocket",
+		recipe: ["main:paper", "mob:gunpowder"],
+	});
 }
