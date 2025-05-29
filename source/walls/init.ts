@@ -150,8 +150,6 @@ namespace walls {
 					9 / 16,
 					4 / 16,
 				],
-				// connect_top =
-				// connect_bottom =
 				connect_front: [-2 / 16, -1 / 2, -1 / 2, 2 / 16, 1 / 2, 2 / 16],
 				connect_left: [-1 / 2, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 2 / 16],
 				connect_back: [-2 / 16, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 1 / 2],
