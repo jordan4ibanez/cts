@@ -32,7 +32,11 @@ namespace fireworks {
 		});
 	}
 
-	// core.register_entity("fireworks:rocket", {
+	class FireworksEntity extends types.Entity {
+		name = "fireworks:rocket";
+	}
+
+	// core.register_entity(, {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
