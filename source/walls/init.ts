@@ -239,26 +239,25 @@ namespace walls {
 	def2.drop = "";
 	def2.paramtype = ParamType1.light;
 	def2.drawtype = Drawtype.nodebox;
-
-	// //def2.on_place = function(itemstack, placer, pointed_thing)
-	// //	core.item_place(itemstack, placer, pointed_thing)
-	// //	wall_placing(pointed_thing.above,newname)
-	// //end
-	// def2.node_box = {
-	// 	type = "connected",
-	// 	disconnected_sides  = {
-	// 	{-1/16,  -1/2, -1/2,   1/16,  1/2, 1/16 },
-	// 	{-1/2,   -1/2, -1/16, 1/16,   1/2,  1/16},
-	// 	{-1/16,  -1/2,  -1/16,   1/16,  1/2,  1/2 },
-	// 	{ -1/16,   -1/2, -1/16,  1/2,   1/2,  1/16},
-	// 	},
-	// 	// connect_top =
-	// 	// connect_bottom =
-	// 	connect_front = {-1/16,  -1/2, -1/2,   1/16,  1/2, 1/16 },
-	// 	connect_left =  {-1/2,   -1/2, -1/16, 1/16,   1/2,  1/16},
-	// 	connect_back =  {-1/16,  -1/2,  -1/16,   1/16,  1/2,  1/2 },
-	// 	connect_right = { -1/16,   -1/2, -1/16,  1/2,   1/2,  1/16},
-	// }
+	//def2.on_place = function(itemstack, placer, pointed_thing)
+	//	core.item_place(itemstack, placer, pointed_thing)
+	//	wall_placing(pointed_thing.above,newname)
+	//end
+	def2.node_box = {
+		type: Nodeboxtype.connected,
+		disconnected_sides: [
+			[-1 / 16, -1 / 2, -1 / 2, 1 / 16, 1 / 2, 1 / 16],
+			[-1 / 2, -1 / 2, -1 / 16, 1 / 16, 1 / 2, 1 / 16],
+			[-1 / 16, -1 / 2, -1 / 16, 1 / 16, 1 / 2, 1 / 2],
+			[-1 / 16, -1 / 2, -1 / 16, 1 / 2, 1 / 2, 1 / 16],
+		],
+		// connect_top =
+		// connect_bottom =
+		connect_front: [-1 / 16, -1 / 2, -1 / 2, 1 / 16, 1 / 2, 1 / 16],
+		connect_left: [-1 / 2, -1 / 2, -1 / 16, 1 / 16, 1 / 2, 1 / 16],
+		connect_back: [-1 / 16, -1 / 2, -1 / 16, 1 / 16, 1 / 2, 1 / 2],
+		connect_right: [-1 / 16, -1 / 2, -1 / 16, 1 / 2, 1 / 2, 1 / 16],
+	};
 
 	// def2.connects_to = {"group:fence", "group:wood", "group:wall", "group:stone", "group:sand","group:glass"}
 	// def2.sunlight_propagates = true
