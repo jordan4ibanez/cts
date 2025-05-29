@@ -23,7 +23,7 @@ namespace walls {
 		print(name, def, dump(string.gsub(name, "crafter:", "")[0]));
 
 		const newname: string =
-			"crafter_walls:" + string.gsub(name, "crafter:", "") + "_fence";
+			"crafter_walls:" + string.gsub(name, "crafter:", "")[0] + "_fence";
 		def2.mod_origin = "walls";
 
 		// def2.name = newname
