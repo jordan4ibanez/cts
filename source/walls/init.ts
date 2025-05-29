@@ -9,9 +9,11 @@ namespace walls {
 		}
 
 		if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
-			// 	//set up fence
-			// 	local def2 = table.copy(def)
-			// 	local newname = "walls:"..string.gsub(name, "main:", "").."_fence"
+			// Set up fence.
+			const def2 = table.copy(def as LuaTable);
+
+			const newname =
+				"walls:" + string.gsub(name, "main:", "") + "_fence";
 			// 	def2.mod_origin = "walls"
 			// 	def2.name = newname
 			// 	def2.description = def.description.." Fence"
