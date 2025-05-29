@@ -1,8 +1,4 @@
 // this is from https://github.com/HybridDog/builtin_item/blob/e6dfd9dce86503b3cbd1474257eca5f6f6ca71c2/init.lua#L50
-// local
-// minetest,vector,math,pairs
-// =
-// minetest,vector,math,pairs
 
 namespace flowLib {
 	interface FlowNode {
