@@ -10,7 +10,9 @@ namespace walls {
 
 		if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
 			// Set up fence.
-			const def2: NodeDefinition = table.copy(def as LuaTable) as NodeDefinition;
+			const def2: NodeDefinition = table.copy(
+				def as LuaTable
+			) as NodeDefinition;
 
 			const newname: string =
 				"walls:" + string.gsub(name, "main:", "") + "_fence";
