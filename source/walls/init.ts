@@ -224,10 +224,14 @@ namespace walls {
 		}
 	}
 
-	// //create window
-	// local def = core.registered_nodes["main:glass"]
+	// Create window.
 
-	// //set up wall
+	const def: NodeDefinition | null = core.registered_nodes["main:glass"];
+	if (!def) {
+		throw new Error("Glass is undefined.");
+	}
+
+	//set up wall
 	// local def2 = table.copy(def)
 	// local newname = "walls:window"
 	// def2.description = "Window"
