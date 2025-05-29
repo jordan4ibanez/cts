@@ -64,7 +64,11 @@ namespace flowLib {
 			for (const i of data) {
 				const par2: number | undefined = i.node.param2;
 
-				if (i.node.name == "main:waterflow" && par2 && par2 == 7) {
+				if (
+					i.node.name == "main:waterflow" &&
+					par2 != null &&
+					par2 == 7
+				) {
 					return vector.subtract(i.pos, pos);
 				}
 			}
@@ -73,7 +77,7 @@ namespace flowLib {
 		for (const i of data) {
 			const name: string = i.node.name;
 			const par2: number | undefined = i.node.param2;
-			if (name == "main:waterflow" && par2 && par2 < param2) {
+			if (name == "main:waterflow" && par2 != null && par2 < param2) {
 				return vector.subtract(i.pos, pos);
 			}
 		}
