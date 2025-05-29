@@ -102,13 +102,13 @@ namespace walls {
 			];
 			def2.sunlight_propagates = true;
 			core.register_node(newname, def2);
-			// 	core.register_craft({
-			// 		output = newname + " 16",
-			// 		recipe = {
-			// 			{ name, 'main:stick', name },
-			// 			{ name, 'main:stick', name },
-			// 		}
-			// 	})
+			core.register_craft({
+				output: newname + " 16",
+				recipe: [
+					[name, "main:stick", name],
+					[name, "main:stick", name],
+				],
+			});
 		}
 	}
 
