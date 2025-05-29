@@ -33,7 +33,7 @@ namespace fireworks {
 	}
 
 	class FireworksEntity extends types.Entity {
-		name = "fireworks:rocket";
+		name = "crafter_fireworks:rocket";
 
 		timer: number = 0;
 		sound_played: boolean = false;
@@ -87,7 +87,7 @@ namespace fireworks {
 		}
 	}
 
-	// })
+	utility.registerTSEntity(FireworksEntity);
 
 	// core.register_craftitem("fireworks:rocket", {
 	// 	description = "Fireworks",
