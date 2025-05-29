@@ -1,3 +1,4 @@
+namespace vignette {
 function joinplayer (player)
   player:hud_add({
     hud_elem_type = "image",
@@ -12,3 +13,4 @@ end
 
 minetest.register_on_joinplayer(joinplayer)
 	
+}
