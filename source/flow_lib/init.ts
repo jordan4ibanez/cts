@@ -13,7 +13,7 @@ namespace flowLib {
 		node: NodeTable;
 	}
 
-	function get_nodes(pos: Vec3) {
+	function get_nodes(pos: Vec3): FlowNode[] {
 		const tab: FlowNode[] = [];
 
 		for (let i = -1; i <= 1; i += 2) {
