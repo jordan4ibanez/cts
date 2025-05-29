@@ -2328,7 +2328,8 @@ declare global {
 		get_player_control_bits(): number;
 		set_physics_override(override: PhysicsOverride): void;
 		get_physics_override(): PhysicsOverride;
-		hud_add(definition: HudDefinition): number;
+		// returns ID number on success
+		hud_add(definition: HudDefinition): number | null;
 		hud_remove(id: number): void;
 		// stat supports the same keys as in the hud definition table except for "type" (or the deprecated "hud_elem_type").
 		hud_change(id: number, stat: keyof HudDefinition, value: any): void;
