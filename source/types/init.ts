@@ -434,7 +434,7 @@ namespace types {
 		object: ObjectRef = utility.fakeRef();
 
 		// Abstract members.
-		initial_properties?: ObjectProperties | undefined;
+		initial_properties?: ObjectProperties;
 		on_activate?(staticData: string, delta: number): void;
 		on_deactivate?(removal: boolean): void;
 		// Note: moveResult: only available if physical=true
