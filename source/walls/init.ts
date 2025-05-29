@@ -219,7 +219,7 @@ namespace walls {
 		if (def2.groups == null) {
 			def2.groups = {};
 		}
-		def2.groups["fence"] = 1;
+		def2.groups["wall"] = 1;
 		def2.connects_to = [
 			"group:fence",
 			"group:wood",
