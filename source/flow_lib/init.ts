@@ -94,7 +94,6 @@ namespace flowLib {
 
 		for (const i of data) {
 			const name: string = i.node.name;
-			const par2: number | undefined = i.node.param2;
 			const tmp: NodeDefinition | null = core.registered_nodes[name];
 			if (
 				tmp != null &&
