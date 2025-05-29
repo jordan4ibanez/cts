@@ -30,8 +30,8 @@ function door_rightclick (pos: Vec3) {
 	const name: string = node.name
 	const opened: number = get_item_group(name, "door_open")
 	const closed: number = get_item_group(name, "door_closed")
-	const top: number = get_item_group(name, "top")
-	const bottom: number = get_item_group(name, "bottom")
+	const top: number = get_item_group(name, "crafter_door_top")
+	const bottom: number = get_item_group(name, "crafter_door_bottom")
 	const param2: number | undefined = node.param2
 	const pos2: Vec3 = vector.create3d(pos)
 	
@@ -98,7 +98,7 @@ function door_rightclick (pos: Vec3) {
 // 				//bottom
 // 				if door == "bottom" then
 // 					tiles = {"wood.png"}
-// 					groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, bottom = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
+// 					groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, crafter_door_bottom = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
 					
 // 				//top
 // 				else
@@ -107,7 +107,7 @@ function door_rightclick (pos: Vec3) {
 // 					elseif state == "open" then
 // 						tiles = {"wood.png","wood.png","wood_door_top.png","wood_door_top.png","wood.png","wood.png"}
 // 					end
-// 					groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, redstone_activation = 1, top = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
+// 					groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, redstone_activation = 1, crafter_door_top = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
 // 				end
 // 			elseif material == "iron" then
 // 				sounds = main.stoneSound()
