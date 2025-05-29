@@ -48,11 +48,17 @@ namespace flowLib {
 			return null;
 		}
 
-		// data = get_nodes(pos)
-		// param2 = core.get_node(pos).param2
-		// if param2 > 7 then
-		// 	return nil
-		// end
+		const data: FlowNode[] = get_nodes(pos);
+
+		const param2: number | undefined = core.get_node(pos).param2;
+
+		if (param2 == null) {
+			return null;
+		}
+
+		if (param2 > 7) {
+			return null;
+		}
 
 		// if c_node == "main:water" then
 		// 	for _,i in pairs(data) do
