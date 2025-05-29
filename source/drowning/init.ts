@@ -160,7 +160,7 @@ namespace drowning {
 	function handle_breath(player: ObjectRef, dtime: number): void {
 		const name: string = player.get_player_name();
 
-		const head: string = newFunctions.get_player_head_env(player) || "";
+		const head: string | null = newFunctions.get_player_head_env(player);
 
 		const data: DrownData | undefined = pool.get(name);
 
@@ -173,7 +173,7 @@ namespace drowning {
 			return;
 		}
 
-		if (core.get_item_group(head, "drowning") > 0) {
+		if (head != null && core.get_item_group(head, "drowning") > 0) {
 			// 	temp_pool.ticker = temp_pool.ticker + dtime
 			// 	if temp_pool.breath > 0 and temp_pool.ticker >= 1.3 then
 			// 		if temp_pool.breath == 21 then
@@ -192,13 +192,13 @@ namespace drowning {
 			// 		temp_pool.ticker = 0
 			// 	end
 		} else {
-			// 	temp_pool.ticker = temp_pool.ticker + dtime
-			// 	if temp_pool.breath < 21 and temp_pool.ticker >= 0.25 then
-			// 		temp_pool.breath = temp_pool.breath + 2
-			// 		temp_pool.drowning      = 0
-			// 		temp_pool.ticker = 0
-			// 		update_breath_bar(player,temp_pool.breath)
-			// 	end
+			data.ticker += dtime;
+			// if temp_pool.breath < 21 and temp_pool.ticker >= 0.25 then
+			// 	temp_pool.breath = temp_pool.breath + 2
+			// 	temp_pool.drowning      = 0
+			// 	temp_pool.ticker = 0
+			// 	update_breath_bar(player,temp_pool.breath)
+			// end
 		}
 	}
 
