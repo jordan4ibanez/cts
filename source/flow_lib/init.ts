@@ -93,14 +93,18 @@ namespace flowLib {
 		}
 
 		for (const i of data) {
-			nd = i[2]
-			name = nd.name
-			par2 = nd.param2
-			tmp = core.registered_nodes[name]
-			if tmp and not tmp.walkable and name ~= "main:waterflow" and name ~= "main:water" then
-				return(vector.subtract(i[1],pos))
-			end
-        }
+			const name: string = i.node.name;
+			const par2: number | undefined = i.node.param2;
+			const tmp: NodeDefinition | null = core.registered_nodes[name];
+			if (
+				tmp != null &&
+				!tmp.walkable &&
+				name != "main:waterflow" &&
+				name != "main:water"
+			) {
+				return vector.subtract(i.pos, pos);
+			}
+		}
 
 		// return nil
 	}
