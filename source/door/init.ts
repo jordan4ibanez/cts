@@ -21,7 +21,7 @@ namespace door {
 	// local pos2
 
 	for (const material of ["wood", "iron"]) {
-		//this is the function that makes the door open and close when rightclicked
+		// This is the function that makes the door open and close when rightclicked.
 		function door_rightclick(pos: Vec3) {
 			const node: NodeTable = get_node(pos);
 			const name: string = node.name;
@@ -32,31 +32,38 @@ namespace door {
 			const param2: number | undefined = node.param2;
 			const pos2: Vec3 = vector.create3d(pos);
 
-			// //close the door
-			// if opened > 0 then
-			// 	play_sound("door_close", {pos=pos,pitch=math.random(80,100)/100})
-			// 	if top > 0 then
-			// 		pos2.y = pos2.y - 1
-			// 		set_node(pos,{name="door:top_"..material.."_closed",param2=param2})
-			// 		set_node(pos2,{name="door:bottom_"..material.."_closed",param2=param2})
-			// 	elseif bottom > 0 then
-			// 		pos2.y = pos2.y + 1
-			// 		set_node(pos,{name="door:bottom_"..material.."_closed",param2=param2})
-			// 		set_node(pos2,{name="door:top_"..material.."_closed",param2=param2})
-			// 	end
-			// //open the door
-			// elseif closed > 0 then
-			// 	play_sound("door_open", {pos=pos,pitch=math.random(80,100)/100})
-			// 	if top > 0 then
-			// 		pos2.y = pos2.y - 1
-			// 		set_node(pos,{name="door:top_"..material.."_open",param2=param2})
-			// 		set_node(pos2,{name="door:bottom_"..material.."_open",param2=param2})
-			// 	elseif bottom > 0 then
-			// 		pos2.y = pos2.y + 1
-			// 		set_node(pos,{name="door:bottom_"..material.."_open",param2=param2})
-			// 		set_node(pos2,{name="door:top_"..material.."_open",param2=param2})
-			// 	end
-			// end
+			// Close the door.
+			if (opened > 0) {
+				play_sound("door_close", {
+					pos: pos,
+					pitch: math.random(80, 100) / 100,
+				});
+				// if top > 0 then
+				// 	pos2.y = pos2.y - 1
+				// 	set_node(pos,{name="door:top_"..material.."_closed",param2=param2})
+				// 	set_node(pos2,{name="door:bottom_"..material.."_closed",param2=param2})
+				// elseif bottom > 0 then
+				// 	pos2.y = pos2.y + 1
+				// 	set_node(pos,{name="door:bottom_"..material.."_closed",param2=param2})
+				// 	set_node(pos2,{name="door:top_"..material.."_closed",param2=param2})
+				// end
+
+				//open the door
+			} else if (closed > 0) {
+				play_sound("door_open", {
+					pos: pos,
+					pitch: math.random(80, 100) / 100,
+				});
+				// if top > 0 then
+				// 	pos2.y = pos2.y - 1
+				// 	set_node(pos,{name="door:top_"..material.."_open",param2=param2})
+				// 	set_node(pos2,{name="door:bottom_"..material.."_open",param2=param2})
+				// elseif bottom > 0 then
+				// 	pos2.y = pos2.y + 1
+				// 	set_node(pos,{name="door:bottom_"..material.."_open",param2=param2})
+				// 	set_node(pos2,{name="door:top_"..material.."_open",param2=param2})
+				// end
+			}
 		}
 
 		// //this is where the top and bottom of the door are created
