@@ -4,7 +4,7 @@ namespace fireworks {
 
 	 function fireworks_pop(pos: Vec3): void {
 	    for (const [_,color] of ipairs(colors)) {
-	        minetest.add_particlespawner({
+	        core.add_particlespawner({
 	            amount = 15,
 	            time = 0.001,
 	            minpos = pos,
@@ -27,7 +27,7 @@ namespace fireworks {
 	    core.sound_play("fireworks_pop",{pos=pos,pitch=math.random(80,100)/100,gain=6.0,max_hear_distance = 128})
         }
 
-	// minetest.register_entity("fireworks:rocket", {
+	// core.register_entity("fireworks:rocket", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -44,7 +44,7 @@ namespace fireworks {
 
 	// 	on_activate = function(self, staticdata, dtime_s)
 	//         self.object:set_acceleration(vector.new(0,50,0))
-	//         minetest.add_particlespawner({
+	//         core.add_particlespawner({
 	//             amount = 30,
 	//             time = 1,
 	//             minpos = pos,
@@ -63,7 +63,7 @@ namespace fireworks {
 	//             attached = self.object,
 	//             texture = "smoke.png",
 	//         })
-	//         minetest.sound_play("fireworks_launch",{object=self.object,pitch=math.random(80,100)/100})
+	//         core.sound_play("fireworks_launch",{object=self.object,pitch=math.random(80,100)/100})
 	// 	end,
 
 	// 	sound_played = false,
@@ -76,7 +76,7 @@ namespace fireworks {
 	// 	end,
 	// })
 
-	// minetest.register_craftitem("fireworks:rocket", {
+	// core.register_craftitem("fireworks:rocket", {
 	// 	description = "Fireworks",
 	// 	inventory_image = "fireworks.png",
 	// 	wield_image = "fireworks.png",
@@ -85,7 +85,7 @@ namespace fireworks {
 	// 			return
 	// 		end
 
-	// 		minetest.add_entity(pointed_thing.above, "fireworks:rocket")
+	// 		core.add_entity(pointed_thing.above, "fireworks:rocket")
 
 	// 		itemstack:take_item()
 
@@ -93,7 +93,7 @@ namespace fireworks {
 	// 	end,
 	// })
 
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	type = "shapeless",
 	// 	output = "fireworks:rocket",
 	// 	recipe = {"main:paper","mob:gunpowder"},
