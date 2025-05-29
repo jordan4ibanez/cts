@@ -138,7 +138,9 @@ namespace walls {
 			def as LuaTable
 		) as NodeDefinition;
 		const newname: string =
-			"crafter_walls:" + string.gsub(name, "crafter:", "") + "_wall_post";
+			"crafter_walls:" +
+			string.gsub(name, "crafter:", "")[0] +
+			"_wall_post";
 		def2.description = def.description + " Wall";
 		def2.mod_origin = "walls";
 		// def2.name = newname
