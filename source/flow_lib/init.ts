@@ -105,7 +105,7 @@ namespace flowLib {
 			}
 		}
 
-		// return nil
+		return null;
 	}
 
 	// function flow(pos)
