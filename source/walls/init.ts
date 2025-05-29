@@ -2,7 +2,7 @@ namespace walls {
 local fence_collision_extra = 4/8
 
 //create fences for all solid nodes
-for name,def in pairs(minetest.registered_nodes) do
+for name,def in pairs(core.registered_nodes) do
 	if def.drawtype == "normal" and string.match(name, "main:") then
 	
 		//set up fence
@@ -41,9 +41,9 @@ for name,def in pairs(minetest.registered_nodes) do
 		}
 		def2.connects_to = {"group:fence", "group:wood", "group:tree", "group:wall", "group:stone", "group:sand"}
 		def2.sunlight_propagates = true
-		minetest.register_node(newname,def2)
+		core.register_node(newname,def2)
 		
-		minetest.register_craft({
+		core.register_craft({
 			output = newname .. " 16",
 			recipe = {
 				{ name, 'main:stick', name },
@@ -55,7 +55,7 @@ for name,def in pairs(minetest.registered_nodes) do
 end
 
 //create wall posts
-for name,def in pairs(minetest.registered_nodes) do
+for name,def in pairs(core.registered_nodes) do
 	if def.drawtype == "normal" and string.match(name, "main:") then
 	
 		//set up wall
@@ -69,7 +69,7 @@ for name,def in pairs(minetest.registered_nodes) do
 		def2.drawtype = "nodebox"
 		def2.on_dig = nil
 		//def2.on_place = function(itemstack, placer, pointed_thing)
-		//	minetest.item_place(itemstack, placer, pointed_thing)
+		//	core.item_place(itemstack, placer, pointed_thing)
 		//	wall_placing(pointed_thing.above,newname)
 		//end
 		def2.node_box = {
@@ -95,9 +95,9 @@ for name,def in pairs(minetest.registered_nodes) do
 		def2.groups["fence"] = 1
 		def2.connects_to = {"group:fence", "group:wood", "group:tree", "group:wall", "group:stone", "group:sand"}
 		def2.sunlight_propagates = true
-		minetest.register_node(newname,def2)
+		core.register_node(newname,def2)
 		
-		minetest.register_craft({
+		core.register_craft({
 			output = newname .. " 16",
 			recipe = {
 				{ name, 'main:iron', name },
@@ -109,7 +109,7 @@ for name,def in pairs(minetest.registered_nodes) do
 end
 
 //create window
-local def = minetest.registered_nodes["main:glass"]
+local def = core.registered_nodes["main:glass"]
 
 //set up wall
 local def2 = table.copy(def)
@@ -122,7 +122,7 @@ def2.paramtype = "light"
 def2.drawtype = "nodebox"
 def2.on_dig = nil
 //def2.on_place = function(itemstack, placer, pointed_thing)
-//	minetest.item_place(itemstack, placer, pointed_thing)
+//	core.item_place(itemstack, placer, pointed_thing)
 //	wall_placing(pointed_thing.above,newname)
 //end
 def2.node_box = {
@@ -143,9 +143,9 @@ def2.node_box = {
 
 def2.connects_to = {"group:fence", "group:wood", "group:wall", "group:stone", "group:sand","group:glass"}
 def2.sunlight_propagates = true
-minetest.register_node(newname,def2)
+core.register_node(newname,def2)
 
-minetest.register_craft({
+core.register_craft({
 	output = newname .. " 16",
 	recipe = {
 		{ "main:glass", "main:glass" },
