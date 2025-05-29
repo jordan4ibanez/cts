@@ -1,7 +1,9 @@
-local
-minetest,math,pairs,table
-=
-minetest,math,pairs,table
+// local
+// minetest,math,pairs,table
+// =
+// minetest,math,pairs,table
+
+namespace door {
 
 local get_item_group = minetest.get_item_group
 local get_node       = minetest.get_node
@@ -182,5 +184,4 @@ minetest.register_craft({
 })
 end
 
-
-
+}
