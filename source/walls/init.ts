@@ -101,7 +101,7 @@ namespace walls {
 				"group:sand",
 			];
 			def2.sunlight_propagates = true;
-			// 	core.register_node(newname,def2)
+			core.register_node(newname, def2);
 			// 	core.register_craft({
 			// 		output = newname + " 16",
 			// 		recipe = {
