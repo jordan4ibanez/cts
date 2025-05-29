@@ -135,20 +135,28 @@ namespace walls {
 			def2.paramtype = ParamType1.light;
 			def2.drawtype = Drawtype.nodebox;
 
-			// 		//def2.on_place = function(itemstack, placer, pointed_thing)
-			// 		//	core.item_place(itemstack, placer, pointed_thing)
-			// 		//	wall_placing(pointed_thing.above,newname)
-			// 		//end
-			// 		def2.node_box = {
-			// 			type = "connected",
-			// 			disconnected_sides  = {-4/16, -1/2, -4/16, 4/16, 9/16, 4/16},
-			// 			// connect_top =
-			// 			// connect_bottom =
-			// 			connect_front = {-2/16,  -1/2, -1/2,   2/16,  1/2, 2/16 },
-			// 			connect_left =  {-1/2,   -1/2, -2/16, 2/16,   1/2,  2/16},
-			// 			connect_back =  {-2/16,  -1/2,  -2/16,   2/16,  1/2,  1/2 },
-			// 			connect_right = { -2/16,   -1/2, -2/16,  1/2,   1/2,  2/16},
-			// 		}
+			//def2.on_place = function(itemstack, placer, pointed_thing)
+			//	core.item_place(itemstack, placer, pointed_thing)
+			//	wall_placing(pointed_thing.above,newname)
+			//end
+
+			def2.node_box = {
+				type: Nodeboxtype.connected,
+				disconnected_sides: [
+					-4 / 16,
+					-1 / 2,
+					-4 / 16,
+					4 / 16,
+					9 / 16,
+					4 / 16,
+				],
+				// connect_top =
+				// connect_bottom =
+				connect_front: [-2 / 16, -1 / 2, -1 / 2, 2 / 16, 1 / 2, 2 / 16],
+				connect_left: [-1 / 2, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 2 / 16],
+				connect_back: [-2 / 16, -1 / 2, -2 / 16, 2 / 16, 1 / 2, 1 / 2],
+				connect_right: [-2 / 16, -1 / 2, -2 / 16, 1 / 2, 1 / 2, 2 / 16],
+			};
 			// 		def2.collision_box = {
 			// 			type = "connected",
 			// 			fixed = {-1/8, -1/2, -1/8, 1/8, 1/2 + fence_collision_extra, 1/8},
