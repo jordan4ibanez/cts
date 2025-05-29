@@ -122,16 +122,19 @@ namespace walls {
 		}
 
 		if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
-			// 		//set up wall
-			// 		local def2 = table.copy(def)
-			// 		local newname = "walls:"..string.gsub(name, "main:", "").."_wall_post"
-			// 		def2.description = def.description.." Wall"
-			// 		def2.mod_origin = "walls"
-			// 		def2.name = newname
-			// 		def2.drop = newname
-			// 		def2.paramtype = "light"
-			// 		def2.drawtype = "nodebox"
-			// 		def2.on_dig = nil
+			//set up wall
+			const def2: NodeDefinition = table.copy(
+				def as LuaTable
+			) as NodeDefinition;
+			const newname: string =
+				"walls:" + string.gsub(name, "main:", "") + "_wall_post";
+			def2.description = def.description + " Wall";
+			def2.mod_origin = "walls";
+			// def2.name = newname
+			def2.drop = newname;
+			def2.paramtype = ParamType1.light;
+			def2.drawtype = Drawtype.nodebox;
+
 			// 		//def2.on_place = function(itemstack, placer, pointed_thing)
 			// 		//	core.item_place(itemstack, placer, pointed_thing)
 			// 		//	wall_placing(pointed_thing.above,newname)
