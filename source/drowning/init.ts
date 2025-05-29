@@ -202,10 +202,10 @@ namespace drowning {
 		}
 	}
 
-	// // inject into main loop
-	// core.register_globalstep(function(dtime)
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		handle_breath(player,dtime)
-	// 	end
-	// end)
+	// Inject into main loop.
+	core.register_globalstep((dtime: number) => {
+		for (const [_, player] of ipairs(core.get_connected_players())) {
+			handle_breath(player, dtime);
+		}
+	});
 }
