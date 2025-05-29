@@ -28,8 +28,8 @@ for ( const material of ["wood","iron"]) {
 function door_rightclick (pos: Vec3) {
 	const node: NodeTable = get_node(pos)
 	const name: string = node.name
-	const opened: number = get_item_group(name, "door_open")
-	const closed: number = get_item_group(name, "door_closed")
+	const opened: number = get_item_group(name, "crafter_door_open")
+	const closed: number = get_item_group(name, "crafter_door_closed")
 	const top: number = get_item_group(name, "crafter_door_top")
 	const bottom: number = get_item_group(name, "crafter_door_bottom")
 	const param2: number | undefined = node.param2
@@ -113,7 +113,7 @@ function door_rightclick (pos: Vec3) {
 // 				sounds = main.stoneSound()
 // 				if door == "bottom" then
 // 					tiles = {"iron_block.png"}
-// 					groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, bottom = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
+// 					groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, bottom = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
 					
 // 				else
 // 					if state == "closed" then
@@ -121,7 +121,7 @@ function door_rightclick (pos: Vec3) {
 // 					elseif state == "open" then
 // 						tiles = {"iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png","iron_block.png","iron_block.png"}
 // 					end
-// 					groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, redstone_activation = 1, top = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
+// 					groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, redstone_activation = 1, top = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
 // 				end
 // 			end
 // 			core.register_node("door:"..door.."_"..material.."_"..state, {
