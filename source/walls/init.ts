@@ -110,6 +110,7 @@ namespace walls {
 			"group:wall",
 			"group:stone",
 			"group:sand",
+			"group:soil",
 		];
 		def2.sunlight_propagates = true;
 		core.register_node(newname, def2);
@@ -225,6 +226,7 @@ namespace walls {
 			"group:wall",
 			"group:stone",
 			"group:sand",
+			"group:soil",
 		];
 		def2.sunlight_propagates = true;
 		core.register_node(newname, def2);
@@ -279,6 +281,7 @@ namespace walls {
 		"group:stone",
 		"group:sand",
 		"group:glass",
+		"group:soil",
 	];
 	def2.sunlight_propagates = true;
 	core.register_node(newname, def2);
