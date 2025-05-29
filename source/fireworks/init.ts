@@ -34,7 +34,7 @@ namespace fireworks {
 
 	class FireworksEntity extends types.Entity {
 		name = "fireworks:rocket";
-        
+
 		timer: number = 0;
 
 		initial_properties = {
@@ -48,31 +48,35 @@ namespace fireworks {
 			is_visible: true,
 			pointable: true,
 		};
-	}
 
-	// 	on_activate = function(self, staticdata, dtime_s)
-	//         self.object:set_acceleration(vector.new(0,50,0))
-	//         core.add_particlespawner({
-	//             amount = 30,
-	//             time = 1,
-	//             minpos = pos,
-	//             maxpos = pos,
-	//             minvel = vector.new(0,-20,0),
-	//             maxvel = vector.new(0,-20,0),
-	//             minacc = {x=0, y=0, z=0},
-	//             maxacc = {x=0, y=0, z=0},
-	//             minexptime = 1.1,
-	//             maxexptime = 1.5,
-	//             minsize = 1,
-	//             maxsize = 2,
-	//             collisiondetection = false,
-	//             collision_removal = false,
-	//             vertical = false,
-	//             attached = self.object,
-	//             texture = "smoke.png",
-	//         })
-	//         core.sound_play("fireworks_launch",{object=self.object,pitch=math.random(80,100)/100})
-	// 	end,
+		on_activate(staticdata: string, dtime_s: number): void {
+			this.object.set_acceleration(vector.create3d(0, 50, 0));
+			const pos = this.object.get_pos();
+			core.add_particlespawner({
+				amount: 30,
+				time: 1,
+				minpos: pos,
+				maxpos: pos,
+				minvel: vector.create3d(0, -20, 0),
+				maxvel: vector.create3d(0, -20, 0),
+				minacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+				maxacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+				minexptime: 1.1,
+				maxexptime: 1.5,
+				minsize: 1,
+				maxsize: 2,
+				collisiondetection: false,
+				collision_removal: false,
+				vertical: false,
+				attached: this.object,
+				texture: "smoke.png",
+			});
+			core.sound_play("fireworks_launch", {
+				object: this.object,
+				pitch: math.random(80, 100) / 100,
+			});
+		}
+	}
 
 	// 	sound_played = false,
 	// 	on_step = function(self, dtime)
