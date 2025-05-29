@@ -1,3 +1,4 @@
+namespace fireworks {
 local colors ={
     "red",
     "white",
@@ -107,3 +108,4 @@ minetest.register_craft({
 	output = "fireworks:rocket",
 	recipe = {"main:paper","mob:gunpowder"},
 })
+}
