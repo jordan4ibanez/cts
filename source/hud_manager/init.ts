@@ -22,11 +22,19 @@ namespace hudManager {
 		const local_hud: number = player.hud_add({
 			type: def.type,
 			position: def.position,
+			name: def.name,
+			scale: def.scale,
 			text: def.text,
+			text2: def.text2,
 			number: def.number,
+			item: def.item,
 			direction: def.direction,
-			size: def.size,
+			alignment: def.alignment,
 			offset: def.offset,
+			world_pos: def.world_pos,
+			size: def.size,
+			z_index: def.z_index,
+			style: def.style,
 		});
 
 		let data: Map<string, number> | undefined = player_huds.get(name);
