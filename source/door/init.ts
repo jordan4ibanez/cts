@@ -38,15 +38,28 @@ namespace door {
 					pos: pos,
 					pitch: math.random(80, 100) / 100,
 				});
-				// if top > 0 then
-				// 	pos2.y = pos2.y - 1
-				// 	set_node(pos,{name="door:top_"..material.."_closed",param2=param2})
-				// 	set_node(pos2,{name="door:bottom_"..material.."_closed",param2=param2})
-				// elseif bottom > 0 then
-				// 	pos2.y = pos2.y + 1
-				// 	set_node(pos,{name="door:bottom_"..material.."_closed",param2=param2})
-				// 	set_node(pos2,{name="door:top_"..material.."_closed",param2=param2})
-				// end
+
+				if (top > 0) {
+					pos2.y = pos2.y - 1;
+					set_node(pos, {
+						name: "door:top_" + material + "_closed",
+						param2: param2,
+					});
+					set_node(pos2, {
+						name: "door:bottom_" + material + "_closed",
+						param2: param2,
+					});
+				} else if (bottom > 0) {
+					pos2.y = pos2.y + 1;
+					set_node(pos, {
+						name: "door:bottom_" + material + "_closed",
+						param2: param2,
+					});
+					set_node(pos2, {
+						name: "door:top_" + material + "_closed",
+						param2: param2,
+					});
+				}
 
 				// Open the door.
 			} else if (closed > 0) {
