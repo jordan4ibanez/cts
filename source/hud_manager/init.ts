@@ -19,7 +19,7 @@ namespace hudManager {
 	): void {
 		const name: string = player.get_player_name();
 
-		const local_hud: number = player.hud_add({
+		const local_hud: number | null = player.hud_add({
 			type: def.type,
 			position: def.position,
 			name: def.name,
@@ -37,7 +37,7 @@ namespace hudManager {
 			style: def.style,
 		});
 
-		if (local_hud == 0) {
+		if (local_hud == null) {
 			throw new Error(
 				`Failed to add hud [${hud_name}] to player [${name}]`
 			);
