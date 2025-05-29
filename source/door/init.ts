@@ -24,7 +24,7 @@ local pos2
 
 
 for _,material in pairs({"wood","iron"}) do
---this is the function that makes the door open and close when rightclicked
+//this is the function that makes the door open and close when rightclicked
 local door_rightclick = function(pos)
 	node = get_node(pos)
 	name = node.name
@@ -36,7 +36,7 @@ local door_rightclick = function(pos)
 	param2 = node.param2
 	pos2 = t_copy(pos)
 	
-	--close the door
+	//close the door
 	if opened > 0 then
 		play_sound("door_close", {pos=pos,pitch=math.random(80,100)/100})
 		if top > 0 then
@@ -48,7 +48,7 @@ local door_rightclick = function(pos)
 			set_node(pos,{name="door:bottom_"..material.."_closed",param2=param2})
 			set_node(pos2,{name="door:top_"..material.."_closed",param2=param2})
 		end
-	--open the door
+	//open the door
 	elseif closed > 0 then
 		play_sound("door_open", {pos=pos,pitch=math.random(80,100)/100})
 		if top > 0 then
@@ -63,7 +63,7 @@ local door_rightclick = function(pos)
 	end
 end
 
---this is where the top and bottom of the door are created
+//this is where the top and bottom of the door are created
 for _,door in pairs({"top","bottom"}) do
 		for _,state in pairs({"open","closed"}) do
 			local door_node_box = {}
@@ -80,7 +80,7 @@ for _,door in pairs({"top","bottom"}) do
 			local redstone_deactivation
 			local redstone_activation
 
-			--redstone input
+			//redstone input
 			if state == "open" then
 				redstone_deactivation = function(pos)
 					door_rightclick(pos)
@@ -96,12 +96,12 @@ for _,door in pairs({"top","bottom"}) do
 				on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 					door_rightclick(pos)
 				end
-				--bottom
+				//bottom
 				if door == "bottom" then
 					tiles = {"wood.png"}
 					groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, bottom = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
 					
-				--top
+				//top
 				else
 					if state == "closed" then
 						tiles = {"wood.png","wood.png","wood.png","wood.png","wood_door_top.png","wood_door_top.png"}
@@ -140,11 +140,11 @@ for _,door in pairs({"top","bottom"}) do
 				node_box = {
 					type = "fixed",
 					fixed = {
-							--left front bottom right back top
+							//left front bottom right back top
 							door_node_box
 						},
 					},
-				--redstone activation is in both because only the bottom is defined as an activator and it's easier to do it like this
+				//redstone activation is in both because only the bottom is defined as an activator and it's easier to do it like this
 
 				redstone_activation = redstone_activation,
 				redstone_deactivation = redstone_deactivation,
