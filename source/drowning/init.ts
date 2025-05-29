@@ -146,7 +146,6 @@ namespace drowning {
 		if (data == null) {
 			throw new Error(`Player [${name}] has no drowning data.`);
 		}
-
 		data.breath = 21;
 		data.ticker = 0;
 		data.drowning = 0;
@@ -158,57 +157,64 @@ namespace drowning {
 	// local temp_pool
 	// local head
 	// local hp
-	// local handle_breath = function(player,dtime)
-	// 	name = player:get_player_name()
-	// 	head = get_player_head_env(player)
-	// 	temp_pool = pool[name]
-	// 	hp = player:get_hp()
-	// 	if hp <= 0 then
-	// 		return
-	// 	end
-	// 	if core.get_item_group(head, "drowning") > 0 then
+	function handle_breath(player: ObjectRef, dtime: number): void {
+		const name: string = player.get_player_name();
 
-	// 		temp_pool.ticker = temp_pool.ticker + dtime
+		const head = newFunctions.get_player_head_env(player);
 
-	// 		if temp_pool.breath > 0 and temp_pool.ticker >= 1.3 then
+		const data: DrownData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] has no drowning data.`);
+		}
 
-	// 			if temp_pool.breath == 21 then
-	// 				temp_pool.breath = 20
-	// 			end
-	// 			temp_pool.breath = temp_pool.breath - 2
+		const hp: number = player.get_hp();
+		if (hp <= 0) {
+			return;
+		}
 
-	// 			temp_pool.drowning = 0
+		// if core.get_item_group(head, "drowning") > 0 then
 
-	// 			update_breath_bar(player,temp_pool.breath)
-	// 		elseif temp_pool.breath <= 0 and temp_pool.ticker >= 1.3 then
+		// 	temp_pool.ticker = temp_pool.ticker + dtime
 
-	// 			temp_pool.drowning = 1
+		// 	if temp_pool.breath > 0 and temp_pool.ticker >= 1.3 then
 
-	// 			if hp > 0 then
-	// 				player:set_hp( hp - 2 )
-	// 			end
-	// 		end
+		// 		if temp_pool.breath == 21 then
+		// 			temp_pool.breath = 20
+		// 		end
+		// 		temp_pool.breath = temp_pool.breath - 2
 
-	// 		if temp_pool.ticker >= 1.3 then
-	// 			temp_pool.ticker = 0
-	// 		end
+		// 		temp_pool.drowning = 0
 
-	// 	else
+		// 		update_breath_bar(player,temp_pool.breath)
+		// 	elseif temp_pool.breath <= 0 and temp_pool.ticker >= 1.3 then
 
-	// 		temp_pool.ticker = temp_pool.ticker + dtime
+		// 		temp_pool.drowning = 1
 
-	// 		if temp_pool.breath < 21 and temp_pool.ticker >= 0.25 then
+		// 		if hp > 0 then
+		// 			player:set_hp( hp - 2 )
+		// 		end
+		// 	end
 
-	// 			temp_pool.breath = temp_pool.breath + 2
+		// 	if temp_pool.ticker >= 1.3 then
+		// 		temp_pool.ticker = 0
+		// 	end
 
-	// 			temp_pool.drowning      = 0
+		// else
 
-	// 			temp_pool.ticker = 0
+		// 	temp_pool.ticker = temp_pool.ticker + dtime
 
-	// 			update_breath_bar(player,temp_pool.breath)
-	// 		end
-	// 	end
-	// end
+		// 	if temp_pool.breath < 21 and temp_pool.ticker >= 0.25 then
+
+		// 		temp_pool.breath = temp_pool.breath + 2
+
+		// 		temp_pool.drowning      = 0
+
+		// 		temp_pool.ticker = 0
+
+		// 		update_breath_bar(player,temp_pool.breath)
+		// 	end
+		// end
+	}
 
 	// // inject into main loop
 	// core.register_globalstep(function(dtime)
