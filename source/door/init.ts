@@ -12,18 +12,18 @@ const play_sound     = core.sound_play
 const t_copy         = table.copy
 
 
-local node
-local name
-local opened
-local closed
-local closed
-local top
-local bottom
-local param2
-local pos2
+// local node
+// local name
+// local opened
+// local closed
+// local closed
+// local top
+// local bottom
+// local param2
+// local pos2
 
 
-for _,material in pairs({"wood","iron"}) do
+for ( const material of ["wood","iron"]) {
 //this is the function that makes the door open and close when rightclicked
 local door_rightclick = function(pos)
 	node = get_node(pos)
@@ -61,7 +61,7 @@ local door_rightclick = function(pos)
 			set_node(pos2,{name="door:top_"..material.."_open",param2=param2})
 		end
 	end
-end
+}
 
 //this is where the top and bottom of the door are created
 for _,door in pairs({"top","bottom"}) do
