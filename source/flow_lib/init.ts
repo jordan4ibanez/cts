@@ -108,7 +108,7 @@ namespace flowLib {
 		return null;
 	}
 
-	// function flow(pos)
-	// 	return(get_flowing_dir(pos))
-	// end
+	export function flow(pos: Vec3) {
+		return get_flowing_dir(pos);
+	}
 }
