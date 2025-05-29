@@ -60,16 +60,15 @@ namespace flowLib {
 			return null;
 		}
 
-		// if c_node == "main:water" then
-		// 	for _,i in pairs(data) do
-		// 		nd = i[2]
-		// 		name = nd.name
-		// 		par2 = nd.param2
-		// 		if name == "main:waterflow" and par2 == 7 then
-		// 			return(vector.subtract(i[1],pos))
-		// 		end
-		// 	end
-		// end
+		if (c_node == "main:water") {
+			for (const i of data) {
+				const par2: number | undefined = i.node.param2;
+
+				if (i.node.name == "main:waterflow" && par2 && par2 == 7) {
+					return vector.subtract(i.pos, pos);
+				}
+			}
+		}
 
 		// for _,i in pairs(data) do
 		// 	nd = i[2]
