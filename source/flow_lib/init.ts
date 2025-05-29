@@ -41,7 +41,7 @@ namespace flowLib {
 	// local tmp
 	// local c_node
 
-	function get_flowing_dir(pos: Vec3) {
+	export function flow(pos: Vec3): Vec3 | null {
 		const c_node = core.get_node(pos).name;
 
 		if (c_node != "main:waterflow" && c_node != "main:water") {
@@ -106,9 +106,5 @@ namespace flowLib {
 		}
 
 		return null;
-	}
-
-	export function flow(pos: Vec3) {
-		return get_flowing_dir(pos);
 	}
 }
