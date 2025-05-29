@@ -15,7 +15,6 @@ namespace flowLib {
 
 	function get_nodes(pos: Vec3) {
 		const tab: FlowNode[] = [];
-		const n: number = 1;
 
 		for (let i = -1; i <= 1; i += 2) {
 			const data = [
