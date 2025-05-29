@@ -193,12 +193,12 @@ namespace drowning {
 			// 	end
 		} else {
 			data.ticker += dtime;
-			// if temp_pool.breath < 21 and temp_pool.ticker >= 0.25 then
-			// 	temp_pool.breath = temp_pool.breath + 2
-			// 	temp_pool.drowning      = 0
-			// 	temp_pool.ticker = 0
-			// 	update_breath_bar(player,temp_pool.breath)
-			// end
+			if (data.breath < 21 && data.ticker >= 0.25) {
+				data.breath += 2;
+				data.drowning = 0;
+				data.ticker = 0;
+				update_breath_bar(player, data.breath);
+			}
 		}
 	}
 
