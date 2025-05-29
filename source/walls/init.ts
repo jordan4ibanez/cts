@@ -204,7 +204,14 @@ namespace walls {
 				def2.groups = {};
 			}
 			def2.groups["fence"] = 1;
-			// 		def2.connects_to = {"group:fence", "group:wood", "group:tree", "group:wall", "group:stone", "group:sand"}
+			def2.connects_to = [
+				"group:fence",
+				"group:wood",
+				"group:tree",
+				"group:wall",
+				"group:stone",
+				"group:sand",
+			];
 			// 		def2.sunlight_propagates = true
 			// 		core.register_node(newname,def2)
 			// 		core.register_craft({
