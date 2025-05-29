@@ -481,7 +481,7 @@ namespace item_handling {
 			if (is_stuck) {
 				let shootdir: Vec3 | null = null;
 				// Check which one of the 4 sides is free
-				for (let o = 1; o <= order.length; o++) {
+				for (let o = 0; o <= order.length; o++) {
 					const cnode: string = core.get_node(
 						vector.add(pos, order[o])
 					).name;
