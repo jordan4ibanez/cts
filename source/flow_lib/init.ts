@@ -42,15 +42,19 @@ namespace flowLib {
 	// local c_node
 
 	function get_flowing_dir(pos: Vec3) {
+        
 		c_node = minetest.get_node(pos).name
+
 		if c_node ~= "main:waterflow" and c_node ~= "main:water" then
 			return nil
 		end
+
 		data = get_nodes(pos)
 		param2 = minetest.get_node(pos).param2
 		if param2 > 7 then
 			return nil
 		end
+
 		if c_node == "main:water" then
 			for _,i in pairs(data) do
 				nd = i[2]
@@ -61,6 +65,7 @@ namespace flowLib {
 				end
 			end
 		end
+
 		for _,i in pairs(data) do
 			nd = i[2]
 			name = nd.name
@@ -69,6 +74,7 @@ namespace flowLib {
 				return(vector.subtract(i[1],pos))
 			end
 		end
+
 		for _,i in pairs(data) do
 			nd = i[2]
 			name = nd.name
@@ -77,6 +83,7 @@ namespace flowLib {
 				return(vector.subtract(i[1],pos))
 			end
 		end
+
 		for _,i in pairs(data) do
 			nd = i[2]
 			name = nd.name
