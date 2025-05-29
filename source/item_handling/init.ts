@@ -533,17 +533,17 @@ namespace item_handling {
 				}
 			}
 
-			// fixme: this was using the flow library mod.
-			// let flow_dir: Vec3 | null = flow(pos)
+			
+			let flow_dir: Vec3 | null = flowLib.flow(pos)
 
-			// if (flow_dir != null) {
-			// 	flow_dir = vector.multiply(flow_dir,10)
-			// 	const vel: Vec3 = this.object.get_velocity();
-			// 	let acceleration: Vec3 = vector.create3d(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
-			// 	acceleration = vector.multiply(acceleration, 0.01)
-			// 	this.object.add_velocity(acceleration)
-			// 	return
-			// }
+			if (flow_dir != null) {
+				flow_dir = vector.multiply(flow_dir,10)
+				const vel: Vec3 = this.object.get_velocity();
+				let acceleration: Vec3 = vector.create3d(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
+				acceleration = vector.multiply(acceleration, 0.01)
+				this.object.add_velocity(acceleration)
+				return
+			}
 
 			let change: boolean = false;
 			// Slide on slippery nodes
