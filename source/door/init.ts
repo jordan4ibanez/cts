@@ -25,7 +25,7 @@ const t_copy         = table.copy
 
 for ( const material of ["wood","iron"]) {
 //this is the function that makes the door open and close when rightclicked
-local door_rightclick = function(pos)
+local door_rightclick = function(pos) {
 	node = get_node(pos)
 	name = node.name
 	opened = get_item_group(name, "door_open")
@@ -182,6 +182,6 @@ local door_rightclick = function(pos)
 // 		{"main:"..material,"main:"..material}
 // 	}
 // })
-// end
+}
 
 }
