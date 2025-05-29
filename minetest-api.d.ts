@@ -2112,7 +2112,7 @@ declare global {
 		add_wear_by_uses(maxUses: number): void;
 		add_item(item: ItemStackObject): ItemStackObject;
 		item_fits(item: ItemStackObject): boolean;
-		take_item(n: number): ItemStackObject;
+		take_item(n?: number): ItemStackObject;
 		peek_item(n: number): ItemStackObject;
 		equals(other: ItemStackObject): boolean;
 	}
