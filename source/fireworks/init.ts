@@ -2,30 +2,35 @@ namespace fireworks {
 	const colors: string[] = ["red", "white", "blue"];
 	const colors_halloween: string[] = ["orange", "black"];
 
-	 function fireworks_pop(pos: Vec3): void {
-	    for (const [_,color] of ipairs(colors)) {
-	        core.add_particlespawner({
-	            amount = 15,
-	            time = 0.001,
-	            minpos = pos,
-	            maxpos = pos,
-	            minvel = vector.new(-16,-16,-16),
-	            maxvel = vector.new(16,16,16),
-	            minacc = {x=0, y=0, z=0},
-	            maxacc = {x=0, y=0, z=0},
-	            minexptime = 1.1,
-	            maxexptime = 1.5,
-	            minsize = 1,
-	            maxsize = 2,
-	            collisiondetection = false,
-	            collision_removal = false,
-	            vertical = false,
-	            texture = "smoke.png^[colorize:"..color..":255",
-	            glow = 14,
-	        })
-        }
-	    core.sound_play("fireworks_pop",{pos=pos,pitch=math.random(80,100)/100,gain=6.0,max_hear_distance = 128})
-        }
+	function fireworks_pop(pos: Vec3): void {
+		for (const [_, color] of ipairs(colors)) {
+			core.add_particlespawner({
+				amount: 15,
+				time: 0.001,
+				minpos: pos,
+				maxpos: pos,
+				minvel: vector.create3d(-16, -16, -16),
+				maxvel: vector.create3d(16, 16, 16),
+				minacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+				maxacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+				minexptime: 1.1,
+				maxexptime: 1.5,
+				minsize: 1,
+				maxsize: 2,
+				collisiondetection: false,
+				collision_removal: false,
+				vertical: false,
+				texture: "smoke.png^[colorize:" + color + ":255",
+				glow: 14,
+			});
+		}
+		core.sound_play("fireworks_pop", {
+			pos: pos,
+			pitch: math.random(80, 100) / 100,
+			gain: 6.0,
+			max_hear_distance: 128,
+		});
+	}
 
 	// core.register_entity("fireworks:rocket", {
 	// 	initial_properties = {
