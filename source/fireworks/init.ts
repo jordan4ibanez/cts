@@ -34,6 +34,9 @@ namespace fireworks {
 
 	class FireworksEntity extends types.Entity {
 		name = "fireworks:rocket";
+        
+		timer: number = 0;
+
 		initial_properties = {
 			hp_max: 1,
 			physical: true,
@@ -46,8 +49,6 @@ namespace fireworks {
 			pointable: true,
 		};
 	}
-
-	//     timer = 0,
 
 	// 	on_activate = function(self, staticdata, dtime_s)
 	//         self.object:set_acceleration(vector.new(0,50,0))
