@@ -1762,7 +1762,7 @@ declare global {
 	}
 
 	/** @noSelf **/ interface HudDefinition {
-		hud_elem_type: HudElementType;
+		type: HudElementType;
 		position?: Vec2;
 		name?: string;
 		scale?: Vec2;
