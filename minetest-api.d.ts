@@ -1892,6 +1892,7 @@ declare global {
 		collision_removal?: boolean;
 		glow?: number;
 		attached?: ObjectRef;
+		// End 5.6.0 def.
 		amount?: number;
 		time?: number;
 		maxpos?: Vec3;
