@@ -5,9 +5,6 @@
 // minetest,vector,math,pairs
 
 namespace flowLib {
-	// local tab
-	// local n
-
 	interface FlowNode {
 		pos: Vec3;
 		node: NodeTable;
