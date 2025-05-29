@@ -33,14 +33,6 @@ namespace flowLib {
 		return tab;
 	}
 
-	// local data
-	// local param2
-	// local nd
-	// local par2
-	// local name
-	// local tmp
-	// local c_node
-
 	export function flow(pos: Vec3): Vec3 | null {
 		const c_node = core.get_node(pos).name;
 
