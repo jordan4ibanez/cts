@@ -8,110 +8,117 @@ namespace walls {
 			continue;
 		}
 
-		if (def.drawtype == Drawtype.normal && string.match(name, "crafter:")) {
-			// Set up fence.
-			const def2: NodeDefinition = table.copy(
-				def as LuaTable
-			) as NodeDefinition;
-
-			const newname: string =
-				"walls:" + string.gsub(name, "crafter:", "") + "_fence";
-			def2.mod_origin = "walls";
-
-			// def2.name = newname
-
-			def2.description = def.description + " Fence";
-			def2.drop = newname;
-			def2.paramtype = ParamType1.light;
-			def2.drawtype = Drawtype.nodebox;
-			// def2.on_dig = nil
-
-			def2.node_box = {
-				type: Nodeboxtype.connected,
-				fixed: [-1 / 8, -1 / 2, -1 / 8, 1 / 8, 1 / 2, 1 / 8],
-
-				connect_front: [
-					[-1 / 16, 3 / 16, -1 / 2, 1 / 16, 5 / 16, -1 / 8],
-					[-1 / 16, -5 / 16, -1 / 2, 1 / 16, -3 / 16, -1 / 8],
-				],
-				connect_left: [
-					[-1 / 2, 3 / 16, -1 / 16, -1 / 8, 5 / 16, 1 / 16],
-					[-1 / 2, -5 / 16, -1 / 16, -1 / 8, -3 / 16, 1 / 16],
-				],
-				connect_back: [
-					[-1 / 16, 3 / 16, 1 / 8, 1 / 16, 5 / 16, 1 / 2],
-					[-1 / 16, -5 / 16, 1 / 8, 1 / 16, -3 / 16, 1 / 2],
-				],
-				connect_right: [
-					[1 / 8, 3 / 16, -1 / 16, 1 / 2, 5 / 16, 1 / 16],
-					[1 / 8, -5 / 16, -1 / 16, 1 / 2, -3 / 16, 1 / 16],
-				],
-			};
-
-			def2.collision_box = {
-				type: Nodeboxtype.connected,
-				fixed: [
-					-1 / 8,
-					-1 / 2,
-					-1 / 8,
-					1 / 8,
-					1 / 2 + fence_collision_extra,
-					1 / 8,
-				],
-				// connect_top =
-				// connect_bottom =
-				connect_front: [
-					-1 / 8,
-					-1 / 2,
-					-1 / 2,
-					1 / 8,
-					1 / 2 + fence_collision_extra,
-					-1 / 8,
-				],
-				connect_left: [
-					-1 / 2,
-					-1 / 2,
-					-1 / 8,
-					-1 / 8,
-					1 / 2 + fence_collision_extra,
-					1 / 8,
-				],
-				connect_back: [
-					-1 / 8,
-					-1 / 2,
-					1 / 8,
-					1 / 8,
-					1 / 2 + fence_collision_extra,
-					1 / 2,
-				],
-				connect_right: [
-					1 / 8,
-					-1 / 2,
-					-1 / 8,
-					1 / 2,
-					1 / 2 + fence_collision_extra,
-					1 / 8,
-				],
-			};
-
-			def2.connects_to = [
-				"group:fence",
-				"group:wood",
-				"group:tree",
-				"group:wall",
-				"group:stone",
-				"group:sand",
-			];
-			def2.sunlight_propagates = true;
-			core.register_node(newname, def2);
-			core.register_craft({
-				output: newname + " 16",
-				recipe: [
-					[name, "crafter:stick", name],
-					[name, "crafter:stick", name],
-				],
-			});
+		if (
+			def.drawtype != Drawtype.normal ||
+			string.match(name, "crafter:").length <= 0
+		) {
+			continue;
 		}
+
+		// Set up fence.
+		const def2: NodeDefinition = table.copy(
+			def as LuaTable
+		) as NodeDefinition;
+
+		print(name, def, dump(string.gsub(name, "crafter:", "")[0]));
+
+		const newname: string =
+			"crafter_walls:" + string.gsub(name, "crafter:", "") + "_fence";
+		def2.mod_origin = "walls";
+
+		// def2.name = newname
+
+		def2.description = def.description + " Fence";
+		def2.drop = newname;
+		def2.paramtype = ParamType1.light;
+		def2.drawtype = Drawtype.nodebox;
+		// def2.on_dig = nil
+
+		def2.node_box = {
+			type: Nodeboxtype.connected,
+			fixed: [-1 / 8, -1 / 2, -1 / 8, 1 / 8, 1 / 2, 1 / 8],
+
+			connect_front: [
+				[-1 / 16, 3 / 16, -1 / 2, 1 / 16, 5 / 16, -1 / 8],
+				[-1 / 16, -5 / 16, -1 / 2, 1 / 16, -3 / 16, -1 / 8],
+			],
+			connect_left: [
+				[-1 / 2, 3 / 16, -1 / 16, -1 / 8, 5 / 16, 1 / 16],
+				[-1 / 2, -5 / 16, -1 / 16, -1 / 8, -3 / 16, 1 / 16],
+			],
+			connect_back: [
+				[-1 / 16, 3 / 16, 1 / 8, 1 / 16, 5 / 16, 1 / 2],
+				[-1 / 16, -5 / 16, 1 / 8, 1 / 16, -3 / 16, 1 / 2],
+			],
+			connect_right: [
+				[1 / 8, 3 / 16, -1 / 16, 1 / 2, 5 / 16, 1 / 16],
+				[1 / 8, -5 / 16, -1 / 16, 1 / 2, -3 / 16, 1 / 16],
+			],
+		};
+
+		def2.collision_box = {
+			type: Nodeboxtype.connected,
+			fixed: [
+				-1 / 8,
+				-1 / 2,
+				-1 / 8,
+				1 / 8,
+				1 / 2 + fence_collision_extra,
+				1 / 8,
+			],
+			// connect_top =
+			// connect_bottom =
+			connect_front: [
+				-1 / 8,
+				-1 / 2,
+				-1 / 2,
+				1 / 8,
+				1 / 2 + fence_collision_extra,
+				-1 / 8,
+			],
+			connect_left: [
+				-1 / 2,
+				-1 / 2,
+				-1 / 8,
+				-1 / 8,
+				1 / 2 + fence_collision_extra,
+				1 / 8,
+			],
+			connect_back: [
+				-1 / 8,
+				-1 / 2,
+				1 / 8,
+				1 / 8,
+				1 / 2 + fence_collision_extra,
+				1 / 2,
+			],
+			connect_right: [
+				1 / 8,
+				-1 / 2,
+				-1 / 8,
+				1 / 2,
+				1 / 2 + fence_collision_extra,
+				1 / 8,
+			],
+		};
+
+		def2.connects_to = [
+			"group:fence",
+			"group:wood",
+			"group:tree",
+			"group:wall",
+			"group:stone",
+			"group:sand",
+		];
+		def2.sunlight_propagates = true;
+		core.register_node(newname, def2);
+		core.register_craft({
+			output: newname + " 16",
+			recipe: [
+				[name, "crafter:stick", name],
+				[name, "crafter:stick", name],
+			],
+		});
 	}
 
 	// Create wall posts.
@@ -127,7 +134,9 @@ namespace walls {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"walls:" + string.gsub(name, "crafter:", "") + "_wall_post";
+				"crafter_walls:" +
+				string.gsub(name, "crafter:", "") +
+				"_wall_post";
 			def2.description = def.description + " Wall";
 			def2.mod_origin = "walls";
 			// def2.name = newname
@@ -233,7 +242,7 @@ namespace walls {
 
 	// Set up wall.
 	const def2: NodeDefinition = table.copy(def as LuaTable) as NodeDefinition;
-	const newname: string = "walls:window";
+	const newname: string = "crafter_walls:window";
 	def2.description = "Window";
 	def2.mod_origin = "walls";
 	def2.drop = "";
