@@ -1,0 +1,6 @@
+This is from bas080 - https://github.com/bas080/minetest_vignette
+I have no idea what the license is :( So... MIT?
+
+New vignette texture: SolarShrine
+
+// todo: figure out what SolarShrine licensed this under
