@@ -139,9 +139,13 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 		})
     }
 }
-//slabs - shift click to place upside down
-// for name,def in pairs(core.registered_nodes) do
-// 	if def.drawtype == "normal" and string.match(name, "main:") then
+// Slabs - shift click to place upside down.
+ for (const [name,def] of pairs(core.registered_nodes)) {
+    if (typeof name != "string") {
+        core.log(LogLevel.warning, "Number in global registered nodes table")
+        continue;
+    }
+	if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
 	
 // 		//set up fence
 // 		local def2 = table.copy(def)
@@ -231,8 +235,9 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 // 			}
 // 		})
 		
-// 	end
-// end
+    }
+ }
+
 // //upside down stairs
 // for name,def in pairs(core.registered_nodes) do
 // 	if def.drawtype == "normal" and string.match(name, "main:") then
