@@ -75,26 +75,26 @@ namespace furnace_chest {
 		);
 	}
 
-	// core.register_on_player_receive_fields(function(player, formname, fields)
-	// 	if formname ~= "utility:chest" then
-	// 		return
-	// 	end
-	// 	if not player or not fields.quit then
-	// 		return
-	// 	end
-	// 	local pn = player:get_player_name()
-	// 	if not chest.open_chests[pn] then
-	// 		return
-	// 	end
-	// 	chest.chest_lid_close(pn)
-	// 	return true
-	// end)
-	// core.register_on_leaveplayer(function(player)
-	// 	local pn = player:get_player_name()
-	// 	if chest.open_chests[pn] then
-	// 		chest.chest_lid_close(pn)
-	// 	end
-	// end)
+	core.register_on_player_receive_fields((player, formname, fields) => {
+		// 	if formname ~= "utility:chest" then
+		// 		return
+		// 	end
+		// 	if not player or not fields.quit then
+		// 		return
+		// 	end
+		// 	local pn = player:get_player_name()
+		// 	if not chest.open_chests[pn] then
+		// 		return
+		// 	end
+		// 	chest.chest_lid_close(pn)
+		// 	return true
+		// end)
+		// core.register_on_leaveplayer(function(player)
+		// 	local pn = player:get_player_name()
+		// 	if chest.open_chests[pn] then
+		// 		chest.chest_lid_close(pn)
+		// 	end
+	});
 
 	// local function destroy_chest(pos)
 	// 	local meta = core.get_meta(pos)
