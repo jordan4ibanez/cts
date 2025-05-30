@@ -142,7 +142,7 @@ namespace furnace_chest {
 		core.swap_node(pos, node);
 	}
 
-	function furnace_node_timer(pos: Vec3, elapsed: number) {
+	function furnace_node_timer(pos: Vec3, elapsed: number): boolean {
 		//
 		// Initialize metadata
 		//
