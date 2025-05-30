@@ -101,10 +101,10 @@ namespace door {
 						door_node_box = [5/16, -0.5,  -0.5, 0.5,  0.5, 0.5]
                     }
 
-		// 			local tiles
-		// 			local groups
-		// 			local sounds
-		// 			local on_rightclick
+					let tiles: string[] = []
+					let groups: {[id: string] : number} = {}
+					let sounds: NodeSoundSpec | undefined
+					let on_rightclick: ((pos: Vec3) => void) | undefined
 					let redstone_deactivation: ((pos: Vec3) => void) | undefined;
 					let redstone_activation: ((pos: Vec3) => void) | undefined
                     
@@ -120,24 +120,25 @@ namespace door {
                     }
 
 					if (material == "wood") {
-						sounds = main.woodSound()
-						on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-							door_rightclick(pos)
-						end
-						//bottom
-						if door == "bottom" then
-							tiles = {"wood.png"}
-							groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, crafter_door_bottom = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
+						sounds = crafter.woodSound()
 
-						//top
-						else
+						on_rightclick = function(pos: Vec3) {
+							door_rightclick(pos)
+                        }
+						// Bottom.
+						if (door == "bottom") {
+							tiles = ["wood.png"]
+							groups = {wood : 2, tree : 1, hard : 1, axe : 1, hand : 3, crafter_door_bottom : 1,door_open : ((state == "open" && 1) || 0),door_closed : ((state == "closed" && 1) || 0)}
+
+						// Top.
+                        } else {
 							if state == "closed" then
 								tiles = {"wood.png","wood.png","wood.png","wood.png","wood_door_top.png","wood_door_top.png"}
 							elseif state == "open" then
 								tiles = {"wood.png","wood.png","wood_door_top.png","wood_door_top.png","wood.png","wood.png"}
 							end
 							groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, redstone_activation = 1, crafter_door_top = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
-						end
+                        }
                     } else if (material == "iron") {
 						sounds = main.stoneSound()
 						if door == "bottom" then
