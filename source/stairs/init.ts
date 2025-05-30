@@ -164,8 +164,8 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 			[-8/16, -8/16, -8/16, 8/16, 0/16, 8/16],
             ]
 		}
-// 		//we're passing in the local variables newname and name into this function
-// 		//calculating wether to turn a half slab into a full block
+		// We're passing in the local variables newname and name into this function
+		// calculating wether to turn a half slab into a full block.
 // 		def2.on_place = function(itemstack, placer, pointed_thing)
 // 			//get all the required variables
 // 			local sneak = placer:get_player_control().sneak
