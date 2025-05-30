@@ -458,11 +458,11 @@ namespace furnace_chest {
 	});
 
 	core.register_craft({
-		output : "crafter_furnace_chest:furnace",
-		recipe : [
+		output: "crafter_furnace_chest:furnace",
+		recipe: [
 			["crafter:cobble", "crafter:cobble", "crafter:cobble"],
-			["crafter:cobble", "",            "crafter:cobble"],
+			["crafter:cobble", "", "crafter:cobble"],
 			["crafter:cobble", "crafter:cobble", "crafter:cobble"],
-        ]
-	})
+		],
+	});
 }
