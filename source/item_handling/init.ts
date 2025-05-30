@@ -257,7 +257,8 @@ namespace item_handling {
 			const itemname: string =
 				(stack.is_known() && stack.get_name()) || "unknown";
 
-			const def: ItemDefinition = core.registered_items[itemname];
+			const def: ItemDefinition | undefined =
+				core.registered_items[itemname];
 
 			this.object.set_properties({
 				textures: [itemname],
@@ -485,8 +486,8 @@ namespace item_handling {
 					const cnode: string = core.get_node(
 						vector.add(pos, order[o])
 					).name;
-					const cdef: NodeDefinition =
-						core.registered_nodes[cnode] || null;
+					const cdef: NodeDefinition | undefined =
+						core.registered_nodes[cnode];
 					if (cdef == null) {
 						core.log(
 							LogLevel.warning,
