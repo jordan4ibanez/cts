@@ -293,7 +293,7 @@ interface core {
 		pos2: Vec3,
 		nodeNames: string[],
 		grouped: true
-	): { [id: string]: Vec3[] };
+	): Dictionary<string, Vec3[]>;
 	find_nodes_in_area(
 		pos1: Vec3,
 		pos2: Vec3,
