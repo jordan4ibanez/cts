@@ -153,9 +153,9 @@ namespace furnace_chest {
 
 		const inv: InvRef = meta.get_inventory();
 
-		let cookable;
-		let cooked;
-		let fuel;
+		// let cookable;
+		// let cooked;
+		// let fuel;
 
 		let dst_full: boolean = false;
 		let update: boolean = true;
@@ -165,17 +165,26 @@ namespace furnace_chest {
 
 			const srclist: ItemStackObject[] = inv.get_list("src");
 			const fuellist: ItemStackObject[] = inv.get_list("fuel");
+
 			//
-			// Cooking
+			// Cooking.
 			//
-			// Check if we have cookable content
-			// 	local aftercooked
-			// 	cooked, aftercooked = core.get_craft_result({method = "cooking", width = 1, items = srclist})
-			// 	cookable = cooked.time ~= 0
-			// 	local el = math.min(elapsed, fuel_totaltime - fuel_time)
-			// 	if cookable then // fuel lasts long enough, adjust el to cooking duration
-			// 		el = math.min(el, cooked.time - src_time)
-			// 	end
+
+			// Check if we have cookable content.
+
+			const [cooked, aftercooked] = core.get_craft_result({
+				method: CraftCheckType.cooking,
+				width: 1,
+				items: srclist,
+			});
+
+			const cookable: boolean = cooked.time != 0;
+			let el: number = math.min(elapsed, fuel_totaltime - fuel_time);
+			// Fuel lasts long enough, adjust el to cooking duration.
+			if (cookable) {
+				el = math.min(el, cooked.time - src_time);
+			}
+
 			// 	// Check if we have enough fuel to burn
 			// 	if fuel_time < fuel_totaltime then
 			// 		// The furnace is currently active and has enough fuel
