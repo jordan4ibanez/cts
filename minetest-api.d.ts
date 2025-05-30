@@ -2066,7 +2066,7 @@ declare global {
 		): void;
 		get_list(listName: string): ItemStackObject[];
 		set_list(listName: string, list: ItemStackObject[]): void;
-		get_lists(): string[];
+		get_lists(): Dictionary<string, ItemStackObject[]>;
 		set_lists(lists: ItemStackObject[]): void;
 		add_item(
 			listName: string,
