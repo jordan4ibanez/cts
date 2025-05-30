@@ -190,13 +190,13 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 				if (worked) {
 					placement_worked = true
                 }
-			//normal slab to full slab
+			// Normal slab to full slab.
             } else if (rightsideup && ydiff == 1) {
 				place_slab_sound(pointed_thing.under,newname)
 				core.set_node(pointed_thing.under, {name : name})
 				itemstack.take_item()
 				placement_worked = true
-			//upsidedown slab to full slab
+			// Upsidedown slab to full slab.
             } else if (upsidedown && ydiff == -1) {
 				place_slab_sound(pointed_thing.under,newname)
 				core.set_node(pointed_thing.under, {name : name})
@@ -204,17 +204,17 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 				placement_worked = true
             }
 			
-			//try to do pointed_thing above
-			// if placement_worked == false then
-			// 	local node_above = core.get_node(pointed_thing.above).name
-			// 	local rightsideup = (newname == node_above)
-			// 	local upsidedown = (newname+"_upsidedown" == node_above)
-			// 	if rightsideup or upsidedown then
-			// 		place_slab_sound(pointed_thing.above,newname)
-			// 		core.set_node(pointed_thing.above, {name = name})
-			// 		itemstack:take_item()
-			// 	end
-			// end
+			// Try to do pointed_thing above.
+			if (placement_worked == false) {
+				const node_above = core.get_node(pointed_thing.above).name
+				const rightsideup = (newname == node_above)
+				const upsidedown = (newname+"_upsidedown" == node_above)
+				if (rightsideup || upsidedown) {
+					place_slab_sound(pointed_thing.above,newname)
+					core.set_node(pointed_thing.above, {name : name})
+					itemstack.take_item()
+                }
+            }
 			
 			
 			return(itemstack)
