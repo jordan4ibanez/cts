@@ -639,7 +639,7 @@ interface core {
 	): Vec3;
 	get_tool_wear_after_use(uses: number, initialWear: number): number;
 	get_dig_params(
-		groups: { [id: string]: number },
+		groups: Dictionary<string, number>,
 		toolCapabilities: ToolCapabilities,
 		wear?: number
 	): DigParamsReturn;
