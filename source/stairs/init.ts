@@ -3,58 +3,58 @@ namespace stairs {
 for (const [name,def] of pairs(core.registered_nodes)) {
 	if (def.drawtype == "normal" && string.match(name, "main:")[0] != null) {
 	
-		//set up fence
-		local def2 = table.copy(def)
-		local newname = "stairs:"..string.gsub(name, "main:", "").."_stair"
-		def2.mod_origin = "stairs"
-		def2.name = newname
-		def2.description = def.description.." Stair"
-		def2.drop = newname
-		def2.paramtype = "light"
-		def2.drawtype = "nodebox"
-		def2.paramtype2 = "facedir"
-		def2.node_placement_prediction = ""
-		def2.on_dig = nil
-		def2.node_box = {
-			type = "fixed",
-			fixed = {
-			{-8/16, -8/16, -0/16, 8/16, 8/16, 8/16},
-			{-8/16, -8/16, -8/16, 8/16, 0/16, 8/16},
-			}
-		}
-		//ability to place stairs upside down
-		def2.on_place = function(itemstack, placer, pointed_thing)
-			local sneak = placer:get_player_control().sneak
-			if sneak then
-				local _,worked = core.item_place(ItemStack(newname.."_upsidedown"), placer, pointed_thing)
-				if worked then
-					itemstack:take_item()
-				end
-			else
-				core.item_place(itemstack, placer, pointed_thing)
-			end
-			return(itemstack)
-		end
-		def2.groups["stairs"] = 1
-		core.register_node(newname,def2)
+		// //set up fence
+		// local def2 = table.copy(def)
+		// local newname = "stairs:"..string.gsub(name, "main:", "").."_stair"
+		// def2.mod_origin = "stairs"
+		// def2.name = newname
+		// def2.description = def.description.." Stair"
+		// def2.drop = newname
+		// def2.paramtype = "light"
+		// def2.drawtype = "nodebox"
+		// def2.paramtype2 = "facedir"
+		// def2.node_placement_prediction = ""
+		// def2.on_dig = nil
+		// def2.node_box = {
+		// 	type = "fixed",
+		// 	fixed = {
+		// 	{-8/16, -8/16, -0/16, 8/16, 8/16, 8/16},
+		// 	{-8/16, -8/16, -8/16, 8/16, 0/16, 8/16},
+		// 	}
+		// }
+		// //ability to place stairs upside down
+		// def2.on_place = function(itemstack, placer, pointed_thing)
+		// 	local sneak = placer:get_player_control().sneak
+		// 	if sneak then
+		// 		local _,worked = core.item_place(ItemStack(newname.."_upsidedown"), placer, pointed_thing)
+		// 		if worked then
+		// 			itemstack:take_item()
+		// 		end
+		// 	else
+		// 		core.item_place(itemstack, placer, pointed_thing)
+		// 	end
+		// 	return(itemstack)
+		// end
+		// def2.groups["stairs"] = 1
+		// core.register_node(newname,def2)
 		
-		core.register_craft({
-			output = newname.." 6",
-			recipe = {
-				{ "","",name },
-				{ "",name, name},
-				{ name, name,name},
-			}
-		})
+		// core.register_craft({
+		// 	output = newname.." 6",
+		// 	recipe = {
+		// 		{ "","",name },
+		// 		{ "",name, name},
+		// 		{ name, name,name},
+		// 	}
+		// })
 		
-		core.register_craft({
-			output = newname.." 6",
-			recipe = {
-				{ name,"","" },
-				{ name, name,""},
-				{ name, name,name},
-			}
-		})
+		// core.register_craft({
+		// 	output = newname.." 6",
+		// 	recipe = {
+		// 		{ name,"","" },
+		// 		{ name, name,""},
+		// 		{ name, name,name},
+		// 	}
+		// })
     }
 }
 // //upside down stairs
