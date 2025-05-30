@@ -1590,7 +1590,7 @@ declare global {
 	}
 
 	/** @noSelf **/ type Dictionary<K extends string | number | symbol, V> = {
-		[id in K]: V;
+		[id in K]?: V;
 	};
 
 	/** @noSelf **/ interface PlayerControlObject
