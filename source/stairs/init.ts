@@ -245,7 +245,7 @@ namespace stairs {
 						placer,
 						pointed_thing
 					);
-					if (worked) {
+					if (worked != null) {
 						placement_worked = true;
 					}
 					// Normal slab to full slab.
