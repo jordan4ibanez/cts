@@ -133,14 +133,14 @@ namespace furnace_chest {
 		return stack.get_count();
 	}
 
-	// local function swap_node(pos, name)
-	// 	local node = core.get_node(pos)
-	// 	if node.name == name then
-	// 		return
-	// 	end
-	// 	node.name = name
-	// 	core.swap_node(pos, node)
-	// end
+	function swap_node(pos: Vec3, name: string): void {
+		const node: NodeTable = core.get_node(pos);
+		if (node.name == name) {
+			return;
+		}
+		node.name = name;
+		core.swap_node(pos, node);
+	}
 
 	// local function furnace_node_timer(pos, elapsed)
 	// 	//
