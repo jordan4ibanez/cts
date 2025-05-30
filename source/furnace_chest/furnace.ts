@@ -153,97 +153,90 @@ namespace furnace_chest {
 
 		const inv: InvRef = meta.get_inventory();
 
-		const dst_full = false;
-
 		let srclist;
 		let fuellist;
 		let cookable;
 		let cooked;
 		let fuel;
 
-		const update = true;
-		// while elapsed > 0 and update do
-		// 	update = false
+		let dst_full: boolean = false;
+		let update: boolean = true;
 
-		// 	srclist = inv:get_list("src")
-		// 	fuellist = inv:get_list("fuel")
-
-		// 	//
-		// 	// Cooking
-		// 	//
-
-		// 	// Check if we have cookable content
-		// 	local aftercooked
-		// 	cooked, aftercooked = core.get_craft_result({method = "cooking", width = 1, items = srclist})
-		// 	cookable = cooked.time ~= 0
-
-		// 	local el = math.min(elapsed, fuel_totaltime - fuel_time)
-		// 	if cookable then // fuel lasts long enough, adjust el to cooking duration
-		// 		el = math.min(el, cooked.time - src_time)
-		// 	end
-
-		// 	// Check if we have enough fuel to burn
-		// 	if fuel_time < fuel_totaltime then
-		// 		// The furnace is currently active and has enough fuel
-		// 		fuel_time = fuel_time + el
-		// 		// If there is a cookable item then check if it is ready yet
-		// 		if cookable then
-		// 			src_time = src_time + el
-		// 			if src_time >= cooked.time then
-		// 				// Place result in dst list if possible
-		// 				if inv:room_for_item("dst", cooked.item) then
-		// 					inv:add_item("dst", cooked.item)
-		// 					inv:set_stack("src", 1, aftercooked.items[1])
-		// 					src_time = src_time - cooked.time
-		// 					update = true
-		// 					local dir = vector.divide(core.facedir_to_dir(core.get_node(pos).param2),-1.95)
-		// 					local newpos = vector.add(pos,dir)
-		// 					core.throw_experience(newpos, 1)
-		// 				else
-		// 					dst_full = true
-		// 				end
-		// 			else
-		// 				// Item could not be cooked: probably missing fuel
-		// 				update = true
-		// 			end
-		// 		end
-		// 	else
-		// 		// Furnace ran out of fuel
-		// 		if cookable then
-		// 			// We need to get new fuel
-		// 			local afterfuel
-		// 			fuel, afterfuel = core.get_craft_result({method = "fuel", width = 1, items = fuellist})
-
-		// 			if fuel.time == 0 then
-		// 				// No valid fuel in fuel list
-		// 				fuel_totaltime = 0
-		// 				src_time = 0
-		// 			else
-		// 				// Take fuel from fuel list
-		// 				inv:set_stack("fuel", 1, afterfuel.items[1])
-		// 				// Put replacements in dst list or drop them on the furnace.
-		// 				local replacements = fuel.replacements
-		// 				if replacements[1] then
-		// 					local leftover = inv:add_item("dst", replacements[1])
-		// 					if not leftover:is_empty() then
-		// 						local above = vector.new(pos.x, pos.y + 1, pos.z)
-		// 						local drop_pos = core.find_node_near(above, 1, {"air"}) or above
-		// 						core.item_drop(replacements[1], nil, drop_pos)
-		// 					end
-		// 				end
-		// 				update = true
-		// 				fuel_totaltime = fuel.time + (fuel_totaltime - fuel_time)
-		// 			end
-		// 		else
-		// 			// We don't need to get new fuel since there is no cookable item
-		// 			fuel_totaltime = 0
-		// 			src_time = 0
-		// 		end
-		// 		fuel_time = 0
-		// 	end
-
-		// 	elapsed = elapsed - el
-		// end //! While loop ends here
+		while (elapsed > 0 && update) {
+			// 	update = false
+			// 	srclist = inv:get_list("src")
+			// 	fuellist = inv:get_list("fuel")
+			// 	//
+			// 	// Cooking
+			// 	//
+			// 	// Check if we have cookable content
+			// 	local aftercooked
+			// 	cooked, aftercooked = core.get_craft_result({method = "cooking", width = 1, items = srclist})
+			// 	cookable = cooked.time ~= 0
+			// 	local el = math.min(elapsed, fuel_totaltime - fuel_time)
+			// 	if cookable then // fuel lasts long enough, adjust el to cooking duration
+			// 		el = math.min(el, cooked.time - src_time)
+			// 	end
+			// 	// Check if we have enough fuel to burn
+			// 	if fuel_time < fuel_totaltime then
+			// 		// The furnace is currently active and has enough fuel
+			// 		fuel_time = fuel_time + el
+			// 		// If there is a cookable item then check if it is ready yet
+			// 		if cookable then
+			// 			src_time = src_time + el
+			// 			if src_time >= cooked.time then
+			// 				// Place result in dst list if possible
+			// 				if inv:room_for_item("dst", cooked.item) then
+			// 					inv:add_item("dst", cooked.item)
+			// 					inv:set_stack("src", 1, aftercooked.items[1])
+			// 					src_time = src_time - cooked.time
+			// 					update = true
+			// 					local dir = vector.divide(core.facedir_to_dir(core.get_node(pos).param2),-1.95)
+			// 					local newpos = vector.add(pos,dir)
+			// 					core.throw_experience(newpos, 1)
+			// 				else
+			// 					dst_full = true
+			// 				end
+			// 			else
+			// 				// Item could not be cooked: probably missing fuel
+			// 				update = true
+			// 			end
+			// 		end
+			// 	else
+			// 		// Furnace ran out of fuel
+			// 		if cookable then
+			// 			// We need to get new fuel
+			// 			local afterfuel
+			// 			fuel, afterfuel = core.get_craft_result({method = "fuel", width = 1, items = fuellist})
+			// 			if fuel.time == 0 then
+			// 				// No valid fuel in fuel list
+			// 				fuel_totaltime = 0
+			// 				src_time = 0
+			// 			else
+			// 				// Take fuel from fuel list
+			// 				inv:set_stack("fuel", 1, afterfuel.items[1])
+			// 				// Put replacements in dst list or drop them on the furnace.
+			// 				local replacements = fuel.replacements
+			// 				if replacements[1] then
+			// 					local leftover = inv:add_item("dst", replacements[1])
+			// 					if not leftover:is_empty() then
+			// 						local above = vector.new(pos.x, pos.y + 1, pos.z)
+			// 						local drop_pos = core.find_node_near(above, 1, {"air"}) or above
+			// 						core.item_drop(replacements[1], nil, drop_pos)
+			// 					end
+			// 				end
+			// 				update = true
+			// 				fuel_totaltime = fuel.time + (fuel_totaltime - fuel_time)
+			// 			end
+			// 		else
+			// 			// We don't need to get new fuel since there is no cookable item
+			// 			fuel_totaltime = 0
+			// 			src_time = 0
+			// 		end
+			// 		fuel_time = 0
+			// 	end
+			// 	elapsed = elapsed - el
+		}
 
 		// if fuel and fuel_totaltime > fuel.time then
 		// 	fuel_totaltime = fuel.time
