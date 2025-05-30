@@ -194,15 +194,15 @@ namespace door {
 								itemstack.add_item(ItemStack("door:bottom_"+material+"_closed"))
                             }
                         },
-						// after_dig_node = function(pos, oldnode, oldmetadata, digger)
-						// 	if string.match(oldnode.name, ":bottom") then
-						// 		pos.y = pos.y + 1
-						// 		core.remove_node(pos)
-						// 	else
-						// 		pos.y = pos.y - 1
-						// 		core.remove_node(pos)
-						// 	end
-						// end,
+						after_dig_node : (pos, oldnode, oldmetadata, digger) => {
+							if (string.match(oldnode.name, ":bottom")[0] != null) {
+								pos.y = pos.y + 1
+								core.remove_node(pos)
+                        } else {
+								pos.y = pos.y - 1
+								core.remove_node(pos)
+                        }
+                        },
 					})
                 }
         }
