@@ -105,16 +105,16 @@ namespace furnace_chest {
 	});
 
 	function destroy_chest(pos: Vec3) {
-		const meta = core.get_meta(pos);
-		const inv = meta.get_inventory();
-		const lists = inv.get_lists();
-		// 	for listname,_ in pairs(lists) do
-		// 		local size = inv:get_size(listname)
-		// 		for i = 1,size do
-		// 			local stack = inv:get_stack(listname, i)
-		// 			core.add_item(pos, stack)
-		// 		end
-		// 	end
+		const meta: MetaRef = core.get_meta(pos);
+		const inv: InvRef = meta.get_inventory();
+		const lists: Dictionary<string, ItemStackObject[]> = inv.get_lists();
+		for (const [listname, _] of pairs(lists)) {
+			const size = inv.get_size(listname);
+			for (let i = 1; i <= size; i++) {
+				const stack: ItemStackObject = inv.get_stack(listname, i);
+				core.add_item(pos, stack);
+			}
+		}
 	}
 
 	// function chest.register_chest(name, d)
