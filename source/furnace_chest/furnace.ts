@@ -360,9 +360,9 @@ namespace furnace_chest {
 		// end
      }
 
-	// //
-	// // Node definitions
-	// //
+	//
+	// Node definitions.
+	//
 
 	core.register_node("utility:furnace", {
 		description : ("Furnace"),
