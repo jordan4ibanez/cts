@@ -299,7 +299,7 @@ interface core {
 		pos2: Vec3,
 		nodeNames: string[],
 		grouped?: false
-	): LuaMultiReturn<[Vec3[], { [id: string]: number }]>;
+	): LuaMultiReturn<[Vec3[], Dictionary<string, number>]>;
 	find_nodes_in_area_under_air(
 		pos1: Vec3,
 		pos2: Vec3,
