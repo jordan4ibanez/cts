@@ -240,7 +240,7 @@ namespace furnace_chest {
 			end
 
 			elapsed = elapsed - el
-		end
+		end //! While loop ends here
 
 		if fuel and fuel_totaltime > fuel.time then
 			fuel_totaltime = fuel.time
