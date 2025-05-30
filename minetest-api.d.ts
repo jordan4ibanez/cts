@@ -608,11 +608,11 @@ interface core {
 	request_insecure_environment(): any;
 	global_exists(name: string): boolean;
 
-	registered_tools: { [id: string]: ItemDefinition };
 	registered_entities: { [id: string]: LuaEntity };
 	registered_items: Dictionary<string, ItemDefinition>;
 	registered_nodes: Dictionary<string, NodeDefinition>;
 	registered_craftitems: Dictionary<string, ItemDefinition>;
+	registered_tools: Dictionary<string, ItemDefinition>;
 	object_refs: { [id: string]: ObjectRef };
 	luaentities: { [id: string]: LuaEntity };
 	registered_abms: ABMDefinition[];
