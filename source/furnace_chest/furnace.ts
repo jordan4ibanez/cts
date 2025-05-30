@@ -268,12 +268,12 @@ namespace furnace_chest {
 			elapsed -= el;
 		}
 
-		// if fuel and fuel_totaltime > fuel.time then
-		// 	fuel_totaltime = fuel.time
-		// end
-		// if srclist and srclist[0]:is_empty() then
-		// 	src_time = 0
-		// end
+		if (fuel && fuel_totaltime > fuel.time) {
+			fuel_totaltime = fuel.time;
+		}
+		if (srclist && srclist.length > 0 && srclist[0].is_empty()) {
+			src_time = 0;
+		}
 
 		// //
 		// // Update formspec, infotext and node
