@@ -120,12 +120,18 @@ namespace furnace_chest {
 		);
 	}
 
-	// local function allow_metadata_inventory_take(pos, listname, index, stack, player)
-	// 	if core.is_protected(pos, player:get_player_name()) then
-	// 		return 0
-	// 	end
-	// 	return stack:get_count()
-	// end
+	function allow_metadata_inventory_take(
+		pos: Vec3,
+		listname: string,
+		index: number,
+		stack: ItemStackObject,
+		player: ObjectRef
+	): number {
+		if (core.is_protected(pos, player.get_player_name())) {
+			return 0;
+		}
+		return stack.get_count();
+	}
 
 	// local function swap_node(pos, name)
 	// 	local node = core.get_node(pos)
