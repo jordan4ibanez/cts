@@ -142,7 +142,7 @@ namespace furnace_chest {
 		core.swap_node(pos, node);
 	}
 
-	local function furnace_node_timer(pos, elapsed)
+	 function furnace_node_timer(pos, elapsed) {
 		//
 		// Initialize metadata
 		//
@@ -324,7 +324,7 @@ namespace furnace_chest {
 				core.add_item(pos, stack)
 			end
 		end
-	end
+    }
 
 	// //
 	// // Node definitions
