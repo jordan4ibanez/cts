@@ -155,53 +155,54 @@ namespace door {
 							groups = {stone : 1, hard : 1, pickaxe : 1, hand : 4, redstone_activation : 1, top : 1,crafter_door_open : ((state == "open" && 1) || 0),crafter_door_closed : ((state == "closed" && 1) || 0)}
                         }
                     }
-		// 			core.register_node("door:"..door.."_"..material.."_"..state, {
-		// 				description = material:gsub("^%l", string.upper).." Door",
-		// 				tiles = tiles,
-		// 				wield_image = "door_inv_"..material..".png",
-		// 				inventory_image = "door_inv_"..material..".png",
-		// 				drawtype = "nodebox",
-		// 				paramtype = "light",
-		// 				paramtype2 = "facedir",
-		// 				groups = groups,
-		// 				sounds = sounds,
-		// 				drop = "door:bottom_"..material.."_closed",
-		// 				node_placement_prediction = "",
-		// 				node_box = {
-		// 					type = "fixed",
-		// 					fixed = {
-		// 							//left front bottom right back top
-		// 							door_node_box
-		// 						},
-		// 					},
-		// 				//redstone activation is in both because only the bottom is defined as an activator and it's easier to do it like this
 
-		// 				redstone_activation = redstone_activation,
-		// 				redstone_deactivation = redstone_deactivation,
+					core.register_node("door:"+door+"_"+material+"_"+state, {
+						description = material:gsub("^%l", string.upper)+" Door",
+						tiles = tiles,
+						wield_image = "door_inv_"+material+".png",
+						inventory_image = "door_inv_"+material+".png",
+						drawtype = "nodebox",
+						paramtype = "light",
+						paramtype2 = "facedir",
+						groups = groups,
+						sounds = sounds,
+						drop = "door:bottom_"+material+"_closed",
+						node_placement_prediction = "",
+						node_box = {
+							type = "fixed",
+							fixed = {
+									//left front bottom right back top
+									door_node_box
+								},
+							},
+						//redstone activation is in both because only the bottom is defined as an activator and it's easier to do it like this
 
-		// 				on_rightclick = on_rightclick,
-		// 				after_place_node = function(pos, placer, itemstack, pointed_thing)
-		// 					local node = get_node(pos)
-		// 					local param2 = node.param2
-		// 					local pos2 = t_copy(pos)
-		// 					pos2.y = pos2.y + 1
-		// 					if get_node(pos2).name == "air" then
-		// 						set_node(pos2,{name="door:top_"..material.."_closed",param2=param2})
-		// 					else
-		// 						core.remove_node(pos)
-		// 						itemstack:add_item(ItemStack("door:bottom_"..material.."_closed"))
-		// 					end
-		// 				end,
-		// 				after_dig_node = function(pos, oldnode, oldmetadata, digger)
-		// 					if string.match(oldnode.name, ":bottom") then
-		// 						pos.y = pos.y + 1
-		// 						core.remove_node(pos)
-		// 					else
-		// 						pos.y = pos.y - 1
-		// 						core.remove_node(pos)
-		// 					end
-		// 				end,
-		// 			})
+						redstone_activation = redstone_activation,
+						redstone_deactivation = redstone_deactivation,
+
+						on_rightclick = on_rightclick,
+						after_place_node = function(pos, placer, itemstack, pointed_thing)
+							local node = get_node(pos)
+							local param2 = node.param2
+							local pos2 = t_copy(pos)
+							pos2.y = pos2.y + 1
+							if get_node(pos2).name == "air" then
+								set_node(pos2,{name="door:top_"+material+"_closed",param2=param2})
+							else
+								core.remove_node(pos)
+								itemstack:add_item(ItemStack("door:bottom_"+material+"_closed"))
+							end
+						end,
+						after_dig_node = function(pos, oldnode, oldmetadata, digger)
+							if string.match(oldnode.name, ":bottom") then
+								pos.y = pos.y + 1
+								core.remove_node(pos)
+							else
+								pos.y = pos.y - 1
+								core.remove_node(pos)
+							end
+						end,
+					})
                 }
         }
 		// core.register_craft({
