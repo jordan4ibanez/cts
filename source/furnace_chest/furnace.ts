@@ -70,7 +70,7 @@ namespace furnace_chest {
 		index: number,
 		stack: ItemStackObject,
 		player: ObjectRef
-	) {
+	): number {
 		if (core.is_protected(pos, player.get_player_name())) {
 			return 0;
 		}
@@ -96,6 +96,7 @@ namespace furnace_chest {
 		} else if (listname == "dst") {
 			return 0;
 		}
+		return 0;
 	}
 
 	// local function allow_metadata_inventory_move(pos, from_list, from_index, to_list, to_index, count, player)
