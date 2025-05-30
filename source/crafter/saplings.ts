@@ -118,9 +118,12 @@ core.register_node("crafter:sapling", {
 			return;
 		}
 
-		let buildable: boolean =
-			core.registered_nodes[core.get_node(pointed_thing.under).name]
-				.buildable_to || false;
+		let buildable: boolean = false;
+		{
+			const def: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pointed_thing.under).name];
+			buildable = (def && def.buildable_to) || false;
+		}
 
 		//replace buildable
 		if (
