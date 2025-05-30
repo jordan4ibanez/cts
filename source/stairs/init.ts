@@ -1,6 +1,6 @@
 namespace stairs {
 //stairs - shift click to place upside down
-for name,def in pairs(core.registered_nodes) do
+for (const [name,def] of pairs(core.registered_nodes)) {
 	if def.drawtype == "normal" and string.match(name, "main:") then
 	
 		//set up fence
@@ -56,7 +56,7 @@ for name,def in pairs(core.registered_nodes) do
 			}
 		})
 	end
-end
+}
 // //upside down stairs
 // for name,def in pairs(core.registered_nodes) do
 // 	if def.drawtype == "normal" and string.match(name, "main:") then
