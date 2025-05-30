@@ -227,7 +227,7 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 		core.register_node(newname,def2)
 		//equalize recipe 6 half slabs turn into 3 full blocks
 		core.register_craft({
-			output = newname.." 6",
+			output = newname+" 6",
 			recipe = {
 				{ name, name,name},
 			}
@@ -247,10 +247,10 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 // for name,def in pairs(core.registered_nodes) do
 // 	if def.drawtype == "normal" and string.match(name, "main:") then
 // 		local def2 = table.copy(def)
-// 		local newname = "stairs:"..string.gsub(name, "main:", "").."_slab_upsidedown"
+// 		local newname = "stairs:"+string.gsub(name, "main:", "")+"_slab_upsidedown"
 // 		def2.mod_origin = "stairs"
 // 		def2.name = newname
-// 		def2.description = def.description.." Slab"
+// 		def2.description = def.description+" Slab"
 // 		def2.drop = string.gsub(newname, "_upsidedown", "")
 // 		def2.paramtype = "light"
 // 		def2.on_dig = nil
