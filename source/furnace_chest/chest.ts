@@ -19,30 +19,45 @@ namespace furnace_chest {
 		return formspec;
 	}
 
-    const open_chests: Dictionary<string, any> = {};
+	interface OpenChestData {
+		pos: Vec3;
+		sound: string;
+		swap: string;
+	}
 
-	function chest_lid_close(pn) {
-		local chest_open_info = chest.open_chests[pn]
-		local pos = chest_open_info.pos
-		local sound = chest_open_info.sound
-		local swap = chest_open_info.swap
-		chest.open_chests[pn] = nil
-		for k, v in pairs(chest.open_chests) do
-			if v.pos.x == pos.x and v.pos.y == pos.y and v.pos.z == pos.z then
-				return true
-			end
-		end
-		local node = minetest.get_node(pos)
-		minetest.after(0.2, function(pos,swap,node)
-			if minetest.get_node(pos).name == "utility:chest_open" then
-				minetest.swap_node(pos,{name = "utility:"..swap,param2=node.param2})
-				minetest.sound_play(sound, {gain = 0.3, pos = pos, max_hear_distance = 10},true)
-			end
-			//redstone.collect_info(pos)
-		end,pos,swap,node)
-    }
+	const open_chests = new Map<string, OpenChestData>();
 
-	
+	function chest_lid_close(pn: string) {
+		const chest_open_info = open_chests.get(pn);
+
+		if (chest_open_info == null) {
+			core.log(
+				LogLevel.warning,
+				`Chest open info for player [${pn}] is null. There is a chest stuck open.`
+			);
+            return;
+		}
+
+		const pos: Vec3 = chest_open_info.pos;
+		const sound: string = chest_open_info.sound;
+		const swap: string = chest_open_info.swap;
+
+		// chest.open_chests[pn] = nil
+		// for k, v in pairs(chest.open_chests) do
+		// 	if v.pos.x == pos.x and v.pos.y == pos.y and v.pos.z == pos.z then
+		// 		return true
+		// 	end
+		// end
+		// local node = minetest.get_node(pos)
+		// minetest.after(0.2, function(pos,swap,node)
+		// 	if minetest.get_node(pos).name == "utility:chest_open" then
+		// 		minetest.swap_node(pos,{name = "utility:"..swap,param2=node.param2})
+		// 		minetest.sound_play(sound, {gain = 0.3, pos = pos, max_hear_distance = 10},true)
+		// 	end
+		// 	//redstone.collect_info(pos)
+		// end,pos,swap,node)
+	}
+
 	// minetest.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if formname ~= "utility:chest" then
 	// 		return
