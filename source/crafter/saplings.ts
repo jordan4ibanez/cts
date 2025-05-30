@@ -139,7 +139,7 @@ core.register_node("crafter:sapling", {
 			return core.item_place(itemstack, placer, pointed_thing);
 		}
 		{
-			const def =
+			const def: NodeDefinition | undefined =
 				core.registered_nodes[core.get_node(pointed_thing.above).name];
 			buildable = (def && def.buildable_to) || false;
 		}
