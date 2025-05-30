@@ -11,9 +11,9 @@ namespace furnace_chest {
 		const meta: MetaRef = core.get_meta(pos);
 		const owner: string = meta.get_string("owner");
 
-		// if not owner or owner == "" or owner == player:get_player_name() then
-		// 	return true
-		// end
+		if (owner == null || owner == "" || owner == player.get_player_name()) {
+			return true;
+		}
 
 		// // Is player wielding the right key?
 		// local item = player:get_wielded_item()
