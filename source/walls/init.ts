@@ -100,7 +100,7 @@ namespace walls {
 			],
 		};
 		if (def2.groups == null) {
-			def2.groups = {};
+			throw new Error(`Undefined groups for [${name}]`)
 		}
 		def2.groups["fence"] = 1;
 		def2.connects_to = [
@@ -216,7 +216,7 @@ namespace walls {
 			],
 		};
 		if (def2.groups == null) {
-			def2.groups = {};
+			throw new Error(`Undefined groups for [${name}]`)
 		}
 		def2.groups["wall"] = 1;
 		def2.connects_to = [
@@ -274,7 +274,7 @@ namespace walls {
 		connect_right: [-1 / 16, -1 / 2, -1 / 16, 1 / 2, 1 / 2, 1 / 16],
 	};
 	if (def2.groups == null) {
-		def2.groups = {};
+		throw new Error(`Undefined groups for [${newname}]`)
 	}
 	def2.groups["fence"] = 1;
 	def2.connects_to = [
