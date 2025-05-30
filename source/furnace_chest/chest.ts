@@ -92,8 +92,8 @@ namespace furnace_chest {
 			if (!open_chests.has(pn)) {
 				return;
 			}
-			// 	chest.chest_lid_close(pn)
-			// 	return true
+			chest_lid_close(pn);
+			return true;
 		}
 	);
 
