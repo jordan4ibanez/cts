@@ -67,8 +67,13 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 }
 
 // Upside down stairs.
-for name,def in pairs(core.registered_nodes) do
-	if def.drawtype == "normal" and string.match(name, "main:") then
+for (const [name,def] of pairs(core.registered_nodes)) {
+    if (typeof name != "string") {
+        core.log(LogLevel.warning, "Number in global registered nodes table")
+        continue;
+    }
+
+	if (def.drawtype == Drawtype.normal && string.match(name, "main:")[0] != null) {
 		local def2 = table.copy(def)
 		local newname = "stairs:"..string.gsub(name, "main:", "").."_stair_upsidedown"
 		def2.mod_origin = "stairs"
@@ -88,8 +93,8 @@ for name,def in pairs(core.registered_nodes) do
 		}
 		def2.groups["stairs"] = 1
 		core.register_node(newname,def2)
-	end
-end
+    }
+}
 
 
 //////////////////////////////////////////////////////- slabs
