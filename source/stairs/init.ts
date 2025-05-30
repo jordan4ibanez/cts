@@ -132,7 +132,7 @@ namespace stairs {
 
 	// todo: Why isn't this just using the global place node thing that makes the sound play when you place a node?!
 	function place_slab_sound(pos: Vec3, newnode: string): void {
-		const node: NodeDefinition | null = core.registered_nodes[newnode];
+		const node: NodeDefinition | undefined = core.registered_nodes[newnode];
 		if (node == null) {
 			core.log(
 				LogLevel.warning,
