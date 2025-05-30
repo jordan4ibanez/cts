@@ -104,7 +104,7 @@ namespace furnace_chest {
 		}
 	});
 
-	function destroy_chest(pos: Vec3) {
+	function destroy_chest(pos: Vec3): void {
 		const meta: MetaRef = core.get_meta(pos);
 		const inv: InvRef = meta.get_inventory();
 		const lists: Dictionary<string, ItemStackObject[]> = inv.get_lists();
