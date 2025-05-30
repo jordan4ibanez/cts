@@ -1,6 +1,4 @@
 namespace furnace_chest {
-	// const furnace = {}
-
 	function get_furnace_active_formspec(
 		fuel_percent: number,
 		item_percent: number
