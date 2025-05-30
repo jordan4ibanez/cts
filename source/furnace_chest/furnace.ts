@@ -148,8 +148,8 @@ namespace furnace_chest {
 		//
 		const meta = core.get_meta(pos)
 		const fuel_time = meta.get_float("fuel_time") || 0
-		const src_time = meta:get_float("src_time") or 0
-		const fuel_totaltime = meta:get_float("fuel_totaltime") or 0
+		const src_time = meta.get_float("src_time") || 0
+		const fuel_totaltime = meta.get_float("fuel_totaltime") || 0
 
 		const inv = meta:get_inventory()
 		const srclist, fuellist
