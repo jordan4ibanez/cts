@@ -44,11 +44,13 @@ namespace furnace_chest {
 
 		open_chests.delete(pn);
 
+		// See if any other player has this chest open.
 		// for k, v in pairs(chest.open_chests) do
 		// 	if v.pos.x == pos.x and v.pos.y == pos.y and v.pos.z == pos.z then
 		// 		return true
 		// 	end
 		// end
+
 		// local node = minetest.get_node(pos)
 		// minetest.after(0.2, function(pos,swap,node)
 		// 	if minetest.get_node(pos).name == "utility:chest_open" then
