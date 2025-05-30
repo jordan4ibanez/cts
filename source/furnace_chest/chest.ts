@@ -97,12 +97,12 @@ namespace furnace_chest {
 		}
 	);
 
-	// core.register_on_leaveplayer(function(player)
-	// 	local pn = player:get_player_name()
-	// 	if chest.open_chests[pn] then
-	// 		chest.chest_lid_close(pn)
-	// 	end
-	// });
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		const pn: string = player.get_player_name();
+		if (open_chests.has(pn)) {
+			chest_lid_close(pn);
+		}
+	});
 
 	// local function destroy_chest(pos)
 	// 	local meta = core.get_meta(pos)
