@@ -51,15 +51,28 @@ namespace furnace_chest {
 			}
 		}
 
-		const node: NodeTable = core.get_node(pos)
+		const node: NodeTable = core.get_node(pos);
 
-		core.after(0.2, (pos,swap,node) => {
-			if (core.get_node(pos).name == "utility:chest_open") {
-				core.swap_node(pos,{name : "utility:"+swap,param2:node.param2})
-				core.sound_play(sound, {gain : 0.3, pos : pos, max_hear_distance : 10},true)
-            }
-			//redstone.collect_info(pos)
-        },pos,swap,node)
+		core.after(
+			0.2,
+			(pos, swap, node) => {
+				if (core.get_node(pos).name == "utility:chest_open") {
+					core.swap_node(pos, {
+						name: "utility:" + swap,
+						param2: node.param2,
+					});
+					core.sound_play(
+						sound,
+						{ gain: 0.3, pos: pos, max_hear_distance: 10 },
+						true
+					);
+				}
+				//redstone.collect_info(pos)
+			},
+			pos,
+			swap,
+			node
+		);
 	}
 
 	// core.register_on_player_receive_fields(function(player, formname, fields)
