@@ -552,8 +552,8 @@ namespace item_handling {
 			}
 
 			let change: boolean = false;
-			// Slide on slippery nodes
-			const def: NodeDefinition | null =
+			// Slide on slippery nodes.
+			const def: NodeDefinition | null | undefined =
 				node && core.registered_nodes[node.name];
 			const vel = this.object.get_velocity();
 			if (node && def && def.walkable) {
