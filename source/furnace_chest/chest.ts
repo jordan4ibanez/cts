@@ -19,6 +19,8 @@ namespace furnace_chest {
 		return formspec;
 	}
 
+    const open_chests: Dictionary<string, any> = {};
+
 	function chest_lid_close(pn) {
 		local chest_open_info = chest.open_chests[pn]
 		local pos = chest_open_info.pos
@@ -40,7 +42,7 @@ namespace furnace_chest {
 		end,pos,swap,node)
     }
 
-	// chest.open_chests = {}
+	
 	// minetest.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if formname ~= "utility:chest" then
 	// 		return
