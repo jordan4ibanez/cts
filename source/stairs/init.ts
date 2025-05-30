@@ -184,35 +184,37 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
                 }
 			// Normal placement - (back of slab) or normal node.
             } else if ((rightsideup && ydiff == -1) || (upsidedown && ydiff == 1) || (! rightsideup && ! upsidedown) || ydiff == 0) {
-				local itemstack,worked = core.item_place(itemstack, placer, pointed_thing)
-				if worked then
+                
+                // todo: check if this still works, _ used to be itemstack
+				const [_,worked] = core.item_place(itemstack, placer, pointed_thing)
+				if (worked) {
 					placement_worked = true
-				end
+                }
 			//normal slab to full slab
-            } else if (rightsideup and ydiff == 1) {
+            } else if (rightsideup && ydiff == 1) {
 				place_slab_sound(pointed_thing.under,newname)
-				core.set_node(pointed_thing.under, {name = name})
-				itemstack:take_item()
+				core.set_node(pointed_thing.under, {name : name})
+				itemstack.take_item()
 				placement_worked = true
 			//upsidedown slab to full slab
-            } else if (upsidedown and ydiff == -1) {
+            } else if (upsidedown && ydiff == -1) {
 				place_slab_sound(pointed_thing.under,newname)
-				core.set_node(pointed_thing.under, {name = name})
-				itemstack:take_item()
+				core.set_node(pointed_thing.under, {name : name})
+				itemstack.take_item()
 				placement_worked = true
             }
 			
 			//try to do pointed_thing above
-			if placement_worked == false then
-				local node_above = core.get_node(pointed_thing.above).name
-				local rightsideup = (newname == node_above)
-				local upsidedown = (newname+"_upsidedown" == node_above)
-				if rightsideup or upsidedown then
-					place_slab_sound(pointed_thing.above,newname)
-					core.set_node(pointed_thing.above, {name = name})
-					itemstack:take_item()
-				end
-			end
+			// if placement_worked == false then
+			// 	local node_above = core.get_node(pointed_thing.above).name
+			// 	local rightsideup = (newname == node_above)
+			// 	local upsidedown = (newname+"_upsidedown" == node_above)
+			// 	if rightsideup or upsidedown then
+			// 		place_slab_sound(pointed_thing.above,newname)
+			// 		core.set_node(pointed_thing.above, {name = name})
+			// 		itemstack:take_item()
+			// 	end
+			// end
 			
 			
 			return(itemstack)
