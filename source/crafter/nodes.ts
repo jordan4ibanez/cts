@@ -382,10 +382,10 @@ core.register_node("crafter:tree", {
 		}
 
 		const sneak: boolean = placer.get_player_control().sneak;
-		const noddef: NodeDefinition =
+		const noddef: NodeDefinition | undefined =
 			core.registered_nodes[core.get_node(pointed_thing.under).name];
 
-		if (!sneak && noddef.on_rightclick) {
+		if (!sneak && noddef && noddef.on_rightclick) {
 			core.item_place(itemstack, placer, pointed_thing);
 			return null;
 		}
