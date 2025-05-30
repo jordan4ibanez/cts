@@ -144,13 +144,20 @@ namespace furnace_chest {
 				//meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
 			};
 
-			// 		def.allow_metadata_inventory_move = function(pos, from_list, from_index,
-			// 				to_list, to_index, count, player)
-			// 			if not default.can_interact_with_node(player, pos) then
-			// 				return 0
-			// 			end
-			// 			return count
-			// 		end
+			def.allow_metadata_inventory_move = (
+				pos,
+				from_list,
+				from_index,
+				to_list,
+				to_index,
+				count,
+				player
+			) => {
+				if (!can_interact_with_node(player, pos)) {
+					return 0;
+				}
+				return count;
+			};
 
 			// 		def.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
 			// 			if not default.can_interact_with_node(player, pos) then
