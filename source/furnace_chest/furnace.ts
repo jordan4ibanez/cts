@@ -154,7 +154,8 @@ namespace furnace_chest {
 		const inv: InvRef = meta.get_inventory();
 
 		let cookable: boolean = false;
-		// let cooked;
+		let cooked: CraftResultObject | null = null;
+		let aftercooked: CraftRecipeCheckDefinition | null = null;
 
 		let fuel: CraftResultObject | null = null;
 		let srclist: ItemStackObject[] = [];
@@ -174,7 +175,7 @@ namespace furnace_chest {
 
 			// Check if we have cookable content.
 
-			const [cooked, aftercooked] = core.get_craft_result({
+			[cooked, aftercooked] = core.get_craft_result({
 				method: CraftCheckType.cooking,
 				width: 1,
 				items: srclist,
