@@ -2262,7 +2262,7 @@ declare global {
 		get_wielded_item(): ItemStackObject;
 		set_wielded_item(item: ItemStackObject): boolean;
 		get_armor_groups(): { string: number };
-		set_armor_groups(groups: { [id: string]: number }): void;
+		set_armor_groups(groups: Dictionary<string, number>): void;
 		get_animation(): Array<Vec2 | number>;
 		set_animation(
 			frameRange: Vec2,
