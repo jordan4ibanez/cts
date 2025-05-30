@@ -946,7 +946,7 @@ declare global {
 		type?: string;
 		description?: string;
 		short_description?: string;
-		groups?: { [id: string]: number };
+		groups?: Dictionary<string, number>;
 		//! Note: crafter custom.
 		mob_hit_wear?: number;
 		inventory_image?: string;
