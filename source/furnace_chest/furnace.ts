@@ -99,12 +99,26 @@ namespace furnace_chest {
 		return 0;
 	}
 
-	// local function allow_metadata_inventory_move(pos, from_list, from_index, to_list, to_index, count, player)
-	// 	local meta = core.get_meta(pos)
-	// 	local inv = meta:get_inventory()
-	// 	local stack = inv:get_stack(from_list, from_index)
-	// 	return allow_metadata_inventory_put(pos, to_list, to_index, stack, player)
-	// end
+	function allow_metadata_inventory_move(
+		pos: Vec3,
+		from_list: string,
+		from_index: number,
+		to_list: string,
+		to_index: number,
+		count: number,
+		player: ObjectRef
+	) {
+		const meta: MetaRef = core.get_meta(pos);
+		const inv: InvRef = meta.get_inventory();
+		const stack: ItemStackObject = inv.get_stack(from_list, from_index);
+		return allow_metadata_inventory_put(
+			pos,
+			to_list,
+			to_index,
+			stack,
+			player
+		);
+	}
 
 	// local function allow_metadata_inventory_take(pos, listname, index, stack, player)
 	// 	if core.is_protected(pos, player:get_player_name()) then
