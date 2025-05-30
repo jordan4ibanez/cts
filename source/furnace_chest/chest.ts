@@ -122,11 +122,7 @@ namespace furnace_chest {
 		protected: boolean;
 	}
 
-	export function register_chest(name: string, d: ChestDefinition) {
-		const def: ChestDefinition = table.copy(
-			d as unknown as LuaTable
-		) as unknown as ChestDefinition;
-        
+	export function register_chest(name: string, def: ChestDefinition) {
 		def.drawtype = Drawtype.mesh;
 		// def.visual = "mesh"
 		def.paramtype = ParamType1.light;
