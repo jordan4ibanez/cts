@@ -103,20 +103,40 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 //////////////////////////////////////////////////////- slabs
 
 function place_slab_sound (pos: Vec3,newnode: string): void {
-	local node = core.registered_nodes[newnode]
-	local sound = node.sounds
-	local placing = ""
-	if sound then
+	const node: NodeDefinition | null = core.registered_nodes[newnode] 
+    if (node == null) {
+        core.log(LogLevel.warning, `Node [${newnode}] has a null definition`)
+        return;
+    }
+
+	const sound: NodeSoundSpec | undefined = node.sounds
+
+	let placing: string | SimpleSoundSpec | null = null;
+
+	if (sound && sound && sound.placing) {
 		placing = sound.placing
-	end
-	//only play the sound when is defined
-	if type(placing) == "table" then
-		core.sound_play(placing.name, {
-			  pos = pos,
-			  gain = placing.gain,
+    }
+
+	// Only play the sound when is defined.
+	if (placing != null) {
+        let finalSound: string = ""
+        let finalGain = 1.0;
+        if (typeof placing == "string"){
+            finalSound = placing;
+        } else if (placing.name) {
+            finalSound = placing.name;
+            if (placing.gain) {
+                finalGain = placing.gain;
+            }
+        } else {
+            core.log(LogLevel.warning, `Node [${newnode}] has a missing placing sound.`)
+        }
+		core.sound_play(finalSound, {
+			  pos : pos,
+			  gain : finalGain,
 			  //pitch = math.random(60,100)/100
 		})
-	end
+    }
 }
 //slabs - shift click to place upside down
 // for name,def in pairs(core.registered_nodes) do
