@@ -623,7 +623,7 @@ interface core {
 	registered_decorations: Dictionary<string, DecorationDefinition>;
 	registered_schematics: Dictionary<string, SchematicDefinition>;
 	registered_chatcommands: Dictionary<string, ChatCommandDefinition>;
-	registered_privileges: { [id: string]: PrivilegeDefinition };
+	registered_privileges: Dictionary<string, PrivilegeDefinition>;
 
 	wrap_text(str: string, limit: number, asTable: boolean): string | string[];
 	pos_to_string(position: Vec3, decimalPlaces?: number): string;
