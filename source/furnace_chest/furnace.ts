@@ -311,20 +311,20 @@ namespace furnace_chest {
 		//meta:set_string("infotext", infotext)
 
 		return result
-	end
+     }
 	//throw all items in furnace out on destroy
-	local function destroy_furnace(pos)
-		local meta = core.get_meta(pos)
-		local inv = meta:get_inventory()
-		local lists = inv:get_lists()
-		for listname,_ in pairs(lists) do
-			local size = inv:get_size(listname)
-			for i = 1,size do
-				local stack = inv:get_stack(listname, i)
-				core.add_item(pos, stack)
-			end
-		end
-    }
+	// local function destroy_furnace(pos)
+	// 	local meta = core.get_meta(pos)
+	// 	local inv = meta:get_inventory()
+	// 	local lists = inv:get_lists()
+	// 	for listname,_ in pairs(lists) do
+	// 		local size = inv:get_size(listname)
+	// 		for i = 1,size do
+	// 			local stack = inv:get_stack(listname, i)
+	// 			core.add_item(pos, stack)
+	// 		end
+	// 	end
+    // end
 
 	// //
 	// // Node definitions
