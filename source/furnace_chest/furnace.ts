@@ -149,7 +149,7 @@ namespace furnace_chest {
 		const meta: MetaRef = core.get_meta(pos);
 		let fuel_time: number = meta.get_float("fuel_time") || 0;
 		let src_time: number = meta.get_float("src_time") || 0;
-		const fuel_totaltime: number = meta.get_float("fuel_totaltime") || 0;
+		let fuel_totaltime: number = meta.get_float("fuel_totaltime") || 0;
 
 		const inv: InvRef = meta.get_inventory();
 
@@ -196,7 +196,7 @@ namespace furnace_chest {
 							// Place result in dst list if possible.
 							if (inv.room_for_item("dst", cooked.item)) {
 								inv.add_item("dst", cooked.item)
-								inv.set_stack("src", 1, aftercooked.items[1])
+								inv.set_stack("src", 1, aftercooked.items[0])
 								src_time  -= cooked.time;
 								update = true
 								const dir: Vec3 = vector.divide(core.facedir_to_dir(core.get_node(pos).param2 || 0),-1.95)
@@ -211,36 +211,35 @@ namespace furnace_chest {
                         }
                     }
                 }else{
-					// Furnace ran out of fuel
-					if cookable then
-						// We need to get new fuel
-						local afterfuel
-						fuel, afterfuel = core.get_craft_result({method = "fuel", width = 1, items = fuellist})
-						if fuel.time == 0 then
+					// Furnace ran out of fuel.
+					if (cookable) {
+						// We need to get new fuel.
+						const [fuel, afterfuel] = core.get_craft_result({method : CraftCheckType.fuel, width : 1, items : fuellist})
+						if (fuel.time == 0) {
 							// No valid fuel in fuel list
 							fuel_totaltime = 0
 							src_time = 0
-						else
+                        }else{
 							// Take fuel from fuel list
-							inv:set_stack("fuel", 1, afterfuel.items[1])
+							inv.set_stack("fuel", 1, afterfuel.items[0])
 							// Put replacements in dst list or drop them on the furnace.
 							local replacements = fuel.replacements
-							if replacements[1] then
-								local leftover = inv:add_item("dst", replacements[1])
+							if replacements[0] then
+								local leftover = inv:add_item("dst", replacements[0])
 								if not leftover:is_empty() then
 									local above = vector.new(pos.x, pos.y + 1, pos.z)
 									local drop_pos = core.find_node_near(above, 1, {"air"}) or above
-									core.item_drop(replacements[1], nil, drop_pos)
+									core.item_drop(replacements[0], nil, drop_pos)
 								end
 							end
 							update = true
 							fuel_totaltime = fuel.time + (fuel_totaltime - fuel_time)
-						end
-					else
+                        }
+                    }else{
 						// We don't need to get new fuel since there is no cookable item
 						fuel_totaltime = 0
 						src_time = 0
-					end
+                    }
 					fuel_time = 0
                 }
 				elapsed = elapsed - el
@@ -249,7 +248,7 @@ namespace furnace_chest {
 		// if fuel and fuel_totaltime > fuel.time then
 		// 	fuel_totaltime = fuel.time
 		// end
-		// if srclist and srclist[1]:is_empty() then
+		// if srclist and srclist[0]:is_empty() then
 		// 	src_time = 0
 		// end
 
@@ -267,7 +266,7 @@ namespace furnace_chest {
 		// 		item_state = (item_percent)
 		// 	end
 		// else
-		// 	if srclist and not srclist[1]:is_empty() then
+		// 	if srclist and not srclist[0]:is_empty() then
 		// 		item_state = ("Not cookable")
 		// 	else
 		// 		item_state = ("Empty")
@@ -287,7 +286,7 @@ namespace furnace_chest {
 		// 	// make sure timer restarts automatically
 		// 	result = true
 		// else
-		// 	if fuellist and not fuellist[1]:is_empty() then
+		// 	if fuellist and not fuellist[0]:is_empty() then
 		// 		fuel_state = (0)
 		// 	end
 		// 	formspec = furnace.get_furnace_inactive_formspec()
