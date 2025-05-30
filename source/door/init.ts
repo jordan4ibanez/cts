@@ -142,18 +142,18 @@ namespace door {
                         }
                     } else if (material == "iron") {
 						sounds = crafter.stoneSound()
-						if door == "bottom" then
-							tiles = {"iron_block.png"}
-							groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, bottom = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
+						if (door == "bottom") {
+							tiles = ["iron_block.png"]
+							groups = {stone : 1, hard : 1, pickaxe : 1, hand : 4, bottom : 1,crafter_door_open : ((state == "open" && 1) || 0),crafter_door_closed : ((state == "closed" && 1) || 0)}
 
-						else
-							if state == "closed" then
-								tiles = {"iron_block.png","iron_block.png","iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png"}
-							elseif state == "open" then
-								tiles = {"iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png","iron_block.png","iron_block.png"}
-							end
-							groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, redstone_activation = 1, top = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
-						end
+                        } else {
+							if (state == "closed") {
+								tiles = ["iron_block.png","iron_block.png","iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png"]
+                            } else if (state == "open") {
+								tiles = ["iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png","iron_block.png","iron_block.png"]
+                            }
+							groups = {stone : 1, hard : 1, pickaxe : 1, hand : 4, redstone_activation : 1, top : 1,crafter_door_open : ((state == "open" && 1) || 0),crafter_door_closed : ((state == "closed" && 1) || 0)}
+                        }
                     }
 		// 			core.register_node("door:"..door.."_"..material.."_"..state, {
 		// 				description = material:gsub("^%l", string.upper).." Door",
