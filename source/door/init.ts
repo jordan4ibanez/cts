@@ -277,7 +277,7 @@ namespace door {
 								);
 							}
 						},
-						after_dig_node: (pos, oldnode, oldmetadata, digger) => {
+						after_dig_node: (pos: Vec3, oldnode: NodeTable) => {
 							if (
 								string.match(oldnode.name, ":bottom")[0] != null
 							) {
