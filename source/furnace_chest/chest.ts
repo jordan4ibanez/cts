@@ -137,11 +137,13 @@ namespace furnace_chest {
 			// 			local inv = meta:get_inventory()
 			// 			inv:set_size("main", 9*4)
 			// 		end
+
 			// 		def.after_place_node = function(pos, placer)
 			// 			local meta = core.get_meta(pos)
 			// 			meta:set_string("owner", placer:get_player_name() or "")
 			// 			//meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
 			// 		end
+
 			// 		def.allow_metadata_inventory_move = function(pos, from_list, from_index,
 			// 				to_list, to_index, count, player)
 			// 			if not default.can_interact_with_node(player, pos) then
@@ -149,18 +151,21 @@ namespace furnace_chest {
 			// 			end
 			// 			return count
 			// 		end
+
 			// 		def.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
 			// 			if not default.can_interact_with_node(player, pos) then
 			// 				return 0
 			// 			end
 			// 			return stack:get_count()
 			// 		end
+
 			// 		def.allow_metadata_inventory_take = function(pos, listname, index, stack, player)
 			// 			if not default.can_interact_with_node(player, pos) then
 			// 				return 0
 			// 			end
 			// 			return stack:get_count()
 			// 		end
+
 			// 		def.on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 			// 			if not default.can_interact_with_node(clicker, pos) then
 			// 				return itemstack
@@ -174,7 +179,9 @@ namespace furnace_chest {
 			// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,
 			// 					sound = def.sound_close, swap = name }
 			// 		end
+
 			// 		def.on_blast = function() end
+
 			// 		def.on_key_use = function(pos, player)
 			// 			local secret = core.get_meta(pos):get_string("key_lock_secret")
 			// 			local itemstack = player:get_wielded_item()
@@ -195,6 +202,7 @@ namespace furnace_chest {
 			// 				chest.get_chest_formspec(pos)
 			// 			)
 			// 		end
+            
 			// 		def.on_skeleton_key_use = function(pos, player, newsecret)
 			// 			local meta = core.get_meta(pos)
 			// 			local owner = meta:get_string("owner")
