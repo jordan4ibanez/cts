@@ -50,20 +50,20 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 
 // //[[
 // local function can_dig(pos, player)
-// 	local meta = minetest.get_meta(pos);
+// 	local meta = core.get_meta(pos);
 // 	local inv = meta:get_inventory()
 // 	return inv:is_empty("fuel") and inv:is_empty("dst") and inv:is_empty("src")
 // end
 // ]]//
 
 // local function allow_metadata_inventory_put(pos, listname, index, stack, player)
-// 	if minetest.is_protected(pos, player:get_player_name()) then
+// 	if core.is_protected(pos, player:get_player_name()) then
 // 		return 0
 // 	end
-// 	local meta = minetest.get_meta(pos)
+// 	local meta = core.get_meta(pos)
 // 	local inv = meta:get_inventory()
 // 	if listname == "fuel" then
-// 		if minetest.get_craft_result({method="fuel", width=1, items={stack}}).time ~= 0 then
+// 		if core.get_craft_result({method="fuel", width=1, items={stack}}).time ~= 0 then
 // 			//if inv:is_empty("src") then
 // 			//	meta:set_string("infotext", "Furnace is empty")
 // 			//end
@@ -79,33 +79,33 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // end
 
 // local function allow_metadata_inventory_move(pos, from_list, from_index, to_list, to_index, count, player)
-// 	local meta = minetest.get_meta(pos)
+// 	local meta = core.get_meta(pos)
 // 	local inv = meta:get_inventory()
 // 	local stack = inv:get_stack(from_list, from_index)
 // 	return allow_metadata_inventory_put(pos, to_list, to_index, stack, player)
 // end
 
 // local function allow_metadata_inventory_take(pos, listname, index, stack, player)
-// 	if minetest.is_protected(pos, player:get_player_name()) then
+// 	if core.is_protected(pos, player:get_player_name()) then
 // 		return 0
 // 	end
 // 	return stack:get_count()
 // end
 
 // local function swap_node(pos, name)
-// 	local node = minetest.get_node(pos)
+// 	local node = core.get_node(pos)
 // 	if node.name == name then
 // 		return
 // 	end
 // 	node.name = name
-// 	minetest.swap_node(pos, node)
+// 	core.swap_node(pos, node)
 // end
 
 // local function furnace_node_timer(pos, elapsed)
 // 	//
 // 	// Initialize metadata
 // 	//
-// 	local meta = minetest.get_meta(pos)
+// 	local meta = core.get_meta(pos)
 // 	local fuel_time = meta:get_float("fuel_time") or 0
 // 	local src_time = meta:get_float("src_time") or 0
 // 	local fuel_totaltime = meta:get_float("fuel_totaltime") or 0
@@ -130,7 +130,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 
 // 		// Check if we have cookable content
 // 		local aftercooked
-// 		cooked, aftercooked = minetest.get_craft_result({method = "cooking", width = 1, items = srclist})
+// 		cooked, aftercooked = core.get_craft_result({method = "cooking", width = 1, items = srclist})
 // 		cookable = cooked.time ~= 0
 
 // 		local el = math.min(elapsed, fuel_totaltime - fuel_time)
@@ -152,9 +152,9 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 						inv:set_stack("src", 1, aftercooked.items[1])
 // 						src_time = src_time - cooked.time
 // 						update = true
-// 						local dir = vector.divide(minetest.facedir_to_dir(minetest.get_node(pos).param2),-1.95)
+// 						local dir = vector.divide(core.facedir_to_dir(core.get_node(pos).param2),-1.95)
 // 						local newpos = vector.add(pos,dir)
-// 						minetest.throw_experience(newpos, 1)
+// 						core.throw_experience(newpos, 1)
 // 					else
 // 						dst_full = true
 // 					end
@@ -168,7 +168,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 			if cookable then
 // 				// We need to get new fuel
 // 				local afterfuel
-// 				fuel, afterfuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist})
+// 				fuel, afterfuel = core.get_craft_result({method = "fuel", width = 1, items = fuellist})
 
 // 				if fuel.time == 0 then
 // 					// No valid fuel in fuel list
@@ -183,8 +183,8 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 						local leftover = inv:add_item("dst", replacements[1])
 // 						if not leftover:is_empty() then
 // 							local above = vector.new(pos.x, pos.y + 1, pos.z)
-// 							local drop_pos = minetest.find_node_near(above, 1, {"air"}) or above
-// 							minetest.item_drop(replacements[1], nil, drop_pos)
+// 							local drop_pos = core.find_node_near(above, 1, {"air"}) or above
+// 							core.item_drop(replacements[1], nil, drop_pos)
 // 						end
 // 					end
 // 					update = true
@@ -248,7 +248,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 		formspec = furnace.get_furnace_inactive_formspec()
 // 		swap_node(pos, "utility:furnace")
 // 		// stop timer on the inactive furnace
-// 		minetest.get_node_timer(pos):stop()
+// 		core.get_node_timer(pos):stop()
 // 	end
 
 
@@ -274,14 +274,14 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // end
 // //throw all items in furnace out on destroy
 // local function destroy_furnace(pos)
-// 	local meta = minetest.get_meta(pos)
+// 	local meta = core.get_meta(pos)
 // 	local inv = meta:get_inventory()
 // 	local lists = inv:get_lists()
 // 	for listname,_ in pairs(lists) do
 // 		local size = inv:get_size(listname)
 // 		for i = 1,size do
 // 			local stack = inv:get_stack(listname, i)
-// 			minetest.add_item(pos, stack)
+// 			core.add_item(pos, stack)
 // 		end
 // 	end
 // end
@@ -290,7 +290,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // // Node definitions
 // //
 
-// minetest.register_node("utility:furnace", {
+// core.register_node("utility:furnace", {
 // 	description = ("Furnace"),
 // 	tiles = {
 // 		"furnace_top.png", "furnace_bottom.png",
@@ -308,7 +308,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 	on_timer = furnace_node_timer,
 
 // 	on_construct = function(pos)
-// 		local meta = minetest.get_meta(pos)
+// 		local meta = core.get_meta(pos)
 // 		local inv = meta:get_inventory()
 // 		inv:set_size('src', 1)
 // 		inv:set_size('fuel', 1)
@@ -317,14 +317,14 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 	end,
 
 // 	on_metadata_inventory_move = function(pos)
-// 		local timer = minetest.get_node_timer(pos)
+// 		local timer = core.get_node_timer(pos)
 // 		if timer:is_started() == false then
 // 			timer:start(1.0)
 // 		end
 // 	end,
 // 	on_metadata_inventory_put = function(pos)
 // 		// start timer function, it will sort out whether furnace can burn or not.
-// 		local timer = minetest.get_node_timer(pos)
+// 		local timer = core.get_node_timer(pos)
 // 		if timer:is_started() == false then
 // 			timer:start(1.0)
 // 		end
@@ -336,7 +336,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 		furnace.get_inventory_drops(pos, "fuel", drops)
 // 		furnace.get_inventory_drops(pos, "dst", drops)
 // 		drops[#drops+1] = "utility:furnace"
-// 		minetest.remove_node(pos)
+// 		core.remove_node(pos)
 // 		return drops
 // 	end,
 // 	]]//
@@ -348,7 +348,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 	allow_metadata_inventory_take = allow_metadata_inventory_take,
 // })
 
-// minetest.register_node("utility:furnace_active", {
+// core.register_node("utility:furnace_active", {
 // 	description = ("Furnace"),
 // 	tiles = {
 // 		"furnace_top.png", "furnace_bottom.png",
@@ -384,7 +384,7 @@ function get_furnace_active_formspec(fuel_percent, item_percent) {
 // 	end,
 // })
 
-// minetest.register_craft({
+// core.register_craft({
 // 	output = "utility:furnace",
 // 	recipe = {
 // 		{"main:cobble", "main:cobble", "main:cobble"},
