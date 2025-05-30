@@ -142,24 +142,26 @@ namespace furnace_chest {
 		core.swap_node(pos, node);
 	}
 
-	 function furnace_node_timer(pos: Vec3, elapsed: number) {
+	function furnace_node_timer(pos: Vec3, elapsed: number) {
 		//
 		// Initialize metadata
 		//
-		const meta = core.get_meta(pos)
-		const fuel_time = meta.get_float("fuel_time") || 0
-		const src_time = meta.get_float("src_time") || 0
-		const fuel_totaltime = meta.get_float("fuel_totaltime") || 0
+		const meta: MetaRef = core.get_meta(pos);
+		const fuel_time: number = meta.get_float("fuel_time") || 0;
+		const src_time: number = meta.get_float("src_time") || 0;
+		const fuel_totaltime: number = meta.get_float("fuel_totaltime") || 0;
 
-		const inv = meta.get_inventory()
-		let srclist
-        let fuellist
-		const dst_full = false
+		const inv: InvRef = meta.get_inventory();
 
-		const cookable, cooked
-		const fuel
+		const dst_full = false;
 
-		const update = true
+		let srclist;
+		let fuellist;
+		let cookable;
+		let cooked;
+		let fuel;
+
+		const update = true;
 		// while elapsed > 0 and update do
 		// 	update = false
 
@@ -313,7 +315,7 @@ namespace furnace_chest {
 		// //meta:set_string("infotext", infotext)
 
 		// return result
-     }
+	}
 	//throw all items in furnace out on destroy
 	// local function destroy_furnace(pos)
 	// 	local meta = core.get_meta(pos)
@@ -326,7 +328,7 @@ namespace furnace_chest {
 	// 			core.add_item(pos, stack)
 	// 		end
 	// 	end
-    // end
+	// end
 
 	// //
 	// // Node definitions
