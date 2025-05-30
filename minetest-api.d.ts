@@ -1020,7 +1020,7 @@ declare global {
 		description?: string;
 		drawtype?: Drawtype;
 		visual_scale?: number;
-		tiles?: string[] | TileDefinition[];
+		tiles?: (string | TileDefinition)[];
 		inventory_image?: string;
 		wield_image?: string;
 		node_placement_prediction?: string;
