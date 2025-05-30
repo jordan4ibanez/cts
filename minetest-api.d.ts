@@ -1116,7 +1116,7 @@ declare global {
 		on_receive_fields?(
 			position: Vec3,
 			formName: string,
-			fields: { [id: string]: any },
+			fields: Dictionary<string, any>,
 			sender: ObjectRef
 		): void;
 		allow_metadata_inventory_move?(
