@@ -102,6 +102,7 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 
 //////////////////////////////////////////////////////- slabs
 
+// todo: Why isn't this just using the global place node thing that makes the sound play when you place a node?!
 function place_slab_sound (pos: Vec3,newnode: string): void {
 	const node: NodeDefinition | null = core.registered_nodes[newnode] 
     if (node == null) {
