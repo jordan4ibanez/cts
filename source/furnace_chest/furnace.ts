@@ -293,7 +293,11 @@ namespace furnace_chest {
 				item_state = tostring(item_percent);
 			}
 		} else {
-			if (srclist != null && srclist.length > 0 && !srclist[0].is_empty()) {
+			if (
+				srclist != null &&
+				srclist.length > 0 &&
+				!srclist[0].is_empty()
+			) {
 				item_state = "Not cookable";
 			} else {
 				item_state = "Empty";
