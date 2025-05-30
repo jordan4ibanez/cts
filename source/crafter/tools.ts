@@ -1449,7 +1449,8 @@ namespace crafter {
 						core.registered_nodes[
 							core.get_node(pointed_thing.under).name
 						];
-					const walkable: boolean = (noddef && noddef.walkable) || false;
+					const walkable: boolean =
+						(noddef && noddef.walkable) || false;
 					const sneak: boolean = placer.get_player_control().sneak;
 					if (!sneak && noddef && noddef.on_rightclick) {
 						core.item_place(itemstack, placer, pointed_thing);
