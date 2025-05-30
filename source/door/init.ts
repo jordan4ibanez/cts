@@ -105,19 +105,19 @@ namespace door {
 		// 			local groups
 		// 			local sounds
 		// 			local on_rightclick
-		// 			local redstone_deactivation
-		// 			local redstone_activation
-
-		// 			//redstone input
-		// 			if state == "open" then
-		// 				redstone_deactivation = function(pos)
-		// 					door_rightclick(pos)
-		// 				end
-		// 			elseif state == "closed" then
-		// 				redstone_activation = function(pos)
-		// 					door_rightclick(pos)
-		// 				end
-		// 			end
+					let redstone_deactivation: ((pos: Vec3) => void) | undefined;
+					let redstone_activation: ((pos: Vec3) => void) | undefined
+                    
+					// Redstone input.
+					if (state == "open") {
+						redstone_deactivation = (pos: Vec3) => {
+							door_rightclick(pos)
+                        }
+                    } else if (state == "closed") {
+						redstone_activation = (pos: Vec3) => {
+							door_rightclick(pos)
+                        }
+                    }
 
 		// 			if material == "wood" then
 		// 				sounds = main.woodSound()
