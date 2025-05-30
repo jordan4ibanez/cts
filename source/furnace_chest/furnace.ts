@@ -353,8 +353,11 @@ namespace furnace_chest {
 	function destroy_furnace(pos: Vec3): void {
 		const meta: MetaRef = core.get_meta(pos);
 		const inv: InvRef = meta.get_inventory();
-		const lists: string[] = inv.get_lists();
+		const lists: Dictionary<string, ItemStackObject[]> = inv.get_lists();
+		const x = lists.test;
+		print(x);
 		print(dump(lists));
+
 		// for listname,_ in pairs(lists) do
 		// 	local size = inv:get_size(listname)
 		// 	for i = 1,size do
