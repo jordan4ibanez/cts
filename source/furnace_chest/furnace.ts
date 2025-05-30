@@ -64,27 +64,39 @@ namespace furnace_chest {
 	// end
 	// ]]//
 
-	// local function allow_metadata_inventory_put(pos, listname, index, stack, player)
-	// 	if core.is_protected(pos, player:get_player_name()) then
-	// 		return 0
-	// 	end
-	// 	local meta = core.get_meta(pos)
-	// 	local inv = meta:get_inventory()
-	// 	if listname == "fuel" then
-	// 		if core.get_craft_result({method="fuel", width=1, items={stack}}).time ~= 0 then
-	// 			//if inv:is_empty("src") then
-	// 			//	meta:set_string("infotext", "Furnace is empty")
-	// 			//end
-	// 			return stack:get_count()
-	// 		else
-	// 			return 0
-	// 		end
-	// 	elseif listname == "src" then
-	// 		return stack:get_count()
-	// 	elseif listname == "dst" then
-	// 		return 0
-	// 	end
-	// end
+	function allow_metadata_inventory_put(
+		pos: Vec3,
+		listname: string,
+		index: number,
+		stack: ItemStackObject,
+		player: ObjectRef
+	) {
+		if (core.is_protected(pos, player.get_player_name())) {
+			return 0;
+		}
+		const meta: MetaRef = core.get_meta(pos);
+		const inv: InvRef = meta.get_inventory();
+		if (listname == "fuel") {
+			if (
+				core.get_craft_result({
+					method: CraftCheckType.fuel,
+					width: 1,
+					items: [stack],
+				})[0].time != 0
+			) {
+				//if inv:is_empty("src") then
+				//	meta:set_string("infotext", "Furnace is empty")
+				//end
+				return stack.get_count();
+			} else {
+				return 0;
+			}
+		} else if (listname == "src") {
+			return stack.get_count();
+		} else if (listname == "dst") {
+			return 0;
+		}
+	}
 
 	// local function allow_metadata_inventory_move(pos, from_list, from_index, to_list, to_index, count, player)
 	// 	local meta = core.get_meta(pos)
