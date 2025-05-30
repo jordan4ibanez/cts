@@ -166,57 +166,57 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 		}
 		// We're passing in the local variables newname and name into this function
 		// calculating wether to turn a half slab into a full block.
-// 		def2.on_place = function(itemstack, placer, pointed_thing)
-// 			//get all the required variables
-// 			local sneak = placer:get_player_control().sneak
-// 			local ydiff = pointed_thing.above.y-pointed_thing.under.y
-// 			local node_under = core.get_node(pointed_thing.under).name
-// 			local rightsideup = (newname == node_under)
-// 			local upsidedown = (newname.."_upsidedown" == node_under)
+		def2.on_place = (itemstack, placer, pointed_thing) => {
+			//get all the required variables
+			local sneak = placer:get_player_control().sneak
+			local ydiff = pointed_thing.above.y-pointed_thing.under.y
+			local node_under = core.get_node(pointed_thing.under).name
+			local rightsideup = (newname == node_under)
+			local upsidedown = (newname.."_upsidedown" == node_under)
 			
-// 			local placement_worked = false
-// 			//upsidedown slab placement
-// 			if sneak == true then
-// 				local _,worked = core.item_place(ItemStack(newname.."_upsidedown"), placer, pointed_thing)
-// 				if worked then
-// 					itemstack:take_item()
-// 					placement_worked = true
-// 				end
-// 			//normal placement - (back of slab) or normal node
-// 			elseif (rightsideup and ydiff == -1) or (upsidedown and ydiff == 1) or (not rightsideup and not upsidedown) or ydiff == 0 then
-// 				local itemstack,worked = core.item_place(itemstack, placer, pointed_thing)
-// 				if worked then
-// 					placement_worked = true
-// 				end
-// 			//normal slab to full slab
-// 			elseif rightsideup and ydiff == 1 then
-// 				place_slab_sound(pointed_thing.under,newname)
-// 				core.set_node(pointed_thing.under, {name = name})
-// 				itemstack:take_item()
-// 				placement_worked = true
-// 			//upsidedown slab to full slab
-// 			elseif upsidedown and ydiff == -1 then
-// 				place_slab_sound(pointed_thing.under,newname)
-// 				core.set_node(pointed_thing.under, {name = name})
-// 				itemstack:take_item()
-// 				placement_worked = true
-// 			end
+			local placement_worked = false
+			//upsidedown slab placement
+			if sneak == true then
+				local _,worked = core.item_place(ItemStack(newname.."_upsidedown"), placer, pointed_thing)
+				if worked then
+					itemstack:take_item()
+					placement_worked = true
+				end
+			//normal placement - (back of slab) or normal node
+			elseif (rightsideup and ydiff == -1) or (upsidedown and ydiff == 1) or (not rightsideup and not upsidedown) or ydiff == 0 then
+				local itemstack,worked = core.item_place(itemstack, placer, pointed_thing)
+				if worked then
+					placement_worked = true
+				end
+			//normal slab to full slab
+			elseif rightsideup and ydiff == 1 then
+				place_slab_sound(pointed_thing.under,newname)
+				core.set_node(pointed_thing.under, {name = name})
+				itemstack:take_item()
+				placement_worked = true
+			//upsidedown slab to full slab
+			elseif upsidedown and ydiff == -1 then
+				place_slab_sound(pointed_thing.under,newname)
+				core.set_node(pointed_thing.under, {name = name})
+				itemstack:take_item()
+				placement_worked = true
+			end
 			
-// 			//try to do pointed_thing above
-// 			if placement_worked == false then
-// 				local node_above = core.get_node(pointed_thing.above).name
-// 				local rightsideup = (newname == node_above)
-// 				local upsidedown = (newname.."_upsidedown" == node_above)
-// 				if rightsideup or upsidedown then
-// 					place_slab_sound(pointed_thing.above,newname)
-// 					core.set_node(pointed_thing.above, {name = name})
-// 					itemstack:take_item()
-// 				end
-// 			end
+			//try to do pointed_thing above
+			if placement_worked == false then
+				local node_above = core.get_node(pointed_thing.above).name
+				local rightsideup = (newname == node_above)
+				local upsidedown = (newname.."_upsidedown" == node_above)
+				if rightsideup or upsidedown then
+					place_slab_sound(pointed_thing.above,newname)
+					core.set_node(pointed_thing.above, {name = name})
+					itemstack:take_item()
+				end
+			end
 			
 			
-// 			return(itemstack)
-// 		end
+			return(itemstack)
+        }
 // 		def2.groups["slabs"] = 1
 // 		def2.groups[name]=1
 // 		core.register_node(newname,def2)
