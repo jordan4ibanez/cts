@@ -75,20 +75,26 @@ namespace furnace_chest {
 		);
 	}
 
-	core.register_on_player_receive_fields((player, formname, fields) => {
-		// 	if formname ~= "utility:chest" then
-		// 		return
-		// 	end
-		// 	if not player or not fields.quit then
-		// 		return
-		// 	end
-		// 	local pn = player:get_player_name()
-		// 	if not chest.open_chests[pn] then
-		// 		return
-		// 	end
-		// 	chest.chest_lid_close(pn)
-		// 	return true
-	});
+	core.register_on_player_receive_fields(
+		(
+			player: ObjectRef,
+			formname: string,
+			fields: Dictionary<string, any>
+		) => {
+			// 	if formname ~= "utility:chest" then
+			// 		return
+			// 	end
+			// 	if not player or not fields.quit then
+			// 		return
+			// 	end
+			// 	local pn = player:get_player_name()
+			// 	if not chest.open_chests[pn] then
+			// 		return
+			// 	end
+			// 	chest.chest_lid_close(pn)
+			// 	return true
+		}
+	);
 
 	// core.register_on_leaveplayer(function(player)
 	// 	local pn = player:get_player_name()
