@@ -180,28 +180,29 @@ namespace door {
 						redstone_activation : redstone_activation,
 						redstone_deactivation : redstone_deactivation,
 
-						on_rightclick = on_rightclick,
-						after_place_node = function(pos, placer, itemstack, pointed_thing)
-							local node = get_node(pos)
-							local param2 = node.param2
-							local pos2 = t_copy(pos)
+						on_rightclick : on_rightclick,
+						after_place_node  : (pos: Vec3, placer: ObjectRef, itemstack: ItemStackObject)  => {
+							const node: NodeTable = get_node(pos)
+							const param2: number | undefined = node.param2
+							const pos2: Vec3 = vector.create3d(pos)
+
 							pos2.y = pos2.y + 1
-							if get_node(pos2).name == "air" then
-								set_node(pos2,{name="door:top_"+material+"_closed",param2=param2})
-							else
+							if (get_node(pos2).name == "air") {
+								set_node(pos2,{name:"door:top_"+material+"_closed",param2:param2})
+                            }else{
 								core.remove_node(pos)
-								itemstack:add_item(ItemStack("door:bottom_"+material+"_closed"))
-							end
-						end,
-						after_dig_node = function(pos, oldnode, oldmetadata, digger)
-							if string.match(oldnode.name, ":bottom") then
-								pos.y = pos.y + 1
-								core.remove_node(pos)
-							else
-								pos.y = pos.y - 1
-								core.remove_node(pos)
-							end
-						end,
+								itemstack.add_item(ItemStack("door:bottom_"+material+"_closed"))
+                            }
+                        },
+						// after_dig_node = function(pos, oldnode, oldmetadata, digger)
+						// 	if string.match(oldnode.name, ":bottom") then
+						// 		pos.y = pos.y + 1
+						// 		core.remove_node(pos)
+						// 	else
+						// 		pos.y = pos.y - 1
+						// 		core.remove_node(pos)
+						// 	end
+						// end,
 					})
                 }
         }
