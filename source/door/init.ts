@@ -42,21 +42,21 @@ namespace door {
 				if (top > 0) {
 					pos2.y = pos2.y - 1;
 					set_node(pos, {
-						name: "door:top_" + material + "_closed",
+						name: "crafter_door:top_" + material + "_closed",
 						param2: param2,
 					});
 					set_node(pos2, {
-						name: "door:bottom_" + material + "_closed",
+						name: "crafter_door:bottom_" + material + "_closed",
 						param2: param2,
 					});
 				} else if (bottom > 0) {
 					pos2.y = pos2.y + 1;
 					set_node(pos, {
-						name: "door:bottom_" + material + "_closed",
+						name: "crafter_door:bottom_" + material + "_closed",
 						param2: param2,
 					});
 					set_node(pos2, {
-						name: "door:top_" + material + "_closed",
+						name: "crafter_door:top_" + material + "_closed",
 						param2: param2,
 					});
 				}
@@ -70,21 +70,21 @@ namespace door {
 				if (top > 0) {
 					pos2.y = pos2.y - 1;
 					set_node(pos, {
-						name: "door:top_" + material + "_open",
+						name: "crafter_door:top_" + material + "_open",
 						param2: param2,
 					});
 					set_node(pos2, {
-						name: "door:bottom_" + material + "_open",
+						name: "crafter_door:bottom_" + material + "_open",
 						param2: param2,
 					});
 				} else if (bottom > 0) {
 					pos2.y = pos2.y + 1;
 					set_node(pos, {
-						name: "door:bottom_" + material + "_open",
+						name: "crafter_door:bottom_" + material + "_open",
 						param2: param2,
 					});
 					set_node(pos2, {
-						name: "door:top_" + material + "_open",
+						name: "crafter_door:top_" + material + "_open",
 						param2: param2,
 					});
 				}
@@ -156,7 +156,7 @@ namespace door {
                         }
                     }
 
-					core.register_node("door:"+door+"_"+material+"_"+state, {
+					core.register_node("crafter_door:"+door+"_"+material+"_"+state, {
 						description : string.gsub(material, "^%l", string.upper)+" Door",
 						tiles : tiles,
 						wield_image : "door_inv_"+material+".png",
@@ -166,7 +166,7 @@ namespace door {
 						paramtype2 : ParamType2.facedir,
 						groups : groups,
 						sounds : sounds,
-						drop : "door:bottom_"+material+"_closed",
+						drop : "crafter_door:bottom_"+material+"_closed",
 						node_placement_prediction : "",
 						node_box : {
 							type : Nodeboxtype.fixed,
@@ -188,10 +188,10 @@ namespace door {
 
 							pos2.y = pos2.y + 1
 							if (get_node(pos2).name == "air") {
-								set_node(pos2,{name:"door:top_"+material+"_closed",param2:param2})
+								set_node(pos2,{name:"crafter_door:top_"+material+"_closed",param2:param2})
                             }else{
 								core.remove_node(pos)
-								itemstack.add_item(ItemStack("door:bottom_"+material+"_closed"))
+								itemstack.add_item(ItemStack("crafter_door:bottom_"+material+"_closed"))
                             }
                         },
 						after_dig_node : (pos, oldnode, oldmetadata, digger) => {
@@ -207,7 +207,7 @@ namespace door {
                 }
         }
 		// core.register_craft({
-		// 	output = "door:bottom_"..material.."_closed",
+		// 	output = "crafter_door:bottom_"..material.."_closed",
 		// 	recipe = {
 		// 		{"main:"..material,"main:"..material},
 		// 		{"main:"..material,"main:"..material},
