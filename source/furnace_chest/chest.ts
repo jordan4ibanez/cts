@@ -1,5 +1,5 @@
 namespace furnace_chest {
-	function can_interact_with_node(player, pos) {
+	function can_interact_with_node(player: ObjectRef, pos: Vec3) {
 		// if player and player:is_player() then
 		// 	if minetest.check_player_privs(player, "protection_bypass") then
 		// 		return true
@@ -15,7 +15,7 @@ namespace furnace_chest {
 		// 	return true
 		// end
 
-		// -- Is player wielding the right key?
+		// // Is player wielding the right key?
 		// local item = player:get_wielded_item()
 		// if minetest.get_item_group(item:get_name(), "key") == 1 then
 		// 	local key_meta = item:get_meta()
