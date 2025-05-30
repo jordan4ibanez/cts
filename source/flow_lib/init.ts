@@ -72,7 +72,11 @@ namespace flowLib {
 
 		for (const i of data) {
 			const par2: number | undefined = i.node.param2;
-			if (i.node.name == "crafter:waterflow" && par2 != null && par2 >= 11) {
+			if (
+				i.node.name == "crafter:waterflow" &&
+				par2 != null &&
+				par2 >= 11
+			) {
 				return vector.subtract(i.pos, pos);
 			}
 		}
