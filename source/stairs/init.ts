@@ -1,3 +1,4 @@
+namespace stairs {
 //stairs - shift click to place upside down
 for name,def in pairs(core.registered_nodes) do
 	if def.drawtype == "normal" and string.match(name, "main:") then
@@ -217,3 +218,4 @@ for name,def in pairs(core.registered_nodes) do
 		core.register_node(newname,def2)
 	end
 end
+}
