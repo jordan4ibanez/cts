@@ -8,7 +8,7 @@ core.register_craftitem(":", {
 });
 
 // This is a fake node that should never be placed in the world.
-const def: ItemDefinition = core.registered_items[""];
+const def: ItemDefinition | undefined = core.registered_items[""];
 
 core.register_node("crafter_hand:player", {
 	description: "",
@@ -102,7 +102,7 @@ core.register_node("crafter_hand:player", {
 		return "";
 	},
 	groups: { dig_immediate: 3, not_in_creative_inventory: 1 },
-	range: def.range,
+	range: def && def.range,
 });
 
 core.register_node("crafter_hand:creative", {
