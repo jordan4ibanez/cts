@@ -102,22 +102,22 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 
 //////////////////////////////////////////////////////- slabs
 
-// local place_slab_sound = function(pos,newnode)
-// 	local node = core.registered_nodes[newnode]
-// 	local sound = node.sounds
-// 	local placing = ""
-// 	if sound then
-// 		placing = sound.placing
-// 	end
-// 	//only play the sound when is defined
-// 	if type(placing) == "table" then
-// 		core.sound_play(placing.name, {
-// 			  pos = pos,
-// 			  gain = placing.gain,
-// 			  //pitch = math.random(60,100)/100
-// 		})
-// 	end
-// end
+function place_slab_sound (pos: Vec3,newnode: string): void {
+	local node = core.registered_nodes[newnode]
+	local sound = node.sounds
+	local placing = ""
+	if sound then
+		placing = sound.placing
+	end
+	//only play the sound when is defined
+	if type(placing) == "table" then
+		core.sound_play(placing.name, {
+			  pos = pos,
+			  gain = placing.gain,
+			  //pitch = math.random(60,100)/100
+		})
+	end
+}
 //slabs - shift click to place upside down
 // for name,def in pairs(core.registered_nodes) do
 // 	if def.drawtype == "normal" and string.match(name, "main:") then
