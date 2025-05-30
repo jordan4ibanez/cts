@@ -159,6 +159,7 @@ namespace furnace_chest {
 
 		let fuel: CraftResultObject | null = null;
 		let srclist: ItemStackObject[] = [];
+		let fuellist: ItemStackObject[] = [];
 
 		let dst_full: boolean = false;
 		let update: boolean = true;
@@ -167,7 +168,7 @@ namespace furnace_chest {
 			update = false;
 
 			srclist = inv.get_list("src");
-			const fuellist: ItemStackObject[] = inv.get_list("fuel");
+			fuellist = inv.get_list("fuel");
 
 			//
 			// Cooking.
