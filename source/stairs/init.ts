@@ -219,23 +219,26 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 			
 			return(itemstack)
         }
-// 		def2.groups["slabs"] = 1
-// 		def2.groups[name]=1
-// 		core.register_node(newname,def2)
-// 		//equalize recipe 6 half slabs turn into 3 full blocks
-// 		core.register_craft({
-// 			output = newname.." 6",
-// 			recipe = {
-// 				{ name, name,name},
-// 			}
-// 		})
-// 		core.register_craft({
-// 			output = name,
-// 			recipe = {
-// 				{ newname},
-// 				{ newname},
-// 			}
-// 		})
+        if (def2.groups == null) {
+            throw new Error(`Undefined groups for [${name}]`)
+        }
+		def2.groups["slabs"] = 1
+		def2.groups[name]=1
+		core.register_node(newname,def2)
+		//equalize recipe 6 half slabs turn into 3 full blocks
+		core.register_craft({
+			output = newname.." 6",
+			recipe = {
+				{ name, name,name},
+			}
+		})
+		core.register_craft({
+			output = name,
+			recipe = {
+				{ newname},
+				{ newname},
+			}
+		})
 		
     }
  }
