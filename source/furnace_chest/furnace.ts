@@ -418,12 +418,12 @@ namespace furnace_chest {
 		// 	]]//
 		on_destruct: destroy_furnace,
 
-		// 	allow_metadata_inventory_put = allow_metadata_inventory_put,
-		// 	allow_metadata_inventory_move = allow_metadata_inventory_move,
-		// 	allow_metadata_inventory_take = allow_metadata_inventory_take,
-		// })
+		allow_metadata_inventory_put: allow_metadata_inventory_put,
+		allow_metadata_inventory_move: allow_metadata_inventory_move,
+		allow_metadata_inventory_take: allow_metadata_inventory_take,
+	});
 
-		// core.register_node("crafter_furnace_chest:furnace_active", {
+	core.register_node("crafter_furnace_chest:furnace_active", {
 		// 	description = ("Furnace"),
 		// 	tiles = {
 		// 		"furnace_top.png", "furnace_bottom.png",
@@ -448,9 +448,7 @@ namespace furnace_chest {
 		// 	is_ground_content = false,
 		// 	sounds = main.stoneSound(),
 		// 	on_timer = furnace_node_timer,
-
 		// 	//can_dig = can_dig,
-
 		// 	allow_metadata_inventory_put = allow_metadata_inventory_put,
 		// 	allow_metadata_inventory_move = allow_metadata_inventory_move,
 		// 	allow_metadata_inventory_take = allow_metadata_inventory_take,
