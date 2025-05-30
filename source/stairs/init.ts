@@ -67,29 +67,29 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 }
 
 // Upside down stairs.
-// for name,def in pairs(core.registered_nodes) do
-// 	if def.drawtype == "normal" and string.match(name, "main:") then
-// 		local def2 = table.copy(def)
-// 		local newname = "stairs:"..string.gsub(name, "main:", "").."_stair_upsidedown"
-// 		def2.mod_origin = "stairs"
-// 		def2.name = newname
-// 		def2.description = def.description.." Stair"
-// 		def2.drop = string.gsub(newname, "_upsidedown", "")
-// 		def2.paramtype = "light"
-// 		def2.drawtype = "nodebox"
-// 		def2.paramtype2 = "facedir"
-// 		def2.on_dig = nil
-// 		def2.node_box = {
-// 			type = "fixed",
-// 			fixed = {
-// 			{-8/16, -8/16, -0/16, 8/16, 8/16, 8/16},
-// 			{-8/16, -0/16, -8/16, 8/16, 8/16, 8/16},
-// 			}
-// 		}
-// 		def2.groups["stairs"] = 1
-// 		core.register_node(newname,def2)
-// 	end
-// end
+for name,def in pairs(core.registered_nodes) do
+	if def.drawtype == "normal" and string.match(name, "main:") then
+		local def2 = table.copy(def)
+		local newname = "stairs:"..string.gsub(name, "main:", "").."_stair_upsidedown"
+		def2.mod_origin = "stairs"
+		def2.name = newname
+		def2.description = def.description.." Stair"
+		def2.drop = string.gsub(newname, "_upsidedown", "")
+		def2.paramtype = "light"
+		def2.drawtype = "nodebox"
+		def2.paramtype2 = "facedir"
+		def2.on_dig = nil
+		def2.node_box = {
+			type = "fixed",
+			fixed = {
+			{-8/16, -8/16, -0/16, 8/16, 8/16, 8/16},
+			{-8/16, -0/16, -8/16, 8/16, 8/16, 8/16},
+			}
+		}
+		def2.groups["stairs"] = 1
+		core.register_node(newname,def2)
+	end
+end
 
 
 //////////////////////////////////////////////////////- slabs
