@@ -323,26 +323,26 @@ namespace furnace_chest {
 			core.get_node_timer(pos).stop();
 		}
 
-		// // //[[
-		// // local infotext
-		// // if active then
-		// // 	infotext = ("Furnace active")
-		// // else
-		// // 	infotext = ("Furnace inactive")
-		// // end
-		// // infotext = infotext .. "\n" .. "Item:"..item_state.. "Fuel:"..fuel_state
-		// // ]]//
+		// //[[
+		// local infotext
+		// if active then
+		// 	infotext = ("Furnace active")
+		// else
+		// 	infotext = ("Furnace inactive")
+		// end
+		// infotext = infotext .. "\n" .. "Item:"..item_state.. "Fuel:"..fuel_state
+		// ]]//
 
-		// //
-		// // Set meta values
-		// //
-		// meta:set_float("fuel_totaltime", fuel_totaltime)
-		// meta:set_float("fuel_time", fuel_time)
-		// meta:set_float("src_time", src_time)
-		// meta:set_string("formspec", formspec)
-		// //meta:set_string("infotext", infotext)
+		//
+		// Set meta values
+		//
+		meta.set_float("fuel_totaltime", fuel_totaltime);
+		meta.set_float("fuel_time", fuel_time);
+		meta.set_float("src_time", src_time);
+		meta.set_string("formspec", formspec);
+		//meta:set_string("infotext", infotext)
 
-		// return result
+		return result;
 	}
 	//throw all items in furnace out on destroy
 	// local function destroy_furnace(pos)
