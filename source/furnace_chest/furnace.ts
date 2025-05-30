@@ -280,7 +280,8 @@ namespace furnace_chest {
 		// Update formspec, infotext and node.
 		//
 
-		let formspec;
+		let formspec: string = "";
+
 		let item_state: string = "";
 		let item_percent: number = 0;
 		if (cookable && cooked != null) {
@@ -298,9 +299,9 @@ namespace furnace_chest {
 			}
 		}
 
-		// local fuel_state = ("Empty")
-		// local active = false
-		// local result = false
+		let fuel_state: string = "Empty";
+		let active: boolean = false;
+		let result: boolean = false;
 
 		// if fuel_totaltime ~= 0 then
 		// 	active = true
