@@ -40,8 +40,11 @@ for (const [name,def] of pairs(core.registered_nodes)) {
             }
 			return(itemstack)
         }
-		// def2.groups["stairs"] = 1
-		// core.register_node(newname,def2)
+        if (!def2.groups) {
+            throw new Error(`Undefined groups for [${name}]`)
+        }
+		def2.groups["stairs"] = 1
+		core.register_node(newname,def2)
 		
 		// core.register_craft({
 		// 	output = newname.." 6",
