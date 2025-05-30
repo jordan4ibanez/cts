@@ -24,10 +24,15 @@ namespace furnace_chest {
 				if (key_oldmeta == "" || !core.parse_json(key_oldmeta)) {
 					return false;
 				}
-				// 		key_meta:set_string("secret", core.parse_json(key_oldmeta).secret)
-				// 		item:set_metadata("")
+				key_meta.set_string(
+					"secret",
+					core.parse_json(key_oldmeta).secret
+				);
 			}
-			// 	return meta:get_string("key_lock_secret") == key_meta:get_string("secret")
+			return (
+				meta.get_string("key_lock_secret") ==
+				key_meta.get_string("secret")
+			);
 		}
 
 		return false;
