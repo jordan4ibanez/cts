@@ -177,8 +177,8 @@ namespace door {
 							},
 						//redstone activation is in both because only the bottom is defined as an activator and it's easier to do it like this
 
-						redstone_activation = redstone_activation,
-						redstone_deactivation = redstone_deactivation,
+						redstone_activation : redstone_activation,
+						redstone_deactivation : redstone_deactivation,
 
 						on_rightclick = on_rightclick,
 						after_place_node = function(pos, placer, itemstack, pointed_thing)
