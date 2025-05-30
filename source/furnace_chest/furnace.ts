@@ -344,36 +344,38 @@ namespace furnace_chest {
 
 		return result;
 	}
-	//throw all items in furnace out on destroy
-	// local function destroy_furnace(pos)
-	// 	local meta = core.get_meta(pos)
-	// 	local inv = meta:get_inventory()
-	// 	local lists = inv:get_lists()
-	// 	for listname,_ in pairs(lists) do
-	// 		local size = inv:get_size(listname)
-	// 		for i = 1,size do
-	// 			local stack = inv:get_stack(listname, i)
-	// 			core.add_item(pos, stack)
-	// 		end
-	// 	end
-	// end
+
+	// Throw all items in furnace out on destroy.
+	 function destroy_furnace(pos: Vec3): void {
+		const meta: MetaRef = core.get_meta(pos)
+		const inv: InvRef = meta.get_inventory()
+		const lists: string[] = inv.get_lists()
+        print(dump(lists));
+		// for listname,_ in pairs(lists) do
+		// 	local size = inv:get_size(listname)
+		// 	for i = 1,size do
+		// 		local stack = inv:get_stack(listname, i)
+		// 		core.add_item(pos, stack)
+		// 	end
+		// end
+     }
 
 	// //
 	// // Node definitions
 	// //
 
-	// core.register_node("utility:furnace", {
-	// 	description = ("Furnace"),
-	// 	tiles = {
-	// 		"furnace_top.png", "furnace_bottom.png",
-	// 		"furnace_side.png", "furnace_side.png",
-	// 		"furnace_side.png", "furnace_front.png"
-	// 	},
-	// 	paramtype2 = "facedir",
-	// 	groups = {stone=2},
-	// 	legacy_facedir_simple = true,
-	// 	is_ground_content = false,
-	// 	sounds = main.stoneSound(),
+	core.register_node("utility:furnace", {
+		description : ("Furnace"),
+		tiles : [
+			"furnace_top.png", "furnace_bottom.png",
+			"furnace_side.png", "furnace_side.png",
+			"furnace_side.png", "furnace_front.png"
+        ],
+		paramtype2 : ParamType2.facedir,
+		groups : {stone:2},
+		legacy_facedir_simple : true,
+		is_ground_content : false,
+		sounds : crafter.stoneSound(),
 
 	// 	//can_dig = can_dig,
 
@@ -454,7 +456,7 @@ namespace furnace_chest {
 	// 	on_destruct = function(pos)
 	// 		destroy_furnace(pos)
 	// 	end,
-	// })
+	})
 
 	// core.register_craft({
 	// 	output = "utility:furnace",
