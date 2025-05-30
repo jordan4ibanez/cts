@@ -276,26 +276,27 @@ namespace furnace_chest {
 			src_time = 0;
 		}
 
-		// //
-		// // Update formspec, infotext and node
-		// //
-		// local formspec
-		// local item_state
-		// local item_percent = 0
-		// if cookable then
-		// 	item_percent = math.floor(src_time / cooked.time * 100)
-		// 	if dst_full then
-		// 		item_state = ("100% (output full)")
-		// 	else
-		// 		item_state = (item_percent)
-		// 	end
-		// else
-		// 	if srclist and not srclist[0]:is_empty() then
-		// 		item_state = ("Not cookable")
-		// 	else
-		// 		item_state = ("Empty")
-		// 	end
-		// end
+		//
+		// Update formspec, infotext and node.
+		//
+
+		let formspec;
+		let item_state: string = "";
+		let item_percent: number = 0;
+		if (cookable && cooked != null) {
+			item_percent = math.floor((src_time / cooked.time) * 100);
+			if (dst_full) {
+				item_state = "100% (output full)";
+			} else {
+				item_state = tostring(item_percent);
+			}
+		} else {
+			if (srclist != null && !srclist[0].is_empty()) {
+				item_state = "Not cookable";
+			} else {
+				item_state = "Empty";
+			}
+		}
 
 		// local fuel_state = ("Empty")
 		// local active = false
