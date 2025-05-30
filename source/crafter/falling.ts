@@ -91,7 +91,8 @@ namespace crafter {
 				}
 			}
 
-			const def: NodeDefinition | null = core.registered_nodes[node.name];
+			const def: NodeDefinition | undefined =
+				core.registered_nodes[node.name];
 
 			if (!def) {
 				// Don't allow unknown nodes to fall.
@@ -301,7 +302,8 @@ namespace crafter {
 				});
 				// Check what's here
 				const n2: NodeTable = core.get_node(np);
-				const nd: NodeDefinition = core.registered_nodes[n2.name];
+				const nd: NodeDefinition | undefined =
+					core.registered_nodes[n2.name];
 				// If it's not air or liquid, remove node and replace it with
 				// it's drops
 				if (
@@ -326,7 +328,7 @@ namespace crafter {
 				}
 
 				// Create node and remove entity
-				const def: NodeDefinition | null =
+				const def: NodeDefinition | undefined =
 					core.registered_nodes[this.node.name];
 				if (def != null) {
 					core.add_node(np, this.node);
