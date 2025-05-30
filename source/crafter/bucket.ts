@@ -115,10 +115,17 @@ namespace crafter {
 			const nodeUnder: string = core.get_node(posUnder).name;
 			const nodeAbove: string = core.get_node(posAbove).name;
 
-			const buildableUnder: boolean =
-				core.registered_nodes[nodeUnder].buildable_to === true;
-			const buildableAbove: boolean =
-				core.registered_nodes[nodeAbove].buildable_to === true;
+			const buildableUnder: boolean = (() => {
+				const def: NodeDefinition | undefined =
+					core.registered_nodes[nodeUnder];
+				return (def && def.buildable_to) || false;
+			})();
+
+			const buildableAbove: boolean = (() => {
+				const def: NodeDefinition | undefined =
+					core.registered_nodes[nodeAbove];
+				return (def && def.buildable_to) || false;
+			})();
 
 			// Set it to water.
 			if (buildableUnder === true) {
@@ -149,12 +156,14 @@ namespace crafter {
 			const nodeAbove: string = core.get_node(posAbove).name;
 
 			const buildableUnder: boolean = (() => {
-				const def = core.registered_nodes[nodeUnder];
+				const def: NodeDefinition | undefined =
+					core.registered_nodes[nodeUnder];
 				return (def && def.buildable_to) || false;
 			})();
 
 			const buildableAbove: boolean = (() => {
-				const def = core.registered_nodes[nodeAbove];
+				const def: NodeDefinition | undefined =
+					core.registered_nodes[nodeAbove];
 				return (def && def.buildable_to) || false;
 			})();
 
