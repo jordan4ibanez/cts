@@ -55,7 +55,7 @@ namespace furnace_chest {
 
 		core.after(
 			0.2,
-			(pos, swap, node) => {
+			(pos: Vec3, swap: string, node: NodeTable) => {
 				if (core.get_node(pos).name == "utility:chest_open") {
 					core.swap_node(pos, {
 						name: "utility:" + swap,
