@@ -30,25 +30,27 @@ namespace furnace_chest {
 		// furnace.get_hotbar_bg(0, 4.25)
 	}
 
-	// function furnace.get_furnace_inactive_formspec()
-	// 	return "size[9,8.75]"..
-	// 		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"..
-	// 		"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-	// 		"list[context;src;2.75,0.5;1,1;]"..
-	// 		"list[context;fuel;2.75,2.5;1,1;]"..
-	// 		"image[2.75,1.5;1,1;default_furnace_fire_bg.png]"..
-	// 		"image[3.75,1.5;1,1;gui_furnace_arrow_bg.png^[transformR270]"..
-	// 		"list[context;dst;4.75,0.96;2,2;]"..
-	// 		"list[current_player;main;0,4.5;9,1;]"..
-	// 		"list[current_player;main;0,6;9,3;9]"..
-	// 		"listring[context;dst]"..
-	// 		"listring[current_player;main]"..
-	// 		"listring[context;src]"..
-	// 		"listring[current_player;main]"..
-	// 		"listring[context;fuel]"..
-	// 		"listring[current_player;main]"
-	// 		//furnace.get_hotbar_bg(0, 4.25)
-	// end
+	function get_furnace_inactive_formspec(): string {
+		return (
+			"size[9,8.75]" +
+			"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]" +
+			"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]" +
+			"list[context;src;2.75,0.5;1,1;]" +
+			"list[context;fuel;2.75,2.5;1,1;]" +
+			"image[2.75,1.5;1,1;default_furnace_fire_bg.png]" +
+			"image[3.75,1.5;1,1;gui_furnace_arrow_bg.png^[transformR270]" +
+			"list[context;dst;4.75,0.96;2,2;]" +
+			"list[current_player;main;0,4.5;9,1;]" +
+			"list[current_player;main;0,6;9,3;9]" +
+			"listring[context;dst]" +
+			"listring[current_player;main]" +
+			"listring[context;src]" +
+			"listring[current_player;main]" +
+			"listring[context;fuel]" +
+			"listring[current_player;main]"
+		);
+		//furnace.get_hotbar_bg(0, 4.25)
+	}
 
 	// //
 	// // Node callback functions that are the same for active and inactive furnace
