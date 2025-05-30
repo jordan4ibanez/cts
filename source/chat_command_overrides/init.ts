@@ -1,9 +1,9 @@
-core.register_chatcommand("clearinv", {
+core.override_chatcommand("clearinv", {
 	params: "[<name>]",
 	description: "Clear the inventory of yourself or another player",
 	privs: { server: true },
 	func: (name, param) => {
-		let player;
+		let player: ObjectRef | null;
 
 		if (param && param != "" && param != name) {
 			if (!core.check_player_privs(name, { server: true })) {
