@@ -621,7 +621,7 @@ interface core {
 	registered_ores: Dictionary<string, OreDefinition>;
 	registered_biomes: Dictionary<string, BiomeDefinition>;
 	registered_decorations: Dictionary<string, DecorationDefinition>;
-	registered_schematics: { [id: string]: SchematicDefinition };
+	registered_schematics: Dictionary<string, SchematicDefinition>;
 	registered_chatcommands: { [id: string]: ChatCommandDefinition };
 	registered_privileges: { [id: string]: PrivilegeDefinition };
 
