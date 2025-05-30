@@ -235,7 +235,7 @@ interface core {
 	get_player_privs(playerName: string): string[];
 	check_player_privs(
 		playerOrName: ObjectRef | string,
-		stringListOrMap: string | Map<string, boolean>
+		stringListOrMap: string | { [id: string]: boolean }
 	): boolean | boolean[];
 	check_password_entry(
 		playerName: string,
