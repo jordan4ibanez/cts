@@ -88,11 +88,10 @@ namespace furnace_chest {
 			) {
 				return;
 			}
-
-			// 	local pn = player:get_player_name()
-			// 	if not chest.open_chests[pn] then
-			// 		return
-			// 	end
+			const pn: string = player.get_player_name();
+			if (!open_chests.has(pn)) {
+				return;
+			}
 			// 	chest.chest_lid_close(pn)
 			// 	return true
 		}
