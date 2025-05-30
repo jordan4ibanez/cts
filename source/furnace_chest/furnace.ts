@@ -1,28 +1,28 @@
 namespace furnace_chest {
 // const furnace = {}
 
-function get_furnace_active_formspec(fuel_percent, item_percent)
-	return "size[9,8.75]"..
-		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"..
-		"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-		"list[context;src;2.75,0.5;1,1;]"..
-		"list[context;fuel;2.75,2.5;1,1;]"..
-		"image[2.75,1.5;1,1;default_furnace_fire_bg.png^[lowpart:"..
-		(fuel_percent)..":default_furnace_fire_fg.png]"..
-		"image[3.75,1.5;1,1;gui_furnace_arrow_bg.png^[lowpart:"..
-		(item_percent)..":gui_furnace_arrow_fg.png^[transformR270]"..
-		"list[context;dst;4.75,0.96;2,2;]"..
-		"list[current_player;main;0,4.5;9,1;]".. --hotbar
-		"list[current_player;main;0,6;9,3;9]".. --inventory
+function get_furnace_active_formspec(fuel_percent, item_percent) {
+	return "size[9,8.75]"+
+		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"+
+		"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"+
+		"list[context;src;2.75,0.5;1,1;]"+
+		"list[context;fuel;2.75,2.5;1,1;]"+
+		"image[2.75,1.5;1,1;default_furnace_fire_bg.png^[lowpart:"+
+		(fuel_percent)+":default_furnace_fire_fg.png]"+
+		"image[3.75,1.5;1,1;gui_furnace_arrow_bg.png^[lowpart:"+
+		(item_percent)+":gui_furnace_arrow_fg.png^[transformR270]"+
+		"list[context;dst;4.75,0.96;2,2;]"+
+		"list[current_player;main;0,4.5;9,1;]"+ --hotbar
+		"list[current_player;main;0,6;9,3;9]"+ --inventory
 		
-		"listring[context;dst]"..
-		"listring[current_player;main]"..
-		"listring[context;src]"..
-		"listring[current_player;main]"..
-		"listring[context;fuel]"..
+		"listring[context;dst]"+
+		"listring[current_player;main]"+
+		"listring[context;src]"+
+		"listring[current_player;main]"+
+		"listring[context;fuel]"+
 		"listring[current_player;main]"
-		--furnace.get_hotbar_bg(0, 4.25)
-end
+		furnace.get_hotbar_bg(0, 4.25)
+}
 
 // function furnace.get_furnace_inactive_formspec()
 // 	return "size[9,8.75]"..
