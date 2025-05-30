@@ -130,13 +130,13 @@ namespace furnace_chest {
 		def.legacy_facedir_simple = true;
 		def.is_ground_content = false;
 		if (def.protected) {
-			// 		def.on_construct = function(pos)
-			// 			local meta = core.get_meta(pos)
-			// 			//meta:set_string("infotext", S("Locked Chest"))
-			// 			meta:set_string("owner", "")
-			// 			local inv = meta:get_inventory()
-			// 			inv:set_size("main", 9*4)
-			// 		end
+			def.on_construct = (pos) => {
+				const meta: MetaRef = core.get_meta(pos);
+				//meta:set_string("infotext", S("Locked Chest"))
+				meta.set_string("owner", "");
+				const inv: InvRef = meta.get_inventory();
+				inv.set_size("main", 9 * 4);
+			};
 
 			// 		def.after_place_node = function(pos, placer)
 			// 			local meta = core.get_meta(pos)
@@ -202,7 +202,7 @@ namespace furnace_chest {
 			// 				chest.get_chest_formspec(pos)
 			// 			)
 			// 		end
-            
+
 			// 		def.on_skeleton_key_use = function(pos, player, newsecret)
 			// 			local meta = core.get_meta(pos)
 			// 			local owner = meta:get_string("owner")
