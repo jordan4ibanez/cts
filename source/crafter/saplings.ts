@@ -107,7 +107,7 @@ core.register_node("crafter:sapling", {
 		}
 
 		const sneak: boolean = placer.get_player_control().sneak;
-		const noddef: NodeDefinition | null =
+		const noddef: NodeDefinition | undefined =
 			core.registered_nodes[core.get_node(pointed_thing.under).name];
 		if (noddef == null) {
 			throw new Error("Sapling error");
