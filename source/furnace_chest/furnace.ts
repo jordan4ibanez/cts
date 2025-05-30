@@ -153,7 +153,7 @@ namespace furnace_chest {
 
 		const inv: InvRef = meta.get_inventory();
 
-		// let cookable;
+		let cookable: boolean = false;
 		// let cooked;
 
 		let fuel: CraftResultObject | null = null;
@@ -180,7 +180,7 @@ namespace furnace_chest {
 				items: srclist,
 			});
 
-			const cookable: boolean = cooked.time != 0;
+			cookable = cooked.time != 0;
 			let el: number = math.min(elapsed, fuel_totaltime - fuel_time);
 			// Fuel lasts long enough, adjust el to cooking duration.
 			if (cookable) {
