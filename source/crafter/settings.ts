@@ -23,9 +23,8 @@ core.register_on_mods_loaded(() => {
 		});
 	}
 
-	for (const [name, _] of pairs(core.registered_craftitems)) {
-		let stack_max: number | undefined =
-			core.registered_items[name].stack_max;
+	for (const [name, def] of pairs(core.registered_craftitems)) {
+		let stack_max: number | undefined = def.stack_max;
 
 		if (stack_max == null) {
 			throw new Error("how");
