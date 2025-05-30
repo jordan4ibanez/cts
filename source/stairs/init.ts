@@ -8,7 +8,7 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 
 	if (def.drawtype == Drawtype.normal && string.match(name, "main:")[0] != null) {
 	
-		// //set up fence
+		// Set up stair.
 		// local def2 = table.copy(def)
 		// local newname = "stairs:"..string.gsub(name, "main:", "").."_stair"
 		// def2.mod_origin = "stairs"
