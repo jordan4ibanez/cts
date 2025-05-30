@@ -300,23 +300,23 @@ namespace furnace_chest {
 			}
 		}
 
-		let fuel_state: string = "Empty";
-		let active: boolean = false;
+		// let fuel_state: string = "Empty";
+		// let active: boolean = false;
 		let result: boolean = false;
 
 		if (fuel_totaltime != 0) {
-			active = true;
+			// active = true;
 			const fuel_percent =
 				100 - math.floor((fuel_time / fuel_totaltime) * 100);
-			fuel_state = tostring(fuel_percent);
+			// fuel_state = tostring(fuel_percent);
 			formspec = get_furnace_active_formspec(fuel_percent, item_percent);
 			swap_node(pos, "utility:furnace_active");
 			// Make sure timer restarts automatically.
 			result = true;
 		} else {
-			if (fuellist != null && !fuellist[0].is_empty()) {
-				fuel_state = tostring(0);
-			}
+			// if (fuellist != null && !fuellist[0].is_empty()) {
+			// 	fuel_state = tostring(0);
+			// }
 			formspec = get_furnace_inactive_formspec();
 			swap_node(pos, "utility:furnace");
 			// stop timer on the inactive furnace
