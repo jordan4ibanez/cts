@@ -107,7 +107,7 @@ namespace furnace_chest {
 		to_index: number,
 		count: number,
 		player: ObjectRef
-	) {
+	): number {
 		const meta: MetaRef = core.get_meta(pos);
 		const inv: InvRef = meta.get_inventory();
 		const stack: ItemStackObject = inv.get_stack(from_list, from_index);
