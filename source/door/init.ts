@@ -125,7 +125,7 @@ namespace door {
 					on_rightclick = function (pos: Vec3) {
 						door_rightclick(pos);
 					};
-					// todo: swap lua style to ternary
+
 					// Bottom.
 					if (door == "bottom") {
 						tiles = ["wood.png"];
@@ -136,8 +136,8 @@ namespace door {
 							axe: 1,
 							hand: 3,
 							crafter_door_bottom: 1,
-							door_open: (state == "open" && 1) || 0,
-							door_closed: (state == "closed" && 1) || 0,
+							door_open: state == "open" ? 1 : 0,
+							door_closed: state == "closed" ? 1 : 0,
 						};
 
 						// Top.
@@ -169,8 +169,8 @@ namespace door {
 							hand: 3,
 							redstone_activation: 1,
 							crafter_door_top: 1,
-							door_open: (state == "open" && 1) || 0,
-							door_closed: (state == "closed" && 1) || 0,
+							door_open: state == "open" ? 1 : 0,
+							door_closed: state == "closed" ? 1 : 0,
 						};
 					}
 				} else if (material == "iron") {
@@ -183,8 +183,8 @@ namespace door {
 							pickaxe: 1,
 							hand: 4,
 							bottom: 1,
-							crafter_door_open: (state == "open" && 1) || 0,
-							crafter_door_closed: (state == "closed" && 1) || 0,
+							crafter_door_open: state == "open" ? 1 : 0,
+							crafter_door_closed: state == "closed" ? 1 : 0,
 						};
 					} else {
 						if (state == "closed") {
@@ -213,8 +213,8 @@ namespace door {
 							hand: 4,
 							redstone_activation: 1,
 							top: 1,
-							crafter_door_open: (state == "open" && 1) || 0,
-							crafter_door_closed: (state == "closed" && 1) || 0,
+							crafter_door_open: state == "open" ? 1 : 0,
+							crafter_door_closed: state == "closed" ? 1 : 0,
 						};
 					}
 				}
