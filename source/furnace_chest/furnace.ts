@@ -153,8 +153,6 @@ namespace furnace_chest {
 
 		const inv: InvRef = meta.get_inventory();
 
-		let srclist;
-		let fuellist;
 		let cookable;
 		let cooked;
 		let fuel;
@@ -163,13 +161,14 @@ namespace furnace_chest {
 		let update: boolean = true;
 
 		while (elapsed > 0 && update) {
-			// 	update = false
-			// 	srclist = inv:get_list("src")
-			// 	fuellist = inv:get_list("fuel")
-			// 	//
-			// 	// Cooking
-			// 	//
-			// 	// Check if we have cookable content
+			update = false;
+
+			const srclist: ItemStackObject[] = inv.get_list("src");
+			const fuellist: ItemStackObject[] = inv.get_list("fuel");
+			//
+			// Cooking
+			//
+			// Check if we have cookable content
 			// 	local aftercooked
 			// 	cooked, aftercooked = core.get_craft_result({method = "cooking", width = 1, items = srclist})
 			// 	cookable = cooked.time ~= 0
