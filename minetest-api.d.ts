@@ -1589,9 +1589,9 @@ declare global {
 		scale?: BoneOverrideProperty;
 	}
 
-	/** @noSelf **/ interface Dictionary {
-		[key: string]: number | boolean;
-	}
+	/** @noSelf **/ type Dictionary<K extends string | number | symbol, V> = {
+		[id in K]: V;
+	};
 
 	/** @noSelf **/ interface PlayerControlObject extends Dictionary {
 		up: boolean;
