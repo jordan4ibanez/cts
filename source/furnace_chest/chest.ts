@@ -81,12 +81,14 @@ namespace furnace_chest {
 			formname: string,
 			fields: Dictionary<string, any>
 		) => {
-			if (formname != "utility:chest") {
+			if (
+				formname != "utility:chest" ||
+				player == null ||
+				fields.quit == null
+			) {
 				return;
 			}
-			if (player == null || fields.quit == null) {
-				return;
-			}
+
 			// 	local pn = player:get_player_name()
 			// 	if not chest.open_chests[pn] then
 			// 		return
