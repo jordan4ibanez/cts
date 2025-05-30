@@ -88,13 +88,14 @@ namespace furnace_chest {
 		// 	end
 		// 	chest.chest_lid_close(pn)
 		// 	return true
-		// end)
-		// core.register_on_leaveplayer(function(player)
-		// 	local pn = player:get_player_name()
-		// 	if chest.open_chests[pn] then
-		// 		chest.chest_lid_close(pn)
-		// 	end
 	});
+
+	// core.register_on_leaveplayer(function(player)
+	// 	local pn = player:get_player_name()
+	// 	if chest.open_chests[pn] then
+	// 		chest.chest_lid_close(pn)
+	// 	end
+	// });
 
 	// local function destroy_chest(pos)
 	// 	local meta = core.get_meta(pos)
