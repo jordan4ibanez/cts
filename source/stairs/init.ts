@@ -19,7 +19,7 @@ namespace stairs {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname =
-				"stairs:" + string.gsub(name, "main:", "") + "_stair";
+				"crafter_stairs:" + string.gsub(name, "main:", "") + "_stair";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Stair";
@@ -100,7 +100,7 @@ namespace stairs {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname =
-				"stairs:" +
+				"crafter_stairs:" +
 				string.gsub(name, "main:", "") +
 				"_stair_upsidedown";
 			def2.mod_origin = "stairs";
@@ -186,7 +186,7 @@ namespace stairs {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"stairs:" + string.gsub(name, "main:", "") + "_slab";
+				"crafter_stairs:" + string.gsub(name, "main:", "") + "_slab";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Slab";
@@ -305,7 +305,7 @@ namespace stairs {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"stairs:" + string.gsub(name, "main:", "") + "_slab_upsidedown";
+				"crafter_stairs:" + string.gsub(name, "main:", "") + "_slab_upsidedown";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Slab";
