@@ -618,7 +618,7 @@ interface core {
 	registered_abms: ABMDefinition[];
 	registered_lbms: LBMDefinition[];
 	registered_aliases: Dictionary<string, string>;
-	registered_ores: { [id: string]: OreDefinition };
+	registered_ores: Dictionary<string, OreDefinition>;
 	registered_biomes: { [id: string]: BiomeDefinition };
 	registered_decorations: { [id: string]: DecorationDefinition };
 	registered_schematics: { [id: string]: SchematicDefinition };
