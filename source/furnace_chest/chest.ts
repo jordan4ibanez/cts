@@ -51,17 +51,18 @@ namespace furnace_chest {
 			}
 		}
 
-		// local node = minetest.get_node(pos)
-		// minetest.after(0.2, function(pos,swap,node)
-		// 	if minetest.get_node(pos).name == "utility:chest_open" then
-		// 		minetest.swap_node(pos,{name = "utility:"..swap,param2=node.param2})
-		// 		minetest.sound_play(sound, {gain = 0.3, pos = pos, max_hear_distance = 10},true)
+		const node = core.get_node(pos)
+
+		// core.after(0.2, function(pos,swap,node)
+		// 	if core.get_node(pos).name == "utility:chest_open" then
+		// 		core.swap_node(pos,{name = "utility:"..swap,param2=node.param2})
+		// 		core.sound_play(sound, {gain = 0.3, pos = pos, max_hear_distance = 10},true)
 		// 	end
 		// 	//redstone.collect_info(pos)
 		// end,pos,swap,node)
 	}
 
-	// minetest.register_on_player_receive_fields(function(player, formname, fields)
+	// core.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if formname ~= "utility:chest" then
 	// 		return
 	// 	end
@@ -75,7 +76,7 @@ namespace furnace_chest {
 	// 	chest.chest_lid_close(pn)
 	// 	return true
 	// end)
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	// 	local pn = player:get_player_name()
 	// 	if chest.open_chests[pn] then
 	// 		chest.chest_lid_close(pn)
@@ -83,14 +84,14 @@ namespace furnace_chest {
 	// end)
 
 	// local function destroy_chest(pos)
-	// 	local meta = minetest.get_meta(pos)
+	// 	local meta = core.get_meta(pos)
 	// 	local inv = meta:get_inventory()
 	// 	local lists = inv:get_lists()
 	// 	for listname,_ in pairs(lists) do
 	// 		local size = inv:get_size(listname)
 	// 		for i = 1,size do
 	// 			local stack = inv:get_stack(listname, i)
-	// 			minetest.add_item(pos, stack)
+	// 			core.add_item(pos, stack)
 	// 		end
 	// 	end
 	// end
@@ -105,14 +106,14 @@ namespace furnace_chest {
 	// 	def.is_ground_content = false
 	// 	if def.protected then
 	// 		def.on_construct = function(pos)
-	// 			local meta = minetest.get_meta(pos)
+	// 			local meta = core.get_meta(pos)
 	// 			//meta:set_string("infotext", S("Locked Chest"))
 	// 			meta:set_string("owner", "")
 	// 			local inv = meta:get_inventory()
 	// 			inv:set_size("main", 9*4)
 	// 		end
 	// 		def.after_place_node = function(pos, placer)
-	// 			local meta = minetest.get_meta(pos)
+	// 			local meta = core.get_meta(pos)
 	// 			meta:set_string("owner", placer:get_player_name() or "")
 	// 			//meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
 	// 		end
@@ -139,44 +140,44 @@ namespace furnace_chest {
 	// 			if not default.can_interact_with_node(clicker, pos) then
 	// 				return itemstack
 	// 			end
-	// 			minetest.sound_play(def.sound_open, {gain = 0.3,
+	// 			core.sound_play(def.sound_open, {gain = 0.3,
 	// 					pos = pos, max_hear_distance = 10}, true)
-	// 				minetest.swap_node(pos,
+	// 				core.swap_node(pos,
 	// 						{ name = "utility:" .. name .. "_open",
 	// 						param2 = node.param2 })
-	// 			 minetest.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
+	// 			 core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
 	// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,
 	// 					sound = def.sound_close, swap = name }
 	// 		end
 	// 		def.on_blast = function() end
 	// 		def.on_key_use = function(pos, player)
-	// 			local secret = minetest.get_meta(pos):get_string("key_lock_secret")
+	// 			local secret = core.get_meta(pos):get_string("key_lock_secret")
 	// 			local itemstack = player:get_wielded_item()
 	// 			local key_meta = itemstack:get_meta()
 	// 			if itemstack:get_metadata() == "" then
 	// 				return
 	// 			end
 	// 			if key_meta:get_string("secret") == "" then
-	// 				key_meta:set_string("secret", minetest.parse_json(itemstack:get_metadata()).secret)
+	// 				key_meta:set_string("secret", core.parse_json(itemstack:get_metadata()).secret)
 	// 				itemstack:set_metadata("")
 	// 			end
 	// 			if secret ~= key_meta:get_string("secret") then
 	// 				return
 	// 			end
-	// 			minetest.show_formspec(
+	// 			core.show_formspec(
 	// 				player:get_player_name(),
 	// 				"utility:chest_locked",
 	// 				chest.get_chest_formspec(pos)
 	// 			)
 	// 		end
 	// 		def.on_skeleton_key_use = function(pos, player, newsecret)
-	// 			local meta = minetest.get_meta(pos)
+	// 			local meta = core.get_meta(pos)
 	// 			local owner = meta:get_string("owner")
 	// 			local pn = player:get_player_name()
 	// 			// verify placer is owner of lockable chest
 	// 			if owner ~= pn then
-	// 				minetest.record_protection_violation(pos, pn)
-	// 				//minetest.chat_send_player(pn, S("You do not own this chest."))
+	// 				core.record_protection_violation(pos, pn)
+	// 				//core.chat_send_player(pn, S("You do not own this chest."))
 	// 				return nil
 	// 			end
 	// 			local secret = meta:get_string("key_lock_secret")
@@ -188,18 +189,18 @@ namespace furnace_chest {
 	// 		end
 	// 	else
 	// 		def.on_construct = function(pos)
-	// 			local meta = minetest.get_meta(pos)
+	// 			local meta = core.get_meta(pos)
 	// 			//meta:set_string("infotext", S("Chest"))
 	// 			local inv = meta:get_inventory()
 	// 			inv:set_size("main", 9*4)
 	// 		end
 	// 		def.on_rightclick = function(pos, node, clicker)
-	// 			if minetest.get_node(pos).name ~= "utility:chest" and  minetest.get_node(pos).name ~= "utility:chest_open" then
+	// 			if core.get_node(pos).name ~= "utility:chest" and  core.get_node(pos).name ~= "utility:chest_open" then
 	// 				return
 	// 			end
-	// 			minetest.sound_play(def.sound_open, {gain = 0.3, pos = pos, max_hear_distance = 10}, true)
-	// 			minetest.swap_node(pos, {name = "utility:" .. name .. "_open", param2 = node.param2 })
-	// 			minetest.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
+	// 			core.sound_play(def.sound_open, {gain = 0.3, pos = pos, max_hear_distance = 10}, true)
+	// 			core.swap_node(pos, {name = "utility:" .. name .. "_open", param2 = node.param2 })
+	// 			core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
 	// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,sound = def.sound_close, swap = name }
 	// 			//redstone.collect_info(pos)
 	// 		end
@@ -207,7 +208,7 @@ namespace furnace_chest {
 	// 			local drops = {}
 	// 			default.get_inventory_drops(pos, "main", drops)
 	// 			drops[#drops+1] = "utility:" .. name
-	// 			minetest.remove_node(pos)
+	// 			core.remove_node(pos)
 	// 			return drops
 	// 		end
 	// 	end
@@ -236,8 +237,8 @@ namespace furnace_chest {
 	// 	def_closed.tiles[6] = def.tiles[5] // swap textures around for "normal"
 	// 	def_closed.tiles[5] = def.tiles[3] // drawtype to make them match the mesh
 	// 	def_closed.tiles[3] = def.tiles[3].."^[transformFX"
-	// 	minetest.register_node("utility:" .. name, def_closed)
-	// 	minetest.register_node("utility:" .. name .. "_open", def_opened)
+	// 	core.register_node("utility:" .. name, def_closed)
+	// 	core.register_node("utility:" .. name .. "_open", def_opened)
 	// end
 
 	// chest.register_chest("chest", {
@@ -256,7 +257,7 @@ namespace furnace_chest {
 	// 	groups = {wood = 2,  hard = 1, axe = 1, hand = 3,pathable = 1},
 	// })
 
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "utility:chest",
 	// 	recipe = {
 	// 		{"main:wood", "main:wood", "main:wood"},
@@ -265,16 +266,16 @@ namespace furnace_chest {
 	// 	}
 	// })
 
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	type = "fuel",
 	// 	recipe = "utility:chest",
 	// 	burntime = 5,
 	// })
 
-	// local groups = minetest.registered_nodes["utility:chest_open"].groups
+	// local groups = core.registered_nodes["utility:chest_open"].groups
 	// groups["redstone_torch"]=1
 	// groups["redstone_power"]=9
-	// minetest.override_item("utility:chest_open", {
+	// core.override_item("utility:chest_open", {
 	// 	groups = groups
 	// })
 }
