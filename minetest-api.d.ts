@@ -913,7 +913,7 @@ declare global {
 		full_punch_interval?: number;
 		max_drop_level?: number;
 		groupcaps?: Dictionary<string, GroupCap>;
-		damage_groups?: { [id: string]: number };
+		damage_groups?: Dictionary<string, number>;
 		punch_attack_uses?: number;
 	}
 
