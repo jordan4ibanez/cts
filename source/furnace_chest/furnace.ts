@@ -223,15 +223,15 @@ namespace furnace_chest {
 							// Take fuel from fuel list
 							inv.set_stack("fuel", 1, afterfuel.items[0])
 							// Put replacements in dst list or drop them on the furnace.
-							local replacements = fuel.replacements
-							if replacements[0] then
-								local leftover = inv:add_item("dst", replacements[0])
-								if not leftover:is_empty() then
-									local above = vector.new(pos.x, pos.y + 1, pos.z)
-									local drop_pos = core.find_node_near(above, 1, {"air"}) or above
-									core.item_drop(replacements[0], nil, drop_pos)
-								end
-							end
+							const replacements = fuel.replacements
+							if (replacements[0]) {
+								const leftover = inv.add_item("dst", replacements[0])
+								if (! leftover.is_empty()) {
+									const above = vector.create3d(pos.x, pos.y + 1, pos.z)
+									const drop_pos = core.find_node_near(above, 1, ["air"]) || above
+									core.item_drop(replacements[0], null, drop_pos)
+                                }
+                            }
 							update = true
 							fuel_totaltime = fuel.time + (fuel_totaltime - fuel_time)
                         }
