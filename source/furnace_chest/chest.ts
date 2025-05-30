@@ -18,7 +18,7 @@ namespace furnace_chest {
 		// Is player wielding the right key?
 		const item: ItemStackObject = player.get_wielded_item();
 		if (core.get_item_group(item.get_name(), "key") == 1) {
-			// local key_meta = item:get_meta()
+			const key_meta: MetaRef = item.get_meta();
 			// 	if key_meta:get_string("secret") == "" then
 			// 		local key_oldmeta = item:get_metadata()
 			// 		if key_oldmeta == "" or not core.parse_json(key_oldmeta) then
