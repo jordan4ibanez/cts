@@ -1,7 +1,12 @@
 namespace stairs {
 //stairs - shift click to place upside down
 for (const [name,def] of pairs(core.registered_nodes)) {
-	if (def.drawtype == "normal" && string.match(name, "main:")[0] != null) {
+    if (typeof name != "string") {
+        core.log(LogLevel.warning, "Number in global registered nodes table")
+        continue;
+    }
+
+	if (def.drawtype == Drawtype.normal && string.match(name, "main:")[0] != null) {
 	
 		// //set up fence
 		// local def2 = table.copy(def)
