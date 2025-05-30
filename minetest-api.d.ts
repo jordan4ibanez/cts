@@ -154,7 +154,7 @@ interface core {
 		fun: (
 			player: ObjectRef,
 			formName: string,
-			fields: { string: any }
+			fields: Dictionary<string, any>
 		) => void
 	): void;
 	register_on_craft(
