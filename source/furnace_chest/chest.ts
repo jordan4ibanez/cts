@@ -2,19 +2,24 @@ namespace furnace_chest {
 	// local chest = {}
 
 	function get_chest_formspec(pos: Vec3) {
-		local spos = pos.x + "," + pos.y + "," + pos.z
-		local formspec =
+		const spos =
+			tostring(pos.x) + "," + tostring(pos.y) + "," + tostring(pos.z);
+		const formspec =
 			"size[9,8.75]" +
-			"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"+
-			"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"+
-			"list[nodemeta:" + spos + ";main;0,0.3;9,4;]" +
+			"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]" +
+			"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]" +
+			"list[nodemeta:" +
+			spos +
+			";main;0,0.3;9,4;]" +
 			"list[current_player;main;0,4.5;9,1;]" +
 			"list[current_player;main;0,6.08;9,3;9]" +
-			"listring[nodemeta:" + spos + ";main]" +
-			"listring[current_player;main]" //+
-			//default.get_hotbar_bg(0,4.85)
-		return formspec
-    }
+			"listring[nodemeta:" +
+			spos +
+			";main]" +
+			"listring[current_player;main]"; //+
+		//default.get_hotbar_bg(0,4.85)
+		return formspec;
+	}
 
 	// function chest.chest_lid_close(pn)
 	// 	local chest_open_info = chest.open_chests[pn]
