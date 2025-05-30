@@ -1593,7 +1593,8 @@ declare global {
 		[id in K]: V;
 	};
 
-	/** @noSelf **/ interface PlayerControlObject extends Dictionary {
+	/** @noSelf **/ interface PlayerControlObject
+		extends Dictionary<string, boolean | number> {
 		up: boolean;
 		down: boolean;
 		left: boolean;
