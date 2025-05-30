@@ -19,7 +19,9 @@ namespace stairs {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname =
-				"crafter_stairs:" + string.gsub(name, "crafter:", "")[0] + "_stair";
+				"crafter_stairs:" +
+				string.gsub(name, "crafter:", "")[0] +
+				"_stair";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Stair";
@@ -180,13 +182,18 @@ namespace stairs {
 			);
 			continue;
 		}
-		if (def.drawtype == Drawtype.normal && string.match(name, "crafter:")[0] != null) {
+		if (
+			def.drawtype == Drawtype.normal &&
+			string.match(name, "crafter:")[0] != null
+		) {
 			// Set up slab.
 			const def2: NodeDefinition = table.copy(
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"crafter_stairs:" + string.gsub(name, "crafter:", "")[0] + "_slab";
+				"crafter_stairs:" +
+				string.gsub(name, "crafter:", "")[0] +
+				"_slab";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Slab";
@@ -305,7 +312,9 @@ namespace stairs {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"crafter_stairs:" + string.gsub(name, "crafter:", "")[0] + "_slab_upsidedown";
+				"crafter_stairs:" +
+				string.gsub(name, "crafter:", "")[0] +
+				"_slab_upsidedown";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Slab";
