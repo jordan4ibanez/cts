@@ -119,12 +119,12 @@ namespace furnace_chest {
 
 	export function register_chest(name: string, d: NodeDefinition) {
 		const def: NodeDefinition = table.copy(d as LuaTable) as NodeDefinition;
-		// 	def.drawtype = "mesh"
-		// 	def.visual = "mesh"
-		// 	def.paramtype = "light"
-		// 	def.paramtype2 = "facedir"
-		// 	def.legacy_facedir_simple = true
-		// 	def.is_ground_content = false
+		def.drawtype = Drawtype.mesh;
+		// def.visual = "mesh"
+		def.paramtype = ParamType1.light;
+		def.paramtype2 = ParamType2.facedir;
+		def.legacy_facedir_simple = true;
+		def.is_ground_content = false;
 		// 	if def.protected then
 		// 		def.on_construct = function(pos)
 		// 			local meta = core.get_meta(pos)
