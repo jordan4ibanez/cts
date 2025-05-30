@@ -185,64 +185,83 @@ namespace furnace_chest {
 				el = math.min(el, cooked.time - src_time);
 			}
 
-				// Check if we have enough fuel to burn
-				if (fuel_time < fuel_totaltime) {
-					// The furnace is currently active and has enough fuel.
-					fuel_time += el;
-					// If there is a cookable item then check if it is ready yet
-					if (cookable) {
-						src_time = src_time + el
-						if (src_time >= cooked.time) {
-							// Place result in dst list if possible.
-							if (inv.room_for_item("dst", cooked.item)) {
-								inv.add_item("dst", cooked.item)
-								inv.set_stack("src", 1, aftercooked.items[0])
-								src_time  -= cooked.time;
-								update = true
-								const dir: Vec3 = vector.divide(core.facedir_to_dir(core.get_node(pos).param2 || 0),-1.95)
-								const newpos: Vec3 = vector.add(pos,dir)
-								item_handling.throw_experience(newpos, 1)
-                            } else {
-								dst_full = true
-                            }
-                        }else{
-							// Item could not be cooked: probably missing fuel.
-							update = true
-                        }
-                    }
-                }else{
-					// Furnace ran out of fuel.
-					if (cookable) {
-						// We need to get new fuel.
-						const [fuel, afterfuel] = core.get_craft_result({method : CraftCheckType.fuel, width : 1, items : fuellist})
-						if (fuel.time == 0) {
-							// No valid fuel in fuel list
-							fuel_totaltime = 0
-							src_time = 0
-                        }else{
-							// Take fuel from fuel list
-							inv.set_stack("fuel", 1, afterfuel.items[0])
-							// Put replacements in dst list or drop them on the furnace.
-							const replacements = fuel.replacements
-							if (replacements[0]) {
-								const leftover = inv.add_item("dst", replacements[0])
-								if (! leftover.is_empty()) {
-									const above = vector.create3d(pos.x, pos.y + 1, pos.z)
-									const drop_pos = core.find_node_near(above, 1, ["air"]) || above
-									core.item_drop(replacements[0], null, drop_pos)
-                                }
-                            }
-							update = true
-							fuel_totaltime = fuel.time + (fuel_totaltime - fuel_time)
-                        }
-                    }else{
-						// We don't need to get new fuel since there is no cookable item
-						fuel_totaltime = 0
-						src_time = 0
-                    }
-					fuel_time = 0
-                }
-				elapsed = elapsed - el
+			// Check if we have enough fuel to burn
+			if (fuel_time < fuel_totaltime) {
+				// The furnace is currently active and has enough fuel.
+				fuel_time += el;
+				// If there is a cookable item then check if it is ready yet
+				if (cookable) {
+					src_time = src_time + el;
+					if (src_time >= cooked.time) {
+						// Place result in dst list if possible.
+						if (inv.room_for_item("dst", cooked.item)) {
+							inv.add_item("dst", cooked.item);
+							inv.set_stack("src", 1, aftercooked.items[0]);
+							src_time -= cooked.time;
+							update = true;
+							const dir: Vec3 = vector.divide(
+								core.facedir_to_dir(
+									core.get_node(pos).param2 || 0
+								),
+								-1.95
+							);
+							const newpos: Vec3 = vector.add(pos, dir);
+							item_handling.throw_experience(newpos, 1);
+						} else {
+							dst_full = true;
+						}
+					} else {
+						// Item could not be cooked: probably missing fuel.
+						update = true;
+					}
+				}
+			} else {
+				// Furnace ran out of fuel.
+				if (cookable) {
+					// We need to get new fuel.
+					const [fuel, afterfuel] = core.get_craft_result({
+						method: CraftCheckType.fuel,
+						width: 1,
+						items: fuellist,
+					});
+					if (fuel.time == 0) {
+						// No valid fuel in fuel list
+						fuel_totaltime = 0;
+						src_time = 0;
+					} else {
+						// Take fuel from fuel list
+						inv.set_stack("fuel", 1, afterfuel.items[0]);
+						// Put replacements in dst list or drop them on the furnace.
+						const replacements = fuel.replacements;
+						if (replacements[0]) {
+							const leftover = inv.add_item(
+								"dst",
+								replacements[0]
+							);
+							if (!leftover.is_empty()) {
+								const above = vector.create3d(
+									pos.x,
+									pos.y + 1,
+									pos.z
+								);
+								const drop_pos =
+									core.find_node_near(above, 1, ["air"]) ||
+									above;
+								core.item_drop(replacements[0], null, drop_pos);
+							}
+						}
+						update = true;
+						fuel_totaltime =
+							fuel.time + (fuel_totaltime - fuel_time);
+					}
+				} else {
+					// We don't need to get new fuel since there is no cookable item
+					fuel_totaltime = 0;
+					src_time = 0;
+				}
+				fuel_time = 0;
+			}
+			elapsed = elapsed - el;
 		}
 
 		// if fuel and fuel_totaltime > fuel.time then
