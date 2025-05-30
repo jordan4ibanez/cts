@@ -195,7 +195,7 @@ namespace hand {
 			return "";
 		},
 		groups: { dig_immediate: 3, not_in_creative_inventory: 1 },
-		range: def.range,
+		range: def && def.range,
 	});
 
 	//Create a hand list and then enable the hand node
