@@ -104,18 +104,18 @@ namespace furnace_chest {
 		}
 	});
 
-	// local function destroy_chest(pos)
-	// 	local meta = core.get_meta(pos)
-	// 	local inv = meta:get_inventory()
-	// 	local lists = inv:get_lists()
-	// 	for listname,_ in pairs(lists) do
-	// 		local size = inv:get_size(listname)
-	// 		for i = 1,size do
-	// 			local stack = inv:get_stack(listname, i)
-	// 			core.add_item(pos, stack)
-	// 		end
-	// 	end
-	// end
+	function destroy_chest(pos: Vec3) {
+		// 	local meta = core.get_meta(pos)
+		// 	local inv = meta:get_inventory()
+		// 	local lists = inv:get_lists()
+		// 	for listname,_ in pairs(lists) do
+		// 		local size = inv:get_size(listname)
+		// 		for i = 1,size do
+		// 			local stack = inv:get_stack(listname, i)
+		// 			core.add_item(pos, stack)
+		// 		end
+		// 	end
+	}
 
 	// function chest.register_chest(name, d)
 	// 	local def = table.copy(d)
