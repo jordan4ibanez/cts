@@ -1,15 +1,15 @@
 namespace furnace_chest {
 	function can_interact_with_node(player: ObjectRef, pos: Vec3) {
 		if (player && player.is_player()) {
-			if core.check_player_privs(player, "protection_bypass") then
-				return true
-			end
-        }else{
-			return false
-        }
+			if (core.check_player_privs(player, "protection_bypass")) {
+				return true;
+			}
+		} else {
+			return false;
+		}
 
-		// local meta = core.get_meta(pos)
-		// local owner = meta:get_string("owner")
+		const meta: MetaRef = core.get_meta(pos);
+		const owner: string = meta.get_string("owner");
 
 		// if not owner or owner == "" or owner == player:get_player_name() then
 		// 	return true
