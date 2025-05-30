@@ -622,7 +622,7 @@ interface core {
 	registered_biomes: Dictionary<string, BiomeDefinition>;
 	registered_decorations: Dictionary<string, DecorationDefinition>;
 	registered_schematics: Dictionary<string, SchematicDefinition>;
-	registered_chatcommands: { [id: string]: ChatCommandDefinition };
+	registered_chatcommands: Dictionary<string, ChatCommandDefinition>;
 	registered_privileges: { [id: string]: PrivilegeDefinition };
 
 	wrap_text(str: string, limit: number, asTable: boolean): string | string[];
