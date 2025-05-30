@@ -151,8 +151,9 @@ namespace furnace_chest {
 		const src_time = meta.get_float("src_time") || 0
 		const fuel_totaltime = meta.get_float("fuel_totaltime") || 0
 
-		const inv = meta:get_inventory()
-		const srclist, fuellist
+		const inv = meta.get_inventory()
+		let srclist
+        let fuellist
 		const dst_full = false
 
 		const cookable, cooked
