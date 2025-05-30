@@ -1,6 +1,6 @@
 namespace furnace_chest {
 
-    function default.can_interact_with_node(player, pos)
+    function can_interact_with_node(player, pos) {
 	if player and player:is_player() then
 		if minetest.check_player_privs(player, "protection_bypass") then
 			return true
@@ -35,7 +35,7 @@ namespace furnace_chest {
 	end
 
 	return false
-end
+    }
 
 
 	function get_chest_formspec(pos: Vec3): string {
