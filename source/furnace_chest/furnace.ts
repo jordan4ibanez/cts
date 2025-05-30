@@ -392,13 +392,12 @@ namespace furnace_chest {
 			inv.set_size("dst", 4);
 			furnace_node_timer(pos, 0);
 		},
-
-		// 	on_metadata_inventory_move = function(pos)
-		// 		local timer = core.get_node_timer(pos)
-		// 		if timer:is_started() == false then
-		// 			timer:start(1.0)
-		// 		end
-		// 	end,
+		on_metadata_inventory_move: (pos: Vec3) => {
+			const timer: NodeTimerObject = core.get_node_timer(pos);
+			if (timer.is_started() == false) {
+				timer.start(1.0);
+			}
+		},
 		// 	on_metadata_inventory_put = function(pos)
 		// 		// start timer function, it will sort out whether furnace can burn or not.
 		// 		local timer = core.get_node_timer(pos)
