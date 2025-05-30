@@ -92,120 +92,206 @@ namespace door {
 		}
 
 		// This is where the top and bottom of the door are created.
-		for (const door of ["top","bottom"]) {
-				for (const state of  ["open","closed"]) {
-					let door_node_box: number[]= []
-					if (state == "closed") {
-						door_node_box = [-0.5, -0.5,  -0.5, 0.5,  0.5, -0.3]
-                    } else if (state == "open") {
-						door_node_box = [5/16, -0.5,  -0.5, 0.5,  0.5, 0.5]
-                    }
+		for (const door of ["top", "bottom"]) {
+			for (const state of ["open", "closed"]) {
+				let door_node_box: number[] = [];
+				if (state == "closed") {
+					door_node_box = [-0.5, -0.5, -0.5, 0.5, 0.5, -0.3];
+				} else if (state == "open") {
+					door_node_box = [5 / 16, -0.5, -0.5, 0.5, 0.5, 0.5];
+				}
 
-					let tiles: string[] = []
-					let groups: {[id: string] : number} = {}
-					let sounds: NodeSoundSpec | undefined
-					let on_rightclick: ((pos: Vec3) => void) | undefined
-					let redstone_deactivation: ((pos: Vec3) => void) | undefined;
-					let redstone_activation: ((pos: Vec3) => void) | undefined
-                    
-					// Redstone input.
-					if (state == "open") {
-						redstone_deactivation = (pos: Vec3) => {
-							door_rightclick(pos)
-                        }
-                    } else if (state == "closed") {
-						redstone_activation = (pos: Vec3) => {
-							door_rightclick(pos)
-                        }
-                    }
+				let tiles: string[] = [];
+				let groups: { [id: string]: number } = {};
+				let sounds: NodeSoundSpec | undefined;
+				let on_rightclick: ((pos: Vec3) => void) | undefined;
+				let redstone_deactivation: ((pos: Vec3) => void) | undefined;
+				let redstone_activation: ((pos: Vec3) => void) | undefined;
 
-					if (material == "wood") {
-						sounds = crafter.woodSound()
+				// Redstone input.
+				if (state == "open") {
+					redstone_deactivation = (pos: Vec3) => {
+						door_rightclick(pos);
+					};
+				} else if (state == "closed") {
+					redstone_activation = (pos: Vec3) => {
+						door_rightclick(pos);
+					};
+				}
 
-						on_rightclick = function(pos: Vec3) {
-							door_rightclick(pos)
-                        }
-                        // todo: swap lua style to ternary
-						// Bottom.
-						if (door == "bottom") {
-							tiles = ["wood.png"]
-							groups = {wood : 2, tree : 1, hard : 1, axe : 1, hand : 3, crafter_door_bottom : 1,door_open : ((state == "open" && 1) || 0),door_closed : ((state == "closed" && 1) || 0)}
+				if (material == "wood") {
+					sounds = crafter.woodSound();
+
+					on_rightclick = function (pos: Vec3) {
+						door_rightclick(pos);
+					};
+					// todo: swap lua style to ternary
+					// Bottom.
+					if (door == "bottom") {
+						tiles = ["wood.png"];
+						groups = {
+							wood: 2,
+							tree: 1,
+							hard: 1,
+							axe: 1,
+							hand: 3,
+							crafter_door_bottom: 1,
+							door_open: (state == "open" && 1) || 0,
+							door_closed: (state == "closed" && 1) || 0,
+						};
 
 						// Top.
-                        } else {
-							if (state == "closed") {
-								tiles = ["wood.png","wood.png","wood.png","wood.png","wood_door_top.png","wood_door_top.png"]
-                            } else if (state == "open") {
-								tiles = ["wood.png","wood.png","wood_door_top.png","wood_door_top.png","wood.png","wood.png"]
-                            }
-							groups = {wood : 2, tree : 1, hard : 1, axe : 1, hand : 3, redstone_activation : 1, crafter_door_top : 1,door_open : ((state == "open" && 1) || 0),door_closed : ((state == "closed" && 1) || 0)}
-                        }
-                    } else if (material == "iron") {
-						sounds = crafter.stoneSound()
-						if (door == "bottom") {
-							tiles = ["iron_block.png"]
-							groups = {stone : 1, hard : 1, pickaxe : 1, hand : 4, bottom : 1,crafter_door_open : ((state == "open" && 1) || 0),crafter_door_closed : ((state == "closed" && 1) || 0)}
+					} else {
+						if (state == "closed") {
+							tiles = [
+								"wood.png",
+								"wood.png",
+								"wood.png",
+								"wood.png",
+								"wood_door_top.png",
+								"wood_door_top.png",
+							];
+						} else if (state == "open") {
+							tiles = [
+								"wood.png",
+								"wood.png",
+								"wood_door_top.png",
+								"wood_door_top.png",
+								"wood.png",
+								"wood.png",
+							];
+						}
+						groups = {
+							wood: 2,
+							tree: 1,
+							hard: 1,
+							axe: 1,
+							hand: 3,
+							redstone_activation: 1,
+							crafter_door_top: 1,
+							door_open: (state == "open" && 1) || 0,
+							door_closed: (state == "closed" && 1) || 0,
+						};
+					}
+				} else if (material == "iron") {
+					sounds = crafter.stoneSound();
+					if (door == "bottom") {
+						tiles = ["iron_block.png"];
+						groups = {
+							stone: 1,
+							hard: 1,
+							pickaxe: 1,
+							hand: 4,
+							bottom: 1,
+							crafter_door_open: (state == "open" && 1) || 0,
+							crafter_door_closed: (state == "closed" && 1) || 0,
+						};
+					} else {
+						if (state == "closed") {
+							tiles = [
+								"iron_block.png",
+								"iron_block.png",
+								"iron_block.png",
+								"iron_block.png",
+								"iron_door_top.png",
+								"iron_door_top.png",
+							];
+						} else if (state == "open") {
+							tiles = [
+								"iron_block.png",
+								"iron_block.png",
+								"iron_door_top.png",
+								"iron_door_top.png",
+								"iron_block.png",
+								"iron_block.png",
+							];
+						}
+						groups = {
+							stone: 1,
+							hard: 1,
+							pickaxe: 1,
+							hand: 4,
+							redstone_activation: 1,
+							top: 1,
+							crafter_door_open: (state == "open" && 1) || 0,
+							crafter_door_closed: (state == "closed" && 1) || 0,
+						};
+					}
+				}
 
-                        } else {
-							if (state == "closed") {
-								tiles = ["iron_block.png","iron_block.png","iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png"]
-                            } else if (state == "open") {
-								tiles = ["iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png","iron_block.png","iron_block.png"]
-                            }
-							groups = {stone : 1, hard : 1, pickaxe : 1, hand : 4, redstone_activation : 1, top : 1,crafter_door_open : ((state == "open" && 1) || 0),crafter_door_closed : ((state == "closed" && 1) || 0)}
-                        }
-                    }
-
-					core.register_node("crafter_door:"+door+"_"+material+"_"+state, {
-						description : string.gsub(material, "^%l", string.upper)+" Door",
-						tiles : tiles,
-						wield_image : "door_inv_"+material+".png",
-						inventory_image : "door_inv_"+material+".png",
-						drawtype : Drawtype.nodebox,
-						paramtype : ParamType1.light,
-						paramtype2 : ParamType2.facedir,
-						groups : groups,
-						sounds : sounds,
-						drop : "crafter_door:bottom_"+material+"_closed",
-						node_placement_prediction : "",
-						node_box : {
-							type : Nodeboxtype.fixed,
-							fixed : [
-									//left front bottom right back top
-									door_node_box
-                            ],
-							},
+				core.register_node(
+					"crafter_door:" + door + "_" + material + "_" + state,
+					{
+						description:
+							string.gsub(material, "^%l", string.upper) +
+							" Door",
+						tiles: tiles,
+						wield_image: "door_inv_" + material + ".png",
+						inventory_image: "door_inv_" + material + ".png",
+						drawtype: Drawtype.nodebox,
+						paramtype: ParamType1.light,
+						paramtype2: ParamType2.facedir,
+						groups: groups,
+						sounds: sounds,
+						drop: "crafter_door:bottom_" + material + "_closed",
+						node_placement_prediction: "",
+						node_box: {
+							type: Nodeboxtype.fixed,
+							fixed: [
+								//left front bottom right back top
+								door_node_box,
+							],
+						},
 						//redstone activation is in both because only the bottom is defined as an activator and it's easier to do it like this
 
-						redstone_activation : redstone_activation,
-						redstone_deactivation : redstone_deactivation,
+						redstone_activation: redstone_activation,
+						redstone_deactivation: redstone_deactivation,
 
-						on_rightclick : on_rightclick,
-						after_place_node  : (pos: Vec3, placer: ObjectRef, itemstack: ItemStackObject)  => {
-							const node: NodeTable = get_node(pos)
-							const param2: number | undefined = node.param2
-							const pos2: Vec3 = vector.create3d(pos)
+						on_rightclick: on_rightclick,
+						after_place_node: (
+							pos: Vec3,
+							placer: ObjectRef,
+							itemstack: ItemStackObject
+						) => {
+							const node: NodeTable = get_node(pos);
+							const param2: number | undefined = node.param2;
+							const pos2: Vec3 = vector.create3d(pos);
 
-							pos2.y = pos2.y + 1
+							pos2.y = pos2.y + 1;
 							if (get_node(pos2).name == "air") {
-								set_node(pos2,{name:"crafter_door:top_"+material+"_closed",param2:param2})
-                            }else{
-								core.remove_node(pos)
-								itemstack.add_item(ItemStack("crafter_door:bottom_"+material+"_closed"))
-                            }
-                        },
-						after_dig_node : (pos, oldnode, oldmetadata, digger) => {
-							if (string.match(oldnode.name, ":bottom")[0] != null) {
-								pos.y = pos.y + 1
-								core.remove_node(pos)
-                        } else {
-								pos.y = pos.y - 1
-								core.remove_node(pos)
-                        }
-                        },
-					})
-                }
-        }
+								set_node(pos2, {
+									name:
+										"crafter_door:top_" +
+										material +
+										"_closed",
+									param2: param2,
+								});
+							} else {
+								core.remove_node(pos);
+								itemstack.add_item(
+									ItemStack(
+										"crafter_door:bottom_" +
+											material +
+											"_closed"
+									)
+								);
+							}
+						},
+						after_dig_node: (pos, oldnode, oldmetadata, digger) => {
+							if (
+								string.match(oldnode.name, ":bottom")[0] != null
+							) {
+								pos.y = pos.y + 1;
+								core.remove_node(pos);
+							} else {
+								pos.y = pos.y - 1;
+								core.remove_node(pos);
+							}
+						},
+					}
+				);
+			}
+		}
 		// core.register_craft({
 		// 	output = "crafter_door:bottom_"..material.."_closed",
 		// 	recipe = {
