@@ -4,7 +4,7 @@ const creative_mode: boolean = core.settings.get_bool("creative_mode") || false;
 core.register_on_mods_loaded(() => {
 	for (const [name, def] of pairs(core.registered_nodes)) {
 		if (creative_mode == true) {
-			const groups: { [id: string]: number } | undefined = def.groups;
+			const groups: Dictionary<string, number> | undefined = def.groups;
 			if (groups != null) {
 				groups["dig_immediate"] = 3;
 			}
