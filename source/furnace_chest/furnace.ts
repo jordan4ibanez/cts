@@ -354,17 +354,14 @@ namespace furnace_chest {
 		const meta: MetaRef = core.get_meta(pos);
 		const inv: InvRef = meta.get_inventory();
 		const lists: Dictionary<string, ItemStackObject[]> = inv.get_lists();
-		const x = lists.test;
-		print(x);
-		print(dump(lists));
 
-		// for listname,_ in pairs(lists) do
-		// 	local size = inv:get_size(listname)
-		// 	for i = 1,size do
-		// 		local stack = inv:get_stack(listname, i)
-		// 		core.add_item(pos, stack)
-		// 	end
-		// end
+		for (const [listname, _] of pairs(lists)) {
+			const size = inv.get_size(listname);
+			for (let i = 1; i <= size; i++) {
+				const stack = inv.get_stack(listname, i);
+				core.add_item(pos, stack);
+			}
+		}
 	}
 
 	//
