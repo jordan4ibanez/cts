@@ -19,14 +19,14 @@ namespace furnace_chest {
 		const item: ItemStackObject = player.get_wielded_item();
 		if (core.get_item_group(item.get_name(), "key") == 1) {
 			const key_meta: MetaRef = item.get_meta();
-			// 	if key_meta:get_string("secret") == "" then
-			// 		local key_oldmeta = item:get_metadata()
-			// 		if key_oldmeta == "" or not core.parse_json(key_oldmeta) then
-			// 			return false
-			// 		end
-			// 		key_meta:set_string("secret", core.parse_json(key_oldmeta).secret)
-			// 		item:set_metadata("")
-			// 	end
+			if (key_meta.get_string("secret") == "") {
+				// 		local key_oldmeta = item:get_metadata()
+				// 		if key_oldmeta == "" or not core.parse_json(key_oldmeta) then
+				// 			return false
+				// 		end
+				// 		key_meta:set_string("secret", core.parse_json(key_oldmeta).secret)
+				// 		item:set_metadata("")
+			}
 			// 	return meta:get_string("key_lock_secret") == key_meta:get_string("secret")
 		}
 
