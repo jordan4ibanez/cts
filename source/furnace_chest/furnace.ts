@@ -142,23 +142,23 @@ namespace furnace_chest {
 		core.swap_node(pos, node);
 	}
 
-	 function furnace_node_timer(pos, elapsed) {
+	 function furnace_node_timer(pos: Vec3, elapsed: number) {
 		//
 		// Initialize metadata
 		//
-		local meta = core.get_meta(pos)
-		local fuel_time = meta:get_float("fuel_time") or 0
-		local src_time = meta:get_float("src_time") or 0
-		local fuel_totaltime = meta:get_float("fuel_totaltime") or 0
+		const meta = core.get_meta(pos)
+		const fuel_time = meta.get_float("fuel_time") || 0
+		const src_time = meta:get_float("src_time") or 0
+		const fuel_totaltime = meta:get_float("fuel_totaltime") or 0
 
-		local inv = meta:get_inventory()
-		local srclist, fuellist
-		local dst_full = false
+		const inv = meta:get_inventory()
+		const srclist, fuellist
+		const dst_full = false
 
-		local cookable, cooked
-		local fuel
+		const cookable, cooked
+		const fuel
 
-		local update = true
+		const update = true
 		// while elapsed > 0 and update do
 		// 	update = false
 
