@@ -9,8 +9,8 @@ core.register_on_mods_loaded(() => {
 				groups["dig_immediate"] = 3;
 			}
 		}
-		let stack_max: number | undefined =
-			core.registered_items[name].stack_max;
+
+		let stack_max: number | undefined = def.stack_max;
 		if (stack_max == null) {
 			throw new Error("how");
 		}
