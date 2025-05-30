@@ -11,7 +11,7 @@ namespace stairs {
 
 		if (
 			def.drawtype == Drawtype.normal &&
-			string.match(name, "main:")[0] != null
+			string.match(name, "crafter:")[0] != null
 		) {
 			// Set up stair.
 
@@ -19,7 +19,7 @@ namespace stairs {
 				def as LuaTable
 			) as NodeDefinition;
 			const newname =
-				"crafter_stairs:" + string.gsub(name, "main:", "") + "_stair";
+				"crafter_stairs:" + string.gsub(name, "crafter:", "")[0] + "_stair";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Stair";
@@ -94,14 +94,14 @@ namespace stairs {
 
 		if (
 			def.drawtype == Drawtype.normal &&
-			string.match(name, "main:")[0] != null
+			string.match(name, "crafter:")[0] != null
 		) {
 			const def2: NodeDefinition = table.copy(
 				def as LuaTable
 			) as NodeDefinition;
 			const newname =
 				"crafter_stairs:" +
-				string.gsub(name, "main:", "") +
+				string.gsub(name, "crafter:", "")[0] +
 				"_stair_upsidedown";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
@@ -180,13 +180,13 @@ namespace stairs {
 			);
 			continue;
 		}
-		if (def.drawtype == Drawtype.normal && string.match(name, "main:")) {
+		if (def.drawtype == Drawtype.normal && string.match(name, "crafter:")[0] != null) {
 			// Set up slab.
 			const def2: NodeDefinition = table.copy(
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"crafter_stairs:" + string.gsub(name, "main:", "") + "_slab";
+				"crafter_stairs:" + string.gsub(name, "crafter:", "")[0] + "_slab";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Slab";
@@ -299,13 +299,13 @@ namespace stairs {
 		}
 		if (
 			def.drawtype == Drawtype.normal &&
-			string.match(name, "main:")[0] != null
+			string.match(name, "crafter:")[0] != null
 		) {
 			const def2: NodeDefinition = table.copy(
 				def as LuaTable
 			) as NodeDefinition;
 			const newname: string =
-				"crafter_stairs:" + string.gsub(name, "main:", "") + "_slab_upsidedown";
+				"crafter_stairs:" + string.gsub(name, "crafter:", "")[0] + "_slab_upsidedown";
 			def2.mod_origin = "stairs";
 			// def2.name = newname
 			def2.description = def.description + " Slab";
