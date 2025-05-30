@@ -608,7 +608,6 @@ interface core {
 	request_insecure_environment(): any;
 	global_exists(name: string): boolean;
 
-	registered_craftitems: { [id: string]: ItemDefinition };
 	registered_tools: { [id: string]: ItemDefinition };
 	registered_entities: { [id: string]: LuaEntity };
 	registered_items: Dictionary<string, ItemDefinition>;
