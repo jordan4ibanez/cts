@@ -244,8 +244,8 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
     }
  }
 
-// //upside down stairs
-// for name,def in pairs(core.registered_nodes) do
+// Upside down stairs.
+for (const [name,def] of pairs(core.registered_nodes)) {
 // 	if def.drawtype == "normal" and string.match(name, "main:") then
 // 		local def2 = table.copy(def)
 // 		local newname = "stairs:"+string.gsub(name, "main:", "")+"_slab_upsidedown"
@@ -266,5 +266,5 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 // 		def2.groups[name]=1
 // 		core.register_node(newname,def2)
 // 	end
-// end
+}
 }
