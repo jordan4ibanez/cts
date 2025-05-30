@@ -1046,7 +1046,7 @@ declare global {
 		is_ground_content?: boolean;
 		sunlight_propagates?: boolean;
 		walkable?: boolean;
-		groups?: { [id: string]: number };
+		groups?: Dictionary<string, number>;
 		pointable?: boolean;
 		diggable?: boolean;
 		climbable?: boolean;
