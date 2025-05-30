@@ -167,7 +167,7 @@ namespace utility {
 		const real_nodes: string[] = [];
 
 		for (const [node_data, count] of Object.entries(damage_nodes)) {
-			if (count > 0) {
+			if (count && count > 0) {
 				real_nodes.push(node_data);
 			}
 		}
@@ -250,7 +250,7 @@ namespace utility {
 		const real_nodes: string[] = [];
 
 		for (const [node_data, count] of Object.entries(damage_nodes)) {
-			if (count > 0) {
+			if (count && count > 0) {
 				table.insert(real_nodes, node_data);
 			}
 		}
@@ -320,7 +320,7 @@ namespace utility {
 		const real_nodes: string[] = [];
 
 		for (const [node_data, count] of Object.entries(damage_nodes)) {
-			if (count > 0) {
+			if (count && count > 0) {
 				real_nodes.push(node_data);
 			}
 		}
@@ -373,7 +373,7 @@ namespace utility {
 		const real_nodes: string[] = [];
 
 		for (const [node_data, count] of Object.entries(damage_nodes)) {
-			if (count > 0) {
+			if (count && count > 0) {
 				real_nodes.push(node_data);
 			}
 		}
