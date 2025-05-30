@@ -177,13 +177,13 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 			let placement_worked = false
 			// Upside down slab placement.
 			if (sneak == true) {
-				local _,worked = core.item_place(ItemStack(newname+"_upsidedown"), placer, pointed_thing)
-				if worked then
-					itemstack:take_item()
+				const [_,worked] = core.item_place(ItemStack(newname+"_upsidedown"), placer, pointed_thing)
+				if (worked) {
+					itemstack.take_item()
 					placement_worked = true
-				end
+                }
 			// Normal placement - (back of slab) or normal node.
-            } else if ((rightsideup and ydiff == -1) or (upsidedown and ydiff == 1) or (not rightsideup and not upsidedown) or ydiff == 0) {
+            } else if ((rightsideup && ydiff == -1) || (upsidedown && ydiff == 1) || (! rightsideup && ! upsidedown) || ydiff == 0) {
 				local itemstack,worked = core.item_place(itemstack, placer, pointed_thing)
 				if worked then
 					placement_worked = true
