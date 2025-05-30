@@ -279,7 +279,10 @@ namespace door {
 						},
 						after_dig_node: (pos: Vec3, oldnode: NodeTable) => {
 							if (
-								string.match(oldnode.name, ":bottom")[0] != null
+								string.match(
+									oldnode.name,
+									"crafter_door:bottom_"
+								)[0] != null
 							) {
 								pos.y = pos.y + 1;
 								core.remove_node(pos);
