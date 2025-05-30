@@ -74,23 +74,26 @@ for (const [name,def] of pairs(core.registered_nodes)) {
     }
 
 	if (def.drawtype == Drawtype.normal && string.match(name, "main:")[0] != null) {
-		local def2 = table.copy(def)
-		local newname = "stairs:"..string.gsub(name, "main:", "").."_stair_upsidedown"
+		const def2: NodeDefinition = table.copy(def as LuaTable) as NodeDefinition
+		const newname = "stairs:"+string.gsub(name, "main:", "")+"_stair_upsidedown"
 		def2.mod_origin = "stairs"
-		def2.name = newname
-		def2.description = def.description.." Stair"
-		def2.drop = string.gsub(newname, "_upsidedown", "")
-		def2.paramtype = "light"
-		def2.drawtype = "nodebox"
-		def2.paramtype2 = "facedir"
-		def2.on_dig = nil
+		// def2.name = newname
+		def2.description = def.description+" Stair"
+		def2.drop = string.gsub(newname, "_upsidedown", "")[0]
+		def2.paramtype = ParamType1.light
+		def2.drawtype = Drawtype.nodebox
+		def2.paramtype2 = ParamType2.facedir
+		
 		def2.node_box = {
-			type = "fixed",
-			fixed = {
-			{-8/16, -8/16, -0/16, 8/16, 8/16, 8/16},
-			{-8/16, -0/16, -8/16, 8/16, 8/16, 8/16},
-			}
+			type : Nodeboxtype.fixed,
+			fixed : [
+			[-8/16, -8/16, -0/16, 8/16, 8/16, 8/16],
+			[-8/16, -0/16, -8/16, 8/16, 8/16, 8/16],
+            ]
 		}
+        if (!def2.groups) {
+            throw new Error(`Undefined groups for [${name}]`)
+        }
 		def2.groups["stairs"] = 1
 		core.register_node(newname,def2)
     }
