@@ -125,6 +125,7 @@ namespace door {
 						on_rightclick = function(pos: Vec3) {
 							door_rightclick(pos)
                         }
+                        // todo: swap lua style to ternary
 						// Bottom.
 						if (door == "bottom") {
 							tiles = ["wood.png"]
