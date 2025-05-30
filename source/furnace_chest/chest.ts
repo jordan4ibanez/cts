@@ -35,14 +35,15 @@ namespace furnace_chest {
 				LogLevel.warning,
 				`Chest open info for player [${pn}] is null. There is a chest stuck open.`
 			);
-            return;
+			return;
 		}
 
 		const pos: Vec3 = chest_open_info.pos;
 		const sound: string = chest_open_info.sound;
 		const swap: string = chest_open_info.swap;
 
-		// chest.open_chests[pn] = nil
+		open_chests.delete(pn);
+
 		// for k, v in pairs(chest.open_chests) do
 		// 	if v.pos.x == pos.x and v.pos.y == pos.y and v.pos.z == pos.z then
 		// 		return true
