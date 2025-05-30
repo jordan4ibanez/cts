@@ -298,9 +298,9 @@ namespace door {
 		core.register_craft({
 			output: "crafter_door:bottom_" + material + "_closed",
 			recipe: [
-				["main:" + material, "main:" + material],
-				["main:" + material, "main:" + material],
-				["main:" + material, "main:" + material],
+				["crafter:" + material, "crafter:" + material],
+				["crafter:" + material, "crafter:" + material],
+				["crafter:" + material, "crafter:" + material],
 			],
 		});
 	}
