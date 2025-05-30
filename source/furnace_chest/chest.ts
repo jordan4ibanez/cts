@@ -20,10 +20,10 @@ namespace furnace_chest {
 		if (core.get_item_group(item.get_name(), "key") == 1) {
 			const key_meta: MetaRef = item.get_meta();
 			if (key_meta.get_string("secret") == "") {
-				// 		local key_oldmeta = item:get_metadata()
-				// 		if key_oldmeta == "" or not core.parse_json(key_oldmeta) then
-				// 			return false
-				// 		end
+				const key_oldmeta: string = key_meta.get_string("");
+				if (key_oldmeta == "" || !core.parse_json(key_oldmeta)) {
+					return false;
+				}
 				// 		key_meta:set_string("secret", core.parse_json(key_oldmeta).secret)
 				// 		item:set_metadata("")
 			}
