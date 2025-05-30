@@ -619,7 +619,7 @@ interface core {
 	registered_lbms: LBMDefinition[];
 	registered_aliases: Dictionary<string, string>;
 	registered_ores: Dictionary<string, OreDefinition>;
-	registered_biomes: { [id: string]: BiomeDefinition };
+	registered_biomes: Dictionary<string, BiomeDefinition>;
 	registered_decorations: { [id: string]: DecorationDefinition };
 	registered_schematics: { [id: string]: SchematicDefinition };
 	registered_chatcommands: { [id: string]: ChatCommandDefinition };
