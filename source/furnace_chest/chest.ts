@@ -14,6 +14,7 @@ namespace furnace_chest {
 	// 		--default.get_hotbar_bg(0,4.85)
 	// 	return formspec
 	// end
+
 	// function chest.chest_lid_close(pn)
 	// 	local chest_open_info = chest.open_chests[pn]
 	// 	local pos = chest_open_info.pos
@@ -34,6 +35,7 @@ namespace furnace_chest {
 	// 		--redstone.collect_info(pos)
 	// 	end,pos,swap,node)
 	// end
+
 	// chest.open_chests = {}
 	// minetest.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if formname ~= "utility:chest" then
@@ -55,6 +57,7 @@ namespace furnace_chest {
 	// 		chest.chest_lid_close(pn)
 	// 	end
 	// end)
+
 	// local function destroy_chest(pos)
 	// 	local meta = minetest.get_meta(pos)
 	// 	local inv = meta:get_inventory()
@@ -67,6 +70,7 @@ namespace furnace_chest {
 	// 		end
 	// 	end
 	// end
+
 	// function chest.register_chest(name, d)
 	// 	local def = table.copy(d)
 	// 	def.drawtype = "mesh"
@@ -211,6 +215,7 @@ namespace furnace_chest {
 	// 	minetest.register_node("utility:" .. name, def_closed)
 	// 	minetest.register_node("utility:" .. name .. "_open", def_opened)
 	// end
+
 	// chest.register_chest("chest", {
 	// 	description = "Chest",
 	// 	tiles = {
@@ -226,6 +231,7 @@ namespace furnace_chest {
 	// 	sound_close = "default_chest_close",
 	// 	groups = {wood = 2,  hard = 1, axe = 1, hand = 3,pathable = 1},
 	// })
+
 	// minetest.register_craft({
 	// 	output = "utility:chest",
 	// 	recipe = {
@@ -234,11 +240,13 @@ namespace furnace_chest {
 	// 		{"main:wood", "main:wood", "main:wood"},
 	// 	}
 	// })
+
 	// minetest.register_craft({
 	// 	type = "fuel",
 	// 	recipe = "utility:chest",
 	// 	burntime = 5,
 	// })
+    
 	// local groups = minetest.registered_nodes["utility:chest_open"].groups
 	// groups["redstone_torch"]=1
 	// groups["redstone_power"]=9
