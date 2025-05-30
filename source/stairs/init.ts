@@ -46,23 +46,23 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 		def2.groups["stairs"] = 1
 		core.register_node(newname,def2)
 		
-		// core.register_craft({
-		// 	output = newname.." 6",
-		// 	recipe = {
-		// 		{ "","",name },
-		// 		{ "",name, name},
-		// 		{ name, name,name},
-		// 	}
-		// })
+		core.register_craft({
+			output : newname+" 6",
+			recipe : [
+				[ "","",name ],
+				[ "",name, name],
+				[ name, name,name],
+            ]
+		})
 		
-		// core.register_craft({
-		// 	output = newname.." 6",
-		// 	recipe = {
-		// 		{ name,"","" },
-		// 		{ name, name,""},
-		// 		{ name, name,name},
-		// 	}
-		// })
+		core.register_craft({
+			output : newname+" 6",
+			recipe : [
+				[ name,"","" ],
+				[ name, name,""],
+				[ name, name,name],
+            ]
+		})
     }
 }
 // //upside down stairs
