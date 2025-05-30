@@ -304,23 +304,24 @@ namespace furnace_chest {
 		let active: boolean = false;
 		let result: boolean = false;
 
-		// if fuel_totaltime ~= 0 then
-		// 	active = true
-		// 	local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
-		// 	fuel_state = (fuel_percent)
-		// 	formspec = furnace.get_furnace_active_formspec(fuel_percent, item_percent)
-		// 	swap_node(pos, "utility:furnace_active")
-		// 	// make sure timer restarts automatically
-		// 	result = true
-		// else
-		// 	if fuellist and not fuellist[0]:is_empty() then
-		// 		fuel_state = (0)
-		// 	end
-		// 	formspec = furnace.get_furnace_inactive_formspec()
-		// 	swap_node(pos, "utility:furnace")
-		// 	// stop timer on the inactive furnace
-		// 	core.get_node_timer(pos):stop()
-		// end
+		if (fuel_totaltime != 0) {
+			active = true;
+			const fuel_percent =
+				100 - math.floor((fuel_time / fuel_totaltime) * 100);
+			fuel_state = tostring(fuel_percent);
+			formspec = get_furnace_active_formspec(fuel_percent, item_percent);
+			swap_node(pos, "utility:furnace_active");
+			// Make sure timer restarts automatically.
+			result = true;
+		} else {
+			if (fuellist != null && !fuellist[0].is_empty()) {
+				fuel_state = tostring(0);
+			}
+			formspec = get_furnace_inactive_formspec();
+			swap_node(pos, "utility:furnace");
+			// stop timer on the inactive furnace
+			core.get_node_timer(pos).stop();
+		}
 
 		// // //[[
 		// // local infotext
