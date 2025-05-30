@@ -2283,7 +2283,7 @@ declare global {
 		set_detach(): void;
 		set_bone_override(bone: string, property: BoneOverride | null): void;
 		get_bone_override(bone: string): BoneOverride;
-		get_bone_overrides(): { [key: string]: BoneOverride };
+		get_bone_overrides(): Dictionary<string, BoneOverride>;
 		set_properties(objectPropertiesTable: ObjectProperties): void;
 		get_properties(): ObjectProperties;
 		is_player(): boolean;
