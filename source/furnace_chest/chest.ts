@@ -1,6 +1,4 @@
 namespace furnace_chest {
-	// local chest = {}
-
 	function get_chest_formspec(pos: Vec3) {
 		const spos =
 			tostring(pos.x) + "," + tostring(pos.y) + "," + tostring(pos.z);
