@@ -1,3 +1,4 @@
+namespace furnace_chest {
 // local chest = {}
 
 // function chest.get_chest_formspec(pos)
@@ -282,3 +283,4 @@
 // minetest.override_item("utility:chest_open", {
 // 	groups = groups	
 // })
+}
