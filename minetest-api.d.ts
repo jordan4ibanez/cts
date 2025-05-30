@@ -614,7 +614,7 @@ interface core {
 	registered_tools: Dictionary<string, ItemDefinition>;
 	registered_entities: Dictionary<string, LuaEntity>;
 	object_refs: Dictionary<string, ObjectRef>;
-	luaentities: { [id: string]: LuaEntity };
+	luaentities: Dictionary<string, LuaEntity>;
 	registered_abms: ABMDefinition[];
 	registered_lbms: LBMDefinition[];
 	registered_aliases: { [id: string]: string };
