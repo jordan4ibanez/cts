@@ -1,10 +1,9 @@
 namespace furnace_chest {
     --formspecs
-local chest = {}
+    local chest = {}
 
-local path = minetest.get_modpath("utility")
+    local path = minetest.get_modpath("utility")
 
-dofile(path.."/furnace.lua")
-dofile(path.."/chest.lua")
+    utility.loadFiles(["furnace", "chest"])
 
 }
