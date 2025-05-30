@@ -383,11 +383,7 @@ namespace furnace_chest {
 		legacy_facedir_simple: true,
 		is_ground_content: false,
 		sounds: crafter.stoneSound(),
-
-		// 	//can_dig = can_dig,
-
-		// 	on_timer = furnace_node_timer,
-
+		on_timer: furnace_node_timer,
 		on_construct: (pos: Vec3) => {
 			const meta: MetaRef = core.get_meta(pos);
 			const inv: InvRef = meta.get_inventory();
