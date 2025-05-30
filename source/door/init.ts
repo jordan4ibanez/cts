@@ -119,40 +119,40 @@ namespace door {
                         }
                     }
 
-		// 			if material == "wood" then
-		// 				sounds = main.woodSound()
-		// 				on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-		// 					door_rightclick(pos)
-		// 				end
-		// 				//bottom
-		// 				if door == "bottom" then
-		// 					tiles = {"wood.png"}
-		// 					groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, crafter_door_bottom = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
+					if (material == "wood") {
+						sounds = main.woodSound()
+						on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+							door_rightclick(pos)
+						end
+						//bottom
+						if door == "bottom" then
+							tiles = {"wood.png"}
+							groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, crafter_door_bottom = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
 
-		// 				//top
-		// 				else
-		// 					if state == "closed" then
-		// 						tiles = {"wood.png","wood.png","wood.png","wood.png","wood_door_top.png","wood_door_top.png"}
-		// 					elseif state == "open" then
-		// 						tiles = {"wood.png","wood.png","wood_door_top.png","wood_door_top.png","wood.png","wood.png"}
-		// 					end
-		// 					groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, redstone_activation = 1, crafter_door_top = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
-		// 				end
-		// 			elseif material == "iron" then
-		// 				sounds = main.stoneSound()
-		// 				if door == "bottom" then
-		// 					tiles = {"iron_block.png"}
-		// 					groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, bottom = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
+						//top
+						else
+							if state == "closed" then
+								tiles = {"wood.png","wood.png","wood.png","wood.png","wood_door_top.png","wood_door_top.png"}
+							elseif state == "open" then
+								tiles = {"wood.png","wood.png","wood_door_top.png","wood_door_top.png","wood.png","wood.png"}
+							end
+							groups = {wood = 2, tree = 1, hard = 1, axe = 1, hand = 3, redstone_activation = 1, crafter_door_top = 1,door_open = ((state == "open" and 1) or 0),door_closed = ((state == "closed" and 1) or 0)}
+						end
+                    } else if (material == "iron") {
+						sounds = main.stoneSound()
+						if door == "bottom" then
+							tiles = {"iron_block.png"}
+							groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, bottom = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
 
-		// 				else
-		// 					if state == "closed" then
-		// 						tiles = {"iron_block.png","iron_block.png","iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png"}
-		// 					elseif state == "open" then
-		// 						tiles = {"iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png","iron_block.png","iron_block.png"}
-		// 					end
-		// 					groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, redstone_activation = 1, top = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
-		// 				end
-		// 			end
+						else
+							if state == "closed" then
+								tiles = {"iron_block.png","iron_block.png","iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png"}
+							elseif state == "open" then
+								tiles = {"iron_block.png","iron_block.png","iron_door_top.png","iron_door_top.png","iron_block.png","iron_block.png"}
+							end
+							groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4, redstone_activation = 1, top = 1,crafter_door_open = ((state == "open" and 1) or 0),crafter_door_closed = ((state == "closed" and 1) or 0)}
+						end
+                    }
 		// 			core.register_node("door:"..door.."_"..material.."_"..state, {
 		// 				description = material:gsub("^%l", string.upper).." Door",
 		// 				tiles = tiles,
