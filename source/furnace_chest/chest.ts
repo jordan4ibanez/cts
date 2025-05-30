@@ -28,7 +28,7 @@ namespace furnace_chest {
 	const open_chests = new Map<string, OpenChestData>();
 
 	function chest_lid_close(pn: string) {
-		const chest_open_info = open_chests.get(pn);
+		const chest_open_info: OpenChestData | undefined = open_chests.get(pn);
 
 		if (chest_open_info == null) {
 			core.log(
@@ -45,11 +45,11 @@ namespace furnace_chest {
 		open_chests.delete(pn);
 
 		// See if any other player has this chest open.
-		// for k, v in pairs(chest.open_chests) do
-		// 	if v.pos.x == pos.x and v.pos.y == pos.y and v.pos.z == pos.z then
-		// 		return true
-		// 	end
-		// end
+		for (const [_, v] of open_chests) {
+			if (v.pos.x == pos.x && v.pos.y == pos.y && v.pos.z == pos.z) {
+				return true;
+			}
+		}
 
 		// local node = minetest.get_node(pos)
 		// minetest.after(0.2, function(pos,swap,node)
