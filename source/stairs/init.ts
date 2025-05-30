@@ -166,18 +166,18 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 		}
 		// We're passing in the local variables newname and name into this function
 		// calculating wether to turn a half slab into a full block.
-		def2.on_place = (itemstack, placer, pointed_thing) => {
+		def2.on_place = (itemstack: ItemStackObject, placer: ObjectRef, pointed_thing: PointedThing) => {
 			//get all the required variables
-			local sneak = placer:get_player_control().sneak
-			local ydiff = pointed_thing.above.y-pointed_thing.under.y
-			local node_under = core.get_node(pointed_thing.under).name
-			local rightsideup = (newname == node_under)
-			local upsidedown = (newname.."_upsidedown" == node_under)
+			const sneak = placer.get_player_control().sneak
+			const ydiff = pointed_thing.above.y-pointed_thing.under.y
+			const node_under = core.get_node(pointed_thing.under).name
+			const rightsideup = (newname == node_under)
+			const upsidedown = (newname+"_upsidedown" == node_under)
 			
 			local placement_worked = false
 			//upsidedown slab placement
 			if sneak == true then
-				local _,worked = core.item_place(ItemStack(newname.."_upsidedown"), placer, pointed_thing)
+				local _,worked = core.item_place(ItemStack(newname+"_upsidedown"), placer, pointed_thing)
 				if worked then
 					itemstack:take_item()
 					placement_worked = true
@@ -206,7 +206,7 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 			if placement_worked == false then
 				local node_above = core.get_node(pointed_thing.above).name
 				local rightsideup = (newname == node_above)
-				local upsidedown = (newname.."_upsidedown" == node_above)
+				local upsidedown = (newname+"_upsidedown" == node_above)
 				if rightsideup or upsidedown then
 					place_slab_sound(pointed_thing.above,newname)
 					core.set_node(pointed_thing.above, {name = name})
