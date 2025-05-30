@@ -5,8 +5,8 @@ namespace furnace_chest {
 		fuel_percent: number,
 		item_percent: number
 	) {
-		return (
-			"size[9,8.75]" +
+		return;
+		"size[9,8.75]" +
 			"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]" +
 			"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]" +
 			"list[context;src;2.75,0.5;1,1;]" +
@@ -25,8 +25,7 @@ namespace furnace_chest {
 			"listring[context;src]" +
 			"listring[current_player;main]" +
 			"listring[context;fuel]" +
-			"listring[current_player;main]"
-		);
+			"listring[current_player;main]";
 		// furnace.get_hotbar_bg(0, 4.25)
 	}
 
