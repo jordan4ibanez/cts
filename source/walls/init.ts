@@ -100,7 +100,7 @@ namespace walls {
 			],
 		};
 		if (def2.groups == null) {
-			throw new Error(`Undefined groups for [${name}]`)
+			throw new Error(`Undefined groups for [${name}]`);
 		}
 		def2.groups["fence"] = 1;
 		def2.connects_to = [
@@ -216,7 +216,7 @@ namespace walls {
 			],
 		};
 		if (def2.groups == null) {
-			throw new Error(`Undefined groups for [${name}]`)
+			throw new Error(`Undefined groups for [${name}]`);
 		}
 		def2.groups["wall"] = 1;
 		def2.connects_to = [
@@ -241,7 +241,8 @@ namespace walls {
 
 	// Create window.
 
-	const def: NodeDefinition | null = core.registered_nodes["crafter:glass"];
+	const def: NodeDefinition | undefined =
+		core.registered_nodes["crafter:glass"];
 	if (!def) {
 		throw new Error("Glass is undefined.");
 	}
@@ -274,7 +275,7 @@ namespace walls {
 		connect_right: [-1 / 16, -1 / 2, -1 / 16, 1 / 2, 1 / 2, 1 / 16],
 	};
 	if (def2.groups == null) {
-		throw new Error(`Undefined groups for [${newname}]`)
+		throw new Error(`Undefined groups for [${newname}]`);
 	}
 	def2.groups["fence"] = 1;
 	def2.connects_to = [
