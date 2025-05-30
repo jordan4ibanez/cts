@@ -1,9 +1,6 @@
 namespace furnace_chest {
-    --formspecs
-    local chest = {}
+	// Formspecs.
+	const chest = {};
 
-    local path = minetest.get_modpath("utility")
-
-    utility.loadFiles(["furnace", "chest"])
-
+	utility.loadFiles(["furnace", "chest"]);
 }
