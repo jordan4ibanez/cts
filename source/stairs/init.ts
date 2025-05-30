@@ -65,7 +65,8 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 		})
     }
 }
-// //upside down stairs
+
+// Upside down stairs.
 // for name,def in pairs(core.registered_nodes) do
 // 	if def.drawtype == "normal" and string.match(name, "main:") then
 // 		local def2 = table.copy(def)
