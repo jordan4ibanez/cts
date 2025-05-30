@@ -11,8 +11,8 @@ namespace furnace_chest {
 			"list[current_player;main;0,4.5;9,1;]" +
 			"list[current_player;main;0,6.08;9,3;9]" +
 			"listring[nodemeta:" + spos + ";main]" +
-			"listring[current_player;main]" --+
-			--default.get_hotbar_bg(0,4.85)
+			"listring[current_player;main]" //+
+			//default.get_hotbar_bg(0,4.85)
 		return formspec
     }
 
@@ -33,7 +33,7 @@ namespace furnace_chest {
 	// 			minetest.swap_node(pos,{name = "utility:"..swap,param2=node.param2})
 	// 			minetest.sound_play(sound, {gain = 0.3, pos = pos, max_hear_distance = 10},true)
 	// 		end
-	// 		--redstone.collect_info(pos)
+	// 		//redstone.collect_info(pos)
 	// 	end,pos,swap,node)
 	// end
 
@@ -83,7 +83,7 @@ namespace furnace_chest {
 	// 	if def.protected then
 	// 		def.on_construct = function(pos)
 	// 			local meta = minetest.get_meta(pos)
-	// 			--meta:set_string("infotext", S("Locked Chest"))
+	// 			//meta:set_string("infotext", S("Locked Chest"))
 	// 			meta:set_string("owner", "")
 	// 			local inv = meta:get_inventory()
 	// 			inv:set_size("main", 9*4)
@@ -91,7 +91,7 @@ namespace furnace_chest {
 	// 		def.after_place_node = function(pos, placer)
 	// 			local meta = minetest.get_meta(pos)
 	// 			meta:set_string("owner", placer:get_player_name() or "")
-	// 			--meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
+	// 			//meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
 	// 		end
 	// 		def.allow_metadata_inventory_move = function(pos, from_list, from_index,
 	// 				to_list, to_index, count, player)
@@ -150,10 +150,10 @@ namespace furnace_chest {
 	// 			local meta = minetest.get_meta(pos)
 	// 			local owner = meta:get_string("owner")
 	// 			local pn = player:get_player_name()
-	// 			-- verify placer is owner of lockable chest
+	// 			// verify placer is owner of lockable chest
 	// 			if owner ~= pn then
 	// 				minetest.record_protection_violation(pos, pn)
-	// 				--minetest.chat_send_player(pn, S("You do not own this chest."))
+	// 				//minetest.chat_send_player(pn, S("You do not own this chest."))
 	// 				return nil
 	// 			end
 	// 			local secret = meta:get_string("key_lock_secret")
@@ -161,12 +161,12 @@ namespace furnace_chest {
 	// 				secret = newsecret
 	// 				meta:set_string("key_lock_secret", secret)
 	// 			end
-	// 			--return secret, S("a locked chest"), owner
+	// 			//return secret, S("a locked chest"), owner
 	// 		end
 	// 	else
 	// 		def.on_construct = function(pos)
 	// 			local meta = minetest.get_meta(pos)
-	// 			--meta:set_string("infotext", S("Chest"))
+	// 			//meta:set_string("infotext", S("Chest"))
 	// 			local inv = meta:get_inventory()
 	// 			inv:set_size("main", 9*4)
 	// 		end
@@ -178,7 +178,7 @@ namespace furnace_chest {
 	// 			minetest.swap_node(pos, {name = "utility:" .. name .. "_open", param2 = node.param2 })
 	// 			minetest.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
 	// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,sound = def.sound_close, swap = name }
-	// 			--redstone.collect_info(pos)
+	// 			//redstone.collect_info(pos)
 	// 		end
 	// 		def.on_blast = function(pos)
 	// 			local drops = {}
@@ -210,8 +210,8 @@ namespace furnace_chest {
 	// 	def_opened.on_blast = function() end
 	// 	def_closed.mesh = nil
 	// 	def_closed.drawtype = nil
-	// 	def_closed.tiles[6] = def.tiles[5] -- swap textures around for "normal"
-	// 	def_closed.tiles[5] = def.tiles[3] -- drawtype to make them match the mesh
+	// 	def_closed.tiles[6] = def.tiles[5] // swap textures around for "normal"
+	// 	def_closed.tiles[5] = def.tiles[3] // drawtype to make them match the mesh
 	// 	def_closed.tiles[3] = def.tiles[3].."^[transformFX"
 	// 	minetest.register_node("utility:" .. name, def_closed)
 	// 	minetest.register_node("utility:" .. name .. "_open", def_opened)
