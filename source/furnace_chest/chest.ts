@@ -130,7 +130,7 @@ namespace furnace_chest {
 		def.legacy_facedir_simple = true;
 		def.is_ground_content = false;
 		if (def.protected) {
-			def.on_construct = (pos) => {
+			def.on_construct = (pos: Vec3) => {
 				const meta: MetaRef = core.get_meta(pos);
 				//meta:set_string("infotext", S("Locked Chest"))
 				meta.set_string("owner", "");
@@ -138,11 +138,11 @@ namespace furnace_chest {
 				inv.set_size("main", 9 * 4);
 			};
 
-			// 		def.after_place_node = function(pos, placer)
-			// 			local meta = core.get_meta(pos)
-			// 			meta:set_string("owner", placer:get_player_name() or "")
-			// 			//meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
-			// 		end
+			def.after_place_node = (pos: Vec3, placer: ObjectRef) => {
+				const meta: MetaRef = core.get_meta(pos);
+				meta.set_string("owner", placer.get_player_name() || "");
+				//meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
+			};
 
 			// 		def.allow_metadata_inventory_move = function(pos, from_list, from_index,
 			// 				to_list, to_index, count, player)
