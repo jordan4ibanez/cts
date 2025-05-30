@@ -155,7 +155,8 @@ namespace furnace_chest {
 
 		// let cookable;
 		// let cooked;
-		// let fuel;
+
+		let fuel: CraftResultObject | null = null;
 
 		let dst_full: boolean = false;
 		let update: boolean = true;
@@ -219,7 +220,8 @@ namespace furnace_chest {
 				// Furnace ran out of fuel.
 				if (cookable) {
 					// We need to get new fuel.
-					const [fuel, afterfuel] = core.get_craft_result({
+					let afterfuel: CraftRecipeCheckDefinition;
+					[fuel, afterfuel] = core.get_craft_result({
 						method: CraftCheckType.fuel,
 						width: 1,
 						items: fuellist,
