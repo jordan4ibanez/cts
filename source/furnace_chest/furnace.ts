@@ -1,3 +1,4 @@
+namespace furnace_chest {
 local furnace = {}
 
 function furnace.get_furnace_active_formspec(fuel_percent, item_percent)
@@ -391,3 +392,4 @@ minetest.register_craft({
 		{"main:cobble", "main:cobble", "main:cobble"},
 	}
 })
+}
