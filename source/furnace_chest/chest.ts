@@ -117,8 +117,8 @@ namespace furnace_chest {
 		}
 	}
 
-	// function chest.register_chest(name, d)
-	// 	local def = table.copy(d)
+	export function register_chest(name: string, d: NodeDefinition) {
+		const def: NodeDefinition = table.copy(d as LuaTable) as NodeDefinition
 	// 	def.drawtype = "mesh"
 	// 	def.visual = "mesh"
 	// 	def.paramtype = "light"
@@ -260,7 +260,7 @@ namespace furnace_chest {
 	// 	def_closed.tiles[3] = def.tiles[3].."^[transformFX"
 	// 	core.register_node("utility:" .. name, def_closed)
 	// 	core.register_node("utility:" .. name .. "_open", def_opened)
-	// end
+    }
 
 	// chest.register_chest("chest", {
 	// 	description = "Chest",
