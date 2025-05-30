@@ -174,33 +174,33 @@ function place_slab_sound (pos: Vec3,newnode: string): void {
 			const rightsideup = (newname == node_under)
 			const upsidedown = (newname+"_upsidedown" == node_under)
 			
-			local placement_worked = false
-			//upsidedown slab placement
-			if sneak == true then
+			let placement_worked = false
+			// Upside down slab placement.
+			if (sneak == true) {
 				local _,worked = core.item_place(ItemStack(newname+"_upsidedown"), placer, pointed_thing)
 				if worked then
 					itemstack:take_item()
 					placement_worked = true
 				end
-			//normal placement - (back of slab) or normal node
-			elseif (rightsideup and ydiff == -1) or (upsidedown and ydiff == 1) or (not rightsideup and not upsidedown) or ydiff == 0 then
+			// Normal placement - (back of slab) or normal node.
+            } else if ((rightsideup and ydiff == -1) or (upsidedown and ydiff == 1) or (not rightsideup and not upsidedown) or ydiff == 0) {
 				local itemstack,worked = core.item_place(itemstack, placer, pointed_thing)
 				if worked then
 					placement_worked = true
 				end
 			//normal slab to full slab
-			elseif rightsideup and ydiff == 1 then
+            } else if (rightsideup and ydiff == 1) {
 				place_slab_sound(pointed_thing.under,newname)
 				core.set_node(pointed_thing.under, {name = name})
 				itemstack:take_item()
 				placement_worked = true
 			//upsidedown slab to full slab
-			elseif upsidedown and ydiff == -1 then
+            } else if (upsidedown and ydiff == -1) {
 				place_slab_sound(pointed_thing.under,newname)
 				core.set_node(pointed_thing.under, {name = name})
 				itemstack:take_item()
 				placement_worked = true
-			end
+            }
 			
 			//try to do pointed_thing above
 			if placement_worked == false then
