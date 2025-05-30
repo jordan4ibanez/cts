@@ -559,7 +559,8 @@ interface core {
 	raillike_group(name: string): number;
 	get_content_id(name: string): number;
 	get_name_from_content_id(id: number): string;
-	parse_json(string: string, nullValue?: any): Array<any>;
+	// fixme: This is probably wrong.
+	parse_json(string: string, nullValue?: any): Dictionary<string, any>;
 	write_json(data: any[], styled: boolean): string | void;
 	serialize(any: any): string;
 	deserialize(string: string, safe?: boolean): any;
