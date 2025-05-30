@@ -457,12 +457,12 @@ namespace furnace_chest {
 		on_destruct: destroy_furnace,
 	});
 
-	// core.register_craft({
-	// 	output = "crafter_furnace_chest:furnace",
-	// 	recipe = {
-	// 		{"main:cobble", "main:cobble", "main:cobble"},
-	// 		{"main:cobble", "",            "main:cobble"},
-	// 		{"main:cobble", "main:cobble", "main:cobble"},
-	// 	}
-	// })
+	core.register_craft({
+		output : "crafter_furnace_chest:furnace",
+		recipe : [
+			["crafter:cobble", "crafter:cobble", "crafter:cobble"],
+			["crafter:cobble", "",            "crafter:cobble"],
+			["crafter:cobble", "crafter:cobble", "crafter:cobble"],
+        ]
+	})
 }
