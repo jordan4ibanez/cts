@@ -346,11 +346,11 @@ namespace furnace_chest {
 	}
 
 	// Throw all items in furnace out on destroy.
-	 function destroy_furnace(pos: Vec3): void {
-		const meta: MetaRef = core.get_meta(pos)
-		const inv: InvRef = meta.get_inventory()
-		const lists: string[] = inv.get_lists()
-        print(dump(lists));
+	function destroy_furnace(pos: Vec3): void {
+		const meta: MetaRef = core.get_meta(pos);
+		const inv: InvRef = meta.get_inventory();
+		const lists: string[] = inv.get_lists();
+		print(dump(lists));
 		// for listname,_ in pairs(lists) do
 		// 	local size = inv:get_size(listname)
 		// 	for i = 1,size do
@@ -358,105 +358,108 @@ namespace furnace_chest {
 		// 		core.add_item(pos, stack)
 		// 	end
 		// end
-     }
+	}
 
 	//
 	// Node definitions.
 	//
 
 	core.register_node("utility:furnace", {
-		description : ("Furnace"),
-		tiles : [
-			"furnace_top.png", "furnace_bottom.png",
-			"furnace_side.png", "furnace_side.png",
-			"furnace_side.png", "furnace_front.png"
-        ],
-		paramtype2 : ParamType2.facedir,
-		groups : {stone:2},
-		legacy_facedir_simple : true,
-		is_ground_content : false,
-		sounds : crafter.stoneSound(),
+		description: "Furnace",
+		tiles: [
+			"furnace_top.png",
+			"furnace_bottom.png",
+			"furnace_side.png",
+			"furnace_side.png",
+			"furnace_side.png",
+			"furnace_front.png",
+		],
+		paramtype2: ParamType2.facedir,
+		groups: { stone: 2 },
+		legacy_facedir_simple: true,
+		is_ground_content: false,
+		sounds: crafter.stoneSound(),
 
-	// 	//can_dig = can_dig,
+		// 	//can_dig = can_dig,
 
-	// 	on_timer = furnace_node_timer,
+		// 	on_timer = furnace_node_timer,
 
-	// 	on_construct = function(pos)
-	// 		local meta = core.get_meta(pos)
-	// 		local inv = meta:get_inventory()
-	// 		inv:set_size('src', 1)
-	// 		inv:set_size('fuel', 1)
-	// 		inv:set_size('dst', 4)
-	// 		furnace_node_timer(pos, 0)
-	// 	end,
+		on_construct: (pos: Vec3) => {
+			const meta: MetaRef = core.get_meta(pos);
+			const inv: InvRef = meta.get_inventory();
+			inv.set_size("src", 1);
+			inv.set_size("fuel", 1);
+			inv.set_size("dst", 4);
+			furnace_node_timer(pos, 0);
+		},
 
-	// 	on_metadata_inventory_move = function(pos)
-	// 		local timer = core.get_node_timer(pos)
-	// 		if timer:is_started() == false then
-	// 			timer:start(1.0)
-	// 		end
-	// 	end,
-	// 	on_metadata_inventory_put = function(pos)
-	// 		// start timer function, it will sort out whether furnace can burn or not.
-	// 		local timer = core.get_node_timer(pos)
-	// 		if timer:is_started() == false then
-	// 			timer:start(1.0)
-	// 		end
-	// 	end,
-	// 	//[[
-	// 	on_blast = function(pos)
-	// 		local drops = {}
-	// 		furnace.get_inventory_drops(pos, "src", drops)
-	// 		furnace.get_inventory_drops(pos, "fuel", drops)
-	// 		furnace.get_inventory_drops(pos, "dst", drops)
-	// 		drops[#drops+1] = "utility:furnace"
-	// 		core.remove_node(pos)
-	// 		return drops
-	// 	end,
-	// 	]]//
-	// 	on_destruct = function(pos)
-	// 		destroy_furnace(pos)
-	// 	end,
-	// 	allow_metadata_inventory_put = allow_metadata_inventory_put,
-	// 	allow_metadata_inventory_move = allow_metadata_inventory_move,
-	// 	allow_metadata_inventory_take = allow_metadata_inventory_take,
-	// })
+		// 	on_metadata_inventory_move = function(pos)
+		// 		local timer = core.get_node_timer(pos)
+		// 		if timer:is_started() == false then
+		// 			timer:start(1.0)
+		// 		end
+		// 	end,
+		// 	on_metadata_inventory_put = function(pos)
+		// 		// start timer function, it will sort out whether furnace can burn or not.
+		// 		local timer = core.get_node_timer(pos)
+		// 		if timer:is_started() == false then
+		// 			timer:start(1.0)
+		// 		end
+		// 	end,
+		// 	//[[
+		// 	on_blast = function(pos)
+		// 		local drops = {}
+		// 		furnace.get_inventory_drops(pos, "src", drops)
+		// 		furnace.get_inventory_drops(pos, "fuel", drops)
+		// 		furnace.get_inventory_drops(pos, "dst", drops)
+		// 		drops[#drops+1] = "utility:furnace"
+		// 		core.remove_node(pos)
+		// 		return drops
+		// 	end,
+		// 	]]//
+		// 	on_destruct = function(pos)
+		// 		destroy_furnace(pos)
+		// 	end,
+		// 	allow_metadata_inventory_put = allow_metadata_inventory_put,
+		// 	allow_metadata_inventory_move = allow_metadata_inventory_move,
+		// 	allow_metadata_inventory_take = allow_metadata_inventory_take,
+		// })
 
-	// core.register_node("utility:furnace_active", {
-	// 	description = ("Furnace"),
-	// 	tiles = {
-	// 		"furnace_top.png", "furnace_bottom.png",
-	// 		"furnace_side.png", "furnace_side.png",
-	// 		"furnace_side.png",
-	// 		{
-	// 			image = "furnace_front_active.png",
-	// 			backface_culling = false,
-	// 			animation = {
-	// 				type = "vertical_frames",
-	// 				aspect_w = 16,
-	// 				aspect_h = 16,
-	// 				length = 1.5
-	// 			},
-	// 		}
-	// 	},
-	// 	paramtype2 = "facedir",
-	// 	light_source = 8,
-	// 	drop = "utility:furnace",
-	// 	groups = {stone=2},
-	// 	legacy_facedir_simple = true,
-	// 	is_ground_content = false,
-	// 	sounds = main.stoneSound(),
-	// 	on_timer = furnace_node_timer,
+		// core.register_node("utility:furnace_active", {
+		// 	description = ("Furnace"),
+		// 	tiles = {
+		// 		"furnace_top.png", "furnace_bottom.png",
+		// 		"furnace_side.png", "furnace_side.png",
+		// 		"furnace_side.png",
+		// 		{
+		// 			image = "furnace_front_active.png",
+		// 			backface_culling = false,
+		// 			animation = {
+		// 				type = "vertical_frames",
+		// 				aspect_w = 16,
+		// 				aspect_h = 16,
+		// 				length = 1.5
+		// 			},
+		// 		}
+		// 	},
+		// 	paramtype2 = "facedir",
+		// 	light_source = 8,
+		// 	drop = "utility:furnace",
+		// 	groups = {stone=2},
+		// 	legacy_facedir_simple = true,
+		// 	is_ground_content = false,
+		// 	sounds = main.stoneSound(),
+		// 	on_timer = furnace_node_timer,
 
-	// 	//can_dig = can_dig,
+		// 	//can_dig = can_dig,
 
-	// 	allow_metadata_inventory_put = allow_metadata_inventory_put,
-	// 	allow_metadata_inventory_move = allow_metadata_inventory_move,
-	// 	allow_metadata_inventory_take = allow_metadata_inventory_take,
-	// 	on_destruct = function(pos)
-	// 		destroy_furnace(pos)
-	// 	end,
-	})
+		// 	allow_metadata_inventory_put = allow_metadata_inventory_put,
+		// 	allow_metadata_inventory_move = allow_metadata_inventory_move,
+		// 	allow_metadata_inventory_take = allow_metadata_inventory_take,
+		// 	on_destruct = function(pos)
+		// 		destroy_furnace(pos)
+		// 	end,
+	});
 
 	// core.register_craft({
 	// 	output = "utility:furnace",
