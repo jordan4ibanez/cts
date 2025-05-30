@@ -52,9 +52,9 @@ namespace furnace_chest {
 		//furnace.get_hotbar_bg(0, 4.25)
 	}
 
-	// //
-	// // Node callback functions that are the same for active and inactive furnace
-	// //
+	//
+	// Node callback functions that are the same for active and inactive furnace.
+	//
 
 	// //[[
 	// local function can_dig(pos, player)
