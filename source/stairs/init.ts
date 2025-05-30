@@ -27,19 +27,19 @@ for (const [name,def] of pairs(core.registered_nodes)) {
 			[-8/16, -8/16, -8/16, 8/16, 0/16, 8/16],
             ]
 		}
-		// //ability to place stairs upside down
-		// def2.on_place = function(itemstack, placer, pointed_thing)
-		// 	local sneak = placer:get_player_control().sneak
-		// 	if sneak then
-		// 		local _,worked = core.item_place(ItemStack(newname.."_upsidedown"), placer, pointed_thing)
-		// 		if worked then
-		// 			itemstack:take_item()
-		// 		end
-		// 	else
-		// 		core.item_place(itemstack, placer, pointed_thing)
-		// 	end
-		// 	return(itemstack)
-		// end
+		// Ability to place stairs upside down.
+		def2.on_place = (itemstack: ItemStackObject, placer: ObjectRef, pointed_thing: PointedThing) => {
+			const sneak: boolean = placer.get_player_control().sneak
+			if (sneak) {
+				const [_,worked] = core.item_place(ItemStack(newname+"_upsidedown"), placer, pointed_thing)
+				if (worked) {
+					itemstack.take_item()
+                }
+            } else{
+				core.item_place(itemstack, placer, pointed_thing)
+            }
+			return(itemstack)
+        }
 		// def2.groups["stairs"] = 1
 		// core.register_node(newname,def2)
 		
