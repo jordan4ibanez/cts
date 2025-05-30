@@ -293,7 +293,7 @@ namespace furnace_chest {
 				item_state = tostring(item_percent);
 			}
 		} else {
-			if (srclist != null && !srclist[0].is_empty()) {
+			if (srclist != null && srclist.length > 0 && !srclist[0].is_empty()) {
 				item_state = "Not cookable";
 			} else {
 				item_state = "Empty";
@@ -310,7 +310,7 @@ namespace furnace_chest {
 				100 - math.floor((fuel_time / fuel_totaltime) * 100);
 			// fuel_state = tostring(fuel_percent);
 			formspec = get_furnace_active_formspec(fuel_percent, item_percent);
-			swap_node(pos, "utility:furnace_active");
+			swap_node(pos, "crafter_furnace_chest:furnace_active");
 			// Make sure timer restarts automatically.
 			result = true;
 		} else {
@@ -318,7 +318,7 @@ namespace furnace_chest {
 			// 	fuel_state = tostring(0);
 			// }
 			formspec = get_furnace_inactive_formspec();
-			swap_node(pos, "utility:furnace");
+			swap_node(pos, "crafter_furnace_chest:furnace");
 			// stop timer on the inactive furnace
 			core.get_node_timer(pos).stop();
 		}
@@ -364,7 +364,7 @@ namespace furnace_chest {
 	// Node definitions.
 	//
 
-	core.register_node("utility:furnace", {
+	core.register_node("crafter_furnace_chest:furnace", {
 		description: "Furnace",
 		tiles: [
 			"furnace_top.png",
@@ -412,20 +412,19 @@ namespace furnace_chest {
 		// 		furnace.get_inventory_drops(pos, "src", drops)
 		// 		furnace.get_inventory_drops(pos, "fuel", drops)
 		// 		furnace.get_inventory_drops(pos, "dst", drops)
-		// 		drops[#drops+1] = "utility:furnace"
+		// 		drops[#drops+1] = "crafter_furnace_chest:furnace"
 		// 		core.remove_node(pos)
 		// 		return drops
 		// 	end,
 		// 	]]//
-		// 	on_destruct = function(pos)
-		// 		destroy_furnace(pos)
-		// 	end,
+		on_destruct: destroy_furnace,
+
 		// 	allow_metadata_inventory_put = allow_metadata_inventory_put,
 		// 	allow_metadata_inventory_move = allow_metadata_inventory_move,
 		// 	allow_metadata_inventory_take = allow_metadata_inventory_take,
 		// })
 
-		// core.register_node("utility:furnace_active", {
+		// core.register_node("crafter_furnace_chest:furnace_active", {
 		// 	description = ("Furnace"),
 		// 	tiles = {
 		// 		"furnace_top.png", "furnace_bottom.png",
@@ -444,7 +443,7 @@ namespace furnace_chest {
 		// 	},
 		// 	paramtype2 = "facedir",
 		// 	light_source = 8,
-		// 	drop = "utility:furnace",
+		// 	drop = "crafter_furnace_chest:furnace",
 		// 	groups = {stone=2},
 		// 	legacy_facedir_simple = true,
 		// 	is_ground_content = false,
@@ -462,7 +461,7 @@ namespace furnace_chest {
 	});
 
 	// core.register_craft({
-	// 	output = "utility:furnace",
+	// 	output = "crafter_furnace_chest:furnace",
 	// 	recipe = {
 	// 		{"main:cobble", "main:cobble", "main:cobble"},
 	// 		{"main:cobble", "",            "main:cobble"},
