@@ -457,7 +457,7 @@ interface core {
 		placer: ObjectRef,
 		pointedThing: PointedThing,
 		param2?: number
-	): [ItemStackObject, Vec3 | null];
+	): LuaMultiReturn<[ItemStackObject, Vec3 | null]>;
 	item_pickup(
 		itemStack: ItemStackObject,
 		picker: ObjectRef,
