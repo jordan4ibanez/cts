@@ -1,8 +1,8 @@
---stairs - shift click to place upside down
+//stairs - shift click to place upside down
 for name,def in pairs(minetest.registered_nodes) do
 	if def.drawtype == "normal" and string.match(name, "main:") then
 	
-		--set up fence
+		//set up fence
 		local def2 = table.copy(def)
 		local newname = "stairs:"..string.gsub(name, "main:", "").."_stair"
 		def2.mod_origin = "stairs"
@@ -21,7 +21,7 @@ for name,def in pairs(minetest.registered_nodes) do
 			{-8/16, -8/16, -8/16, 8/16, 0/16, 8/16},
 			}
 		}
-		--ability to place stairs upside down
+		//ability to place stairs upside down
 		def2.on_place = function(itemstack, placer, pointed_thing)
 			local sneak = placer:get_player_control().sneak
 			if sneak then
@@ -56,7 +56,7 @@ for name,def in pairs(minetest.registered_nodes) do
 		})
 	end
 end
---upside down stairs
+//upside down stairs
 for name,def in pairs(minetest.registered_nodes) do
 	if def.drawtype == "normal" and string.match(name, "main:") then
 		local def2 = table.copy(def)
@@ -82,7 +82,7 @@ for name,def in pairs(minetest.registered_nodes) do
 end
 
 
-------------------------------------------------------- slabs
+//////////////////////////////////////////////////////- slabs
 
 local place_slab_sound = function(pos,newnode)
 	local node = minetest.registered_nodes[newnode]
@@ -91,20 +91,20 @@ local place_slab_sound = function(pos,newnode)
 	if sound then
 		placing = sound.placing
 	end
-	--only play the sound when is defined
+	//only play the sound when is defined
 	if type(placing) == "table" then
 		minetest.sound_play(placing.name, {
 			  pos = pos,
 			  gain = placing.gain,
-			  --pitch = math.random(60,100)/100
+			  //pitch = math.random(60,100)/100
 		})
 	end
 end
---slabs - shift click to place upside down
+//slabs - shift click to place upside down
 for name,def in pairs(minetest.registered_nodes) do
 	if def.drawtype == "normal" and string.match(name, "main:") then
 	
-		--set up fence
+		//set up fence
 		local def2 = table.copy(def)
 		local newname = "stairs:"..string.gsub(name, "main:", "").."_slab"
 		def2.mod_origin = "stairs"
@@ -121,10 +121,10 @@ for name,def in pairs(minetest.registered_nodes) do
 			{-8/16, -8/16, -8/16, 8/16, 0/16, 8/16},
 			}
 		}
-		--we're passing in the local variables newname and name into this function
-		--calculating wether to turn a half slab into a full block
+		//we're passing in the local variables newname and name into this function
+		//calculating wether to turn a half slab into a full block
 		def2.on_place = function(itemstack, placer, pointed_thing)
-			--get all the required variables
+			//get all the required variables
 			local sneak = placer:get_player_control().sneak
 			local ydiff = pointed_thing.above.y-pointed_thing.under.y
 			local node_under = minetest.get_node(pointed_thing.under).name
@@ -132,26 +132,26 @@ for name,def in pairs(minetest.registered_nodes) do
 			local upsidedown = (newname.."_upsidedown" == node_under)
 			
 			local placement_worked = false
-			--upsidedown slab placement
+			//upsidedown slab placement
 			if sneak == true then
 				local _,worked = minetest.item_place(ItemStack(newname.."_upsidedown"), placer, pointed_thing)
 				if worked then
 					itemstack:take_item()
 					placement_worked = true
 				end
-			--normal placement - (back of slab) or normal node
+			//normal placement - (back of slab) or normal node
 			elseif (rightsideup and ydiff == -1) or (upsidedown and ydiff == 1) or (not rightsideup and not upsidedown) or ydiff == 0 then
 				local itemstack,worked = minetest.item_place(itemstack, placer, pointed_thing)
 				if worked then
 					placement_worked = true
 				end
-			--normal slab to full slab
+			//normal slab to full slab
 			elseif rightsideup and ydiff == 1 then
 				place_slab_sound(pointed_thing.under,newname)
 				minetest.set_node(pointed_thing.under, {name = name})
 				itemstack:take_item()
 				placement_worked = true
-			--upsidedown slab to full slab
+			//upsidedown slab to full slab
 			elseif upsidedown and ydiff == -1 then
 				place_slab_sound(pointed_thing.under,newname)
 				minetest.set_node(pointed_thing.under, {name = name})
@@ -159,7 +159,7 @@ for name,def in pairs(minetest.registered_nodes) do
 				placement_worked = true
 			end
 			
-			--try to do pointed_thing above
+			//try to do pointed_thing above
 			if placement_worked == false then
 				local node_above = minetest.get_node(pointed_thing.above).name
 				local rightsideup = (newname == node_above)
@@ -177,7 +177,7 @@ for name,def in pairs(minetest.registered_nodes) do
 		def2.groups["slabs"] = 1
 		def2.groups[name]=1
 		minetest.register_node(newname,def2)
-		--equalize recipe 6 half slabs turn into 3 full blocks
+		//equalize recipe 6 half slabs turn into 3 full blocks
 		minetest.register_craft({
 			output = newname.." 6",
 			recipe = {
@@ -194,7 +194,7 @@ for name,def in pairs(minetest.registered_nodes) do
 		
 	end
 end
---upside down stairs
+//upside down stairs
 for name,def in pairs(minetest.registered_nodes) do
 	if def.drawtype == "normal" and string.match(name, "main:") then
 		local def2 = table.copy(def)
