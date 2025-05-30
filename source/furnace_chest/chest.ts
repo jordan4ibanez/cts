@@ -117,8 +117,13 @@ namespace furnace_chest {
 		}
 	}
 
-	export function register_chest(name: string, d: NodeDefinition) {
-		const def: NodeDefinition = table.copy(d as LuaTable) as NodeDefinition;
+    // You use this to make custom chests.
+	export interface ChestDefinition extends NodeDefinition {
+		protected: boolean;
+	}
+
+	export function register_chest(name: string, d: ChestDefinition) {
+		const def: NodeDefinition = table.copy(d as unknown as LuaTable) as NodeDefinition;
 		def.drawtype = Drawtype.mesh;
 		// def.visual = "mesh"
 		def.paramtype = ParamType1.light;
