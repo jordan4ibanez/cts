@@ -249,68 +249,69 @@ namespace furnace_chest {
 			src_time = 0
 		end
 
-		//
-		// Update formspec, infotext and node
-		//
-		local formspec
-		local item_state
-		local item_percent = 0
-		if cookable then
-			item_percent = math.floor(src_time / cooked.time * 100)
-			if dst_full then
-				item_state = ("100% (output full)")
-			else
-				item_state = (item_percent)
-			end
-		else
-			if srclist and not srclist[1]:is_empty() then
-				item_state = ("Not cookable")
-			else
-				item_state = ("Empty")
-			end
-		end
+		// //
+		// // Update formspec, infotext and node
+		// //
+		// local formspec
+		// local item_state
+		// local item_percent = 0
+		// if cookable then
+		// 	item_percent = math.floor(src_time / cooked.time * 100)
+		// 	if dst_full then
+		// 		item_state = ("100% (output full)")
+		// 	else
+		// 		item_state = (item_percent)
+		// 	end
+		// else
+		// 	if srclist and not srclist[1]:is_empty() then
+		// 		item_state = ("Not cookable")
+		// 	else
+		// 		item_state = ("Empty")
+		// 	end
+		// end
 
-		local fuel_state = ("Empty")
-		local active = false
-		local result = false
+		// local fuel_state = ("Empty")
+		// local active = false
+		// local result = false
 
-		if fuel_totaltime ~= 0 then
-			active = true
-			local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
-			fuel_state = (fuel_percent)
-			formspec = furnace.get_furnace_active_formspec(fuel_percent, item_percent)
-			swap_node(pos, "utility:furnace_active")
-			// make sure timer restarts automatically
-			result = true
-		else
-			if fuellist and not fuellist[1]:is_empty() then
-				fuel_state = (0)
-			end
-			formspec = furnace.get_furnace_inactive_formspec()
-			swap_node(pos, "utility:furnace")
-			// stop timer on the inactive furnace
-			core.get_node_timer(pos):stop()
-		end
+		// if fuel_totaltime ~= 0 then
+		// 	active = true
+		// 	local fuel_percent = 100 - math.floor(fuel_time / fuel_totaltime * 100)
+		// 	fuel_state = (fuel_percent)
+		// 	formspec = furnace.get_furnace_active_formspec(fuel_percent, item_percent)
+		// 	swap_node(pos, "utility:furnace_active")
+		// 	// make sure timer restarts automatically
+		// 	result = true
+		// else
+		// 	if fuellist and not fuellist[1]:is_empty() then
+		// 		fuel_state = (0)
+		// 	end
+		// 	formspec = furnace.get_furnace_inactive_formspec()
+		// 	swap_node(pos, "utility:furnace")
+		// 	// stop timer on the inactive furnace
+		// 	core.get_node_timer(pos):stop()
+		// end
 
-		//[[
-		local infotext
-		if active then
-			infotext = ("Furnace active")
-		else
-			infotext = ("Furnace inactive")
-		end
-		infotext = infotext .. "\n" .. "Item:"..item_state.. "Fuel:"..fuel_state
-		]]//
-		//
-		// Set meta values
-		//
-		meta:set_float("fuel_totaltime", fuel_totaltime)
-		meta:set_float("fuel_time", fuel_time)
-		meta:set_float("src_time", src_time)
-		meta:set_string("formspec", formspec)
-		//meta:set_string("infotext", infotext)
+		// // //[[
+		// // local infotext
+		// // if active then
+		// // 	infotext = ("Furnace active")
+		// // else
+		// // 	infotext = ("Furnace inactive")
+		// // end
+		// // infotext = infotext .. "\n" .. "Item:"..item_state.. "Fuel:"..fuel_state
+		// // ]]//
 
-		return result
+		// //
+		// // Set meta values
+		// //
+		// meta:set_float("fuel_totaltime", fuel_totaltime)
+		// meta:set_float("fuel_time", fuel_time)
+		// meta:set_float("src_time", src_time)
+		// meta:set_string("formspec", formspec)
+		// //meta:set_string("infotext", infotext)
+
+		// return result
      }
 	//throw all items in furnace out on destroy
 	// local function destroy_furnace(pos)
