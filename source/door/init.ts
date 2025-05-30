@@ -157,23 +157,23 @@ namespace door {
                     }
 
 					core.register_node("door:"+door+"_"+material+"_"+state, {
-						description = material:gsub("^%l", string.upper)+" Door",
-						tiles = tiles,
-						wield_image = "door_inv_"+material+".png",
-						inventory_image = "door_inv_"+material+".png",
-						drawtype = "nodebox",
-						paramtype = "light",
-						paramtype2 = "facedir",
-						groups = groups,
-						sounds = sounds,
-						drop = "door:bottom_"+material+"_closed",
-						node_placement_prediction = "",
-						node_box = {
-							type = "fixed",
-							fixed = {
+						description : string.gsub(material, "^%l", string.upper)+" Door",
+						tiles : tiles,
+						wield_image : "door_inv_"+material+".png",
+						inventory_image : "door_inv_"+material+".png",
+						drawtype : Drawtype.nodebox,
+						paramtype : ParamType1.light,
+						paramtype2 : ParamType2.facedir,
+						groups : groups,
+						sounds : sounds,
+						drop : "door:bottom_"+material+"_closed",
+						node_placement_prediction : "",
+						node_box : {
+							type : Nodeboxtype.fixed,
+							fixed : [
 									//left front bottom right back top
 									door_node_box
-								},
+                            ],
 							},
 						//redstone activation is in both because only the bottom is defined as an activator and it's easier to do it like this
 
