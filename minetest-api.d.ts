@@ -612,6 +612,7 @@ interface core {
 	registered_entities: { [id: string]: LuaEntity };
 	registered_items: Dictionary<string, ItemDefinition>;
 	registered_nodes: Dictionary<string, NodeDefinition>;
+	registered_craftitems: Dictionary<string, ItemDefinition>;
 	object_refs: { [id: string]: ObjectRef };
 	luaentities: { [id: string]: LuaEntity };
 	registered_abms: ABMDefinition[];
