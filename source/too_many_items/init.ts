@@ -45,15 +45,19 @@ namespace tooManyItems {
 	// This is from Linuxdirk, thank you AspireMint for showing me this.
 	function recipe_converter(items: string[], width: number) {
 		let usable_recipe: string[] | string[][] = [[], [], []];
+
 		// The recipe is a shapeless recipe so all items are in one table
 		if (width == 0) {
 			usable_recipe = items;
-			usable_recipe = usable_recipe as string[];
 		}
+
 		// x _ _
 		// x _ _
 		// x _ _
 		if (width == 1) {
+			// This is trusting that the original code did not explode.
+			usable_recipe = usable_recipe as string[][];
+
 			usable_recipe[0][0] = items[0] || "";
 			usable_recipe[1][0] = items[1] || "";
 			usable_recipe[2][0] = items[2] || "";
