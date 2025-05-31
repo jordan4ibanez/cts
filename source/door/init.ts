@@ -223,7 +223,7 @@ namespace door {
 					"crafter_door:" + door + "_" + material + "_" + state,
 					{
 						description:
-							string.gsub(material, "^%l", string.upper) +
+							string.gsub(material, "^%l", string.upper)[0] +
 							" Door",
 						tiles: tiles,
 						wield_image: "door_inv_" + material + ".png",
