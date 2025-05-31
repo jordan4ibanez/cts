@@ -166,16 +166,16 @@ namespace tooManyItems {
 			}
 			//shaped (regular)
 			if (recipe.width > 0) {
-				// 				for x = 1,3 do
-				// 					for y = 1,3 do
-				// 						item = get_if_group(usable_table[x][y])
-				// 						if item then
-				// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;"..item..";"..item..";]"
-				// 						else
-				// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;;;]"
-				// 						end
-				// 					end
-				// 				end
+				for (let x of $range(1, 3)) {
+					// 					for y = 1,3 do
+					// 						item = get_if_group(usable_table[x][y])
+					// 						if item then
+					// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;"..item..";"..item..";]"
+					// 						else
+					// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;;;]"
+					// 						end
+					// 					end
+				}
 				//shapeless
 			} else {
 				// 				local i = 1
