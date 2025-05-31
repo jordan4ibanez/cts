@@ -265,14 +265,14 @@ namespace furnace_chest {
 		groups: { wood: 2, hard: 1, axe: 1, hand: 3, pathable: 1 },
 	});
 
-	// core.register_craft({
-	// 	output = "utility:chest",
-	// 	recipe = {
-	// 		{"main:wood", "main:wood", "main:wood"},
-	// 		{"main:wood", "",          "main:wood"},
-	// 		{"main:wood", "main:wood", "main:wood"},
-	// 	}
-	// })
+	core.register_craft({
+		output: "utility:chest",
+		recipe: [
+			["main:wood", "main:wood", "main:wood"],
+			["main:wood", "", "main:wood"],
+			["main:wood", "main:wood", "main:wood"],
+		],
+	});
 
 	// core.register_craft({
 	// 	type = "fuel",
