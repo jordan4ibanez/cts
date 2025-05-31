@@ -492,7 +492,7 @@ namespace tooManyItems {
 			"size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]";
 
 		let pageData: string = pagePreface;
-		const maxPages: number = math.ceil(all_items_table.length / 49);
+		const maxPages: number = math.floor(all_items_table.length / 49);
 
 		const lastItem: string = all_items_table[all_items_table.length - 1];
 
