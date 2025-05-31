@@ -416,7 +416,9 @@ interface core {
 	get_craft_result(
 		input: CraftRecipeCheckDefinition
 	): LuaMultiReturn<[CraftResultObject, CraftRecipeCheckDefinition]>;
-	get_craft_recipe(output: string | NodeTable): CraftRecipeDefinition | null;
+	get_craft_recipe(
+		output: string | NodeTable
+	): CraftRecipeCheckDefinition | null;
 	get_all_craft_recipes(
 		queryItem: string | NodeTable
 	): CraftRecipeDefinition[] | null;
