@@ -122,7 +122,7 @@ local function create_craft_formspec(item)
 		return("")
 	end
 
-	recipe = minetest.get_craft_recipe(item)
+	recipe = core.get_craft_recipe(item)
 	
 	usable_table = recipe_converter(recipe.items, recipe.width)
 
@@ -183,7 +183,7 @@ local stack
 local craft_inv
 local name
 local temp_pool
-minetest.register_on_player_receive_fields(function(player, formname, fields)
+core.register_on_player_receive_fields(function(player, formname, fields)
 	name = player:get_player_name()
 	temp_pool = pool[name]
 
@@ -202,8 +202,8 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		if temp_pool.page > tmi_master_inventory.page_limit then
 			temp_pool.page = 1
 		end	
-		minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-		minetest.sound_play("lever", {to_player = name,gain=0.7})
+		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		core.sound_play("lever", {to_player = name,gain=0.7})
 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 	//"prev" button
 	elseif fields["toomanyitems.prev"] then
@@ -213,13 +213,13 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			temp_pool.page = tmi_master_inventory.page_limit
 		end	
 		
-		minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-		minetest.sound_play("lever", {to_player = name,gain=0.7})
+		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		core.sound_play("lever", {to_player = name,gain=0.7})
 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 	elseif fields["toomanyitems.back"] then
 
-		minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-		minetest.sound_play("lever", {to_player = name,gain=0.7})
+		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		core.sound_play("lever", {to_player = name,gain=0.7})
 	//this resets the craft table
 	elseif fields.quit then
 		inv = player:get_inventory()
@@ -227,18 +227,18 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		inv:set_width("craft", 2)
 		inv:set_size("craft", 4)
 		//reset the player inv
-		//minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		//core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 	elseif fields["toomanyitems.cheat"] then
 		//check if the player has the give priv
-		if (not temp_pool.cheating and minetest.get_player_privs(name).give == true) or temp_pool.cheating == true then
+		if (not temp_pool.cheating and core.get_player_privs(name).give == true) or temp_pool.cheating == true then
 			temp_pool.cheating = not temp_pool.cheating
 
-			minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-			minetest.sound_play("lever", {to_player = name,gain=0.7})
+			core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+			core.sound_play("lever", {to_player = name,gain=0.7})
 			player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 		else
-			minetest.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
-			minetest.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
+			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
+			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
 		end
 	//this is the "cheating" aka giveme function and craft recipe
 	elseif fields and type(fields) == "table" and string.match(next(fields),"toomanyitems.") then
@@ -246,24 +246,24 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		item = string.gsub(next(fields), "toomanyitems.", "")
 		stack = ItemStack(item.." 64")
 		inv = player:get_inventory()
-		if temp_pool.cheating and minetest.get_player_privs(name).give then
+		if temp_pool.cheating and core.get_player_privs(name).give then
 			
 			//room for item
 			if inv and inv:room_for_item("main",stack) then
 				inv:add_item("main", stack)
-				minetest.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
+				core.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
 			//no room for item
 			else
-				minetest.chat_send_player(name, "Might want to clear your inventory")
-				minetest.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
+				core.chat_send_player(name, "Might want to clear your inventory")
+				core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
 			end
 
 		//this is to get the craft recipe
 		else
 			craft_inv = create_craft_formspec(item)
 			if craft_inv and craft_inv ~= "" then
-				minetest.show_formspec(name, id, tmi_master_inventory["page_"..temp_pool.page]..craft_inv..cheat_button(name))
-				minetest.sound_play("lever", {to_player = name,gain=0.7})
+				core.show_formspec(name, id, tmi_master_inventory["page_"..temp_pool.page]..craft_inv..cheat_button(name))
+				core.sound_play("lever", {to_player = name,gain=0.7})
 			end
 		end
 
@@ -277,15 +277,15 @@ local page = 1
 local x = 0
 local y = 0
 
-minetest.register_on_mods_loaded(function()
+core.register_on_mods_loaded(function()
 
 //sort all items (There is definitely a better way to do this)
 
 //get all craftable items
 local all_items_table = {}
-for index,data in pairs(minetest.registered_items) do
+for index,data in pairs(core.registered_items) do
 	if data.name ~= "" then
-		local recipe = minetest.get_craft_recipe(data.name)
+		local recipe = core.get_craft_recipe(data.name)
 		//only put in craftable items
 		if recipe.method then			
 			table.insert(all_items_table,data.name)
@@ -328,13 +328,13 @@ tmi_master_inventory.page_limit = page
 local name
 local temp_pool
 
-minetest.override_item("craftingtable:craftingtable", {
+core.override_item("craftingtable:craftingtable", {
 	 on_rightclick = function(pos, node, player, itemstack)
 		name = player:get_player_name()
 		temp_pool = pool[name]
 		player:get_inventory():set_width("craft", 3)
 		player:get_inventory():set_size("craft", 9)
-		minetest.show_formspec(name, "crafting", crafting_table_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		core.show_formspec(name, "crafting", crafting_table_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 	end
 })
 end)
@@ -344,7 +344,7 @@ end)
 local name
 local temp_pool
 local inv
-minetest.register_on_joinplayer(function(player)
+core.register_on_joinplayer(function(player)
 	name = player:get_player_name()
 	pool[name] = {}
 	temp_pool = pool[name]
@@ -366,7 +366,7 @@ minetest.register_on_joinplayer(function(player)
 end)
 
 local name
-minetest.register_on_leaveplayer(function(player)
+core.register_on_leaveplayer(function(player)
 	name = player:get_player_name()
 	pool[name] = nil
 end)
