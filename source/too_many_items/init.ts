@@ -5,6 +5,7 @@ namespace tooManyItems {
 	class MasterInventory {
 		private constructor() {}
 		private static pages: string[] = [];
+		private static locked: boolean = false;
 
 		static getMaxPageIndex(): number {
 			return this.pages.length - 1;
@@ -15,6 +16,17 @@ namespace tooManyItems {
 				throw new Error("Out of range.");
 			}
 			return this.pages[index];
+		}
+
+		static pushPage(): void {
+			if (this.locked) {
+				throw new Error("Modified when locked.");
+			}
+		}
+
+		static lock(): void {
+			// One way lock
+			this.locked = true;
 		}
 	}
 
