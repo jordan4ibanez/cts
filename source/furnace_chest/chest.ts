@@ -189,13 +189,13 @@ namespace furnace_chest {
 			};
 
 			def.allow_metadata_inventory_move = (
-				pos,
-				from_list,
-				from_index,
-				to_list,
-				to_index,
-				count,
-				player
+				pos: Vec3,
+				from_list: string,
+				from_index: number,
+				to_list: string,
+				to_index: number,
+				count: number,
+				player: ObjectRef
 			) => {
 				if (!can_interact_with_node(player, pos)) {
 					return 0;
