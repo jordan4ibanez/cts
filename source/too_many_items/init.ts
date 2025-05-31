@@ -501,9 +501,9 @@ namespace tooManyItems {
 		for (const item of all_items_table) {
 			pageData +=
 				"item_image_button[" +
-				(9.25 + x) +
+				tostring(9.25 + x) +
 				"," +
-				y +
+				tostring(y) +
 				";1,1;" +
 				item +
 				";toomanyitems." +
