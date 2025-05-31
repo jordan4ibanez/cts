@@ -606,13 +606,15 @@ namespace tooManyItems {
 				MasterInventory.getPage(newData.page) +
 				cheat_button(name)
 		);
-		// 	player:hud_set_hotbar_itemcount(9)
-		// 	player:hud_set_hotbar_image("inventory_hotbar.png")
-		// 	player:hud_set_hotbar_selected_image("hotbar_selected.png")
-		// end)
-		// local name
-		// core.register_on_leaveplayer(function(player)
-		// 	name = player:get_player_name()
-		// 	pool[name] = nil
+		player.hud_set_hotbar_itemcount(9);
+		player.hud_set_hotbar_image("inventory_hotbar.png");
+		player.hud_set_hotbar_selected_image("hotbar_selected.png");
+
+		pool.set(name, newData);
+	});
+
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		const name = player.get_player_name();
+		pool.delete(name);
 	});
 }
