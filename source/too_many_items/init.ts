@@ -199,18 +199,38 @@ namespace tooManyItems {
 				}
 				//shapeless
 			} else {
-				// 				local i = 1
-				// 				for x = 1,3 do
-				// 					for y = 1,3 do
-				// 						item = get_if_group(usable_table[i])
-				// 						if item then
-				// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;"..item..";"..item..";]"
-				// 						else
-				// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;;;]"
-				// 						end
-				// 						i = i + 1
-				// 					end
-				// 				end
+				let i = 1;
+				for (const x of $range(1, 3)) {
+					for (const y of $range(1, 3)) {
+						item = get_if_group((usable_table as string[])[i]);
+						if (item != null) {
+							output =
+								output +
+								"item_image_button[" +
+								base_x +
+								y +
+								"," +
+								base_y +
+								x +
+								";1,1;" +
+								item +
+								";" +
+								item +
+								";]";
+						} else {
+							output =
+								output +
+								"item_image_button[" +
+								base_x +
+								y +
+								"," +
+								base_y +
+								x +
+								";1,1;;;]";
+						}
+						i = i + 1;
+					}
+				}
 			}
 		} else if (recipe.method == CraftCheckType.cooking) {
 			// 		item = recipe.items[1]
