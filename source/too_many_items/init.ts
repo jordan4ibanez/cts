@@ -588,25 +588,31 @@ namespace tooManyItems {
 	// local name
 	// local temp_pool
 	// local inv
-	// core.register_on_joinplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = {}
-	// 	temp_pool = pool[name]
-	// 	temp_pool.page = 1
-	// 	temp_pool.cheating = false
-	// 	inv = player:get_inventory()
-	// 	inv:set_width("craft", 2)
-	// 	inv:set_width("main", 9)
-	// 	inv:set_size("main", 9*4)
-	// 	inv:set_size("craft", 4)
-	// 	player:set_inventory_formspec(base_inv..tmi_master_inventory["page_1"]..cheat_button(name))
-	// 	player:hud_set_hotbar_itemcount(9)
-	// 	player:hud_set_hotbar_image("inventory_hotbar.png")
-	// 	player:hud_set_hotbar_selected_image("hotbar_selected.png")
-	// end)
-	// local name
-	// core.register_on_leaveplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = nil
-	// end)
+
+	core.register_on_joinplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		const newData: TMIObject = {
+			cheating: false,
+			page: 0,
+		};
+
+		const inv: InvRef = player.get_inventory();
+		inv.set_width("craft", 2);
+		inv.set_width("main", 9);
+		inv.set_size("main", 9 * 4);
+		inv.set_size("craft", 4);
+		player.set_inventory_formspec(
+			base_inv +
+				MasterInventory.getPage(newData.page) +
+				cheat_button(name)
+		);
+		// 	player:hud_set_hotbar_itemcount(9)
+		// 	player:hud_set_hotbar_image("inventory_hotbar.png")
+		// 	player:hud_set_hotbar_selected_image("hotbar_selected.png")
+		// end)
+		// local name
+		// core.register_on_leaveplayer(function(player)
+		// 	name = player:get_player_name()
+		// 	pool[name] = nil
+	});
 }
