@@ -244,7 +244,11 @@ namespace furnace_chest {
 					name: "utility:" + name + "_open",
 					param2: node.param2,
 				});
-				//  core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
+				core.show_formspec(
+					clicker.get_player_name(),
+					"utility:chest",
+					get_chest_formspec(pos)
+				);
 				// chest.open_chests[clicker:get_player_name()] = { pos = pos,
 				// 		sound = def.sound_close, swap = name }
 			};
