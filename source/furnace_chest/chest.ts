@@ -234,10 +234,15 @@ namespace furnace_chest {
 			type: Nodeboxtype.fixed,
 			fixed: [-1 / 2, -1 / 2, -1 / 2, 1 / 2, 3 / 16, 1 / 2],
 		};
-		// 	def_opened.on_blast = function() end
-		// 	def_closed.mesh = nil
-		// 	def_closed.drawtype = nil
-		// 	def_closed.tiles[6] = def.tiles[5] // swap textures around for "normal"
+		def_opened.on_blast = () => {};
+		def_closed.mesh = undefined;
+		def_closed.drawtype = undefined;
+        
+		if (def_closed.tiles == null || def.tiles == null) {
+			throw new Error("Another issue.");
+		}
+
+		def_closed.tiles[6] = def.tiles[5]; // swap textures around for "normal"
 		// 	def_closed.tiles[5] = def.tiles[3] // drawtype to make them match the mesh
 		// 	def_closed.tiles[3] = def.tiles[3].."^[transformFX"
 		// 	core.register_node("utility:" .. name, def_closed)
