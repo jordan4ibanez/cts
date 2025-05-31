@@ -785,8 +785,6 @@ core.register_node("crafter:ladder", {
 		placer: ObjectRef,
 		pointed_thing: PointedThing
 	): ItemStackObject | null => {
-		// todo: find out which torch lol.
-		// Copy from torch.
 		if (pointed_thing.type != "node") {
 			return itemstack;
 		}
@@ -803,7 +801,7 @@ core.register_node("crafter:ladder", {
 			return itemstack;
 		}
 
-		if (retval != null) {
+		if (!retval) {
 			return itemstack;
 		}
 
@@ -815,12 +813,9 @@ core.register_node("crafter:ladder", {
 			wdir
 		);
 
-		if (retval != null) {
+		if (above != null) {
 			core.sound_play("wood", { pos: pointed_thing.above, gain: 1.0 });
 		}
-
-		print(itemstack, retval);
-		itemstack.set_name("crafter:ladder");
 
 		return itemstack;
 	},
