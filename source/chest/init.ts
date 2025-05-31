@@ -268,9 +268,9 @@ namespace chest {
 	core.register_craft({
 		output: "crafter_chest:chest",
 		recipe: [
-			["main:wood", "main:wood", "main:wood"],
-			["main:wood", "", "main:wood"],
-			["main:wood", "main:wood", "main:wood"],
+			["crafter:wood", "crafter:wood", "crafter:wood"],
+			["crafter:wood", "", "crafter:wood"],
+			["crafter:wood", "crafter:wood", "crafter:wood"],
 		],
 	});
 
