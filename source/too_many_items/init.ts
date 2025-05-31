@@ -466,57 +466,58 @@ namespace tooManyItems {
 	let x: number = 0;
 	let y: number = 0;
 
-	// core.register_on_mods_loaded(function()
-	// //sort all items (There is definitely a better way to do this)
-	// //get all craftable items
-	// local all_items_table = {}
-	// for index,data in pairs(core.registered_items) do
-	// 	if data.name ~= "" then
-	// 		local recipe = core.get_craft_recipe(data.name)
-	// 		//only put in craftable items
-	// 		if recipe.method then
-	// 			table.insert(all_items_table,data.name)
-	// 		end
-	// 	end
-	// end
-	// table.sort(all_items_table)
-	// //dump all the items in
-	// tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
-	// for _,item in pairs(all_items_table) do
-	// 	tmi_master_inventory["page_"..page] = tmi_master_inventory["page_"..page].."item_image_button["..(9.25+x)..","..y..";1,1;"..item..";toomanyitems."..item..";]"
-	// 	x = x + 1
-	// 	if x > 7 then
-	// 		x = 0
-	// 		y = y + 1
-	// 	end
-	// 	if y > 7 then
-	// 		y = 0
-	// 		page = page + 1
-	// 		tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
-	// 	end
-	// end
-	// //add buttons and labels
-	// for i = 1,page do
-	// 	//set the last page
-	// 	tmi_master_inventory["page_"..i] = tmi_master_inventory["page_"..i].."button[9.25,7.6;2,2;toomanyitems.prev;prev]"..
-	// 	"button[15.25,7.6;2,2;toomanyitems.next;next]"..
-	// 	//this is +1 so it makes more sense
-	// 	"label[13.75,8.25;page "..i.."/"..page.."]"
-	// end
-	// tmi_master_inventory.page_limit = page
-	// //override crafting table
-	// local name
-	// local temp_pool
-	// core.override_item("craftingtable:craftingtable", {
-	// 	 on_rightclick = function(pos, node, player, itemstack)
-	// 		name = player:get_player_name()
-	// 		temp_pool = pool[name]
-	// 		player:get_inventory():set_width("craft", 3)
-	// 		player:get_inventory():set_size("craft", 9)
-	// 		core.show_formspec(name, "crafting", crafting_table_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 	end
-	// })
-	// end)
+	core.register_on_mods_loaded(() => {
+		// //sort all items (There is definitely a better way to do this)
+		// //get all craftable items
+		// local all_items_table = {}
+		// for index,data in pairs(core.registered_items) do
+		// 	if data.name ~= "" then
+		// 		local recipe = core.get_craft_recipe(data.name)
+		// 		//only put in craftable items
+		// 		if recipe.method then
+		// 			table.insert(all_items_table,data.name)
+		// 		end
+		// 	end
+		// end
+		// table.sort(all_items_table)
+		// //dump all the items in
+		// tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
+		// for _,item in pairs(all_items_table) do
+		// 	tmi_master_inventory["page_"..page] = tmi_master_inventory["page_"..page].."item_image_button["..(9.25+x)..","..y..";1,1;"..item..";toomanyitems."..item..";]"
+		// 	x = x + 1
+		// 	if x > 7 then
+		// 		x = 0
+		// 		y = y + 1
+		// 	end
+		// 	if y > 7 then
+		// 		y = 0
+		// 		page = page + 1
+		// 		tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
+		// 	end
+		// end
+		// //add buttons and labels
+		// for i = 1,page do
+		// 	//set the last page
+		// 	tmi_master_inventory["page_"..i] = tmi_master_inventory["page_"..i].."button[9.25,7.6;2,2;toomanyitems.prev;prev]"..
+		// 	"button[15.25,7.6;2,2;toomanyitems.next;next]"..
+		// 	//this is +1 so it makes more sense
+		// 	"label[13.75,8.25;page "..i.."/"..page.."]"
+		// end
+		// tmi_master_inventory.page_limit = page
+		// //override crafting table
+		// local name
+		// local temp_pool
+		// core.override_item("craftingtable:craftingtable", {
+		// 	 on_rightclick = function(pos, node, player, itemstack)
+		// 		name = player:get_player_name()
+		// 		temp_pool = pool[name]
+		// 		player:get_inventory():set_width("craft", 3)
+		// 		player:get_inventory():set_size("craft", 9)
+		// 		core.show_formspec(name, "crafting", crafting_table_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 	end
+		// })
+	});
+
 	// //set new players inventory up
 	// local name
 	// local temp_pool
