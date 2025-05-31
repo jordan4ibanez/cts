@@ -107,16 +107,18 @@ namespace tooManyItems {
 		tree: "main:tree",
 		wood: "main:wood",
 	};
-	// local get_if_group = function(item)
-	// 	if item ~= nil and item:sub(1,6) == "group:" then
-	// 		local group_name = item:sub(7, item:len())
-	// 		local mapped_item = map_group_to_item[group_name]
-	// 		if mapped_item ~= nil then
-	// 			return(mapped_item)
-	// 		end
-	// 	end
-	// 	return(item)
-	// end
+
+	function get_if_group(item: string) {
+		// 	if item ~= nil and item:sub(1,6) == "group:" then
+		// 		local group_name = item:sub(7, item:len())
+		// 		local mapped_item = map_group_to_item[group_name]
+		// 		if mapped_item ~= nil then
+		// 			return(mapped_item)
+		// 		end
+		// 	end
+		// 	return(item)
+	}
+
 	// local base_x = 0.75
 	// local base_y = -0.5
 	// local output_constant =
