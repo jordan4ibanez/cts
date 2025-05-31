@@ -198,12 +198,18 @@ namespace furnace_chest {
 				return count;
 			};
 
-			// 		def.allow_metadata_inventory_put = function(pos, listname, index, stack, player)
-			// 			if not default.can_interact_with_node(player, pos) then
-			// 				return 0
-			// 			end
-			// 			return stack:get_count()
-			// 		end
+			def.allow_metadata_inventory_put = (
+				pos,
+				listname,
+				index,
+				stack,
+				player
+			) => {
+				if (!can_interact_with_node(player, pos)) {
+					return 0;
+				}
+				return stack.get_count();
+			};
 
 			// 		def.allow_metadata_inventory_take = function(pos, listname, index, stack, player)
 			// 			if not default.can_interact_with_node(player, pos) then
