@@ -327,8 +327,12 @@ namespace tooManyItems {
 						MasterInventory.getPage(data.page) +
 						cheat_button(name)
 				);
-				// 		core.sound_play("lever", {to_player = name,gain=0.7})
-				// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+				core.sound_play("lever", { to_player: name, gain: 0.7 });
+				player.set_inventory_formspec(
+					base_inv +
+						MasterInventory.getPage(data.page) +
+						cheat_button(name)
+				);
 				// "prev" button
 			} else if (fields["toomanyitems.prev"]) {
 				// 		temp_pool.page = temp_pool.page - 1
