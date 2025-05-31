@@ -298,8 +298,8 @@ namespace tooManyItems {
 				id = "crafting";
 			}
 
-			// 	//"next" button
-			// 	if fields["toomanyitems.next"] then
+				//"next" button
+				if (fields["toomanyitems.next"]) {
 			// 		temp_pool.page = temp_pool.page + 1
 			// 		//page loops back to first
 			// 		if temp_pool.page > tmi_master_inventory.page_limit then
@@ -308,8 +308,8 @@ namespace tooManyItems {
 			// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 			// 		core.sound_play("lever", {to_player = name,gain=0.7})
 			// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-			// 	//"prev" button
-			// 	elseif fields["toomanyitems.prev"] then
+				// "prev" button
+                } else if (fields["toomanyitems.prev"]) {
 			// 		temp_pool.page = temp_pool.page - 1
 			// 		//page loops back to end
 			// 		if temp_pool.page < 1 then
@@ -318,18 +318,18 @@ namespace tooManyItems {
 			// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 			// 		core.sound_play("lever", {to_player = name,gain=0.7})
 			// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-			// 	elseif fields["toomanyitems.back"] then
+                } else if (fields["toomanyitems.back"]) {
 			// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 			// 		core.sound_play("lever", {to_player = name,gain=0.7})
-			// 	//this resets the craft table
-			// 	elseif fields.quit then
+				//this resets the craft table
+                } else if (fields.quit) {
 			// 		inv = player:get_inventory()
 			// 		dump_craft(player)
 			// 		inv:set_width("craft", 2)
 			// 		inv:set_size("craft", 4)
 			// 		//reset the player inv
 			// 		//core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-			// 	elseif fields["toomanyitems.cheat"] then
+                } else if (fields["toomanyitems.cheat"]) {
 			// 		//check if the player has the give priv
 			// 		if (not temp_pool.cheating and core.get_player_privs(name).give == true) or temp_pool.cheating == true then
 			// 			temp_pool.cheating = not temp_pool.cheating
@@ -340,8 +340,8 @@ namespace tooManyItems {
 			// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
 			// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
 			// 		end
-			// 	//this is the "cheating" aka giveme function and craft recipe
-			// 	elseif fields and type(fields) == "table" and string.match(next(fields),"toomanyitems.") then
+				// this is the "cheating" aka giveme function and craft recipe
+                } else if (fields && type(fields) == "table" && string.match(next(fields)[0],"toomanyitems.")) {
 			// 		item = string.gsub(next(fields), "toomanyitems.", "")
 			// 		stack = ItemStack(item.." 64")
 			// 		inv = player:get_inventory()
@@ -363,7 +363,7 @@ namespace tooManyItems {
 			// 				core.sound_play("lever", {to_player = name,gain=0.7})
 			// 			end
 			// 		end
-			// 	end
+                }
 		}
 	);
 
