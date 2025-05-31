@@ -269,83 +269,85 @@ namespace tooManyItems {
 	// local craft_inv
 	// local name
 	// local temp_pool
-	// core.register_on_player_receive_fields(function(player, formname, fields)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	if formname == "" then
-	// 		form = base_inv
-	// 		id = ""
-	// 	elseif formname == "crafting" then
-	// 		form = crafting_table_inv
-	// 		id = "crafting"
-	// 	end
-	// 	//"next" button
-	// 	if fields["toomanyitems.next"] then
-	// 		temp_pool.page = temp_pool.page + 1
-	// 		//page loops back to first
-	// 		if temp_pool.page > tmi_master_inventory.page_limit then
-	// 			temp_pool.page = 1
-	// 		end
-	// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 		core.sound_play("lever", {to_player = name,gain=0.7})
-	// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 	//"prev" button
-	// 	elseif fields["toomanyitems.prev"] then
-	// 		temp_pool.page = temp_pool.page - 1
-	// 		//page loops back to end
-	// 		if temp_pool.page < 1 then
-	// 			temp_pool.page = tmi_master_inventory.page_limit
-	// 		end
-	// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 		core.sound_play("lever", {to_player = name,gain=0.7})
-	// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 	elseif fields["toomanyitems.back"] then
-	// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 		core.sound_play("lever", {to_player = name,gain=0.7})
-	// 	//this resets the craft table
-	// 	elseif fields.quit then
-	// 		inv = player:get_inventory()
-	// 		dump_craft(player)
-	// 		inv:set_width("craft", 2)
-	// 		inv:set_size("craft", 4)
-	// 		//reset the player inv
-	// 		//core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 	elseif fields["toomanyitems.cheat"] then
-	// 		//check if the player has the give priv
-	// 		if (not temp_pool.cheating and core.get_player_privs(name).give == true) or temp_pool.cheating == true then
-	// 			temp_pool.cheating = not temp_pool.cheating
-	// 			core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 			core.sound_play("lever", {to_player = name,gain=0.7})
-	// 			player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	// 		else
-	// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
-	// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
-	// 		end
-	// 	//this is the "cheating" aka giveme function and craft recipe
-	// 	elseif fields and type(fields) == "table" and string.match(next(fields),"toomanyitems.") then
-	// 		item = string.gsub(next(fields), "toomanyitems.", "")
-	// 		stack = ItemStack(item.." 64")
-	// 		inv = player:get_inventory()
-	// 		if temp_pool.cheating and core.get_player_privs(name).give then
-	// 			//room for item
-	// 			if inv and inv:room_for_item("main",stack) then
-	// 				inv:add_item("main", stack)
-	// 				core.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
-	// 			//no room for item
-	// 			else
-	// 				core.chat_send_player(name, "Might want to clear your inventory")
-	// 				core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
-	// 			end
-	// 		//this is to get the craft recipe
-	// 		else
-	// 			craft_inv = create_craft_formspec(item)
-	// 			if craft_inv and craft_inv ~= "" then
-	// 				core.show_formspec(name, id, tmi_master_inventory["page_"..temp_pool.page]..craft_inv..cheat_button(name))
-	// 				core.sound_play("lever", {to_player = name,gain=0.7})
-	// 			end
-	// 		end
-	// 	end
-	// end)
+
+	core.register_on_player_receive_fields((player, formname, fields) => {
+		// 	name = player:get_player_name()
+		// 	temp_pool = pool[name]
+		// 	if formname == "" then
+		// 		form = base_inv
+		// 		id = ""
+		// 	elseif formname == "crafting" then
+		// 		form = crafting_table_inv
+		// 		id = "crafting"
+		// 	end
+		// 	//"next" button
+		// 	if fields["toomanyitems.next"] then
+		// 		temp_pool.page = temp_pool.page + 1
+		// 		//page loops back to first
+		// 		if temp_pool.page > tmi_master_inventory.page_limit then
+		// 			temp_pool.page = 1
+		// 		end
+		// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 		core.sound_play("lever", {to_player = name,gain=0.7})
+		// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 	//"prev" button
+		// 	elseif fields["toomanyitems.prev"] then
+		// 		temp_pool.page = temp_pool.page - 1
+		// 		//page loops back to end
+		// 		if temp_pool.page < 1 then
+		// 			temp_pool.page = tmi_master_inventory.page_limit
+		// 		end
+		// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 		core.sound_play("lever", {to_player = name,gain=0.7})
+		// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 	elseif fields["toomanyitems.back"] then
+		// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 		core.sound_play("lever", {to_player = name,gain=0.7})
+		// 	//this resets the craft table
+		// 	elseif fields.quit then
+		// 		inv = player:get_inventory()
+		// 		dump_craft(player)
+		// 		inv:set_width("craft", 2)
+		// 		inv:set_size("craft", 4)
+		// 		//reset the player inv
+		// 		//core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 	elseif fields["toomanyitems.cheat"] then
+		// 		//check if the player has the give priv
+		// 		if (not temp_pool.cheating and core.get_player_privs(name).give == true) or temp_pool.cheating == true then
+		// 			temp_pool.cheating = not temp_pool.cheating
+		// 			core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 			core.sound_play("lever", {to_player = name,gain=0.7})
+		// 			player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		// 		else
+		// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
+		// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
+		// 		end
+		// 	//this is the "cheating" aka giveme function and craft recipe
+		// 	elseif fields and type(fields) == "table" and string.match(next(fields),"toomanyitems.") then
+		// 		item = string.gsub(next(fields), "toomanyitems.", "")
+		// 		stack = ItemStack(item.." 64")
+		// 		inv = player:get_inventory()
+		// 		if temp_pool.cheating and core.get_player_privs(name).give then
+		// 			//room for item
+		// 			if inv and inv:room_for_item("main",stack) then
+		// 				inv:add_item("main", stack)
+		// 				core.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
+		// 			//no room for item
+		// 			else
+		// 				core.chat_send_player(name, "Might want to clear your inventory")
+		// 				core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
+		// 			end
+		// 		//this is to get the craft recipe
+		// 		else
+		// 			craft_inv = create_craft_formspec(item)
+		// 			if craft_inv and craft_inv ~= "" then
+		// 				core.show_formspec(name, id, tmi_master_inventory["page_"..temp_pool.page]..craft_inv..cheat_button(name))
+		// 				core.sound_play("lever", {to_player = name,gain=0.7})
+		// 			end
+		// 		end
+		// 	end
+	});
+
 	// //run through the items and then set the pages
 	// local item_counter = 0
 	// local page = 1
