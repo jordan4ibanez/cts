@@ -133,31 +133,31 @@ namespace furnace_chest {
 		def.paramtype2 = ParamType2.facedir;
 		def.legacy_facedir_simple = true;
 		def.is_ground_content = false;
-		
-			// 		def.on_construct = function(pos)
-			// 			local meta = core.get_meta(pos)
-			// 			//meta:set_string("infotext", S("Chest"))
-			// 			local inv = meta:get_inventory()
-			// 			inv:set_size("main", 9*4)
-			// 		end
-			// 		def.on_rightclick = function(pos, node, clicker)
-			// 			if core.get_node(pos).name ~= "utility:chest" and  core.get_node(pos).name ~= "utility:chest_open" then
-			// 				return
-			// 			end
-			// 			core.sound_play(def.sound_open, {gain = 0.3, pos = pos, max_hear_distance = 10}, true)
-			// 			core.swap_node(pos, {name = "utility:" .. name .. "_open", param2 = node.param2 })
-			// 			core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
-			// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,sound = def.sound_close, swap = name }
-			// 			//redstone.collect_info(pos)
-			// 		end
-			// 		def.on_blast = function(pos)
-			// 			local drops = {}
-			// 			default.get_inventory_drops(pos, "main", drops)
-			// 			drops[#drops+1] = "utility:" .. name
-			// 			core.remove_node(pos)
-			// 			return drops
-			// 		end
-		
+
+		// 		def.on_construct = function(pos)
+		// 			local meta = core.get_meta(pos)
+		// 			//meta:set_string("infotext", S("Chest"))
+		// 			local inv = meta:get_inventory()
+		// 			inv:set_size("main", 9*4)
+		// 		end
+		// 		def.on_rightclick = function(pos, node, clicker)
+		// 			if core.get_node(pos).name ~= "utility:chest" and  core.get_node(pos).name ~= "utility:chest_open" then
+		// 				return
+		// 			end
+		// 			core.sound_play(def.sound_open, {gain = 0.3, pos = pos, max_hear_distance = 10}, true)
+		// 			core.swap_node(pos, {name = "utility:" .. name .. "_open", param2 = node.param2 })
+		// 			core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
+		// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,sound = def.sound_close, swap = name }
+		// 			//redstone.collect_info(pos)
+		// 		end
+		// 		def.on_blast = function(pos)
+		// 			local drops = {}
+		// 			default.get_inventory_drops(pos, "main", drops)
+		// 			drops[#drops+1] = "utility:" .. name
+		// 			core.remove_node(pos)
+		// 			return drops
+		// 		end
+
 		// 	def.on_destruct = function(pos)
 		// 		destroy_chest(pos)
 		// 	end
