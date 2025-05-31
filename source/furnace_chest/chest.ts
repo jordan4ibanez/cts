@@ -28,6 +28,20 @@ namespace furnace_chest {
 		swap: string;
 	}
 
+	function get_inventory_drops(
+		pos: Vec3,
+		inventory: string,
+		drops: ItemStackObject[]
+	) {
+		const inv = core.get_meta(pos).get_inventory();
+		for (let i = 1; i <= inv.get_size(inventory); i++) {
+			const stack: ItemStackObject = inv.get_stack(inventory, i);
+			if (stack.get_count() > 0) {
+				drops.push(stack);
+			}
+		}
+	}
+
 	const open_chests = new Map<string, OpenChestData>();
 
 	function chest_lid_close(pn: string) {
@@ -174,13 +188,13 @@ namespace furnace_chest {
 			//redstone.collect_info(pos)
 		};
 
-		// 		def.on_blast = function(pos)
-		// 			local drops = {}
-		// 			default.get_inventory_drops(pos, "main", drops)
-		// 			drops[#drops+1] = "utility:" .. name
-		// 			core.remove_node(pos)
-		// 			return drops
-		// 		end
+		def.on_blast = (pos: Vec3) => {
+			const drops: ItemStackObject[] = [];
+			get_inventory_drops(pos, "main", drops);
+			drops.push(ItemStack("utility:" + name));
+			core.remove_node(pos);
+			return drops;
+		};
 
 		// 	def.on_destruct = function(pos)
 		// 		destroy_chest(pos)
