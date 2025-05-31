@@ -287,7 +287,7 @@ interface core {
 		radius: number,
 		nodeNames: string[],
 		searchCenter?: boolean
-	): Vec3 | void;
+	): Vec3 | null;
 	find_nodes_in_area(
 		pos1: Vec3,
 		pos2: Vec3,
@@ -319,7 +319,7 @@ interface core {
 	get_mapgen_object(objectName: string): GenNotifyObject;
 	get_heat(position: Vec3): number;
 	get_humidity(position: Vec3): number;
-	get_biome_data(position: Vec3): BiomeDataDefinition | void;
+	get_biome_data(position: Vec3): BiomeDataDefinition | null;
 	get_biome_id(biomeName: string): number;
 	get_biome_name(biomeID: number): string;
 	get_mapgen_setting(settingName: string): MapGenSettingsDefinition;
@@ -373,7 +373,7 @@ interface core {
 	fix_light(pos1: Vec3, pos2: Vec3): boolean;
 	check_single_for_falling(position: Vec3): void;
 	check_for_falling(position: Vec3): void;
-	get_spawn_level(x: number, z: number): number | void;
+	get_spawn_level(x: number, z: number): number | null;
 	mod_channel_join(channelName: string): void;
 	get_inventory(position: Vec3): InvRef;
 	get_perlin_map(params: NoiseParams, size: Vec3): PerlinNoiseMapObject;
@@ -390,7 +390,7 @@ interface core {
 		itemStack: ItemStackObject,
 		user: ObjectRef,
 		pointedThing: PointedThing
-	): ItemStackObject | void;
+	): ItemStackObject | null;
 	show_formspec(playerName: string, formName: string, formSpec: string): void;
 	close_formspec(playerName: string, formName: string): void;
 	formspec_escape(escape: string): string;
@@ -401,7 +401,7 @@ interface core {
 	get_pointed_thing_position(
 		pointedThing: PointedThing,
 		above: boolean
-	): Vec3 | void;
+	): Vec3 | null;
 	dir_to_facedir(direction: Vec3, is6d: boolean): number;
 	facedir_to_dir(faceDir: number): Vec3;
 	dir_to_fourdir(direction: Vec3): number;
@@ -411,15 +411,15 @@ interface core {
 	dir_to_yaw(direction: Vec3): number;
 	yaw_to_dir(yaw: number): Vec3;
 	is_colored_paramtype(pType: number): boolean;
-	strip_param2_color(param2: number, paramType2: ParamType2): number | void;
+	strip_param2_color(param2: number, paramType2: ParamType2): number | null;
 	get_node_drops(node: string | NodeTable, toolName: string): string[] | null;
 	get_craft_result(
 		input: CraftRecipeCheckDefinition
 	): LuaMultiReturn<[CraftResultObject, CraftRecipeCheckDefinition]>;
-	get_craft_recipe(output: string | NodeTable): CraftRecipeDefinition | void;
+	get_craft_recipe(output: string | NodeTable): CraftRecipeDefinition | null;
 	get_all_craft_recipes(
 		queryItem: string | NodeTable
-	): CraftRecipeDefinition[] | void;
+	): CraftRecipeDefinition[] | null;
 	handle_node_drops(
 		position: Vec3,
 		drops: string[] | ItemStackObject[],
@@ -449,7 +449,7 @@ interface core {
 		pointedThing: PointedThing,
 		param2?: number,
 		preventAfterPlace?: boolean
-	): [ItemStackObject, Vec3 | void];
+	): [ItemStackObject, Vec3 | null];
 	//? Deprecated.
 	// item_place_object(itemStack: ItemStackObject, placer: ObjectRef, pointedThing: PointedThing): ItemStackObject
 	item_place(
@@ -550,7 +550,7 @@ interface core {
 	parse_relative_number(
 		arg: ParseRelativeNumberArgument,
 		relativeTo: number
-	): number | void;
+	): number | null;
 	send_join_message(playerName: string): void;
 	send_leave_message(playerName: string, timedOut: boolean): void;
 	hash_node_position(position: Vec3): number;
@@ -561,7 +561,7 @@ interface core {
 	get_name_from_content_id(id: number): string;
 	// fixme: This is probably wrong.
 	parse_json(string: string, nullValue?: any): Dictionary<string, any>;
-	write_json(data: any[], styled: boolean): string | void;
+	write_json(data: any[], styled: boolean): string | null;
 	serialize(any: any): string;
 	deserialize(string: string, safe?: boolean): any;
 	compress(data: string, method: CompressionMethod, ...any: any): string;
@@ -605,7 +605,7 @@ interface core {
 	compare_block_status(
 		position: Vec3,
 		condition: BlockStatusCondition
-	): boolean | void;
+	): boolean | null;
 	request_insecure_environment(): any;
 	global_exists(name: string): boolean;
 
@@ -1360,7 +1360,7 @@ declare global {
 		func(
 			name: string,
 			param: string
-		): LuaMultiReturn<[boolean, string]> | void;
+		): LuaMultiReturn<[boolean, string]> | null;
 	}
 
 	/** @noSelf **/ interface PrivilegeDefinition {
@@ -2175,19 +2175,19 @@ declare global {
 			id: number,
 			includeCorners: boolean,
 			includeData: boolean
-		): Array<AreaStoreArea | boolean> | void;
+		): Array<AreaStoreArea | boolean> | null;
 		get_areas_for_pos(
 			pos: Vec3,
 			includeCorners: boolean,
 			includeData: boolean
-		): Array<AreaStoreArea | boolean> | void;
+		): Array<AreaStoreArea | boolean> | null;
 		get_areas_in_area(
 			corner1: Vec3,
 			corner2: Vec3,
 			acceptOverlap: boolean,
 			includeCorners: boolean,
 			includeData: boolean
-		): Array<AreaStoreArea | boolean> | void;
+		): Array<AreaStoreArea | boolean> | null;
 		insert_area(
 			corner1: Vec3,
 			corner2: Vec3,
@@ -2199,8 +2199,8 @@ declare global {
 		set_cache_params(params: AreaStoreCacheDefinition): void;
 		to_string(): string;
 		to_file(fileName: string): void;
-		from_string(str: string): [boolean, string] | void;
-		from_file(fileName: string): [boolean, string] | void;
+		from_string(str: string): [boolean, string] | null;
+		from_file(fileName: string): [boolean, string] | null;
 	}
 
 	interface LuantiSettingsObject {
@@ -2279,7 +2279,7 @@ declare global {
 			rotation: Vec3,
 			forcedVisible: boolean
 		): void;
-		get_attach(): AttachRef | void;
+		get_attach(): AttachRef | null;
 		get_children(): ObjectRef[];
 		set_detach(): void;
 		set_bone_override(bone: string, property: BoneOverride | null): void;
@@ -2364,8 +2364,8 @@ declare global {
 		get_stars(): StarParameters;
 		set_clouds(parameters: CloudParameters): void;
 		get_clouds(): CloudParameters;
-		override_day_night_ratio(ratio: number | void): void;
-		get_day_night_ratio(): number | void;
+		override_day_night_ratio(ratio: number | null): void;
+		get_day_night_ratio(): number | null;
 		set_local_animation(
 			idle: Vec2,
 			walk: Vec2,
