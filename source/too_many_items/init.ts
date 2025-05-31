@@ -5,7 +5,7 @@ namespace tooManyItems {
 
 	// local pool = {}
 
-	const max = 7*7
+	const max = 7 * 7;
 
 	// 2x2 formspec.
 	const base_inv: string =
