@@ -164,7 +164,6 @@ namespace furnace_chest {
 		protected: boolean;
 		sound_open: string;
 		sound_close: string;
-		on_key_use: (pos: Vec3, player: ObjectRef) => void;
 	}
 
 	export function register_chest(name: string, def: ChestDefinition) {
