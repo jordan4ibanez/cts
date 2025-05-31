@@ -108,15 +108,16 @@ namespace tooManyItems {
 		wood: "main:wood",
 	};
 
-	function get_if_group(item: string) {
+	function get_if_group(item: string): string {
 		if (item != null && string.sub(item, 1, 6)[0] == "group:") {
 			const group_name = string.sub(item, 7, item.length);
-			// local mapped_item = map_group_to_item[group_name]
-			// if mapped_item ~= nil then
-			// 	return(mapped_item)
-			// end
+			const mapped_item: string | undefined =
+				map_group_to_item[group_name];
+			if (mapped_item != null) {
+				return mapped_item;
+			}
 		}
-		// 	return(item)
+		return item;
 	}
 
 	// local base_x = 0.75
