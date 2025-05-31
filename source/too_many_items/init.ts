@@ -513,22 +513,19 @@ namespace tooManyItems {
 			if (y > 7) {
 				y = 0;
 
+				//add buttons and labels
+				//set the last page
+				// tmi_master_inventory["page_"+i] = tmi_master_inventory["page_"+i]+"button[9.25,7.6;2,2;toomanyitems.prev;prev]"+
+				// "button[15.25,7.6;2,2;toomanyitems.next;next]"+
+				//this is +1 so it makes more sense
+				// "label[13.75,8.25;page "+i+"/"+page+"]"
+
 				MasterInventory.pushPage(pageData);
 
 				page++;
 				pageData = pagePreface;
 			}
 		}
-
-		// //add buttons and labels
-		// for i = 1,page do
-		// 	//set the last page
-		// 	tmi_master_inventory["page_"..i] = tmi_master_inventory["page_"..i].."button[9.25,7.6;2,2;toomanyitems.prev;prev]"..
-		// 	"button[15.25,7.6;2,2;toomanyitems.next;next]"..
-		// 	//this is +1 so it makes more sense
-		// 	"label[13.75,8.25;page "..i.."/"..page.."]"
-		// end
-		// tmi_master_inventory.page_limit = page
 
 		// Override crafting table.
 		core.override_item("crafter_workbench:workbench", {
