@@ -122,7 +122,6 @@ namespace furnace_chest {
 
 	// You use this to make custom chests.
 	export interface ChestDefinition extends NodeDefinition {
-		protected: boolean;
 		sound_open: string;
 		sound_close: string;
 	}
