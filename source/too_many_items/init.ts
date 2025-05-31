@@ -530,10 +530,8 @@ namespace tooManyItems {
 		// 	"label[13.75,8.25;page "..i.."/"..page.."]"
 		// end
 		// tmi_master_inventory.page_limit = page
-		// //override crafting table
-		// local name
-		// local temp_pool
 
+		// Override crafting table.
 		core.override_item("crafter_workbench:workbench", {
 			on_rightclick: (
 				pos: Vec3,
