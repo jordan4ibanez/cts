@@ -224,19 +224,25 @@ namespace furnace_chest {
 				return stack.get_count();
 			};
 
-			// 		def.on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			// 			if not default.can_interact_with_node(clicker, pos) then
-			// 				return itemstack
-			// 			end
-			// 			core.sound_play(def.sound_open, {gain = 0.3,
-			// 					pos = pos, max_hear_distance = 10}, true)
-			// 				core.swap_node(pos,
-			// 						{ name = "utility:" .. name .. "_open",
-			// 						param2 = node.param2 })
-			// 			 core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
-			// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,
-			// 					sound = def.sound_close, swap = name }
-			// 		end
+			def.on_rightclick = (
+				pos,
+				node,
+				clicker,
+				itemstack,
+				pointed_thing
+			) => {
+				if (!can_interact_with_node(clicker, pos)) {
+					return itemstack;
+				}
+				// core.sound_play(def.sound_open, {gain = 0.3,
+				// 		pos = pos, max_hear_distance = 10}, true)
+				// 	core.swap_node(pos,
+				// 			{ name = "utility:" .. name .. "_open",
+				// 			param2 = node.param2 })
+				//  core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
+				// chest.open_chests[clicker:get_player_name()] = { pos = pos,
+				// 		sound = def.sound_close, swap = name }
+			};
 
 			// 		def.on_blast = function() end
 
