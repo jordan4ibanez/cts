@@ -1,42 +1,47 @@
 namespace tooManyItems {
 	// local minetest,pairs = minetest,pairs
+
 	// local tmi_master_inventory = {}
+
 	// local pool = {}
+
 	// local max = 7*7
-	// //2x2 formspec
-	// local base_inv =
-	// "size[17.2,8.75]"..
-	// "background[-0.19,-0.25;9.41,9.49;main_inventory.png]"..
-	// "listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-	// "list[current_player;main;0,4.5;9,1;]".. //hot bar
-	// "list[current_player;main;0,6;9,3;9]".. //big part
-	// "list[current_player;craft;2.5,1;2,2;]"..
-	// //armor slots
-	// "list[current_player;armor_head;0.25,0;1,1;]"..
-	// "list[current_player;armor_torso;0.25,1;1,1;]"..
-	// "list[current_player;armor_legs;0.25,2;1,1;]"..
-	// "list[current_player;armor_feet;0.25,3;1,1;]"..
-	// //craft preview with ring
-	// "list[current_player;craftpreview;6.1,1.5;1,1;]"..
-	// "listring[current_player;main]"..
-	// "listring[current_player;craft]"
-	// //this is the 3x3 crafting table formspec
-	// local crafting_table_inv =
-	// "size[17.2,8.75]"..
-	// "background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"..
-	// "listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-	// "list[current_player;main;0,4.5;9,1;]".. //hot bar
-	// "list[current_player;main;0,6;9,3;9]".. //big part
-	// "list[current_player;craft;1.75,0.5;3,3;]"..
-	// //armor slots
-	// "list[current_player;armor_head;0.25,0;1,1;]"..
-	// "list[current_player;armor_torso;0.25,1;1,1;]"..
-	// "list[current_player;armor_legs;0.25,2;1,1;]"..
-	// "list[current_player;armor_feet;0.25,3;1,1;]"..
-	// //craft preview with ring
-	// "list[current_player;craftpreview;6.1,1.5;1,1;]"..
-	// "listring[current_player;main]"..
-	// "listring[current_player;craft]"
+
+	// 2x2 formspec.
+	const base_inv: string =
+		"size[17.2,8.75]" +
+		"background[-0.19,-0.25;9.41,9.49;main_inventory.png]" +
+		"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]" +
+		"list[current_player;main;0,4.5;9,1;]" + //hot bar
+		"list[current_player;main;0,6;9,3;9]" + //big part
+		"list[current_player;craft;2.5,1;2,2;]" +
+		//armor slots
+		"list[current_player;armor_head;0.25,0;1,1;]" +
+		"list[current_player;armor_torso;0.25,1;1,1;]" +
+		"list[current_player;armor_legs;0.25,2;1,1;]" +
+		"list[current_player;armor_feet;0.25,3;1,1;]" +
+		//craft preview with ring
+		"list[current_player;craftpreview;6.1,1.5;1,1;]" +
+		"listring[current_player;main]" +
+		"listring[current_player;craft]";
+	//this is the 3x3 crafting table formspec
+	const crafting_table_inv: string =
+		"size[17.2,8.75]" +
+		"background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]" +
+		"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]" +
+		"list[current_player;main;0,4.5;9,1;]" + //hot bar
+		"list[current_player;main;0,6;9,3;9]" + //big part
+		"list[current_player;craft;1.75,0.5;3,3;]" +
+		//armor slots
+		"list[current_player;armor_head;0.25,0;1,1;]" +
+		"list[current_player;armor_torso;0.25,1;1,1;]" +
+		"list[current_player;armor_legs;0.25,2;1,1;]" +
+		"list[current_player;armor_feet;0.25,3;1,1;]" +
+		//craft preview with ring
+		"list[current_player;craftpreview;6.1,1.5;1,1;]" +
+		"listring[current_player;main]" +
+		"listring[current_player;craft]";
+
 	// //this is from Linuxdirk, thank you AspireMint for showing me this
 	// local recipe_converter = function (items, width)
 	//     local usable_recipe = { {}, {}, {} }
