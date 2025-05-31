@@ -374,16 +374,20 @@ namespace tooManyItems {
 				//reset the player inv
 				//core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 			} else if (fields["toomanyitems.cheat"]) {
-						// Check if the player has the give priv.
-				// 		if (not temp_pool.cheating and core.get_player_privs(name).give == true) or temp_pool.cheating == true then
-				// 			temp_pool.cheating = not temp_pool.cheating
-				// 			core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-				// 			core.sound_play("lever", {to_player = name,gain=0.7})
-				// 			player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-				// 		else
-				// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
-				// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
-				// 		end
+				// Check if the player has the give priv.
+				if (
+					(!data.cheating &&
+						core.get_player_privs(name).give == true) ||
+					data.cheating == true
+				) {
+					// 			temp_pool.cheating = not temp_pool.cheating
+					// 			core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+					// 			core.sound_play("lever", {to_player = name,gain=0.7})
+					// 			player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+				} else {
+					// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
+					// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
+				}
 				// this is the "cheating" aka giveme function and craft recipe
 			} else if (
 				fields &&
