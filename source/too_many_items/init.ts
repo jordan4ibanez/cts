@@ -411,9 +411,13 @@ namespace tooManyItems {
 				type(fields) == "table" &&
 				string.match(next(fields)[0], "toomanyitems.")
 			) {
-				const item = string.gsub(next(fields)[0], "toomanyitems.", "");
-				// 		stack = ItemStack(item.." 64")
-				// 		inv = player:get_inventory()
+				const item: string = string.gsub(
+					next(fields)[0],
+					"toomanyitems.",
+					""
+				)[0];
+				const stack: ItemStackObject = ItemStack(item + " 64");
+				const inv: InvRef = player.get_inventory();
 				// 		if temp_pool.cheating and core.get_player_privs(name).give then
 				// 			//room for item
 				// 			if inv and inv:room_for_item("main",stack) then
