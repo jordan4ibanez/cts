@@ -188,9 +188,6 @@ namespace furnace_chest {
 				itemstack: ItemStackObject,
 				pointed_thing: PointedThing
 			) => {
-				if (!can_interact_with_node(clicker, pos)) {
-					return itemstack;
-				}
 				core.sound_play(
 					def.sound_open,
 					{ gain: 0.3, pos: pos, max_hear_distance: 10 },
