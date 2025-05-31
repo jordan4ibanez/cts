@@ -388,8 +388,12 @@ namespace tooManyItems {
 							MasterInventory.getPage(data.page) +
 							cheat_button(name)
 					);
-					// 			core.sound_play("lever", {to_player = name,gain=0.7})
-					// 			player:set_inventory_formspec(base_inv+tmi_master_inventory["page_"+temp_pool.page]+cheat_button(name))
+					core.sound_play("lever", { to_player: name, gain: 0.7 });
+					player.set_inventory_formspec(
+						base_inv +
+							MasterInventory.getPage(data.page) +
+							cheat_button(name)
+					);
 				} else {
 					// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
 					// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
