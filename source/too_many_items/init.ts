@@ -75,20 +75,22 @@ namespace tooManyItems {
 			usable_recipe[2][0] = items[4] || "";
 			usable_recipe[2][1] = items[5] || "";
 		}
-		//     // x x x
-		//     // x x x
-		//     // x x x
-		//     if width == 3 then
-		//         usable_recipe[1][1] = items[1] or ''
-		//         usable_recipe[1][2] = items[2] or ''
-		//         usable_recipe[1][3] = items[3] or ''
-		//         usable_recipe[2][1] = items[4] or ''
-		//         usable_recipe[2][2] = items[5] or ''
-		//         usable_recipe[2][3] = items[6] or ''
-		//         usable_recipe[3][1] = items[7] or ''
-		//         usable_recipe[3][2] = items[8] or ''
-		//         usable_recipe[3][3] = items[9] or ''
-		//     end
+		// x x x
+		// x x x
+		// x x x
+		if (width == 3) {
+			usable_recipe = usable_recipe as string[][];
+
+			usable_recipe[0][0] = items[0] || "";
+			usable_recipe[0][1] = items[1] || "";
+			usable_recipe[0][2] = items[2] || "";
+			usable_recipe[1][0] = items[3] || "";
+			usable_recipe[1][1] = items[4] || "";
+			usable_recipe[1][2] = items[5] || "";
+			usable_recipe[2][0] = items[6] || "";
+			usable_recipe[2][1] = items[7] || "";
+			usable_recipe[2][2] = items[8] || "";
+		}
 		//     return(usable_recipe)
 	}
 
