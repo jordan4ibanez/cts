@@ -156,15 +156,11 @@ namespace tooManyItems {
 	const base_x: number = 0.75;
 	const base_y: number = -0.5;
 
-	const output_constant =
+	const output_constant: string =
 		"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]" +
 		"list[current_player;main;0,4.5;9,1;]" + //hot bar
 		"list[current_player;main;0,6;9,3;9]" + //main inventory
 		"button[5,3.5;1,1;toomanyitems.back;back]"; //back button
-
-	// local output
-	// local recipe
-	// local usable_recipe
 
 	function create_craft_formspec(item: string): string {
 		// Don't do air.
