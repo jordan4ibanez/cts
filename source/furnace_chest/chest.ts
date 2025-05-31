@@ -199,9 +199,14 @@ namespace furnace_chest {
 
 		def.on_destruct = destroy_chest;
 
-		// 	local def_opened = table.copy(def)
-		// 	local def_closed = table.copy(def)
-		// 	def_opened.mesh = "chest_open.obj"
+		const def_opened: ChestDefinition = table.copy(
+			def as any as LuaTable
+		) as any as ChestDefinition;
+		const def_closed: ChestDefinition = table.copy(
+			def as any as LuaTable
+		) as any as ChestDefinition;
+		def_opened.mesh = "chest_open.obj";
+
 		// 	for i = 1, #def_opened.tiles do
 		// 		if type(def_opened.tiles[i]) == "string" then
 		// 			def_opened.tiles[i] = {name = def_opened.tiles[i], backface_culling = true}
