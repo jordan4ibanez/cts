@@ -18,10 +18,11 @@ namespace tooManyItems {
 			return this.pages[index];
 		}
 
-		static pushPage(): void {
+		static pushPage(pageData: string): void {
 			if (this.locked) {
 				throw new Error("Modified when locked.");
 			}
+			this.pages.push(pageData);
 		}
 
 		static lock(): void {
@@ -504,24 +505,40 @@ namespace tooManyItems {
 		let x: number = 0;
 		let y: number = 0;
 
-		let pageData: string =
+		const pagePreface: string =
 			"size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]";
 
-        // todo: set this up as 1 loop, why is it 2?
+		let pageData: string = pagePreface;
 
-		// for _,item in pairs(all_items_table) do
-		// 	tmi_master_inventory["page_"..page] = tmi_master_inventory["page_"..page].."item_image_button["..(9.25+x)..","..y..";1,1;"..item..";toomanyitems."..item..";]"
-		// 	x = x + 1
-		// 	if x > 7 then
-		// 		x = 0
-		// 		y = y + 1
-		// 	end
-		// 	if y > 7 then
-		// 		y = 0
-		// 		page = page + 1
-		// 		tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
-		// 	end
-		// end
+		// todo: set this up as 1 loop, why is it 2?
+
+		for (const item of all_items_table) {
+			pageData +=
+				"item_image_button[" +
+				(9.25 + x) +
+				"," +
+				y +
+				";1,1;" +
+				item +
+				";toomanyitems." +
+				item +
+				";]";
+			x = x + 1;
+			if (x > 7) {
+				x = 0;
+				y = y + 1;
+			}
+			if (y > 7) {
+				y = 0;
+
+				// page = page + 1
+
+				MasterInventory.pushPage(pageData);
+
+				pageData = pagePreface;
+			}
+		}
+
 		// //add buttons and labels
 		// for i = 1,page do
 		// 	//set the last page
@@ -534,6 +551,7 @@ namespace tooManyItems {
 		// //override crafting table
 		// local name
 		// local temp_pool
+
 		// core.override_item("craftingtable:craftingtable", {
 		// 	 on_rightclick = function(pos, node, player, itemstack)
 		// 		name = player:get_player_name()
