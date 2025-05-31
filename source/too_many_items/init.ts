@@ -42,7 +42,7 @@ namespace tooManyItems {
 		"listring[current_player;main]" +
 		"listring[current_player;craft]";
 
-	// //this is from Linuxdirk, thank you AspireMint for showing me this
+	// This is from Linuxdirk, thank you AspireMint for showing me this.
 	// local recipe_converter = function (items, width)
 	//     local usable_recipe = { {}, {}, {} }
 	//     // The recipe is a shapeless recipe so all items are in one table
@@ -84,6 +84,7 @@ namespace tooManyItems {
 	//     end
 	//     return(usable_recipe)
 	// end
+
 	// local map_group_to_item = {
 	// 	["coal"]  = "main:coal",
 	// 	["glass"] = "main:glass",
