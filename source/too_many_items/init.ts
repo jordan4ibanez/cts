@@ -246,9 +246,8 @@ namespace tooManyItems {
 				}
 			}
 		} else if (recipe.method == CraftCheckType.cooking) {
-			item = recipe.items[1];
-			output =
-				output +
+			item = recipe.items[0];
+			output +=
 				"item_image_button[" +
 				(base_x + 2) +
 				"," +
