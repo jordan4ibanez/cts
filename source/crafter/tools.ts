@@ -1417,9 +1417,9 @@ namespace crafter {
 
 			core.register_tool("crafter:" + material + tool, {
 				description:
-					string.gsub(material, "^%l", string.upper) +
+					string.gsub(material, "^%l", string.upper)[0] +
 					" " +
-					string.gsub(tool, "^%l", string.upper),
+					string.gsub(tool, "^%l", string.upper)[0],
 				inventory_image: material + tool + ".png",
 				tool_capabilities: {
 					full_punch_interval: 0,
@@ -1525,7 +1525,8 @@ namespace crafter {
 
 		// Add swords.
 		core.register_tool("crafter:" + material + "sword", {
-			description: string.gsub(material, "^%l", string.upper) + " Sword",
+			description:
+				string.gsub(material, "^%l", string.upper)[0] + " Sword",
 			inventory_image: material + "sword.png",
 			tool_capabilities: {
 				full_punch_interval: 0,
