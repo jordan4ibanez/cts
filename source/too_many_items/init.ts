@@ -1,7 +1,9 @@
 namespace tooManyItems {
 	// local minetest,pairs = minetest,pairs
 
+	//? Note: This is being treated as a fortran module in this namespace.
 	class MasterInventory {
+		private constructor() {}
 		static page_limit: number = 0;
 		private static pages: string[] = [];
 
