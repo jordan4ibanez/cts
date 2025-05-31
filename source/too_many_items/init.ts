@@ -484,7 +484,7 @@ namespace tooManyItems {
 		// Dump all the items in.
 
 		let item_counter: number = 0;
-		// let page: number = 1;
+		let page: number = 1;
 		let x: number = 0;
 		let y: number = 0;
 
