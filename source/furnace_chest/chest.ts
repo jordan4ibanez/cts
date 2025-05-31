@@ -133,83 +133,7 @@ namespace furnace_chest {
 		def.paramtype2 = ParamType2.facedir;
 		def.legacy_facedir_simple = true;
 		def.is_ground_content = false;
-		if (def.protected) {
-			def.on_construct = (pos: Vec3) => {
-				const meta: MetaRef = core.get_meta(pos);
-				//meta:set_string("infotext", S("Locked Chest"))
-				meta.set_string("owner", "");
-				const inv: InvRef = meta.get_inventory();
-				inv.set_size("main", 9 * 4);
-			};
-
-			def.after_place_node = (pos: Vec3, placer: ObjectRef) => {
-				const meta: MetaRef = core.get_meta(pos);
-				meta.set_string("owner", placer.get_player_name() || "");
-				//meta:set_string("infotext", S("Locked Chest (owned by @1)", meta:get_string("owner")))
-			};
-
-			def.allow_metadata_inventory_move = (
-				pos: Vec3,
-				from_list: string,
-				from_index: number,
-				to_list: string,
-				to_index: number,
-				count: number,
-				player: ObjectRef
-			) => {
-				return count;
-			};
-
-			def.allow_metadata_inventory_put = (
-				pos: Vec3,
-				listname: string,
-				index: number,
-				stack: ItemStackObject,
-				player: ObjectRef
-			) => {
-				return stack.get_count();
-			};
-
-			def.allow_metadata_inventory_take = (
-				pos: Vec3,
-				listname: string,
-				index: number,
-				stack: ItemStackObject,
-				player: ObjectRef
-			) => {
-				return stack.get_count();
-			};
-
-			def.on_rightclick = (
-				pos: Vec3,
-				node: NodeTable,
-				clicker: ObjectRef,
-				itemstack: ItemStackObject,
-				pointed_thing: PointedThing
-			) => {
-				core.sound_play(
-					def.sound_open,
-					{ gain: 0.3, pos: pos, max_hear_distance: 10 },
-					true
-				);
-				core.swap_node(pos, {
-					name: "utility:" + name + "_open",
-					param2: node.param2,
-				});
-				core.show_formspec(
-					clicker.get_player_name(),
-					"utility:chest",
-					get_chest_formspec(pos)
-				);
-				open_chests.set(clicker.get_player_name(), {
-					pos: pos,
-					sound: def.sound_close,
-					swap: name,
-				});
-			};
-
-			def.on_blast = () => {};
-		} else {
+		
 			// 		def.on_construct = function(pos)
 			// 			local meta = core.get_meta(pos)
 			// 			//meta:set_string("infotext", S("Chest"))
@@ -233,7 +157,7 @@ namespace furnace_chest {
 			// 			core.remove_node(pos)
 			// 			return drops
 			// 		end
-		}
+		
 		// 	def.on_destruct = function(pos)
 		// 		destroy_chest(pos)
 		// 	end
