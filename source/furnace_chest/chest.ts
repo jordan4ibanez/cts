@@ -199,11 +199,11 @@ namespace furnace_chest {
 			};
 
 			def.allow_metadata_inventory_put = (
-				pos,
-				listname,
-				index,
-				stack,
-				player
+				pos: Vec3,
+				listname: string,
+				index: number,
+				stack: ItemStackObject,
+				player: ObjectRef
 			) => {
 				if (!can_interact_with_node(player, pos)) {
 					return 0;
