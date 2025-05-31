@@ -1,7 +1,9 @@
 namespace tooManyItems {
 	// local minetest,pairs = minetest,pairs
 
-	// local tmi_master_inventory = {}
+	const tmi_master_inventory = {
+		page_limit: 0,
+	};
 
 	interface TMIObject {
 		cheating: boolean;
@@ -304,9 +306,10 @@ namespace tooManyItems {
 			if (fields["toomanyitems.next"]) {
 				data.page += 1;
 				// Page loops back to first.
-				// 		if temp_pool.page > tmi_master_inventory.page_limit then
-				// 			temp_pool.page = 1
-				// 		end
+				if (data.page > tmi_master_inventory.page_limit) {
+					data.page = 1;
+				}
+
 				// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 				// 		core.sound_play("lever", {to_player = name,gain=0.7})
 				// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
