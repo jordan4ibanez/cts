@@ -380,10 +380,16 @@ namespace tooManyItems {
 						core.get_player_privs(name).give == true) ||
 					data.cheating == true
 				) {
-					// 			temp_pool.cheating = not temp_pool.cheating
-					// 			core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+					data.cheating = !data.cheating;
+					core.show_formspec(
+						name,
+						id,
+						form +
+							MasterInventory.getPage(data.page) +
+							cheat_button(name)
+					);
 					// 			core.sound_play("lever", {to_player = name,gain=0.7})
-					// 			player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+					// 			player:set_inventory_formspec(base_inv+tmi_master_inventory["page_"+temp_pool.page]+cheat_button(name))
 				} else {
 					// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
 					// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
