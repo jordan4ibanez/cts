@@ -43,7 +43,7 @@ interface core {
 	register_node(nodeName: string, definition: NodeDefinition): void;
 	register_craftitem(craftItemName: string, definition: ItemDefinition): void;
 	register_tool(toolName: string, definition: ItemDefinition): void;
-	override_item(itemName: string, definition: ItemDefinition): void;
+	override_item(itemName: string, definition: NodeDefinition): void;
 	unregister_item(itemName: string): void;
 	register_entity(entityName: string, definition: LuaEntity): void;
 	register_abm(abm: ABMDefinition): void;
