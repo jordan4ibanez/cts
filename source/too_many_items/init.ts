@@ -331,8 +331,8 @@ namespace tooManyItems {
 				);
 				// "prev" button.
 			} else if (fields["toomanyitems.prev"]) {
-				// 		temp_pool.page = temp_pool.page - 1
-				// 		//page loops back to end
+				data.page -= 1;
+				// Page loops back to end.
 				// 		if temp_pool.page < 1 then
 				// 			temp_pool.page = tmi_master_inventory.page_limit
 				// 		end
