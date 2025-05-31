@@ -395,8 +395,15 @@ namespace tooManyItems {
 							cheat_button(name)
 					);
 				} else {
-					// 			core.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
-					// 			core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
+					core.chat_send_player(
+						name,
+						"Sorry, server says I can't let you do that. :("
+					);
+					core.sound_play("lever", {
+						to_player: name,
+						gain: 0.7,
+						pitch: 0.7,
+					});
 				}
 				// this is the "cheating" aka giveme function and craft recipe
 			} else if (
