@@ -211,12 +211,18 @@ namespace furnace_chest {
 				return stack.get_count();
 			};
 
-			// 		def.allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-			// 			if not default.can_interact_with_node(player, pos) then
-			// 				return 0
-			// 			end
-			// 			return stack:get_count()
-			// 		end
+			def.allow_metadata_inventory_take = (
+				pos: Vec3,
+				listname: string,
+				index: number,
+				stack: ItemStackObject,
+				player: ObjectRef
+			) => {
+				if (!can_interact_with_node(player, pos)) {
+					return 0;
+				}
+				return stack.get_count();
+			};
 
 			// 		def.on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 			// 			if not default.can_interact_with_node(clicker, pos) then
