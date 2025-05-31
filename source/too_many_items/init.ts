@@ -515,12 +515,17 @@ namespace tooManyItems {
 			if (y > 7 || item == lastItem) {
 				y = 0;
 
-				//add buttons and labels
-				//set the last page
-				// tmi_master_inventory["page_"+i] = tmi_master_inventory["page_"+i]+"button[9.25,7.6;2,2;toomanyitems.prev;prev]"+
-				// "button[15.25,7.6;2,2;toomanyitems.next;next]"+
-				//this is +1 so it makes more sense
-				// "label[13.75,8.25;page "+i+"/"+page+"]"
+				// Add buttons and labels to complete this page.
+				// Also, set the last page index: [x/max pages]
+				pageData +=
+					"button[9.25,7.6;2,2;toomanyitems.prev;prev]" +
+					"button[15.25,7.6;2,2;toomanyitems.next;next]" +
+					// this is +1 so it makes more sense
+					"label[13.75,8.25;page " +
+					page +
+					"/" +
+					maxPages +
+					"]";
 
 				MasterInventory.pushPage(pageData);
 
