@@ -74,9 +74,9 @@ namespace chest {
 		core.after(
 			0.2,
 			(pos: Vec3, swap: string, node: NodeTable) => {
-				if (core.get_node(pos).name == "utility:chest_open") {
+				if (core.get_node(pos).name == "crafter_chest:chest_open") {
 					core.swap_node(pos, {
-						name: "utility:" + swap,
+						name: "crafter_chest:" + swap,
 						param2: node.param2,
 					});
 					core.sound_play(
@@ -100,7 +100,7 @@ namespace chest {
 			fields: Dictionary<string, any>
 		) => {
 			if (
-				formname != "utility:chest" ||
+				formname != "crafter_chest:chest" ||
 				player == null ||
 				fields.quit == null
 			) {
@@ -162,8 +162,8 @@ namespace chest {
 			clicker: ObjectRef
 		) => {
 			if (
-				core.get_node(pos).name != "utility:chest" &&
-				core.get_node(pos).name != "utility:chest_open"
+				core.get_node(pos).name != "crafter_chest:chest" &&
+				core.get_node(pos).name != "crafter_chest:chest_open"
 			) {
 				return;
 			}
@@ -173,12 +173,12 @@ namespace chest {
 				true
 			);
 			core.swap_node(pos, {
-				name: "utility:" + name + "_open",
+				name: "crafter_chest:" + name + "_open",
 				param2: node.param2,
 			});
 			core.show_formspec(
 				clicker.get_player_name(),
-				"utility:chest",
+				"crafter_chest:chest",
 				get_chest_formspec(pos)
 			);
 			open_chests.set(clicker.get_player_name(), {
@@ -192,7 +192,7 @@ namespace chest {
 		def.on_blast = (pos: Vec3) => {
 			const drops: ItemStackObject[] = [];
 			get_inventory_drops(pos, "main", drops);
-			drops.push(ItemStack("utility:" + name));
+			drops.push(ItemStack("crafter_chest:" + name));
 			core.remove_node(pos);
 			return drops;
 		};
@@ -225,7 +225,7 @@ namespace chest {
 			}
 		}
 
-		def_opened.drop = "utility:" + name;
+		def_opened.drop = "crafter_chest:" + name;
 		if (def_opened.groups == null) {
 			throw new Error("Groups undefined.");
 		}
@@ -245,8 +245,8 @@ namespace chest {
 		def_closed.tiles[5] = def.tiles[4]; // swap textures around for "normal"
 		def_closed.tiles[4] = def.tiles[2]; // drawtype to make them match the mesh
 		def_closed.tiles[2] = (def.tiles[2] as string) + "^[transformFX";
-		core.register_node("utility:" + name, def_closed);
-		core.register_node("utility:" + name + "_open", def_opened);
+		core.register_node("crafter_chest:" + name, def_closed);
+		core.register_node("crafter_chest:" + name + "_open", def_opened);
 	}
 
 	register_chest("chest", {
@@ -266,7 +266,7 @@ namespace chest {
 	});
 
 	core.register_craft({
-		output: "utility:chest",
+		output: "crafter_chest:chest",
 		recipe: [
 			["main:wood", "main:wood", "main:wood"],
 			["main:wood", "", "main:wood"],
@@ -276,11 +276,11 @@ namespace chest {
 
 	core.register_craft({
 		type: CraftRecipeType.fuel,
-		recipe: "utility:chest",
+		recipe: "crafter_chest:chest",
 		burntime: 5,
 	});
 
-	const rNode = core.registered_nodes["utility:chest_open"];
+	const rNode = core.registered_nodes["crafter_chest:chest_open"];
 	if (rNode == null) {
 		throw new Error("Another issue");
 	}
@@ -292,7 +292,7 @@ namespace chest {
 	groups["redstone_torch"] = 1;
 	groups["redstone_power"] = 9;
 
-	core.override_item("utility:chest_open", {
+	core.override_item("crafter_chest:chest_open", {
 		groups: groups,
 	});
 }
