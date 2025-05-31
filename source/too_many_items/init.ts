@@ -109,13 +109,13 @@ namespace tooManyItems {
 	};
 
 	function get_if_group(item: string) {
-		// 	if item ~= nil and item:sub(1,6) == "group:" then
-		// 		local group_name = item:sub(7, item:len())
-		// 		local mapped_item = map_group_to_item[group_name]
-		// 		if mapped_item ~= nil then
-		// 			return(mapped_item)
-		// 		end
-		// 	end
+		if (item != null && string.sub(item, 1, 6)[0] == "group:") {
+			const group_name = string.sub(item, 7, item.length);
+			// local mapped_item = map_group_to_item[group_name]
+			// if mapped_item ~= nil then
+			// 	return(mapped_item)
+			// end
+		}
 		// 	return(item)
 	}
 
