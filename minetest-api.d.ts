@@ -232,7 +232,7 @@ interface core {
 	setting_get_pos(name: string): Vec3;
 	string_to_privs(str: string, delim: string): string;
 	privs_to_string(privs: string, delim: string): string;
-	get_player_privs(playerName: string): string[];
+	get_player_privs(playerName: string): Dictionary<string, boolean>;
 	check_player_privs(
 		playerOrName: ObjectRef | string,
 		stringListOrMap: string | Dictionary<string, boolean>
