@@ -276,8 +276,17 @@ namespace tooManyItems {
 			formname: string,
 			fields: Dictionary<string, any>
 		) => {
-			// 	name = player:get_player_name()
-			// 	temp_pool = pool[name]
+			const name: string = player.get_player_name();
+
+			const data = pool.get(name);
+
+			if (!data) {
+				core.log(
+					LogLevel.warning,
+					`Player [${name}] is not in the tmi pool.`
+				);
+			}
+
 			// 	if formname == "" then
 			// 		form = base_inv
 			// 		id = ""
@@ -285,6 +294,7 @@ namespace tooManyItems {
 			// 		form = crafting_table_inv
 			// 		id = "crafting"
 			// 	end
+
 			// 	//"next" button
 			// 	if fields["toomanyitems.next"] then
 			// 		temp_pool.page = temp_pool.page + 1
