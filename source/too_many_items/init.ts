@@ -133,52 +133,52 @@ namespace tooManyItems {
 	// local recipe
 	// local usable_recipe
 
-	// local function create_craft_formspec(item)
-	// 	//don't do air
-	// 	if item == "" then
-	// 		return("")
-	// 	end
-	// 	recipe = core.get_craft_recipe(item)
-	// 	usable_table = recipe_converter(recipe.items, recipe.width)
-	// 	output = output_constant
-	// 	if recipe.method == "normal" then
-	// 		if usable_table then
-	// 			//shaped (regular)
-	// 			if recipe.width > 0 then
-	// 				for x = 1,3 do
-	// 					for y = 1,3 do
-	// 						item = get_if_group(usable_table[x][y])
-	// 						if item then
-	// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;"..item..";"..item..";]"
-	// 						else
-	// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;;;]"
-	// 						end
-	// 					end
-	// 				end
-	// 			//shapeless
-	// 			else
-	// 				local i = 1
-	// 				for x = 1,3 do
-	// 					for y = 1,3 do
-	// 						item = get_if_group(usable_table[i])
-	// 						if item then
-	// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;"..item..";"..item..";]"
-	// 						else
-	// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;;;]"
-	// 						end
-	// 						i = i + 1
-	// 					end
-	// 				end
-	// 			end
-	// 		end
-	// 	elseif recipe.method == "cooking" then
-	// 		item = recipe.items[1]
-	// 		output = output.."item_image_button["..(base_x+2)..","..(base_y+1)..";1,1;"..item..";"..item..";]"
-	// 		output = output.."image[2.75,1.5;1,1;default_furnace_fire_fg.png]"
-	// 	end
-	// 	return(output)
-	// end
-    
+	function create_craft_formspec(item: string) {
+		// 	//don't do air
+		// 	if item == "" then
+		// 		return("")
+		// 	end
+		// 	recipe = core.get_craft_recipe(item)
+		// 	usable_table = recipe_converter(recipe.items, recipe.width)
+		// 	output = output_constant
+		// 	if recipe.method == "normal" then
+		// 		if usable_table then
+		// 			//shaped (regular)
+		// 			if recipe.width > 0 then
+		// 				for x = 1,3 do
+		// 					for y = 1,3 do
+		// 						item = get_if_group(usable_table[x][y])
+		// 						if item then
+		// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;"..item..";"..item..";]"
+		// 						else
+		// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;;;]"
+		// 						end
+		// 					end
+		// 				end
+		// 			//shapeless
+		// 			else
+		// 				local i = 1
+		// 				for x = 1,3 do
+		// 					for y = 1,3 do
+		// 						item = get_if_group(usable_table[i])
+		// 						if item then
+		// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;"..item..";"..item..";]"
+		// 						else
+		// 							output = output.."item_image_button["..base_x+y..","..base_y+x..";1,1;;;]"
+		// 						end
+		// 						i = i + 1
+		// 					end
+		// 				end
+		// 			end
+		// 		end
+		// 	elseif recipe.method == "cooking" then
+		// 		item = recipe.items[1]
+		// 		output = output.."item_image_button["..(base_x+2)..","..(base_y+1)..";1,1;"..item..";"..item..";]"
+		// 		output = output.."image[2.75,1.5;1,1;default_furnace_fire_fg.png]"
+		// 	end
+		// 	return(output)
+	}
+
 	// local function cheat_button(name)
 	// 	if pool[name] and pool[name].cheating then
 	// 		return("button[11.5,7.6;2,2;toomanyitems.cheat;cheat:on]")
