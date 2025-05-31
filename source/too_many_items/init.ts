@@ -257,7 +257,7 @@ namespace tooManyItems {
 								x +
 								";1,1;;;]";
 						}
-						i = i + 1;
+						i += 1;
 					}
 				}
 			}
