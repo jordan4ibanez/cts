@@ -28,11 +28,12 @@ namespace furnace_chest {
 		swap: string;
 	}
 
+    // Drops is being used as a reference.
 	function get_inventory_drops(
 		pos: Vec3,
 		inventory: string,
 		drops: ItemStackObject[]
-	) {
+	): void {
 		const inv = core.get_meta(pos).get_inventory();
 		for (let i = 1; i <= inv.get_size(inventory); i++) {
 			const stack: ItemStackObject = inv.get_stack(inventory, i);
