@@ -569,11 +569,6 @@ namespace tooManyItems {
 		});
 	});
 
-	// Set new players inventory up.
-	// local name
-	// local temp_pool
-	// local inv
-
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 		const newData: TMIObject = {
