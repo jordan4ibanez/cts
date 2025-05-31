@@ -1,4 +1,4 @@
-namespace furnace_chest {
+namespace chest {
 	// todo: this is, horrible. This thing is storing fixed data as dynamic.
 	// todo: rewrite this to not be a disaster.
 
