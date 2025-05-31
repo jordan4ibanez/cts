@@ -164,6 +164,7 @@ namespace furnace_chest {
 		protected: boolean;
 		sound_open: string;
 		sound_close: string;
+        on_key_use : (pos: Vec3, player: ObjectRef) => void
 	}
 
 	export function register_chest(name: string, def: ChestDefinition) {
@@ -262,26 +263,26 @@ namespace furnace_chest {
 
 			def.on_blast = () => {};
 
-			// 		def.on_key_use = function(pos, player)
-			// 			local secret = core.get_meta(pos):get_string("key_lock_secret")
-			// 			local itemstack = player:get_wielded_item()
-			// 			local key_meta = itemstack:get_meta()
-			// 			if itemstack:get_metadata() == "" then
-			// 				return
-			// 			end
-			// 			if key_meta:get_string("secret") == "" then
-			// 				key_meta:set_string("secret", core.parse_json(itemstack:get_metadata()).secret)
-			// 				itemstack:set_metadata("")
-			// 			end
-			// 			if secret ~= key_meta:get_string("secret") then
-			// 				return
-			// 			end
-			// 			core.show_formspec(
-			// 				player:get_player_name(),
-			// 				"utility:chest_locked",
-			// 				chest.get_chest_formspec(pos)
-			// 			)
-			// 		end
+					def.on_key_use = (pos, player) => {
+						const secret = core.get_meta(pos).get_string("key_lock_secret")
+						const itemstack = player.get_wielded_item()
+						const key_meta = itemstack.get_meta()
+						if itemstack.get_metadata() == "" then
+							return
+						end
+						if key_meta:get_string("secret") == "" then
+							key_meta:set_string("secret", core.parse_json(itemstack:get_metadata()).secret)
+							itemstack:set_metadata("")
+						end
+						if secret ~= key_meta:get_string("secret") then
+							return
+						end
+						core.show_formspec(
+							player:get_player_name(),
+							"utility:chest_locked",
+							chest.get_chest_formspec(pos)
+						)
+                }
 
 			// 		def.on_skeleton_key_use = function(pos, player, newsecret)
 			// 			local meta = core.get_meta(pos)
