@@ -312,7 +312,7 @@ namespace furnace {
 				100 - math.floor((fuel_time / fuel_totaltime) * 100);
 			// fuel_state = tostring(fuel_percent);
 			formspec = get_furnace_active_formspec(fuel_percent, item_percent);
-			swap_node(pos, "crafter_furnace_chest:furnace_active");
+			swap_node(pos, "crafter_furnace:furnace_active");
 			// Make sure timer restarts automatically.
 			result = true;
 		} else {
@@ -320,7 +320,7 @@ namespace furnace {
 			// 	fuel_state = tostring(0);
 			// }
 			formspec = get_furnace_inactive_formspec();
-			swap_node(pos, "crafter_furnace_chest:furnace");
+			swap_node(pos, "crafter_furnace:furnace");
 			// stop timer on the inactive furnace
 			core.get_node_timer(pos).stop();
 		}
@@ -366,7 +366,7 @@ namespace furnace {
 	// Node definitions.
 	//
 
-	core.register_node("crafter_furnace_chest:furnace", {
+	core.register_node("crafter_furnace:furnace", {
 		description: "Furnace",
 		tiles: [
 			"furnace_top.png",
@@ -409,7 +409,7 @@ namespace furnace {
 		// 		furnace.get_inventory_drops(pos, "src", drops)
 		// 		furnace.get_inventory_drops(pos, "fuel", drops)
 		// 		furnace.get_inventory_drops(pos, "dst", drops)
-		// 		drops[#drops+1] = "crafter_furnace_chest:furnace"
+		// 		drops[#drops+1] = "crafter_furnace:furnace"
 		// 		core.remove_node(pos)
 		// 		return drops
 		// 	end,
@@ -421,7 +421,7 @@ namespace furnace {
 		allow_metadata_inventory_take: allow_metadata_inventory_take,
 	});
 
-	core.register_node("crafter_furnace_chest:furnace_active", {
+	core.register_node("crafter_furnace:furnace_active", {
 		description: "Furnace",
 		tiles: [
 			"furnace_top.png",
@@ -442,7 +442,7 @@ namespace furnace {
 		],
 		paramtype2: ParamType2.facedir,
 		light_source: 8,
-		drop: "crafter_furnace_chest:furnace",
+		drop: "crafter_furnace:furnace",
 		groups: { stone: 2 },
 		legacy_facedir_simple: true,
 		is_ground_content: false,
@@ -456,7 +456,7 @@ namespace furnace {
 	});
 
 	core.register_craft({
-		output: "crafter_furnace_chest:furnace",
+		output: "crafter_furnace:furnace",
 		recipe: [
 			["crafter:cobble", "crafter:cobble", "crafter:cobble"],
 			["crafter:cobble", "", "crafter:cobble"],
