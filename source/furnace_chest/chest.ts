@@ -245,8 +245,8 @@ namespace furnace_chest {
 		def_closed.tiles[5] = def.tiles[4]; // swap textures around for "normal"
 		def_closed.tiles[4] = def.tiles[2]; // drawtype to make them match the mesh
 		def_closed.tiles[2] = (def.tiles[2] as string) + "^[transformFX";
-		// 	core.register_node("utility:" .. name, def_closed)
-		// 	core.register_node("utility:" .. name .. "_open", def_opened)
+		core.register_node("utility:" + name, def_closed);
+		core.register_node("utility:" + name + "_open", def_opened);
 	}
 
 	// chest.register_chest("chest", {
