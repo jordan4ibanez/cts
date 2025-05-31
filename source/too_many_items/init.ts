@@ -3,61 +3,61 @@ local minetest,pairs = minetest,pairs
 local tmi_master_inventory = {}
 local pool = {}
 local max = 7*7
---2x2 formspec
+//2x2 formspec
 local base_inv = 
 "size[17.2,8.75]"..
 "background[-0.19,-0.25;9.41,9.49;main_inventory.png]"..
 "listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-"list[current_player;main;0,4.5;9,1;]".. --hot bar
-"list[current_player;main;0,6;9,3;9]".. --big part
+"list[current_player;main;0,4.5;9,1;]".. //hot bar
+"list[current_player;main;0,6;9,3;9]".. //big part
 "list[current_player;craft;2.5,1;2,2;]"..
---armor slots
+//armor slots
 "list[current_player;armor_head;0.25,0;1,1;]"..
 "list[current_player;armor_torso;0.25,1;1,1;]"..
 "list[current_player;armor_legs;0.25,2;1,1;]"..
 "list[current_player;armor_feet;0.25,3;1,1;]"..
---craft preview with ring
+//craft preview with ring
 "list[current_player;craftpreview;6.1,1.5;1,1;]"..
 "listring[current_player;main]"..
 "listring[current_player;craft]"
---this is the 3x3 crafting table formspec
+//this is the 3x3 crafting table formspec
 local crafting_table_inv = 
 "size[17.2,8.75]"..
 "background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"..
 "listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-"list[current_player;main;0,4.5;9,1;]".. --hot bar
-"list[current_player;main;0,6;9,3;9]".. --big part
+"list[current_player;main;0,4.5;9,1;]".. //hot bar
+"list[current_player;main;0,6;9,3;9]".. //big part
 "list[current_player;craft;1.75,0.5;3,3;]"..
---armor slots
+//armor slots
 "list[current_player;armor_head;0.25,0;1,1;]"..
 "list[current_player;armor_torso;0.25,1;1,1;]"..
 "list[current_player;armor_legs;0.25,2;1,1;]"..
 "list[current_player;armor_feet;0.25,3;1,1;]"..
---craft preview with ring
+//craft preview with ring
 "list[current_player;craftpreview;6.1,1.5;1,1;]"..
 "listring[current_player;main]"..
 "listring[current_player;craft]"
---this is from Linuxdirk, thank you AspireMint for showing me this
+//this is from Linuxdirk, thank you AspireMint for showing me this
 local recipe_converter = function (items, width)
     local usable_recipe = { {}, {}, {} }
 
-    -- The recipe is a shapeless recipe so all items are in one table
+    // The recipe is a shapeless recipe so all items are in one table
     if width == 0 then
         usable_recipe = items
     end
 
-    -- x _ _
-    -- x _ _
-    -- x _ _
+    // x _ _
+    // x _ _
+    // x _ _
     if width == 1 then
         usable_recipe[1][1] = items[1] or ''
         usable_recipe[2][1] = items[2] or ''
         usable_recipe[3][1] = items[3] or ''
     end
 
-    -- x x _
-    -- x x _
-    -- x x _
+    // x x _
+    // x x _
+    // x x _
     if width == 2 then
         usable_recipe[1][1] = items[1] or ''
         usable_recipe[1][2] = items[2] or ''
@@ -67,9 +67,9 @@ local recipe_converter = function (items, width)
         usable_recipe[3][2] = items[6] or ''
     end
 
-    -- x x x
-    -- x x x
-    -- x x x
+    // x x x
+    // x x x
+    // x x x
     if width == 3 then
         usable_recipe[1][1] = items[1] or ''
         usable_recipe[1][2] = items[2] or ''
@@ -110,14 +110,14 @@ local base_x = 0.75
 local base_y = -0.5
 local output_constant = 
 "listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-"list[current_player;main;0,4.5;9,1;]"..   --hot bar
-"list[current_player;main;0,6;9,3;9]"..    --main inventory
-"button[5,3.5;1,1;toomanyitems.back;back]" --back button
+"list[current_player;main;0,4.5;9,1;]"..   //hot bar
+"list[current_player;main;0,6;9,3;9]"..    //main inventory
+"button[5,3.5;1,1;toomanyitems.back;back]" //back button
 local output
 local recipe
 local usable_recipe
 local function create_craft_formspec(item)
-	--don't do air
+	//don't do air
 	if item == "" then
 		return("")
 	end
@@ -130,7 +130,7 @@ local function create_craft_formspec(item)
 	
 	if recipe.method == "normal" then
 		if usable_table then
-			--shaped (regular)
+			//shaped (regular)
 			if recipe.width > 0 then
 				for x = 1,3 do
 					for y = 1,3 do
@@ -142,7 +142,7 @@ local function create_craft_formspec(item)
 						end
 					end
 				end
-			--shapeless
+			//shapeless
 			else
 				local i = 1
 				for x = 1,3 do
@@ -195,20 +195,20 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		id = "crafting"
 	end
 	
-	--"next" button
+	//"next" button
 	if fields["toomanyitems.next"] then
 		temp_pool.page = temp_pool.page + 1
-		--page loops back to first
+		//page loops back to first
 		if temp_pool.page > tmi_master_inventory.page_limit then
 			temp_pool.page = 1
 		end	
 		minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 		minetest.sound_play("lever", {to_player = name,gain=0.7})
 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-	--"prev" button
+	//"prev" button
 	elseif fields["toomanyitems.prev"] then
 		temp_pool.page = temp_pool.page - 1
-		--page loops back to end
+		//page loops back to end
 		if temp_pool.page < 1 then
 			temp_pool.page = tmi_master_inventory.page_limit
 		end	
@@ -220,16 +220,16 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 
 		minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 		minetest.sound_play("lever", {to_player = name,gain=0.7})
-	--this resets the craft table
+	//this resets the craft table
 	elseif fields.quit then
 		inv = player:get_inventory()
 		dump_craft(player)
 		inv:set_width("craft", 2)
 		inv:set_size("craft", 4)
-		--reset the player inv
-		--minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+		//reset the player inv
+		//minetest.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 	elseif fields["toomanyitems.cheat"] then
-		--check if the player has the give priv
+		//check if the player has the give priv
 		if (not temp_pool.cheating and minetest.get_player_privs(name).give == true) or temp_pool.cheating == true then
 			temp_pool.cheating = not temp_pool.cheating
 
@@ -240,7 +240,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 			minetest.chat_send_player(name, "Sorry m8, server says I can't let you do that :(")
 			minetest.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
 		end
-	--this is the "cheating" aka giveme function and craft recipe
+	//this is the "cheating" aka giveme function and craft recipe
 	elseif fields and type(fields) == "table" and string.match(next(fields),"toomanyitems.") then
 
 		item = string.gsub(next(fields), "toomanyitems.", "")
@@ -248,17 +248,17 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		inv = player:get_inventory()
 		if temp_pool.cheating and minetest.get_player_privs(name).give then
 			
-			--room for item
+			//room for item
 			if inv and inv:room_for_item("main",stack) then
 				inv:add_item("main", stack)
 				minetest.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
-			--no room for item
+			//no room for item
 			else
 				minetest.chat_send_player(name, "Might want to clear your inventory")
 				minetest.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
 			end
 
-		--this is to get the craft recipe
+		//this is to get the craft recipe
 		else
 			craft_inv = create_craft_formspec(item)
 			if craft_inv and craft_inv ~= "" then
@@ -271,7 +271,7 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 end)
 
 
---run through the items and then set the pages
+//run through the items and then set the pages
 local item_counter = 0
 local page = 1
 local x = 0
@@ -279,14 +279,14 @@ local y = 0
 
 minetest.register_on_mods_loaded(function()
 
---sort all items (There is definitely a better way to do this)
+//sort all items (There is definitely a better way to do this)
 
---get all craftable items
+//get all craftable items
 local all_items_table = {}
 for index,data in pairs(minetest.registered_items) do
 	if data.name ~= "" then
 		local recipe = minetest.get_craft_recipe(data.name)
-		--only put in craftable items
+		//only put in craftable items
 		if recipe.method then			
 			table.insert(all_items_table,data.name)
 		end
@@ -295,7 +295,7 @@ end
 
 table.sort(all_items_table)
 
---dump all the items in
+//dump all the items in
 
 tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
 
@@ -313,18 +313,18 @@ for _,item in pairs(all_items_table) do
 	end
 end
 
---add buttons and labels
+//add buttons and labels
 for i = 1,page do
-	--set the last page
+	//set the last page
 	tmi_master_inventory["page_"..i] = tmi_master_inventory["page_"..i].."button[9.25,7.6;2,2;toomanyitems.prev;prev]"..
 	"button[15.25,7.6;2,2;toomanyitems.next;next]"..
-	--this is +1 so it makes more sense
+	//this is +1 so it makes more sense
 	"label[13.75,8.25;page "..i.."/"..page.."]"
 end
 
 tmi_master_inventory.page_limit = page
 
---override crafting table
+//override crafting table
 local name
 local temp_pool
 
@@ -340,7 +340,7 @@ minetest.override_item("craftingtable:craftingtable", {
 end)
 
 
---set new players inventory up
+//set new players inventory up
 local name
 local temp_pool
 local inv
