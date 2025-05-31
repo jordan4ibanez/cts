@@ -150,11 +150,6 @@ namespace tooManyItems {
 	// local recipe
 	// local usable_recipe
 
-	core.register_on_mods_loaded(() => {
-		// create_craft_formspec("crafter:ladder");
-		MasterInventory.getPage(0);
-	});
-
 	function create_craft_formspec(item: string): string {
 		// Don't do air.
 		if (item == "") {
