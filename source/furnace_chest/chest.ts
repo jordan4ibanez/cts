@@ -2,8 +2,6 @@ namespace furnace_chest {
 	// todo: this is, horrible. This thing is storing fixed data as dynamic.
 	// todo: rewrite this to not be a disaster.
 
-
-
 	function get_chest_formspec(pos: Vec3): string {
 		const spos =
 			tostring(pos.x) + "," + tostring(pos.y) + "," + tostring(pos.z);
@@ -160,9 +158,6 @@ namespace furnace_chest {
 				count: number,
 				player: ObjectRef
 			) => {
-				if (!can_interact_with_node(player, pos)) {
-					return 0;
-				}
 				return count;
 			};
 
