@@ -225,12 +225,15 @@ namespace furnace_chest {
 			}
 		}
 
-		// 	def_opened.drop = "utility:" .. name
-		// 	def_opened.groups.not_in_creative_inventory = 1
-		// 	def_opened.selection_box = {
-		// 		type = "fixed",
-		// 		fixed = { -1/2, -1/2, -1/2, 1/2, 3/16, 1/2 },
-		// 	}
+		def_opened.drop = "utility:" + name;
+		if (def_opened.groups == null) {
+			throw new Error("Groups undefined.");
+		}
+		def_opened.groups.not_in_creative_inventory = 1;
+		def_opened.selection_box = {
+			type: Nodeboxtype.fixed,
+			fixed: [-1 / 2, -1 / 2, -1 / 2, 1 / 2, 3 / 16, 1 / 2],
+		};
 		// 	def_opened.on_blast = function() end
 		// 	def_closed.mesh = nil
 		// 	def_closed.drawtype = nil
