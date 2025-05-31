@@ -364,7 +364,7 @@ namespace tooManyItems {
 						cheat_button(name)
 				);
 				core.sound_play("lever", { to_player: name, gain: 0.7 });
-				//this resets the craft table
+				// This resets the craft table.
 			} else if (fields.quit) {
 				const inv: InvRef = player.get_inventory();
 				// todo: dump_craft comes from player_mechanics
@@ -374,7 +374,7 @@ namespace tooManyItems {
 				//reset the player inv
 				//core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 			} else if (fields["toomanyitems.cheat"]) {
-				// 		//check if the player has the give priv
+						// Check if the player has the give priv.
 				// 		if (not temp_pool.cheating and core.get_player_privs(name).give == true) or temp_pool.cheating == true then
 				// 			temp_pool.cheating = not temp_pool.cheating
 				// 			core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
