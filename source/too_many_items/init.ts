@@ -198,11 +198,9 @@ namespace tooManyItems {
 						if (item != null) {
 							output +=
 								"item_image_button[" +
-								base_x +
-								y +
+								tostring(base_x + y) +
 								"," +
-								base_y +
-								x +
+								tostring(base_y + x) +
 								";1,1;" +
 								item +
 								";" +
@@ -211,11 +209,9 @@ namespace tooManyItems {
 						} else {
 							output +=
 								"item_image_button[" +
-								base_x +
-								y +
+								tostring(base_x + y) +
 								"," +
-								base_y +
-								x +
+								tostring(base_y + x) +
 								";1,1;;;]";
 						}
 					}
@@ -229,11 +225,9 @@ namespace tooManyItems {
 						if (item != null) {
 							output +=
 								"item_image_button[" +
-								base_x +
-								y +
+								tostring(base_x + y) +
 								"," +
-								base_y +
-								x +
+								tostring(base_y + x) +
 								";1,1;" +
 								item +
 								";" +
@@ -242,11 +236,9 @@ namespace tooManyItems {
 						} else {
 							output +=
 								"item_image_button[" +
-								base_x +
-								y +
+								tostring(base_x + y) +
 								"," +
-								base_y +
-								x +
+								tostring(base_y + x) +
 								";1,1;;;]";
 						}
 						i += 1;
