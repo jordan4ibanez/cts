@@ -98,15 +98,15 @@ namespace tooManyItems {
 		return usable_recipe;
 	}
 
-	// local map_group_to_item = {
-	// 	["coal"]  = "main:coal",
-	// 	["glass"] = "main:glass",
-	// 	["sand"]  = "main:sand",
-	// 	["stick"] = "main:stick",
-	// 	["stone"] = "main:cobble",
-	// 	["tree"]  = "main:tree",
-	// 	["wood"]  = "main:wood"
-	// }
+	const map_group_to_item: Dictionary<string, string> = {
+		coal: "main:coal",
+		glass: "main:glass",
+		sand: "main:sand",
+		stick: "main:stick",
+		stone: "main:cobble",
+		tree: "main:tree",
+		wood: "main:wood",
+	};
 	// local get_if_group = function(item)
 	// 	if item ~= nil and item:sub(1,6) == "group:" then
 	// 		local group_name = item:sub(7, item:len())
