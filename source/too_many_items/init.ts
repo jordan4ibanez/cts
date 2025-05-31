@@ -467,9 +467,11 @@ namespace tooManyItems {
 	let y: number = 0;
 
 	core.register_on_mods_loaded(() => {
-		// //sort all items (There is definitely a better way to do this)
-		// //get all craftable items
+		// Sort all items (There is definitely a better way to do this).
+		// Get all craftable items.
+
 		// local all_items_table = {}
+        
 		// for index,data in pairs(core.registered_items) do
 		// 	if data.name ~= "" then
 		// 		local recipe = core.get_craft_recipe(data.name)
