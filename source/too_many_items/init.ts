@@ -137,15 +137,13 @@ namespace tooManyItems {
 		create_craft_formspec("crafter:ladder");
 	});
 
-	function create_craft_formspec(item: string) {
+	function create_craft_formspec(item: string): string {
 		// Don't do air.
 		if (item == "") {
 			return "";
 		}
 
 		const recipe: CraftRecipeObject | null = core.get_craft_recipe(item);
-
-		print(dump(recipe));
 
 		if (recipe == null) {
 			return "";
@@ -155,8 +153,6 @@ namespace tooManyItems {
 			recipe.items,
 			recipe.width
 		);
-
-		print(dump(usable_table));
 
 		let output: string = output_constant;
 
@@ -248,7 +244,7 @@ namespace tooManyItems {
 			output = output + "image[2.75,1.5;1,1;default_furnace_fire_fg.png]";
 		}
 
-		// 	return(output)
+		return output;
 	}
 
 	// local function cheat_button(name)
