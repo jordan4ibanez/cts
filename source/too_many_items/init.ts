@@ -1,7 +1,7 @@
 namespace tooManyItems {
 	// local minetest,pairs = minetest,pairs
 
-    // todo: this needs to be able to scroll through all the recipes of an item!
+	// todo: this needs to be able to scroll through all the recipes of an item!
 
 	//? Note: This is being treated as a fortran module in this namespace.
 	class MasterInventory {
