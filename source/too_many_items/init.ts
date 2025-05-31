@@ -1,12 +1,9 @@
 namespace tooManyItems {
 	// local minetest,pairs = minetest,pairs
 
-
 	class MasterInventory {
-        static instance: MasterInventory = new MasterInventory();
-		
-        
-	};
+		static page_limit: number = 0;
+	}
 
 	interface TMIObject {
 		cheating: boolean;
@@ -309,7 +306,7 @@ namespace tooManyItems {
 			if (fields["toomanyitems.next"]) {
 				data.page += 1;
 				// Page loops back to first.
-				if (data.page > tmi_master_inventory.page_limit) {
+				if (data.page > MasterInventory.page_limit) {
 					data.page = 1;
 				}
 
