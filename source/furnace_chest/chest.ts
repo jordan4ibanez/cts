@@ -1,4 +1,8 @@
 namespace furnace_chest {
+
+    // todo: this is, horrible. This thing is storing fixed data as dynamic.
+    // todo: rewrite this to not be a disaster.
+    
 	function can_interact_with_node(player: ObjectRef, pos: Vec3) {
 		if (player && player.is_player()) {
 			if (core.check_player_privs(player, "protection_bypass")) {
@@ -160,6 +164,7 @@ namespace furnace_chest {
 	export interface ChestDefinition extends NodeDefinition {
 		protected: boolean;
 		sound_open: string;
+		sound_close: string;
 	}
 
 	export function register_chest(name: string, def: ChestDefinition) {
@@ -249,8 +254,11 @@ namespace furnace_chest {
 					"utility:chest",
 					get_chest_formspec(pos)
 				);
-				// chest.open_chests[clicker:get_player_name()] = { pos = pos,
-				// 		sound = def.sound_close, swap = name }
+				open_chests.set(clicker.get_player_name(), {
+					pos: pos,
+					sound: def.sound_close,
+					swap: name,
+				});
 			};
 
 			// 		def.on_blast = function() end
