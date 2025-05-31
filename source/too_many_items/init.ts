@@ -3,6 +3,14 @@ namespace tooManyItems {
 
 	class MasterInventory {
 		static page_limit: number = 0;
+		private static pages: string[] = [];
+
+		static getPage(index: number): string {
+			if (index < 0 || index > this.pages.length) {
+				throw new Error("Out of range.");
+			}
+			return this.pages[index];
+		}
 	}
 
 	interface TMIObject {
