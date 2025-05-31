@@ -439,13 +439,22 @@ namespace tooManyItems {
 							pitch: 0.7,
 						});
 					}
-					// 		//this is to get the craft recipe
+					// This is to get the craft recipe.
 				} else {
-					// 			craft_inv = create_craft_formspec(item)
-					// 			if craft_inv and craft_inv ~= "" then
-					// 				core.show_formspec(name, id, tmi_master_inventory["page_"..temp_pool.page]..craft_inv..cheat_button(name))
-					// 				core.sound_play("lever", {to_player = name,gain=0.7})
-					// 			end
+					const craft_inv: string = create_craft_formspec(item);
+					if (craft_inv != "") {
+						core.show_formspec(
+							name,
+							id,
+							MasterInventory.getPage(data.page) +
+								craft_inv +
+								cheat_button(name)
+						);
+						core.sound_play("lever", {
+							to_player: name,
+							gain: 0.7,
+						});
+					}
 				}
 			}
 		}
