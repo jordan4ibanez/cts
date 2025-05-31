@@ -312,8 +312,8 @@ namespace tooManyItems {
 			if (fields["toomanyitems.next"]) {
 				data.page += 1;
 				// Page loops back to first.
-				if (data.page > MasterInventory.page_limit) {
-					data.page = 1;
+				if (data.page >= MasterInventory.page_limit) {
+					data.page = 0;
 				}
 
 				core.show_formspec(
