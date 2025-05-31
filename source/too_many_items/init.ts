@@ -51,11 +51,10 @@ namespace tooManyItems {
 			usable_recipe = items;
 			usable_recipe = usable_recipe as string[];
 		}
-
 		// x _ _
 		// x _ _
 		// x _ _
-		if (width == 1) {
+		else if (width == 1) {
 			usable_recipe = usable_recipe as string[][];
 
 			usable_recipe[0][0] = items[0] || "";
@@ -65,7 +64,7 @@ namespace tooManyItems {
 		// x x _
 		// x x _
 		// x x _
-		if (width == 2) {
+		else if (width == 2) {
 			usable_recipe = usable_recipe as string[][];
 
 			usable_recipe[0][0] = items[0] || "";
@@ -78,7 +77,7 @@ namespace tooManyItems {
 		// x x x
 		// x x x
 		// x x x
-		if (width == 3) {
+		else if (width == 3) {
 			usable_recipe = usable_recipe as string[][];
 
 			usable_recipe[0][0] = items[0] || "";
@@ -90,6 +89,8 @@ namespace tooManyItems {
 			usable_recipe[2][0] = items[6] || "";
 			usable_recipe[2][1] = items[7] || "";
 			usable_recipe[2][2] = items[8] || "";
+		} else {
+			throw new Error("How did this happen?");
 		}
 		//     return(usable_recipe)
 	}
