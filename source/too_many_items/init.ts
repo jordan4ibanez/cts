@@ -418,24 +418,24 @@ namespace tooManyItems {
 				)[0];
 				const stack: ItemStackObject = ItemStack(item + " 64");
 				const inv: InvRef = player.get_inventory();
-				// 		if temp_pool.cheating and core.get_player_privs(name).give then
-				// 			//room for item
-				// 			if inv and inv:room_for_item("main",stack) then
-				// 				inv:add_item("main", stack)
-				// 				core.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
-				// 			//no room for item
-				// 			else
-				// 				core.chat_send_player(name, "Might want to clear your inventory")
-				// 				core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
-				// 			end
-				// 		//this is to get the craft recipe
-				// 		else
-				// 			craft_inv = create_craft_formspec(item)
-				// 			if craft_inv and craft_inv ~= "" then
-				// 				core.show_formspec(name, id, tmi_master_inventory["page_"..temp_pool.page]..craft_inv..cheat_button(name))
-				// 				core.sound_play("lever", {to_player = name,gain=0.7})
-				// 			end
-				// 		end
+				if (data.cheating && core.get_player_privs(name).give) {
+					// 			//room for item
+					// 			if inv and inv:room_for_item("main",stack) then
+					// 				inv:add_item("main", stack)
+					// 				core.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
+					// 			//no room for item
+					// 			else
+					// 				core.chat_send_player(name, "Might want to clear your inventory")
+					// 				core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
+					// 			end
+					// 		//this is to get the craft recipe
+				} else {
+					// 			craft_inv = create_craft_formspec(item)
+					// 			if craft_inv and craft_inv ~= "" then
+					// 				core.show_formspec(name, id, tmi_master_inventory["page_"..temp_pool.page]..craft_inv..cheat_button(name))
+					// 				core.sound_play("lever", {to_player = name,gain=0.7})
+					// 			end
+				}
 			}
 		}
 	);
