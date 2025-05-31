@@ -1,3 +1,4 @@
+namespace tooManyItems {
 // local minetest,pairs = minetest,pairs
 
 // local tmi_master_inventory = {}
@@ -370,3 +371,4 @@
 // 	name = player:get_player_name()
 // 	pool[name] = nil
 // end)
+}
