@@ -514,10 +514,9 @@ namespace tooManyItems {
 			if (y > 7) {
 				y = 0;
 
-				// page = page + 1
-
 				MasterInventory.pushPage(pageData);
 
+				page++;
 				pageData = pagePreface;
 			}
 		}
