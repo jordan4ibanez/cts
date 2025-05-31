@@ -5,6 +5,7 @@ namespace tooManyItems {
 
 	interface TMIObject {
 		cheating: boolean;
+		page: number;
 	}
 
 	const pool = new Map<string, TMIObject>();
@@ -285,6 +286,7 @@ namespace tooManyItems {
 					LogLevel.warning,
 					`Player [${name}] is not in the tmi pool.`
 				);
+				return;
 			}
 
 			let form: string = "";
@@ -300,8 +302,8 @@ namespace tooManyItems {
 
 			//"next" button
 			if (fields["toomanyitems.next"]) {
-				// 		temp_pool.page = temp_pool.page + 1
-				// 		//page loops back to first
+				data.page += 1;
+				// Page loops back to first.
 				// 		if temp_pool.page > tmi_master_inventory.page_limit then
 				// 			temp_pool.page = 1
 				// 		end
