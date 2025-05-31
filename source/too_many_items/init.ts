@@ -43,47 +43,54 @@ namespace tooManyItems {
 		"listring[current_player;craft]";
 
 	// This is from Linuxdirk, thank you AspireMint for showing me this.
-	function recipe_converter  (items: ItemStackObject, width: number) {
-	    const usable_recipe = [ [], [], [] ]
-	//     // The recipe is a shapeless recipe so all items are in one table
-	//     if width == 0 then
-	//         usable_recipe = items
-	//     end
-	//     // x _ _
-	//     // x _ _
-	//     // x _ _
-	//     if width == 1 then
-	//         usable_recipe[1][1] = items[1] or ''
-	//         usable_recipe[2][1] = items[2] or ''
-	//         usable_recipe[3][1] = items[3] or ''
-	//     end
-	//     // x x _
-	//     // x x _
-	//     // x x _
-	//     if width == 2 then
-	//         usable_recipe[1][1] = items[1] or ''
-	//         usable_recipe[1][2] = items[2] or ''
-	//         usable_recipe[2][1] = items[3] or ''
-	//         usable_recipe[2][2] = items[4] or ''
-	//         usable_recipe[3][1] = items[5] or ''
-	//         usable_recipe[3][2] = items[6] or ''
-	//     end
-	//     // x x x
-	//     // x x x
-	//     // x x x
-	//     if width == 3 then
-	//         usable_recipe[1][1] = items[1] or ''
-	//         usable_recipe[1][2] = items[2] or ''
-	//         usable_recipe[1][3] = items[3] or ''
-	//         usable_recipe[2][1] = items[4] or ''
-	//         usable_recipe[2][2] = items[5] or ''
-	//         usable_recipe[2][3] = items[6] or ''
-	//         usable_recipe[3][1] = items[7] or ''
-	//         usable_recipe[3][2] = items[8] or ''
-	//         usable_recipe[3][3] = items[9] or ''
-	//     end
-	//     return(usable_recipe)
-    }
+	function recipe_converter(
+		items: ItemStackObject[] | ItemStackObject[][],
+		width: number
+	) {
+		let usable_recipe: ItemStackObject[] | ItemStackObject[][] = [
+			[],
+			[],
+			[],
+		];
+		// The recipe is a shapeless recipe so all items are in one table
+		if (width == 0) {
+			usable_recipe = items;
+		}
+		//     // x _ _
+		//     // x _ _
+		//     // x _ _
+		//     if width == 1 then
+		//         usable_recipe[1][1] = items[1] or ''
+		//         usable_recipe[2][1] = items[2] or ''
+		//         usable_recipe[3][1] = items[3] or ''
+		//     end
+		//     // x x _
+		//     // x x _
+		//     // x x _
+		//     if width == 2 then
+		//         usable_recipe[1][1] = items[1] or ''
+		//         usable_recipe[1][2] = items[2] or ''
+		//         usable_recipe[2][1] = items[3] or ''
+		//         usable_recipe[2][2] = items[4] or ''
+		//         usable_recipe[3][1] = items[5] or ''
+		//         usable_recipe[3][2] = items[6] or ''
+		//     end
+		//     // x x x
+		//     // x x x
+		//     // x x x
+		//     if width == 3 then
+		//         usable_recipe[1][1] = items[1] or ''
+		//         usable_recipe[1][2] = items[2] or ''
+		//         usable_recipe[1][3] = items[3] or ''
+		//         usable_recipe[2][1] = items[4] or ''
+		//         usable_recipe[2][2] = items[5] or ''
+		//         usable_recipe[2][3] = items[6] or ''
+		//         usable_recipe[3][1] = items[7] or ''
+		//         usable_recipe[3][2] = items[8] or ''
+		//         usable_recipe[3][3] = items[9] or ''
+		//     end
+		//     return(usable_recipe)
+	}
 
 	// local map_group_to_item = {
 	// 	["coal"]  = "main:coal",
