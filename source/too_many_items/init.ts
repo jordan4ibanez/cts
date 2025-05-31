@@ -552,15 +552,36 @@ namespace tooManyItems {
 		// local name
 		// local temp_pool
 
-		// core.override_item("craftingtable:craftingtable", {
-		// 	 on_rightclick = function(pos, node, player, itemstack)
-		// 		name = player:get_player_name()
-		// 		temp_pool = pool[name]
-		// 		player:get_inventory():set_width("craft", 3)
-		// 		player:get_inventory():set_size("craft", 9)
-		// 		core.show_formspec(name, "crafting", crafting_table_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-		// 	end
-		// })
+		core.override_item("crafter_workbench:workbench", {
+			on_rightclick: (
+				pos: Vec3,
+				node: NodeTable,
+				player: ObjectRef,
+				itemstack: ItemStackObject
+			) => {
+				const name: string = player.get_player_name();
+
+				const data: TMIObject | undefined = pool.get(name);
+
+				if (!data) {
+					core.log(
+						LogLevel.warning,
+						`Player [${name}] is not in the tmi pool.`
+					);
+					return;
+				}
+
+				player.get_inventory().set_width("craft", 3);
+				player.get_inventory().set_size("craft", 9);
+				core.show_formspec(
+					name,
+					"crafting",
+					crafting_table_inv +
+						MasterInventory.getPage(data.page) +
+						cheat_button(name)
+				);
+			},
+		});
 	});
 
 	// //set new players inventory up
