@@ -128,9 +128,11 @@ namespace tooManyItems {
 		"list[current_player;main;0,4.5;9,1;]" + //hot bar
 		"list[current_player;main;0,6;9,3;9]" + //main inventory
 		"button[5,3.5;1,1;toomanyitems.back;back]"; //back button
+
 	// local output
 	// local recipe
 	// local usable_recipe
+
 	// local function create_craft_formspec(item)
 	// 	//don't do air
 	// 	if item == "" then
@@ -176,6 +178,7 @@ namespace tooManyItems {
 	// 	end
 	// 	return(output)
 	// end
+    
 	// local function cheat_button(name)
 	// 	if pool[name] and pool[name].cheating then
 	// 		return("button[11.5,7.6;2,2;toomanyitems.cheat;cheat:on]")
