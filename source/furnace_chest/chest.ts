@@ -134,12 +134,13 @@ namespace furnace_chest {
 		def.legacy_facedir_simple = true;
 		def.is_ground_content = false;
 
-		// 		def.on_construct = function(pos)
-		// 			local meta = core.get_meta(pos)
-		// 			//meta:set_string("infotext", S("Chest"))
-		// 			local inv = meta:get_inventory()
-		// 			inv:set_size("main", 9*4)
-		// 		end
+		def.on_construct = (pos) => {
+			const meta: MetaRef = core.get_meta(pos);
+			//meta:set_string("infotext", S("Chest"))
+			const inv: InvRef = meta.get_inventory();
+			inv.set_size("main", 9 * 4);
+		};
+
 		// 		def.on_rightclick = function(pos, node, clicker)
 		// 			if core.get_node(pos).name ~= "utility:chest" and  core.get_node(pos).name ~= "utility:chest_open" then
 		// 				return
@@ -150,6 +151,7 @@ namespace furnace_chest {
 		// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,sound = def.sound_close, swap = name }
 		// 			//redstone.collect_info(pos)
 		// 		end
+
 		// 		def.on_blast = function(pos)
 		// 			local drops = {}
 		// 			default.get_inventory_drops(pos, "main", drops)
