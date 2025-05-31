@@ -28,7 +28,7 @@ namespace furnace_chest {
 		swap: string;
 	}
 
-    // Drops is being used as a reference.
+	// Drops is being used as a reference.
 	function get_inventory_drops(
 		pos: Vec3,
 		inventory: string,
@@ -197,9 +197,8 @@ namespace furnace_chest {
 			return drops;
 		};
 
-		// 	def.on_destruct = function(pos)
-		// 		destroy_chest(pos)
-		// 	end
+		def.on_destruct = destroy_chest;
+
 		// 	local def_opened = table.copy(def)
 		// 	local def_closed = table.copy(def)
 		// 	def_opened.mesh = "chest_open.obj"
