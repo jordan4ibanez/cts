@@ -405,13 +405,13 @@ namespace tooManyItems {
 						pitch: 0.7,
 					});
 				}
-				// this is the "cheating" aka giveme function and craft recipe
+				// This is the "cheating" aka giveme function and craft recipe.
 			} else if (
 				fields &&
 				type(fields) == "table" &&
 				string.match(next(fields)[0], "toomanyitems.")
 			) {
-				// 		item = string.gsub(next(fields), "toomanyitems.", "")
+				const item = string.gsub(next(fields)[0], "toomanyitems.", "");
 				// 		stack = ItemStack(item.." 64")
 				// 		inv = player:get_inventory()
 				// 		if temp_pool.cheating and core.get_player_privs(name).give then
