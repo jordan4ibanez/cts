@@ -133,14 +133,33 @@ namespace tooManyItems {
 	// local recipe
 	// local usable_recipe
 
+	core.register_on_mods_loaded(() => {
+		create_craft_formspec("crafter:ladder");
+	});
+
 	function create_craft_formspec(item: string) {
-		// 	//don't do air
-		// 	if item == "" then
-		// 		return("")
-		// 	end
-		// 	recipe = core.get_craft_recipe(item)
-		// 	usable_table = recipe_converter(recipe.items, recipe.width)
+		// Don't do air.
+		if (item == "") {
+			return "";
+		}
+
+		const recipe: CraftRecipeObject | null = core.get_craft_recipe(item);
+
+		print(dump(recipe));
+
+		if (recipe == null) {
+			return "";
+		}
+
+		const usable_table: string[] | string[][] = recipe_converter(
+			recipe.items,
+			recipe.width
+		);
+
+		print(dump(usable_table));
+
 		// 	output = output_constant
+
 		// 	if recipe.method == "normal" then
 		// 		if usable_table then
 		// 			//shaped (regular)
