@@ -1,8 +1,11 @@
 namespace tooManyItems {
 	// local minetest,pairs = minetest,pairs
 
-	const tmi_master_inventory = {
-		page_limit: 0,
+
+	class MasterInventory {
+        static instance: MasterInventory = new MasterInventory();
+		
+        
 	};
 
 	interface TMIObject {
