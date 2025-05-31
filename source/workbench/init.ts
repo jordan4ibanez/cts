@@ -16,8 +16,8 @@ namespace workbench {
 	core.register_craft({
 		output: "crafter_workbench:workbench",
 		recipe: [
-			["main:wood", "main:wood"],
-			["main:wood", "main:wood"],
+			["crafter:wood", "crafter:wood"],
+			["crafter:wood", "crafter:wood"],
 		],
 	});
 }
