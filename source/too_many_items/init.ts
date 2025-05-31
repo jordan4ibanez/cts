@@ -233,9 +233,19 @@ namespace tooManyItems {
 				}
 			}
 		} else if (recipe.method == CraftCheckType.cooking) {
-			// 		item = recipe.items[1]
-			// 		output = output.."item_image_button["..(base_x+2)..","..(base_y+1)..";1,1;"..item..";"..item..";]"
-			// 		output = output.."image[2.75,1.5;1,1;default_furnace_fire_fg.png]"
+			item = recipe.items[1];
+			output =
+				output +
+				"item_image_button[" +
+				(base_x + 2) +
+				"," +
+				(base_y + 1) +
+				";1,1;" +
+				item +
+				";" +
+				item +
+				";]";
+			output = output + "image[2.75,1.5;1,1;default_furnace_fire_fg.png]";
 		}
 
 		// 	return(output)
