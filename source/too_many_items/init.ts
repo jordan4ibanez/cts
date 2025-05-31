@@ -320,13 +320,13 @@ namespace tooManyItems {
 					data.page = 1;
 				}
 
-				// core.show_formspec(
-				// 	name,
-				// 	id,
-				// 	form +
-				// 		tmi_master_inventory["page_" + temp_pool.page] +
-				// 		cheat_button(name)
-				// );
+				core.show_formspec(
+					name,
+					id,
+					form +
+						MasterInventory.getPage(data.page) +
+						cheat_button(name)
+				);
 				// 		core.sound_play("lever", {to_player = name,gain=0.7})
 				// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 				// "prev" button
