@@ -287,13 +287,16 @@ namespace tooManyItems {
 				);
 			}
 
-			// 	if formname == "" then
-			// 		form = base_inv
-			// 		id = ""
-			// 	elseif formname == "crafting" then
-			// 		form = crafting_table_inv
-			// 		id = "crafting"
-			// 	end
+			let form: string = "";
+			let id: string = "";
+
+			if (formname == "") {
+				form = base_inv;
+				id = "";
+			} else if (formname == "crafting") {
+				form = crafting_table_inv;
+				id = "crafting";
+			}
 
 			// 	//"next" button
 			// 	if fields["toomanyitems.next"] then
