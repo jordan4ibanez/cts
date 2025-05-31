@@ -260,7 +260,7 @@ namespace furnace_chest {
 				});
 			};
 
-			// 		def.on_blast = function() end
+			def.on_blast = () => {};
 
 			// 		def.on_key_use = function(pos, player)
 			// 			local secret = core.get_meta(pos):get_string("key_lock_secret")
