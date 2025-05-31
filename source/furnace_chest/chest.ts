@@ -159,6 +159,7 @@ namespace furnace_chest {
 	// You use this to make custom chests.
 	export interface ChestDefinition extends NodeDefinition {
 		protected: boolean;
+		sound_open: string;
 	}
 
 	export function register_chest(name: string, def: ChestDefinition) {
@@ -225,17 +226,20 @@ namespace furnace_chest {
 			};
 
 			def.on_rightclick = (
-				pos,
-				node,
-				clicker,
-				itemstack,
-				pointed_thing
+				pos: Vec3,
+				node: NodeTable,
+				clicker: ObjectRef,
+				itemstack: ItemStackObject,
+				pointed_thing: PointedThing
 			) => {
 				if (!can_interact_with_node(clicker, pos)) {
 					return itemstack;
 				}
-				// core.sound_play(def.sound_open, {gain = 0.3,
-				// 		pos = pos, max_hear_distance = 10}, true)
+				core.sound_play(
+					def.sound_open,
+					{ gain: 0.3, pos: pos, max_hear_distance: 10 },
+					true
+				);
 				// 	core.swap_node(pos,
 				// 			{ name = "utility:" .. name .. "_open",
 				// 			param2 = node.param2 })
