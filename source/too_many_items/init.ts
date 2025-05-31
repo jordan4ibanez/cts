@@ -159,9 +159,9 @@ namespace tooManyItems {
 			return "";
 		}
 
-		const recipe: CraftRecipeObject | null = core.get_craft_recipe(item);
+		const recipe: CraftRecipeObject = core.get_craft_recipe(item);
 
-		if (recipe == null || recipe.width == 0) {
+		if (recipe.width == 0) {
 			return "";
 		}
 
