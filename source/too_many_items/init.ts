@@ -460,11 +460,12 @@ namespace tooManyItems {
 		}
 	);
 
-	// //run through the items and then set the pages
-	// local item_counter = 0
-	// local page = 1
-	// local x = 0
-	// local y = 0
+	// Run through the items and then set the pages.
+	let item_counter: number = 0;
+	let page: number = 1;
+	let x: number = 0;
+	let y: number = 0;
+
 	// core.register_on_mods_loaded(function()
 	// //sort all items (There is definitely a better way to do this)
 	// //get all craftable items
