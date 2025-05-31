@@ -8,7 +8,7 @@ namespace tooManyItems {
 		private static pages: string[] = [];
 
 		static getPage(index: number): string {
-			if (index < 0 || index > this.pages.length) {
+			if (index < 0 || index >= this.pages.length) {
 				throw new Error("Out of range.");
 			}
 			return this.pages[index];
@@ -151,7 +151,8 @@ namespace tooManyItems {
 	// local usable_recipe
 
 	core.register_on_mods_loaded(() => {
-		create_craft_formspec("crafter:ladder");
+		// create_craft_formspec("crafter:ladder");
+		MasterInventory.getPage(0);
 	});
 
 	function create_craft_formspec(item: string): string {
