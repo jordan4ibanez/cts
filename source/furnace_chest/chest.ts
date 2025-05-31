@@ -1,8 +1,7 @@
 namespace furnace_chest {
+	// todo: this is, horrible. This thing is storing fixed data as dynamic.
+	// todo: rewrite this to not be a disaster.
 
-    // todo: this is, horrible. This thing is storing fixed data as dynamic.
-    // todo: rewrite this to not be a disaster.
-    
 	function can_interact_with_node(player: ObjectRef, pos: Vec3) {
 		if (player && player.is_player()) {
 			if (core.check_player_privs(player, "protection_bypass")) {
