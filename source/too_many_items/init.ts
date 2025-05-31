@@ -300,6 +300,8 @@ namespace tooManyItems {
 				return;
 			}
 
+            // Todo: does this need to call the same thing twice every time??
+
 			let form: string = "";
 			let id: string = "";
 
