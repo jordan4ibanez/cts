@@ -477,10 +477,6 @@ namespace tooManyItems {
 	);
 
 	// Run through the items and then set the pages.
-	let item_counter: number = 0;
-	let page: number = 1;
-	let x: number = 0;
-	let y: number = 0;
 
 	core.register_on_mods_loaded(() => {
 		// Sort all items (There is definitely a better way to do this).
@@ -501,8 +497,18 @@ namespace tooManyItems {
 
 		all_items_table.sort();
 
-		// //dump all the items in
-		// tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
+		// Dump all the items in.
+
+		let item_counter: number = 0;
+		// let page: number = 1;
+		let x: number = 0;
+		let y: number = 0;
+
+		let pageData: string =
+			"size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]";
+
+        // todo: set this up as 1 loop, why is it 2?
+
 		// for _,item in pairs(all_items_table) do
 		// 	tmi_master_inventory["page_"..page] = tmi_master_inventory["page_"..page].."item_image_button["..(9.25+x)..","..y..";1,1;"..item..";toomanyitems."..item..";]"
 		// 	x = x + 1
