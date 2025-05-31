@@ -4,8 +4,11 @@ namespace tooManyItems {
 	//? Note: This is being treated as a fortran module in this namespace.
 	class MasterInventory {
 		private constructor() {}
-		static page_limit: number = 0;
 		private static pages: string[] = [];
+
+		static getMaxPageIndex(): number {
+			return this.pages.length - 1;
+		}
 
 		static getPage(index: number): string {
 			if (index < 0 || index >= this.pages.length) {
@@ -312,7 +315,7 @@ namespace tooManyItems {
 			if (fields["toomanyitems.next"]) {
 				data.page += 1;
 				// Page loops back to first.
-				if (data.page >= MasterInventory.page_limit) {
+				if (data.page > MasterInventory.getMaxPageIndex()) {
 					data.page = 0;
 				}
 
@@ -333,9 +336,9 @@ namespace tooManyItems {
 			} else if (fields["toomanyitems.prev"]) {
 				data.page -= 1;
 				// Page loops back to end.
-				// 		if temp_pool.page < 1 then
-				// 			temp_pool.page = tmi_master_inventory.page_limit
-				// 		end
+				if (data.page < 0) {
+					data.page = MasterInventory.getMaxPageIndex();
+				}
 				// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 				// 		core.sound_play("lever", {to_player = name,gain=0.7})
 				// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
