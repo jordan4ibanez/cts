@@ -1362,7 +1362,7 @@ declare global {
 		func(
 			name: string,
 			param: string
-		): LuaMultiReturn<[boolean, string]> | null;
+		): LuaMultiReturn<[boolean, string]> | void;
 	}
 
 	/** @noSelf **/ interface PrivilegeDefinition {
