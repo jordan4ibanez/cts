@@ -474,17 +474,19 @@ namespace tooManyItems {
 		// Sort all items (There is definitely a better way to do this).
 		// Get all craftable items.
 
-		// local all_items_table = {}
-        
-		// for index,data in pairs(core.registered_items) do
-		// 	if data.name ~= "" then
-		// 		local recipe = core.get_craft_recipe(data.name)
-		// 		//only put in craftable items
-		// 		if recipe.method then
-		// 			table.insert(all_items_table,data.name)
-		// 		end
-		// 	end
-		// end
+		const all_items_table: string[] = [];
+
+		for (const [name, data] of pairs(core.registered_items)) {
+			if (name == "") {
+				continue;
+			}
+			const recipe: CraftRecipeObject = core.get_craft_recipe(name);
+			// Only put in craftable items.
+			if (recipe.width > 0) {
+				all_items_table.push(name);
+			}
+		}
+
 		// table.sort(all_items_table)
 		// //dump all the items in
 		// tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
