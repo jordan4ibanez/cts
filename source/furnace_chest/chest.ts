@@ -207,17 +207,23 @@ namespace furnace_chest {
 		) as any as ChestDefinition;
 		def_opened.mesh = "chest_open.obj";
 
-        if (def_opened.tiles == null) {
-            throw new Error("How")
-        }
+		if (def_opened.tiles == null) {
+			throw new Error("How");
+		}
 
-			for (let i = 0; i < def_opened.tiles.length; i++) {
-				if type(def_opened.tiles[i]) == "string" then
-					def_opened.tiles[i] = {name = def_opened.tiles[i], backface_culling = true}
-				elseif def_opened.tiles[i].backface_culling == nil then
-					def_opened.tiles[i].backface_culling = true
-				end
-            }
+		for (let i = 0; i < def_opened.tiles.length; i++) {
+			if (typeof def_opened.tiles[i] == "string") {
+				def_opened.tiles[i] = {
+					name: def_opened.tiles[i] as string,
+					backface_culling: true,
+				};
+			} else if (
+				typeof def_opened.tiles[i] == "object" &&
+				(def_opened.tiles[i] as TileDefinition).backface_culling == null
+			) {
+				(def_opened.tiles[i] as TileDefinition).backface_culling = true;
+			}
+		}
 
 		// 	def_opened.drop = "utility:" .. name
 		// 	def_opened.groups.not_in_creative_inventory = 1
