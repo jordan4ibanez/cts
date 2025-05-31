@@ -134,23 +134,45 @@ namespace furnace_chest {
 		def.legacy_facedir_simple = true;
 		def.is_ground_content = false;
 
-		def.on_construct = (pos) => {
+		def.on_construct = (pos: Vec3) => {
 			const meta: MetaRef = core.get_meta(pos);
 			//meta:set_string("infotext", S("Chest"))
 			const inv: InvRef = meta.get_inventory();
 			inv.set_size("main", 9 * 4);
 		};
 
-		// 		def.on_rightclick = function(pos, node, clicker)
-		// 			if core.get_node(pos).name ~= "utility:chest" and  core.get_node(pos).name ~= "utility:chest_open" then
-		// 				return
-		// 			end
-		// 			core.sound_play(def.sound_open, {gain = 0.3, pos = pos, max_hear_distance = 10}, true)
-		// 			core.swap_node(pos, {name = "utility:" .. name .. "_open", param2 = node.param2 })
-		// 			core.show_formspec(clicker:get_player_name(),"utility:chest", chest.get_chest_formspec(pos))
-		// 			chest.open_chests[clicker:get_player_name()] = { pos = pos,sound = def.sound_close, swap = name }
-		// 			//redstone.collect_info(pos)
-		// 		end
+		def.on_rightclick = (
+			pos: Vec3,
+			node: NodeTable,
+			clicker: ObjectRef
+		) => {
+			if (
+				core.get_node(pos).name != "utility:chest" &&
+				core.get_node(pos).name != "utility:chest_open"
+			) {
+				return;
+			}
+			core.sound_play(
+				def.sound_open,
+				{ gain: 0.3, pos: pos, max_hear_distance: 10 },
+				true
+			);
+			core.swap_node(pos, {
+				name: "utility:" + name + "_open",
+				param2: node.param2,
+			});
+			core.show_formspec(
+				clicker.get_player_name(),
+				"utility:chest",
+				get_chest_formspec(pos)
+			);
+			open_chests.set(clicker.get_player_name(), {
+				pos: pos,
+				sound: def.sound_close,
+				swap: name,
+			});
+			//redstone.collect_info(pos)
+		};
 
 		// 		def.on_blast = function(pos)
 		// 			local drops = {}
