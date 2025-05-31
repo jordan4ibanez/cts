@@ -43,7 +43,10 @@ namespace tooManyItems {
 		"listring[current_player;craft]";
 
 	// This is from Linuxdirk, thank you AspireMint for showing me this.
-	function recipe_converter(items: string[], width: number) {
+	function recipe_converter(
+		items: string[],
+		width: number
+	): string[] | string[][] {
 		let usable_recipe: string[] | string[][] = [[], [], []];
 
 		// The recipe is a shapeless recipe so all items are in one table
@@ -92,7 +95,7 @@ namespace tooManyItems {
 		} else {
 			throw new Error("How did this happen?");
 		}
-		//     return(usable_recipe)
+		return usable_recipe;
 	}
 
 	// local map_group_to_item = {
