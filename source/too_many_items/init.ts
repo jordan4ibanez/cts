@@ -339,7 +339,13 @@ namespace tooManyItems {
 				if (data.page < 0) {
 					data.page = MasterInventory.getMaxPageIndex();
 				}
-				// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+				core.show_formspec(
+					name,
+					id,
+					form +
+						MasterInventory.getPage(data.page) +
+						cheat_button(name)
+				);
 				// 		core.sound_play("lever", {to_player = name,gain=0.7})
 				// 		player:set_inventory_formspec(base_inv..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
 			} else if (fields["toomanyitems.back"]) {
