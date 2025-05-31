@@ -388,8 +388,8 @@ namespace tooManyItems {
 				// dump_craft(player)
 				inv.set_width("craft", 2);
 				inv.set_size("craft", 4);
-				//reset the player inv
-				//core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
+				//reset the player inv //todo: figure out what this was for
+				//core.show_formspec(name,id, form+tmi_master_inventory["page_"+temp_pool.page]+cheat_button(name))
 			} else if (fields["toomanyitems.cheat"]) {
 				// Check if the player has the give priv.
 				if (
