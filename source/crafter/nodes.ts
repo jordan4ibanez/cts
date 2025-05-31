@@ -110,6 +110,9 @@ const levels: { [id: string]: number } = {
 let level: number = 0;
 
 for (const [ore, tool_required] of pairs(ores)) {
+	if (typeof ore != "string") {
+		throw new Error("ore is not a string!");
+	}
 	level = levels[ore];
 
 	let experience: number = 0;
@@ -121,7 +124,7 @@ for (const [ore, tool_required] of pairs(ores)) {
 	}
 
 	core.register_node("crafter:" + ore + "block", {
-		description: string.gsub(ore as string, "^%l", string.upper) + " Block",
+		description: string.gsub(ore, "^%l", string.upper)[0] + " Block",
 		tiles: [ore + "block.png"],
 		groups: { stone: level, pathable: 1 },
 		sounds: crafter.stoneSound(),
