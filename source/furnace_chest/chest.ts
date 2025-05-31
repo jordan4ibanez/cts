@@ -249,21 +249,21 @@ namespace furnace_chest {
 		core.register_node("utility:" + name + "_open", def_opened);
 	}
 
-	// chest.register_chest("chest", {
-	// 	description = "Chest",
-	// 	tiles = {
-	// 		"chest_top.png",
-	// 		"chest_top.png",
-	// 		"chest_side.png",
-	// 		"chest_side.png",
-	// 		"chest_front.png",
-	// 		"chest_inside.png"
-	// 	},
-	// 	sounds = main.woodSound(),
-	// 	sound_open = "default_chest_open",
-	// 	sound_close = "default_chest_close",
-	// 	groups = {wood = 2,  hard = 1, axe = 1, hand = 3,pathable = 1},
-	// })
+	register_chest("chest", {
+		description: "Chest",
+		tiles: [
+			"chest_top.png",
+			"chest_top.png",
+			"chest_side.png",
+			"chest_side.png",
+			"chest_front.png",
+			"chest_inside.png",
+		],
+		sounds: crafter.woodSound(),
+		sound_open: "default_chest_open",
+		sound_close: "default_chest_close",
+		groups: { wood: 2, hard: 1, axe: 1, hand: 3, pathable: 1 },
+	});
 
 	// core.register_craft({
 	// 	output = "utility:chest",
