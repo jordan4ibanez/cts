@@ -494,6 +494,8 @@ namespace tooManyItems {
 		let pageData: string = pagePreface;
 		const maxPages: number = math.ceil(all_items_table.length / 49);
 
+		const lastItem: string = all_items_table[all_items_table.length - 1];
+
 		for (const item of all_items_table) {
 			pageData +=
 				"item_image_button[" +
@@ -510,7 +512,7 @@ namespace tooManyItems {
 				x = 0;
 				y = y + 1;
 			}
-			if (y > 7) {
+			if (y > 7 || item == lastItem) {
 				y = 0;
 
 				//add buttons and labels
