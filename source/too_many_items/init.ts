@@ -492,8 +492,7 @@ namespace tooManyItems {
 			"size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]";
 
 		let pageData: string = pagePreface;
-
-		// todo: set this up as 1 loop, why is it 2?
+		const maxPages: number = math.ceil(all_items_table.length / 49);
 
 		for (const item of all_items_table) {
 			pageData +=
