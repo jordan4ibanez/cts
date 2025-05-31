@@ -300,7 +300,7 @@ namespace tooManyItems {
 				return;
 			}
 
-            // Todo: does this need to call the same thing twice every time??
+			// Todo: does this need to call the same thing twice every time??
 
 			let form: string = "";
 			let id: string = "";
@@ -354,9 +354,16 @@ namespace tooManyItems {
 						MasterInventory.getPage(data.page) +
 						cheat_button(name)
 				);
+				// "back" button.
 			} else if (fields["toomanyitems.back"]) {
-				// 		core.show_formspec(name,id, form..tmi_master_inventory["page_"..temp_pool.page]..cheat_button(name))
-				// 		core.sound_play("lever", {to_player = name,gain=0.7})
+				core.show_formspec(
+					name,
+					id,
+					form +
+						MasterInventory.getPage(data.page) +
+						cheat_button(name)
+				);
+				core.sound_play("lever", { to_player: name, gain: 0.7 });
 				//this resets the craft table
 			} else if (fields.quit) {
 				// 		inv = player:get_inventory()
