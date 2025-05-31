@@ -1355,10 +1355,10 @@ declare global {
 
 	// This is what a recipe definition gets turned into in the engine.
 	/** @noSelf **/ interface CraftRecipeObject {
-		method: CraftCheckType;
+		method?: CraftCheckType;
 		width: number;
-		items: string[];
-		output: string;
+		items?: string[];
+		output?: string;
 	}
 
 	/** @noSelf **/ interface ChatCommandDefinition {
