@@ -584,7 +584,7 @@ namespace tooManyItems {
 		});
 	});
 
-	// //set new players inventory up
+	// Set new players inventory up.
 	// local name
 	// local temp_pool
 	// local inv
