@@ -197,7 +197,7 @@ namespace tooManyItems {
 			if (recipe.width > 0) {
 				for (const x of $range(1, 3)) {
 					for (const y of $range(1, 3)) {
-						item = get_if_group(usable_table[x][y]);
+						item = get_if_group(usable_table[x - 1][y - 1]);
 
 						if (item != null) {
 							output =
