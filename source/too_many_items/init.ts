@@ -419,15 +419,26 @@ namespace tooManyItems {
 				const stack: ItemStackObject = ItemStack(item + " 64");
 				const inv: InvRef = player.get_inventory();
 				if (data.cheating && core.get_player_privs(name).give) {
-					// 			//room for item
-					// 			if inv and inv:room_for_item("main",stack) then
-					// 				inv:add_item("main", stack)
-					// 				core.sound_play("pickup", {to_player = name,gain=0.7,pitch = math.random(60,100)/100})
-					// 			//no room for item
-					// 			else
-					// 				core.chat_send_player(name, "Might want to clear your inventory")
-					// 				core.sound_play("lever", {to_player = name,gain=0.7,pitch=0.7})
-					// 			end
+					// Room for item.
+					if (inv.room_for_item("main", stack)) {
+						inv.add_item("main", stack);
+						core.sound_play("pickup", {
+							to_player: name,
+							gain: 0.7,
+							pitch: math.random(60, 100) / 100,
+						});
+						//no room for item
+					} else {
+						core.chat_send_player(
+							name,
+							"Might want to clear your inventory!"
+						);
+						core.sound_play("lever", {
+							to_player: name,
+							gain: 0.7,
+							pitch: 0.7,
+						});
+					}
 					// 		//this is to get the craft recipe
 				} else {
 					// 			craft_inv = create_craft_formspec(item)
