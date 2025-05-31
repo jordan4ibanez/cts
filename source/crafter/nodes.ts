@@ -142,7 +142,7 @@ for (const [ore, tool_required] of pairs(ores)) {
 	});
 
 	core.register_node("crafter:" + ore + "ore", {
-		description: string.gsub(ore as string, "^%l", string.upper) + " Ore",
+		description: string.gsub(ore, "^%l", string.upper)[0] + " Ore",
 		tiles: ["stone.png^" + ore + "ore.png"],
 		groups: { stone: level, pathable: 1, experience: experience },
 		sounds: crafter.stoneSound(),
@@ -161,9 +161,7 @@ for (const [ore, tool_required] of pairs(ores)) {
 
 	core.register_node(":nether:" + ore + "ore", {
 		description:
-			"Nether " +
-			string.gsub(ore as string, "^%l", string.upper) +
-			" Ore",
+			"Nether " + string.gsub(ore, "^%l", string.upper)[0] + " Ore",
 		tiles: ["netherrack.png^" + ore + "ore.png"],
 		groups: { netherrack: level, pathable: 1, experience: experience },
 		sounds: crafter.stoneSound(),
