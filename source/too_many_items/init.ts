@@ -487,9 +487,8 @@ namespace tooManyItems {
 			}
 		}
 
-		print(dump(all_items_table));
+		all_items_table.sort();
 
-		// table.sort(all_items_table)
 		// //dump all the items in
 		// tmi_master_inventory["page_"..page] = "size[17.2,8.75]background[-0.19,-0.25;9.41,9.49;crafting_inventory_workbench.png]"
 		// for _,item in pairs(all_items_table) do
