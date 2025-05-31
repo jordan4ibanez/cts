@@ -3,7 +3,11 @@ namespace tooManyItems {
 
 	// local tmi_master_inventory = {}
 
-	// local pool = {}
+	interface TMIObject {
+		cheating: boolean;
+	}
+
+	const pool = new Map<string, TMIObject>();
 
 	const max = 7 * 7;
 
@@ -247,13 +251,16 @@ namespace tooManyItems {
 		return output;
 	}
 
-	// local function cheat_button(name)
-	// 	if pool[name] and pool[name].cheating then
-	// 		return("button[11.5,7.6;2,2;toomanyitems.cheat;cheat:on]")
-	// 	else
-	// 		return("button[11.5,7.6;2,2;toomanyitems.cheat;cheat:off]")
-	// 	end
-	// end
+	function cheat_button(name: string): string {
+		const data: TMIObject | undefined = pool.get(name);
+
+		if (data && data.cheating) {
+			return "button[11.5,7.6;2,2;toomanyitems.cheat;cheat:on]";
+		} else {
+			return "button[11.5,7.6;2,2;toomanyitems.cheat;cheat:off]";
+		}
+	}
+
 	// local form
 	// local id
 	// local inv
