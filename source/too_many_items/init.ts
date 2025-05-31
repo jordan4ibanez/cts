@@ -120,13 +120,14 @@ namespace tooManyItems {
 		return item;
 	}
 
-	// local base_x = 0.75
-	// local base_y = -0.5
-	// local output_constant =
-	// "listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]"..
-	// "list[current_player;main;0,4.5;9,1;]"..   //hot bar
-	// "list[current_player;main;0,6;9,3;9]"..    //main inventory
-	// "button[5,3.5;1,1;toomanyitems.back;back]" //back button
+	const base_x: number = 0.75;
+	const base_y: number = -0.5;
+
+	const output_constant =
+		"listcolors[#8b8a89;#c9c3c6;#3e3d3e;#000000;#FFFFFF]" +
+		"list[current_player;main;0,4.5;9,1;]" + //hot bar
+		"list[current_player;main;0,6;9,3;9]" + //main inventory
+		"button[5,3.5;1,1;toomanyitems.back;back]"; //back button
 	// local output
 	// local recipe
 	// local usable_recipe
