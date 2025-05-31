@@ -161,8 +161,12 @@ namespace tooManyItems {
 
 		const recipe: CraftRecipeObject | null = core.get_craft_recipe(item);
 
-		if (recipe == null) {
+		if (recipe == null || recipe.width == 0) {
 			return "";
+		}
+
+		if (recipe.items == null) {
+			throw new Error("Null recipe!");
 		}
 
 		const usable_table: string[] | string[][] = recipe_converter(
