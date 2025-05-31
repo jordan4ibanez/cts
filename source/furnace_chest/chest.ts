@@ -168,9 +168,6 @@ namespace furnace_chest {
 				stack: ItemStackObject,
 				player: ObjectRef
 			) => {
-				if (!can_interact_with_node(player, pos)) {
-					return 0;
-				}
 				return stack.get_count();
 			};
 
