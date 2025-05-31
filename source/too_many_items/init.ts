@@ -200,8 +200,7 @@ namespace tooManyItems {
 						item = get_if_group(usable_table[x - 1][y - 1]);
 
 						if (item != null) {
-							output =
-								output +
+							output +=
 								"item_image_button[" +
 								base_x +
 								y +
@@ -214,8 +213,7 @@ namespace tooManyItems {
 								item +
 								";]";
 						} else {
-							output =
-								output +
+							output +=
 								"item_image_button[" +
 								base_x +
 								y +
