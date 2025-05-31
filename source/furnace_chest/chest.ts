@@ -274,11 +274,11 @@ namespace furnace_chest {
 		],
 	});
 
-	// core.register_craft({
-	// 	type = "fuel",
-	// 	recipe = "utility:chest",
-	// 	burntime = 5,
-	// })
+	core.register_craft({
+		type: CraftRecipeType.fuel,
+		recipe: "utility:chest",
+		burntime: 5,
+	});
 
 	// local groups = core.registered_nodes["utility:chest_open"].groups
 	// groups["redstone_torch"]=1
