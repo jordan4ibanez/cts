@@ -134,13 +134,13 @@ namespace tooManyItems {
 	}
 
 	const map_group_to_item: Dictionary<string, string> = {
-		coal: "main:coal",
-		glass: "main:glass",
-		sand: "main:sand",
-		stick: "main:stick",
-		stone: "main:cobble",
-		tree: "main:tree",
-		wood: "main:wood",
+		coal: "crafter:coal",
+		glass: "crafter:glass",
+		sand: "crafter:sand",
+		stick: "crafter:stick",
+		stone: "crafter:cobble",
+		tree: "crafter:tree",
+		wood: "crafter:wood",
 	};
 
 	function get_if_group(item: string): string {
