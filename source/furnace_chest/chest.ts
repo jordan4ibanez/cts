@@ -2,44 +2,7 @@ namespace furnace_chest {
 	// todo: this is, horrible. This thing is storing fixed data as dynamic.
 	// todo: rewrite this to not be a disaster.
 
-	function can_interact_with_node(player: ObjectRef, pos: Vec3) {
-		if (player && player.is_player()) {
-			if (core.check_player_privs(player, "protection_bypass")) {
-				return true;
-			}
-		} else {
-			return false;
-		}
 
-		const meta: MetaRef = core.get_meta(pos);
-		const owner: string = meta.get_string("owner");
-
-		if (owner == null || owner == "" || owner == player.get_player_name()) {
-			return true;
-		}
-
-		// Is player wielding the right key?
-		const item: ItemStackObject = player.get_wielded_item();
-		if (core.get_item_group(item.get_name(), "key") == 1) {
-			const key_meta: MetaRef = item.get_meta();
-			if (key_meta.get_string("secret") == "") {
-				const key_oldmeta: string = key_meta.get_string("");
-				if (key_oldmeta == "" || !core.parse_json(key_oldmeta)) {
-					return false;
-				}
-				key_meta.set_string(
-					"secret",
-					core.parse_json(key_oldmeta).secret
-				);
-			}
-			return (
-				meta.get_string("key_lock_secret") ==
-				key_meta.get_string("secret")
-			);
-		}
-
-		return false;
-	}
 
 	function get_chest_formspec(pos: Vec3): string {
 		const spos =
