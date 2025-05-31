@@ -244,8 +244,7 @@ namespace tooManyItems {
 								item +
 								";]";
 						} else {
-							output =
-								output +
+							output +=
 								"item_image_button[" +
 								base_x +
 								y +
