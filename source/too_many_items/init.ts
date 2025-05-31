@@ -312,7 +312,7 @@ namespace tooManyItems {
 				id = "crafting";
 			}
 
-			//"next" button
+			// "next" button.
 			if (fields["toomanyitems.next"]) {
 				data.page += 1;
 				// Page loops back to first.
@@ -333,7 +333,7 @@ namespace tooManyItems {
 						MasterInventory.getPage(data.page) +
 						cheat_button(name)
 				);
-				// "prev" button
+				// "prev" button.
 			} else if (fields["toomanyitems.prev"]) {
 				// 		temp_pool.page = temp_pool.page - 1
 				// 		//page loops back to end
