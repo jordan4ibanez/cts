@@ -231,8 +231,7 @@ namespace tooManyItems {
 					for (const y of $range(1, 3)) {
 						item = get_if_group((usable_table as string[])[i]);
 						if (item != null) {
-							output =
-								output +
+							output +=
 								"item_image_button[" +
 								base_x +
 								y +
