@@ -49,30 +49,32 @@ namespace tooManyItems {
 		// The recipe is a shapeless recipe so all items are in one table
 		if (width == 0) {
 			usable_recipe = items;
+			usable_recipe = usable_recipe as string[];
 		}
 
 		// x _ _
 		// x _ _
 		// x _ _
 		if (width == 1) {
-			// This is trusting that the original code did not explode.
 			usable_recipe = usable_recipe as string[][];
 
 			usable_recipe[0][0] = items[0] || "";
 			usable_recipe[1][0] = items[1] || "";
 			usable_recipe[2][0] = items[2] || "";
 		}
-		//     // x x _
-		//     // x x _
-		//     // x x _
-		//     if width == 2 then
-		//         usable_recipe[1][1] = items[1] or ''
-		//         usable_recipe[1][2] = items[2] or ''
-		//         usable_recipe[2][1] = items[3] or ''
-		//         usable_recipe[2][2] = items[4] or ''
-		//         usable_recipe[3][1] = items[5] or ''
-		//         usable_recipe[3][2] = items[6] or ''
-		//     end
+		// x x _
+		// x x _
+		// x x _
+		if (width == 2) {
+			usable_recipe = usable_recipe as string[][];
+
+			usable_recipe[0][0] = items[0] || "";
+			usable_recipe[0][1] = items[1] || "";
+			usable_recipe[1][0] = items[2] || "";
+			usable_recipe[1][1] = items[3] || "";
+			usable_recipe[2][0] = items[4] || "";
+			usable_recipe[2][1] = items[5] || "";
+		}
 		//     // x x x
 		//     // x x x
 		//     // x x x
