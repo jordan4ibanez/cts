@@ -280,10 +280,19 @@ namespace furnace_chest {
 		burntime: 5,
 	});
 
-	// local groups = core.registered_nodes["utility:chest_open"].groups
-	// groups["redstone_torch"]=1
-	// groups["redstone_power"]=9
-	// core.override_item("utility:chest_open", {
-	// 	groups = groups
-	// })
+	const rNode = core.registered_nodes["utility:chest_open"];
+	if (rNode == null) {
+		throw new Error("Another issue");
+	}
+	const groups: Dictionary<string, number> | undefined = rNode.groups;
+	if (groups == null) {
+		throw new Error("Another issue again");
+	}
+
+	groups["redstone_torch"] = 1;
+	groups["redstone_power"] = 9;
+
+	core.override_item("utility:chest_open", {
+		groups: groups,
+	});
 }
