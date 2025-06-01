@@ -37,12 +37,11 @@ namespace playerMechanics {
 			}
 
 			if (data > 0) {
-                real_nodes.push(node_data);
-				// table.insert(real_nodes,node_data)
+				real_nodes.push(node_data);
 			}
 		}
 
-		// 	// find the highest damage node
+		// find the highest damage node
 		// 	if table.getn(real_nodes) > 0 then
 		// 		return(true)
 		// 	end
