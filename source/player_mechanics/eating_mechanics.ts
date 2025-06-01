@@ -43,7 +43,7 @@ namespace playerMechanics {
 		player: ObjectRef,
 		timer: number,
 		sneaking: boolean,
-		item: ObjectRef
+		item: string
 	): number {
 		let position: Vec3 = player.get_pos();
 		let offset: number = 0;
@@ -109,32 +109,29 @@ namespace playerMechanics {
 			throw new Error(`Player [${name}] has no food data.`);
 		}
 
-		//     //eating
-		//     if control.RMB then
-		//         item      = player:get_wielded_item():get_name()
-		//         satiation = core.get_item_group( item, "satiation")
-		//         hunger    = core.get_item_group( item, "hunger"   )
-		//         if hunger > 0 or satiation > 0  then
-		//             pool.eating_step  = pool.eating_step  + dtime
-		//             pool.eating_timer = pool.eating_timer + dtime
-		//             pool.eating_timer = manage_eating_effects(
-		//                 player,
-		//                 pool.eating_timer,
-		//                 control.sneak,
-		//                 item
-		//             )
-		//             pool.eating_step = finish_eating(
-		//                 player,
-		//                 pool.eating_step
-		//             )
-		//         else
-		//             pool.eating_step  = 0
-		//             pool.eating_timer = 0
-		//         end
-		//     else
-		//         pool.eating_step  = 0
-		//         pool.eating_timer = 0
-		//     end
+		// Eating.
+		if (control.RMB) {
+			const item: string = player.get_wielded_item().get_name();
+			const satiation: number = core.get_item_group(item, "satiation");
+			const hunger: number = core.get_item_group(item, "hunger");
+			if (hunger > 0 || satiation > 0) {
+				data.eating_step += dtime;
+				data.eating_timer += dtime;
+				data.eating_timer = manage_eating_effects(
+					player,
+					data.eating_timer,
+					control.sneak,
+					item
+				);
+				data.eating_step = finish_eating(player, data.eating_step);
+			} else {
+				data.eating_step = 0;
+				data.eating_timer = 0;
+			}
+		} else {
+			data.eating_step = 0;
+			data.eating_timer = 0;
+		}
 	}
 
 	// local player
