@@ -170,7 +170,7 @@ namespace playerMechanics {
 					oldnode: NodeTable,
 					itemstack: ItemStackObject,
 					pointed_thing: PointedThing,
-					old: NodeTable
+					old: string
 				) => {
 					// 		if not placer then
 					// 			return
