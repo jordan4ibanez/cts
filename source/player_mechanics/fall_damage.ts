@@ -20,33 +20,11 @@ namespace playerMechanics {
 		);
 
 		// Now search for nodes that disable fall damage.
-		let [_, saving_nodes] = core.find_nodes_in_area(a_min, a_max, [
+		let [positions, _] = core.find_nodes_in_area(a_min, a_max, [
 			"group:disable_fall_damage",
 		]);
 
-		// todo: check if the saving_nodes table length has anything in it and if it does, return true
-
-		for (const [node_data, _] of pairs(saving_nodes)) {
-			// Todo: Find out what the hell I was doing
-			print(dump(node_data));
-
-			let data = saving_nodes[node_data];
-
-			if (data == null) {
-				core.log(
-					LogLevel.warning,
-					`Node data is null. Quietly continuing`
-				);
-				continue;
-			}
-
-			// If ANY nodes were found, fall damage is now disabled.
-			if (data > 0) {
-				return true;
-			}
-		}
-
-		return false;
+		return positions.length > 0 ? true : false;
 	}
 
 	function calc_fall_damage(player: ObjectRef, hp_change: number) {
