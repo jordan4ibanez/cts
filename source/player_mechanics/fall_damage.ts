@@ -125,13 +125,21 @@ namespace playerMechanics {
 					pitch: math.random(80, 100) / 100,
 				});
 			}
-			// 			hp_change = hp_change + absorption
-			// 			if hp_change >= 0 then
-			// 				hp_change = 0
-			// 			else
-			// 				player:set_hp(player:get_hp()+hp_change,{reason="correction"})
-			// 				core.sound_play("hurt", {object=player, gain = 1.0, max_hear_distance = 60,pitch = math.random(80,100)/100})
-			// 			end
+
+			hp_change += absorption;
+			if (hp_change >= 0) {
+				hp_change = 0;
+			} else {
+				player.set_hp(player.get_hp() + hp_change, {
+					type: HPChangeReasonType.fall,
+				});
+				core.sound_play("hurt", {
+					object: player,
+					gain: 1.0,
+					max_hear_distance: 60,
+					pitch: math.random(80, 100) / 100,
+				});
+			}
 		} else {
 			player.set_hp(player.get_hp() + hp_change, {
 				type: HPChangeReasonType.fall,
