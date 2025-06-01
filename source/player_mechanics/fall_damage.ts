@@ -73,7 +73,11 @@ namespace playerMechanics {
 			const new_stack: string = inv.get_stack("armor_feet", 1).get_name();
 			// The boots broke.
 			if (new_stack == "") {
-				// 				core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=math.random(80,100)/100})
+				core.sound_play("armor_break", {
+					object: player,
+					gain: 1,
+					pitch: math.random(80, 100) / 100,
+				});
 				// 				recalculate_armor(player)
 				// 				set_armor_gui(player)
 				// 				//do particles too
