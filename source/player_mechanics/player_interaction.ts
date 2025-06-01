@@ -237,19 +237,25 @@ namespace playerMechanics {
 		});
 	}
 
-	// //we need to do this to override the default damage mechanics
-	// local pool = {}
-	// local name
-	// core.register_on_joinplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = core.get_us_time()/1000000
-	// end)
+	// Do this to override the default damage mechanics.
+	const pool = new Map<string, number>();
+
+	core.register_on_joinplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		pool.set(name, core.get_us_time() / 1000000);
+	});
 
 	// local name
-	// function player_can_be_punched(player)
-	// 	name = player:get_player_name()
-	// 	return((core.get_us_time()/1000000)-pool[name] >= 0.5)
-	// end
+
+	export function player_can_be_punched(player: ObjectRef): boolean {
+		const name = player.get_player_name();
+		const data: number | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		return core.get_us_time() / 1000000 - data >= 0.5;
+	}
 
 	// //this throws the player when they're punched and activates the custom damage mechanics
 	// local name
