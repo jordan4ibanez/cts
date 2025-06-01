@@ -12,12 +12,13 @@ namespace playerMechanics {
 	// local newvel
 	// local flow_dir
 	// local name
-	// minetest.register_globalstep(function()
-	//     for _,player in ipairs(minetest.get_connected_players()) do
+    
+	// core.register_globalstep(function()
+	//     for _,player in ipairs(core.get_connected_players()) do
 	//         flow_dir = flow(player:get_pos())
 	//         name = player:get_player_name()
 	//         if flow_dir then
-	//             --buffer continuation
+	//             //buffer continuation
 	//             if pool[name] then
 	//                 c_flow = pool[name]
 	//                 vel = player:get_player_velocity()
