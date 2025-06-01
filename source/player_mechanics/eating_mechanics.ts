@@ -56,18 +56,20 @@ namespace playerMechanics {
 			offset = 0.3;
 		}
 
-		const velocity: Vec3 = player.get_velocity();
-
 		position = vector.add(
 			position,
 			vector.multiply(player.get_look_dir(), offset)
 		);
 
+		const velocity: Vec3 = player.get_velocity();
+
 		const temp_particle = table.copy(
 			particle_constant as any as LuaTable
 		) as ParticleSpawnerDefinition;
-		//     temp_particle = table.copy(particle_constant)
-		//     temp_particle.minpos = vector.add(position,temp_particle.minpos)
+
+        
+
+		    temp_particle.minpos = vector.add(position,temp_particle.minpos!)
 		//     temp_particle.maxpos = vector.add(position,temp_particle.maxpos)
 		//     temp_particle.minvel = vector.add(velocity,temp_particle.minvel)
 		//     temp_particle.maxvel = vector.add(velocity,temp_particle.maxvel)
