@@ -172,32 +172,39 @@ namespace playerMechanics {
 					pointed_thing: PointedThing,
 					old: string
 				) => {
-					// 		if not placer then
-					// 			return
-					// 		end
-					// 		new = placer:get_wielded_item():get_name()
-					// 		if old ~= new and new == "" then
-					// 			inv = placer:get_inventory()
-					// 			//check if another stack
-					// 			if inv:contains_item("main", old) then
-					// 				//print("moving stack")
-					// 				//run through inventory
-					// 				for i = 1,inv:get_size("main") do
-					// 					//if found set wielded item and remove old stack
-					// 					if inv:get_stack("main", i):get_name() == old then
-					// 						count = inv:get_stack("main", i):get_count()
-					// 						placer:set_wielded_item(old.." "..count)
-					// 						inv:set_stack("main",i,ItemStack(""))
-					// 						play_sound("pickup", {
-					// 							  to_player = player,
-					// 							  gain = 0.7,
-					// 							  pitch = random(60,100)/100
-					// 						})
-					// 						return
-					// 					end
-					// 				end
-					// 			end
-					// 		end
+					if (placer == null) {
+						return;
+					}
+					let newItem = placer.get_wielded_item().get_name();
+					if (old != newItem && newItem == "") {
+						const inv: InvRef = placer.get_inventory();
+						// Check if another stack.
+						if (inv.contains_item("main", old)) {
+							// print("moving stack")
+							// Run through inventory.
+
+							for (const i of $range(1, inv.get_size("main"))) {
+								// If found set wielded item and remove old stack.
+								if (
+									inv.get_stack("main", i).get_name() == old
+								) {
+									const count: number = inv
+										.get_stack("main", i)
+										.get_count();
+									placer.set_wielded_item(
+										ItemStack(old + " " + count)
+									);
+									inv.set_stack("main", i, ItemStack(""));
+									play_sound("pickup", {
+										to_player: placer.get_player_name(),
+										gain: 0.7,
+										pitch: random(60, 100) / 100,
+									});
+									return;
+								}
+							}
+						}
+					}
 				},
 				pos,
 				newnode,
