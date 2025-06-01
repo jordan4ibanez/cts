@@ -4,10 +4,12 @@ namespace playerMechanics {
 		if (player.get_hp() <= 0) {
 			return false;
 		}
-		// 	// used for finding a damage node from the center of the player
-		// 	// rudementary collision detection
-		// 	pos = player:get_pos()
-		// 	pos.y = pos.y
+		// Used for finding a damage node from the center of the player.
+		// Rudementary collision detection.
+		const pos: Vec3 = player.get_pos();
+
+		pos.y = pos.y;
+
 		// 	a_min = vector.new(
 		// 		pos.x-0.25,
 		// 		pos.y-0.85,
