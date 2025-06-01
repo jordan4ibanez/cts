@@ -59,5 +59,6 @@ namespace playerMechanics {
 // end)
 
 
-// --coal armor stops fire from hurting you
+// todo: coal armor stops fire from hurting you
+// todo: also why is this todo here?
 }
