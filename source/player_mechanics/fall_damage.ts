@@ -113,7 +113,13 @@ namespace playerMechanics {
 					node: { name: name + "particletexture" },
 					//texture = "eat_particles_1.png"
 				});
-				// 				core.sound_play("armor_fall_damage", {object=player, gain = 1.0, max_hear_distance = 60,pitch = math.random(80,100)/100})
+
+				core.sound_play("armor_fall_damage", {
+					object: player,
+					gain: 1.0,
+					max_hear_distance: 60,
+					pitch: math.random(80, 100) / 100,
+				});
 			}
 			// 			hp_change = hp_change + absorption
 			// 			if hp_change >= 0 then
