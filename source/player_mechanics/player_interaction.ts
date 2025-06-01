@@ -88,14 +88,10 @@ namespace playerMechanics {
 		for (const i of $range(1, inv.get_size("craft"))) {
 			const stack: ItemStackObject = inv.get_stack("craft", i);
 			const name: string = stack.get_name();
-			const count: number = stack.get_count();
-					if (name != "") {
-			// 			obj = add_item(pos, stack)
-			// 			if obj then
-			// 				obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-			// 			end
-			// 			inv:set_stack("craft", i, ItemStack(""))
-					}
+			if (name != "") {
+				item_handling.throw_item(pos, stack);
+				inv.set_stack("craft", i, ItemStack(""));
+			}
 		}
 	}
 
