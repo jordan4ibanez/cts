@@ -45,9 +45,9 @@ namespace playerMechanics {
 		sneaking: boolean,
 		item: ObjectRef
 	): number {
-		const position: Vec3 = player.get_pos();
+		let position: Vec3 = player.get_pos();
 		let offset: number = 0;
-		const velocity: Vec3 = player.get_velocity();
+
 		if (sneaking) {
 			position.y = position.y + 1.2;
 			offset = 0.6;
@@ -56,7 +56,7 @@ namespace playerMechanics {
 			offset = 0.3;
 		}
 
-		//     position = vector.add(position, vector.multiply(player:get_look_dir(),offset))
+		const velocity: Vec3 = player.get_velocity();
 		//     temp_particle = table.copy(particle_constant)
 		//     temp_particle.minpos = vector.add(position,temp_particle.minpos)
 		//     temp_particle.maxpos = vector.add(position,temp_particle.maxpos)
