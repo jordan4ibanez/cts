@@ -58,15 +58,15 @@ namespace playerMechanics {
 					inv.set_stack("armor_torso", 1, ItemStack(""));
 				}
 			}
-			// 	stack = inv:get_stack("armor_legs", 1)
-			// 	name = stack:get_name()
-			// 	if name ~= "" then
-			// 		obj = add_item(pos, stack)
-			// 		if obj then
-			// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-			// 		end
-			// 		inv:set_stack("armor_legs", 1, ItemStack(""))
-			// 	end
+			{
+				const stack: ItemStackObject = inv.get_stack("armor_legs", 1);
+				const name: string = stack.get_name();
+				if (name != "") {
+					item_handling.throw_item(pos, stack);
+					inv.set_stack("armor_legs", 1, ItemStack(""));
+				}
+			}
+
 			// 	stack = inv:get_stack("armor_feet", 1)
 			// 	name = stack:get_name()
 			// 	if name ~= "" then
