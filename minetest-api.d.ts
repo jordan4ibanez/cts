@@ -2265,7 +2265,7 @@ declare global {
 		): void;
 		right_click(clicker: ObjectRef): void;
 		get_hp(): number;
-		set_hp(hp: number, reason?: HPChangeReasonType): void;
+		set_hp(hp: number, reason?: HPChangeReasonDefinition): void;
 		get_inventory(): InvRef;
 		get_wield_list(): string;
 		get_wield_index(): number;
