@@ -27,7 +27,7 @@ namespace playerMechanics {
 	};
 
 	core.register_on_joinplayer((player: ObjectRef) => {
-		const name = player.get_player_name();
+		const name: string = player.get_player_name();
 		food_control_pool.set(name, {
 			eating_step: 0,
 			eating_timer: 0,
@@ -38,18 +38,14 @@ namespace playerMechanics {
 		food_control_pool.delete(player.get_player_name());
 	});
 
-	// manages player eating effects
-	// local position
-	// local velocity
-	// local offset
-	// local temp_particle
+	// Manages player eating effects.
 	function manage_eating_effects(
 		player: ObjectRef,
 		timer: number,
 		sneaking: boolean,
 		item: ObjectRef
 	): number {
-		//     position    = player:get_pos()
+		const position: Vec3 = player.get_pos();
 		//     velocity    = player:get_player_velocity()
 		//     if sneaking then
 		//         position.y  = position.y + 1.2
