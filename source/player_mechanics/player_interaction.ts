@@ -330,16 +330,15 @@ namespace playerMechanics {
 		}
 	);
 
-	// local inv
-	// core.register_on_respawnplayer(function(player)
-	// 	player:add_player_velocity(multiply_vec(player:get_player_velocity(),-1))
-	// 	inv = player:get_inventory()
-	// 	inv:set_list("main", {})
-	// 	inv:set_list("craft", {})
-	//     inv:set_list("craftpreview", {})
-	//     inv:set_list("armor_head", {})
-	//     inv:set_list("armor_torso", {})
-	//     inv:set_list("armor_legs", {})
-	//     inv:set_list("armor_feet", {})
-	// end)
+	core.register_on_respawnplayer((player) => {
+		player.add_velocity(multiply_vec(player.get_velocity(), -1));
+		const inv: InvRef = player.get_inventory();
+		inv.set_list("main", []);
+		inv.set_list("craft", []);
+		inv.set_list("craftpreview", []);
+		inv.set_list("armor_head", []);
+		inv.set_list("armor_torso", []);
+		inv.set_list("armor_legs", []);
+		inv.set_list("armor_feet", []);
+	});
 }
