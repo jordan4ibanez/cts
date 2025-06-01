@@ -50,8 +50,10 @@ namespace playerMechanics {
 	}
 
 	function calc_fall_damage(player: ObjectRef, hp_change: number) {
-		// 	if cancel_fall_damage(player) then
-		// 		return
+		if (cancel_fall_damage(player)) {
+			return;
+		}
+
 		// 	else
 		// 		local inv = player:get_inventory()
 		// 		local stack = inv:get_stack("armor_feet", 1)
