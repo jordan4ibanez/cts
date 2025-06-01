@@ -8,23 +8,47 @@ namespace playerMechanics {
 		// Rudementary collision detection.
 		const pos: Vec3 = player.get_pos();
 
-		// 	a_min = vector.new(
-		// 		pos.x-0.25,
-		// 		pos.y-0.85,
-		// 		pos.z-0.25
-		// 	)
-		// 	a_max = vector.new(
-		// 		pos.x+0.25,
-		// 		pos.y+0.85,
-		// 		pos.z+0.25
-		// 	)
-		// 	_,saving_nodes = core.find_nodes_in_area( a_min,  a_max, {"group:disable_fall_damage"})
-		// 	real_nodes = {}
-		// 	for node_data,_ in pairs(saving_nodes) do
-		// 		if saving_nodes[node_data] > 0 then
-		// 			table.insert(real_nodes,node_data)
-		// 		end
-		// 	end
+		const a_min: Vec3 = vector.create3d(
+			pos.x - 0.25,
+			pos.y - 0.85,
+			pos.z - 0.25
+		);
+		const a_max: Vec3 = vector.create3d(
+			pos.x + 0.25,
+			pos.y + 0.85,
+			pos.z + 0.25
+		);
+
+		let [_, saving_nodes] = core.find_nodes_in_area(a_min, a_max, [
+			"group:disable_fall_damage",
+		]);
+
+		if (saving_nodes == null) {
+			core.log(
+				LogLevel.warning,
+				`Saving nodes has become null, somehow. Quietly bailing`
+			);
+			return false;
+		}
+
+		const real_nodes: string[] = [];
+
+		for (const [node_data, _] of pairs(saving_nodes)) {
+			let data = saving_nodes[node_data];
+			if (data == null) {
+				core.log(
+					LogLevel.warning,
+					`Node data is null. Quietly continuing`
+				);
+				continue;
+			}
+
+			if (data > 0) {
+                real_nodes.push(node_data);
+				// table.insert(real_nodes,node_data)
+			}
+		}
+
 		// 	// find the highest damage node
 		// 	if table.getn(real_nodes) > 0 then
 		// 		return(true)
