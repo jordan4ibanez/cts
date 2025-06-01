@@ -71,19 +71,9 @@ namespace playerMechanics {
 			stack.add_wear(wear_level);
 			inv.set_stack("armor_feet", 1, stack);
 			const new_stack: string = inv.get_stack("armor_feet", 1).get_name();
-			// The boots broke.
-			if (new_stack == "") {
-				core.sound_play("armor_break", {
-					object: player,
-					gain: 1,
-					pitch: math.random(80, 100) / 100,
-				});
-				// todo: this depends on crafter armor.
-				// recalculate_armor(player)
-				// set_armor_gui(player)
 
-				// Do particles too.
-			} else if (core.get_item_group(new_stack, "boots") > 0) {
+			// Do boot absorbtion particles.
+			{
 				const pos: Vec3 = player.get_pos();
 				core.add_particlespawner({
 					amount: 30,
@@ -113,7 +103,21 @@ namespace playerMechanics {
 					node: { name: name + "particletexture" },
 					//texture = "eat_particles_1.png"
 				});
+			}
 
+			// The boots broke.
+			if (new_stack == "") {
+				core.sound_play("armor_break", {
+					object: player,
+					gain: 1,
+					pitch: math.random(80, 100) / 100,
+				});
+				// todo: this depends on crafter armor.
+				// recalculate_armor(player)
+				// set_armor_gui(player)
+
+				// Do particles too.
+			} else if (core.get_item_group(new_stack, "boots") > 0) {
 				core.sound_play("armor_fall_damage", {
 					object: player,
 					gain: 1.0,
