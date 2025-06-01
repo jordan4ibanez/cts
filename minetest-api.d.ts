@@ -1392,10 +1392,10 @@ declare global {
 
 	/** @noSelf **/ interface HPChangeReasonDefinition {
 		type: HPChangeReasonType;
-		node: string;
-		node_pos: Vec3;
-		object: ObjectRef;
-		from: string;
+		node?: string;
+		node_pos?: Vec3;
+		object?: ObjectRef;
+		from?: string;
 	}
 
 	/** @noSelf **/ interface ActionDefinition {
