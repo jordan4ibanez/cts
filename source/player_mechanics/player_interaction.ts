@@ -97,7 +97,14 @@ namespace playerMechanics {
 
 	// Play sound to keep up with player's placing vs inconsistent client placing sound.
 	core.register_on_placenode(
-		(pos, newnode, placer, oldnode, itemstack, pointed_thing) => {
+		(
+			pos: Vec3,
+			newnode: NodeTable,
+			placer: ObjectRef,
+			oldnode: NodeTable,
+			itemstack: ItemStackObject,
+			pointed_thing: PointedThing
+		) => {
 			const node: NodeDefinition | undefined =
 				core.registered_nodes[newnode.name];
 			if (node == null) {
@@ -143,40 +150,40 @@ namespace playerMechanics {
 	);
 
 	// Replace stack when empty (building).
-	
-
-	core.register_on_placenode((pos, newnode, placer, oldnode, itemstack, pointed_thing) => {
-	// 	old = itemstack:get_name()
-	// 	//pass through to check
-	// 	core.after(0,function(pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
-	// 		if not placer then
-	// 			return
-	// 		end
-	// 		new = placer:get_wielded_item():get_name()
-	// 		if old ~= new and new == "" then
-	// 			inv = placer:get_inventory()
-	// 			//check if another stack
-	// 			if inv:contains_item("main", old) then
-	// 				//print("moving stack")
-	// 				//run through inventory
-	// 				for i = 1,inv:get_size("main") do
-	// 					//if found set wielded item and remove old stack
-	// 					if inv:get_stack("main", i):get_name() == old then
-	// 						count = inv:get_stack("main", i):get_count()
-	// 						placer:set_wielded_item(old.." "..count)
-	// 						inv:set_stack("main",i,ItemStack(""))
-	// 						play_sound("pickup", {
-	// 							  to_player = player,
-	// 							  gain = 0.7,
-	// 							  pitch = random(60,100)/100
-	// 						})
-	// 						return
-	// 					end
-	// 				end
-	// 			end
-	// 		end
-	// 	end,pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
-})
+	core.register_on_placenode(
+		(pos, newnode, placer, oldnode, itemstack, pointed_thing) => {
+			// 	old = itemstack:get_name()
+			// 	//pass through to check
+			// 	core.after(0,function(pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
+			// 		if not placer then
+			// 			return
+			// 		end
+			// 		new = placer:get_wielded_item():get_name()
+			// 		if old ~= new and new == "" then
+			// 			inv = placer:get_inventory()
+			// 			//check if another stack
+			// 			if inv:contains_item("main", old) then
+			// 				//print("moving stack")
+			// 				//run through inventory
+			// 				for i = 1,inv:get_size("main") do
+			// 					//if found set wielded item and remove old stack
+			// 					if inv:get_stack("main", i):get_name() == old then
+			// 						count = inv:get_stack("main", i):get_count()
+			// 						placer:set_wielded_item(old.." "..count)
+			// 						inv:set_stack("main",i,ItemStack(""))
+			// 						play_sound("pickup", {
+			// 							  to_player = player,
+			// 							  gain = 0.7,
+			// 							  pitch = random(60,100)/100
+			// 						})
+			// 						return
+			// 					end
+			// 				end
+			// 			end
+			// 		end
+			// 	end,pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
+		}
+	);
 
 	// local do_critical_particles = function(pos)
 	// 	add_ps({
@@ -263,7 +270,7 @@ namespace playerMechanics {
 	// 		player:set_hp(hp-hurt)
 	// 	end
 	// end)
-	
+
 	// local inv
 	// core.register_on_respawnplayer(function(player)
 	// 	player:add_player_velocity(multiply_vec(player:get_player_velocity(),-1))
