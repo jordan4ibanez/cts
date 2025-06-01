@@ -3,16 +3,18 @@ namespace playerMechanics {
 	// minetest,math,pairs,ipairs,type
 	// =
 	// minetest,math,pairs,ipairs,type
-	// local add_item   = minetest.add_item
+
+	// local add_item   = core.add_item
 	// local random     = math.random
-	// local play_sound = minetest.sound_play
-	// local add_ps     = minetest.add_particlespawner
+	// local play_sound = core.sound_play
+	// local add_ps     = core.add_particlespawner
 	// local abs        = math.abs
 	// local ceil       = math.ceil
 	// local new_vec    = vector.new
 	// local multiply_vec = vector.multiply
+
 	// --hurt sound and disable fall damage group handling
-	// minetest.register_on_player_hpchange(function(player, hp_change, reason)
+	// core.register_on_player_hpchange(function(player, hp_change, reason)
 	// 	if reason.type == "fall" then
 	// 		--fall damage is handled on another globalstep calc
 	// 		return(0)
@@ -28,7 +30,7 @@ namespace playerMechanics {
 	// local count
 	// local obj
 	// local name
-	// minetest.register_on_dieplayer(function(player, reason)
+	// core.register_on_dieplayer(function(player, reason)
 	// 	pos = player:get_pos()
 	// 	inv = player:get_inventory()
 	// 	for i = 1,inv:get_size("main") do
@@ -100,14 +102,14 @@ namespace playerMechanics {
 	// 	end
 	// end
 	// local registered_nodes
-	// minetest.register_on_mods_loaded(function()
-	// 	registered_nodes = minetest.registered_nodes
+	// core.register_on_mods_loaded(function()
+	// 	registered_nodes = core.registered_nodes
 	// end)
 	// --play sound to keep up with player's placing vs inconsistent client placing sound
 	// local node
 	// local sound
 	// local placing
-	// minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+	// core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
 	// 	node = registered_nodes[newnode.name]
 	// 	sound = node.sounds
 	// 	placing = ""
@@ -129,10 +131,10 @@ namespace playerMechanics {
 	// local inv
 	// local old
 	// local count
-	// minetest.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+	// core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
 	// 	old = itemstack:get_name()
 	// 	--pass through to check
-	// 	minetest.after(0,function(pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
+	// 	core.after(0,function(pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
 	// 		if not placer then
 	// 			return
 	// 		end
@@ -183,14 +185,14 @@ namespace playerMechanics {
 	// --we need to do this to override the default damage mechanics
 	// local pool = {}
 	// local name
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
-	// 	pool[name] = minetest.get_us_time()/1000000
+	// 	pool[name] = core.get_us_time()/1000000
 	// end)
 	// local name
 	// function player_can_be_punched(player)
 	// 	name = player:get_player_name()
-	// 	return((minetest.get_us_time()/1000000)-pool[name] >= 0.5)
+	// 	return((core.get_us_time()/1000000)-pool[name] >= 0.5)
 	// end
 	// --this throws the player when they're punched and activates the custom damage mechanics
 	// local name
@@ -203,17 +205,17 @@ namespace playerMechanics {
 	// local vel
 	// local hp_modifier
 	// local modify_output
-	// minetest.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
+	// core.register_on_punchplayer(function(player, hitter, time_from_last_punch, tool_capabilities, dir, damage)
 	// 	name = player:get_player_name()
 	// 	temp_pool = pool[name]
-	// 	punch_diff = (minetest.get_us_time()/1000000)-temp_pool
+	// 	punch_diff = (core.get_us_time()/1000000)-temp_pool
 	// 	hurt = tool_capabilities.damage_groups.damage
 	// 	if not hurt then
 	// 		hurt = 0
 	// 	end
 	// 	hp = player:get_hp()
 	// 	if punch_diff >= 0.5 and hp > 0 then
-	// 		temp_pool = minetest.get_us_time()/1000000
+	// 		temp_pool = core.get_us_time()/1000000
 	// 		if hitter:is_player() and hitter ~= player then
 	// 			puncher_vel = hitter:get_player_velocity().y
 	// 			if puncher_vel < 0 then
@@ -244,7 +246,7 @@ namespace playerMechanics {
 	// 	end
 	// end)
 	// local inv
-	// minetest.register_on_respawnplayer(function(player)
+	// core.register_on_respawnplayer(function(player)
 	// 	player:add_player_velocity(multiply_vec(player:get_player_velocity(),-1))
 	// 	inv = player:get_inventory()
 	// 	inv:set_list("main", {})
