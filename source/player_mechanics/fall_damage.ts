@@ -58,8 +58,8 @@ namespace playerMechanics {
 		const stack: ItemStackObject = inv.get_stack("armor_feet", 1);
 		const name: string = stack.get_name();
 		if (name != "") {
-			let absorption: number = 0;
-			absorption = core.get_item_group(name, "armor_level") * 2;
+			let absorption: number =
+				core.get_item_group(name, "armor_level") * 2;
 
 			//print("absorbtion:",absorption)
 			// 			local wear_level = ((9-core.get_item_group(name,"armor_level"))*8)*(5-core.get_item_group(name,"armor_type"))*math.abs(hp_change)
