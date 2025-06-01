@@ -286,36 +286,37 @@ namespace playerMechanics {
 				hurt = 0;
 			}
 			const hp: number = player.get_hp();
-			if (punch_diff >= 0.5 && hp > 0) {
-				// 		temp_pool = core.get_us_time()/1000000
-				// 		if hitter:is_player() and hitter ~= player then
-				// 			puncher_vel = hitter:get_player_velocity().y
-				// 			if puncher_vel < 0 then
-				// 				hurt = hurt * 1.5
-				// 				do_critical_particles(player:get_pos())
-				// 				play_sound("critical", {pos=player:get_pos(), gain = 0.1, max_hear_distance = 16,pitch = random(80,100)/100})
-				// 			end
-				// 		end
-				// 		dir = multiply_vec(dir,10)
-				// 		vel = player:get_player_velocity()
-				// 		dir.y = 0
-				// 		if vel.y <= 0 then
-				// 			dir.y = 7
-				// 		end
-				// 		hp_modifier = ceil(calculate_armor_absorbtion(player)/3)
-				// 		//print("hp_modifier:",hp_modifier)
-				// 		damage_armor(player,abs(hurt))
-				// 		//print("hurt:",hurt,"|","hp_modifier:",hp_modifier)
-				// 		modify_output = (hurt == 0)
-				// 		hurt = hurt - hp_modifier
-				// 		if not modify_output and hurt <= 0 then
-				// 			hurt = 1
-				// 		elseif modify_output then
-				// 			hurt = 0
-				// 		end
-				// 		player:add_player_velocity(dir)
-				// 		player:set_hp(hp-hurt)
+			if (punch_diff < 0.5 || hp <= 0) {
+				return;
 			}
+			// 		temp_pool = core.get_us_time()/1000000
+			// 		if hitter:is_player() and hitter ~= player then
+			// 			puncher_vel = hitter:get_player_velocity().y
+			// 			if puncher_vel < 0 then
+			// 				hurt = hurt * 1.5
+			// 				do_critical_particles(player:get_pos())
+			// 				play_sound("critical", {pos=player:get_pos(), gain = 0.1, max_hear_distance = 16,pitch = random(80,100)/100})
+			// 			end
+			// 		end
+			// 		dir = multiply_vec(dir,10)
+			// 		vel = player:get_player_velocity()
+			// 		dir.y = 0
+			// 		if vel.y <= 0 then
+			// 			dir.y = 7
+			// 		end
+			// 		hp_modifier = ceil(calculate_armor_absorbtion(player)/3)
+			// 		//print("hp_modifier:",hp_modifier)
+			// 		damage_armor(player,abs(hurt))
+			// 		//print("hurt:",hurt,"|","hp_modifier:",hp_modifier)
+			// 		modify_output = (hurt == 0)
+			// 		hurt = hurt - hp_modifier
+			// 		if not modify_output and hurt <= 0 then
+			// 			hurt = 1
+			// 		elseif modify_output then
+			// 			hurt = 0
+			// 		end
+			// 		player:add_player_velocity(dir)
+			// 		player:set_hp(hp-hurt)
 		}
 	);
 
