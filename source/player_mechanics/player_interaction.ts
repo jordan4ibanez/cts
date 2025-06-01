@@ -159,8 +159,8 @@ namespace playerMechanics {
 			itemstack: ItemStackObject,
 			pointed_thing: PointedThing
 		) => {
-			// 	old = itemstack:get_name()
-			// 	//pass through to check
+			const old: string = itemstack.get_name();
+			// Pass through to check.
 			// 	core.after(0,function(pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
 			// 		if not placer then
 			// 			return
