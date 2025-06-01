@@ -102,9 +102,12 @@ namespace playerMechanics {
 
 	function manage_eating(player: ObjectRef, dtime: number) {
 		const control: PlayerControlObject = player.get_player_control();
-		const name = player.get_player_name();
-		const data = food_control_pool.get(name);
-        
+		const name: string = player.get_player_name();
+		const data: FoodData | undefined = food_control_pool.get(name);
+
+		if (data == null) {
+			throw new Error(`Player [${name}] has no food data.`);
+		}
 
 		//     //eating
 		//     if control.RMB then
