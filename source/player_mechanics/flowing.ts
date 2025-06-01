@@ -1,18 +1,4 @@
 namespace playerMechanics {
-	// local
-	// minetest,vector,math,pairs
-	// =
-	// minetest,vector,math,pairs
-	// local pool = {}
-	// local legs
-	// local flowing
-	// local c_flow
-	// local vel
-	// local acceleration
-	// local newvel
-	// local flow_dir
-	// local name
-
 	const pool = new Map<string, Vec3>();
 
 	core.register_globalstep(() => {
