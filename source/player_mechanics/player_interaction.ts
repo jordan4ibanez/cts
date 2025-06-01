@@ -259,17 +259,6 @@ namespace playerMechanics {
 	}
 
 	// This throws the player when they're punched and activates the custom damage mechanics.
-	// local name
-	// local temp_pool
-	// local hurt
-	// local punch_diff
-	// local hurt
-	// local hp
-	// local puncher_vel
-	// local vel
-	// local hp_modifier
-	// local modify_output
-
 	core.register_on_punchplayer(
 		(
 			player: ObjectRef,
