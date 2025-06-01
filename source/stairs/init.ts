@@ -143,9 +143,9 @@ namespace stairs {
 
 		const sound: NodeSoundSpec | undefined = node.sounds;
 
-		let placing: string | SimpleSoundSpec | null = null;
+		let placing: SimpleSoundSpec | string | undefined = undefined;
 
-		if (sound && sound && sound.placing) {
+		if (sound && sound.placing) {
 			placing = sound.placing;
 		}
 
