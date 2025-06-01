@@ -1,4 +1,4 @@
-
+namespace playerMechanics {
 // local
 // minetest,vector,math,pairs
 // =
@@ -60,3 +60,4 @@
 
 
 // --coal armor stops fire from hurting you
+}
