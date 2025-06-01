@@ -95,18 +95,12 @@ namespace playerMechanics {
 		}
 	}
 
-	// todo: what the hell is this
-	local registered_nodes
-	core.register_on_mods_loaded(()
-		registered_nodes = core.registered_nodes
-	end)
-
 	// //play sound to keep up with player's placing vs inconsistent client placing sound
 	// local node
 	// local sound
 	// local placing
 	// core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
-	// 	node = registered_nodes[newnode.name]
+	// 	node = core.registered_nodes[newnode.name]
 	// 	sound = node.sounds
 	// 	placing = ""
 	// 	if sound then
