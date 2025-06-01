@@ -100,19 +100,12 @@ namespace playerMechanics {
 		return timer;
 	}
 
-	// local name
-	// local control
-	// local item
-	// local satiation
-	// local hunger
-	// local eating_step
-	// local eating_timer
-	// local pool
-
 	function manage_eating(player: ObjectRef, dtime: number) {
-		//     control = player:get_player_control()
-		//     name    = player:get_player_name()
-		//     pool    = food_control_pool[name]
+		const control: PlayerControlObject = player.get_player_control();
+		const name = player.get_player_name();
+		const data = food_control_pool.get(name);
+        
+
 		//     //eating
 		//     if control.RMB then
 		//         item      = player:get_wielded_item():get_name()
