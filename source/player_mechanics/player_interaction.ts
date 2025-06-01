@@ -116,15 +116,6 @@ namespace playerMechanics {
 				placing = sound.placing;
 			}
 			// Only play the sound when is defined.
-
-			// 	if type(placing) == "table" then
-			// 		play_sound(placing.name, {
-			// 			  pos = pos,
-			// 			  gain = placing.gain,
-			//
-			// 			  //pitch = random(60,100)/100
-			// 		})
-			// 	end
 			if (placing != null) {
 				let finalSound: string = "";
 				let finalGain = 1.0;
