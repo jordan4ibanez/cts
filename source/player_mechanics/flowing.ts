@@ -27,7 +27,6 @@ namespace playerMechanics {
 				if (data != null) {
 					const c_flow: Vec3 = data;
 
-					const vel: Vec3 = player.get_velocity();
 					let acceleration: Vec3 | null = null;
 
 					if (c_flow.x != 0) {
@@ -47,7 +46,6 @@ namespace playerMechanics {
 					}
 				} else {
 					const newFlow = vector.multiply(flow_dir, 10);
-					const vel: Vec3 = player.get_velocity();
 					let acceleration: Vec3 | null = null;
 					if (newFlow.x != 0) {
 						acceleration = vector.create3d(newFlow.x, 0, 0);
