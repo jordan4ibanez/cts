@@ -134,10 +134,9 @@ namespace playerMechanics {
 		}
 	}
 
-	// local player
-	// core.register_globalstep(function(dtime)
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		manage_eating(player,dtime)
-	// 	end
-	// end)
+	core.register_globalstep((dtime) => {
+		for (const [_, player] of ipairs(core.get_connected_players())) {
+			manage_eating(player, dtime);
+		}
+	});
 }
