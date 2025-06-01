@@ -42,12 +42,14 @@ namespace playerMechanics {
 		food_control_pool.delete(player.get_player_name());
 	}
 
-	// core.register_on_joinplayer(function(player)
-	// 	create_data(player)
-	// end)
-	// core.register_on_leaveplayer(function(player)
-	// 	terminate(player)
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		create_data(player);
+	});
+
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		terminate(player);
+	});
+
 	// // manages player eating effects
 	// local position
 	// local velocity
