@@ -279,10 +279,12 @@ namespace playerMechanics {
 
 			const punch_diff: number = core.get_us_time() / 1000000 - data;
 
-			// 	hurt = tool_capabilities.damage_groups.damage
-			// 	if not hurt then
-			// 		hurt = 0
-			// 	end
+			let hurt: number | undefined =
+				tool_capabilities.damage_groups?.damage;
+
+			if (hurt == null) {
+				hurt = 0;
+			}
 			// 	hp = player:get_hp()
 			// 	if punch_diff >= 0.5 and hp > 0 then
 			// 		temp_pool = core.get_us_time()/1000000
