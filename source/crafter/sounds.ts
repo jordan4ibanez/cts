@@ -4,7 +4,7 @@ namespace crafter {
 		table.dig = table.dig || { name: "stone", gain: 0.2 };
 		table.footstep = table.footstep || { name: "stone", gain: 0.1 };
 		table.dug = table.dug || { name: "stone", gain: 1.0 };
-		table.placing = table.placing || { name: "stone", gain: 1.0 };
+		table.placing = table.placing || { name: "stone", gain: 0.5 };
 		// default.node_sound_defaults(table)
 		return table;
 	}
@@ -14,7 +14,7 @@ namespace crafter {
 		table.dig = table.dig || { name: "wood", gain: 0.3 };
 		table.footstep = table.footstep || { name: "wood", gain: 0.2 };
 		table.dug = table.dug || { name: "wood", gain: 1.0 };
-		table.placing = table.placing || { name: "wood", gain: 1.0 };
+		table.placing = table.placing || { name: "wood", gain: 0.5 };
 		// default.node_sound_defaults(table)
 		return table;
 	}
