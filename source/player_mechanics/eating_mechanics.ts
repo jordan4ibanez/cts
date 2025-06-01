@@ -67,13 +67,11 @@ namespace playerMechanics {
 			particle_constant as any as LuaTable
 		) as ParticleSpawnerDefinition;
 
-        
-
-		    temp_particle.minpos = vector.add(position,temp_particle.minpos!)
-		//     temp_particle.maxpos = vector.add(position,temp_particle.maxpos)
-		//     temp_particle.minvel = vector.add(velocity,temp_particle.minvel)
-		//     temp_particle.maxvel = vector.add(velocity,temp_particle.maxvel)
-		//     temp_particle.node   = {name=item.."node"}
+		temp_particle.minpos = vector.add(position, temp_particle.minpos!);
+		temp_particle.maxpos = vector.add(position, temp_particle.maxpos!);
+		temp_particle.minvel = vector.add(velocity, temp_particle.minvel!);
+		temp_particle.maxvel = vector.add(velocity, temp_particle.maxvel!);
+		temp_particle.node = { name: item + "node" };
 		core.add_particlespawner(temp_particle);
 
 		//     if timer >= 0.2 then
