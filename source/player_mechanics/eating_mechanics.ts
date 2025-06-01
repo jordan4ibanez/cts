@@ -28,7 +28,6 @@ namespace playerMechanics {
 
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name = player.get_player_name();
-
 		food_control_pool.set(name, {
 			eating_step: 0,
 			eating_timer: 0,
