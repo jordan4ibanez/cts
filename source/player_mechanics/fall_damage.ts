@@ -82,9 +82,9 @@ namespace playerMechanics {
 				// recalculate_armor(player)
 				// set_armor_gui(player)
 
-				// todo: do particles too <- this was never done
+				// Do particles too.
 			} else if (core.get_item_group(new_stack, "boots") > 0) {
-				// 				local pos = player:get_pos()
+								const pos: Vec3 = player:get_pos()
 				// 				core.add_particlespawner({
 				// 					amount = 30,
 				// 					time = 0.00001,
