@@ -95,27 +95,41 @@ namespace playerMechanics {
 		}
 	}
 
-	// //play sound to keep up with player's placing vs inconsistent client placing sound
+	// Play sound to keep up with player's placing vs inconsistent client placing sound.
+
 	// local node
 	// local sound
 	// local placing
-	// core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
-	// 	node = core.registered_nodes[newnode.name]
-	// 	sound = node.sounds
-	// 	placing = ""
-	// 	if sound then
-	// 		placing = sound.placing
-	// 	end
-	// 	//only play the sound when is defined
-	// 	if type(placing) == "table" then
-	// 		play_sound(placing.name, {
-	// 			  pos = pos,
-	// 			  gain = placing.gain,
-	// 			  max_hear_distance = 32,
-	// 			  //pitch = random(60,100)/100
-	// 		})
-	// 	end
-	// end)
+
+	core.register_on_placenode(
+		(pos, newnode, placer, oldnode, itemstack, pointed_thing) => {
+			const node: NodeDefinition | undefined =
+				core.registered_nodes[newnode.name];
+			if (node == null) {
+				throw new Error(
+					`Player [${placer.get_player_name()}] placed a non-existent node [${
+						newnode.name
+					}]`
+				);
+			}
+
+			// 	sound = node.sounds
+			// 	placing = ""
+			// 	if sound then
+			// 		placing = sound.placing
+			// 	end
+			// 	//only play the sound when is defined
+			// 	if type(placing) == "table" then
+			// 		play_sound(placing.name, {
+			// 			  pos = pos,
+			// 			  gain = placing.gain,
+			// 			  max_hear_distance = 32,
+			// 			  //pitch = random(60,100)/100
+			// 		})
+			// 	end
+		}
+	);
+
 	// //replace stack when empty (building)
 	// local new
 	// local inv
