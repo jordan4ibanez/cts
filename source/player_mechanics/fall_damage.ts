@@ -131,13 +131,6 @@ namespace playerMechanics {
 		}
 	}
 
-	// local pool = {}
-	// local name
-	// local new_vel
-	// local old_vel
-	// local damage_calc
-	// local pos
-
 	const pool = new Map<string, number>();
 
 	core.register_globalstep((dtime) => {
