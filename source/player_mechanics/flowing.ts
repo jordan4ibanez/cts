@@ -46,17 +46,18 @@ namespace playerMechanics {
 						pool.delete(name);
 					}
 				} else {
-					//                 flow_dir = vector.multiply(flow_dir,10)
-					//                 vel = player:get_player_velocity()
-					//                 acceleration = nil
-					//                 if flow_dir.x ~= 0 then
-					//                     acceleration = vector.new(flow_dir.x,0,0)
-					//                 elseif flow_dir.z ~= 0 then
-					//                     acceleration = vector.new(0,0,flow_dir.z)
-					//                 end
-					//                 acceleration = vector.multiply(acceleration, 0.075)
-					//                 player:add_player_velocity(acceleration)
-					//                 pool[name] = flow_dir
+					const newFlow = vector.multiply(flow_dir, 10);
+					const vel: Vec3 = player.get_velocity();
+					let acceleration: Vec3 | null = null;
+					if (newFlow.x != 0) {
+						acceleration = vector.create3d(newFlow.x, 0, 0);
+					} else if (newFlow.z != 0) {
+						acceleration = vector.create3d(0, 0, newFlow.z);
+					}
+					acceleration = acceleration as Vec3;
+					acceleration = vector.multiply(acceleration, 0.075);
+					player.add_velocity(acceleration);
+					pool.set(name, newFlow);
 				}
 			} else {
 				pool.delete(name);
