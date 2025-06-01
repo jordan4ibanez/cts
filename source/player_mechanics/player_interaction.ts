@@ -96,11 +96,6 @@ namespace playerMechanics {
 	}
 
 	// Play sound to keep up with player's placing vs inconsistent client placing sound.
-
-	// local node
-	// local sound
-	// local placing
-
 	core.register_on_placenode(
 		(pos, newnode, placer, oldnode, itemstack, pointed_thing) => {
 			const node: NodeDefinition | undefined =
@@ -113,20 +108,46 @@ namespace playerMechanics {
 				);
 			}
 
-			// 	sound = node.sounds
-			// 	placing = ""
-			// 	if sound then
-			// 		placing = sound.placing
-			// 	end
-			// 	//only play the sound when is defined
+			const sound: NodeSoundSpec | undefined = node.sounds;
+
+			let placing: string | SimpleSoundSpec | undefined = undefined;
+
+			if (sound && sound.placing) {
+				placing = sound.placing;
+			}
+			// Only play the sound when is defined.
+
 			// 	if type(placing) == "table" then
 			// 		play_sound(placing.name, {
 			// 			  pos = pos,
 			// 			  gain = placing.gain,
-			// 			  max_hear_distance = 32,
+			//
 			// 			  //pitch = random(60,100)/100
 			// 		})
 			// 	end
+			if (placing != null) {
+				let finalSound: string = "";
+				let finalGain = 1.0;
+				if (typeof placing == "string") {
+					finalSound = placing;
+				} else if (placing.name) {
+					finalSound = placing.name;
+					if (placing.gain) {
+						finalGain = placing.gain;
+					}
+				} else {
+					core.log(
+						LogLevel.warning,
+						`Node [${newnode}] has a missing placing sound.`
+					);
+				}
+				core.sound_play(finalSound, {
+					pos: pos,
+					gain: finalGain,
+					max_hear_distance: 32,
+					//pitch = math.random(60,100)/100
+				});
+			}
 		}
 	);
 
