@@ -272,12 +272,12 @@ namespace playerMechanics {
 
 	core.register_on_punchplayer(
 		(
-			player,
-			hitter,
-			time_from_last_punch,
-			tool_capabilities,
-			dir,
-			damage
+			player: ObjectRef,
+			hitter: ObjectRef,
+			time_from_last_punch: number,
+			tool_capabilities: ToolCapabilities,
+			dir: Vec3,
+			damage: number
 		) => {
 			// 	name = player:get_player_name()
 			// 	temp_pool = pool[name]
