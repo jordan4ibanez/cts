@@ -41,10 +41,10 @@ namespace playerMechanics {
 			}
 		}
 
-		// find the highest damage node
-		// 	if table.getn(real_nodes) > 0 then
-		// 		return(true)
-		// 	end
+		// If ANY nodes were found, fall damage is now disabled.
+		if (real_nodes.length > 0) {
+			return true;
+		}
 		return false;
 	}
 
