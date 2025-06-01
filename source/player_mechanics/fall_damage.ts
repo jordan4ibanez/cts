@@ -102,8 +102,15 @@ namespace playerMechanics {
 			// 				core.sound_play("hurt", {object=player, gain = 1.0, max_hear_distance = 60,pitch = math.random(80,100)/100})
 			// 			end
 		} else {
-			// 			player:set_hp(player:get_hp()+hp_change,{reason="correction"})
-			// 			core.sound_play("hurt", {object=player, gain = 1.0, max_hear_distance = 60,pitch = math.random(80,100)/100})
+			player.set_hp(player.get_hp() + hp_change, {
+				type: HPChangeReasonType.fall,
+			});
+			core.sound_play("hurt", {
+				object: player,
+				gain: 1.0,
+				max_hear_distance: 60,
+				pitch: math.random(80, 100) / 100,
+			});
 		}
 	}
 
