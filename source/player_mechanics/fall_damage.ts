@@ -8,8 +8,6 @@ namespace playerMechanics {
 		// Rudementary collision detection.
 		const pos: Vec3 = player.get_pos();
 
-		pos.y = pos.y;
-
 		// 	a_min = vector.new(
 		// 		pos.x-0.25,
 		// 		pos.y-0.85,
