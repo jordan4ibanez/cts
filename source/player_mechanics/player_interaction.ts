@@ -8,7 +8,8 @@ namespace playerMechanics {
 	const new_vec = vector.create3d;
 	const multiply_vec = vector.multiply;
 
-	// //hurt sound and disable fall damage group handling
+	// Hurt sound and disable fall damage group handling.
+	// todo: was this sound playing twice?
 	// core.register_on_player_hpchange(function(player, hp_change, reason)
 	// 	if reason.type == "fall" then
 	// 		//fall damage is handled on another globalstep calc
