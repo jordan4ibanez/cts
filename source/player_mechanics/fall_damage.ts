@@ -62,10 +62,15 @@ namespace playerMechanics {
 				core.get_item_group(name, "armor_level") * 2;
 
 			//print("absorbtion:",absorption)
-			// 			local wear_level = ((9-core.get_item_group(name,"armor_level"))*8)*(5-core.get_item_group(name,"armor_type"))*math.abs(hp_change)
-			// 			stack:add_wear(wear_level)
-			// 			inv:set_stack("armor_feet", 1, stack)
-			// 			local new_stack = inv:get_stack("armor_feet",1):get_name()
+
+			const wear_level =
+				(9 - core.get_item_group(name, "armor_level")) *
+				8 *
+				(5 - core.get_item_group(name, "armor_type")) *
+				math.abs(hp_change);
+			stack.add_wear(wear_level);
+			inv.set_stack("armor_feet", 1, stack);
+			const new_stack = inv.get_stack("armor_feet", 1).get_name();
 			// 			if new_stack == "" then
 			// 				core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=math.random(80,100)/100})
 			// 				recalculate_armor(player)
