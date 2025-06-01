@@ -20,7 +20,7 @@ namespace playerMechanics {
 	//     vertical = false,
 	// }
 
-	// -- creates volitile data for the game to use
+	// // creates volitile data for the game to use
 	// local name
 	// local create_data = function(player)
 	//     name = player:get_player_name()
@@ -32,7 +32,7 @@ namespace playerMechanics {
 	//     end
 	// end
 
-	// -- removes movement data
+	// // removes movement data
 	// local name
 	// local terminate = function(player)
 	// 	name = player:get_player_name()
@@ -46,7 +46,7 @@ namespace playerMechanics {
 	// core.register_on_leaveplayer(function(player)
 	// 	terminate(player)
 	// end)
-	// -- manages player eating effects
+	// // manages player eating effects
 	// local position
 	// local velocity
 	// local offset
@@ -105,7 +105,7 @@ namespace playerMechanics {
 	//     control = player:get_player_control()
 	//     name    = player:get_player_name()
 	//     pool    = food_control_pool[name]
-	//     --eating
+	//     //eating
 	//     if control.RMB then
 	//         item      = player:get_wielded_item():get_name()
 	//         satiation = core.get_item_group( item, "satiation")
