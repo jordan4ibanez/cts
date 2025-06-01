@@ -2,6 +2,7 @@ namespace playerMechanics {
 	// local minetest,math,vector,ipairs,pairs,table =
 	//       minetest,math,vector,ipairs,pairs,table
 	// local food_control_pool  = {}
+
 	// local particle_constant = {
 	//     amount = 12,
 	//     time = 0.01,
@@ -18,6 +19,7 @@ namespace playerMechanics {
 	//     collision_removal = true,
 	//     vertical = false,
 	// }
+
 	// -- creates volitile data for the game to use
 	// local name
 	// local create_data = function(player)
@@ -29,6 +31,7 @@ namespace playerMechanics {
 	//         }
 	//     end
 	// end
+
 	// -- removes movement data
 	// local name
 	// local terminate = function(player)
@@ -37,10 +40,10 @@ namespace playerMechanics {
 	// 		food_control_pool[name] = nil
 	// 	end
 	// end
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	create_data(player)
 	// end)
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	// 	terminate(player)
 	// end)
 	// -- manages player eating effects
@@ -65,9 +68,9 @@ namespace playerMechanics {
 	//     temp_particle.minvel = vector.add(velocity,temp_particle.minvel)
 	//     temp_particle.maxvel = vector.add(velocity,temp_particle.maxvel)
 	//     temp_particle.node   = {name=item.."node"}
-	//     minetest.add_particlespawner(temp_particle)
+	//     core.add_particlespawner(temp_particle)
 	//     if timer >= 0.2 then
-	//         minetest.sound_play("eat", {
+	//         core.sound_play("eat", {
 	//             object = player,
 	//             gain = 0.2                      ,
 	//             pitch = math.random(60,85)/100}
@@ -81,7 +84,7 @@ namespace playerMechanics {
 	//     if timer >= 1 then
 	//         item = player:get_wielded_item()
 	//         player_eat_food(player,item)
-	//         minetest.sound_play("eat_finish", {
+	//         core.sound_play("eat_finish", {
 	//             object = player,
 	//             gain = 0.025                      ,
 	//             pitch = math.random(60,85)/100}
@@ -105,8 +108,8 @@ namespace playerMechanics {
 	//     --eating
 	//     if control.RMB then
 	//         item      = player:get_wielded_item():get_name()
-	//         satiation = minetest.get_item_group( item, "satiation")
-	//         hunger    = minetest.get_item_group( item, "hunger"   )
+	//         satiation = core.get_item_group( item, "satiation")
+	//         hunger    = core.get_item_group( item, "hunger"   )
 	//         if hunger > 0 or satiation > 0  then
 	//             pool.eating_step  = pool.eating_step  + dtime
 	//             pool.eating_timer = pool.eating_timer + dtime
@@ -130,8 +133,8 @@ namespace playerMechanics {
 	//     end
 	// end
 	// local player
-	// minetest.register_globalstep(function(dtime)
-	// 	for _,player in ipairs(minetest.get_connected_players()) do
+	// core.register_globalstep(function(dtime)
+	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		manage_eating(player,dtime)
 	// 	end
 	// end)
