@@ -4,7 +4,7 @@ namespace playerMechanics {
 		if (player.get_hp() <= 0) {
 			return false;
 		}
-		// Used for finding a damage node from the center of the player.
+		// Used for finding a disable fall damage node from the center of the player.
 		// Rudementary collision detection.
 		const pos: Vec3 = player.get_pos();
 
@@ -19,6 +19,7 @@ namespace playerMechanics {
 			pos.z + 0.25
 		);
 
+		// Now search for nodes that disable fall damage.
 		let [_, saving_nodes] = core.find_nodes_in_area(a_min, a_max, [
 			"group:disable_fall_damage",
 		]);
