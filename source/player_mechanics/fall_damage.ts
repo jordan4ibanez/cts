@@ -54,10 +54,9 @@ namespace playerMechanics {
 			return;
 		}
 
-		// 	else
-		// 		local inv = player:get_inventory()
-		// 		local stack = inv:get_stack("armor_feet", 1)
-		// 		local name = stack:get_name()
+		const inv: InvRef = player.get_inventory();
+		const stack: ItemStackObject = inv.get_stack("armor_feet", 1);
+		const name: string = stack.get_name();
 		// 		if name ~= "" then
 		// 			local absorption = 0
 		// 			absorption = core.get_item_group(name,"armor_level")*2
@@ -106,7 +105,6 @@ namespace playerMechanics {
 		// 			player:set_hp(player:get_hp()+hp_change,{reason="correction"})
 		// 			core.sound_play("hurt", {object=player, gain = 1.0, max_hear_distance = 60,pitch = math.random(80,100)/100})
 		// 		end
-		// 	end
 	}
 
 	// local pool = {}
