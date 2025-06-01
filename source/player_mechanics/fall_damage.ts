@@ -25,7 +25,11 @@ namespace playerMechanics {
 		]);
 
 		for (const [node_data, _] of pairs(saving_nodes)) {
+			// Todo: Find out what the hell I was doing
+			print(dump(node_data));
+
 			let data = saving_nodes[node_data];
+
 			if (data == null) {
 				core.log(
 					LogLevel.warning,
