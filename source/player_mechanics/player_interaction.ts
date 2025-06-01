@@ -143,12 +143,9 @@ namespace playerMechanics {
 	);
 
 	// Replace stack when empty (building).
-	// local new
-	// local inv
-	// local old
-	// local count
 	
-	// core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
+
+	core.register_on_placenode((pos, newnode, placer, oldnode, itemstack, pointed_thing) => {
 	// 	old = itemstack:get_name()
 	// 	//pass through to check
 	// 	core.after(0,function(pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
@@ -179,7 +176,8 @@ namespace playerMechanics {
 	// 			end
 	// 		end
 	// 	end,pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
-	// end)
+})
+
 	// local do_critical_particles = function(pos)
 	// 	add_ps({
 	// 		amount = 40,
@@ -199,6 +197,7 @@ namespace playerMechanics {
 	// 		texture = "critical.png",
 	// 	})
 	// end
+
 	// //we need to do this to override the default damage mechanics
 	// local pool = {}
 	// local name
@@ -206,11 +205,13 @@ namespace playerMechanics {
 	// 	name = player:get_player_name()
 	// 	pool[name] = core.get_us_time()/1000000
 	// end)
+
 	// local name
 	// function player_can_be_punched(player)
 	// 	name = player:get_player_name()
 	// 	return((core.get_us_time()/1000000)-pool[name] >= 0.5)
 	// end
+
 	// //this throws the player when they're punched and activates the custom damage mechanics
 	// local name
 	// local temp_pool
@@ -262,6 +263,7 @@ namespace playerMechanics {
 	// 		player:set_hp(hp-hurt)
 	// 	end
 	// end)
+	
 	// local inv
 	// core.register_on_respawnplayer(function(player)
 	// 	player:add_player_velocity(multiply_vec(player:get_player_velocity(),-1))
