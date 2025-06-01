@@ -27,9 +27,8 @@ namespace playerMechanics {
 	};
 
 	// Creates data for the game to use.
-	function create_data(player: ObjectRef) {
+	function create_data(player: ObjectRef): void {
 		const name = player.get_player_name();
-
 		if (!food_control_pool.has(name)) {
 			food_control_pool.set(name, {
 				eating_step: 0,
@@ -38,14 +37,11 @@ namespace playerMechanics {
 		}
 	}
 
-	// // removes movement data
-	// local name
-	// local terminate = function(player)
-	// 	name = player:get_player_name()
-	// 	if food_control_pool[name] then
-	// 		food_control_pool[name] = nil
-	// 	end
-	// end
+	// Removes movement data.
+	function terminate(player: ObjectRef): void {
+		food_control_pool.delete(player.get_player_name());
+	}
+
 	// core.register_on_joinplayer(function(player)
 	// 	create_data(player)
 	// end)
