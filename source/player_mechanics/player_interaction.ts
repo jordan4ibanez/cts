@@ -255,7 +255,6 @@ namespace playerMechanics {
 		if (data == null) {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
-
 		return core.get_us_time() / 1000000 - data >= 0.5;
 	}
 
