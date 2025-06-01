@@ -164,13 +164,13 @@ namespace playerMechanics {
 			core.after(
 				0,
 				(
-					pos,
-					newnode,
-					placer,
-					oldnode,
-					itemstack,
-					pointed_thing,
-					old
+					pos: Vec3,
+					newnode: NodeTable,
+					placer: ObjectRef,
+					oldnode: NodeTable,
+					itemstack: ItemStackObject,
+					pointed_thing: PointedThing,
+					old: NodeTable
 				) => {
 					// 		if not placer then
 					// 			return
