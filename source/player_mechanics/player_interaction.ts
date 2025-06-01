@@ -306,13 +306,15 @@ namespace playerMechanics {
 				}
 			}
 
-			// 		dir = multiply_vec(dir,10)
-			// 		vel = player:get_player_velocity()
-			// 		dir.y = 0
-			// 		if vel.y <= 0 then
-			// 			dir.y = 7
-			// 		end
-			// 		hp_modifier = ceil(calculate_armor_absorbtion(player)/3)
+			dir = multiply_vec(dir, 10);
+			const vel: Vec3 = player.get_velocity();
+			dir.y = 0;
+			if (vel.y <= 0) {
+				dir.y = 7;
+			}
+
+			// todo: the rest of this requires the crafter armor mod.
+			// const hp_modifier: number = ceil(calculate_armor_absorbtion(player)/3)
 			// 		//print("hp_modifier:",hp_modifier)
 			// 		damage_armor(player,abs(hurt))
 			// 		//print("hurt:",hurt,"|","hp_modifier:",hp_modifier)
