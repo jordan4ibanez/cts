@@ -85,20 +85,21 @@ namespace playerMechanics {
 		return timer;
 	}
 
-	// local item
-	// local finish_eating = function(player,timer)
-	//     if timer >= 1 then
-	//         item = player:get_wielded_item()
-	//         player_eat_food(player,item)
-	//         core.sound_play("eat_finish", {
-	//             object = player,
-	//             gain = 0.025                      ,
-	//             pitch = math.random(60,85)/100}
-	//         )
-	//         return(0)
-	//     end
-	//     return(timer)
-	// end
+	function finish_eating(player: ObjectRef, timer: number): number {
+		if (timer >= 1) {
+			const item: ItemStackObject = player.get_wielded_item();
+			// todo: this was dependant on the food mod.
+			// player_eat_food(player,item)
+			core.sound_play("eat_finish", {
+				object: player,
+				gain: 0.025,
+				pitch: math.random(60, 85) / 100,
+			});
+			return 0;
+		}
+		return timer;
+	}
+
 	// local name
 	// local control
 	// local item
