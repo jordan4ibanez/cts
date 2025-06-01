@@ -46,14 +46,16 @@ namespace playerMechanics {
 		item: ObjectRef
 	): number {
 		const position: Vec3 = player.get_pos();
-		//     velocity    = player:get_player_velocity()
-		//     if sneaking then
-		//         position.y  = position.y + 1.2
-		//         offset = 0.6
-		//     else
-		//         position.y = position.y + 1.3
-		//         offset = 0.3
-		//     end
+		let offset: number = 0;
+		const velocity: Vec3 = player.get_velocity();
+		if (sneaking) {
+			position.y = position.y + 1.2;
+			offset = 0.6;
+		} else {
+			position.y = position.y + 1.3;
+			offset = 0.3;
+		}
+
 		//     position = vector.add(position, vector.multiply(player:get_look_dir(),offset))
 		//     temp_particle = table.copy(particle_constant)
 		//     temp_particle.minpos = vector.add(position,temp_particle.minpos)
