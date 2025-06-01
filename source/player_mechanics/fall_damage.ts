@@ -116,7 +116,7 @@ namespace playerMechanics {
 				// recalculate_armor(player)
 				// set_armor_gui(player)
 
-				// Do particles too.
+				// The boots survived and get a special sound.
 			} else if (core.get_item_group(new_stack, "boots") > 0) {
 				core.sound_play("armor_fall_damage", {
 					object: player,
