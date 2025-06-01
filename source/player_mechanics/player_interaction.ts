@@ -74,7 +74,9 @@ namespace playerMechanics {
 					inv.set_stack("armor_feet", 1, ItemStack(""));
 				}
 			}
+			// todo: dump_craft comes from player_mechanics
 			// 	dump_craft(player)
+			// todo: this needs the crafter armor mod
 			// 	recalculate_armor(player)
 		}
 	);
