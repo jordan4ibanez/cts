@@ -106,12 +106,14 @@ namespace playerMechanics {
 	// 		end
 	// 	end
 	// end
+
 	// local pool = {}
 	// local name
 	// local new_vel
 	// local old_vel
 	// local damage_calc
 	// local pos
+    
 	// core.register_globalstep(function(dtime)
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		name = player:get_player_name()
