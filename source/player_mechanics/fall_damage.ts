@@ -70,7 +70,7 @@ namespace playerMechanics {
 				math.abs(hp_change);
 			stack.add_wear(wear_level);
 			inv.set_stack("armor_feet", 1, stack);
-			const new_stack = inv.get_stack("armor_feet", 1).get_name();
+			const new_stack: string = inv.get_stack("armor_feet", 1).get_name();
 			// 			if new_stack == "" then
 			// 				core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=math.random(80,100)/100})
 			// 				recalculate_armor(player)
