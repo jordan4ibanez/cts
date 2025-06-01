@@ -2,7 +2,12 @@ namespace playerMechanics {
 	// local minetest,math,vector,ipairs,pairs,table =
 	//       minetest,math,vector,ipairs,pairs,table
 
-	// local food_control_pool  = {}
+	interface FoodData {
+		eating_step: number;
+		eating_timer: number;
+	}
+
+	const food_control_pool = new Map<string, FoodData>();
 
 	const particle_constant = {
 		amount: 12,
@@ -21,17 +26,17 @@ namespace playerMechanics {
 		vertical: false,
 	};
 
-	// // creates volitile data for the game to use
-	// local name
-	// local create_data = function(player)
-	//     name = player:get_player_name()
-	//     if not food_control_pool[name] then
-	// 		food_control_pool[name] = {
-	// 			eating_step  = 0,
-	// 			eating_timer = 0,
-	//         }
-	//     end
-	// end
+	// Creates volitile data for the game to use.
+	function create_data(player: ObjectRef) {
+		const name = player.get_player_name();
+
+		if (!food_control_pool.has(name)) {
+			food_control_pool.set(name, {
+				eating_step: 0,
+				eating_timer: 0,
+			});
+		}
+	}
 
 	// // removes movement data
 	// local name
