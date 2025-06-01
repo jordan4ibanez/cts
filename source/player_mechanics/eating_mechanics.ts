@@ -26,7 +26,7 @@ namespace playerMechanics {
 		vertical: false,
 	};
 
-	// Creates volitile data for the game to use.
+	// Creates data for the game to use.
 	function create_data(player: ObjectRef) {
 		const name = player.get_player_name();
 
