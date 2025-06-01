@@ -13,17 +13,17 @@ namespace playerMechanics {
 	// local new_vec    = vector.new
 	// local multiply_vec = vector.multiply
 
-	// --hurt sound and disable fall damage group handling
+	// //hurt sound and disable fall damage group handling
 	// core.register_on_player_hpchange(function(player, hp_change, reason)
 	// 	if reason.type == "fall" then
-	// 		--fall damage is handled on another globalstep calc
+	// 		//fall damage is handled on another globalstep calc
 	// 		return(0)
 	// 	elseif hp_change < 0 and reason.reason ~= "correction" then
 	// 		play_sound("hurt", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
 	// 	end
 	// 	return(hp_change)
 	// end, true)
-	// --throw all items on death
+	// //throw all items on death
 	// local pos
 	// local inv
 	// local stack
@@ -84,7 +84,7 @@ namespace playerMechanics {
 	// 	dump_craft(player)
 	// 	recalculate_armor(player)
 	// end)
-	// --this dumps the players crafting table on closing the inventory
+	// //this dumps the players crafting table on closing the inventory
 	// dump_craft = function(player)
 	// 	pos = player:get_pos()
 	// 	inv = player:get_inventory()
@@ -105,7 +105,7 @@ namespace playerMechanics {
 	// core.register_on_mods_loaded(function()
 	// 	registered_nodes = core.registered_nodes
 	// end)
-	// --play sound to keep up with player's placing vs inconsistent client placing sound
+	// //play sound to keep up with player's placing vs inconsistent client placing sound
 	// local node
 	// local sound
 	// local placing
@@ -116,24 +116,24 @@ namespace playerMechanics {
 	// 	if sound then
 	// 		placing = sound.placing
 	// 	end
-	// 	--only play the sound when is defined
+	// 	//only play the sound when is defined
 	// 	if type(placing) == "table" then
 	// 		play_sound(placing.name, {
 	// 			  pos = pos,
 	// 			  gain = placing.gain,
 	// 			  max_hear_distance = 32,
-	// 			  --pitch = random(60,100)/100
+	// 			  //pitch = random(60,100)/100
 	// 		})
 	// 	end
 	// end)
-	// --replace stack when empty (building)
+	// //replace stack when empty (building)
 	// local new
 	// local inv
 	// local old
 	// local count
 	// core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
 	// 	old = itemstack:get_name()
-	// 	--pass through to check
+	// 	//pass through to check
 	// 	core.after(0,function(pos, newnode, placer, oldnode, itemstack, pointed_thing,old)
 	// 		if not placer then
 	// 			return
@@ -141,12 +141,12 @@ namespace playerMechanics {
 	// 		new = placer:get_wielded_item():get_name()
 	// 		if old ~= new and new == "" then
 	// 			inv = placer:get_inventory()
-	// 			--check if another stack
+	// 			//check if another stack
 	// 			if inv:contains_item("main", old) then
-	// 				--print("moving stack")
-	// 				--run through inventory
+	// 				//print("moving stack")
+	// 				//run through inventory
 	// 				for i = 1,inv:get_size("main") do
-	// 					--if found set wielded item and remove old stack
+	// 					//if found set wielded item and remove old stack
 	// 					if inv:get_stack("main", i):get_name() == old then
 	// 						count = inv:get_stack("main", i):get_count()
 	// 						placer:set_wielded_item(old.." "..count)
@@ -182,7 +182,7 @@ namespace playerMechanics {
 	// 		texture = "critical.png",
 	// 	})
 	// end
-	// --we need to do this to override the default damage mechanics
+	// //we need to do this to override the default damage mechanics
 	// local pool = {}
 	// local name
 	// core.register_on_joinplayer(function(player)
@@ -194,7 +194,7 @@ namespace playerMechanics {
 	// 	name = player:get_player_name()
 	// 	return((core.get_us_time()/1000000)-pool[name] >= 0.5)
 	// end
-	// --this throws the player when they're punched and activates the custom damage mechanics
+	// //this throws the player when they're punched and activates the custom damage mechanics
 	// local name
 	// local temp_pool
 	// local hurt
@@ -231,9 +231,9 @@ namespace playerMechanics {
 	// 			dir.y = 7
 	// 		end
 	// 		hp_modifier = ceil(calculate_armor_absorbtion(player)/3)
-	// 		--print("hp_modifier:",hp_modifier)
+	// 		//print("hp_modifier:",hp_modifier)
 	// 		damage_armor(player,abs(hurt))
-	// 		--print("hurt:",hurt,"|","hp_modifier:",hp_modifier)
+	// 		//print("hurt:",hurt,"|","hp_modifier:",hp_modifier)
 	// 		modify_output = (hurt == 0)
 	// 		hurt = hurt - hp_modifier
 	// 		if not modify_output and hurt <= 0 then
