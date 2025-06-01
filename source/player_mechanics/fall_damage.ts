@@ -163,7 +163,7 @@ namespace playerMechanics {
 		pool.delete(player.get_player_name());
 	});
 
-    // This disables normal fall damage.
+	// This disables normal fall damage.
 	core.register_on_mods_loaded(() => {
 		for (const [name, def] of pairs(core.registered_nodes)) {
 			if (!def.groups) {
