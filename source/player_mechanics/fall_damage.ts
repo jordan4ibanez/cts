@@ -140,7 +140,6 @@ namespace playerMechanics {
 
 	const pool = new Map<string, number>();
 
-	// todo: check if fall damage was disabled?!
 	core.register_globalstep((dtime) => {
 		for (const [_, player] of ipairs(core.get_connected_players())) {
 			const name = player.get_player_name();
@@ -169,5 +168,15 @@ namespace playerMechanics {
 
 	core.register_on_leaveplayer((player: ObjectRef) => {
 		pool.delete(player.get_player_name());
+	});
+
+	core.register_on_mods_loaded(() => {
+		for (const [name, def] of pairs(core.registered_nodes)) {
+			if (!def.groups) {
+				throw new Error(`Node [${name}] has no groups.`);
+			}
+			def.groups["fall_damage_add_percent"] = -100;
+			core.override_item(name, { groups: def.groups });
+		}
 	});
 }
