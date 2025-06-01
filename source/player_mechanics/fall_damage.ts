@@ -24,8 +24,6 @@ namespace playerMechanics {
 			"group:disable_fall_damage",
 		]);
 
-		const real_nodes: string[] = [];
-
 		for (const [node_data, _] of pairs(saving_nodes)) {
 			let data = saving_nodes[node_data];
 			if (data == null) {
@@ -36,15 +34,12 @@ namespace playerMechanics {
 				continue;
 			}
 
+			// If ANY nodes were found, fall damage is now disabled.
 			if (data > 0) {
-				real_nodes.push(node_data);
+				return true;
 			}
 		}
 
-		// If ANY nodes were found, fall damage is now disabled.
-		if (real_nodes.length > 0) {
-			return true;
-		}
 		return false;
 	}
 
