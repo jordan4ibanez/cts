@@ -279,9 +279,17 @@ namespace playerMechanics {
 			dir: Vec3,
 			damage: number
 		) => {
-			// 	name = player:get_player_name()
-			// 	temp_pool = pool[name]
-			// 	punch_diff = (core.get_us_time()/1000000)-temp_pool
+			const name: string = player.get_player_name();
+
+			const data: number | undefined = pool.get(name);
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added to the pool.`
+				);
+			}
+
+			const punch_diff: number = core.get_us_time() / 1000000 - data;
+
 			// 	hurt = tool_capabilities.damage_groups.damage
 			// 	if not hurt then
 			// 		hurt = 0
