@@ -1,12 +1,13 @@
 namespace playerMechanics {
-	// local add_item   = core.add_item
-	// local random     = math.random
-	// local play_sound = core.sound_play
-	// local add_ps     = core.add_particlespawner
-	// local abs        = math.abs
-	// local ceil       = math.ceil
-	// local new_vec    = vector.new
-	// local multiply_vec = vector.multiply
+	const add_item = core.add_item;
+	const random = math.random;
+	const play_sound = core.sound_play;
+	const add_ps = core.add_particlespawner;
+	const abs = math.abs;
+	const ceil = math.ceil;
+	const new_vec = vector.create3d;
+	const multiply_vec = vector.multiply;
+
 	// //hurt sound and disable fall damage group handling
 	// core.register_on_player_hpchange(function(player, hp_change, reason)
 	// 	if reason.type == "fall" then
@@ -17,6 +18,7 @@ namespace playerMechanics {
 	// 	end
 	// 	return(hp_change)
 	// end, true)
+
 	// //throw all items on death
 	// local pos
 	// local inv
