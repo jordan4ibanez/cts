@@ -1,9 +1,4 @@
 namespace playerMechanics {
-	// local
-	// minetest,math,pairs,ipairs,type
-	// =
-	// minetest,math,pairs,ipairs,type
-
 	// local add_item   = core.add_item
 	// local random     = math.random
 	// local play_sound = core.sound_play
@@ -12,7 +7,6 @@ namespace playerMechanics {
 	// local ceil       = math.ceil
 	// local new_vec    = vector.new
 	// local multiply_vec = vector.multiply
-
 	// //hurt sound and disable fall damage group handling
 	// core.register_on_player_hpchange(function(player, hp_change, reason)
 	// 	if reason.type == "fall" then
