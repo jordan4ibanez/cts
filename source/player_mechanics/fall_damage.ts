@@ -160,22 +160,22 @@ namespace playerMechanics {
 	// local damage_calc
 	// local pos
 
-	// core.register_globalstep(function(dtime)
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		name = player:get_player_name()
-	// 		old_vel = pool[name]
-	// 		if old_vel then
-	// 			new_vel = player:get_player_velocity().y
-	// 			if old_vel < -15 and new_vel >= -0.5 then
-	// 				//don't do fall damage on unloaded areas
-	// 				pos = player:get_pos()
-	// 				pos.y = pos.y - 1
-	// 				if core.get_node_or_nil(pos) then
-	// 					calc_fall_damage(player,math.ceil(old_vel+14))
-	// 				end
-	// 			end
-	// 		end
-	// 		pool[name] = player:get_player_velocity().y
-	// 	end
-	// end)
+	core.register_globalstep((dtime) => {
+		// 	for _,player in ipairs(core.get_connected_players()) do
+		// 		name = player:get_player_name()
+		// 		old_vel = pool[name]
+		// 		if old_vel then
+		// 			new_vel = player:get_player_velocity().y
+		// 			if old_vel < -15 and new_vel >= -0.5 then
+		// 				//don't do fall damage on unloaded areas
+		// 				pos = player:get_pos()
+		// 				pos.y = pos.y - 1
+		// 				if core.get_node_or_nil(pos) then
+		// 					calc_fall_damage(player,math.ceil(old_vel+14))
+		// 				end
+		// 			end
+		// 		end
+		// 		pool[name] = player:get_player_velocity().y
+		// 	end
+	});
 }
