@@ -108,37 +108,39 @@ namespace playerMechanics {
 	// local eating_step
 	// local eating_timer
 	// local pool
-	// local manage_eating = function(player,dtime)
-	//     control = player:get_player_control()
-	//     name    = player:get_player_name()
-	//     pool    = food_control_pool[name]
-	//     //eating
-	//     if control.RMB then
-	//         item      = player:get_wielded_item():get_name()
-	//         satiation = core.get_item_group( item, "satiation")
-	//         hunger    = core.get_item_group( item, "hunger"   )
-	//         if hunger > 0 or satiation > 0  then
-	//             pool.eating_step  = pool.eating_step  + dtime
-	//             pool.eating_timer = pool.eating_timer + dtime
-	//             pool.eating_timer = manage_eating_effects(
-	//                 player,
-	//                 pool.eating_timer,
-	//                 control.sneak,
-	//                 item
-	//             )
-	//             pool.eating_step = finish_eating(
-	//                 player,
-	//                 pool.eating_step
-	//             )
-	//         else
-	//             pool.eating_step  = 0
-	//             pool.eating_timer = 0
-	//         end
-	//     else
-	//         pool.eating_step  = 0
-	//         pool.eating_timer = 0
-	//     end
-	// end
+
+	function manage_eating(player: ObjectRef, dtime: number) {
+		//     control = player:get_player_control()
+		//     name    = player:get_player_name()
+		//     pool    = food_control_pool[name]
+		//     //eating
+		//     if control.RMB then
+		//         item      = player:get_wielded_item():get_name()
+		//         satiation = core.get_item_group( item, "satiation")
+		//         hunger    = core.get_item_group( item, "hunger"   )
+		//         if hunger > 0 or satiation > 0  then
+		//             pool.eating_step  = pool.eating_step  + dtime
+		//             pool.eating_timer = pool.eating_timer + dtime
+		//             pool.eating_timer = manage_eating_effects(
+		//                 player,
+		//                 pool.eating_timer,
+		//                 control.sneak,
+		//                 item
+		//             )
+		//             pool.eating_step = finish_eating(
+		//                 player,
+		//                 pool.eating_step
+		//             )
+		//         else
+		//             pool.eating_step  = 0
+		//             pool.eating_timer = 0
+		//         end
+		//     else
+		//         pool.eating_step  = 0
+		//         pool.eating_timer = 0
+		//     end
+	}
+
 	// local player
 	// core.register_globalstep(function(dtime)
 	// 	for _,player in ipairs(core.get_connected_players()) do
