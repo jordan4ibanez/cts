@@ -24,14 +24,6 @@ namespace playerMechanics {
 			"group:disable_fall_damage",
 		]);
 
-		if (saving_nodes == null) {
-			core.log(
-				LogLevel.warning,
-				`Saving nodes has become null, somehow. Quietly bailing`
-			);
-			return false;
-		}
-
 		const real_nodes: string[] = [];
 
 		for (const [node_data, _] of pairs(saving_nodes)) {
