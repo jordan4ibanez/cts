@@ -1,10 +1,14 @@
 namespace playerMechanics {
 	// local minetest,math,vector,ipairs,tonumber = minetest,math,vector,ipairs,tonumber
+
 	// local state_channels = {} // holds every player's channel
+
 	// local pool           = {}
+    
 	// // creates specific channels for players
 	// local name
 	// local temp_pool
+
 	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	state_channels[name] = core.mod_channel_join(name..":player_movement_state")
