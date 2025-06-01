@@ -1,8 +1,4 @@
 namespace playerMechanics {
-	// local
-	// minetest,math,pairs,ipairs,table
-	// =
-	// minetest,math,pairs,ipairs,table
 	// local pos
 	// local name
 	// local saving_nodes
@@ -10,38 +6,40 @@ namespace playerMechanics {
 	// local a_min
 	// local a_max
 	// local _
-	// local cancel_fall_damage = function(player)
-	// 	name = player:get_player_name()
-	// 	if player:get_hp() <= 0 then
-	// 		return
-	// 	end
-	// 	-- used for finding a damage node from the center of the player
-	// 	-- rudementary collision detection
-	// 	pos = player:get_pos()
-	// 	pos.y = pos.y
-	// 	a_min = vector.new(
-	// 		pos.x-0.25,
-	// 		pos.y-0.85,
-	// 		pos.z-0.25
-	// 	)
-	// 	a_max = vector.new(
-	// 		pos.x+0.25,
-	// 		pos.y+0.85,
-	// 		pos.z+0.25
-	// 	)
-	// 	_,saving_nodes = minetest.find_nodes_in_area( a_min,  a_max, {"group:disable_fall_damage"})
-	// 	real_nodes = {}
-	// 	for node_data,_ in pairs(saving_nodes) do
-	// 		if saving_nodes[node_data] > 0 then
-	// 			table.insert(real_nodes,node_data)
-	// 		end
-	// 	end
-	// 	-- find the highest damage node
-	// 	if table.getn(real_nodes) > 0 then
-	// 		return(true)
-	// 	end
-	// 	return(false)
-	// end
+
+	function cancel_fall_damage(player: ObjectRef) {
+		// 	name = player:get_player_name()
+		// 	if player:get_hp() <= 0 then
+		// 		return
+		// 	end
+		// 	-- used for finding a damage node from the center of the player
+		// 	-- rudementary collision detection
+		// 	pos = player:get_pos()
+		// 	pos.y = pos.y
+		// 	a_min = vector.new(
+		// 		pos.x-0.25,
+		// 		pos.y-0.85,
+		// 		pos.z-0.25
+		// 	)
+		// 	a_max = vector.new(
+		// 		pos.x+0.25,
+		// 		pos.y+0.85,
+		// 		pos.z+0.25
+		// 	)
+		// 	_,saving_nodes = minetest.find_nodes_in_area( a_min,  a_max, {"group:disable_fall_damage"})
+		// 	real_nodes = {}
+		// 	for node_data,_ in pairs(saving_nodes) do
+		// 		if saving_nodes[node_data] > 0 then
+		// 			table.insert(real_nodes,node_data)
+		// 		end
+		// 	end
+		// 	-- find the highest damage node
+		// 	if table.getn(real_nodes) > 0 then
+		// 		return(true)
+		// 	end
+		// 	return(false)
+	}
+
 	// local function calc_fall_damage(player,hp_change)
 	// 	if cancel_fall_damage(player) then
 	// 		return
