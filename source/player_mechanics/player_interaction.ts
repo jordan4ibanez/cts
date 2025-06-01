@@ -294,11 +294,16 @@ namespace playerMechanics {
 
 			if (hitter.is_player() && hitter != player) {
 				const puncher_vel: number = hitter.get_velocity().y;
-				// 			if puncher_vel < 0 then
-				// 				hurt = hurt * 1.5
-				// 				do_critical_particles(player:get_pos())
-				// 				play_sound("critical", {pos=player:get_pos(), gain = 0.1, max_hear_distance = 16,pitch = random(80,100)/100})
-				// 			end
+				if (puncher_vel < 0) {
+					hurt *= 1.5;
+					do_critical_particles(player.get_pos());
+					play_sound("critical", {
+						pos: player.get_pos(),
+						gain: 0.1,
+						max_hear_distance: 16,
+						pitch: random(80, 100) / 100,
+					});
+				}
 			}
 
 			// 		dir = multiply_vec(dir,10)
