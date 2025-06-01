@@ -24,6 +24,8 @@ namespace playerMechanics {
 			"group:disable_fall_damage",
 		]);
 
+		// todo: check if the saving_nodes table length has anything in it and if it does, return true
+
 		for (const [node_data, _] of pairs(saving_nodes)) {
 			// Todo: Find out what the hell I was doing
 			print(dump(node_data));
