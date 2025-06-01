@@ -245,7 +245,9 @@ namespace playerMechanics {
 		pool.set(name, core.get_us_time() / 1000000);
 	});
 
-	// local name
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		pool.delete(player.get_player_name());
+	});
 
 	export function player_can_be_punched(player: ObjectRef): boolean {
 		const name = player.get_player_name();
