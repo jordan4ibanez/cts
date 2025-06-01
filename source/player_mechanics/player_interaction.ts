@@ -217,25 +217,25 @@ namespace playerMechanics {
 		}
 	);
 
-	// local do_critical_particles = function(pos)
-	// 	add_ps({
-	// 		amount = 40,
-	// 		time = 0.001,
-	// 		minpos = pos,
-	// 		maxpos = pos,
-	// 		minvel = new_vec(-2,-2,-2),
-	// 		maxvel = new_vec(2,8,2),
-	// 		minacc = {x=0, y=4, z=0},
-	// 		maxacc = {x=0, y=12, z=0},
-	// 		minexptime = 1.1,
-	// 		maxexptime = 1.5,
-	// 		minsize = 1,
-	// 		maxsize = 2,
-	// 		collisiondetection = false,
-	// 		vertical = false,
-	// 		texture = "critical.png",
-	// 	})
-	// end
+	function do_critical_particles(pos: Vec3): void {
+		add_ps({
+			amount: 40,
+			time: 0.001,
+			minpos: pos,
+			maxpos: pos,
+			minvel: new_vec(-2, -2, -2),
+			maxvel: new_vec(2, 8, 2),
+			minacc: vector.create3d({ x: 0, y: 4, z: 0 }),
+			maxacc: vector.create3d({ x: 0, y: 12, z: 0 }),
+			minexptime: 1.1,
+			maxexptime: 1.5,
+			minsize: 1,
+			maxsize: 2,
+			collisiondetection: false,
+			vertical: false,
+			texture: "critical.png",
+		});
+	}
 
 	// //we need to do this to override the default damage mechanics
 	// local pool = {}
