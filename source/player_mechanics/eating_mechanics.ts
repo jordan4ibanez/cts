@@ -74,14 +74,14 @@ namespace playerMechanics {
 		temp_particle.node = { name: item + "node" };
 		core.add_particlespawner(temp_particle);
 
-		//     if timer >= 0.2 then
-		//         core.sound_play("eat", {
-		//             object = player,
-		//             gain = 0.2                      ,
-		//             pitch = math.random(60,85)/100}
-		//         )
-		//         return(0)
-		//     end
+		if (timer >= 0.2) {
+			core.sound_play("eat", {
+				object: player,
+				gain: 0.2,
+				pitch: math.random(60, 85) / 100,
+			});
+			return 0;
+		}
 		return timer;
 	}
 
