@@ -38,39 +38,45 @@ namespace playerMechanics {
 		food_control_pool.delete(player.get_player_name());
 	});
 
-	// // manages player eating effects
+	// manages player eating effects
 	// local position
 	// local velocity
 	// local offset
 	// local temp_particle
-	// local manage_eating_effects = function(player,timer,sneaking,item)
-	//     position    = player:get_pos()
-	//     velocity    = player:get_player_velocity()
-	//     if sneaking then
-	//         position.y  = position.y + 1.2
-	//         offset = 0.6
-	//     else
-	//         position.y = position.y + 1.3
-	//         offset = 0.3
-	//     end
-	//     position = vector.add(position, vector.multiply(player:get_look_dir(),offset))
-	//     temp_particle = table.copy(particle_constant)
-	//     temp_particle.minpos = vector.add(position,temp_particle.minpos)
-	//     temp_particle.maxpos = vector.add(position,temp_particle.maxpos)
-	//     temp_particle.minvel = vector.add(velocity,temp_particle.minvel)
-	//     temp_particle.maxvel = vector.add(velocity,temp_particle.maxvel)
-	//     temp_particle.node   = {name=item.."node"}
-	//     core.add_particlespawner(temp_particle)
-	//     if timer >= 0.2 then
-	//         core.sound_play("eat", {
-	//             object = player,
-	//             gain = 0.2                      ,
-	//             pitch = math.random(60,85)/100}
-	//         )
-	//         return(0)
-	//     end
-	//     return(timer)
-	// end
+	function manage_eating_effects(
+		player: ObjectRef,
+		timer: number,
+		sneaking: boolean,
+		item: ObjectRef
+	): number {
+		//     position    = player:get_pos()
+		//     velocity    = player:get_player_velocity()
+		//     if sneaking then
+		//         position.y  = position.y + 1.2
+		//         offset = 0.6
+		//     else
+		//         position.y = position.y + 1.3
+		//         offset = 0.3
+		//     end
+		//     position = vector.add(position, vector.multiply(player:get_look_dir(),offset))
+		//     temp_particle = table.copy(particle_constant)
+		//     temp_particle.minpos = vector.add(position,temp_particle.minpos)
+		//     temp_particle.maxpos = vector.add(position,temp_particle.maxpos)
+		//     temp_particle.minvel = vector.add(velocity,temp_particle.minvel)
+		//     temp_particle.maxvel = vector.add(velocity,temp_particle.maxvel)
+		//     temp_particle.node   = {name=item.."node"}
+		//     core.add_particlespawner(temp_particle)
+		//     if timer >= 0.2 then
+		//         core.sound_play("eat", {
+		//             object = player,
+		//             gain = 0.2                      ,
+		//             pitch = math.random(60,85)/100}
+		//         )
+		//         return(0)
+		//     end
+		return timer;
+	}
+
 	// local item
 	// local finish_eating = function(player,timer)
 	//     if timer >= 1 then
