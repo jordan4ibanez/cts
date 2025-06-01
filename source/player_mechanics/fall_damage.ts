@@ -169,18 +169,18 @@ namespace playerMechanics {
 			if (old_vel == null) {
 				throw new Error(`Player [${name}] was never added to the pool`);
 			}
-			// 		if old_vel then
-			// 			new_vel = player:get_player_velocity().y
-			// 			if old_vel < -15 and new_vel >= -0.5 then
-			// 				//don't do fall damage on unloaded areas
-			// 				pos = player:get_pos()
-			// 				pos.y = pos.y - 1
-			// 				if core.get_node_or_nil(pos) then
-			// 					calc_fall_damage(player,math.ceil(old_vel+14))
-			// 				end
-			// 			end
-			// 		end
-			// 		pool[name] = player:get_player_velocity().y
+
+			const new_vel: number = player.get_velocity().y;
+			if (old_vel < -15 && new_vel >= -0.5) {
+				// Don't do fall damage on unloaded areas.
+				const pos: Vec3 = player.get_pos();
+				pos.y = pos.y - 1;
+				if (core.get_node_or_nil(pos) != null) {
+					calc_fall_damage(player, math.ceil(old_vel + 14));
+				}
+			}
+
+			pool.set(name, player.get_velocity().y);
 		}
 	});
 }
