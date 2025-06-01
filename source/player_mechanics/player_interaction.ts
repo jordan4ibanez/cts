@@ -142,11 +142,12 @@ namespace playerMechanics {
 		}
 	);
 
-	// //replace stack when empty (building)
+	// Replace stack when empty (building).
 	// local new
 	// local inv
 	// local old
 	// local count
+	
 	// core.register_on_placenode(function(pos, newnode, placer, oldnode, itemstack, pointed_thing)
 	// 	old = itemstack:get_name()
 	// 	//pass through to check
