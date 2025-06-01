@@ -1,24 +1,25 @@
 namespace playerMechanics {
 	// local minetest,math,vector,ipairs,pairs,table =
 	//       minetest,math,vector,ipairs,pairs,table
+
 	// local food_control_pool  = {}
 
-	// local particle_constant = {
-	//     amount = 12,
-	//     time = 0.01,
-	//     minpos = {x=-0.1,y=-0.1,z=-0.1},
-	//     maxpos = {x=0.1, y=0.3, z=0.1},
-	//     minvel = {x=-0.5,y=0.2, z=-0.5},
-	//     maxvel = {x=0.5,y=0.6,z=0.5},
-	//     minacc = {x=0, y=-9.81, z=1},
-	//     maxacc = {x=0, y=-9.81, z=1},
-	//     minexptime = 0.5,
-	//     maxexptime = 1.5,
-	//     object_collision = false,
-	//     collisiondetection = true,
-	//     collision_removal = true,
-	//     vertical = false,
-	// }
+	const particle_constant = {
+		amount: 12,
+		time: 0.01,
+		minpos: { x: -0.1, y: -0.1, z: -0.1 },
+		maxpos: { x: 0.1, y: 0.3, z: 0.1 },
+		minvel: { x: -0.5, y: 0.2, z: -0.5 },
+		maxvel: { x: 0.5, y: 0.6, z: 0.5 },
+		minacc: { x: 0, y: -9.81, z: 1 },
+		maxacc: { x: 0, y: -9.81, z: 1 },
+		minexptime: 0.5,
+		maxexptime: 1.5,
+		object_collision: false,
+		collisiondetection: true,
+		collision_removal: true,
+		vertical: false,
+	};
 
 	// // creates volitile data for the game to use
 	// local name
