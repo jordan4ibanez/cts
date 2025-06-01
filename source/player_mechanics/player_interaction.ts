@@ -1,3 +1,4 @@
+namespace playerMechanics {
 // local 
 // minetest,math,pairs,ipairs,type
 // =
@@ -289,3 +290,4 @@
 //     inv:set_list("armor_legs", {})
 //     inv:set_list("armor_feet", {})
 // end)
+}
