@@ -20,67 +20,71 @@ namespace playerMechanics {
 	// 	return(hp_change)
 	// end, true)
 
-	// //throw all items on death
+	// Throw all items on death.
 	// local pos
 	// local inv
 	// local stack
 	// local count
 	// local obj
 	// local name
-	// core.register_on_dieplayer(function(player, reason)
-	// 	pos = player:get_pos()
-	// 	inv = player:get_inventory()
-	// 	for i = 1,inv:get_size("main") do
-	// 		stack = inv:get_stack("main", i)
-	// 		name = stack:get_name()
-	// 		count = stack:get_count()
-	// 		if name ~= "" then
-	// 			obj = add_item(pos, stack)
-	// 			if obj then
-	// 				obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-	// 			end
-	// 			inv:set_stack("main", i, ItemStack(""))
-	// 		end
-	// 	end
-	// 	stack = inv:get_stack("armor_head", 1)
-	// 	name = stack:get_name()
-	// 	if name ~= "" then
-	// 		obj = add_item(pos, stack)
-	// 		if obj then
-	// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-	// 		end
-	// 		inv:set_stack("armor_head", 1, ItemStack(""))
-	// 	end
-	// 	stack = inv:get_stack("armor_torso", 1)
-	// 	name = stack:get_name()
-	// 	if name ~= "" then
-	// 		obj = add_item(pos, stack)
-	// 		if obj then
-	// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-	// 		end
-	// 		inv:set_stack("armor_torso", 1, ItemStack(""))
-	// 	end
-	// 	stack = inv:get_stack("armor_legs", 1)
-	// 	name = stack:get_name()
-	// 	if name ~= "" then
-	// 		obj = add_item(pos, stack)
-	// 		if obj then
-	// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-	// 		end
-	// 		inv:set_stack("armor_legs", 1, ItemStack(""))
-	// 	end
-	// 	stack = inv:get_stack("armor_feet", 1)
-	// 	name = stack:get_name()
-	// 	if name ~= "" then
-	// 		obj = add_item(pos, stack)
-	// 		if obj then
-	// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-	// 		end
-	// 		inv:set_stack("armor_feet", 1, ItemStack(""))
-	// 	end
-	// 	dump_craft(player)
-	// 	recalculate_armor(player)
-	// end)
+
+	core.register_on_dieplayer(
+		(player: ObjectRef, reason: HPChangeReasonDefinition) => {
+			// 	pos = player:get_pos()
+			// 	inv = player:get_inventory()
+			// 	for i = 1,inv:get_size("main") do
+			// 		stack = inv:get_stack("main", i)
+			// 		name = stack:get_name()
+			// 		count = stack:get_count()
+			// 		if name ~= "" then
+			// 			obj = add_item(pos, stack)
+			// 			if obj then
+			// 				obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
+			// 			end
+			// 			inv:set_stack("main", i, ItemStack(""))
+			// 		end
+			// 	end
+			// 	stack = inv:get_stack("armor_head", 1)
+			// 	name = stack:get_name()
+			// 	if name ~= "" then
+			// 		obj = add_item(pos, stack)
+			// 		if obj then
+			// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
+			// 		end
+			// 		inv:set_stack("armor_head", 1, ItemStack(""))
+			// 	end
+			// 	stack = inv:get_stack("armor_torso", 1)
+			// 	name = stack:get_name()
+			// 	if name ~= "" then
+			// 		obj = add_item(pos, stack)
+			// 		if obj then
+			// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
+			// 		end
+			// 		inv:set_stack("armor_torso", 1, ItemStack(""))
+			// 	end
+			// 	stack = inv:get_stack("armor_legs", 1)
+			// 	name = stack:get_name()
+			// 	if name ~= "" then
+			// 		obj = add_item(pos, stack)
+			// 		if obj then
+			// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
+			// 		end
+			// 		inv:set_stack("armor_legs", 1, ItemStack(""))
+			// 	end
+			// 	stack = inv:get_stack("armor_feet", 1)
+			// 	name = stack:get_name()
+			// 	if name ~= "" then
+			// 		obj = add_item(pos, stack)
+			// 		if obj then
+			// 			obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
+			// 		end
+			// 		inv:set_stack("armor_feet", 1, ItemStack(""))
+			// 	end
+			// 	dump_craft(player)
+			// 	recalculate_armor(player)
+		}
+	);
+
 	// //this dumps the players crafting table on closing the inventory
 	// dump_craft = function(player)
 	// 	pos = player:get_pos()
