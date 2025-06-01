@@ -1,3 +1,4 @@
+namespace playerMechanics {
 // local minetest,math,vector,ipairs,tonumber = minetest,math,vector,ipairs,tonumber
 
 // local state_channels = {} -- holds every player's channel
@@ -212,3 +213,4 @@
 // 		control_state(player)
 // 	end
 // end)
+}
