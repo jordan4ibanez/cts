@@ -162,6 +162,7 @@ namespace playerMechanics {
 
 	const pool = new Map<string, number>();
 
+	// todo: check if fall damage was disabled?!
 	core.register_globalstep((dtime) => {
 		for (const [_, player] of ipairs(core.get_connected_players())) {
 			const name = player.get_player_name();
@@ -182,5 +183,13 @@ namespace playerMechanics {
 
 			pool.set(name, player.get_velocity().y);
 		}
+	});
+
+	core.register_on_joinplayer((player: ObjectRef) => {
+		pool.set(player.get_player_name(), player.get_velocity().y);
+	});
+
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		pool.delete(player.get_player_name());
 	});
 }
