@@ -78,9 +78,11 @@ namespace playerMechanics {
 					gain: 1,
 					pitch: math.random(80, 100) / 100,
 				});
-				// 				recalculate_armor(player)
-				// 				set_armor_gui(player)
-				// 				//do particles too
+				// todo: this depends on crafter armor.
+				// recalculate_armor(player)
+				// set_armor_gui(player)
+
+				// todo: do particles too <- this was never done
 			} else if (core.get_item_group(new_stack, "boots") > 0) {
 				// 				local pos = player:get_pos()
 				// 				core.add_particlespawner({
