@@ -25,22 +25,26 @@ namespace playerMechanics {
 				let data: Vec3 | undefined = pool.get(name);
 
 				if (data != null) {
-					//                 c_flow = pool[name]
-					//                 vel = player:get_player_velocity()
-					//                 acceleration = nil
-					//                 if c_flow.x ~= 0 then
-					//                     acceleration = vector.new(c_flow.x,0,0)
-					//                 elseif c_flow.z ~= 0 then
-					//                     acceleration = vector.new(0,0,c_flow.z)
-					//                 end
-					//                 acceleration = vector.multiply(acceleration, 0.075)
-					//                 player:add_player_velocity(acceleration)
-					//                 newvel = player:get_player_velocity()
-					//                 if newvel.x ~= 0 or newvel.z ~= 0 then
-					//                     return
-					//                 else
-					//                     pool[name] = nil
-					//                 end
+					const c_flow: Vec3 = data;
+
+					const vel: Vec3 = player.get_velocity();
+					let acceleration: Vec3 | null = null;
+
+					if (c_flow.x != 0) {
+						acceleration = vector.create3d(c_flow.x, 0, 0);
+					} else if (c_flow.z != 0) {
+						acceleration = vector.create3d(0, 0, c_flow.z);
+					}
+					acceleration = acceleration as Vec3;
+
+					acceleration = vector.multiply(acceleration, 0.075);
+					player.add_velocity(acceleration);
+					const newvel: Vec3 = player.get_velocity();
+					if (newvel.x != 0 || newvel.z != 0) {
+						continue;
+					} else {
+						pool.delete(name);
+					}
 				} else {
 					//                 flow_dir = vector.multiply(flow_dir,10)
 					//                 vel = player:get_player_velocity()
