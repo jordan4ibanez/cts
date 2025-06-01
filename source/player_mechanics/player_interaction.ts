@@ -81,23 +81,24 @@ namespace playerMechanics {
 		}
 	);
 
-	// //this dumps the players crafting table on closing the inventory
-	// dump_craft = function(player)
-	// 	pos = player:get_pos()
-	// 	inv = player:get_inventory()
-	// 	for i = 1,inv:get_size("craft") do
-	// 		stack = inv:get_stack("craft", i)
-	// 		name = stack:get_name()
-	// 		count = stack:get_count()
-	// 		if name ~= "" then
-	// 			obj = add_item(pos, stack)
-	// 			if obj then
-	// 				obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
-	// 			end
-	// 			inv:set_stack("craft", i, ItemStack(""))
-	// 		end
-	// 	end
-	// end
+	// This dumps the players crafting table on closing the inventory.
+	export function dump_craft(player: ObjectRef): void {
+		const pos: Vec3 = player.get_pos();
+		const inv: InvRef = player.get_inventory();
+		for (const i of $range(1, inv.get_size("craft"))) {
+			const stack: ItemStackObject = inv.get_stack("craft", i);
+			const name: string = stack.get_name();
+			const count: number = stack.get_count();
+					if (name != "") {
+			// 			obj = add_item(pos, stack)
+			// 			if obj then
+			// 				obj:set_velocity(new_vec(random(-3,3),random(4,8),random(-3,3)))
+			// 			end
+			// 			inv:set_stack("craft", i, ItemStack(""))
+					}
+		}
+	}
+
 	// local registered_nodes
 	// core.register_on_mods_loaded(function()
 	// 	registered_nodes = core.registered_nodes
