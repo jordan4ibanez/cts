@@ -158,14 +158,28 @@ namespace playerAPI {
 		speed: number,
 		loop: boolean
 	) {
-		// 	name = player:get_player_name()
-		// 	temp_pool = pool[name]
-		// 	current_animation = temp_pool.animation
-		// 	if current_animation == animation_name then
-		// 		return
-		// 	end
-		// 	temp_pool.animation = animation_name
-		// 	player:set_animation(animation_list[animation_name], speed, 0, loop)
+		const name = player.get_player_name();
+		const data: ApiPlayerData | undefined = pool.get(name);
+
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		const current_animation: string = data.current_animation;
+
+		if (current_animation == animation_name) {
+			return;
+		}
+
+		let gottenAnimation: Vec2 | undefined = animation_list[animation_name];
+
+		if (gottenAnimation == null) {
+			throw new Error(`Animation [${animation_name}] does not exist.`);
+		}
+
+		data.current_animation = animation_name;
+
+		player.set_animation(gottenAnimation, speed, 0, loop);
 	}
 
 	// // allows mods to force update animation
