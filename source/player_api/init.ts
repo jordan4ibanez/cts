@@ -477,19 +477,15 @@ namespace playerAPI {
 					if (keys == null) {
 						throw new Error("Sneak keys are undefined.");
 					}
-
 					if (keys[k]) {
 						const index: number = mouse ? 1 : 0;
-
 						const translated: AnimationComponent | undefined =
 							translation_table.sneak.states.true[index];
-
 						if (translated == null) {
 							throw new Error(
 								`Sneak states true is missing index [${index}]`
 							);
 						}
-
 						set_animation(
 							player,
 							translated.animation,
