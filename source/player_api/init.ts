@@ -65,7 +65,6 @@ namespace playerAPI {
 		swimming:  false;
 		collisionbox:  [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
 		old_controls: player.get_player_control()
-		
 		stepheight:  0.6;
 		eye_height:  1.47;
 		attached:  false;
