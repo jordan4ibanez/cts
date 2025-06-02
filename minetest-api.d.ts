@@ -1573,9 +1573,9 @@ declare global {
 	}
 
 	/** @noSelf **/ interface NametagAttributes {
-		text: string;
-		color: RGBA;
-		bgcolor: RGBA;
+		text?: string;
+		color?: RGBA;
+		bgcolor?: RGBA;
 	}
 
 	/** @noSelf **/ interface AttachRef {
