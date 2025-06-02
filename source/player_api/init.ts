@@ -429,11 +429,7 @@ namespace playerAPI {
 		let mouse: boolean = control.LMB || control.RMB;
 		if (swimming) {
 			for (const [k, i] of pairs(control)) {
-				if (i == null) {
-					core.log(
-						LogLevel.warning,
-						`Component [${k}] of player controls [${name}] was null`
-					);
+				if (!i) {
 					continue;
 				}
 				const keys: AnimationKeySet | undefined =
@@ -467,11 +463,7 @@ namespace playerAPI {
 		} else {
 			if (control.sneak) {
 				for (const [k, i] of pairs(control)) {
-					if (i == null) {
-						core.log(
-							LogLevel.warning,
-							`Component [${k}] of player controls [${name}] was null`
-						);
+					if (!i) {
 						continue;
 					}
 					const keys: AnimationKeySet | undefined =
@@ -508,11 +500,7 @@ namespace playerAPI {
 				return;
 			} else {
 				for (const [k, i] of pairs(control)) {
-					if (i == null) {
-						core.log(
-							LogLevel.warning,
-							`Component [${k}] of player controls [${name}] was null`
-						);
+					if (!i) {
 						continue;
 					}
 					const keys: AnimationKeySet | undefined =
