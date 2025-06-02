@@ -225,7 +225,7 @@ namespace playerMechanics {
 		// 			end
 
 				} else if ((! in_water && data.state != 1 && data.state != 2 &&
-				(temp_pool.old_state == 1 or temp_pool.old_state == 2)) or
+				(data.old_state == 1 || data.old_state == 2)) ||
 				(in_water and temp_pool.state ~= 1 and temp_pool.state ~= 2 and temp_pool.state ~= 3 and
 				(temp_pool.old_state == 1 or temp_pool.old_state == 2 or temp_pool.old_state == 3))) {
 
