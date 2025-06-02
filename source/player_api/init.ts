@@ -404,9 +404,10 @@ namespace playerAPI {
 	// 	})
 	// end
 
-    class PlayerHoldingItemEntity extends types.Entity {
-        name: string = "player_api:item";
-    }
+	class PlayerHoldingItemEntity extends types.Entity {
+		name: string = "player_api:item";
+		set_item(item: string): void {}
+	}
 
 	// core.register_entity("player_api:item", {
 	// 	initial_properties = {
