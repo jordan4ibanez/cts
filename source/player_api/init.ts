@@ -591,7 +591,7 @@ namespace playerAPI {
 			visual: EntityVisual.wielditem,
 			physical: false,
 			textures: [""],
-			automatic_rotate: 1.5,
+			// automatic_rotate: 1.5,
 			is_visible: true,
 			pointable: false,
 			collide_with_objects: false,
