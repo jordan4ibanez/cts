@@ -76,9 +76,19 @@ namespace skins {
 				file.close();
 				core.dynamic_add_media({ filepath: new_temp_path });
 
-				const fileName = "skin_"+name+".png"
-				// player = core.get_player_by_name(name)
-				// player:set_properties({textures = {file, "blank_skin.png"}})
+				const fileName = "skin_" + name + ".png";
+				const player: ObjectRef | null = core.get_player_by_name(name);
+				if (player == null) {
+					core.log(
+						LogLevel.warning,
+						`Player [${name}] disappeared before skin could be applied.`
+					);
+					return;
+				}
+				player.set_properties({
+					textures: [fileName, "blank_skin.png"],
+				});
+
 				// pool[name] = file
 				// recalculate_armor(player)
 			}
@@ -305,7 +315,7 @@ namespace skins {
 	core.register_on_joinplayer((player: ObjectRef) => {
 		// todo: add_cape(player)
 		core.after(0, () => {
-            // player.get_player_name()
+			// player.get_player_name()
 			fetch_function("jordan4ibanez");
 			// todo: depends on crafter armor
 			// recalculate_armor(player)
