@@ -166,9 +166,10 @@ namespace playerMechanics {
 			handle_touch_hurting(player, hurt, dtime);
 		} else {
 			const data: PlayerEnvironment | undefined = pool.get(name);
-			if (!data) {
-				triggerNullPtype(name);
-				return;
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added to the pool.`
+				);
 			}
 			data.touch_hurt_ticker = 0;
 		}
