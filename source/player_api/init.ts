@@ -580,12 +580,12 @@ namespace playerAPI {
 		create_force_update(player);
 	});
 
-	// // inject into global loop
-	// core.register_globalstep(function()
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		do_animations(player)
-	// 	end
-	// end)
+	// Inject into global loop.
+	core.register_globalstep(() => {
+		for (const [_, player] of ipairs(core.get_connected_players())) {
+			do_animations(player);
+		}
+	});
 
 	// local stack
 	// local itemname
