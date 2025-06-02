@@ -258,12 +258,11 @@ namespace playerAPI {
 
 	// Toggles nametag visibility.
 	function show_nametag(player: ObjectRef, show: boolean): void {
-		const opacity = show ? 255 : 0;
 		player.set_nametag_attributes({
 			color: {
 				r: 255,
 				b: 255,
-				a: opacity,
+				a: show ? 255 : 0,
 				g: 255,
 			},
 		});
