@@ -229,13 +229,13 @@ namespace playerMechanics {
 				(in_water && data.state != 1 && data.state != 2 && data.state != 3 &&
 				(data.old_state == 1 || data.old_state == 2 || data.old_state == 3))) {
 
-					player.set_fov(1, true,0.15)
-					player.set_physics_override({speed:1})
+					player.set_fov(1, true,0.15);
+					player.set_physics_override({speed:1});
 					// Preserve network data.
-					send_running_cancellation(player,data.state==3) 
+					send_running_cancellation(player,data.state==3) ;
 				} else if ((data.state == 1 || data.state == 2) && hunger <= 6) {
-					player.set_fov(1, true,0.15)
-					player.set_physics_override({speed:1})
+					player.set_fov(1, true,0.15);
+					player.set_physics_override({speed:1});
 					// Preserve network data.
 					send_running_cancellation(player,false) 
 				}
