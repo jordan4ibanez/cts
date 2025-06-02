@@ -537,7 +537,10 @@ interface core {
 		schematic: SchematicDefinition | string,
 		options: SchematicReadOptionYSlice[]
 	): Array<any>;
-	request_http_api(): HTTPApi;
+
+	// Function only exists if Luanti server was built with cURL support.
+	request_http_api?(): HTTPApi;
+
 	get_mod_storage(): MetaRef;
 	get_connected_players(): ObjectRef[];
 	is_player(thing: ObjectRef): boolean;
