@@ -2394,7 +2394,7 @@ declare global {
 		set_eye_offset(
 			firstPerson: Vec3,
 			thirdPersonBack: Vec3,
-			thirdPersonFront: Vec3
+			thirdPersonFront?: Vec3
 		): void;
 		get_eye_offset(): [Vec3, Vec3, Vec3];
 		send_mapblock(blockPos: Vec3): boolean;
