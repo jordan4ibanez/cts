@@ -12,7 +12,10 @@ namespace playerMechanics {
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 		print("hi");
-		print(core.mod_channel_join(name + ":player_movement_state"));
+		print(
+			"flarp",
+			dump(core.mod_channel_join(name + ":player_movement_state"))
+		);
 		// 	state_channels[name] = core.mod_channel_join(name..":player_movement_state")
 		// 	player:set_physics_override({
 		// 			jump   = 1.25,
