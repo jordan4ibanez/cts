@@ -1,28 +1,27 @@
 namespace playerAPI {
-	
+
+    // Todo: current animation enum.
 
 	// Player physical data constant.
-	const player_constant = {
-		visual: "mesh",
-		mesh: "player.b3d",
-		animation_speed: 24,
-		visual_size: { x: 1, y: 1, z: 1 },
-		textures: ["player.png", "blank_skin.png"],
-		current_animation: "stand",
-		swimming: false,
-		collisionbox: [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
-		old_controls: {},
-		stepheight: 0.6,
-		eye_height: 1.47,
-		attached: false,
-		wield_item: null,
+	class ApiData {
+		visual: EntityVisual = EntityVisual.mesh;
+		mesh: string = "player.b3d";
+		animation_speed: number = 24;
+		visual_size: Vec3 = vector.create3d({ x: 1, y: 1, z: 1 });
+		textures: string[] = ["player.png", "blank_skin.png"];
+		current_animation: "stand";
+		swimming: false;
+		collisionbox: [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
+		old_controls: {};
+		stepheight: 0.6;
+		eye_height: 1.47;
+		attached: false;
+		wield_item: null;
 	};
 
-    interface PlayerData {
+	
 
-    }
-
-    const pool = new Map<string, PlayerData>()
+	const pool = new Map<string, PlayerData>();
 
 	// Set player wield item.
 	function update_wield_item(player: ObjectRef) {
@@ -53,22 +52,25 @@ namespace playerAPI {
 	// local data
 	// local name
 	// local temp_pool
-	// local set_all_properties = function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = {}
-	// 	temp_pool = pool[name]
-	// 	data = {}
-	// 	temp_pool.visual       = player_constant.visual
-	// 	temp_pool.mesh         = player_constant.mesh
-	// 	temp_pool.textures     = player_constant.textures
-	// 	temp_pool.collisionbox = player_constant.collisionbox
-	// 	temp_pool.eye_height   = player_constant.eye_height
-	// 	temp_pool.stepheight   = player_constant.stepheight
-	// 	temp_pool.visual_size  = player_constant.visual_size
-	// 	temp_pool.attached     = false
-	// 	temp_pool.sleeping     = false
-	// 	player:set_properties(temp_pool)
-	// end
+	function set_all_properties(player: ObjectRef) {
+		const name = player.get_player_name();
+		const newData: PlayerData = {
+
+        };
+
+		// 	temp_pool = pool[name]
+		// 	data = {}
+		// 	temp_pool.visual       = player_constant.visual
+		// 	temp_pool.mesh         = player_constant.mesh
+		// 	temp_pool.textures     = player_constant.textures
+		// 	temp_pool.collisionbox = player_constant.collisionbox
+		// 	temp_pool.eye_height   = player_constant.eye_height
+		// 	temp_pool.stepheight   = player_constant.stepheight
+		// 	temp_pool.visual_size  = player_constant.visual_size
+		// 	temp_pool.attached     = false
+		// 	temp_pool.sleeping     = false
+		// 	player:set_properties(temp_pool)
+	}
 
 	// // easy way to set textures
 	// local set_textures = function(player, textures)
