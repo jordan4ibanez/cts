@@ -493,7 +493,7 @@ interface core {
 	remove_player_auth(playerName: string): boolean;
 	dynamic_add_media(
 		options: DynamicAddMediaOptions,
-		fun: (name: string) => void
+		fun?: (name: string) => void
 	): void;
 	get_ban_list(): string;
 	get_ban_description(ipOrName: string): string;
@@ -1838,8 +1838,8 @@ declare global {
 
 	/** @noSelf **/ interface DynamicAddMediaOptions {
 		filepath: string;
-		to_player: string;
-		ephemeral: boolean;
+		to_player?: string;
+		ephemeral?: boolean;
 	}
 
 	/** @noSelf **/ interface ParticleBounceDefinition {
