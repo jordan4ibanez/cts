@@ -203,14 +203,16 @@ namespace playerMechanics {
 						collisionbox : [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
 					})
 				} else if (in_water && ! data.was_in_water) {
-		// 			player:set_physics_override({
-		// 				sneak   = false,
-		// 			})
-		// 			force_update_animation(player)
-		// 			player:set_properties({
-		// 				collisionbox = {-0.3, 0.8, -0.3, 0.3, 1.6, 0.3},
-		// 			})
-		// 			player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
+					player.set_physics_override({
+						sneak   : false,
+					})
+					// todo: this depends on crafter player api.
+					// force_update_animation(player)
+
+					player.set_properties({
+						collisionbox : [-0.3, 0.8, -0.3, 0.3, 1.6, 0.3],
+					})
+					player.set_eye_offset(vector.create3d({x:0,y:0,z:0}),vector.create3d({x:0,y:0,z:0}))
 				}
 		
 		// 		// running/swimming fov modifier
