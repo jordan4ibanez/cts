@@ -299,7 +299,10 @@ namespace playerAPI {
 		control_table: PlayerControlObject
 	) {
 		const name: string = player.get_player_name();
-		// 	temp_pool = pool[name]
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
 
 		// 	if not temp_pool.old_controls then
 		// 		temp_pool.old_controls = control_table
