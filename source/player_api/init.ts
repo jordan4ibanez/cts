@@ -434,36 +434,29 @@ namespace playerAPI {
 					);
 					continue;
 				}
-
 				const keys: AnimationKeySet | undefined =
 					translation_table.swim.keys;
-
 				if (keys == null) {
 					throw new Error("Swim keys are undefined.");
 				}
-
 				if (keys[k]) {
 					let translatedArray: AnimationComponent[] | undefined =
 						translation_table.swim.states.true;
-
 					if (translatedArray == null) {
 						throw new Error("Swim states true is null.");
 					}
 					translatedArray = translatedArray as AnimationComponent[];
-
 					const translated: AnimationComponent | undefined =
 						translatedArray[0];
-
 					if (translated == null) {
 						throw new Error("Swim states array 0 is null.");
 					}
-
 					set_animation(
 						player,
 						translated.animation,
 						translated.speed
 					);
-					// 				return
+					return;
 				}
 			}
 
