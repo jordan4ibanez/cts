@@ -1,9 +1,6 @@
 namespace playerAPI {
 	// Todo: current animation enum.
 
-	// Player physical data constant.
-	class Pdata {}
-
 	interface ApiPlayerData {
 		visual: EntityVisual;
 		mesh: string;
