@@ -56,12 +56,11 @@ namespace playerMechanics {
 		});
 	});
 
-	// // delete data on player leaving
-	// local name
-	// core.register_on_leaveplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = nil
-	// end)
+	// Delete data on player leaving,
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		pool.delete(name);
+	});
 
 	// // tells the client to stop sending running/bunnyhop data
 	// local name
