@@ -1,22 +1,24 @@
 namespace skins {
-	const http: HTTPApi = (() => {
-		// Binary downloads are required.
-		if (!core.features.httpfetch_binary_data) {
-			throw new Error(
-				"Outdated Minetest Engine detected. Skins mod will not load. This crashes armor."
-			);
-		}
+	// Binary downloads are required.
+	if (!core.features.httpfetch_binary_data) {
+		throw new Error(
+			"Outdated Minetest Engine detected. Skins mod will not load. This crashes armor."
+		);
+	}
 
-		const maybeHTTP = core.request_http_api && core.request_http_api();
+	if (core.request_http_api == null) {
+		throw new Error("This server was not compiled with curl.");
+	}
 
-		if (maybeHTTP == null) {
-			throw new Error(`HTTP access is required. Please add this to your minetest.conf:
+	const maybeHTTP: HTTPApi | null = core.request_http_api();
+
+	if (maybeHTTP == null) {
+		throw new Error(`HTTP access is required. Please add this to your minetest.conf:
 	    secure.http_mods = crafter_skins
 	    Skins will not work without this.`);
-		}
+	}
 
-		return maybeHTTP;
-	})();
+	const http: HTTPApi = maybeHTTP;
 
 	const id: string = "Typescript Skins Updater";
 	const temppath: string = core.get_worldpath();
@@ -52,29 +54,37 @@ namespace skins {
 			}
 		);
 	}
-	// // gets github raw data of skin
-	// local new_temp_path
-	// local file
-	// local player
-	// local fetch_function = function(name)
-	//     fetch_url("https://raw.githubusercontent.com/"..name.."/crafter_skindex/master/skin.png", function(data)
-	//         if data then
-	//             if not core.get_player_by_name(name) then
-	//                 return
-	//             end
-	//             new_temp_path = temppath .. DIR_DELIM .. "/skin_"..name..".png"
-	//             file = io.open(new_temp_path, "wb")
-	//             file:write(data)
-	//             file:close()
-	//             core.dynamic_add_media(new_temp_path)
-	//             file = "skin_"..name..".png" // reuse the data
-	//             player = core.get_player_by_name(name)
-	//             player:set_properties({textures = {file, "blank_skin.png"}})
-	//             pool[name] = file
-	//             recalculate_armor(player)
-	//         end
-	//     end)
-	// end
+	// Gets github raw data of skin.
+	function fetch_function(name: string): void {
+		fetch_url(
+			"https://raw.githubusercontent.com/" +
+				name +
+				"/crafter_skindex/master/skin.png",
+			(data: string) => {
+				if (core.get_player_by_name(name) == null) {
+					return;
+				}
+				const new_temp_path: string =
+					temppath + "/skin_" + name + ".png";
+				const [file, _] = io.open(new_temp_path, "wb");
+				if (!file) {
+					throw new Error(
+						`The skins file for player [${name}] was null.`
+					);
+				}
+				file.write(data);
+				file.close();
+				core.dynamic_add_media({ filepath: new_temp_path });
+
+				// file = "skin_"+name+".png" // reuse the data
+				// player = core.get_player_by_name(name)
+				// player:set_properties({textures = {file, "blank_skin.png"}})
+				// pool[name] = file
+				// recalculate_armor(player)
+			}
+		);
+	}
+
 	// local pi = math.pi
 	// // simple degrees calculation
 	// local degrees = function(yaw)
@@ -292,11 +302,11 @@ namespace skins {
 	//         readd_capes()
 	//     end)
 	// end)
-	// core.register_on_joinplayer(function(player)
-	//     add_cape(player)
-	//     core.after(0,function()
-	//         fetch_function(player:get_player_name())
-	//         recalculate_armor(player)
-	//     end)
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		// todo: add_cape(player)
+		core.after(0, () => {
+			fetch_function(player.get_player_name());
+			// recalculate_armor(player)
+		});
+	});
 }
