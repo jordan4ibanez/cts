@@ -148,7 +148,7 @@ namespace playerMechanics {
 		// }
 
 		// todo: this depends on crafter hunger
-		const hunger    = 0;//get_player_hunger(player)
+		const hunger = 0; //get_player_hunger(player)
 		const name: string = player.get_player_name();
 		const data: PlayerState | undefined = pool.get(name);
 		if (data == null) {
@@ -189,76 +189,88 @@ namespace playerMechanics {
 			}
 		}
 
-		if ((in_water != data.was_in_water) ||
-			(data.state != data.old_state) ||
-			((data.state == 1 || data.state == 2) && hunger <= 6)) {
-				if (! in_water && data.was_in_water) {
-					player.set_physics_override({
-						sneak   : true,
-					})
-					// todo: this depends on crafter player api.
-					// force_update_animation(player)
+		if (
+			in_water != data.was_in_water ||
+			data.state != data.old_state ||
+			((data.state == 1 || data.state == 2) && hunger <= 6)
+		) {
+			if (!in_water && data.was_in_water) {
+				player.set_physics_override({
+					sneak: true,
+				});
+				// todo: this depends on crafter player api.
+				// force_update_animation(player)
 
-					player.set_properties({
-						collisionbox : [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
-					})
-				} else if (in_water && ! data.was_in_water) {
-					player.set_physics_override({
-						sneak   : false,
-					})
-					// todo: this depends on crafter player api.
-					// force_update_animation(player)
+				player.set_properties({
+					collisionbox: [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
+				});
+			} else if (in_water && !data.was_in_water) {
+				player.set_physics_override({
+					sneak: false,
+				});
+				// todo: this depends on crafter player api.
+				// force_update_animation(player)
 
-					player.set_properties({
-						collisionbox : [-0.3, 0.8, -0.3, 0.3, 1.6, 0.3],
-					})
-					player.set_eye_offset(vector.create3d({x:0,y:0,z:0}),vector.create3d({x:0,y:0,z:0}))
-				}
-		
-				// Running/swimming fov modifier.
-				if (hunger > 6 && (data.state == 1 || data.state == 2)) {
-					player.set_fov(1.25, true, 0.15)
-					if (data.state == 2) {
-						player.set_physics_override({speed:1.75})
-					} else if (data.state == 1) {
-						player.set_physics_override({speed:1.5})
-					}
-
-				} else if ((! in_water && data.state != 1 && data.state != 2 &&
-				(data.old_state == 1 || data.old_state == 2)) ||
-				(in_water && data.state != 1 && data.state != 2 && data.state != 3 &&
-				(data.old_state == 1 || data.old_state == 2 || data.old_state == 3))) {
-
-					player.set_fov(1, true,0.15);
-					player.set_physics_override({speed:1});
-					// Preserve network data.
-					send_running_cancellation(player,data.state==3) ;
-				} else if ((data.state == 1 || data.state == 2) && hunger <= 6) {
-					player.set_fov(1, true,0.15);
-					player.set_physics_override({speed:1});
-					// Preserve network data.
-					send_running_cancellation(player,false) 
-				}
-		// 		//sneaking
-		// 		if temp_pool.state == 3 and in_water then
-		// 			//send_running_cancellation(player,false)
-		// 		elseif not in_water and temp_pool.state == 3 and temp_pool.old_state ~= 3 then
-		// 			player:set_eye_offset({x=0,y=-1,z=0},{x=0,y=0,z=0})
-		// 		elseif not in_water and temp_pool.old_state == 3 and temp_pool.state ~= 3 then
-		// 			player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
-		// 		end
-		// 		temp_pool.old_state    = state
-		// 		temp_pool.was_in_water = in_water
-		// 	// water movement
-			} else if (in_water) {
-		// 		if not temp_pool.was_in_water then
-		// 			player:set_physics_override({
-		// 				sneak   = false ,
-		// 			})
-		// 		end
-		// 		temp_pool.old_state    = temp_pool.old_state
-		// 		temp_pool.was_in_water = in_water
+				player.set_properties({
+					collisionbox: [-0.3, 0.8, -0.3, 0.3, 1.6, 0.3],
+				});
+				player.set_eye_offset(
+					vector.create3d({ x: 0, y: 0, z: 0 }),
+					vector.create3d({ x: 0, y: 0, z: 0 })
+				);
 			}
+
+			// Running/swimming fov modifier.
+			if (hunger > 6 && (data.state == 1 || data.state == 2)) {
+				player.set_fov(1.25, true, 0.15);
+				if (data.state == 2) {
+					player.set_physics_override({ speed: 1.75 });
+				} else if (data.state == 1) {
+					player.set_physics_override({ speed: 1.5 });
+				}
+			} else if (
+				(!in_water &&
+					data.state != 1 &&
+					data.state != 2 &&
+					(data.old_state == 1 || data.old_state == 2)) ||
+				(in_water &&
+					data.state != 1 &&
+					data.state != 2 &&
+					data.state != 3 &&
+					(data.old_state == 1 ||
+						data.old_state == 2 ||
+						data.old_state == 3))
+			) {
+				player.set_fov(1, true, 0.15);
+				player.set_physics_override({ speed: 1 });
+				// Preserve network data.
+				send_running_cancellation(player, data.state == 3);
+			} else if ((data.state == 1 || data.state == 2) && hunger <= 6) {
+				player.set_fov(1, true, 0.15);
+				player.set_physics_override({ speed: 1 });
+				// Preserve network data.
+				send_running_cancellation(player, false);
+			}
+			// 		//sneaking
+			// 		if temp_pool.state == 3 and in_water then
+			// 			//send_running_cancellation(player,false)
+			// 		elseif not in_water and temp_pool.state == 3 and temp_pool.old_state ~= 3 then
+			// 			player:set_eye_offset({x=0,y=-1,z=0},{x=0,y=0,z=0})
+			// 		elseif not in_water and temp_pool.old_state == 3 and temp_pool.state ~= 3 then
+			// 			player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
+			// 		end
+			// 		temp_pool.old_state    = state
+			// 		temp_pool.was_in_water = in_water
+			// 	// water movement
+		} else if (in_water) {
+			// 		if not temp_pool.was_in_water then
+			// 			player:set_physics_override({
+			// 				sneak   = false ,
+			// 			})
+			// 		end
+			// 		temp_pool.old_state    = temp_pool.old_state
+			// 		temp_pool.was_in_water = in_water
+		}
 	}
 
 	// core.register_globalstep(function(dtime)
