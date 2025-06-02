@@ -10,8 +10,6 @@ namespace playerMechanics {
 
 				if (data != null) {
 					// Flowing velocity buffer continuation.
-
-					print("continue");
 					let acceleration: Vec3 | null = null;
 
 					if (data.x != 0) {
@@ -21,7 +19,7 @@ namespace playerMechanics {
 					}
 					acceleration = acceleration as Vec3;
 
-					acceleration = vector.multiply(acceleration, 0.075);
+					acceleration = vector.multiply(acceleration, 0.1);
 
 					player.add_velocity(acceleration);
 
@@ -34,8 +32,8 @@ namespace playerMechanics {
 					}
 				} else {
 					// Flowing velocity buffer trigger.
-					print("hit");
-					const newFlow = vector.multiply(flow_dir, 10);
+
+					const newFlow = vector.multiply(flow_dir, 5.25);
 
 					let acceleration: Vec3 | null = null;
 					if (newFlow.x != 0) {
@@ -44,7 +42,7 @@ namespace playerMechanics {
 						acceleration = vector.create3d(0, 0, newFlow.z);
 					}
 					acceleration = acceleration as Vec3;
-					acceleration = vector.multiply(acceleration, 0.075);
+					acceleration = vector.multiply(acceleration, 0.1);
 
 					player.add_velocity(acceleration);
 					pool.set(name, newFlow);
