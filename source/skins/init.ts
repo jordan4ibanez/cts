@@ -89,7 +89,7 @@ namespace skins {
 					textures: [fileName, "blank_skin.png"],
 				});
 
-				// pool[name] = file
+				pool.set(name, fileName);
 				// recalculate_armor(player)
 			}
 		);
