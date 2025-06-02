@@ -612,10 +612,23 @@ namespace playerAPI {
 					`Tried to set item to [${itemname}] which is undefined.`
 				);
 			}
+
+			// Make nodes draw correctly in hand.
+			const newSize = vector.create2d(0, 0);
+
+			if (core.registered_nodes[itemname]) {
+				newSize.x = 0.21;
+				newSize.y = 0.21;
+			} else {
+				newSize.x = 0.4;
+				newSize.y = 0.4;
+			}
+
 			this.object.set_properties({
 				textures: [itemname],
 				wield_item: this.itemstring,
 				glow: def.light_source,
+				visual_size: newSize,
 			});
 		}
 
