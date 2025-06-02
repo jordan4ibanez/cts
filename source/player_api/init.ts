@@ -1,5 +1,5 @@
 namespace playerAPI {
-	// local pool = {}
+	
 
 	// Player physical data constant.
 	const player_constant = {
@@ -18,36 +18,37 @@ namespace playerAPI {
 		wield_item: null,
 	};
 
-	// // set player wield item
-	// local name
-	// local temp_pool
-	// local item
-	// local object
-	// local entity
-	// local object_string
-	// local update_wield_item = function(player)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	object = temp_pool.wield_item
-	// 	item = player:get_wielded_item():get_name()
-	// 	if not object or (object and not object:get_luaentity()) then
-	// 		object = core.add_entity(player:get_pos(),"player_api:item")
-	// 		entity = object:get_luaentity()
-	// 		if entity then
-	// 			entity.set_item(entity,item)
-	// 			entity.wielder = name
-	// 			object:set_attach(player, "Right_Hand", vector.new(0,0,0), vector.new(0,0,0))
-	// 			temp_pool.wield_item = object
-	// 		end
-	// 		return // catch it
-	// 	end
-	// 	entity = object:get_luaentity()
-	// 	object_string = entity.itemstring
-	// 	if object_string ~= item then
-	// 		entity.itemstring = item
-	// 		entity.set_item(entity,item)
-	// 	end
-	// end
+    interface PlayerData {
+
+    }
+
+    const pool = new Map<string, PlayerData>()
+
+	// Set player wield item.
+	function update_wield_item(player: ObjectRef) {
+		const name = player.get_player_name();
+		// 	temp_pool = pool[name]
+		// 	object = temp_pool.wield_item
+		// 	item = player:get_wielded_item():get_name()
+		// 	if not object or (object and not object:get_luaentity()) then
+		// 		object = core.add_entity(player:get_pos(),"player_api:item")
+		// 		entity = object:get_luaentity()
+		// 		if entity then
+		// 			entity.set_item(entity,item)
+		// 			entity.wielder = name
+		// 			object:set_attach(player, "Right_Hand", vector.new(0,0,0), vector.new(0,0,0))
+		// 			temp_pool.wield_item = object
+		// 		end
+		// 		return // catch it
+		// 	end
+		// 	entity = object:get_luaentity()
+		// 	object_string = entity.itemstring
+		// 	if object_string ~= item then
+		// 		entity.itemstring = item
+		// 		entity.set_item(entity,item)
+		// 	end
+	}
+
 	// // easy way to allocate new players
 	// local data
 	// local name
