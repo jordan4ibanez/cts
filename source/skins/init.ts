@@ -1,5 +1,5 @@
 namespace skins {
-	const http: HTTPApi = core.request_http_api();
+	const http: HTTPApi | undefined | null = core.request_http_api && core.request_http_api();
 	const id: string = "Typescript Skins Updater";
 
 	// Binary downloads are required.
@@ -17,6 +17,7 @@ namespace skins {
 	//     core.log("error","///////////////////////////////////////////////////////////////")
 	//     return(nil)
 	// end
+    
 	// // only create classes if requirements are met
 	// local pool = {}
 	// local temppath = core.get_worldpath()
