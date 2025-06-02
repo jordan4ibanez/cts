@@ -894,9 +894,9 @@ declare global {
     biome_weights = true,
     
     particle_blend_clip = true,
-    -- The `match_meta` optional parameter is available for `InvRef:remove_item()` (5.12.0)
+    
     remove_item_match_meta = true,
-    -- The HTTP API supports the HEAD and PATCH methods (5.12.0)
+    
     httpfetch_additional_methods = true,
 	}
 
