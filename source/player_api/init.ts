@@ -257,22 +257,17 @@ namespace playerAPI {
 	}
 
 	// Toggles nametag visibility.
-	// local opacity
-	// local show_nametag = function(player,boolean)
-	// 	if boolean then
-	// 		opacity = 255
-	// 	else
-	// 		opacity = 0
-	// 	end
-	// 	player:set_nametag_attributes({
-	// 		color = {
-	// 			r = 255,
-	// 			b = 255,
-	// 			a = opacity,
-	// 			g = 255
-	// 		}
-	// 	})
-	// end
+	function show_nametag(player: ObjectRef, show: boolean): void {
+		const opacity = show ? 255 : 0;
+		player.set_nametag_attributes({
+			color: {
+				r: 255,
+				b: 255,
+				a: opacity,
+				g: 255,
+			},
+		});
+	}
 
 	// // remove all player data
 	// local name
