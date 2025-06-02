@@ -294,12 +294,9 @@ namespace playerAPI {
 		});
 	}
 
-	// // checks if the player has done anything with their keyboard/mouse
-	// local name
-	// local temp_pool
-	// local old_control
-	// local control_check = function(player,control_table)
-	// 	name = player:get_player_name()
+	// Checks if the player has done anything with their keyboard/mouse.
+	function control_check  (player: ObjectRef,control_table: PlayerControlObject){ 
+		const name: string = player.get_player_name()
 	// 	temp_pool = pool[name]
 	// 	if not temp_pool.old_controls then
 	// 		temp_pool.old_controls = control_table
@@ -317,7 +314,7 @@ namespace playerAPI {
 	// 	end
 	// 	temp_pool.old_controls = control_table
 	// 	return(false)
-	// end
+    }
 
 	// // movement to animation translations
 	// local translation_table = {
