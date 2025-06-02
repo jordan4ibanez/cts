@@ -463,28 +463,28 @@ namespace playerAPI {
 			set_animation(player, translated.animation, translated.speed);
 			return;
 		} else {
-			// 		if control.sneak then
-			// 			for k,i in pairs(control) do
-			// 				if i and translation_table.sneak.keys[k] then
-			// 					translated = translation_table.sneak.states[true][mouse]
-			// 					set_animation(player, translated.animation, translated.speed)
-			// 					return
-			// 				end
-			// 			end
-			// 			translated = translation_table.sneak.states[false][mouse]
-			// 			set_animation(player, translated.animation, translated.speed)
-			// 			return
-			// 		else
-			// 			for k,i in pairs(control) do
-			// 				if i and translation_table.walk.keys[k] then
-			// 					translated = translation_table.walk.states[mouse][state]
-			// 					if translated then
-			// 						set_animation(player, translated.animation, translated.speed)
-			// 						return
-			// 					end
-			// 				end
-			// 			end
-			// 		end
+			if (control.sneak) {
+				// 			for k,i in pairs(control) do
+				// 				if i and translation_table.sneak.keys[k] then
+				// 					translated = translation_table.sneak.states[true][mouse]
+				// 					set_animation(player, translated.animation, translated.speed)
+				// 					return
+				// 				end
+				// 			end
+				// 			translated = translation_table.sneak.states[false][mouse]
+				// 			set_animation(player, translated.animation, translated.speed)
+				// 			return
+			} else {
+				// 			for k,i in pairs(control) do
+				// 				if i and translation_table.walk.keys[k] then
+				// 					translated = translation_table.walk.states[mouse][state]
+				// 					if translated then
+				// 						set_animation(player, translated.animation, translated.speed)
+				// 						return
+				// 					end
+				// 				end
+				// 			end
+			}
 			// 		translated = translation_table.stand[mouse]
 			// 		set_animation(player, translated.animation, translated.speed)
 		}
