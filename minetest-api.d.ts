@@ -539,7 +539,7 @@ interface core {
 	): Array<any>;
 
 	// Function only exists if Luanti server was built with cURL support.
-	request_http_api?(): HTTPApi;
+	request_http_api?(): HTTPApi | null;
 
 	get_mod_storage(): MetaRef;
 	get_connected_players(): ObjectRef[];
