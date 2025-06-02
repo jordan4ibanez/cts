@@ -72,13 +72,13 @@ namespace playerAPI {
 		// 	temp_pool.attached     = false
 		// 	temp_pool.sleeping     = false
 		player.set_properties({
-			visual       : newData.visual,
-			mesh         : newData.mesh,
-			textures     : newData.textures,
-			collisionbox : newData.collisionbox,
-			eye_height   : newData.eye_height,
-			stepheight   : newData.stepheight,
-			visual_size  : newData.visual_size,
+			visual: newData.visual,
+			mesh: newData.mesh,
+			textures: newData.textures,
+			collisionbox: newData.collisionbox,
+			eye_height: newData.eye_height,
+			stepheight: newData.stepheight,
+			visual_size: newData.visual_size,
 		});
 	}
 
