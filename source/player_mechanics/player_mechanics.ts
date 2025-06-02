@@ -29,9 +29,6 @@ namespace playerMechanics {
 			gravity: 1.25,
 		});
 
-		// 	pool[name] = {}
-		// 	temp_pool = pool[name]
-
 		const newData: PlayerState = {
 			state: 0,
 			old_state: 0,
@@ -39,6 +36,8 @@ namespace playerMechanics {
 			swimming: false,
 			swim_bumped: core.get_us_time() / 1000000,
 		};
+
+		pool.set(name, newData);
 	});
 
 	// // resets the player's state on death
