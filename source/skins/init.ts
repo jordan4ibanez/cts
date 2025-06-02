@@ -1,3 +1,4 @@
+namespace skins {
 // local
 // minetest,math,io,vector,table,pairs
 // =
@@ -346,3 +347,4 @@
 //         recalculate_armor(player)
 //     end)
 // end)
+}
