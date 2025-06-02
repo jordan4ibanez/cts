@@ -3,13 +3,13 @@ namespace playerMechanics {
 
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const offset: Vec2 = {
-			x: 146,
+			x: -146,
 			y: 20,
 		};
 		// Add in version info.
 		player.hud_add({
 			type: HudElementType.text,
-			position: { x: 0, y: 0 },
+			position: { x: 1, y: 0 },
 			name: "versionbg",
 			text: "Crafter Alpha v2.0.0",
 			number: 0x000000,
@@ -19,7 +19,7 @@ namespace playerMechanics {
 		});
 		player.hud_add({
 			type: HudElementType.text,
-			position: { x: 0, y: 0 },
+			position: { x: 1, y: 0 },
 			name: "versionfg",
 			text: "Crafter Alpha v2.0.0",
 			number: 0xffffff,
