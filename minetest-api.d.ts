@@ -805,24 +805,25 @@ declare global {
     
     no_chat_message_prediction = true,
     
+    
     object_use_texture_alpha = true,
-    -- Object selectionbox is settable independently from collisionbox
-    -- (5.0.0)
+    
+    
     object_independent_selectionbox = true,
-    -- Specifies whether binary data can be uploaded or downloaded using
-    -- the HTTP API (5.1.0)
+    
+    
     httpfetch_binary_data = true,
-    -- Whether formspec_version[<version>] may be used (5.1.0)
+    
     formspec_version_element = true,
-    -- Whether AreaStore's IDs are kept on save/load (5.1.0)
+    
     area_store_persistent_ids = true,
-    -- Whether core.find_path is functional (5.2.0)
+    
     pathfinder_works = true,
-    -- Whether Collision info is available to an objects' on_step (5.3.0)
+    
     object_step_has_moveresult = true,
-    -- Whether get_velocity() and add_velocity() can be used on players (5.4.0)
+    
     direct_velocity_on_players = true,
-    -- nodedef's use_texture_alpha accepts new string modes (5.4.0)
+    
     use_texture_alpha_string_modes = true,
     -- degrotate param2 rotates in units of 1.5° instead of 2°
     -- thus changing the range of values from 0-179 to 0-240 (5.5.0)
