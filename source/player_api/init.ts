@@ -297,7 +297,7 @@ namespace playerAPI {
 	function control_check(
 		player: ObjectRef,
 		control_table: PlayerControlObject
-	) {
+	): boolean {
 		const name: string = player.get_player_name();
 		const data: ApiPlayerData | undefined = pool.get(name);
 		if (data == null) {
@@ -308,18 +308,21 @@ namespace playerAPI {
 		// 		temp_pool.old_controls = control_table
 		// 		return(true)
 		// 	end
+
 		// 	if temp_pool.force_update then
 		// 		temp_pool.old_controls = control_table
 		// 		return(true)
 		// 	end
+
 		// 	for i,k in pairs(temp_pool.old_controls) do
 		// 		if control_table[i] ~= k then
 		// 			temp_pool.old_controls = control_table
 		// 			return(true)
 		// 		end
 		// 	end
+
 		// 	temp_pool.old_controls = control_table
-		// 	return(false)
+		return false;
 	}
 
 	// // movement to animation translations
