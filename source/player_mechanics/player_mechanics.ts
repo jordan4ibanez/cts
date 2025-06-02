@@ -38,18 +38,16 @@ namespace playerMechanics {
 	});
 
 	// Resets the player's state on death.
-	// local name
-
-	// core.register_on_respawnplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name].state = 0
-	// 	pool[name].was_in_water = false
-	// 	pool[name].swim_bumped = core.get_us_time()/1000000
-	// 	send_running_cancellation(player,false)
-	// 	player:set_properties({
-	// 		collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
-	// 	})
-	// end)
+	core.register_on_respawnplayer((player: ObjectRef) => {
+		// 	name = player:get_player_name()
+		// 	pool[name].state = 0
+		// 	pool[name].was_in_water = false
+		// 	pool[name].swim_bumped = core.get_us_time()/1000000
+		// 	send_running_cancellation(player,false)
+		// 	player:set_properties({
+		// 		collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
+		// 	})
+	});
 
 	// // delete data on player leaving
 	// local name
@@ -195,7 +193,7 @@ namespace playerMechanics {
 	// 		temp_pool.was_in_water = in_water
 	// 	end
 	// end
-	
+
 	// core.register_globalstep(function(dtime)
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		control_state(player)
