@@ -193,13 +193,15 @@ namespace playerMechanics {
 			(data.state != data.old_state) ||
 			((data.state == 1 || data.state == 2) && hunger <= 6)) {
 				if (! in_water && data.was_in_water) {
-		// 			player:set_physics_override({
-		// 				sneak   = true,
-		// 			})
-		// 			force_update_animation(player)
-		// 			player:set_properties({
-		// 				collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
-		// 			})
+					player.set_physics_override({
+						sneak   : true,
+					})
+					// todo: this depends on crafter player api.
+					// force_update_animation(player)
+
+					player.set_properties({
+						collisionbox : [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
+					})
 				} else if (in_water && ! data.was_in_water) {
 		// 			player:set_physics_override({
 		// 				sneak   = false,
