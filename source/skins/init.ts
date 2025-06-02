@@ -76,7 +76,7 @@ namespace skins {
 				file.close();
 				core.dynamic_add_media({ filepath: new_temp_path });
 
-				// file = "skin_"+name+".png" // reuse the data
+				const fileName = "skin_"+name+".png"
 				// player = core.get_player_by_name(name)
 				// player:set_properties({textures = {file, "blank_skin.png"}})
 				// pool[name] = file
