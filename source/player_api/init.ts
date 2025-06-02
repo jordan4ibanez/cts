@@ -1,26 +1,22 @@
 namespace playerAPI {
-	
 	// local pool = {}
 
-	// // player physical data constant
-	// local player_constant = {
-	// 	visual               = "mesh"       ,
-	// 	mesh                 = "player.b3d" ,
-	// 	animation_speed      = 24           ,
-	// 	visual_size          = {x = 1, y = 1, z = 1},
-	// 	textures             = {
-	// 							"player.png"    ,
-	// 							"blank_skin.png",
-	// 						   },
-	// 	current_animation    = "stand",
-	// 	swimming             = false,
-	// 	collisionbox         = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
-	// 	old_controls         = {},
-	// 	stepheight           = 0.6  ,
-	// 	eye_height           = 1.47 ,
-	// 	attached             = false,
-	// 	wield_item           = nil  ,
-	// }
+	// Player physical data constant.
+	const player_constant = {
+		visual: "mesh",
+		mesh: "player.b3d",
+		animation_speed: 24,
+		visual_size: { x: 1, y: 1, z: 1 },
+		textures: ["player.png", "blank_skin.png"],
+		current_animation: "stand",
+		swimming: false,
+		collisionbox: [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
+		old_controls: {},
+		stepheight: 0.6,
+		eye_height: 1.47,
+		attached: false,
+		wield_item: null,
+	};
 
 	// // set player wield item
 	// local name
