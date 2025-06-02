@@ -227,7 +227,7 @@ namespace playerMechanics {
 				} else if ((! in_water && data.state != 1 && data.state != 2 &&
 				(data.old_state == 1 || data.old_state == 2)) ||
 				(in_water && data.state != 1 && data.state != 2 && data.state != 3 &&
-				(temp_pool.old_state == 1 or temp_pool.old_state == 2 or temp_pool.old_state == 3))) {
+				(data.old_state == 1 || data.old_state == 2 || data.old_state == 3))) {
 
 		// 			player:set_fov(1, true,0.15)
 		// 			player:set_physics_override({speed=1})
