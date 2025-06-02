@@ -550,27 +550,26 @@ namespace playerAPI {
 		}
 	}
 
-	// // translates player movement to animation
-	// local control_table
-	// local update
-	// local name
-	// local temp_pool
-	// local do_animations = function(player)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	control_table = player:get_player_control()
-	// 	pitch_look(player,control_table.sneak)
-	// 	if player:get_hp() <= 0 then
-	// 		set_animation(player,"die",40,false)
-	// 	elseif not temp_pool.sleeping and (not temp_pool.attached or not player:get_attach()) then
-	// 		temp_pool.attached = false
-	// 		update = control_check(player,control_table)
-	// 		update_wield_item(player)
-	// 		if update and player:get_hp() > 0 then
-	// 			control_translation(player,control_table)
-	// 		end
-	// 	end
-	// end
+	// Translates player movement to animation.
+	function do_animations(player: ObjectRef): void {
+		const name: string = player.get_player_name();
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		// 	control_table = player:get_player_control()
+		// 	pitch_look(player,control_table.sneak)
+		// 	if player:get_hp() <= 0 then
+		// 		set_animation(player,"die",40,false)
+		// 	elseif not temp_pool.sleeping and (not temp_pool.attached or not player:get_attach()) then
+		// 		temp_pool.attached = false
+		// 		update = control_check(player,control_table)
+		// 		update_wield_item(player)
+		// 		if update and player:get_hp() > 0 then
+		// 			control_translation(player,control_table)
+		// 		end
+		// 	end
+	}
 
 	// // Update appearance when the player joins
 	// core.register_on_joinplayer(function(player)
