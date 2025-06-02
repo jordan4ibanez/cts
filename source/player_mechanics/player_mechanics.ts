@@ -61,26 +61,32 @@ namespace playerMechanics {
 		const name: string = player.get_player_name();
 		pool.delete(name);
 		{
-		const channel: ModChannel | undefined = state_channels.get(name)
-		if (channel == null) {
-			throw new Error(`Player [${name}] was never given a mod channel.`)
-		}
-		channel.leave()
+			const channel: ModChannel | undefined = state_channels.get(name);
+			if (channel == null) {
+				throw new Error(
+					`Player [${name}] was never given a mod channel.`
+				);
+			}
+			channel.leave();
 		}
 		state_channels.delete(name);
 	});
 
-	// // tells the client to stop sending running/bunnyhop data
-	// local name
-	// send_running_cancellation = function(player,sneaking)
-	// 	name = player:get_player_name()
-	// 	state_channels[name]:send_all(
-	// 		core.serialize({
-	// 			stop_running=true,
-	// 			state=sneaking
-	// 		}
-	// 	))
-	// end
+	// Tells the client to stop sending running/bunnyhop data.
+	function send_running_cancellation(player: ObjectRef, sneaking: boolean) {
+		const name: string = player.get_player_name();
+		const channel: ModChannel | undefined = state_channels.get(name);
+		if (channel == null) {
+			throw new Error(`Player [${name}] was never given a mod channel.`);
+		}
+
+		channel.send_all(
+			core.serialize({
+				stop_running: true,
+				state: sneaking,
+			})
+		);
+	}
 
 	// // intercept incoming data messages
 	// local channel_decyphered
