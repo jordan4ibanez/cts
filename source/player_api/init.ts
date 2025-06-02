@@ -336,7 +336,7 @@ namespace playerAPI {
 
 	interface AnimationContainer {
 		keys?: AnimationKeySet;
-		states?: AnimationStateSet;
+		states: AnimationStateSet;
 	}
 
 	// Movement to animation translations.
@@ -392,20 +392,22 @@ namespace playerAPI {
 				false: [{ animation: "stand", speed: 0 }],
 			},
 		},
-
-		// ["swim"] : {
-		// 	["keys"]    : { // required keys
-		// 		up      : true,
-		// 		down    : true,
-		// 		left    : true,
-		// 		right   : true,
-		// 	},
-		// 	["states"]  : {
-		// 		[true ] : {animation : "swim"      , speed : 24},
-		// 		[false] : {animation : "swim_still", speed : 0 },
-		// 	}
-		// }
+		swim: {
+			keys: {
+				// required keys
+				up: true,
+				down: true,
+				left: true,
+				right: true,
+			},
+			states: {
+				true: [{ animation: "swim", speed: 24 }],
+				false: [{ animation: "swim_still", speed: 0 }],
+			},
+		},
 	};
+
+    
 
 	// // translate input and combine with state
 	// local name
