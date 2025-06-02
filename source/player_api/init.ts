@@ -414,17 +414,13 @@ namespace playerAPI {
 		control: PlayerControlObject
 	): void {
 		const name: string = player.get_player_name();
-
 		const data: ApiPlayerData | undefined = pool.get(name);
 		if (data == null) {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
-
 		const state: number = playerMechanics.get_player_state(player);
 		const swimming: boolean = playerMechanics.is_player_swimming(player);
-
 		let mouse: boolean = control.LMB || control.RMB;
-
 		if (swimming) {
 			for (const [k, i] of pairs(control)) {
 				if (i == null) {
@@ -545,7 +541,6 @@ namespace playerAPI {
 					? translation_table.stand.states.true
 					: translation_table.stand.states.false
 			)[0];
-
 			if (translated == null) {
 				throw new Error(
 					`Stand state missing [${tostring(mouse)}] index 0`
