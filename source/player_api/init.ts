@@ -34,20 +34,19 @@ namespace playerAPI {
 	}
 
 	interface ApiPlayerData {
-		visual: EntityVisual = EntityVisual.mesh;
-		mesh: string = "player.b3d";
-		animation_speed: number = 24;
-		visual_size: Vec3 = vector.create3d({ x: 1, y: 1, z: 1 });
-		textures: string[] = ["player.png", "blank_skin.png"];
-		current_animation: string = "stand";
-		swimming: boolean = false;
-		collisionbox: number[] = [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
+		visual: EntityVisual;
+		mesh: string;
+		animation_speed: number;
+		visual_size: Vec3;
+		textures: string[];
+		current_animation: string;
+		swimming: boolean;
+		collisionbox: number[];
 		old_controls: PlayerControlObject;
-
-		stepheight: number = 0.6;
-		eye_height: number = 1.47;
-		attached: boolean = false;
-		wield_item: string = "";
+		stepheight: number;
+		eye_height: number;
+		attached: boolean;
+		wield_item: string;
 	}
 
 	const pool = new Map<string, ApiPlayerData>();
