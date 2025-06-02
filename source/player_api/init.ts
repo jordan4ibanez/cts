@@ -196,7 +196,6 @@ namespace playerAPI {
 	}
 
 	// Force updates the player.
-
 	function create_force_update(player: ObjectRef): void {
 		const name: string = player.get_player_name();
 		const data: ApiPlayerData | undefined = pool.get(name);
