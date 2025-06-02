@@ -21,7 +21,7 @@ namespace playerAPI {
 	const pool = new Map<string, ApiPlayerData>();
 
 	// Set player wield item.
-	function update_wield_item(player: ObjectRef) {
+	function update_wield_item(player: ObjectRef): void {
 		const name = player.get_player_name();
 
 		const data: ApiPlayerData | undefined = pool.get(name);
@@ -82,7 +82,7 @@ namespace playerAPI {
 	}
 
 	// Easy way to allocate new players.
-	function set_all_properties(player: ObjectRef) {
+	function set_all_properties(player: ObjectRef): void {
 		const name = player.get_player_name();
 		const newData: ApiPlayerData = {
 			visual: EntityVisual.mesh,
@@ -114,10 +114,10 @@ namespace playerAPI {
 		pool.set(name, newData);
 	}
 
-	// // easy way to set textures
-	// local set_textures = function(player, textures)
-	// 	player:set_properties({textures = textures})
-	// end
+	// Easy way to set textures.
+	function set_textures(player: ObjectRef, textures: string[]): void {
+		player.set_properties({ textures: textures });
+	}
 
 	// local animation_list = {
 	// 	stand            = { x = 5  , y = 5   },
