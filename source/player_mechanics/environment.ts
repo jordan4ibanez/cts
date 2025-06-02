@@ -248,9 +248,10 @@ namespace playerMechanics {
 			handle_hurt_inside(player, hurt, dtime);
 		} else {
 			const data: PlayerEnvironment | undefined = pool.get(name);
-			if (!data) {
-				triggerNullPtype(name);
-				return;
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added to the pool.`
+				);
 			}
 			data.hurt_inside_ticker = 0;
 		}
