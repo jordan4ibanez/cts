@@ -54,7 +54,7 @@ namespace item_handling {
 			if (object.is_player()) {
 				continue;
 			}
-			let __entity: LuaEntity = object.get_luaentity();
+			let __entity: LuaEntity | null = object.get_luaentity();
 			if (
 				__entity == null ||
 				(__entity.name != "__builtin:item" &&
