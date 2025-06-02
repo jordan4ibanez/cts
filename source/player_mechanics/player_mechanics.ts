@@ -39,14 +39,21 @@ namespace playerMechanics {
 
 	// Resets the player's state on death.
 	core.register_on_respawnplayer((player: ObjectRef) => {
-		// 	name = player:get_player_name()
-		// 	pool[name].state = 0
-		// 	pool[name].was_in_water = false
-		// 	pool[name].swim_bumped = core.get_us_time()/1000000
-		// 	send_running_cancellation(player,false)
-		// 	player:set_properties({
-		// 		collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
-		// 	})
+		const name: string = player.get_player_name();
+		const data: PlayerState | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		data.state = 0;
+		data.was_in_water = false;
+		data.swim_bumped = core.get_us_time() / 1000000;
+
+		send_running_cancellation(player, false);
+
+		player.set_properties({
+			collisionbox: [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
+		});
 	});
 
 	// // delete data on player leaving
