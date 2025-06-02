@@ -369,8 +369,9 @@ namespace tooManyItems {
 				// This resets the craft table.
 			} else if (fields.quit) {
 				const inv: InvRef = player.get_inventory();
-				// todo: dump_craft comes from player_mechanics
-				// dump_craft(player)
+
+				playerMechanics.dump_craft(player);
+
 				inv.set_width("craft", 2);
 				inv.set_size("craft", 4);
 				//reset the player inv //todo: figure out what this was for
