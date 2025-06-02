@@ -234,9 +234,10 @@ namespace playerMechanics {
 					// Preserve network data.
 					send_running_cancellation(player,data.state==3) 
 				} else if ((data.state == 1 || data.state == 2) && hunger <= 6) {
-		// 			player:set_fov(1, true,0.15)
-		// 			player:set_physics_override({speed=1})
-		// 			send_running_cancellation(player,false) //preserve network data
+					player.set_fov(1, true,0.15)
+					player.set_physics_override({speed:1})
+					// Preserve network data.
+					send_running_cancellation(player,false) 
 				}
 		// 		//sneaking
 		// 		if temp_pool.state == 3 and in_water then
