@@ -150,7 +150,11 @@ namespace playerMechanics {
 		// todo: this depends on crafter hunger
 		// const hunger    = get_player_hunger(player)
 		const name: string = player.get_player_name();
-		// 	temp_pool = pool[name]
+		const data: PlayerState | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
 		// 	// water movement data
 		// 	head = core.get_item_group(get_player_head_env(player),"water") > 0
 		// 	legs = core.get_item_group(get_player_legs_env(player),"water") > 0
