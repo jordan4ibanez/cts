@@ -374,7 +374,7 @@ interface core {
 	check_single_for_falling(position: Vec3): void;
 	check_for_falling(position: Vec3): void;
 	get_spawn_level(x: number, z: number): number | null;
-	mod_channel_join(channelName: string): void;
+	mod_channel_join(channelName: string): ModChannel;
 	get_inventory(position: Vec3): InvRef;
 	get_perlin_map(params: NoiseParams, size: Vec3): PerlinNoiseMapObject;
 	get_inventory(position: Vec3): InvRef;
