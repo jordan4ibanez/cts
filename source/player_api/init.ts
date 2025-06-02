@@ -294,26 +294,30 @@ namespace playerAPI {
 	}
 
 	// Checks if the player has done anything with their keyboard/mouse.
-	function control_check  (player: ObjectRef,control_table: PlayerControlObject){ 
-		const name: string = player.get_player_name()
-	// 	temp_pool = pool[name]
-	// 	if not temp_pool.old_controls then
-	// 		temp_pool.old_controls = control_table
-	// 		return(true)
-	// 	end
-	// 	if temp_pool.force_update then
-	// 		temp_pool.old_controls = control_table
-	// 		return(true)
-	// 	end
-	// 	for i,k in pairs(temp_pool.old_controls) do
-	// 		if control_table[i] ~= k then
-	// 			temp_pool.old_controls = control_table
-	// 			return(true)
-	// 		end
-	// 	end
-	// 	temp_pool.old_controls = control_table
-	// 	return(false)
-    }
+	function control_check(
+		player: ObjectRef,
+		control_table: PlayerControlObject
+	) {
+		const name: string = player.get_player_name();
+		// 	temp_pool = pool[name]
+
+		// 	if not temp_pool.old_controls then
+		// 		temp_pool.old_controls = control_table
+		// 		return(true)
+		// 	end
+		// 	if temp_pool.force_update then
+		// 		temp_pool.old_controls = control_table
+		// 		return(true)
+		// 	end
+		// 	for i,k in pairs(temp_pool.old_controls) do
+		// 		if control_table[i] ~= k then
+		// 			temp_pool.old_controls = control_table
+		// 			return(true)
+		// 		end
+		// 	end
+		// 	temp_pool.old_controls = control_table
+		// 	return(false)
+	}
 
 	// // movement to animation translations
 	// local translation_table = {
