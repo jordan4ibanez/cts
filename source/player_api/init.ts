@@ -185,7 +185,6 @@ namespace playerAPI {
 	}
 
 	// Allows mods to force update animation.
-
 	export function force_update_animation(player: ObjectRef): void {
 		const name: string = player.get_player_name();
 		const data: ApiPlayerData | undefined = pool.get(name);
@@ -215,11 +214,14 @@ namespace playerAPI {
 		set_animation(player, animation, speed, loop);
 	}
 
-	// local name
-	// player_is_attached = function(player,truth)
-	// 	name = player:get_player_name()
-	// 	pool[name].attached = truth
-	// end
+	export function player_is_attached(player: ObjectRef, truth: boolean) {
+		const name: string = player.get_player_name();
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		data.attached = truth;
+	}
 
 	// local name
 	// get_if_player_attached = function(player)
