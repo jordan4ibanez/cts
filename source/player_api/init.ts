@@ -273,10 +273,10 @@ namespace playerAPI {
 		pool.delete(player.get_player_name());
 	});
 
-	// // converts yaw to degrees
-	// local degrees = function(yaw)
-	// 	return(yaw*180.0/math.pi)
-	// end
+	// Converts yaw to degrees.
+	function degrees(yaw: number): number {
+		return (yaw * 180.0) / math.pi;
+	}
 
 	// // controls head bone
 	// local state
