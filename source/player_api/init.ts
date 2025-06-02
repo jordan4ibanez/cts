@@ -465,11 +465,38 @@ namespace playerAPI {
 		} else {
 			if (control.sneak) {
 				for (const [k, i] of pairs(control)) {
-					// 				if i and translation_table.sneak.keys[k] then
-					// 					translated = translation_table.sneak.states[true][mouse]
-					// 					set_animation(player, translated.animation, translated.speed)
-					// 					return
-					// 				end
+					if (i == null) {
+						core.log(
+							LogLevel.warning,
+							`Component [${k}] of player controls [${name}] was null`
+						);
+						continue;
+					}
+					const keys: AnimationKeySet | undefined =
+						translation_table.sneak.keys;
+					if (keys == null) {
+						throw new Error("Sneak keys are undefined.");
+					}
+
+					if (keys[k]) {
+						const index: number = mouse ? 1 : 0;
+
+						const translated: AnimationComponent | undefined =
+							translation_table.sneak.states.true[index];
+
+						if (translated == null) {
+							throw new Error(
+								`Sneak states true is missing index [${index}]`
+							);
+						}
+
+						set_animation(
+							player,
+							translated.animation,
+							translated.speed
+						);
+						return;
+					}
 				}
 
 				// 			translated = translation_table.sneak.states[false][mouse]
