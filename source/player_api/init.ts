@@ -592,7 +592,7 @@ namespace playerAPI {
 
 	class PlayerHoldingItemEntity extends types.Entity {
 		name: string = "crafter_player_api:item";
-		wielder: string = "";
+		wielder: string | null = null;
 		itemstring: string = "";
 
 		initial_properties = {
@@ -609,7 +609,7 @@ namespace playerAPI {
 			visual_size: { x: 0.21, y: 0.21 },
 		};
 
-		set_item(item: string) {
+		set_item(item: string): void {
 			const stack = ItemStack(item || this.itemstring);
 			this.itemstring = stack.to_string();
 			const itemname: string =
@@ -628,11 +628,14 @@ namespace playerAPI {
 			});
 		}
 
-		// 	on_step = function(self, dtime)
-		// 		if not self.wielder or (self.wielder and not core.get_player_by_name(self.wielder)) then
-		// 			self.object:remove()
-		// 		end
-		// 	end,
+		on_step(): void {
+			if (
+				this.wielder == null ||
+				(this.wielder != null && !core.get_player_by_name(this.wielder))
+			) {
+				this.object.remove();
+			}
+		}
 	}
 
 	utility.registerTSEntity(PlayerHoldingItemEntity);
