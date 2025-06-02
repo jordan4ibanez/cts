@@ -330,8 +330,8 @@ namespace playerAPI {
 	}
 
 	interface AnimationStateSet {
-		true?: AnimationComponent[];
-		false?: AnimationComponent[];
+		true: AnimationComponent[];
+		false: AnimationComponent[];
 	}
 
 	interface AnimationContainer {
