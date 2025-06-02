@@ -317,65 +317,65 @@ namespace playerAPI {
 		return false;
 	}
 
-	// // movement to animation translations
-	// local translation_table = {
-	// 	["walk"] = {
-	// 		["keys"]    = { // required keys
-	// 			up      = true,
-	// 			down    = true,
-	// 			left    = true,
-	// 			right   = true,
-	// 		},
-	// 		["states" ] = { // states
-	// 			[false] = { // mouse input
-	// 				[0] = {animation = "walk", speed = 24},
-	// 				[1] = {animation = "walk", speed = 36},
-	// 				[2] = {animation = "walk", speed = 42},
-	// 			},
-	// 			[true ] = {
-	// 				[0] = {animation = "walk_mine", speed = 24},
-	// 				[1] = {animation = "walk_mine", speed = 36},
-	// 				[2] = {animation = "walk_mine", speed = 42},
-	// 			}
-	// 		}
-	// 	},
-	// 	["sneak"] = {
-	// 		["keys"]    = {
-	// 			up      = true,
-	// 			down    = true,
-	// 			left    = true,
-	// 			right   = true,
-	// 		},
-	// 		["states" ] = {
-	// 			[true ] = { // moving
-	// 				//mouse input
-	// 				[false] = {animation = "sneak_walk"     , speed = 24},
-	// 				[true ] = {animation = "sneak_mine_walk", speed = 24},
-	// 			},
-	// 			[false] = { // moving
-	// 				//mouse input
-	// 				[false] = {animation = "sneak"           , speed = 0 },
-	// 				[true ] = {animation = "sneak_mine_stand", speed = 24},
-	// 			}
-	// 		}
-	// 	},
-	// 	["stand"]   = {
-	// 		[true ] = {animation = "mine" , speed = 24},
-	// 		[false] = {animation = "stand", speed = 0 },
-	// 	},
-	// 	["swim"] = {
-	// 		["keys"]    = { // required keys
-	// 			up      = true,
-	// 			down    = true,
-	// 			left    = true,
-	// 			right   = true,
-	// 		},
-	// 		["states"]  = {
-	// 			[true ] = {animation = "swim"      , speed = 24},
-	// 			[false] = {animation = "swim_still", speed = 0 },
-	// 		}
-	// 	}
-	// }
+	// Movement to animation translations.
+	const translation_table: Dictionary<string, Vec2> = {
+		["walk"] : {
+			["keys"]    : { // required keys
+				up      : true,
+				down    : true,
+				left    : true,
+				right   : true,
+			},
+			["states" ] : { // states
+				[false] : { // mouse input
+					[0] : {animation : "walk", speed : 24},
+					[1] : {animation : "walk", speed : 36},
+					[2] : {animation : "walk", speed : 42},
+				},
+				[true ] : {
+					[0] : {animation : "walk_mine", speed : 24},
+					[1] : {animation : "walk_mine", speed : 36},
+					[2] : {animation : "walk_mine", speed : 42},
+				}
+			}
+		},
+		["sneak"] : {
+			["keys"]    : {
+				up      : true,
+				down    : true,
+				left    : true,
+				right   : true,
+			},
+			["states" ] : {
+				[true ] : { // moving
+					//mouse input
+					[false] : {animation : "sneak_walk"     , speed : 24},
+					[true ] : {animation : "sneak_mine_walk", speed : 24},
+				},
+				[false] : { // moving
+					//mouse input
+					[false] : {animation : "sneak"           , speed : 0 },
+					[true ] : {animation : "sneak_mine_stand", speed : 24},
+				}
+			}
+		},
+		["stand"]   : {
+			[true ] : {animation : "mine" , speed : 24},
+			[false] : {animation : "stand", speed : 0 },
+		},
+		["swim"] : {
+			["keys"]    : { // required keys
+				up      : true,
+				down    : true,
+				left    : true,
+				right   : true,
+			},
+			["states"]  : {
+				[true ] : {animation : "swim"      , speed : 24},
+				[false] : {animation : "swim_still", speed : 0 },
+			}
+		}
+	}
 
 	// // translate input and combine with state
 	// local name
