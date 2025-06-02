@@ -1,6 +1,6 @@
 // todo: fix this disaster, why is this monolithic?
 namespace playerMechanics {
-    interface PType {
+    interface PlayerEnvironment {
 		head: string;
 		legs: string;
 		under: string;
@@ -9,7 +9,7 @@ namespace playerMechanics {
 		hurt_inside_ticker: number;
 	}
 
-	const pool = new Map<string, PType>();
+	const pool = new Map<string, PlayerEnvironment>();
 
 	function triggerNullPtype(name: string): void {
 		print(`warning: PType for ${name} was null. Fixing.`);
@@ -25,7 +25,7 @@ namespace playerMechanics {
 
 	export function get_player_head_env(player: ObjectRef): string | null {
 		const name: string = player.get_player_name();
-		const data: PType | undefined = pool.get(name);
+		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (!data) {
 			triggerNullPtype(name);
 			return null;
@@ -35,7 +35,7 @@ namespace playerMechanics {
 
 	export function get_player_legs_env(player: ObjectRef): string | null {
 		const name: string = player.get_player_name();
-		const data: PType | undefined = pool.get(name);
+		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (!data) {
 			triggerNullPtype(name);
 			return null;
@@ -45,7 +45,7 @@ namespace playerMechanics {
 
 	export function player_under_check(player: ObjectRef): string | null {
 		const name: string = player.get_player_name();
-		const data: PType | undefined = pool.get(name);
+		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (!data) {
 			triggerNullPtype(name);
 			return null;
@@ -56,7 +56,7 @@ namespace playerMechanics {
 	export function player_swim_check(player: ObjectRef): boolean {
 		const name: string = player.get_player_name();
 
-		const data: PType | undefined = pool.get(name);
+		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (!data) {
 			triggerNullPtype(name);
 			return false;
@@ -73,7 +73,7 @@ namespace playerMechanics {
 	export function player_swim_under_check(player: ObjectRef): boolean {
 		const name: string = player.get_player_name();
 
-		const data: PType | undefined = pool.get(name);
+		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (!data) {
 			triggerNullPtype(name);
 			return false;
@@ -183,7 +183,7 @@ namespace playerMechanics {
 			}
 			handle_touch_hurting(player, hurt, dtime);
 		} else {
-			const data: PType | undefined = pool.get(name);
+			const data: PlayerEnvironment | undefined = pool.get(name);
 			if (!data) {
 				triggerNullPtype(name);
 				return;
@@ -202,7 +202,7 @@ namespace playerMechanics {
 	): void {
 		const name: string = player.get_player_name();
 
-		const data: PType | undefined = pool.get(name);
+		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (!data) {
 			triggerNullPtype(name);
 			return;
@@ -265,7 +265,7 @@ namespace playerMechanics {
 			}
 			handle_hurt_inside(player, hurt, dtime);
 		} else {
-			const data: PType | undefined = pool.get(name);
+			const data: PlayerEnvironment | undefined = pool.get(name);
 			if (!data) {
 				triggerNullPtype(name);
 				return;
@@ -429,7 +429,7 @@ namespace playerMechanics {
 		for (const player of core.get_connected_players()) {
 			const name: string = player.get_player_name();
 
-			const data: PType | undefined = pool.get(name);
+			const data: PlayerEnvironment | undefined = pool.get(name);
 			if (!data) {
 				triggerNullPtype(name);
 				continue;
