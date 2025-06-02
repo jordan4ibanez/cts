@@ -867,32 +867,32 @@ declare global {
     wallmounted_rotate = true,
     
     item_specific_pointabilities = true,
-    -- Nodes `pointable` property can be `"blocking"` (5.9.0)
+    
     blocking_pointability_type = true,
-    -- dynamic_add_media can be called at startup when leaving callback as `nil` (5.9.0)
+    
     dynamic_add_media_startup = true,
-    -- dynamic_add_media supports `filename` and `filedata` parameters (5.9.0)
+    
     dynamic_add_media_filepath = true,
-     -- L-system decoration type (5.9.0)
+    
     lsystem_decoration_type = true,
-    -- Overridable pointing range using the itemstack meta key `"range"` (5.9.0)
+    
     item_meta_range = true,
-    -- Allow passing an optional "actor" ObjectRef to the following functions:
-    -- core.place_node, core.dig_node, core.punch_node (5.9.0)
+    
+    
     node_interaction_actor = true,
-    -- "new_pos" field in entity moveresult (5.9.0)
+    
     moveresult_new_pos = true,
-    -- Allow removing definition fields in `core.override_item` (5.9.0)
+    
     override_item_remove_fields = true,
-    -- The predefined hotbar is a Lua HUD element of type `hotbar` (5.10.0)
+    
     hotbar_hud_element = true,
-    -- Bulk LBM support (5.10.0)
+    
     bulk_lbms = true,
-    -- ABM supports field without_neighbors (5.10.0)
+    
     abm_without_neighbors = true,
-    -- biomes have a weight parameter (5.11.0)
+    
     biome_weights = true,
-    -- Particles can specify a "clip" blend mode (5.11.0)
+    
     particle_blend_clip = true,
     -- The `match_meta` optional parameter is available for `InvRef:remove_item()` (5.12.0)
     remove_item_match_meta = true,
