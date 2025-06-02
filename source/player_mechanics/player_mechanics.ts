@@ -155,9 +155,11 @@ namespace playerMechanics {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 
-		// 	// water movement data
-		// 	head = core.get_item_group(get_player_head_env(player),"water") > 0
+		// Water movement data.
+			head = core.get_item_group(get_player_head_env(player),"water") > 0
+
 		// 	legs = core.get_item_group(get_player_legs_env(player),"water") > 0
+
 		// 	in_water = temp_pool.swimming
 		// 	//check if in water
 		// 	if head then
