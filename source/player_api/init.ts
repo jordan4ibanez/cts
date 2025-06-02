@@ -590,6 +590,14 @@ namespace playerAPI {
 	// local stack
 	// local itemname
 	// local def
+
+	class PlayerHoldingItemEntity extends types.Entity {
+		name: string = "player_api:item";
+		wielder: string = "";
+		itemstring: string = "";
+		set_item(item: string): void {}
+	}
+
 	// local set_item = function(self, item)
 	// 	stack = ItemStack(item or self.itemstring)
 	// 	self.itemstring = stack:to_string()
@@ -601,13 +609,6 @@ namespace playerAPI {
 	// 		glow = def and def.light_source,
 	// 	})
 	// end
-
-	class PlayerHoldingItemEntity extends types.Entity {
-		name: string = "player_api:item";
-		wielder: string = "";
-		itemstring: string = "";
-		set_item(item: string): void {}
-	}
 
 	// core.register_entity("player_api:item", {
 	// 	initial_properties = {
