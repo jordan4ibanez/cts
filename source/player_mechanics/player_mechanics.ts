@@ -217,12 +217,12 @@ namespace playerMechanics {
 		
 				// Running/swimming fov modifier.
 				if (hunger > 6 && (data.state == 1 || data.state == 2)) {
-		// 			player:set_fov(1.25, true, 0.15)
-		// 			if temp_pool.state == 2 then
-		// 				player:set_physics_override({speed=1.75})
-		// 			elseif temp_pool.state == 1 then
-		// 				player:set_physics_override({speed=1.5})
-		// 			end
+					player.set_fov(1.25, true, 0.15)
+					if (data.state == 2) {
+						player.set_physics_override({speed:1.75})
+					} else if (data.state == 1) {
+						player.set_physics_override({speed:1.5})
+					}
 
 				} else if ((! in_water && data.state != 1 && data.state != 2 &&
 				(data.old_state == 1 || data.old_state == 2)) ||
@@ -232,11 +232,11 @@ namespace playerMechanics {
 		// 			player:set_fov(1, true,0.15)
 		// 			player:set_physics_override({speed=1})
 		// 			send_running_cancellation(player,temp_pool.state==3) //preserve network data
-		// 		elseif (temp_pool.state == 1 or temp_pool.state == 2) and hunger <= 6 then
+				} else if ((data.state == 1 || data.state == 2) && hunger <= 6) {
 		// 			player:set_fov(1, true,0.15)
 		// 			player:set_physics_override({speed=1})
 		// 			send_running_cancellation(player,false) //preserve network data
-		// 		end
+				}
 		// 		//sneaking
 		// 		if temp_pool.state == 3 and in_water then
 		// 			//send_running_cancellation(player,false)
