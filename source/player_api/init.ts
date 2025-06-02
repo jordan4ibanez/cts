@@ -247,11 +247,14 @@ namespace playerAPI {
 		data.sleeping = truth;
 	}
 
-	// local name
-	// get_if_player_sleeping = function(player)
-	// 	name = player:get_player_name()
-	// 	return(pool[name].sleeping)
-	// end
+	export function get_if_player_sleeping(player: ObjectRef): boolean {
+		const name: string = player.get_player_name();
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		return data.sleeping;
+	}
 
 	// // toggles nametag visibility
 	// local opacity
