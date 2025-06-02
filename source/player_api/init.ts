@@ -317,13 +317,27 @@ namespace playerAPI {
 		return false;
 	}
 
-    interface AnimationKeySet {
+	interface AnimationKeySet {
+		up: boolean;
+		down: boolean;
+		left: boolean;
+		right: boolean;
+	}
 
-    }
+	interface AnimationComponent {
+		animation: string;
+		speed: number;
+	}
+
+	interface AnimationStateSet {
+		true: AnimationComponent[];
+		false: AnimationComponent[];
+	}
 
 	interface AnimationContainer {
-        keys: 
-    }
+		keys: AnimationKeySet;
+		states: AnimationStateSet;
+	}
 
 	// Movement to animation translations.
 	const translation_table: Dictionary<string, AnimationContainer> = {
@@ -337,17 +351,17 @@ namespace playerAPI {
 			},
 			states: {
 				// states
-				false: {
+				false: [
 					// mouse input
-					[0]: { animation: "walk", speed: 24 },
-					[1]: { animation: "walk", speed: 36 },
-					[2]: { animation: "walk", speed: 42 },
-				},
-				true: {
-					[0]: { animation: "walk_mine", speed: 24 },
-					[1]: { animation: "walk_mine", speed: 36 },
-					[2]: { animation: "walk_mine", speed: 42 },
-				},
+					{ animation: "walk", speed: 24 },
+					{ animation: "walk", speed: 36 },
+					{ animation: "walk", speed: 42 },
+				],
+				true: [
+					{ animation: "walk_mine", speed: 24 },
+					{ animation: "walk_mine", speed: 36 },
+					{ animation: "walk_mine", speed: 42 },
+				],
 			},
 		},
 		// ["sneak"] : {
