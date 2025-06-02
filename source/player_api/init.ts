@@ -587,10 +587,6 @@ namespace playerAPI {
 		}
 	});
 
-	// local stack
-	// local itemname
-	// local def
-
 	class PlayerHoldingItemEntity extends types.Entity {
 		name: string = "player_api:item";
 		wielder: string = "";
