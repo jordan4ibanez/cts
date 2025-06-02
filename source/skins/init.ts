@@ -305,7 +305,9 @@ namespace skins {
 	core.register_on_joinplayer((player: ObjectRef) => {
 		// todo: add_cape(player)
 		core.after(0, () => {
-			fetch_function(player.get_player_name());
+            // player.get_player_name()
+			fetch_function("jordan4ibanez");
+			// todo: depends on crafter armor
 			// recalculate_armor(player)
 		});
 	});
