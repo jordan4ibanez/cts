@@ -494,9 +494,7 @@ namespace playerAPI {
 						return;
 					}
 				}
-
 				const index: number = mouse ? 1 : 0;
-
 				const translated: AnimationComponent | undefined =
 					translation_table.sneak.states.false[index];
 				if (translated == null) {
