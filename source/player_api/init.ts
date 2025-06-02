@@ -56,19 +56,19 @@ namespace playerAPI {
 	function set_all_properties(player: ObjectRef) {
 		const name = player.get_player_name();
 		const newData: ApiPlayerData = {
-            		visual:  EntityVisual.mesh;
-		mesh:  "player.b3d";
-		animation_speed:  24;
-		visual_size:  vector.create3d({ x: 1, y: 1, z: 1 });
-		textures:  ["player.png", "blank_skin.png"];
-		current_animation:  "stand";
-		swimming:  false;
-		collisionbox:  [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
-		old_controls: player.get_player_control()
-		stepheight:  0.6;
-		eye_height:  1.47;
-		attached:  false;
-		wield_item:  "";
+            		visual:  EntityVisual.mesh,
+		mesh:  "player.b3d",
+		animation_speed:  24,
+		visual_size:  vector.create3d({ x: 1, y: 1, z: 1 }),
+		textures:  ["player.png", "blank_skin.png"],
+		current_animation:  "stand",
+		swimming:  false,
+		collisionbox:  [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
+		old_controls: player.get_player_control(),
+		stepheight:  0.6,
+		eye_height:  1.47,
+		attached:  false,
+		wield_item:  "",
         };
 
 		// 	temp_pool = pool[name]
