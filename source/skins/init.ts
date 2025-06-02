@@ -1,22 +1,22 @@
 namespace skins {
-	// local http = minetest.request_http_api()
+	// local http = core.request_http_api()
 	// local id = "Lua Skins Updater"
 	// -- binary downloads are required
 	// if not core.features.httpfetch_binary_data then
-	//     minetest.log("error","Outdated Minetest Engine detected. Skins mod will not load. This crashes armor.")
+	//     core.log("error","Outdated Minetest Engine detected. Skins mod will not load. This crashes armor.")
 	//     return(nil)
 	// end
 	// if not http then
-	//     minetest.log("error","---------------------------------------------------------------")
-	//     minetest.log("error","HTTP access is required. Please add this to your minetest.conf:")
-	//     minetest.log("error","secure.http_mods = skins")
-	//     minetest.log("error","Skins will not work without this")
-	//     minetest.log("error","---------------------------------------------------------------")
+	//     core.log("error","---------------------------------------------------------------")
+	//     core.log("error","HTTP access is required. Please add this to your core.conf:")
+	//     core.log("error","secure.http_mods = skins")
+	//     core.log("error","Skins will not work without this")
+	//     core.log("error","---------------------------------------------------------------")
 	//     return(nil)
 	// end
 	// -- only create classes if requirements are met
 	// local pool = {}
-	// local temppath = minetest.get_worldpath()
+	// local temppath = core.get_worldpath()
 	// local name
 	// function get_skin(player)
 	//     name = player:get_player_name()
@@ -49,16 +49,16 @@ namespace skins {
 	// local fetch_function = function(name)
 	//     fetch_url("https://raw.githubusercontent.com/"..name.."/crafter_skindex/master/skin.png", function(data)
 	//         if data then
-	//             if not minetest.get_player_by_name(name) then
+	//             if not core.get_player_by_name(name) then
 	//                 return
 	//             end
 	//             new_temp_path = temppath .. DIR_DELIM .. "/skin_"..name..".png"
 	//             file = io.open(new_temp_path, "wb")
 	//             file:write(data)
 	//             file:close()
-	//             minetest.dynamic_add_media(new_temp_path)
+	//             core.dynamic_add_media(new_temp_path)
 	//             file = "skin_"..name..".png" -- reuse the data
-	//             player = minetest.get_player_by_name(name)
+	//             player = core.get_player_by_name(name)
 	//             player:set_properties({textures = {file, "blank_skin.png"}})
 	//             pool[name] = file
 	//             recalculate_armor(player)
@@ -75,7 +75,7 @@ namespace skins {
 	//     return(
 	//         math.floor(
 	//             degrees(
-	//                 minetest.dir_to_yaw(
+	//                 core.dir_to_yaw(
 	//                     vector.new(
 	//                         vector.distance(
 	//                             vector.new(
@@ -101,7 +101,7 @@ namespace skins {
 	// -- calculation to calculate the yaw of the old position
 	// local cape_yaw_calculation = function(pos,pos2)
 	//     return(
-	//         minetest.dir_to_yaw(
+	//         core.dir_to_yaw(
 	//             vector.direction(
 	//                 vector.new(
 	//                     pos2.x,
@@ -154,7 +154,7 @@ namespace skins {
 	// }
 	// cape_object.texture_set = false
 	// cape_object.on_activate = function(self)
-	//     minetest.after(0,function()
+	//     core.after(0,function()
 	//          --don't waste any cpu
 	//         if not self.owner or not self.owner:is_player() then
 	//             self.object:remove()
@@ -182,7 +182,7 @@ namespace skins {
 	//     current_animation = object:get_animation() -- if fails assign other values to nil
 	//     current_animation = current_animation.x
 	//     goal              = nil
-	//     if minetest.is_player(self.owner) and self.old_pos then
+	//     if core.is_player(self.owner) and self.old_pos then
 	//         --do not allow cape to flutter if player is moving backwards
 	//         cape_yaw = cape_yaw_calculation(pos,self.old_pos)
 	//         body_yaw = self.owner:get_look_horizontal()
@@ -192,12 +192,12 @@ namespace skins {
 	//             goal = 160
 	//         end
 	//         cape_smoothing(object,current_animation,goal)
-	//     elseif not minetest.is_player(self.owner) then
+	//     elseif not core.is_player(self.owner) then
 	//         object:remove()
 	//     end
 	//     self.old_pos = pos
 	// end
-	// minetest.register_entity("skins:cape",cape_object)
+	// core.register_entity("skins:cape",cape_object)
 	// local pool2 = {}
 	// local custom    = {
 	//     sfan5      = true,
@@ -253,7 +253,7 @@ namespace skins {
 	//         if texture then
 	//             name = player:get_player_name()
 	//             temp_pool = pool2[name]
-	//             object = minetest.add_entity(player:get_pos(),"skins:cape")
+	//             object = core.add_entity(player:get_pos(),"skins:cape")
 	//             lua_entity = object:get_luaentity()
 	//             lua_entity.owner = player
 	//             lua_entity.texture_type = texture
@@ -266,25 +266,25 @@ namespace skins {
 	// local player
 	// local function readd_capes()
 	//     for name,def in pairs(pool2) do
-	//         player = minetest.get_player_by_name(name)
+	//         player = core.get_player_by_name(name)
 	//         if pool2[name] and not pool2[name]:get_luaentity() then
 	//             add_cape(player)
-	//         elseif not minetest.is_player(name) then
+	//         elseif not core.is_player(name) then
 	//             pool2[name] = nil
 	//         end
 	//     end
-	//     minetest.after(3,function()
+	//     core.after(3,function()
 	//         readd_capes()
 	//     end)
 	// end
-	// minetest.register_on_mods_loaded(function()
-	//     minetest.after(3,function()
+	// core.register_on_mods_loaded(function()
+	//     core.after(3,function()
 	//         readd_capes()
 	//     end)
 	// end)
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	//     add_cape(player)
-	//     minetest.after(0,function()
+	//     core.after(0,function()
 	//         fetch_function(player:get_player_name())
 	//         recalculate_armor(player)
 	//     end)
