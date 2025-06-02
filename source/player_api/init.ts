@@ -33,17 +33,31 @@ namespace playerAPI {
 		let object: ObjectRef | null = data.wield_item;
 		const item: string = player.get_wielded_item().get_name();
 
-		// 	if not object or (object and not object:get_luaentity()) then
-		// 		object = core.add_entity(player:get_pos(),"player_api:item")
-		// 		entity = object:get_luaentity()
-		// 		if entity then
-		// 			entity.set_item(entity,item)
-		// 			entity.wielder = name
-		// 			object:set_attach(player, "Right_Hand", vector.new(0,0,0), vector.new(0,0,0))
-		// 			temp_pool.wield_item = object
-		// 		end
-		// 		return // catch it
-		// 	end
+		let entity;
+
+		if (
+			object == null ||
+			(object != null && object.get_luaentity() == null)
+		) {
+			object = core.add_entity(player.get_pos(), "player_api:item");
+			if (object == null) {
+				core.log(
+					LogLevel.warning,
+					`Failed to add wield entity to player [${name}]. Bailing out.`
+				);
+				return;
+			}
+			entity = object.get_luaentity() as PlayerHoldingItemEntity | null;
+
+			if (entity != null) {
+				entity.set_item(item);
+				// 			entity.wielder = name
+				// 			object:set_attach(player, "Right_Hand", vector.new(0,0,0), vector.new(0,0,0))
+				// 			temp_pool.wield_item = object
+			} else {
+				return; // catch it
+			}
+		}
 
 		// 	entity = object:get_luaentity()
 
