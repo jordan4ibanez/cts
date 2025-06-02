@@ -252,13 +252,16 @@ namespace playerMechanics {
 				send_running_cancellation(player, false);
 			}
 			// Sneaking.
-					if (data.state == 3 && in_water) {
-			// 			//send_running_cancellation(player,false)
-					}else if (! in_water && data.state == 3 && data.old_state != 3) {
-			// 			player:set_eye_offset({x=0,y=-1,z=0},{x=0,y=0,z=0})
-					} else if (! in_water && data.old_state == 3 && data.state != 3) {
-			// 			player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
-					}
+			if (data.state == 3 && in_water) {
+				//send_running_cancellation(player,false)
+			} else if (!in_water && data.state == 3 && data.old_state != 3) {
+				player.set_eye_offset(
+					vector.create3d({ x: 0, y: -1, z: 0 }),
+					vector.create3d({ x: 0, y: 0, z: 0 })
+				);
+			} else if (!in_water && data.old_state == 3 && data.state != 3) {
+				// 			player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
+			}
 			// 		temp_pool.old_state    = state
 			// 		temp_pool.was_in_water = in_water
 			// 	// water movement
