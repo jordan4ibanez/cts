@@ -2046,6 +2046,15 @@ declare global {
 			randomFunc: () => number
 		): LuaTable;
 	}
+
+	/** @noSelf **/ interface HTTPApi {
+		fetch(
+			req: HTTPrequestDefinition,
+			callback: (res: HTTPRequestResult) => void
+		): void;
+		fetch_async(req: HTTPrequestDefinition): number;
+		fetch_async_get(handle: number): HTTPRequestResult;
+	}
 }
 
 //? Classes. (Objects with implicit self [this]) ===============================================
@@ -2057,15 +2066,6 @@ declare global {
 		is_writeable(): boolean;
 		// Message size is limited to 65535 characters by protocol.
 		send_all(message: string): void;
-	}
-
-	interface HTTPApi {
-		fetch(
-			req: HTTPrequestDefinition,
-			callback: (res: HTTPRequestResult) => void
-		): void;
-		fetch_async(req: HTTPrequestDefinition): number;
-		fetch_async_get(handle: number): HTTPRequestResult;
 	}
 
 	interface MetaRef {
