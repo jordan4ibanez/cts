@@ -32,23 +32,26 @@ namespace skins {
 
 	// Fancy debug wrapper to download an URL.
 	function fetch_url(url: string, callback: () => void) {
-		// 	http.fetch({
-		//         url = url,
-		//         timeout = 3,
-		//     }, function(result)
-		//         if result.succeeded then
-		//             if result.code == 404 then
-		//                 return(nil)
-		//             end
-		// 			if result.code ~= 200 then
-		//                 return(nil)
-		//             end
-		//             return callback(result.data)
-		//         else
-		//             return(nil)
-		//         end
-		//         return(nil)
-		// 	end)
+		http.fetch(
+			{
+				url: url,
+				timeout: 3,
+			},
+			(result: HTTPRequestResult) => {
+				// if result.succeeded then
+				//     if result.code == 404 then
+				//         return(nil)
+				//     end
+				// 	if result.code ~= 200 then
+				//         return(nil)
+				//     end
+				//     return callback(result.data)
+				// else
+				//     return(nil)
+				// end
+				// return(nil)
+			}
+		);
 	}
 	// // gets github raw data of skin
 	// local new_temp_path
