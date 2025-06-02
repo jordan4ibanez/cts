@@ -495,9 +495,17 @@ namespace playerAPI {
 					}
 				}
 
-				// 			translated = translation_table.sneak.states[false][mouse]
-				// 			set_animation(player, translated.animation, translated.speed)
-				// 			return
+				const index: number = mouse ? 1 : 0;
+
+				const translated: AnimationComponent | undefined =
+					translation_table.sneak.states.false[index];
+				if (translated == null) {
+					throw new Error(
+						`Sneak states false is missing index [${index}]`
+					);
+				}
+				set_animation(player, translated.animation, translated.speed);
+				return;
 			} else {
 				// 			for k,i in pairs(control) do
 				// 				if i and translation_table.walk.keys[k] then
