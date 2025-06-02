@@ -787,32 +787,117 @@ declare global {
 	}
 
 	/** @noSelf **/ interface LuantiFeatures {
-		glasslike_framed: boolean;
-		nodebox_as_selectionbox: boolean;
-		get_all_craft_recipes_works: boolean;
-		use_texture_alpha: boolean;
-		no_legacy_abms: boolean;
-		texture_names_parens: boolean;
-		area_store_custom_ids: boolean;
-		add_entity_with_staticdata: boolean;
-		no_chat_message_prediction: boolean;
-		object_use_texture_alpha: boolean;
-		object_independent_selectionbox: boolean;
-		httpfetch_binary_data: boolean;
-		formspec_version_element: boolean;
-		area_store_persistent_ids: boolean;
-		pathfinder_works: boolean;
-		object_step_has_moveresult: boolean;
-		direct_velocity_on_players: boolean;
-		use_texture_alpha_string_modes: boolean;
-		degrotate_240_steps: boolean;
-		abm_min_max_y: boolean;
-		dynamic_add_media_table: boolean;
-		particlespawner_tweenable: boolean;
-		get_sky_as_table: boolean;
-		get_light_data_buffer: boolean;
-		mod_storage_on_disk: boolean;
-		compress_zstd: boolean;
+    glasslike_framed = true,  -- 0.4.7
+    nodebox_as_selectionbox = true,  -- 0.4.7
+    get_all_craft_recipes_works = true,  -- 0.4.7
+    -- The transparency channel of textures can optionally be used on
+    -- nodes (0.4.7)
+    use_texture_alpha = true,
+    -- Tree and grass ABMs are no longer done from C++ (0.4.8)
+    no_legacy_abms = true,
+    -- Texture grouping is possible using parentheses (0.4.11)
+    texture_names_parens = true,
+    -- Unique Area ID for AreaStore:insert_area (0.4.14)
+    area_store_custom_ids = true,
+    -- add_entity supports passing initial staticdata to on_activate
+    -- (0.4.16)
+    add_entity_with_staticdata = true,
+    -- Chat messages are no longer predicted (0.4.16)
+    no_chat_message_prediction = true,
+    -- The transparency channel of textures can optionally be used on
+    -- objects (ie: players and lua entities) (5.0.0)
+    object_use_texture_alpha = true,
+    -- Object selectionbox is settable independently from collisionbox
+    -- (5.0.0)
+    object_independent_selectionbox = true,
+    -- Specifies whether binary data can be uploaded or downloaded using
+    -- the HTTP API (5.1.0)
+    httpfetch_binary_data = true,
+    -- Whether formspec_version[<version>] may be used (5.1.0)
+    formspec_version_element = true,
+    -- Whether AreaStore's IDs are kept on save/load (5.1.0)
+    area_store_persistent_ids = true,
+    -- Whether core.find_path is functional (5.2.0)
+    pathfinder_works = true,
+    -- Whether Collision info is available to an objects' on_step (5.3.0)
+    object_step_has_moveresult = true,
+    -- Whether get_velocity() and add_velocity() can be used on players (5.4.0)
+    direct_velocity_on_players = true,
+    -- nodedef's use_texture_alpha accepts new string modes (5.4.0)
+    use_texture_alpha_string_modes = true,
+    -- degrotate param2 rotates in units of 1.5° instead of 2°
+    -- thus changing the range of values from 0-179 to 0-240 (5.5.0)
+    degrotate_240_steps = true,
+    -- ABM supports min_y and max_y fields in definition (5.5.0)
+    abm_min_max_y = true,
+    -- dynamic_add_media supports passing a table with options (5.5.0)
+    dynamic_add_media_table = true,
+    -- particlespawners support texpools and animation of properties,
+    -- particle textures support smooth fade and scale animations, and
+    -- sprite-sheet particle animations can by synced to the lifetime
+    -- of individual particles (5.6.0)
+    particlespawner_tweenable = true,
+    -- allows get_sky to return a table instead of separate values (5.6.0)
+    get_sky_as_table = true,
+    -- VoxelManip:get_light_data accepts an optional buffer argument (5.7.0)
+    get_light_data_buffer = true,
+    -- When using a mod storage backend that is not "files" or "dummy",
+    -- the amount of data in mod storage is not constrained by
+    -- the amount of RAM available. (5.7.0)
+    mod_storage_on_disk = true,
+    -- "zstd" method for compress/decompress (5.7.0)
+    compress_zstd = true,
+    -- Sound parameter tables support start_time (5.8.0)
+    sound_params_start_time = true,
+    -- New fields for set_physics_override: speed_climb, speed_crouch,
+    -- liquid_fluidity, liquid_fluidity_smooth, liquid_sink,
+    -- acceleration_default, acceleration_air (5.8.0)
+    physics_overrides_v2 = true,
+    -- In HUD definitions the field `type` is used and `hud_elem_type` is deprecated (5.9.0)
+    hud_def_type_field = true,
+    -- PseudoRandom and PcgRandom state is restorable
+    -- PseudoRandom has get_state method
+    -- PcgRandom has get_state and set_state methods (5.9.0)
+    random_state_restore = true,
+    -- core.after guarantees that coexisting jobs are executed primarily
+    -- in order of expiry and secondarily in order of registration (5.9.0)
+    after_order_expiry_registration = true,
+    -- wallmounted nodes mounted at floor or ceiling may additionally
+    -- be rotated by 90° with special param2 values (5.9.0)
+    wallmounted_rotate = true,
+    -- Availability of the `pointabilities` property in the item definition (5.9.0)
+    item_specific_pointabilities = true,
+    -- Nodes `pointable` property can be `"blocking"` (5.9.0)
+    blocking_pointability_type = true,
+    -- dynamic_add_media can be called at startup when leaving callback as `nil` (5.9.0)
+    dynamic_add_media_startup = true,
+    -- dynamic_add_media supports `filename` and `filedata` parameters (5.9.0)
+    dynamic_add_media_filepath = true,
+     -- L-system decoration type (5.9.0)
+    lsystem_decoration_type = true,
+    -- Overridable pointing range using the itemstack meta key `"range"` (5.9.0)
+    item_meta_range = true,
+    -- Allow passing an optional "actor" ObjectRef to the following functions:
+    -- core.place_node, core.dig_node, core.punch_node (5.9.0)
+    node_interaction_actor = true,
+    -- "new_pos" field in entity moveresult (5.9.0)
+    moveresult_new_pos = true,
+    -- Allow removing definition fields in `core.override_item` (5.9.0)
+    override_item_remove_fields = true,
+    -- The predefined hotbar is a Lua HUD element of type `hotbar` (5.10.0)
+    hotbar_hud_element = true,
+    -- Bulk LBM support (5.10.0)
+    bulk_lbms = true,
+    -- ABM supports field without_neighbors (5.10.0)
+    abm_without_neighbors = true,
+    -- biomes have a weight parameter (5.11.0)
+    biome_weights = true,
+    -- Particles can specify a "clip" blend mode (5.11.0)
+    particle_blend_clip = true,
+    -- The `match_meta` optional parameter is available for `InvRef:remove_item()` (5.12.0)
+    remove_item_match_meta = true,
+    -- The HTTP API supports the HEAD and PATCH methods (5.12.0)
+    httpfetch_additional_methods = true,
 	}
 
 	/** @noSelf **/ interface PlayerInformation {
