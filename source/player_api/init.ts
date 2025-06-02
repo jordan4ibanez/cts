@@ -280,7 +280,6 @@ namespace playerAPI {
 
 	// Controls head bone.
 	function pitch_look(player: ObjectRef, sneak: boolean): void {
-		const state: number = playerMechanics.get_player_state(player);
 		const swimming: boolean = playerMechanics.is_player_swimming(player);
 		let pitch: number = degrees(player.get_look_vertical()) * -1;
 		if (swimming) {
