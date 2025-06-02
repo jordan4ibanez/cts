@@ -165,25 +165,30 @@ namespace playerMechanics {
 		const legs: boolean =
 			core.get_item_group(get_player_legs_env(player), "water") > 0;
 
-		// 	in_water = temp_pool.swimming
-		// 	//check if in water
-		// 	if head then
-		// 		in_water = true
-		// 		temp_pool.swimming = true
-		// 	elseif temp_pool.swimming == true then
-		// 		swim_unlock = player_swim_under_check(player)
-		// 		swim_bump = player_swim_check(player)
-		// 		if swim_unlock then
-		// 			in_water = false
-		// 			temp_pool.swimming = false
-		// 			temp_pool.swim_bumped = core.get_us_time()/1000000
-		// 		elseif swim_bump and core.get_us_time()/1000000-temp_pool.swim_bumped > 1 then
-		// 			if player:get_player_velocity().y <= 0 then
-		// 				temp_pool.swim_bumped = core.get_us_time()/1000000
-		// 				player:add_player_velocity(vector.new(0,9,0))
-		// 			end
-		// 		end
-		// 	end
+		let in_water: boolean = data.swimming;
+		// Check if in water.
+
+		if (head) {
+			in_water = true;
+			data.swimming = true;
+		} else if (data.swimming == true) {
+			let swim_unlock: boolean = player_swim_under_check(player);
+			let swim_bump: boolean = player_swim_check(player);
+			if (swim_unlock) {
+				in_water = false;
+				data.swimming = false;
+				data.swim_bumped = core.get_us_time() / 1000000;
+			} else if (
+				swim_bump &&
+				core.get_us_time() / 1000000 - data.swim_bumped > 1
+			) {
+				if (player.get_velocity().y <= 0) {
+					data.swim_bumped = core.get_us_time() / 1000000;
+					player.add_velocity(vector.create3d(0, 9, 0));
+				}
+			}
+		}
+
 		// 	if (in_water ~= temp_pool.was_in_water) or
 		// 	(temp_pool.state ~= temp_pool.old_state) or
 		// 	((temp_pool.state == 1 or temp_pool.state == 2) and hunger <= 6) then
