@@ -206,10 +206,15 @@ namespace playerAPI {
 		data.force_update = true;
 	}
 
-	// // allows other mods to set animations per player
-	// set_player_animation = function(player,animation,speed,loop)
-	// 	set_animation(player, animation, speed, loop)
-	// end
+	// Allows other mods to set animations per player.
+	export function set_player_animation(
+		player: ObjectRef,
+		animation: string,
+		speed: number,
+		loop: boolean
+	): void {
+		set_animation(player, animation, speed, loop);
+	}
 
 	// local name
 	// player_is_attached = function(player,truth)
