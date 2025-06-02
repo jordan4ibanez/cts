@@ -455,10 +455,8 @@ namespace playerAPI {
 					return;
 				}
 			}
-
 			const translated: AnimationComponent =
 				translation_table.swim.states.false[0];
-
 			if (translated == null) {
 				throw new Error("Swim states missing false array index 0.");
 			}
