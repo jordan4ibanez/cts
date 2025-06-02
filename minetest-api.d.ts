@@ -17,7 +17,6 @@ interface core {
 	get_game_info(): GameInfo;
 	get_worldpath(): string;
 	is_singleplayer(): boolean;
-	features(): LuantiFeatures;
 	has_feature(featureName: string): boolean;
 	get_player_information(playerName: string): PlayerInformation;
 	get_player_window_information(playerName: string): WindowInformation;
