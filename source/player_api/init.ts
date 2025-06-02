@@ -518,15 +518,12 @@ namespace playerAPI {
 					if (keys == null) {
 						throw new Error("Walk keys are undefined.");
 					}
-
 					if (keys[k]) {
-						// const index: number = ;
 						const translated: AnimationComponent | undefined = (
 							mouse
 								? translation_table.walk.states.true
 								: translation_table.walk.states.false
 						)[state];
-
 						if (translated == null) {
 							throw new Error(
 								`Walk state missing [${tostring(
@@ -534,7 +531,6 @@ namespace playerAPI {
 								)}] index [${state}]`
 							);
 						}
-
 						set_animation(
 							player,
 							translated.animation,
