@@ -195,12 +195,16 @@ namespace playerAPI {
 		data.force_update = true;
 	}
 
-	// // force updates the player
-	// local name
-	// local create_force_update = function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name].force_update = true
-	// end
+	// Force updates the player.
+
+	function create_force_update(player: ObjectRef): void {
+		const name: string = player.get_player_name();
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		data.force_update = true;
+	}
 
 	// // allows other mods to set animations per player
 	// set_player_animation = function(player,animation,speed,loop)
