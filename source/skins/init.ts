@@ -2,7 +2,7 @@ namespace skins {
 	const http: HTTPApi = core.request_http_api();
 	const id: string = "Typescript Skins Updater";
 
-	// // binary downloads are required
+	// Binary downloads are required.
 	// if not core.features.httpfetch_binary_data then
 	//     core.log("error","Outdated Minetest Engine detected. Skins mod will not load. This crashes armor.")
 	//     return(nil)
