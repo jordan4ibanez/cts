@@ -232,15 +232,20 @@ namespace playerAPI {
 		if (data == null) {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
-
 		return data.attached;
 	}
 
-	// local name
-	// player_is_sleeping = function(player,truth)
-	// 	name = player:get_player_name()
-	// 	pool[name].sleeping = truth
-	// end
+	export function player_is_sleeping(
+		player: ObjectRef,
+		truth: boolean
+	): void {
+		const name: string = player.get_player_name();
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		data.sleeping = truth;
+	}
 
 	// local name
 	// get_if_player_sleeping = function(player)
