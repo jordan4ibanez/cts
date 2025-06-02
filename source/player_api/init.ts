@@ -571,10 +571,10 @@ namespace playerAPI {
 		}
 	}
 
-	// // Update appearance when the player joins
-	// core.register_on_joinplayer(function(player)
-	// 	set_all_properties(player)
-	// end)
+	// Update appearance when the player joins.
+	core.register_on_joinplayer((player: ObjectRef) => {
+		set_all_properties(player);
+	});
 
 	// core.register_on_respawnplayer(function(player)
 	// 	create_force_update(player)
