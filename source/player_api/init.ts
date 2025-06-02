@@ -75,10 +75,10 @@ namespace playerAPI {
 
 		const object_string: string = entity.itemstring;
 
-		// 	if object_string ~= item then
-		// 		entity.itemstring = item
-		// 		entity.set_item(entity,item)
-		// 	end
+		if (object_string != item) {
+			entity.itemstring = item;
+			entity.set_item(item);
+		}
 	}
 
 	// Easy way to allocate new players.
