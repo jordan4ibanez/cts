@@ -408,50 +408,53 @@ namespace playerAPI {
 	};
 
 	// Translate input and combine with state.
-	function control_translation  (player: ObjectRef,control: PlayerControlObject) {
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	state = get_player_state(player)
-	// 	swimming = is_player_swimming(player)
-	// 	mouse = (control.LMB or control.RMB)
-	// 	if swimming then
-	// 		for k,i in pairs(control) do
-	// 			if i and translation_table.swim.keys[k] then
-	// 				translated = translation_table.swim.states[true]
-	// 				set_animation(player, translated.animation, translated.speed)
-	// 				return
-	// 			end
-	// 		end
-	// 		translated = translation_table.swim.states[false]
-	// 		set_animation(player, translated.animation, translated.speed)
-	// 		return
-	// 	else
-	// 		if control.sneak then
-	// 			for k,i in pairs(control) do
-	// 				if i and translation_table.sneak.keys[k] then
-	// 					translated = translation_table.sneak.states[true][mouse]
-	// 					set_animation(player, translated.animation, translated.speed)
-	// 					return
-	// 				end
-	// 			end
-	// 			translated = translation_table.sneak.states[false][mouse]
-	// 			set_animation(player, translated.animation, translated.speed)
-	// 			return
-	// 		else
-	// 			for k,i in pairs(control) do
-	// 				if i and translation_table.walk.keys[k] then
-	// 					translated = translation_table.walk.states[mouse][state]
-	// 					if translated then
-	// 						set_animation(player, translated.animation, translated.speed)
-	// 						return
-	// 					end
-	// 				end
-	// 			end
-	// 		end
-	// 		translated = translation_table.stand[mouse]
-	// 		set_animation(player, translated.animation, translated.speed)
-	// 	end
-    }
+	function control_translation(
+		player: ObjectRef,
+		control: PlayerControlObject
+	): void {
+		// 	name = player:get_player_name()
+		// 	temp_pool = pool[name]
+		// 	state = get_player_state(player)
+		// 	swimming = is_player_swimming(player)
+		// 	mouse = (control.LMB or control.RMB)
+		// 	if swimming then
+		// 		for k,i in pairs(control) do
+		// 			if i and translation_table.swim.keys[k] then
+		// 				translated = translation_table.swim.states[true]
+		// 				set_animation(player, translated.animation, translated.speed)
+		// 				return
+		// 			end
+		// 		end
+		// 		translated = translation_table.swim.states[false]
+		// 		set_animation(player, translated.animation, translated.speed)
+		// 		return
+		// 	else
+		// 		if control.sneak then
+		// 			for k,i in pairs(control) do
+		// 				if i and translation_table.sneak.keys[k] then
+		// 					translated = translation_table.sneak.states[true][mouse]
+		// 					set_animation(player, translated.animation, translated.speed)
+		// 					return
+		// 				end
+		// 			end
+		// 			translated = translation_table.sneak.states[false][mouse]
+		// 			set_animation(player, translated.animation, translated.speed)
+		// 			return
+		// 		else
+		// 			for k,i in pairs(control) do
+		// 				if i and translation_table.walk.keys[k] then
+		// 					translated = translation_table.walk.states[mouse][state]
+		// 					if translated then
+		// 						set_animation(player, translated.animation, translated.speed)
+		// 						return
+		// 					end
+		// 				end
+		// 			end
+		// 		end
+		// 		translated = translation_table.stand[mouse]
+		// 		set_animation(player, translated.animation, translated.speed)
+		// 	end
+	}
 
 	// // translates player movement to animation
 	// local control_table
