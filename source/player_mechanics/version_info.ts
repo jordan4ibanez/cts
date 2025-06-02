@@ -1,27 +1,31 @@
 namespace playerMechanics {
-    // todo: make this it's own mod, this is not a mechanic?
-	// local minetest = minetest
-	// minetest.register_on_joinplayer(function(player)
-	// 	--add in version info
-	// 	player:hud_add({
-	//         hud_elem_type = "text",
-	//         position = {x=1, y=0},
-	//         name = "versionbg",
-	//         text = "Alpha 0.07",
-	//         number = 0x000000,
-	//         offset = {x = -98, y = 20},
-	//         size = { x=2, y=2 },
-	//         z_index = 0,
-	//     })
-	//     player:hud_add({
-	//         hud_elem_type = "text",
-	//         position = {x=1, y=0},
-	//         name = "versionfg",
-	//         text = "Alpha 0.07",
-	//         number = 0xFFFFFF,
-	//         offset = {x = -100, y = 18},
-	//         size = { x=2, y=2 },
-	//         z_index = 0,
-	//     })
-	// end)
+	// todo: make this it's own mod, this is not a mechanic?
+
+	core.register_on_joinplayer((player: ObjectRef) => {
+		const offset: Vec2 = {
+			x: 146,
+			y: 20,
+		};
+		// Add in version info.
+		player.hud_add({
+			type: HudElementType.text,
+			position: { x: 0, y: 0 },
+			name: "versionbg",
+			text: "Crafter Alpha v2.0.0",
+			number: 0x000000,
+			offset: { x: offset.x + 2, y: offset.y + 2 },
+			size: { x: 2, y: 2 },
+			z_index: 0,
+		});
+		player.hud_add({
+			type: HudElementType.text,
+			position: { x: 0, y: 0 },
+			name: "versionfg",
+			text: "Crafter Alpha v2.0.0",
+			number: 0xffffff,
+			offset: offset,
+			size: { x: 2, y: 2 },
+			z_index: 0,
+		});
+	});
 }
