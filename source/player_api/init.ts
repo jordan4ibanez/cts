@@ -119,21 +119,21 @@ namespace playerAPI {
 		player.set_properties({ textures: textures });
 	}
 
-	const animation_list: Dictionary<string, Vec2> = {
-		stand: { x: 5, y: 5 },
-		lay: { x: 162, y: 162 },
-		walk: { x: 168, y: 187 },
-		mine: { x: 189, y: 198 },
-		walk_mine: { x: 200, y: 219 },
-		sit: { x: 81, y: 160 },
-		sneak: { x: 60, y: 60 },
-		sneak_mine_stand: { x: 20, y: 30 },
-		sneak_walk: { x: 60, y: 80 },
-		sneak_mine_walk: { x: 40, y: 59 },
-		swim: { x: 221, y: 241 },
-		swim_still: { x: 226, y: 226 },
-		die: { x: 242, y: 253 },
-	};
+	class animation_list {
+		static stand: Vec2 = { x: 5, y: 5 };
+		static lay: Vec2 = { x: 162, y: 162 };
+		static walk: Vec2 = { x: 168, y: 187 };
+		static mine: Vec2 = { x: 189, y: 198 };
+		static walk_mine: Vec2 = { x: 200, y: 219 };
+		static sit: Vec2 = { x: 81, y: 160 };
+		static sneak: Vec2 = { x: 60, y: 60 };
+		static sneak_mine_stand: Vec2 = { x: 20, y: 30 };
+		static sneak_walk: Vec2 = { x: 60, y: 80 };
+		static sneak_mine_walk: Vec2 = { x: 40, y: 59 };
+		static swim: Vec2 = { x: 221, y: 241 };
+		static swim_still: Vec2 = { x: 226, y: 226 };
+		static die: Vec2 = { x: 242, y: 253 };
+	}
 
 	// // easy way to set animation
 	// local name
