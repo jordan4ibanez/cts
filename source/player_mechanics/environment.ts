@@ -11,22 +11,20 @@ namespace playerMechanics {
 
 	const pool = new Map<string, PlayerEnvironment>();
 
-	export function get_player_head_env(player: ObjectRef): string | null {
+	export function get_player_head_env(player: ObjectRef): string {
 		const name: string = player.get_player_name();
 		const data: PlayerEnvironment | undefined = pool.get(name);
-		if (!data) {
-			triggerNullPtype(name);
-			return null;
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 		return data.head;
 	}
 
-	export function get_player_legs_env(player: ObjectRef): string | null {
+	export function get_player_legs_env(player: ObjectRef): string {
 		const name: string = player.get_player_name();
 		const data: PlayerEnvironment | undefined = pool.get(name);
-		if (!data) {
-			triggerNullPtype(name);
-			return null;
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 		return data.legs;
 	}
