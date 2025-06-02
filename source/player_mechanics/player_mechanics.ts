@@ -165,8 +165,8 @@ namespace playerMechanics {
 		const legs: boolean =
 			core.get_item_group(get_player_legs_env(player), "water") > 0;
 
-		let in_water: boolean = data.swimming;
 		// Check if in water.
+		let in_water: boolean = data.swimming;
 
 		if (head) {
 			in_water = true;
