@@ -19,14 +19,13 @@ namespace skins {
 	const temppath: string = core.get_worldpath();
 
 	// Only create classes if requirements are met.
-	// local pool = {}
 
-	// local name
+	const pool = new Map<string, string>();
 
-	// function get_skin(player)
-	//     name = player:get_player_name()
-	//     return(pool[name] or "player.png")
-	// end
+	export function get_skin(player: ObjectRef): string {
+		const name = player.get_player_name();
+		return pool.get(name) || "player.png";
+	}
 
 	// // Fancy debug wrapper to download an URL
 	// local function fetch_url(url, callback)
