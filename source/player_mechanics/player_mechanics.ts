@@ -192,7 +192,7 @@ namespace playerMechanics {
 		if ((in_water != data.was_in_water) ||
 			(data.state != data.old_state) ||
 			((data.state == 1 || data.state == 2) && hunger <= 6)) {
-		// 		if (not in_water and temp_pool.was_in_water) then
+				if (! in_water && data.was_in_water) {
 		// 			player:set_physics_override({
 		// 				sneak   = true,
 		// 			})
@@ -200,7 +200,7 @@ namespace playerMechanics {
 		// 			player:set_properties({
 		// 				collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 		// 			})
-		// 		elseif in_water and not temp_pool.was_in_water then
+				} else if (in_water && ! data.was_in_water) {
 		// 			player:set_physics_override({
 		// 				sneak   = false,
 		// 			})
@@ -209,7 +209,8 @@ namespace playerMechanics {
 		// 				collisionbox = {-0.3, 0.8, -0.3, 0.3, 1.6, 0.3},
 		// 			})
 		// 			player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
-		// 		end
+				}
+		
 		// 		// running/swimming fov modifier
 		// 		if hunger > 6 and (temp_pool.state == 1 or temp_pool.state == 2) then
 		// 			player:set_fov(1.25, true, 0.15)
