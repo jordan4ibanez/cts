@@ -355,11 +355,11 @@ namespace crafter {
 
 	utility.registerTSEntity(FallingNode);
 
-	core.register_on_joinplayer((player: ObjectRef) => {
-		const pos = player.get_pos();
-		pos.y += 5;
+	// core.register_on_joinplayer((player: ObjectRef) => {
+	// 	const pos = player.get_pos();
+	// 	pos.y += 5;
 
-		core.set_node(pos, { name: "crafter:dirt" });
-		core.spawn_falling_node(pos);
-	});
+	// 	core.set_node(pos, { name: "crafter:dirt" });
+	// 	core.spawn_falling_node(pos);
+	// });
 }
