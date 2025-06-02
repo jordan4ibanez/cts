@@ -256,7 +256,7 @@ namespace playerAPI {
 		return data.sleeping;
 	}
 
-	// // toggles nametag visibility
+	// Toggles nametag visibility.
 	// local opacity
 	// local show_nametag = function(player,boolean)
 	// 	if boolean then
