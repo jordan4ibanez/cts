@@ -68,7 +68,6 @@ namespace playerMechanics {
 		channel.leave()
 		}
 		state_channels.delete(name);
-		
 	});
 
 	// // tells the client to stop sending running/bunnyhop data
