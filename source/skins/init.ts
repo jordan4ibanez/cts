@@ -74,10 +74,7 @@ namespace skins {
 				}
 				file.write(data);
 				file.close();
-				core.dynamic_add_media(
-					{ filepath: new_temp_path },
-					(name: string) => {}
-				);
+				core.dynamic_add_media({ filepath: new_temp_path }, () => {});
 				const fileName = "skin_" + name + ".png";
 				const player: ObjectRef | null = core.get_player_by_name(name);
 				if (player == null) {
