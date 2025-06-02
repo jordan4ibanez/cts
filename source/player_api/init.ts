@@ -68,11 +68,6 @@ namespace playerAPI {
 			sleeping: false,
 		};
 
-		// 	temp_pool = pool[name]
-		// 	data = {}
-
-		// 	temp_pool.attached     = false
-		// 	temp_pool.sleeping     = false
 		player.set_properties({
 			visual: newData.visual,
 			mesh: newData.mesh,
@@ -82,6 +77,8 @@ namespace playerAPI {
 			stepheight: newData.stepheight,
 			visual_size: newData.visual_size,
 		});
+
+		pool.set(name, newData);
 	}
 
 	// // easy way to set textures
