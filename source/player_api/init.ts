@@ -364,26 +364,29 @@ namespace playerAPI {
 				],
 			},
 		},
-		// ["sneak"] : {
-		// 	["keys"]    : {
-		// 		up      : true,
-		// 		down    : true,
-		// 		left    : true,
-		// 		right   : true,
-		// 	},
-		// 	["states" ] : {
-		// 		[true ] : { // moving
-		// 			//mouse input
-		// 			[false] : {animation : "sneak_walk"     , speed : 24},
-		// 			[true ] : {animation : "sneak_mine_walk", speed : 24},
-		// 		},
-		// 		[false] : { // moving
-		// 			//mouse input
-		// 			[false] : {animation : "sneak"           , speed : 0 },
-		// 			[true ] : {animation : "sneak_mine_stand", speed : 24},
-		// 		}
-		// 	}
-		// },
+		sneak: {
+			keys: {
+				up: true,
+				down: true,
+				left: true,
+				right: true,
+			},
+			states: {
+				true: [
+					// moving
+					//mouse input
+					{ animation: "sneak_walk", speed: 24 },
+					{ animation: "sneak_mine_walk", speed: 24 },
+				],
+				false: [
+					// moving
+					//mouse input
+					{ animation: "sneak", speed: 0 },
+					{ animation: "sneak_mine_stand", speed: 24 },
+				],
+			},
+		},
+
 		// ["stand"]   : {
 		// 	[true ] : {animation : "mine" , speed : 24},
 		// 	[false] : {animation : "stand", speed : 0 },
