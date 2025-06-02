@@ -148,7 +148,7 @@ namespace playerMechanics {
 		// }
 
 		// todo: this depends on crafter hunger
-		// const hunger    = get_player_hunger(player)
+		const hunger    = 0;//get_player_hunger(player)
 		const name: string = player.get_player_name();
 		const data: PlayerState | undefined = pool.get(name);
 		if (data == null) {
@@ -189,9 +189,9 @@ namespace playerMechanics {
 			}
 		}
 
-		// 	if (in_water ~= temp_pool.was_in_water) or
-		// 	(temp_pool.state ~= temp_pool.old_state) or
-		// 	((temp_pool.state == 1 or temp_pool.state == 2) and hunger <= 6) then
+		if ((in_water != data.was_in_water) ||
+			(data.state != data.old_state) ||
+			((data.state == 1 || data.state == 2) && hunger <= 6)) {
 		// 		if (not in_water and temp_pool.was_in_water) then
 		// 			player:set_physics_override({
 		// 				sneak   = true,
@@ -241,7 +241,7 @@ namespace playerMechanics {
 		// 		temp_pool.old_state    = state
 		// 		temp_pool.was_in_water = in_water
 		// 	// water movement
-		// 	elseif in_water then
+			} else if (in_water) {
 		// 		if not temp_pool.was_in_water then
 		// 			player:set_physics_override({
 		// 				sneak   = false ,
@@ -249,7 +249,7 @@ namespace playerMechanics {
 		// 		end
 		// 		temp_pool.old_state    = temp_pool.old_state
 		// 		temp_pool.was_in_water = in_water
-		// 	end
+			}
 	}
 
 	// core.register_globalstep(function(dtime)
