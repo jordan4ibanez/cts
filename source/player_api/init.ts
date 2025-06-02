@@ -440,16 +440,12 @@ namespace playerAPI {
 					throw new Error("Swim keys are undefined.");
 				}
 				if (keys[k]) {
-					let translatedArray: AnimationComponent[] | undefined =
-						translation_table.swim.states.true;
-					if (translatedArray == null) {
-						throw new Error("Swim states true is null.");
-					}
-					translatedArray = translatedArray as AnimationComponent[];
 					const translated: AnimationComponent | undefined =
-						translatedArray[0];
+						translation_table.swim.states.true[0];
 					if (translated == null) {
-						throw new Error("Swim states array 0 is null.");
+						throw new Error(
+							"Swim states missing true array index 0."
+						);
 					}
 					set_animation(
 						player,
@@ -460,7 +456,13 @@ namespace playerAPI {
 				}
 			}
 
-			// 		translated = translation_table.swim.states[false]
+			const translated: AnimationComponent =
+				translation_table.swim.states.false[0];
+
+			if (translated == null) {
+				throw new Error("Swim states missing false array index 0.");
+			}
+
 			// 		set_animation(player, translated.animation, translated.speed)
 			// 		return
 		} else {
