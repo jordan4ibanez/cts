@@ -10,15 +10,12 @@ namespace skins {
 		);
 	}
 
-	// if not http then
-	//     core.log("error","///////////////////////////////////////////////////////////////")
-	//     core.log("error","HTTP access is required. Please add this to your core.conf:")
-	//     core.log("error","secure.http_mods = skins")
-	//     core.log("error","Skins will not work without this")
-	//     core.log("error","///////////////////////////////////////////////////////////////")
-	//     return(nil)
-	// end
-    
+	if (http == null) {
+		throw new Error(`HTTP access is required. Please add this to your core.conf:
+	    secure.http_mods = skins
+	    Skins will not work without this.`);
+	}
+
 	// // only create classes if requirements are met
 	// local pool = {}
 	// local temppath = core.get_worldpath()
