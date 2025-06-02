@@ -407,16 +407,8 @@ namespace playerAPI {
 		},
 	};
 
-    
-
-	// // translate input and combine with state
-	// local name
-	// local temp_pool
-	// local state
-	// //local swimming
-	// local mouse
-	// local translated
-	// local control_translation = function(player,control)
+	// Translate input and combine with state.
+	function control_translation  (player: ObjectRef,control: PlayerControlObject) {
 	// 	name = player:get_player_name()
 	// 	temp_pool = pool[name]
 	// 	state = get_player_state(player)
@@ -459,7 +451,7 @@ namespace playerAPI {
 	// 		translated = translation_table.stand[mouse]
 	// 		set_animation(player, translated.animation, translated.speed)
 	// 	end
-	// end
+    }
 
 	// // translates player movement to animation
 	// local control_table
