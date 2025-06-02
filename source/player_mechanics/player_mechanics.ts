@@ -95,12 +95,28 @@ namespace playerMechanics {
 				sender,
 				""
 			)[0];
-			// 	if sender ~= "" and channel_decyphered == ":player_movement_state" then
-			// 		state = tonumber(message)
-			// 		if type(state) == "number" then
-			// 			pool[sender].state = state
-			// 		end
-			// 	end
+
+			if (
+				sender != "" &&
+				channel_decyphered == ":player_movement_state"
+			) {
+				const state: number | undefined = tonumber(message);
+
+				if (typeof state == "number") {
+					const data: PlayerState | undefined = pool.get(sender);
+					if (data == null) {
+						throw new Error(
+							`Player [${sender}] was never added to the pool.`
+						);
+					}
+					data.state = state;
+				} else {
+					core.log(
+						LogLevel.warning,
+						`Sender [${sender}] is sending malformed data.`
+					);
+				}
+			}
 		}
 	);
 
