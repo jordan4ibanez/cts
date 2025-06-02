@@ -787,117 +787,99 @@ declare global {
 	}
 
 	/** @noSelf **/ interface LuantiFeatures {
-    glasslike_framed = true,  -- 0.4.7
-    nodebox_as_selectionbox = true,  -- 0.4.7
-    get_all_craft_recipes_works = true,  -- 0.4.7
-    
-    
-    use_texture_alpha = true,
-    
-    no_legacy_abms = true,
-    
-    texture_names_parens = true,
-    
-    area_store_custom_ids = true,
-    
-    
-    add_entity_with_staticdata = true,
-    
-    no_chat_message_prediction = true,
-    
-    
-    object_use_texture_alpha = true,
-    
-    
-    object_independent_selectionbox = true,
-    
-    
-    httpfetch_binary_data = true,
-    
-    formspec_version_element = true,
-    
-    area_store_persistent_ids = true,
-    
-    pathfinder_works = true,
-    
-    object_step_has_moveresult = true,
-    
-    direct_velocity_on_players = true,
-    
-    use_texture_alpha_string_modes = true,
-    
-    
-    degrotate_240_steps = true,
-    
-    abm_min_max_y = true,
-    
-    dynamic_add_media_table = true,
-    
-    
-    
-    
-    particlespawner_tweenable = true,
-    
-    get_sky_as_table = true,
-    
-    get_light_data_buffer = true,
-    
-    
-    
-    mod_storage_on_disk = true,
-    
-    compress_zstd = true,
-    
-    sound_params_start_time = true,
-    
-    
-    
-    physics_overrides_v2 = true,
-    
-    hud_def_type_field = true,
-    
-    
-    
-    random_state_restore = true,
-    
-    
-    after_order_expiry_registration = true,
-    
-    
-    wallmounted_rotate = true,
-    
-    item_specific_pointabilities = true,
-    
-    blocking_pointability_type = true,
-    
-    dynamic_add_media_startup = true,
-    
-    dynamic_add_media_filepath = true,
-    
-    lsystem_decoration_type = true,
-    
-    item_meta_range = true,
-    
-    
-    node_interaction_actor = true,
-    
-    moveresult_new_pos = true,
-    
-    override_item_remove_fields = true,
-    
-    hotbar_hud_element = true,
-    
-    bulk_lbms = true,
-    
-    abm_without_neighbors = true,
-    
-    biome_weights = true,
-    
-    particle_blend_clip = true,
-    
-    remove_item_match_meta = true,
-    
-    httpfetch_additional_methods = true,
+		glasslike_framed: boolean;
+		nodebox_as_selectionbox: boolean;
+		get_all_craft_recipes_works: boolean;
+
+		use_texture_alpha: boolean;
+
+		no_legacy_abms: boolean;
+
+		texture_names_parens: boolean;
+
+		area_store_custom_ids: boolean;
+
+		add_entity_with_staticdata: boolean;
+
+		no_chat_message_prediction: boolean;
+
+		object_use_texture_alpha: boolean;
+
+		object_independent_selectionbox: boolean;
+
+		httpfetch_binary_data: boolean;
+
+		formspec_version_element: boolean;
+
+		area_store_persistent_ids: boolean;
+
+		pathfinder_works: boolean;
+
+		object_step_has_moveresult: boolean;
+
+		direct_velocity_on_players: boolean;
+
+		use_texture_alpha_string_modes: boolean;
+
+		degrotate_240_steps: boolean;
+
+		abm_min_max_y: boolean;
+
+		dynamic_add_media_table: boolean;
+
+		particlespawner_tweenable: boolean;
+
+		get_sky_as_table: boolean;
+
+		get_light_data_buffer: boolean;
+
+		mod_storage_on_disk: boolean;
+
+		compress_zstd: boolean;
+
+		sound_params_start_time: boolean;
+
+		physics_overrides_v2: boolean;
+
+		hud_def_type_field: boolean;
+
+		random_state_restore: boolean;
+
+		after_order_expiry_registration: boolean;
+
+		wallmounted_rotate: boolean;
+
+		item_specific_pointabilities: boolean;
+
+		blocking_pointability_type: boolean;
+
+		dynamic_add_media_startup: boolean;
+
+		dynamic_add_media_filepath: boolean;
+
+		lsystem_decoration_type: boolean;
+
+		item_meta_range: boolean;
+
+		node_interaction_actor: boolean;
+
+		moveresult_new_pos: boolean;
+
+		override_item_remove_fields: boolean;
+
+		hotbar_hud_element: boolean;
+
+		bulk_lbms: boolean;
+
+		abm_without_neighbors: boolean;
+
+		biome_weights: boolean;
+
+		particle_blend_clip: boolean;
+
+		remove_item_match_meta: boolean;
+
+		httpfetch_additional_methods: boolean;
 	}
 
 	/** @noSelf **/ interface PlayerInformation {
