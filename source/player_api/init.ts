@@ -65,21 +65,7 @@ namespace playerAPI {
 		swimming:  false;
 		collisionbox:  [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
 		old_controls: PlayerControlObject = {
-			up: false,
-			down: false,
-			left: false,
-			right: false,
-			jump: false,
-			aux1: false,
-			sneak: false,
-			dig: false,
-			place: false,
-			LMB: false,
-			RMB: false,
-			zoom: false,
-			movement_x: 0,
-			movement_y: 0,
-		};
+		
 		stepheight: number = 0.6;
 		eye_height: number = 1.47;
 		attached: boolean = false;
