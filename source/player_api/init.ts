@@ -14,7 +14,7 @@ namespace playerAPI {
 		stepheight: number;
 		eye_height: number;
 		attached: boolean;
-		wield_item: string;
+		wield_item: ObjectRef | null;
 		sleeping: boolean;
 	}
 
@@ -23,9 +23,17 @@ namespace playerAPI {
 	// Set player wield item.
 	function update_wield_item(player: ObjectRef) {
 		const name = player.get_player_name();
-		// 	temp_pool = pool[name]
-		// 	object = temp_pool.wield_item
-		// 	item = player:get_wielded_item():get_name()
+
+		const data: ApiPlayerData | undefined = pool.get(name);
+
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		const object: ObjectRef | null = data.wield_item;
+
+		const item: string = player.get_wielded_item().get_name();
+
 		// 	if not object or (object and not object:get_luaentity()) then
 		// 		object = core.add_entity(player:get_pos(),"player_api:item")
 		// 		entity = object:get_luaentity()
@@ -37,18 +45,18 @@ namespace playerAPI {
 		// 		end
 		// 		return // catch it
 		// 	end
+
 		// 	entity = object:get_luaentity()
+
 		// 	object_string = entity.itemstring
+
 		// 	if object_string ~= item then
 		// 		entity.itemstring = item
 		// 		entity.set_item(entity,item)
 		// 	end
 	}
 
-	// // easy way to allocate new players
-	// local data
-	// local name
-	// local temp_pool
+	// Easy way to allocate new players.
 	function set_all_properties(player: ObjectRef) {
 		const name = player.get_player_name();
 		const newData: ApiPlayerData = {
@@ -64,7 +72,7 @@ namespace playerAPI {
 			stepheight: 0.6,
 			eye_height: 1.47,
 			attached: false,
-			wield_item: "",
+			wield_item: null,
 			sleeping: false,
 		};
 
