@@ -15,6 +15,7 @@ namespace playerAPI {
 		eye_height: number;
 		attached: boolean;
 		wield_item: string;
+		sleeping: boolean;
 	}
 
 	const pool = new Map<string, ApiPlayerData>();
@@ -64,6 +65,7 @@ namespace playerAPI {
 			eye_height: 1.47,
 			attached: false,
 			wield_item: "",
+			sleeping: false,
 		};
 
 		// 	temp_pool = pool[name]
