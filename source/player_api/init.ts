@@ -94,7 +94,7 @@ namespace playerAPI {
 			animation_speed: 24,
 			visual_size: vector.create3d({ x: 1, y: 1, z: 1 }),
 			textures: ["player.png", "blank_skin.png"],
-			current_animation: "stand",
+			current_animation: "",
 			swimming: false,
 			collisionbox: [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3],
 			old_controls: player.get_player_control(),
@@ -117,6 +117,8 @@ namespace playerAPI {
 		});
 
 		pool.set(name, newData);
+
+		set_animation(player, "stand", 0);
 	}
 
 	// Easy way to set textures.
