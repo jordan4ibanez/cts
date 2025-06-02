@@ -142,10 +142,9 @@ namespace playerMechanics {
 
 	// Controls player states.
 	function control_state(player: ObjectRef) {
-		// todo: this depends on crafter player api
-		// if get_if_player_attached(player) {
-		// 	return
-		// }
+		if (playerAPI.get_if_player_attached(player)) {
+			return;
+		}
 
 		// todo: this depends on crafter hunger
 		const hunger = 0; //get_player_hunger(player)
