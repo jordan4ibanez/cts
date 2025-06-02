@@ -35,7 +35,7 @@ namespace playerAPI {
 	// 	object = temp_pool.wield_item
 	// 	item = player:get_wielded_item():get_name()
 	// 	if not object or (object and not object:get_luaentity()) then
-	// 		object = minetest.add_entity(player:get_pos(),"player_api:item")
+	// 		object = core.add_entity(player:get_pos(),"player_api:item")
 	// 		entity = object:get_luaentity()
 	// 		if entity then
 	// 			entity.set_item(entity,item)
@@ -172,7 +172,7 @@ namespace playerAPI {
 
 	// // remove all player data
 	// local name
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name] = nil
 	// end)
@@ -358,17 +358,17 @@ namespace playerAPI {
 	// end
 
 	// // Update appearance when the player joins
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	set_all_properties(player)
 	// end)
 
-	// minetest.register_on_respawnplayer(function(player)
+	// core.register_on_respawnplayer(function(player)
 	// 	create_force_update(player)
 	// end)
 
 	// // inject into global loop
-	// minetest.register_globalstep(function()
-	// 	for _,player in ipairs(minetest.get_connected_players()) do
+	// core.register_globalstep(function()
+	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		do_animations(player)
 	// 	end
 	// end)
@@ -380,7 +380,7 @@ namespace playerAPI {
 	// 	stack = ItemStack(item or self.itemstring)
 	// 	self.itemstring = stack:to_string()
 	// 	itemname = stack:is_known() and stack:get_name() or "unknown"
-	// 	def = minetest.registered_nodes[itemname]
+	// 	def = core.registered_nodes[itemname]
 	// 	self.object:set_properties({
 	// 		textures = {itemname},
 	// 		wield_item = self.itemstring,
@@ -388,7 +388,7 @@ namespace playerAPI {
 	// 	})
 	// end
 
-	// minetest.register_entity("player_api:item", {
+	// core.register_entity("player_api:item", {
 	// 	initial_properties = {
 	// 		hp_max           = 1,
 	// 		visual           = "wielditem",
@@ -405,7 +405,7 @@ namespace playerAPI {
 	// 	itemstring = "",
 	// 	set_item = set_item,
 	// 	on_step = function(self, dtime)
-	// 		if not self.wielder or (self.wielder and not minetest.get_player_by_name(self.wielder)) then
+	// 		if not self.wielder or (self.wielder and not core.get_player_by_name(self.wielder)) then
 	// 			self.object:remove()
 	// 		end
 	// 	end,
