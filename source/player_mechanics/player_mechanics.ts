@@ -120,12 +120,16 @@ namespace playerMechanics {
 		}
 	);
 
-	// // allows other mods to retrieve data for the game to use
-	// local name
-	// get_player_state = function(player)
-	// 	name = player:get_player_name()
-	// 	return(pool[name].state)
-	// end
+	// Allows other mods to retrieve data for the game to use.
+	export function get_player_state(player: ObjectRef): number {
+		const name: string = player.get_player_name();
+		const data: PlayerState | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		return data.state;
+	}
+
 	// local name
 	// is_player_swimming = function(player)
 	// 	name = player:get_player_name()
