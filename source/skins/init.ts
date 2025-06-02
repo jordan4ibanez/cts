@@ -4,12 +4,10 @@ namespace skins {
 
 	// Binary downloads are required.
 	if (!core.features.httpfetch_binary_data) {
-		core.log(
-			LogLevel.error,
+		throw new Error(
 			"Outdated Minetest Engine detected. Skins mod will not load. This crashes armor."
 		);
 	}
-    
 
 	// if not http then
 	//     core.log("error","///////////////////////////////////////////////////////////////")
