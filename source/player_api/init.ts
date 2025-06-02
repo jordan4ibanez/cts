@@ -540,8 +540,18 @@ namespace playerAPI {
 					}
 				}
 			}
-			// 		translated = translation_table.stand[mouse]
-			// 		set_animation(player, translated.animation, translated.speed)
+			const translated: AnimationComponent | undefined = (
+				mouse
+					? translation_table.stand.states.true
+					: translation_table.stand.states.false
+			)[0];
+
+			if (translated == null) {
+				throw new Error(
+					`Stand state missing [${tostring(mouse)}] index 0`
+				);
+			}
+			set_animation(player, translated.animation, translated.speed);
 		}
 	}
 
