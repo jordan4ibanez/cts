@@ -559,16 +559,16 @@ namespace playerAPI {
 		}
 		const control_table: PlayerControlObject = player.get_player_control();
 		pitch_look(player, control_table.sneak);
-		// 	if player:get_hp() <= 0 then
-		// 		set_animation(player,"die",40,false)
-		// 	elseif not temp_pool.sleeping and (not temp_pool.attached or not player:get_attach()) then
-		// 		temp_pool.attached = false
-		// 		update = control_check(player,control_table)
-		// 		update_wield_item(player)
-		// 		if update and player:get_hp() > 0 then
-		// 			control_translation(player,control_table)
-		// 		end
-		// 	end
+		if (player.get_hp() <= 0) {
+			set_animation(player, "die", 40, false);
+		} else if (!data.sleeping && (!data.attached || !player.get_attach())) {
+			data.attached = false;
+			const update: boolean = control_check(player, control_table);
+			update_wield_item(player);
+			if (update) {
+				control_translation(player, control_table);
+			}
+		}
 	}
 
 	// // Update appearance when the player joins
