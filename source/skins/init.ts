@@ -12,7 +12,7 @@ namespace skins {
 
 	if (http == null) {
 		throw new Error(`HTTP access is required. Please add this to your minetest.conf:
-	    secure.http_mods = skins
+	    secure.http_mods = crafter_skins
 	    Skins will not work without this.`);
 	}
 
