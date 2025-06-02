@@ -70,7 +70,8 @@ namespace playerAPI {
 			}
 		}
 
-		// 	entity = object:get_luaentity()
+		// It was already checked to be not-null as thoroughly as possible.
+		entity = object.get_luaentity() as PlayerHoldingItemEntity;
 
 		// 	object_string = entity.itemstring
 
