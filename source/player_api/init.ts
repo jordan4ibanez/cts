@@ -426,13 +426,47 @@ namespace playerAPI {
 		let mouse: boolean = control.LMB || control.RMB;
 
 		if (swimming) {
-			// 		for k,i in pairs(control) do
-			// 			if i and translation_table.swim.keys[k] then
-			// 				translated = translation_table.swim.states[true]
-			// 				set_animation(player, translated.animation, translated.speed)
-			// 				return
-			// 			end
-			// 		end
+			for (const [k, i] of pairs(control)) {
+				if (i == null) {
+					core.log(
+						LogLevel.warning,
+						`Component [${k}] of player controls [${name}] was null`
+					);
+					continue;
+				}
+
+				const keys: AnimationKeySet | undefined =
+					translation_table.swim.keys;
+
+				if (keys == null) {
+					throw new Error("Swim keys are undefined.");
+				}
+
+				if (keys[k]) {
+					let translatedArray: AnimationComponent[] | undefined =
+						translation_table.swim.states.true;
+
+					if (translatedArray == null) {
+						throw new Error("Swim states true is null.");
+					}
+					translatedArray = translatedArray as AnimationComponent[];
+
+					const translated: AnimationComponent | undefined =
+						translatedArray[0];
+
+					if (translated == null) {
+						throw new Error("Swim states array 0 is null.");
+					}
+
+					set_animation(
+						player,
+						translated.animation,
+						translated.speed
+					);
+					// 				return
+				}
+			}
+
 			// 		translated = translation_table.swim.states[false]
 			// 		set_animation(player, translated.animation, translated.speed)
 			// 		return
