@@ -270,18 +270,26 @@ namespace playerAPI {
 	});
 
 	// Converts yaw to degrees.
-	function degrees(yaw: number): number {
-		return (yaw * 180.0) / math.pi;
+	// function degrees(yaw: number): number {
+	// 	return (yaw * 180.0) / math.pi;
+	// }
+
+	function radians(deg: number): number {
+		return deg * (math.pi / 180);
 	}
+	const pitchSwimAdd = radians(90);
+	const pitchSneakAdd = radians(15);
 
 	// Controls head bone.
 	function pitch_look(player: ObjectRef, sneak: boolean): void {
 		const swimming: boolean = playerMechanics.is_player_swimming(player);
-		let pitch: number = degrees(player.get_look_vertical()) * -1;
+
+		let pitch: number = player.get_look_vertical() * -1;
+
 		if (swimming) {
-			pitch += 90;
+			pitch += pitchSwimAdd;
 		} else if (sneak) {
-			pitch += 15;
+			pitch += pitchSneakAdd;
 		}
 		player.set_bone_override("Head", {
 			position: { vec: vector.create3d(0, 6.3, 0), absolute: true },
