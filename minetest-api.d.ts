@@ -2027,6 +2027,14 @@ declare global {
 //? Classes. (Objects with implicit self [this]) ===============================================
 
 declare global {
+	interface ModChannel {
+		// Ensure you set mod_channel to nil after that to free Lua resources.
+		leave(): void;
+		is_writeable(): boolean;
+		// Message size is limited to 65535 characters by protocol.
+		send_all(message: string): void;
+	}
+
 	interface HTTPApi {
 		fetch(
 			req: HTTPrequestDefinition,
