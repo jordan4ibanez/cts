@@ -186,9 +186,8 @@ namespace playerMechanics {
 		const name: string = player.get_player_name();
 
 		const data: PlayerEnvironment | undefined = pool.get(name);
-		if (!data) {
-			triggerNullPtype(name);
-			return;
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 
 		let tick: number = data.hurt_inside_ticker;
