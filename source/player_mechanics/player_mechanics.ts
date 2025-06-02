@@ -130,11 +130,14 @@ namespace playerMechanics {
 		return data.state;
 	}
 
-	// local name
-	// is_player_swimming = function(player)
-	// 	name = player:get_player_name()
-	// 	return(pool[name].swimming)
-	// end
+	export function is_player_swimming(player: ObjectRef): boolean {
+		const name: string = player.get_player_name();
+		const data: PlayerState | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		return data.swimming;
+	}
 
 	// // controls player states
 	// local hunger
