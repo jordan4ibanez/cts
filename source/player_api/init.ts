@@ -40,7 +40,7 @@ namespace playerAPI {
 			object == null ||
 			(object != null && object.get_luaentity() == null)
 		) {
-			object = core.add_entity(player.get_pos(), "player_api:item");
+			object = core.add_entity(player.get_pos(), "crafter_player_api:item");
 			if (object == null) {
 				core.log(
 					LogLevel.warning,
@@ -588,11 +588,11 @@ namespace playerAPI {
 	});
 
 	class PlayerHoldingItemEntity extends types.Entity {
-		name: string = "player_api:item";
+		name: string = "crafter_player_api:item";
 		wielder: string = "";
 		itemstring: string = "";
 		set_item(item: string): void {}
-	}
+	
 
 	// local set_item = function(self, item)
 	// 	stack = ItemStack(item or self.itemstring)
@@ -606,7 +606,7 @@ namespace playerAPI {
 	// 	})
 	// end
 
-	// core.register_entity("player_api:item", {
+	
 	// 	initial_properties = {
 	// 		hp_max           = 1,
 	// 		visual           = "wielditem",
@@ -627,7 +627,8 @@ namespace playerAPI {
 	// 			self.object:remove()
 	// 		end
 	// 	end,
-	// })
+	
+    }
 
 	utility.registerTSEntity(PlayerHoldingItemEntity);
 }
