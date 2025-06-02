@@ -90,7 +90,11 @@ namespace playerMechanics {
 	// Intercept incoming data messages.
 	core.register_on_modchannel_message(
 		(channel_name: string, sender: string, message: string) => {
-			// 	channel_decyphered = channel_name:gsub(sender,"")
+			const channel_decyphered: string = string.gsub(
+				channel_name,
+				sender,
+				""
+			)[0];
 			// 	if sender ~= "" and channel_decyphered == ":player_movement_state" then
 			// 		state = tonumber(message)
 			// 		if type(state) == "number" then
