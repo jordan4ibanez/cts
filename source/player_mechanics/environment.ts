@@ -29,7 +29,7 @@ namespace playerMechanics {
 		return data.legs;
 	}
 
-	export function player_under_check(player: ObjectRef): string | null {
+	export function player_under_check(player: ObjectRef): string {
 		const name: string = player.get_player_name();
 		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (!data) {
