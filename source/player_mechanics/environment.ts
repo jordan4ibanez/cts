@@ -1,6 +1,6 @@
 // todo: fix this disaster, why is this monolithic?
 namespace playerMechanics {
-    interface PlayerEnvironment {
+	interface PlayerEnvironment {
 		head: string;
 		legs: string;
 		under: string;
@@ -10,18 +10,6 @@ namespace playerMechanics {
 	}
 
 	const pool = new Map<string, PlayerEnvironment>();
-
-	function triggerNullPtype(name: string): void {
-		print(`warning: PType for ${name} was null. Fixing.`);
-		pool.set(name, {
-			under: "",
-			legs: "",
-			head: "",
-			swim_check: "",
-			touch_hurt_ticker: 0,
-			hurt_inside_ticker: 0,
-		});
-	}
 
 	export function get_player_head_env(player: ObjectRef): string | null {
 		const name: string = player.get_player_name();
