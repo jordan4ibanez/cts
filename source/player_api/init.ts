@@ -505,15 +505,44 @@ namespace playerAPI {
 				set_animation(player, translated.animation, translated.speed);
 				return;
 			} else {
-				// 			for k,i in pairs(control) do
-				// 				if i and translation_table.walk.keys[k] then
-				// 					translated = translation_table.walk.states[mouse][state]
-				// 					if translated then
-				// 						set_animation(player, translated.animation, translated.speed)
-				// 						return
-				// 					end
-				// 				end
-				// 			end
+				for (const [k, i] of pairs(control)) {
+					if (i == null) {
+						core.log(
+							LogLevel.warning,
+							`Component [${k}] of player controls [${name}] was null`
+						);
+						continue;
+					}
+					const keys: AnimationKeySet | undefined =
+						translation_table.walk.keys;
+					if (keys == null) {
+						throw new Error("Walk keys are undefined.");
+					}
+
+					if (keys[k]) {
+						// const index: number = ;
+						const translated: AnimationComponent | undefined = (
+							mouse
+								? translation_table.walk.states.true
+								: translation_table.walk.states.false
+						)[state];
+
+						if (translated == null) {
+							throw new Error(
+								`Walk state missing [${tostring(
+									mouse
+								)}] index [${state}]`
+							);
+						}
+
+						set_animation(
+							player,
+							translated.animation,
+							translated.speed
+						);
+						return;
+					}
+				}
 			}
 			// 		translated = translation_table.stand[mouse]
 			// 		set_animation(player, translated.animation, translated.speed)
