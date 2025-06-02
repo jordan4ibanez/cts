@@ -141,7 +141,6 @@ namespace playerMechanics {
 	}
 
 	// Controls player states.
-
 	function control_state (player: ObjectRef) {
 	// 	if get_if_player_attached(player) then
 	// 		return
