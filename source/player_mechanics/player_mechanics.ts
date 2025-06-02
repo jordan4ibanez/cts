@@ -2,7 +2,15 @@ namespace playerMechanics {
 	// Holds every player's channel.
 	const state_channels = new Map<string, ModChannel>();
 
-	// local pool           = {}
+	interface PlayerState {
+		state: number;
+		old_state: number;
+		was_in_water: boolean;
+		swimming: boolean;
+		swim_bumped: number;
+	}
+
+	const pool = new Map<string, PlayerState>();
 
 	// Creates specific channels for players
 	// local name
@@ -23,11 +31,14 @@ namespace playerMechanics {
 
 		// 	pool[name] = {}
 		// 	temp_pool = pool[name]
-		// 	temp_pool.state        = 0
-		// 	temp_pool.old_state    = 0
-		// 	temp_pool.was_in_water = false
-		// 	temp_pool.swimming     = false
-		// 	temp_pool.swim_bumped  = core.get_us_time()/1000000
+
+		const newData: PlayerState = {
+			state: 0,
+			old_state: 0,
+			was_in_water: false,
+			swimming: false,
+			swim_bumped: core.get_us_time() / 1000000,
+		};
 	});
 
 	// // resets the player's state on death
