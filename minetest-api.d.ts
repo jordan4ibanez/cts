@@ -1250,12 +1250,12 @@ declare global {
 	/** @noSelf **/ interface HTTPrequestDefinition {
 		url: string;
 		timeout: number;
-		method: HTTPRequestMethod;
-		data: string | { string: string };
-		user_agent: string;
-		extra_headers: string[];
-		multipart: boolean;
-		post_data: string | { string: string };
+		method?: HTTPRequestMethod;
+		data?: string | { string: string };
+		user_agent?: string;
+		extra_headers?: string[];
+		multipart?: boolean;
+		post_data?: string | { string: string };
 	}
 
 	/** @noSelf **/ interface HTTPRequestResult {
