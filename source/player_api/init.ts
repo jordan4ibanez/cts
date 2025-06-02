@@ -68,16 +68,18 @@ namespace playerAPI {
 
 		// 	temp_pool = pool[name]
 		// 	data = {}
-		// 	temp_pool.visual       = player_constant.visual
-		// 	temp_pool.mesh         = player_constant.mesh
-		// 	temp_pool.textures     = player_constant.textures
-		// 	temp_pool.collisionbox = player_constant.collisionbox
-		// 	temp_pool.eye_height   = player_constant.eye_height
-		// 	temp_pool.stepheight   = player_constant.stepheight
-		// 	temp_pool.visual_size  = player_constant.visual_size
+
 		// 	temp_pool.attached     = false
 		// 	temp_pool.sleeping     = false
-		// 	player:set_properties(temp_pool)
+		player.set_properties({
+			// 	temp_pool.visual       = player_constant.visual
+			// 	temp_pool.mesh         = player_constant.mesh
+			// 	temp_pool.textures     = player_constant.textures
+			// 	temp_pool.collisionbox = player_constant.collisionbox
+			// 	temp_pool.eye_height   = player_constant.eye_height
+			// 	temp_pool.stepheight   = player_constant.stepheight
+			// 	temp_pool.visual_size  = player_constant.visual_size
+		});
 	}
 
 	// // easy way to set textures
