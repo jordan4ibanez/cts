@@ -268,12 +268,10 @@ namespace playerAPI {
 		});
 	}
 
-	// // remove all player data
-	// local name
-	// core.register_on_leaveplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = nil
-	// end)
+	// Remove all player data.
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		pool.delete(player.get_player_name());
+	});
 
 	// // converts yaw to degrees
 	// local degrees = function(yaw)
