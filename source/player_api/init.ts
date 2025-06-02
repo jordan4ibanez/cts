@@ -1,6 +1,7 @@
 namespace playerAPI {
-	// local minetest,math = minetest,math
+	
 	// local pool = {}
+
 	// -- player physical data constant
 	// local player_constant = {
 	// 	visual               = "mesh"       ,
@@ -20,6 +21,7 @@ namespace playerAPI {
 	// 	attached             = false,
 	// 	wield_item           = nil  ,
 	// }
+
 	// -- set player wield item
 	// local name
 	// local temp_pool
@@ -70,10 +72,12 @@ namespace playerAPI {
 	// 	temp_pool.sleeping     = false
 	// 	player:set_properties(temp_pool)
 	// end
+
 	// -- easy way to set textures
 	// local set_textures = function(player, textures)
 	// 	player:set_properties({textures = textures})
 	// end
+
 	// local animation_list = {
 	// 	stand            = { x = 5  , y = 5   },
 	// 	lay              = { x = 162, y = 162 },
@@ -89,6 +93,7 @@ namespace playerAPI {
 	// 	swim_still       = { x = 226, y = 226 },
 	// 	die              = { x = 242, y = 253 },
 	// }
+
 	// -- easy way to set animation
 	// local name
 	// local temp_pool
@@ -103,42 +108,50 @@ namespace playerAPI {
 	// 	temp_pool.animation = animation_name
 	// 	player:set_animation(animation_list[animation_name], speed, 0, loop)
 	// end
+
 	// -- allows mods to force update animation
 	// local name
 	// force_update_animation = function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name].force_update = true
 	// end
+
 	// -- force updates the player
 	// local name
 	// local create_force_update = function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name].force_update = true
 	// end
+
 	// -- allows other mods to set animations per player
 	// set_player_animation = function(player,animation,speed,loop)
 	// 	set_animation(player, animation, speed, loop)
 	// end
+
 	// local name
 	// player_is_attached = function(player,truth)
 	// 	name = player:get_player_name()
 	// 	pool[name].attached = truth
 	// end
+
 	// local name
 	// get_if_player_attached = function(player)
 	// 	name = player:get_player_name()
 	// 	return(pool[name].attached)
 	// end
+
 	// local name
 	// player_is_sleeping = function(player,truth)
 	// 	name = player:get_player_name()
 	// 	pool[name].sleeping = truth
 	// end
+
 	// local name
 	// get_if_player_sleeping = function(player)
 	// 	name = player:get_player_name()
 	// 	return(pool[name].sleeping)
 	// end
+
 	// -- toggles nametag visibility
 	// local opacity
 	// local show_nametag = function(player,boolean)
@@ -156,16 +169,19 @@ namespace playerAPI {
 	// 		}
 	// 	})
 	// end
+
 	// -- remove all player data
 	// local name
 	// minetest.register_on_leaveplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name] = nil
 	// end)
+
 	// -- converts yaw to degrees
 	// local degrees = function(yaw)
 	// 	return(yaw*180.0/math.pi)
 	// end
+
 	// -- controls head bone
 	// local state
 	// local swimming
@@ -181,6 +197,7 @@ namespace playerAPI {
 	// 	end
 	// 	player:set_bone_position("Head", vector.new(0,6.3,0), vector.new(pitch,0,0))
 	// end
+
 	// -- checks if the player has done anything with their keyboard/mouse
 	// local name
 	// local temp_pool
@@ -205,6 +222,7 @@ namespace playerAPI {
 	// 	temp_pool.old_controls = control_table
 	// 	return(false)
 	// end
+
 	// -- movement to animation translations
 	// local translation_table = {
 	// 	["walk"] = {
@@ -264,6 +282,7 @@ namespace playerAPI {
 	// 		}
 	// 	}
 	// }
+
 	// -- translate input and combine with state
 	// local name
 	// local temp_pool
@@ -315,6 +334,7 @@ namespace playerAPI {
 	// 		set_animation(player, translated.animation, translated.speed)
 	// 	end
 	// end
+
 	// -- translates player movement to animation
 	// local control_table
 	// local update
@@ -336,19 +356,23 @@ namespace playerAPI {
 	// 		end
 	// 	end
 	// end
+
 	// -- Update appearance when the player joins
 	// minetest.register_on_joinplayer(function(player)
 	// 	set_all_properties(player)
 	// end)
+
 	// minetest.register_on_respawnplayer(function(player)
 	// 	create_force_update(player)
 	// end)
+
 	// -- inject into global loop
 	// minetest.register_globalstep(function()
 	// 	for _,player in ipairs(minetest.get_connected_players()) do
 	// 		do_animations(player)
 	// 	end
 	// end)
+
 	// local stack
 	// local itemname
 	// local def
@@ -363,6 +387,7 @@ namespace playerAPI {
 	// 		glow = def and def.light_source,
 	// 	})
 	// end
+    
 	// minetest.register_entity("player_api:item", {
 	// 	initial_properties = {
 	// 		hp_max           = 1,
