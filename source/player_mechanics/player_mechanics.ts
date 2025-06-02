@@ -224,10 +224,10 @@ namespace playerMechanics {
 		// 				player:set_physics_override({speed=1.5})
 		// 			end
 
-				elseif (not in_water and temp_pool.state ~= 1 and temp_pool.state ~= 2 and
+				elseif ((not in_water and temp_pool.state ~= 1 and temp_pool.state ~= 2 and
 				(temp_pool.old_state == 1 or temp_pool.old_state == 2)) or
 				(in_water and temp_pool.state ~= 1 and temp_pool.state ~= 2 and temp_pool.state ~= 3 and
-				(temp_pool.old_state == 1 or temp_pool.old_state == 2 or temp_pool.old_state == 3))then
+				(temp_pool.old_state == 1 or temp_pool.old_state == 2 or temp_pool.old_state == 3)))then
 
 		// 			player:set_fov(1, true,0.15)
 		// 			player:set_physics_override({speed=1})
