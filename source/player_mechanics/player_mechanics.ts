@@ -140,16 +140,9 @@ namespace playerMechanics {
 		return data.swimming;
 	}
 
-	// // controls player states
-	// local hunger
-	// local name
-	// local temp_pool
-	// local head
-	// local legs
-	// local in_water
-	// local swim_unlock
-	// local swim_bump
-	// local control_state = function(player)
+	// Controls player states.
+
+	function control_state (player: ObjectRef) {
 	// 	if get_if_player_attached(player) then
 	// 		return
 	// 	end
@@ -239,7 +232,7 @@ namespace playerMechanics {
 	// 		temp_pool.old_state    = temp_pool.old_state
 	// 		temp_pool.was_in_water = in_water
 	// 	end
-	// end
+	}
 
 	// core.register_globalstep(function(dtime)
 	// 	for _,player in ipairs(core.get_connected_players()) do
