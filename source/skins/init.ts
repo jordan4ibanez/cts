@@ -1,6 +1,7 @@
 namespace skins {
-	// local http = core.request_http_api()
-	// local id = "Lua Skins Updater"
+	const http: HTTPApi = core.request_http_api();
+	const id: string = "Typescript Skins Updater";
+
 	// // binary downloads are required
 	// if not core.features.httpfetch_binary_data then
 	//     core.log("error","Outdated Minetest Engine detected. Skins mod will not load. This crashes armor.")
