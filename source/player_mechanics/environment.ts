@@ -413,9 +413,10 @@ namespace playerMechanics {
 			const name: string = player.get_player_name();
 
 			const data: PlayerEnvironment | undefined = pool.get(name);
-			if (!data) {
-				triggerNullPtype(name);
-				continue;
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added to the pool.`
+				);
 			}
 
 			const pos: Vec3 = player.get_pos();
