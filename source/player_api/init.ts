@@ -59,13 +59,14 @@ namespace playerAPI {
 					vector.create3d(0, 0, 0),
 					vector.create3d(0, 0, 0)
 				);
-				// 			temp_pool.wield_item = object
+				data.wield_item = object;
 			} else {
 				core.log(
 					LogLevel.warning,
 					`Wield LuaEntity for player [${name}] was null. Bailing out.`
 				);
-				return; // catch it
+				// Catch it.
+				return;
 			}
 		}
 
