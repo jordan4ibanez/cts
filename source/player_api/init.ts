@@ -119,7 +119,7 @@ namespace playerAPI {
 		player.set_properties({ textures: textures });
 	}
 
-	const animation_list = {
+	const animation_list: Dictionary<string, Vec2> = {
 		stand: { x: 5, y: 5 },
 		lay: { x: 162, y: 162 },
 		walk: { x: 168, y: 187 },
