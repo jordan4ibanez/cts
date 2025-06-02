@@ -87,18 +87,18 @@ namespace playerMechanics {
 		);
 	}
 
-	// // intercept incoming data messages
-	// local channel_decyphered
-	// local state
-	// core.register_on_modchannel_message(function(channel_name, sender, message)
-	// 	channel_decyphered = channel_name:gsub(sender,"")
-	// 	if sender ~= "" and channel_decyphered == ":player_movement_state" then
-	// 		state = tonumber(message)
-	// 		if type(state) == "number" then
-	// 			pool[sender].state = state
-	// 		end
-	// 	end
-	// end)
+	// Intercept incoming data messages.
+	core.register_on_modchannel_message(
+		(channel_name: string, sender: string, message: string) => {
+			// 	channel_decyphered = channel_name:gsub(sender,"")
+			// 	if sender ~= "" and channel_decyphered == ":player_movement_state" then
+			// 		state = tonumber(message)
+			// 		if type(state) == "number" then
+			// 			pool[sender].state = state
+			// 		end
+			// 	end
+		}
+	);
 
 	// // allows other mods to retrieve data for the game to use
 	// local name
