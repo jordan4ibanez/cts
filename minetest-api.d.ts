@@ -2294,7 +2294,7 @@ declare global {
 			bone: string,
 			position: Vec3,
 			rotation: Vec3,
-			forcedVisible: boolean
+			forcedVisible?: boolean
 		): void;
 		get_attach(): AttachRef | null;
 		get_children(): ObjectRef[];
