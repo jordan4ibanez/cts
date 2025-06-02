@@ -1,19 +1,22 @@
 namespace skins {
-	const http: HTTPApi | undefined | null =
-		core.request_http_api && core.request_http_api();
+	const http: HTTPApi = (() => {
+		// Binary downloads are required.
+		if (!core.features.httpfetch_binary_data) {
+			throw new Error(
+				"Outdated Minetest Engine detected. Skins mod will not load. This crashes armor."
+			);
+		}
 
-	// Binary downloads are required.
-	if (!core.features.httpfetch_binary_data) {
-		throw new Error(
-			"Outdated Minetest Engine detected. Skins mod will not load. This crashes armor."
-		);
-	}
+		const maybeHTTP = core.request_http_api && core.request_http_api();
 
-	if (http == null) {
-		throw new Error(`HTTP access is required. Please add this to your minetest.conf:
+		if (maybeHTTP == null) {
+			throw new Error(`HTTP access is required. Please add this to your minetest.conf:
 	    secure.http_mods = crafter_skins
 	    Skins will not work without this.`);
-	}
+		}
+
+		return maybeHTTP;
+	})();
 
 	const id: string = "Typescript Skins Updater";
 	const temppath: string = core.get_worldpath();
