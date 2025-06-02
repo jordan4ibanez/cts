@@ -464,13 +464,14 @@ namespace playerAPI {
 			return;
 		} else {
 			if (control.sneak) {
-				// 			for k,i in pairs(control) do
-				// 				if i and translation_table.sneak.keys[k] then
-				// 					translated = translation_table.sneak.states[true][mouse]
-				// 					set_animation(player, translated.animation, translated.speed)
-				// 					return
-				// 				end
-				// 			end
+				for (const [k, i] of pairs(control)) {
+					// 				if i and translation_table.sneak.keys[k] then
+					// 					translated = translation_table.sneak.states[true][mouse]
+					// 					set_animation(player, translated.animation, translated.speed)
+					// 					return
+					// 				end
+				}
+
 				// 			translated = translation_table.sneak.states[false][mouse]
 				// 			set_animation(player, translated.animation, translated.speed)
 				// 			return
