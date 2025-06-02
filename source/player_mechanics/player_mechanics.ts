@@ -206,8 +206,7 @@ namespace playerMechanics {
 				player.set_physics_override({
 					sneak: false,
 				});
-				// todo: this depends on crafter player api.
-				// force_update_animation(player)
+				playerAPI.force_update_animation(player);
 
 				player.set_properties({
 					collisionbox: [-0.3, 0.8, -0.3, 0.3, 1.6, 0.3],
