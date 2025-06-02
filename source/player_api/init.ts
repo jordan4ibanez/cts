@@ -1,3 +1,4 @@
+namespace playerAPI {
 // local minetest,math = minetest,math
 // local pool = {}
 
@@ -456,3 +457,4 @@
 // 		end
 // 	end,
 // })
+}
