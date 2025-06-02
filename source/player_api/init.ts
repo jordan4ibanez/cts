@@ -16,6 +16,7 @@ namespace playerAPI {
 		attached: boolean;
 		wield_item: ObjectRef | null;
 		sleeping: boolean;
+		force_update: boolean;
 	}
 
 	const pool = new Map<string, ApiPlayerData>();
@@ -99,6 +100,7 @@ namespace playerAPI {
 			attached: false,
 			wield_item: null,
 			sleeping: false,
+			force_update: false,
 		};
 
 		player.set_properties({
