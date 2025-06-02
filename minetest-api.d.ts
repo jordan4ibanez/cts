@@ -2324,7 +2324,9 @@ declare global {
 			selectXByCamera: boolean
 		): void;
 		name: string;
-		get_luaentity(): LuaEntity;
+		// Returns the object's associated luaentity table, if there is one.
+		// Otherwise returns nil (e.g. for players).
+		get_luaentity(): LuaEntity | null;
 		//! NOTE:
 		//! From what I read in the api.md, it seems like these are just all no-ops for non-players.
 		//! This can be broken out into a different interface that extends if this causes too many problems.
