@@ -336,7 +336,7 @@ namespace playerAPI {
 
 	interface AnimationContainer {
 		keys?: AnimationKeySet;
-		states: AnimationStateSet;
+		states?: AnimationStateSet;
 	}
 
 	// Movement to animation translations.
