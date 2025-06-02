@@ -60,6 +60,15 @@ namespace playerMechanics {
 	core.register_on_leaveplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 		pool.delete(name);
+		{
+		const channel: ModChannel | undefined = state_channels.get(name)
+		if (channel == null) {
+			throw new Error(`Player [${name}] was never given a mod channel.`)
+		}
+		channel.leave()
+		}
+		state_channels.delete(name);
+		
 	});
 
 	// // tells the client to stop sending running/bunnyhop data
