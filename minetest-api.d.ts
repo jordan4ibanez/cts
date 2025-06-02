@@ -2286,7 +2286,7 @@ declare global {
 			frameRange: Vec2,
 			frameSpeed: number,
 			frameBlend: number,
-			loop: boolean
+			loop?: boolean
 		): void;
 		set_animation_frame_speed(speed: number): void;
 		set_attach(
