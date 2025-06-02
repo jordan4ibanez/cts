@@ -265,23 +265,23 @@ namespace playerMechanics {
 					vector.create3d({ x: 0, y: 0, z: 0 })
 				);
 			}
-			// 		temp_pool.old_state    = state
-			// 		temp_pool.was_in_water = in_water
-			// 	// water movement
+			data.old_state = data.state;
+			data.was_in_water = in_water;
+			// Water movement.
 		} else if (in_water) {
-			// 		if not temp_pool.was_in_water then
-			// 			player:set_physics_override({
-			// 				sneak   = false ,
-			// 			})
-			// 		end
-			// 		temp_pool.old_state    = temp_pool.old_state
-			// 		temp_pool.was_in_water = in_water
+			if (!data.was_in_water) {
+				player.set_physics_override({
+					sneak: false,
+				});
+			}
+			data.old_state = data.old_state;
+			data.was_in_water = in_water;
 		}
 	}
 
-	// core.register_globalstep(function(dtime)
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		control_state(player)
-	// 	end
-	// end)
+	core.register_globalstep(() => {
+		for (const [_, player] of ipairs(core.get_connected_players())) {
+			control_state(player);
+		}
+	});
 }
