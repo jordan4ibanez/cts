@@ -158,7 +158,7 @@ namespace playerAPI {
 		player: ObjectRef,
 		animation_name: string,
 		speed: number,
-		loop: boolean
+		loop?: boolean
 	) {
 		const name = player.get_player_name();
 		const data: ApiPlayerData | undefined = pool.get(name);
@@ -330,8 +330,8 @@ namespace playerAPI {
 	}
 
 	interface AnimationStateSet {
-		true: AnimationComponent[];
-		false: AnimationComponent[];
+		true?: AnimationComponent[];
+		false?: AnimationComponent[];
 	}
 
 	interface AnimationContainer {
