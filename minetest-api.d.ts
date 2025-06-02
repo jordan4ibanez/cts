@@ -2050,7 +2050,7 @@ declare global {
 		to_table(): MetaData | null;
 		from_table(data: MetaData): boolean;
 		equals(other: MetaRef): boolean;
-		//! FIXME: USE INHERITANCE!
+		// fixme: USE INHERITANCE! <- inherit from what?
 		// node
 		get_inventory(): InvRef;
 		mark_as_private(nameOrArray: string | string[]): void;
