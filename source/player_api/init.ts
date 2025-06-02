@@ -335,7 +335,7 @@ namespace playerAPI {
 	}
 
 	interface AnimationContainer {
-		keys: AnimationKeySet;
+		keys?: AnimationKeySet;
 		states: AnimationStateSet;
 	}
 
@@ -386,11 +386,13 @@ namespace playerAPI {
 				],
 			},
 		},
+		stand: {
+			states: {
+				true: [{ animation: "mine", speed: 24 }],
+				false: [{ animation: "stand", speed: 0 }],
+			},
+		},
 
-		// ["stand"]   : {
-		// 	[true ] : {animation : "mine" , speed : 24},
-		// 	[false] : {animation : "stand", speed : 0 },
-		// },
 		// ["swim"] : {
 		// 	["keys"]    : { // required keys
 		// 		up      : true,
