@@ -60,8 +60,8 @@ namespace playerAPI {
 				object.set_attach(
 					player,
 					"Right_Hand",
-					vector.create3d(0, 0, 0),
-					vector.create3d(0, 0, 0)
+					vector.create3d(0, 0, 1),
+					vector.create3d(180, 270, 180)
 				);
 				data.wield_item = object;
 			} else {
