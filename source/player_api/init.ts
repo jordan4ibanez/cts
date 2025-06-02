@@ -557,8 +557,8 @@ namespace playerAPI {
 		if (data == null) {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
-		// 	control_table = player:get_player_control()
-		// 	pitch_look(player,control_table.sneak)
+		const control_table: PlayerControlObject = player.get_player_control();
+		pitch_look(player, control_table.sneak);
 		// 	if player:get_hp() <= 0 then
 		// 		set_animation(player,"die",40,false)
 		// 	elseif not temp_pool.sleeping and (not temp_pool.attached or not player:get_attach()) then
