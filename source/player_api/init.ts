@@ -340,8 +340,9 @@ namespace playerAPI {
 	}
 
 	// Movement to animation translations.
-	const translation_table: Dictionary<string, AnimationContainer> = {
-		walk: {
+	class translation_table {
+		private constructor() {}
+		static readonly walk: AnimationContainer = {
 			keys: {
 				// required keys
 				up: true,
@@ -363,8 +364,8 @@ namespace playerAPI {
 					{ animation: "walk_mine", speed: 42 },
 				],
 			},
-		},
-		sneak: {
+		};
+		static readonly sneak: AnimationContainer = {
 			keys: {
 				up: true,
 				down: true,
@@ -385,14 +386,14 @@ namespace playerAPI {
 					{ animation: "sneak_mine_stand", speed: 24 },
 				],
 			},
-		},
-		stand: {
+		};
+		static readonly stand: AnimationContainer = {
 			states: {
 				true: [{ animation: "mine", speed: 24 }],
 				false: [{ animation: "stand", speed: 0 }],
 			},
-		},
-		swim: {
+		};
+		static readonly swim: AnimationContainer = {
 			keys: {
 				// required keys
 				up: true,
@@ -404,8 +405,8 @@ namespace playerAPI {
 				true: [{ animation: "swim", speed: 24 }],
 				false: [{ animation: "swim_still", speed: 0 }],
 			},
-		},
-	};
+		};
+	}
 
 	// Translate input and combine with state.
 	function control_translation(
