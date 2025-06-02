@@ -136,20 +136,22 @@ namespace playerAPI {
 		static readonly die: Vec2 = { x: 242, y: 253 };
 	}
 
-	// // easy way to set animation
-	// local name
-	// local temp_pool
-	// local current_animation
-	// local set_animation = function(player, animation_name, speed, loop)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	current_animation = temp_pool.animation
-	// 	if current_animation == animation_name then
-	// 		return
-	// 	end
-	// 	temp_pool.animation = animation_name
-	// 	player:set_animation(animation_list[animation_name], speed, 0, loop)
-	// end
+	// Easy way to set animation.
+	function set_animation(
+		player: ObjectRef,
+		animation_name: string,
+		speed: number,
+		loop: boolean
+	) {
+		// 	name = player:get_player_name()
+		// 	temp_pool = pool[name]
+		// 	current_animation = temp_pool.animation
+		// 	if current_animation == animation_name then
+		// 		return
+		// 	end
+		// 	temp_pool.animation = animation_name
+		// 	player:set_animation(animation_list[animation_name], speed, 0, loop)
+	}
 
 	// // allows mods to force update animation
 	// local name
