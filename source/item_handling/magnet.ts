@@ -19,6 +19,7 @@ namespace item_handling {
 		const name: string = player.get_player_name();
 		if (player.get_hp() <= 0) {
 			pool.set(name, 0);
+			return;
 		}
 
 		const pos: Vec3 = player.get_pos();
