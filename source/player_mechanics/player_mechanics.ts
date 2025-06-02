@@ -1,7 +1,6 @@
 namespace playerMechanics {
-	// local minetest,math,vector,ipairs,tonumber = minetest,math,vector,ipairs,tonumber
-
-	// local state_channels = {} // holds every player's channel
+	// Holds every player's channel.
+	const state_channels = new Map<string, ModChannel>();
 
 	// local pool           = {}
 
@@ -12,13 +11,16 @@ namespace playerMechanics {
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 
-		// state_channels[name] = core.mod_channel_join(name + ":player_movement_state")
+		state_channels.set(
+			name,
+			core.mod_channel_join(name + ":player_movement_state")
+		);
 
-		// 	state_channels[name] = core.mod_channel_join(name..":player_movement_state")
-		// 	player:set_physics_override({
-		// 			jump   = 1.25,
-		// 			gravity= 1.25
-		// 	})
+		player.set_physics_override({
+			jump: 1.25,
+			gravity: 1.25,
+		});
+
 		// 	pool[name] = {}
 		// 	temp_pool = pool[name]
 		// 	temp_pool.state        = 0
