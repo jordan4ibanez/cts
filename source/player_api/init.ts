@@ -317,7 +317,7 @@ namespace playerAPI {
 		return false;
 	}
 
-	interface AnimationKeySet {
+	interface AnimationKeySet extends Dictionary<string, boolean> {
 		up: boolean;
 		down: boolean;
 		left: boolean;
