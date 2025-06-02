@@ -96,6 +96,8 @@ namespace skins {
 		);
 	}
 
+    // todo: finish capes.
+
 	// local pi = math.pi
 	// // simple degrees calculation
 	// local degrees = function(yaw)
