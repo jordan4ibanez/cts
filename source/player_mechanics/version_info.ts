@@ -6,12 +6,13 @@ namespace playerMechanics {
 			x: -146,
 			y: 20,
 		};
+		const version: string = "Crafter Alpha v0.0.8";
 		// Add in version info.
 		player.hud_add({
 			type: HudElementType.text,
 			position: { x: 1, y: 0 },
 			name: "versionbg",
-			text: "Crafter Alpha v2.0.0",
+			text: version,
 			number: 0x000000,
 			offset: { x: offset.x + 2, y: offset.y + 2 },
 			size: { x: 2, y: 2 },
@@ -21,7 +22,7 @@ namespace playerMechanics {
 			type: HudElementType.text,
 			position: { x: 1, y: 0 },
 			name: "versionfg",
-			text: "Crafter Alpha v2.0.0",
+			text: version,
 			number: 0xffffff,
 			offset: offset,
 			size: { x: 2, y: 2 },
