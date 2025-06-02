@@ -628,4 +628,6 @@ namespace playerAPI {
 	// 		end
 	// 	end,
 	// })
+
+	utility.registerTSEntity(PlayerHoldingItemEntity);
 }
