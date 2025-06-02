@@ -189,11 +189,9 @@ namespace playerAPI {
 	export function force_update_animation(player: ObjectRef): void {
 		const name: string = player.get_player_name();
 		const data: ApiPlayerData | undefined = pool.get(name);
-
 		if (data == null) {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
-
 		data.force_update = true;
 	}
 
