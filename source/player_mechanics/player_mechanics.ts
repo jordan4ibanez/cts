@@ -12,10 +12,7 @@ namespace playerMechanics {
 
 	const pool = new Map<string, PlayerState>();
 
-	// Creates specific channels for players
-	// local name
-	// local temp_pool
-
+	// Creates specific channels for players.
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 
