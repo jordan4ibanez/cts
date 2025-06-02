@@ -278,21 +278,21 @@ namespace playerAPI {
 		return (yaw * 180.0) / math.pi;
 	}
 
-	// // controls head bone
-	// local state
-	// local swimming
-	// local pitch
-	// local pitch_look = function(player,sneak)
-	// 	state = get_player_state(player)
-	// 	swimming = is_player_swimming(player)
-	// 	pitch = degrees(player:get_look_vertical()) * -1
-	// 	if swimming then
-	// 		pitch = pitch + 90
-	// 	elseif sneak then
-	// 		pitch = pitch + 15
-	// 	end
-	// 	player:set_bone_position("Head", vector.new(0,6.3,0), vector.new(pitch,0,0))
-	// end
+	// Controls head bone.
+	function pitch_look(player: ObjectRef, sneak: boolean): void {
+		const state: number = playerMechanics.get_player_state(player);
+		const swimming: boolean = playerMechanics.is_player_swimming(player);
+		let pitch: number = degrees(player.get_look_vertical()) * -1;
+		if (swimming) {
+			pitch = pitch + 90;
+		} else if (sneak) {
+			pitch = pitch + 15;
+		}
+		player.set_bone_override("Head", {
+			position: { vec: vector.create3d(0, 6.3, 0), absolute: true },
+			rotation: { vec: vector.create3d(pitch, 0, 0), absolute: true },
+		});
+	}
 
 	// // checks if the player has done anything with their keyboard/mouse
 	// local name
