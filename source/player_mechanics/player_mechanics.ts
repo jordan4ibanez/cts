@@ -37,8 +37,9 @@ namespace playerMechanics {
 		pool.set(name, newData);
 	});
 
-	// // resets the player's state on death
+	// Resets the player's state on death.
 	// local name
+
 	// core.register_on_respawnplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name].state = 0
@@ -49,12 +50,14 @@ namespace playerMechanics {
 	// 		collisionbox = {-0.3, 0.0, -0.3, 0.3, 1.7, 0.3},
 	// 	})
 	// end)
+
 	// // delete data on player leaving
 	// local name
 	// core.register_on_leaveplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name] = nil
 	// end)
+
 	// // tells the client to stop sending running/bunnyhop data
 	// local name
 	// send_running_cancellation = function(player,sneaking)
@@ -66,6 +69,7 @@ namespace playerMechanics {
 	// 		}
 	// 	))
 	// end
+
 	// // intercept incoming data messages
 	// local channel_decyphered
 	// local state
@@ -78,6 +82,7 @@ namespace playerMechanics {
 	// 		end
 	// 	end
 	// end)
+
 	// // allows other mods to retrieve data for the game to use
 	// local name
 	// get_player_state = function(player)
@@ -89,6 +94,7 @@ namespace playerMechanics {
 	// 	name = player:get_player_name()
 	// 	return(pool[name].swimming)
 	// end
+
 	// // controls player states
 	// local hunger
 	// local name
@@ -189,6 +195,7 @@ namespace playerMechanics {
 	// 		temp_pool.was_in_water = in_water
 	// 	end
 	// end
+	
 	// core.register_globalstep(function(dtime)
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		control_state(player)
