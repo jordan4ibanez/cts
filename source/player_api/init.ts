@@ -419,6 +419,7 @@ namespace playerAPI {
 
 	class PlayerHoldingItemEntity extends types.Entity {
 		name: string = "player_api:item";
+		wielder: string = "";
 		set_item(item: string): void {}
 	}
 
