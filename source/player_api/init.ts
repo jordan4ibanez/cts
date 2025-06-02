@@ -73,7 +73,7 @@ namespace playerAPI {
 		// It was already checked to be not-null as thoroughly as possible.
 		entity = object.get_luaentity() as PlayerHoldingItemEntity;
 
-		// 	object_string = entity.itemstring
+		const object_string: string = entity.itemstring;
 
 		// 	if object_string ~= item then
 		// 		entity.itemstring = item
@@ -432,6 +432,7 @@ namespace playerAPI {
 	class PlayerHoldingItemEntity extends types.Entity {
 		name: string = "player_api:item";
 		wielder: string = "";
+		itemstring: string = "";
 		set_item(item: string): void {}
 	}
 
