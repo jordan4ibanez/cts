@@ -64,7 +64,7 @@ namespace playerAPI {
 		current_animation:  "stand";
 		swimming:  false;
 		collisionbox:  [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
-		old_controls: PlayerControlObject = {
+		old_controls: player.get_player_control()
 		
 		stepheight: number = 0.6;
 		eye_height: number = 1.47;
