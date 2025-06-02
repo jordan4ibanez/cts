@@ -847,24 +847,25 @@ declare global {
     mod_storage_on_disk = true,
     
     compress_zstd = true,
+    
     sound_params_start_time = true,
-    -- New fields for set_physics_override: speed_climb, speed_crouch,
-    -- liquid_fluidity, liquid_fluidity_smooth, liquid_sink,
-    -- acceleration_default, acceleration_air (5.8.0)
+    
+    
+    
     physics_overrides_v2 = true,
-    -- In HUD definitions the field `type` is used and `hud_elem_type` is deprecated (5.9.0)
+    
     hud_def_type_field = true,
-    -- PseudoRandom and PcgRandom state is restorable
-    -- PseudoRandom has get_state method
-    -- PcgRandom has get_state and set_state methods (5.9.0)
+    
+    
+    
     random_state_restore = true,
-    -- core.after guarantees that coexisting jobs are executed primarily
-    -- in order of expiry and secondarily in order of registration (5.9.0)
+    
+    
     after_order_expiry_registration = true,
-    -- wallmounted nodes mounted at floor or ceiling may additionally
-    -- be rotated by 90° with special param2 values (5.9.0)
+    
+    
     wallmounted_rotate = true,
-    -- Availability of the `pointabilities` property in the item definition (5.9.0)
+    
     item_specific_pointabilities = true,
     -- Nodes `pointable` property can be `"blocking"` (5.9.0)
     blocking_pointability_type = true,
