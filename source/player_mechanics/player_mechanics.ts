@@ -79,7 +79,6 @@ namespace playerMechanics {
 		if (channel == null) {
 			throw new Error(`Player [${name}] was never given a mod channel.`);
 		}
-
 		channel.send_all(
 			core.serialize({
 				stop_running: true,
