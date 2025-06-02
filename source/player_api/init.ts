@@ -3,34 +3,7 @@ namespace playerAPI {
 
 	// Player physical data constant.
 	class Pdata {
-		visual: EntityVisual = EntityVisual.mesh;
-		mesh: string = "player.b3d";
-		animation_speed: number = 24;
-		visual_size: Vec3 = vector.create3d({ x: 1, y: 1, z: 1 });
-		textures: string[] = ["player.png", "blank_skin.png"];
-		current_animation: string = "stand";
-		swimming: boolean = false;
-		collisionbox: number[] = [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
-		old_controls: PlayerControlObject = {
-			up: false,
-			down: false,
-			left: false,
-			right: false,
-			jump: false,
-			aux1: false,
-			sneak: false,
-			dig: false,
-			place: false,
-			LMB: false,
-			RMB: false,
-			zoom: false,
-			movement_x: 0,
-			movement_y: 0,
-		};
-		stepheight: number = 0.6;
-		eye_height: number = 1.47;
-		attached: boolean = false;
-		wield_item: string = "";
+
 	}
 
 	interface ApiPlayerData {
@@ -82,7 +55,36 @@ namespace playerAPI {
 	// local temp_pool
 	function set_all_properties(player: ObjectRef) {
 		const name = player.get_player_name();
-		const newData: PlayerData = {};
+		const newData: ApiPlayerData = {
+            		visual:  EntityVisual.mesh;
+		mesh:  "player.b3d";
+		animation_speed:  24;
+		visual_size:  vector.create3d({ x: 1, y: 1, z: 1 });
+		textures:  ["player.png", "blank_skin.png"];
+		current_animation:  "stand";
+		swimming:  false;
+		collisionbox:  [-0.3, 0.0, -0.3, 0.3, 1.7, 0.3];
+		old_controls: PlayerControlObject = {
+			up: false,
+			down: false,
+			left: false,
+			right: false,
+			jump: false,
+			aux1: false,
+			sneak: false,
+			dig: false,
+			place: false,
+			LMB: false,
+			RMB: false,
+			zoom: false,
+			movement_x: 0,
+			movement_y: 0,
+		};
+		stepheight: number = 0.6;
+		eye_height: number = 1.47;
+		attached: boolean = false;
+		wield_item: string = "";
+        };
 
 		// 	temp_pool = pool[name]
 		// 	data = {}
