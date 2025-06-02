@@ -214,7 +214,10 @@ namespace playerAPI {
 		set_animation(player, animation, speed, loop);
 	}
 
-	export function player_is_attached(player: ObjectRef, truth: boolean) {
+	export function player_is_attached(
+		player: ObjectRef,
+		truth: boolean
+	): void {
 		const name: string = player.get_player_name();
 		const data: ApiPlayerData | undefined = pool.get(name);
 		if (data == null) {
@@ -223,11 +226,15 @@ namespace playerAPI {
 		data.attached = truth;
 	}
 
-	// local name
-	// get_if_player_attached = function(player)
-	// 	name = player:get_player_name()
-	// 	return(pool[name].attached)
-	// end
+	export function get_if_player_attached(player: ObjectRef): boolean {
+		const name: string = player.get_player_name();
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		return data.attached;
+	}
 
 	// local name
 	// player_is_sleeping = function(player,truth)
