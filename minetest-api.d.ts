@@ -1588,9 +1588,9 @@ declare global {
 
 	/** @noSelf **/ interface BoneOverrideProperty {
 		vec: Vec3;
-		interpolation: number;
+		interpolation?: number;
 		/** If set to false, it's relative to the animated property. */
-		absolute: boolean;
+		absolute?: boolean;
 	}
 
 	/** @noSelf **/ interface BoneOverride {
