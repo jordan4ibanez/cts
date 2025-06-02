@@ -4,26 +4,29 @@ namespace playerMechanics {
 	// local state_channels = {} // holds every player's channel
 
 	// local pool           = {}
-    
-	// // creates specific channels for players
+
+	// Creates specific channels for players
 	// local name
 	// local temp_pool
 
-	// core.register_on_joinplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	state_channels[name] = core.mod_channel_join(name..":player_movement_state")
-	// 	player:set_physics_override({
-	// 			jump   = 1.25,
-	// 			gravity= 1.25
-	// 	})
-	// 	pool[name] = {}
-	// 	temp_pool = pool[name]
-	// 	temp_pool.state        = 0
-	// 	temp_pool.old_state    = 0
-	// 	temp_pool.was_in_water = false
-	// 	temp_pool.swimming     = false
-	// 	temp_pool.swim_bumped  = core.get_us_time()/1000000
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		print("hi");
+		print(core.mod_channel_join(name + ":player_movement_state"));
+		// 	state_channels[name] = core.mod_channel_join(name..":player_movement_state")
+		// 	player:set_physics_override({
+		// 			jump   = 1.25,
+		// 			gravity= 1.25
+		// 	})
+		// 	pool[name] = {}
+		// 	temp_pool = pool[name]
+		// 	temp_pool.state        = 0
+		// 	temp_pool.old_state    = 0
+		// 	temp_pool.was_in_water = false
+		// 	temp_pool.swimming     = false
+		// 	temp_pool.swim_bumped  = core.get_us_time()/1000000
+	});
+
 	// // resets the player's state on death
 	// local name
 	// core.register_on_respawnplayer(function(player)
