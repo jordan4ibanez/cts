@@ -30,8 +30,7 @@ namespace playerAPI {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 
-		const object: ObjectRef | null = data.wield_item;
-
+		let object: ObjectRef | null = data.wield_item;
 		const item: string = player.get_wielded_item().get_name();
 
 		// 	if not object or (object and not object:get_luaentity()) then
