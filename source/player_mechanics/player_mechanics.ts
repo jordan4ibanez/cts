@@ -215,18 +215,20 @@ namespace playerMechanics {
 					player.set_eye_offset(vector.create3d({x:0,y:0,z:0}),vector.create3d({x:0,y:0,z:0}))
 				}
 		
-		// 		// running/swimming fov modifier
-		// 		if hunger > 6 and (temp_pool.state == 1 or temp_pool.state == 2) then
+				// Running/swimming fov modifier.
+				if (hunger > 6 && (data.state == 1 || data.state == 2)) {
 		// 			player:set_fov(1.25, true, 0.15)
 		// 			if temp_pool.state == 2 then
 		// 				player:set_physics_override({speed=1.75})
 		// 			elseif temp_pool.state == 1 then
 		// 				player:set_physics_override({speed=1.5})
 		// 			end
+
 		// 		elseif (not in_water and temp_pool.state ~= 1 and temp_pool.state ~= 2 and
 		// 		(temp_pool.old_state == 1 or temp_pool.old_state == 2)) or
 		// 		(in_water and temp_pool.state ~= 1 and temp_pool.state ~= 2 and temp_pool.state ~= 3 and
 		// 		(temp_pool.old_state == 1 or temp_pool.old_state == 2 or temp_pool.old_state == 3))then
+
 		// 			player:set_fov(1, true,0.15)
 		// 			player:set_physics_override({speed=1})
 		// 			send_running_cancellation(player,temp_pool.state==3) //preserve network data
