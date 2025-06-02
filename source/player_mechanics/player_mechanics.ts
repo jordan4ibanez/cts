@@ -156,13 +156,14 @@ namespace playerMechanics {
 		}
 
 		// Water movement data.
-		const head =
+		const head: boolean =
 			core.get_item_group(
 				playerMechanics.get_player_head_env(player),
 				"water"
 			) > 0;
 
-		// 	legs = core.get_item_group(get_player_legs_env(player),"water") > 0
+		const legs: boolean =
+			core.get_item_group(get_player_legs_env(player), "water") > 0;
 
 		// 	in_water = temp_pool.swimming
 		// 	//check if in water
