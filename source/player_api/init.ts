@@ -404,6 +404,10 @@ namespace playerAPI {
 	// 	})
 	// end
 
+    class PlayerHoldingItemEntity extends types.Entity {
+        name: string = "player_api:item";
+    }
+
 	// core.register_entity("player_api:item", {
 	// 	initial_properties = {
 	// 		hp_max           = 1,
