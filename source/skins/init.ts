@@ -27,26 +27,26 @@ namespace skins {
 		return pool.get(name) || "player.png";
 	}
 
-	// // Fancy debug wrapper to download an URL
-	// local function fetch_url(url, callback)
-	// 	http.fetch({
-	//         url = url,
-	//         timeout = 3,
-	//     }, function(result)
-	//         if result.succeeded then
-	//             if result.code == 404 then
-	//                 return(nil)
-	//             end
-	// 			if result.code ~= 200 then
-	//                 return(nil)
-	//             end
-	//             return callback(result.data)
-	//         else
-	//             return(nil)
-	//         end
-	//         return(nil)
-	// 	end)
-	// end
+	// Fancy debug wrapper to download an URL.
+	function fetch_url(url: string, callback: () => void) {
+		// 	http.fetch({
+		//         url = url,
+		//         timeout = 3,
+		//     }, function(result)
+		//         if result.succeeded then
+		//             if result.code == 404 then
+		//                 return(nil)
+		//             end
+		// 			if result.code ~= 200 then
+		//                 return(nil)
+		//             end
+		//             return callback(result.data)
+		//         else
+		//             return(nil)
+		//         end
+		//         return(nil)
+		// 	end)
+	}
 	// // gets github raw data of skin
 	// local new_temp_path
 	// local file
