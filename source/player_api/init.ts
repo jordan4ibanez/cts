@@ -576,9 +576,9 @@ namespace playerAPI {
 		set_all_properties(player);
 	});
 
-	// core.register_on_respawnplayer(function(player)
-	// 	create_force_update(player)
-	// end)
+	core.register_on_respawnplayer((player: ObjectRef) => {
+		create_force_update(player);
+	});
 
 	// // inject into global loop
 	// core.register_globalstep(function()
