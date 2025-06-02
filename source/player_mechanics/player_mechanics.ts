@@ -251,14 +251,14 @@ namespace playerMechanics {
 				// Preserve network data.
 				send_running_cancellation(player, false);
 			}
-			// 		//sneaking
-			// 		if temp_pool.state == 3 and in_water then
+			// Sneaking.
+					if (data.state == 3 && in_water) {
 			// 			//send_running_cancellation(player,false)
-			// 		elseif not in_water and temp_pool.state == 3 and temp_pool.old_state ~= 3 then
+					}else if (! in_water && data.state == 3 && data.old_state != 3) {
 			// 			player:set_eye_offset({x=0,y=-1,z=0},{x=0,y=0,z=0})
-			// 		elseif not in_water and temp_pool.old_state == 3 and temp_pool.state ~= 3 then
+					} else if (! in_water && data.old_state == 3 && data.state != 3) {
 			// 			player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
-			// 		end
+					}
 			// 		temp_pool.old_state    = state
 			// 		temp_pool.was_in_water = in_water
 			// 	// water movement
