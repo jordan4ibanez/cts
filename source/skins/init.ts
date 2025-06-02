@@ -11,7 +11,7 @@ namespace skins {
 	}
 
 	if (http == null) {
-		throw new Error(`HTTP access is required. Please add this to your core.conf:
+		throw new Error(`HTTP access is required. Please add this to your minetest.conf:
 	    secure.http_mods = skins
 	    Skins will not work without this.`);
 	}
