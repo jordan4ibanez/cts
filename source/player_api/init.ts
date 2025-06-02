@@ -120,6 +120,7 @@ namespace playerAPI {
 	}
 
 	class animation_list {
+		private constructor() {}
 		static stand: Vec2 = { x: 5, y: 5 };
 		static lay: Vec2 = { x: 162, y: 162 };
 		static walk: Vec2 = { x: 168, y: 187 };
