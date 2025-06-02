@@ -460,9 +460,8 @@ namespace playerAPI {
 			if (translated == null) {
 				throw new Error("Swim states missing false array index 0.");
 			}
-
-			// 		set_animation(player, translated.animation, translated.speed)
-			// 		return
+			set_animation(player, translated.animation, translated.speed);
+			return;
 		} else {
 			// 		if control.sneak then
 			// 			for k,i in pairs(control) do
