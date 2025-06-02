@@ -1,8 +1,4 @@
 namespace skins {
-	// local
-	// minetest,math,io,vector,table,pairs
-	// =
-	// minetest,math,io,vector,table,pairs
 	// local http = minetest.request_http_api()
 	// local id = "Lua Skins Updater"
 	// -- binary downloads are required
