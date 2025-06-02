@@ -47,14 +47,24 @@ namespace playerAPI {
 				);
 				return;
 			}
+
 			entity = object.get_luaentity() as PlayerHoldingItemEntity | null;
 
 			if (entity != null) {
 				entity.set_item(item);
-				// 			entity.wielder = name
-				// 			object:set_attach(player, "Right_Hand", vector.new(0,0,0), vector.new(0,0,0))
+				entity.wielder = name;
+				object.set_attach(
+					player,
+					"Right_Hand",
+					vector.create3d(0, 0, 0),
+					vector.create3d(0, 0, 0)
+				);
 				// 			temp_pool.wield_item = object
 			} else {
+				core.log(
+					LogLevel.warning,
+					`Wield LuaEntity for player [${name}] was null. Bailing out.`
+				);
 				return; // catch it
 			}
 		}
