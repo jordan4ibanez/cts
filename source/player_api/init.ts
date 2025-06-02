@@ -40,7 +40,10 @@ namespace playerAPI {
 			object == null ||
 			(object != null && object.get_luaentity() == null)
 		) {
-			object = core.add_entity(player.get_pos(), "crafter_player_api:item");
+			object = core.add_entity(
+				player.get_pos(),
+				"crafter_player_api:item"
+			);
 			if (object == null) {
 				core.log(
 					LogLevel.warning,
@@ -592,43 +595,41 @@ namespace playerAPI {
 		wielder: string = "";
 		itemstring: string = "";
 		set_item(item: string): void {}
-	
 
-	// local set_item = function(self, item)
-	// 	stack = ItemStack(item or self.itemstring)
-	// 	self.itemstring = stack:to_string()
-	// 	itemname = stack:is_known() and stack:get_name() or "unknown"
-	// 	def = core.registered_nodes[itemname]
-	// 	self.object:set_properties({
-	// 		textures = {itemname},
-	// 		wield_item = self.itemstring,
-	// 		glow = def and def.light_source,
-	// 	})
-	// end
+		initial_properties = {
+			hp_max: 1,
+			visual: EntityVisual.wielditem,
+			physical: false,
+			textures: [""],
+			automatic_rotate: 1.5,
+			is_visible: true,
+			pointable: false,
+			collide_with_objects: false,
+			collisionbox: [-0.21, -0.21, -0.21, 0.21, 0.21, 0.21],
+			selectionbox: [-0.21, -0.21, -0.21, 0.21, 0.21, 0.21],
+			visual_size: { x: 0.21, y: 0.21 },
+		};
 
-	
-	// 	initial_properties = {
-	// 		hp_max           = 1,
-	// 		visual           = "wielditem",
-	// 		physical         = false,
-	// 		textures         = {""},
-	// 		automatic_rotate = 1.5,
-	// 		is_visible       = true,
-	// 		pointable        = false,
-	// 		collide_with_objects = false,
-	// 		collisionbox = {-0.21, -0.21, -0.21, 0.21, 0.21, 0.21},
-	// 		selectionbox = {-0.21, -0.21, -0.21, 0.21, 0.21, 0.21},
-	// 		visual_size  = {x = 0.21, y = 0.21},
-	// 	},
-	// 	itemstring = "",
-	// 	set_item = set_item,
-	// 	on_step = function(self, dtime)
-	// 		if not self.wielder or (self.wielder and not core.get_player_by_name(self.wielder)) then
-	// 			self.object:remove()
-	// 		end
-	// 	end,
-	
-    }
+		// local set_item = function(self, item)
+		// 	stack = ItemStack(item or self.itemstring)
+		// 	self.itemstring = stack:to_string()
+		// 	itemname = stack:is_known() and stack:get_name() or "unknown"
+		// 	def = core.registered_nodes[itemname]
+		// 	self.object:set_properties({
+		// 		textures = {itemname},
+		// 		wield_item = self.itemstring,
+		// 		glow = def and def.light_source,
+		// 	})
+		// end
+
+		// 	itemstring = "",
+		// 	set_item = set_item,
+		// 	on_step = function(self, dtime)
+		// 		if not self.wielder or (self.wielder and not core.get_player_by_name(self.wielder)) then
+		// 			self.object:remove()
+		// 		end
+		// 	end,
+	}
 
 	utility.registerTSEntity(PlayerHoldingItemEntity);
 }
