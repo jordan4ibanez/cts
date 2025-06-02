@@ -303,25 +303,17 @@ namespace playerAPI {
 		if (data == null) {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
-
-		// 	if not temp_pool.old_controls then
-		// 		temp_pool.old_controls = control_table
-		// 		return(true)
-		// 	end
-
-		// 	if temp_pool.force_update then
-		// 		temp_pool.old_controls = control_table
-		// 		return(true)
-		// 	end
-
-		// 	for i,k in pairs(temp_pool.old_controls) do
-		// 		if control_table[i] ~= k then
-		// 			temp_pool.old_controls = control_table
-		// 			return(true)
-		// 		end
-		// 	end
-
-		// 	temp_pool.old_controls = control_table
+		if (data.force_update) {
+			data.old_controls = control_table;
+			return true;
+		}
+		for (const [i, k] of pairs(data.old_controls)) {
+			if (control_table[i] != k) {
+				data.old_controls = control_table;
+				return true;
+			}
+		}
+		data.old_controls = control_table;
 		return false;
 	}
 
