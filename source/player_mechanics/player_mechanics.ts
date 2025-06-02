@@ -156,7 +156,7 @@ namespace playerMechanics {
 		}
 
 		// Water movement data.
-			head = core.get_item_group(get_player_head_env(player),"water") > 0
+		// head = core.get_item_group(get_player_head_env(player), "water") > 0;
 
 		// 	legs = core.get_item_group(get_player_legs_env(player),"water") > 0
 
