@@ -594,7 +594,6 @@ namespace playerAPI {
 		name: string = "crafter_player_api:item";
 		wielder: string = "";
 		itemstring: string = "";
-		set_item(item: string): void {}
 
 		initial_properties = {
 			hp_max: 1,
@@ -610,20 +609,25 @@ namespace playerAPI {
 			visual_size: { x: 0.21, y: 0.21 },
 		};
 
-		// local set_item = function(self, item)
-		// 	stack = ItemStack(item or self.itemstring)
-		// 	self.itemstring = stack:to_string()
-		// 	itemname = stack:is_known() and stack:get_name() or "unknown"
-		// 	def = core.registered_nodes[itemname]
-		// 	self.object:set_properties({
-		// 		textures = {itemname},
-		// 		wield_item = self.itemstring,
-		// 		glow = def and def.light_source,
-		// 	})
-		// end
+		set_item(item: string) {
+			const stack = ItemStack(item || this.itemstring);
+			this.itemstring = stack.to_string();
+			const itemname: string =
+				(stack.is_known() && stack.get_name()) || "unknown";
+			const def: ItemDefinition | undefined =
+				core.registered_items[itemname];
+			if (def == null) {
+				throw new Error(
+					`Tried to set item to [${itemname}] which is undefined.`
+				);
+			}
+			this.object.set_properties({
+				textures: [itemname],
+				wield_item: this.itemstring,
+				glow: def.light_source,
+			});
+		}
 
-		// 	itemstring = "",
-		// 	set_item = set_item,
 		// 	on_step = function(self, dtime)
 		// 		if not self.wielder or (self.wielder and not core.get_player_by_name(self.wielder)) then
 		// 			self.object:remove()
