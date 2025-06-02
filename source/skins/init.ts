@@ -1,7 +1,6 @@
 namespace skins {
 	const http: HTTPApi | undefined | null =
 		core.request_http_api && core.request_http_api();
-	const id: string = "Typescript Skins Updater";
 
 	// Binary downloads are required.
 	if (!core.features.httpfetch_binary_data) {
@@ -16,14 +15,19 @@ namespace skins {
 	    Skins will not work without this.`);
 	}
 
-	// // only create classes if requirements are met
+	const id: string = "Typescript Skins Updater";
+	const temppath: string = core.get_worldpath();
+
+	// Only create classes if requirements are met.
 	// local pool = {}
-	// local temppath = core.get_worldpath()
+
 	// local name
+
 	// function get_skin(player)
 	//     name = player:get_player_name()
 	//     return(pool[name] or "player.png")
 	// end
+
 	// // Fancy debug wrapper to download an URL
 	// local function fetch_url(url, callback)
 	// 	http.fetch({
