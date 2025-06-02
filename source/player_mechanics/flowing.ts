@@ -6,32 +6,37 @@ namespace playerMechanics {
 			const flow_dir = flowLib.flow(player.get_pos());
 			const name: string = player.get_player_name();
 			if (flow_dir != null) {
-				// Buffer continuation.
-
 				let data: Vec3 | undefined = pool.get(name);
 
 				if (data != null) {
-					const c_flow: Vec3 = data;
+					// Flowing velocity buffer continuation.
 
+					print("continue");
 					let acceleration: Vec3 | null = null;
 
-					if (c_flow.x != 0) {
-						acceleration = vector.create3d(c_flow.x, 0, 0);
-					} else if (c_flow.z != 0) {
-						acceleration = vector.create3d(0, 0, c_flow.z);
+					if (data.x != 0) {
+						acceleration = vector.create3d(data.x, 0, 0);
+					} else if (data.z != 0) {
+						acceleration = vector.create3d(0, 0, data.z);
 					}
 					acceleration = acceleration as Vec3;
 
 					acceleration = vector.multiply(acceleration, 0.075);
+
 					player.add_velocity(acceleration);
+
 					const newvel: Vec3 = player.get_velocity();
+
 					if (newvel.x != 0 || newvel.z != 0) {
 						continue;
 					} else {
 						pool.delete(name);
 					}
 				} else {
+					// Flowing velocity buffer trigger.
+					print("hit");
 					const newFlow = vector.multiply(flow_dir, 10);
+
 					let acceleration: Vec3 | null = null;
 					if (newFlow.x != 0) {
 						acceleration = vector.create3d(newFlow.x, 0, 0);
@@ -40,6 +45,7 @@ namespace playerMechanics {
 					}
 					acceleration = acceleration as Vec3;
 					acceleration = vector.multiply(acceleration, 0.075);
+
 					player.add_velocity(acceleration);
 					pool.set(name, newFlow);
 				}
