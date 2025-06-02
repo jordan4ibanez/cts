@@ -825,29 +825,28 @@ declare global {
     direct_velocity_on_players = true,
     
     use_texture_alpha_string_modes = true,
-    -- degrotate param2 rotates in units of 1.5° instead of 2°
-    -- thus changing the range of values from 0-179 to 0-240 (5.5.0)
+    
+    
     degrotate_240_steps = true,
-    -- ABM supports min_y and max_y fields in definition (5.5.0)
+    
     abm_min_max_y = true,
-    -- dynamic_add_media supports passing a table with options (5.5.0)
+    
     dynamic_add_media_table = true,
-    -- particlespawners support texpools and animation of properties,
-    -- particle textures support smooth fade and scale animations, and
-    -- sprite-sheet particle animations can by synced to the lifetime
-    -- of individual particles (5.6.0)
+    
+    
+    
+    
     particlespawner_tweenable = true,
-    -- allows get_sky to return a table instead of separate values (5.6.0)
+    
     get_sky_as_table = true,
-    -- VoxelManip:get_light_data accepts an optional buffer argument (5.7.0)
+    
     get_light_data_buffer = true,
-    -- When using a mod storage backend that is not "files" or "dummy",
-    -- the amount of data in mod storage is not constrained by
-    -- the amount of RAM available. (5.7.0)
+    
+    
+    
     mod_storage_on_disk = true,
-    -- "zstd" method for compress/decompress (5.7.0)
+    
     compress_zstd = true,
-    -- Sound parameter tables support start_time (5.8.0)
     sound_params_start_time = true,
     -- New fields for set_physics_override: speed_climb, speed_crouch,
     -- liquid_fluidity, liquid_fluidity_smooth, liquid_sink,
