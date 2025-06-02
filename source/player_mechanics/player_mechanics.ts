@@ -120,7 +120,8 @@ namespace playerMechanics {
 		}
 	);
 
-	// Allows other mods to retrieve data for the game to use.
+	// These functions allow other mods to retrieve data for the game to use.
+
 	export function get_player_state(player: ObjectRef): number {
 		const name: string = player.get_player_name();
 		const data: PlayerState | undefined = pool.get(name);
