@@ -1,20 +1,20 @@
 namespace skins {
 	// local http = core.request_http_api()
 	// local id = "Lua Skins Updater"
-	// -- binary downloads are required
+	// // binary downloads are required
 	// if not core.features.httpfetch_binary_data then
 	//     core.log("error","Outdated Minetest Engine detected. Skins mod will not load. This crashes armor.")
 	//     return(nil)
 	// end
 	// if not http then
-	//     core.log("error","---------------------------------------------------------------")
+	//     core.log("error","//////////////////////////////////////////////////////////////-")
 	//     core.log("error","HTTP access is required. Please add this to your core.conf:")
 	//     core.log("error","secure.http_mods = skins")
 	//     core.log("error","Skins will not work without this")
-	//     core.log("error","---------------------------------------------------------------")
+	//     core.log("error","//////////////////////////////////////////////////////////////-")
 	//     return(nil)
 	// end
-	// -- only create classes if requirements are met
+	// // only create classes if requirements are met
 	// local pool = {}
 	// local temppath = core.get_worldpath()
 	// local name
@@ -22,7 +22,7 @@ namespace skins {
 	//     name = player:get_player_name()
 	//     return(pool[name] or "player.png")
 	// end
-	// -- Fancy debug wrapper to download an URL
+	// // Fancy debug wrapper to download an URL
 	// local function fetch_url(url, callback)
 	// 	http.fetch({
 	//         url = url,
@@ -42,7 +42,7 @@ namespace skins {
 	//         return(nil)
 	// 	end)
 	// end
-	// -- gets github raw data of skin
+	// // gets github raw data of skin
 	// local new_temp_path
 	// local file
 	// local player
@@ -57,7 +57,7 @@ namespace skins {
 	//             file:write(data)
 	//             file:close()
 	//             core.dynamic_add_media(new_temp_path)
-	//             file = "skin_"..name..".png" -- reuse the data
+	//             file = "skin_"..name..".png" // reuse the data
 	//             player = core.get_player_by_name(name)
 	//             player:set_properties({textures = {file, "blank_skin.png"}})
 	//             pool[name] = file
@@ -66,11 +66,11 @@ namespace skins {
 	//     end)
 	// end
 	// local pi = math.pi
-	// -- simple degrees calculation
+	// // simple degrees calculation
 	// local degrees = function(yaw)
 	//     return(yaw*180.0/pi)
 	// end
-	// -- built in engine trigonometry
+	// // built in engine trigonometry
 	// local pitch = function(pos,pos2)
 	//     return(
 	//         math.floor(
@@ -98,7 +98,7 @@ namespace skins {
 	//         )
 	//     )
 	// end
-	// -- calculation to calculate the yaw of the old position
+	// // calculation to calculate the yaw of the old position
 	// local cape_yaw_calculation = function(pos,pos2)
 	//     return(
 	//         core.dir_to_yaw(
@@ -117,7 +117,7 @@ namespace skins {
 	//         )
 	//     )
 	// end
-	// -- corrects degrees
+	// // corrects degrees
 	// yaw_correction = function(yaw)
 	//     if yaw < -180 then
 	//         yaw = yaw + 360
@@ -126,16 +126,16 @@ namespace skins {
 	//     end
 	//     return(yaw)
 	// end
-	// -- returns if the cape can be "blown"
+	// // returns if the cape can be "blown"
 	// local cape_yaw
 	// local move_cape = function(yaw,yaw2)
 	//     cape_yaw = yaw_correction(degrees(yaw-yaw2))
 	//     return(cape_yaw >= -90 and cape_yaw <= 90)
 	// end
-	// -- applies movement to the cape
+	// // applies movement to the cape
 	// local cape_smoothing = function(object,current,cape_goal)
 	//     if current ~= cape_goal then
-	//         if math.abs(current-cape_goal) <= 3 then --this stops jittering
+	//         if math.abs(current-cape_goal) <= 3 then //this stops jittering
 	//             object:set_animation({x=cape_goal,y=cape_goal}, 0, 0, false)
 	//         elseif current < cape_goal then
 	//             object:set_animation({x=current+3,y=current+3}, 0, 0, false)
@@ -155,12 +155,12 @@ namespace skins {
 	// cape_object.texture_set = false
 	// cape_object.on_activate = function(self)
 	//     core.after(0,function()
-	//          --don't waste any cpu
+	//          //don't waste any cpu
 	//         if not self.owner or not self.owner:is_player() then
 	//             self.object:remove()
 	//             return
 	//         end
-	//         --set cape texture
+	//         //set cape texture
 	//         if self.texture_type and not self.texture_set then
 	//             self.object:set_properties({textures={self.texture_type}})
 	//             self.texture_type = nil
@@ -179,11 +179,11 @@ namespace skins {
 	// cape_object.on_step = function(self,dtime)
 	//     object            = self.object
 	//     pos               = object:get_pos()
-	//     current_animation = object:get_animation() -- if fails assign other values to nil
+	//     current_animation = object:get_animation() // if fails assign other values to nil
 	//     current_animation = current_animation.x
 	//     goal              = nil
 	//     if core.is_player(self.owner) and self.old_pos then
-	//         --do not allow cape to flutter if player is moving backwards
+	//         //do not allow cape to flutter if player is moving backwards
 	//         cape_yaw = cape_yaw_calculation(pos,self.old_pos)
 	//         body_yaw = self.owner:get_look_horizontal()
 	//         if move_cape(cape_yaw,body_yaw) then
@@ -223,7 +223,7 @@ namespace skins {
 	//     ufa        = true,
 	//     monte48    = true,
 	// }
-	// -- simple check if has cape
+	// // simple check if has cape
 	// local name
 	// local temp_cape
 	// local get_texture = function(player)
@@ -241,7 +241,7 @@ namespace skins {
 	//     end
 	//     return(temp_cape)
 	// end
-	// -- adds cape to player
+	// // adds cape to player
 	// local name
 	// local temp_pool
 	// local texture
@@ -262,7 +262,7 @@ namespace skins {
 	//         end
 	//     end
 	// end
-	// -- looping check to see if cape deleted
+	// // looping check to see if cape deleted
 	// local player
 	// local function readd_capes()
 	//     for name,def in pairs(pool2) do
