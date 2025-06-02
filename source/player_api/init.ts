@@ -284,9 +284,9 @@ namespace playerAPI {
 		const swimming: boolean = playerMechanics.is_player_swimming(player);
 		let pitch: number = degrees(player.get_look_vertical()) * -1;
 		if (swimming) {
-			pitch = pitch + 90;
+			pitch += 90;
 		} else if (sneak) {
-			pitch = pitch + 15;
+			pitch += 15;
 		}
 		player.set_bone_override("Head", {
 			position: { vec: vector.create3d(0, 6.3, 0), absolute: true },
