@@ -412,48 +412,55 @@ namespace playerAPI {
 		player: ObjectRef,
 		control: PlayerControlObject
 	): void {
-		// 	name = player:get_player_name()
-		// 	temp_pool = pool[name]
-		// 	state = get_player_state(player)
-		// 	swimming = is_player_swimming(player)
-		// 	mouse = (control.LMB or control.RMB)
-		// 	if swimming then
-		// 		for k,i in pairs(control) do
-		// 			if i and translation_table.swim.keys[k] then
-		// 				translated = translation_table.swim.states[true]
-		// 				set_animation(player, translated.animation, translated.speed)
-		// 				return
-		// 			end
-		// 		end
-		// 		translated = translation_table.swim.states[false]
-		// 		set_animation(player, translated.animation, translated.speed)
-		// 		return
-		// 	else
-		// 		if control.sneak then
-		// 			for k,i in pairs(control) do
-		// 				if i and translation_table.sneak.keys[k] then
-		// 					translated = translation_table.sneak.states[true][mouse]
-		// 					set_animation(player, translated.animation, translated.speed)
-		// 					return
-		// 				end
-		// 			end
-		// 			translated = translation_table.sneak.states[false][mouse]
-		// 			set_animation(player, translated.animation, translated.speed)
-		// 			return
-		// 		else
-		// 			for k,i in pairs(control) do
-		// 				if i and translation_table.walk.keys[k] then
-		// 					translated = translation_table.walk.states[mouse][state]
-		// 					if translated then
-		// 						set_animation(player, translated.animation, translated.speed)
-		// 						return
-		// 					end
-		// 				end
-		// 			end
-		// 		end
-		// 		translated = translation_table.stand[mouse]
-		// 		set_animation(player, translated.animation, translated.speed)
-		// 	end
+		const name: string = player.get_player_name();
+
+		const data: ApiPlayerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		const state: number = playerMechanics.get_player_state(player);
+		const swimming: boolean = playerMechanics.is_player_swimming(player);
+
+		let mouse: boolean = control.LMB || control.RMB;
+
+		if (swimming) {
+			// 		for k,i in pairs(control) do
+			// 			if i and translation_table.swim.keys[k] then
+			// 				translated = translation_table.swim.states[true]
+			// 				set_animation(player, translated.animation, translated.speed)
+			// 				return
+			// 			end
+			// 		end
+			// 		translated = translation_table.swim.states[false]
+			// 		set_animation(player, translated.animation, translated.speed)
+			// 		return
+		} else {
+			// 		if control.sneak then
+			// 			for k,i in pairs(control) do
+			// 				if i and translation_table.sneak.keys[k] then
+			// 					translated = translation_table.sneak.states[true][mouse]
+			// 					set_animation(player, translated.animation, translated.speed)
+			// 					return
+			// 				end
+			// 			end
+			// 			translated = translation_table.sneak.states[false][mouse]
+			// 			set_animation(player, translated.animation, translated.speed)
+			// 			return
+			// 		else
+			// 			for k,i in pairs(control) do
+			// 				if i and translation_table.walk.keys[k] then
+			// 					translated = translation_table.walk.states[mouse][state]
+			// 					if translated then
+			// 						set_animation(player, translated.animation, translated.speed)
+			// 						return
+			// 					end
+			// 				end
+			// 			end
+			// 		end
+			// 		translated = translation_table.stand[mouse]
+			// 		set_animation(player, translated.animation, translated.speed)
+		}
 	}
 
 	// // translates player movement to animation
