@@ -7,11 +7,11 @@ namespace skins {
 	//     return(nil)
 	// end
 	// if not http then
-	//     core.log("error","//////////////////////////////////////////////////////////////-")
+	//     core.log("error","///////////////////////////////////////////////////////////////")
 	//     core.log("error","HTTP access is required. Please add this to your core.conf:")
 	//     core.log("error","secure.http_mods = skins")
 	//     core.log("error","Skins will not work without this")
-	//     core.log("error","//////////////////////////////////////////////////////////////-")
+	//     core.log("error","///////////////////////////////////////////////////////////////")
 	//     return(nil)
 	// end
 	// // only create classes if requirements are met
