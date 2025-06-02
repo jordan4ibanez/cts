@@ -1,5 +1,6 @@
 namespace skins {
-	const http: HTTPApi | undefined | null = core.request_http_api && core.request_http_api();
+	const http: HTTPApi | undefined | null =
+		core.request_http_api && core.request_http_api();
 	const id: string = "Typescript Skins Updater";
 
 	// Binary downloads are required.
