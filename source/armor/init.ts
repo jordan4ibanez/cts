@@ -5,11 +5,7 @@ namespace armor {
 	const random = math.random;
 
 	export function recalculate_armor(player: ObjectRef) {
-		if (player == null || (player != null && !player.is_player())) {
-			return;
-		}
-
-		//     inv = player:get_inventory()
+		const inv: InvRef = player.get_inventory();
 
 		//     player_skin = get_skin(player)
 		//     armor_skin = "blank_skin.png"
