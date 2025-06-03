@@ -71,49 +71,39 @@ namespace armor {
 		player.set_properties({ textures: [player_skin, armor_skin] });
 	}
 
-	// local inv
-	// local armor_absorbtion
-	// local level
-	// local defense
-	// local stack
-	// function calculate_armor_absorbtion(player)
-	//     if not player or (player and not player:is_player()) then return end
-
-	//     inv = player:get_inventory()
-	//     armor_absorbtion = 0
-
-	//     stack = inv:get_stack("armor_head",1):get_name()
-	//     if stack ~= "" then
-	//         level = get_item_group(stack,"armor_level")
-	//         defense = get_item_group(stack,"armor_defense")
-	//         armor_absorbtion = armor_absorbtion + (level*defense)
-	//     end
-
-	//     stack = inv:get_stack("armor_torso",1):get_name()
-	//     if stack ~= "" then
-	//         level = get_item_group(stack,"armor_level")
-	//         defense = get_item_group(stack,"armor_defense")
-	//         armor_absorbtion = armor_absorbtion + (level*defense)
-	//     end
-
-	//     stack = inv:get_stack("armor_legs",1):get_name()
-	//     if stack ~= "" then
-	//         level = get_item_group(stack,"armor_level")
-	//         defense = get_item_group(stack,"armor_defense")
-	//         armor_absorbtion = armor_absorbtion + (level*defense)
-	//     end
-
-	//     stack = inv:get_stack("armor_feet",1):get_name()
-	//     if stack ~= "" then
-	//         level = get_item_group(stack,"armor_level")
-	//         defense = get_item_group(stack,"armor_defense")
-	//         armor_absorbtion = armor_absorbtion + (level*defense)
-	//     end
-	//     if armor_absorbtion > 0 then
-	//         armor_absorbtion = ceil(armor_absorbtion/4)
-	//     end
-	//     return(armor_absorbtion)
-	// end
+	export function calculate_armor_absorbtion(player: ObjectRef) {
+		//     if not player or (player and not player:is_player()) then return end
+		//     inv = player:get_inventory()
+		//     armor_absorbtion = 0
+		//     stack = inv:get_stack("armor_head",1):get_name()
+		//     if stack ~= "" then
+		//         level = get_item_group(stack,"armor_level")
+		//         defense = get_item_group(stack,"armor_defense")
+		//         armor_absorbtion = armor_absorbtion + (level*defense)
+		//     end
+		//     stack = inv:get_stack("armor_torso",1):get_name()
+		//     if stack ~= "" then
+		//         level = get_item_group(stack,"armor_level")
+		//         defense = get_item_group(stack,"armor_defense")
+		//         armor_absorbtion = armor_absorbtion + (level*defense)
+		//     end
+		//     stack = inv:get_stack("armor_legs",1):get_name()
+		//     if stack ~= "" then
+		//         level = get_item_group(stack,"armor_level")
+		//         defense = get_item_group(stack,"armor_defense")
+		//         armor_absorbtion = armor_absorbtion + (level*defense)
+		//     end
+		//     stack = inv:get_stack("armor_feet",1):get_name()
+		//     if stack ~= "" then
+		//         level = get_item_group(stack,"armor_level")
+		//         defense = get_item_group(stack,"armor_defense")
+		//         armor_absorbtion = armor_absorbtion + (level*defense)
+		//     end
+		//     if armor_absorbtion > 0 then
+		//         armor_absorbtion = ceil(armor_absorbtion/4)
+		//     end
+		//     return(armor_absorbtion)
+	}
 
 	// local level
 	// function set_armor_gui(player)
