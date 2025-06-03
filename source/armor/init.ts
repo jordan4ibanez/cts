@@ -272,9 +272,10 @@ namespace armor {
 
 	for (const [material_id,material] of pairs(materials)) {
 	    for (const [armor_id,armor] of pairs(armor_type)) {
-	//         //print(material_id,material,"|",armor_id,armor)
-	//         core.register_tool("armor:"..material_id.."_"..armor_id,{
-	//             description = material_id:gsub("^%l", string.upper).." "..armor_id:gsub("^%l", string.upper),
+	        //print(material_id,material,"|",armor_id,armor)
+			
+	//         core.register_tool("armor:"+material_id+"_"+armor_id,{
+	//             description = material_id:gsub("^%l", string.upper)+" "+armor_id:gsub("^%l", string.upper),
 
 	//             groups = {
 	//                 armor         = 1,
@@ -285,9 +286,9 @@ namespace armor {
 	//                 leggings      = bool_int(armor_id == "leggings"),
 	//                 boots         = bool_int(armor_id == "boots"),
 	//             },
-	//             inventory_image = material_id.."_"..armor_id.."_item.png",
+	//             inventory_image = material_id+"_"+armor_id+"_item.png",
 	//             stack_max = 1,
-	//             wearing_texture = material_id.."_"..armor_id..".png",
+	//             wearing_texture = material_id+"_"+armor_id+".png",
 	//             tool_capabilities = {
 	//                 full_punch_interval = 0,
 	//                 max_drop_level = 0,
@@ -302,43 +303,43 @@ namespace armor {
 
 	//         if armor_id == "helmet" then
 	//             core.register_craft({
-	//                 output = "armor:"..material_id.."_"..armor_id,
+	//                 output = "armor:"+material_id+"_"+armor_id,
 	//                 recipe = {
-	//                     {"main:"..material_id, "main:"..material_id, "main:"..material_id},
-	//                     {"main:"..material_id, ""                  , "main:"..material_id},
+	//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
+	//                     {"main:"+material_id, ""                  , "main:"+material_id},
 	//                     {""                  , ""                  , ""                  }
 	//                 }
 	//             })
 	//         elseif armor_id == "chestplate" then
 	//             core.register_craft({
-	//                 output = "armor:"..material_id.."_"..armor_id,
+	//                 output = "armor:"+material_id+"_"+armor_id,
 	//                 recipe = {
-	//                     {"main:"..material_id, ""                  , "main:"..material_id},
-	//                     {"main:"..material_id, "main:"..material_id, "main:"..material_id},
-	//                     {"main:"..material_id, "main:"..material_id, "main:"..material_id}
+	//                     {"main:"+material_id, ""                  , "main:"+material_id},
+	//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
+	//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id}
 	//                 }
 	//             })
 	//         elseif armor_id == "leggings" then
 	//             core.register_craft({
-	//                 output = "armor:"..material_id.."_"..armor_id,
+	//                 output = "armor:"+material_id+"_"+armor_id,
 	//                 recipe = {
-	//                     {"main:"..material_id, "main:"..material_id, "main:"..material_id},
-	//                     {"main:"..material_id, ""                  , "main:"..material_id},
-	//                     {"main:"..material_id, ""                  , "main:"..material_id}
+	//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
+	//                     {"main:"+material_id, ""                  , "main:"+material_id},
+	//                     {"main:"+material_id, ""                  , "main:"+material_id}
 	//                 }
 	//             })
 	//         elseif armor_id == "boots" then
 	//             core.register_craft({
-	//                 output = "armor:"..material_id.."_"..armor_id,
+	//                 output = "armor:"+material_id+"_"+armor_id,
 	//                 recipe = {
 	//                     {""                  , "", ""                  },
-	//                     {"main:"..material_id, "", "main:"..material_id},
-	//                     {"main:"..material_id, "", "main:"..material_id}
+	//                     {"main:"+material_id, "", "main:"+material_id},
+	//                     {"main:"+material_id, "", "main:"+material_id}
 	//                 }
 	//             })
-	//             core.register_node("armor:"..material_id.."_"..armor_id.."particletexture", {
+	//             core.register_node("armor:"+material_id+"_"+armor_id+"particletexture", {
 	//                 description = "NIL",
-	//                 tiles = {material_id.."_"..armor_id.."_item.png"},
+	//                 tiles = {material_id+"_"+armor_id+"_item.png"},
 	//                 groups = {},
 	//                 drop = "",
 	//                 drawtype = "allfaces",
