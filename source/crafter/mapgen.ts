@@ -1,3 +1,4 @@
+namespace crafter{
 core.register_alias("mapgen_stone", "crafter:stone");
 core.register_alias("mapgen_dirt", "crafter:dirt");
 core.register_alias("mapgen_dirt_with_grass", "crafter:grass");
@@ -184,3 +185,4 @@ core.register_decoration({
 	rotation: "random",
 	place_offset_y: 1,
 });
+}
