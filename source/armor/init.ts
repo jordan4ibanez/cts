@@ -21,7 +21,7 @@ namespace armor {
 				if (skinElement == null) {
 					throw new Error(`Wearing texture for [${stack}] is null.`);
 				}
-				// todo: why is this in the player skin?
+				// This is probably like this because the skin is broken.
 				player_skin += "^" + skinElement;
 			}
 		}
