@@ -392,7 +392,13 @@ namespace playerMechanics {
 		damage: number,
 		dtime: number
 	): void {
-		// 	environment_class.tick = environment_class.get_data(player,{"suffocation_ticker"})
+		const name: string = player.get_player_name();
+		const data: PlayerEnvironment | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error("Player data became null.");
+		}
+		const tick: number = data.suffocation_ticker;
+
 		// 	if environment_class.tick then
 		// 		environment_class.tick = environment_class.tick.suffocation_ticker
 		// 	end
