@@ -1,14 +1,9 @@
 namespace armor {
 	const get_item_group = core.get_item_group;
 
-	// local ceil  = math.ceil
-	// local random = math.random
+	const ceil = math.ceil;
+	const random = math.random;
 
-	// local inv
-	// local player_skin
-	// local armor_skin
-	// local stack
-	// local skin_element
 	// function recalculate_armor(player)
 
 	//     if not player or (player and not player:is_player()) then return end
