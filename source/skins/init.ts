@@ -330,12 +330,15 @@ namespace skins {
 		}
 		core.after(
 			0,
-			() => {
-				fetch_function(name);
+			(player: ObjectRef) => {
+				if (!player.is_player()) {
+					return;
+				}
+				fetch_function(player.get_player_name());
 				// todo: depends on crafter armor
 				// recalculate_armor(player)
 			},
-			name
+			player
 		);
 	});
 
