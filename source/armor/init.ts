@@ -71,12 +71,14 @@ namespace armor {
 		player.set_properties({ textures: [player_skin, armor_skin] });
 	}
 
-	export function calculate_armor_absorbtion(player: ObjectRef) {
+	export function calculate_armor_absorbtion(player: ObjectRef): number {
 		const inv: InvRef = player.get_inventory();
 
 		let armor_absorbtion: number = 0;
 
-		{ //? Helmet.
+		{
+			//? Helmet.
+
 			const stack: string = inv.get_stack("armor_head", 1).get_name();
 			if (stack != "") {
 				const level: number = get_item_group(stack, "armor_level");
@@ -85,28 +87,43 @@ namespace armor {
 			}
 		}
 
-		//     stack = inv:get_stack("armor_torso",1):get_name()
-		//     if stack ~= "" then
-		//         level = get_item_group(stack,"armor_level")
-		//         defense = get_item_group(stack,"armor_defense")
-		//         armor_absorbtion = armor_absorbtion + (level*defense)
-		//     end
-		//     stack = inv:get_stack("armor_legs",1):get_name()
-		//     if stack ~= "" then
-		//         level = get_item_group(stack,"armor_level")
-		//         defense = get_item_group(stack,"armor_defense")
-		//         armor_absorbtion = armor_absorbtion + (level*defense)
-		//     end
-		//     stack = inv:get_stack("armor_feet",1):get_name()
-		//     if stack ~= "" then
-		//         level = get_item_group(stack,"armor_level")
-		//         defense = get_item_group(stack,"armor_defense")
-		//         armor_absorbtion = armor_absorbtion + (level*defense)
-		//     end
-		//     if armor_absorbtion > 0 then
-		//         armor_absorbtion = ceil(armor_absorbtion/4)
-		//     end
-		//     return(armor_absorbtion)
+		{
+			//? Chest plate.
+
+			const stack: string = inv.get_stack("armor_torso", 1).get_name();
+			if (stack != "") {
+				const level: number = get_item_group(stack, "armor_level");
+				const defense: number = get_item_group(stack, "armor_defense");
+				armor_absorbtion += level * defense;
+			}
+		}
+
+		{
+			//? Leggings.
+
+			const stack: string = inv.get_stack("armor_legs", 1).get_name();
+			if (stack != "") {
+				const level: number = get_item_group(stack, "armor_level");
+				const defense: number = get_item_group(stack, "armor_defense");
+				armor_absorbtion += level * defense;
+			}
+		}
+
+		{
+			//? Boots.
+
+			const stack: string = inv.get_stack("armor_feet", 1).get_name();
+			if (stack != "") {
+				const level: number = get_item_group(stack, "armor_level");
+				const defense: number = get_item_group(stack, "armor_defense");
+				armor_absorbtion += level * defense;
+			}
+		}
+
+		if (armor_absorbtion > 0) {
+			armor_absorbtion = ceil(armor_absorbtion / 4);
+		}
+		return armor_absorbtion;
 	}
 
 	// local level
