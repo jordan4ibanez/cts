@@ -972,8 +972,11 @@ declare global {
 		description?: string;
 		short_description?: string;
 		groups?: Dictionary<string, number>;
+
 		//! Note: crafter custom.
 		mob_hit_wear?: number;
+		wearing_texture?: string;
+
 		inventory_image?: string;
 		inventory_overlay?: string;
 		wield_image?: string;
