@@ -152,31 +152,29 @@ namespace armor {
 		}
 	}
 
-	// local inv
-	// core.register_on_joinplayer(function(player)
-	// 	hud_manager.add_hud(player,"armor_bg",{
-	// 		hud_elem_type = "statbar",
-	// 		position = {x = 0.5, y = 1},
-	// 		text = "armor_icon_bg.png",
-	// 		number = 20,
-	// 		size = {x = 24, y = 24},
-	// 		offset = {x = (-10 * 24) - 25, y = -(48 + 50 + 39)},
-	// 	})
-	// 	hud_manager.add_hud(player,"armor_fg",{
-	// 		hud_elem_type = "statbar",
-	// 		position = {x = 0.5, y = 1},
-	// 		text = "armor_icon.png",
-	// 		number = calculate_armor_absorbtion(player),
-	// 		size = {x = 24, y = 24},
-	// 		offset = {x = (-10 * 24) - 25, y = -(48 + 50 + 39)},
-	// 	})
-
-	//     inv = player:get_inventory()
-	//     inv:set_size("armor_head" ,1)
-	//     inv:set_size("armor_torso",1)
-	//     inv:set_size("armor_legs" ,1)
-	//     inv:set_size("armor_feet" ,1)
-	// end)
+	core.register_on_joinplayer((player) => {
+		// 	hud_manager.add_hud(player,"armor_bg",{
+		// 		hud_elem_type = "statbar",
+		// 		position = {x = 0.5, y = 1},
+		// 		text = "armor_icon_bg.png",
+		// 		number = 20,
+		// 		size = {x = 24, y = 24},
+		// 		offset = {x = (-10 * 24) - 25, y = -(48 + 50 + 39)},
+		// 	})
+		// 	hud_manager.add_hud(player,"armor_fg",{
+		// 		hud_elem_type = "statbar",
+		// 		position = {x = 0.5, y = 1},
+		// 		text = "armor_icon.png",
+		// 		number = calculate_armor_absorbtion(player),
+		// 		size = {x = 24, y = 24},
+		// 		offset = {x = (-10 * 24) - 25, y = -(48 + 50 + 39)},
+		// 	})
+		//     inv = player:get_inventory()
+		//     inv:set_size("armor_head" ,1)
+		//     inv:set_size("armor_torso",1)
+		//     inv:set_size("armor_legs" ,1)
+		//     inv:set_size("armor_feet" ,1)
+	});
 
 	// core.register_on_dieplayer(function(player)
 	//     set_armor_gui(player)
