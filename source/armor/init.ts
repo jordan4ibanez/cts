@@ -209,8 +209,6 @@ namespace armor {
 	);
 
 	// Only allow players to put armor in the right slots to stop exploiting chestplates.
-	// local stack
-	// local item
 	// core.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
 	//     if inventory_info.to_list == "armor_head" then
 	//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
