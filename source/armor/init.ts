@@ -7,39 +7,39 @@ namespace armor {
 	export function recalculate_armor(player: ObjectRef) {
 		const inv: InvRef = player.get_inventory();
 
-		const player_skin: string = skins.get_skin(player);
+		let player_skin: string = skins.get_skin(player);
 
 		const armor_skin = "blank_skin.png";
 
-		const stack: string = inv.get_stack("armor_head", 1).get_name();
-
-		if (stack != "" && get_item_group(stack, "helmet") > 0) {
-			const skinElement: string | undefined =
-				core.registered_items[stack]?.wearing_texture;
-			if (skinElement == null) {
-				throw new Error(`Wearing texture for [${stack}] is null.`);
+		{
+			//? Helmet.
+			const stack: string = inv.get_stack("armor_head", 1).get_name();
+			if (stack != "" && get_item_group(stack, "helmet") > 0) {
+				const skinElement: string | undefined =
+					core.registered_items[stack]?.wearing_texture;
+				if (skinElement == null) {
+					throw new Error(`Wearing texture for [${stack}] is null.`);
+				}
+				player_skin = player_skin + "^" + skinElement;
 			}
-
-			// const skin_element = get_itemdef(stack, "wearing_texture")
-			//         player_skin = player_skin.."^"..skin_element
 		}
 
 		//     stack = inv:get_stack("armor_torso",1):get_name()
 		//     if stack ~= "" and get_item_group(stack,"chestplate") > 0 then
 		//         skin_element = get_itemdef(stack, "wearing_texture")
-		//         armor_skin = armor_skin.."^"..skin_element
+		//         armor_skin = armor_skin+"^"+skin_element
 		//     end
 
 		//     stack = inv:get_stack("armor_legs",1):get_name()
 		//     if stack ~= "" and get_item_group(stack,"leggings") > 0 then
 		//         skin_element = get_itemdef(stack, "wearing_texture")
-		//         armor_skin = armor_skin.."^"..skin_element
+		//         armor_skin = armor_skin+"^"+skin_element
 		//     end
 
 		//     stack = inv:get_stack("armor_feet",1):get_name()
 		//     if stack ~= "" and get_item_group(stack,"boots") > 0 then
 		//         skin_element = get_itemdef(stack, "wearing_texture")
-		//         armor_skin = armor_skin.."^"..skin_element
+		//         armor_skin = armor_skin+"^"+skin_element
 		//     end
 		//     player:set_properties({textures = {player_skin,armor_skin}})
 	}
