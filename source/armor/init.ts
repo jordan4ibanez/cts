@@ -237,7 +237,7 @@ namespace armor {
 						inventory_info.from_index
 					);
 					const item: string = stack.get_name();
-					if (get_item_group(item, "helmet") == 0) {
+					if (get_item_group(item, group[i]) == 0) {
 						return 0;
 					}
 				}
