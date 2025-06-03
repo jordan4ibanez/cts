@@ -141,12 +141,15 @@ namespace armor {
 			}
 		}
 
-		//     if recalc == true then
-		//         core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=random(80,100)/100})
-		//         recalculate_armor(player)
-		//         set_armor_gui(player)
-		//         //do particles too
-		//     end
+		if (recalc) {
+			core.sound_play("armor_break", {
+				object: player,
+				gain: 1,
+				pitch: random(80, 100) / 100,
+			});
+			recalculate_armor(player);
+			set_armor_gui(player);
+		}
 	}
 
 	// local inv
