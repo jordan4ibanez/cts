@@ -1,3 +1,4 @@
+namespace crafter {
 const creative_mode: boolean = core.settings.get_bool("creative_mode") || false;
 
 // Make stack max 1000 for everything
@@ -36,3 +37,4 @@ core.register_on_mods_loaded(() => {
 		}
 	}
 });
+}
