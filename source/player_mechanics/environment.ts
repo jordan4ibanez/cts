@@ -424,14 +424,14 @@ namespace playerMechanics {
 			const swimming: boolean = is_player_swimming(player);
 
 			if (swimming) {
-				// 	--this is where the legs would be
-				// 	temp_pool.under = minetest.get_node(pos).name
-				// 	--legs and head are in the same position
-				// 	pos.y = pos.y + 1.35
-				// 	temp_pool.legs = minetest.get_node(pos).name
-				// 	temp_pool.head = minetest.get_node(pos).name
-				// 	pos.y = pos.y + 0.7
-				// 	temp_pool.swim_check = minetest.get_node(pos).name
+				// This is where the legs would be.
+				data.under = core.get_node(pos).name;
+				// Legs and head are in the same position.
+				pos.y = pos.y + 1.35;
+				data.legs = core.get_node(pos).name;
+				data.head = core.get_node(pos).name;
+				pos.y = pos.y + 0.7;
+				data.swim_check = core.get_node(pos).name;
 			} else {
 				pos.y = pos.y - 0.1;
 				data.under = core.get_node(pos).name;
