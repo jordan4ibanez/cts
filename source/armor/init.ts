@@ -180,20 +180,23 @@ namespace armor {
 		set_armor_gui(player);
 	});
 
-	// local acceptable = {
-	//     ["armor_head"]  = true,
-	//     ["armor_torso"] = true,
-	//     ["armor_legs"]  = true,
-	//     ["armor_feet"]  = true,
-	// }
-	// core.register_on_player_inventory_action(function(player, action, inventory, inventory_info)
-	//     if acceptable[inventory_info.from_list] or acceptable[inventory_info.to_list] then
-	//         core.after(0,function()
-	//             recalculate_armor(player)
-	//             set_armor_gui(player)
-	//         end)
-	//     end
-	// end)
+	const acceptable = new Set<string>([
+		"armor_head",
+		"armor_torso",
+		"armor_legs",
+		"armor_feet",
+	]);
+
+	core.register_on_player_inventory_action(
+		(player, action, inventory, inventory_info) => {
+			//     if acceptable[inventory_info.from_list] or acceptable[inventory_info.to_list] then
+			//         core.after(0,function()
+			//             recalculate_armor(player)
+			//             set_armor_gui(player)
+			//         end)
+			//     end
+		}
+	);
 
 	// //only allow players to put armor in the right slots to stop exploiting chestplates
 	// local stack
