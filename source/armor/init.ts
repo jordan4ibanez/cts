@@ -96,17 +96,15 @@ namespace armor {
 		return armor_absorbtion;
 	}
 
-	// local level
-	// function set_armor_gui(player)
-	//     if not player or (player and not player:is_player()) then return end
-	//     level = calculate_armor_absorbtion(player)
-	//     hud_manager.change_hud({
-	// 		player    =  player ,
-	// 		hud_name  = "armor_fg",
-	// 		element   = "number",
-	// 		data      =  level
-	// 	})
-	// end
+	export function set_armor_gui(player: ObjectRef): void {
+		const level: number = calculate_armor_absorbtion(player);
+		hudManager.change_hud({
+			player: player,
+			hudName: "armor_fg",
+			element: "number",
+			data: level,
+		});
+	}
 
 	// local inv
 	// local recalc
