@@ -171,7 +171,7 @@ namespace armor {
 //         core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=random(80,100)/100})
 //         recalculate_armor(player)
 //         set_armor_gui(player)
-//         --do particles too
+//         //do particles too
 //     end
 // end
 
@@ -220,7 +220,7 @@ namespace armor {
 //     end
 // end)
 
-// --only allow players to put armor in the right slots to stop exploiting chestplates
+// //only allow players to put armor in the right slots to stop exploiting chestplates
 // local stack
 // local item
 // core.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
@@ -251,8 +251,8 @@ namespace armor {
 //     end
 // end)
 
-// local materials = {["coal"]=1,["lapis"]=2,["iron"]=3,["chain"]=4,["gold"]=2,["diamond"]=5,["emerald"]=6,["sapphire"]=7,["ruby"]=8} --max 8
-// local armor_type = {["helmet"]=2,["chestplate"]=4,["leggings"]=3,["boots"]=1} --max 4
+// local materials = {["coal"]=1,["lapis"]=2,["iron"]=3,["chain"]=4,["gold"]=2,["diamond"]=5,["emerald"]=6,["sapphire"]=7,["ruby"]=8} //max 8
+// local armor_type = {["helmet"]=2,["chestplate"]=4,["leggings"]=3,["boots"]=1} //max 4
 
 // local function bool_int(state)
 //     if state == true then return(1) end
@@ -261,7 +261,7 @@ namespace armor {
 
 // for material_id,material in pairs(materials) do
 //     for armor_id,armor in pairs(armor_type) do
-//         --print(material_id,material,"|",armor_id,armor)
+//         //print(material_id,material,"|",armor_id,armor)
 //         core.register_tool("armor:"..material_id.."_"..armor_id,{
 //             description = material_id:gsub("^%l", string.upper).." "..armor_id:gsub("^%l", string.upper),
     
