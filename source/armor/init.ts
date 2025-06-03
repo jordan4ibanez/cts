@@ -7,14 +7,22 @@ namespace armor {
 	export function recalculate_armor(player: ObjectRef) {
 		const inv: InvRef = player.get_inventory();
 
-		//     player_skin = get_skin(player)
-		//     armor_skin = "blank_skin.png"
+		const player_skin: string = skins.get_skin(player);
 
-		//     stack = inv:get_stack("armor_head",1):get_name()
-		//     if stack ~= "" and get_item_group(stack,"helmet") > 0 then
-		//         skin_element = get_itemdef(stack, "wearing_texture")
-		//         player_skin = player_skin.."^"..skin_element
-		//     end
+		const armor_skin = "blank_skin.png";
+
+		const stack: string = inv.get_stack("armor_head", 1).get_name();
+
+		if (stack != "" && get_item_group(stack, "helmet") > 0) {
+			const skinElement: string | undefined =
+				core.registered_items[stack]?.wearing_texture;
+			if (skinElement == null) {
+				throw new Error(`Wearing texture for [${stack}] is null.`);
+			}
+
+			// const skin_element = get_itemdef(stack, "wearing_texture")
+			//         player_skin = player_skin.."^"..skin_element
+		}
 
 		//     stack = inv:get_stack("armor_torso",1):get_name()
 		//     if stack ~= "" and get_item_group(stack,"chestplate") > 0 then
