@@ -477,7 +477,11 @@ interface core {
 		pointedThing: PointedThing
 	): void;
 	node_dig(position: Vec3, nodeTable: NodeTable, digger: ObjectRef): void;
+
+	// Optional: Variable number of arguments that are passed to func.
+	// Aka: It's up to you to make it type safe.
 	after(seconds: number, fun: (...any: any) => void, ...any: any): Job;
+
 	handle_async(
 		fun: (...any: any) => any,
 		callback: (...any: any) => any,
