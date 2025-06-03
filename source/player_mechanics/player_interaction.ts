@@ -172,7 +172,7 @@ namespace playerMechanics {
 					pointed_thing: PointedThing,
 					old: string
 				) => {
-					if (placer == null) {
+					if (!placer.is_player()) {
 						return;
 					}
 					let newItem = placer.get_wielded_item().get_name();
