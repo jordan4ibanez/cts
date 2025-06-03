@@ -193,13 +193,17 @@ namespace armor {
 				acceptable.has(inventory_info.from_list) ||
 				acceptable.has(inventory_info.to_list)
 			) {
-				core.after(0, () => {
-					if (!player.is_player()) {
-						return;
-					}
-					recalculate_armor(player);
-					set_armor_gui(player);
-				});
+				core.after(
+					0,
+					(player: ObjectRef) => {
+						if (!player.is_player()) {
+							return;
+						}
+						recalculate_armor(player);
+						set_armor_gui(player);
+					},
+					player
+				);
 			}
 		}
 	);
