@@ -68,7 +68,7 @@ namespace armor {
 			}
 		}
 
-		//     player:set_properties({textures = {player_skin,armor_skin}})
+		player.set_properties({ textures: [player_skin, armor_skin] });
 	}
 
 	// local inv
