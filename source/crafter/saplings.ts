@@ -1,3 +1,4 @@
+namespace crafter{
 //saplings
 //
 //
@@ -190,3 +191,4 @@ core.register_abm({
 		sapling_grow(pos);
 	},
 });
+}
