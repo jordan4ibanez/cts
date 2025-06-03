@@ -1,8 +1,8 @@
 namespace armor {
 
 
-// local get_item_group = minetest.get_item_group
-// local get_itemdef    = minetest.get_itemdef
+// local get_item_group = core.get_item_group
+// local get_itemdef    = core.get_itemdef
 
 
 // local ceil  = math.ceil
@@ -168,7 +168,7 @@ namespace armor {
 //     end
 
 //     if recalc == true then
-//         minetest.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=random(80,100)/100})
+//         core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=random(80,100)/100})
 //         recalculate_armor(player)
 //         set_armor_gui(player)
 //         --do particles too
@@ -176,7 +176,7 @@ namespace armor {
 // end
 
 // local inv
-// minetest.register_on_joinplayer(function(player)
+// core.register_on_joinplayer(function(player)
 // 	hud_manager.add_hud(player,"armor_bg",{
 // 		hud_elem_type = "statbar",
 // 		position = {x = 0.5, y = 1},
@@ -201,7 +201,7 @@ namespace armor {
 //     inv:set_size("armor_feet" ,1)
 // end)
 
-// minetest.register_on_dieplayer(function(player)
+// core.register_on_dieplayer(function(player)
 //     set_armor_gui(player)
 // end)
 
@@ -211,9 +211,9 @@ namespace armor {
 //     ["armor_legs"]  = true,
 //     ["armor_feet"]  = true,
 // }
-// minetest.register_on_player_inventory_action(function(player, action, inventory, inventory_info)
+// core.register_on_player_inventory_action(function(player, action, inventory, inventory_info)
 //     if acceptable[inventory_info.from_list] or acceptable[inventory_info.to_list] then
-//         minetest.after(0,function()
+//         core.after(0,function()
 //             recalculate_armor(player)
 //             set_armor_gui(player)
 //         end)
@@ -223,7 +223,7 @@ namespace armor {
 // --only allow players to put armor in the right slots to stop exploiting chestplates
 // local stack
 // local item
-// minetest.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
+// core.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
 //     if inventory_info.to_list == "armor_head" then
 //         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
 //         item = stack:get_name()
@@ -262,7 +262,7 @@ namespace armor {
 // for material_id,material in pairs(materials) do
 //     for armor_id,armor in pairs(armor_type) do
 //         --print(material_id,material,"|",armor_id,armor)
-//         minetest.register_tool("armor:"..material_id.."_"..armor_id,{
+//         core.register_tool("armor:"..material_id.."_"..armor_id,{
 //             description = material_id:gsub("^%l", string.upper).." "..armor_id:gsub("^%l", string.upper),
     
 //             groups = {
@@ -290,7 +290,7 @@ namespace armor {
 //         })
 
 //         if armor_id == "helmet" then
-//             minetest.register_craft({
+//             core.register_craft({
 //                 output = "armor:"..material_id.."_"..armor_id,
 //                 recipe = {
 //                     {"main:"..material_id, "main:"..material_id, "main:"..material_id},
@@ -299,7 +299,7 @@ namespace armor {
 //                 }
 //             })
 //         elseif armor_id == "chestplate" then
-//             minetest.register_craft({
+//             core.register_craft({
 //                 output = "armor:"..material_id.."_"..armor_id,
 //                 recipe = {
 //                     {"main:"..material_id, ""                  , "main:"..material_id},
@@ -308,7 +308,7 @@ namespace armor {
 //                 }
 //             })
 //         elseif armor_id == "leggings" then
-//             minetest.register_craft({
+//             core.register_craft({
 //                 output = "armor:"..material_id.."_"..armor_id,
 //                 recipe = {
 //                     {"main:"..material_id, "main:"..material_id, "main:"..material_id},
@@ -317,7 +317,7 @@ namespace armor {
 //                 }
 //             })
 //         elseif armor_id == "boots" then
-//             minetest.register_craft({
+//             core.register_craft({
 //                 output = "armor:"..material_id.."_"..armor_id,
 //                 recipe = {
 //                     {""                  , "", ""                  },
@@ -325,14 +325,14 @@ namespace armor {
 //                     {"main:"..material_id, "", "main:"..material_id}
 //                 }
 //             })
-//             minetest.register_node("armor:"..material_id.."_"..armor_id.."particletexture", {
+//             core.register_node("armor:"..material_id.."_"..armor_id.."particletexture", {
 //                 description = "NIL",
 //                 tiles = {material_id.."_"..armor_id.."_item.png"},
 //                 groups = {},
 //                 drop = "",
 //                 drawtype = "allfaces",
 //                 on_construct = function(pos)
-//                     minetest.remove_node(pos)
+//                     core.remove_node(pos)
 //                 end,
 //             })
 //         end
