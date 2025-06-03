@@ -313,20 +313,21 @@ namespace playerMechanics {
 				dir.y = 7;
 			}
 
-			// todo: the rest of this requires the crafter armor mod.
-			// const hp_modifier: number = ceil(calculate_armor_absorbtion(player)/3)
-			// 		//print("hp_modifier:",hp_modifier)
-			// 		damage_armor(player,abs(hurt))
-			// 		//print("hurt:",hurt,"|","hp_modifier:",hp_modifier)
-			// 		modify_output = (hurt == 0)
-			// 		hurt = hurt - hp_modifier
-			// 		if not modify_output and hurt <= 0 then
-			// 			hurt = 1
-			// 		elseif modify_output then
-			// 			hurt = 0
-			// 		end
-			// 		player:add_player_velocity(dir)
-			// 		player:set_hp(hp-hurt)
+			const hp_modifier: number = ceil(
+				armor.calculate_armor_absorbtion(player) / 3
+			);
+			//print("hp_modifier:",hp_modifier)
+			armor.damage_armor(player, abs(hurt));
+			//print("hurt:",hurt,"|","hp_modifier:",hp_modifier)
+			const modify_output: boolean = hurt == 0;
+			hurt -= hp_modifier;
+			if (!modify_output && hurt <= 0) {
+				hurt = 1;
+			} else if (modify_output) {
+				hurt = 0;
+			}
+			player.add_velocity(dir);
+			player.set_hp(hp - hurt);
 		}
 	);
 
