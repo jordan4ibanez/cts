@@ -81,7 +81,7 @@ namespace playerMechanics {
 			swim_check: "",
 			touch_hurt_ticker: 0,
 			hurt_inside_ticker: 0,
-			suffocation_ticker: 0.25,
+			suffocation_ticker: 0.5,
 		});
 	});
 
@@ -384,10 +384,10 @@ namespace playerMechanics {
 			data.suffocation_ticker -= dtime;
 			if (data.suffocation_ticker <= 0) {
 				player.set_hp(player.get_hp() - 1);
-				data.suffocation_ticker += 0.25;
+				data.suffocation_ticker += 0.5;
 			}
 		} else {
-			data.suffocation_ticker = 0.25;
+			data.suffocation_ticker = 0.5;
 		}
 	}
 
