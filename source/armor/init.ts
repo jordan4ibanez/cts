@@ -4,7 +4,7 @@ namespace armor {
 	const ceil = math.ceil;
 	const random = math.random;
 
-	export function recalculate_armor(player: ObjectRef) {
+	export function recalculate_armor(player: ObjectRef): void {
 		const inv: InvRef = player.get_inventory();
 
 		let player_skin: string = skins.get_skin(player);
