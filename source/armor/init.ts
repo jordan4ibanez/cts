@@ -1,3 +1,4 @@
+namespace armor {
 // local
 // minetest,math,pairs
 // =
@@ -341,3 +342,4 @@
         
 //     end
 // end
+}
