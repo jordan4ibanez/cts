@@ -387,24 +387,28 @@ namespace playerMechanics {
 	}
 
 	// Damages players 4 times a second.
-	// environment_class.handle_suffocation_hurt = function(player,damage,dtime)
-	// 	environment_class.tick = environment_class.get_data(player,{"suffocation_ticker"})
-	// 	if environment_class.tick then
-	// 		environment_class.tick = environment_class.tick.suffocation_ticker
-	// 	end
-	// 	if not environment_class.tick then
-	// 		environment_class.set_data(player,{suffocation_ticker = 0.25})
-	// 		player:set_hp(player:get_hp()-damage)
-	// 	else
-	// 		environment_class.tick = environment_class.tick - dtime
-	// 		if environment_class.tick <= 0 then
-	// 			player:set_hp(player:get_hp()-damage)
-	// 			environment_class.set_data(player,{suffocation_ticker = 0.25})
-	// 		else
-	// 			environment_class.set_data(player,{suffocation_ticker = environment_class.tick})
-	// 		end
-	// 	end
-	// }
+	function handle_suffocation_hurt(
+		player: ObjectRef,
+		damage: number,
+		dtime: number
+	): void {
+		// 	environment_class.tick = environment_class.get_data(player,{"suffocation_ticker"})
+		// 	if environment_class.tick then
+		// 		environment_class.tick = environment_class.tick.suffocation_ticker
+		// 	end
+		// 	if not environment_class.tick then
+		// 		environment_class.set_data(player,{suffocation_ticker = 0.25})
+		// 		player:set_hp(player:get_hp()-damage)
+		// 	else
+		// 		environment_class.tick = environment_class.tick - dtime
+		// 		if environment_class.tick <= 0 then
+		// 			player:set_hp(player:get_hp()-damage)
+		// 			environment_class.set_data(player,{suffocation_ticker = 0.25})
+		// 		else
+		// 			environment_class.set_data(player,{suffocation_ticker = environment_class.tick})
+		// 		end
+		// 	end
+	}
 
 	// Environment indexing.
 
