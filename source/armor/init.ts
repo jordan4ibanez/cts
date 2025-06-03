@@ -216,12 +216,33 @@ namespace armor {
 			inventory: InvRef,
 			inventory_info: ActionDefinition
 		) => {
-			//     if inventory_info.to_list == "armor_head" then
-			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-			//         item = stack:get_name()
-			//         if get_item_group(item, "helmet") == 0 then
-			//             return(0)
-			//         end
+			const slots: string[] = [
+				"armor_head",
+				"armor_torso",
+				"armor_legs",
+				"armor_feet",
+			];
+
+			const group: string[] = [
+				"helmet",
+				"chestplate",
+				"leggings",
+				"boots",
+			];
+
+			for (let i = 0; i < slots.length; i++) {
+				if (inventory_info.to_list == slots[i]) {
+					const stack = inventory.get_stack(
+						inventory_info.from_list,
+						inventory_info.from_index
+					);
+					const item: string = stack.get_name();
+					if (get_item_group(item, "helmet") == 0) {
+						return 0;
+					}
+				}
+			}
+
 			//     elseif inventory_info.to_list == "armor_torso" then
 			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
 			//         item = stack:get_name()
