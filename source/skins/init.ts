@@ -338,4 +338,8 @@ namespace skins {
 			name
 		);
 	});
+
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		pool.delete(player.get_player_name());
+	});
 }
