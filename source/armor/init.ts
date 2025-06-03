@@ -42,6 +42,7 @@ namespace armor {
 
 		{
 			//? Leg piece.
+
 			const stack: string = inv.get_stack("armor_legs", 1).get_name();
 			if (stack != "" && get_item_group(stack, "leggings") > 0) {
 				const skinElement: string | undefined =
