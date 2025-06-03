@@ -271,7 +271,7 @@ namespace armor {
 	}
 
 	for (const [material_id,material] of pairs(materials)) {
-	//     for armor_id,armor in pairs(armor_type) do
+	    for (const [armor_id,armor] of pairs(armor_type)) {
 	//         //print(material_id,material,"|",armor_id,armor)
 	//         core.register_tool("armor:"..material_id.."_"..armor_id,{
 	//             description = material_id:gsub("^%l", string.upper).." "..armor_id:gsub("^%l", string.upper),
@@ -348,6 +348,6 @@ namespace armor {
 	//             })
 	//         end
 
-	//     end
+		}
 	}
 }
