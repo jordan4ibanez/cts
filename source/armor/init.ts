@@ -22,7 +22,7 @@ namespace armor {
 					throw new Error(`Wearing texture for [${stack}] is null.`);
 				}
 				// todo: why is this in the player skin?
-				player_skin = player_skin + "^" + skinElement;
+				player_skin += "^" + skinElement;
 			}
 		}
 
