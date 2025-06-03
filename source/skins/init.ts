@@ -325,6 +325,8 @@ namespace skins {
 		const name: string = player.get_player_name();
 		pool.set(name, "player.png");
 
+		armor.recalculate_armor(player);
+
 		if (core.is_singleplayer()) {
 			return;
 		}
