@@ -5,39 +5,40 @@ namespace armor {
 	const random = math.random;
 
 	export function recalculate_armor(player: ObjectRef) {
+		if (player == null || (player != null && !player.is_player())) {
+			return;
+		}
 
-	//     if not player or (player and not player:is_player()) then return end
+		//     inv = player:get_inventory()
 
-	//     inv = player:get_inventory()
+		//     player_skin = get_skin(player)
+		//     armor_skin = "blank_skin.png"
 
-	//     player_skin = get_skin(player)
-	//     armor_skin = "blank_skin.png"
+		//     stack = inv:get_stack("armor_head",1):get_name()
+		//     if stack ~= "" and get_item_group(stack,"helmet") > 0 then
+		//         skin_element = get_itemdef(stack, "wearing_texture")
+		//         player_skin = player_skin.."^"..skin_element
+		//     end
 
-	//     stack = inv:get_stack("armor_head",1):get_name()
-	//     if stack ~= "" and get_item_group(stack,"helmet") > 0 then
-	//         skin_element = get_itemdef(stack, "wearing_texture")
-	//         player_skin = player_skin.."^"..skin_element
-	//     end
+		//     stack = inv:get_stack("armor_torso",1):get_name()
+		//     if stack ~= "" and get_item_group(stack,"chestplate") > 0 then
+		//         skin_element = get_itemdef(stack, "wearing_texture")
+		//         armor_skin = armor_skin.."^"..skin_element
+		//     end
 
-	//     stack = inv:get_stack("armor_torso",1):get_name()
-	//     if stack ~= "" and get_item_group(stack,"chestplate") > 0 then
-	//         skin_element = get_itemdef(stack, "wearing_texture")
-	//         armor_skin = armor_skin.."^"..skin_element
-	//     end
+		//     stack = inv:get_stack("armor_legs",1):get_name()
+		//     if stack ~= "" and get_item_group(stack,"leggings") > 0 then
+		//         skin_element = get_itemdef(stack, "wearing_texture")
+		//         armor_skin = armor_skin.."^"..skin_element
+		//     end
 
-	//     stack = inv:get_stack("armor_legs",1):get_name()
-	//     if stack ~= "" and get_item_group(stack,"leggings") > 0 then
-	//         skin_element = get_itemdef(stack, "wearing_texture")
-	//         armor_skin = armor_skin.."^"..skin_element
-	//     end
-
-	//     stack = inv:get_stack("armor_feet",1):get_name()
-	//     if stack ~= "" and get_item_group(stack,"boots") > 0 then
-	//         skin_element = get_itemdef(stack, "wearing_texture")
-	//         armor_skin = armor_skin.."^"..skin_element
-	//     end
-	//     player:set_properties({textures = {player_skin,armor_skin}})
-    }
+		//     stack = inv:get_stack("armor_feet",1):get_name()
+		//     if stack ~= "" and get_item_group(stack,"boots") > 0 then
+		//         skin_element = get_itemdef(stack, "wearing_texture")
+		//         armor_skin = armor_skin.."^"..skin_element
+		//     end
+		//     player:set_properties({textures = {player_skin,armor_skin}})
+	}
 
 	// local inv
 	// local armor_absorbtion
