@@ -1,3 +1,4 @@
+namespace crafter{
 // depth : initial level found
 
 // Dirt
@@ -289,3 +290,4 @@ core.register_ore({
 	y_max: -5012,
 	y_min: -10032,
 });
+}
