@@ -242,26 +242,6 @@ namespace armor {
 					}
 				}
 			}
-
-			//     elseif inventory_info.to_list == "armor_torso" then
-			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-			//         item = stack:get_name()
-			//         if get_item_group(item, "chestplate") == 0 then
-			//             return(0)
-			//         end
-			//     elseif inventory_info.to_list == "armor_legs" then
-			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-			//         item = stack:get_name()
-			//         if get_item_group(item, "leggings") == 0 then
-			//             return(0)
-			//         end
-			//     elseif inventory_info.to_list == "armor_feet" then
-			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-			//         item = stack:get_name()
-			//         if get_item_group(item, "boots") == 0 then
-			//             return(0)
-			//         end
-			//     end
 		}
 	);
 
