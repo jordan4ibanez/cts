@@ -189,12 +189,15 @@ namespace armor {
 
 	core.register_on_player_inventory_action(
 		(player, action, inventory, inventory_info) => {
-			//     if acceptable[inventory_info.from_list] or acceptable[inventory_info.to_list] then
-			//         core.after(0,function()
-			//             recalculate_armor(player)
-			//             set_armor_gui(player)
-			//         end)
-			//     end
+			if (
+				acceptable.has(inventory_info.from_list) ||
+				acceptable.has(inventory_info.to_list)
+			) {
+				core.after(0, () => {
+					recalculate_armor(player);
+					set_armor_gui(player);
+				});
+			}
 		}
 	);
 
