@@ -310,7 +310,6 @@ namespace armor {
 							"main:" + material_id,
 						],
 						["main:" + material_id, "", "main:" + material_id],
-						["", "", ""],
 					],
 				});
 			} else if (armor_id == "chestplate") {
