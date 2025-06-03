@@ -176,7 +176,7 @@ interface core {
 		fun: (
 			player: ObjectRef,
 			action: string,
-			inventory: string,
+			inventory: InvRef,
 			inventoryInfo: ActionDefinition
 		) => void
 	): void;
