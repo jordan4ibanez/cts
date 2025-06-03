@@ -36,7 +36,7 @@ namespace armor {
 				if (skinElement == null) {
 					throw new Error(`Wearing texture for [${stack}] is null.`);
 				}
-				armor_skin = armor_skin + "^" + skinElement;
+				armor_skin += "^" + skinElement;
 			}
 		}
 
