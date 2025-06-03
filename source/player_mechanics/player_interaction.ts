@@ -76,8 +76,8 @@ namespace playerMechanics {
 			}
 
 			dump_craft(player);
-			// todo: this needs the crafter armor mod
-			// 	recalculate_armor(player)
+
+			armor.recalculate_armor(player);
 		}
 	);
 
