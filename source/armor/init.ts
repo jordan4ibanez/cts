@@ -107,8 +107,17 @@ namespace armor {
 	}
 
 	function damage_armor(player: ObjectRef, damage: number): void {
-		//     inv = player:get_inventory()
-		//     recalc = false
+		const inv: InvRef = player.get_inventory();
+		let recalc: boolean = false;
+
+		const multiplier: number[] = [8, 4, 6, 10];
+		const slots: string[] = [
+			"armor_head",
+			"armor_torso",
+			"armor_legs",
+			"armor_feet",
+		];
+
 		//     stack = inv:get_stack("armor_head",1)
 		//     name = stack:get_name()
 		//     if name ~= "" then
@@ -120,6 +129,7 @@ namespace armor {
 		//             recalc = true
 		//         end
 		//     end
+
 		//     stack = inv:get_stack("armor_torso",1)
 		//     name = stack:get_name()
 		//     if name ~= "" then
