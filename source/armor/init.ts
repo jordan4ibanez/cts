@@ -106,7 +106,7 @@ namespace armor {
 		});
 	}
 
-	function damage_armor(player: ObjectRef, damage: number): void {
+	export function damage_armor(player: ObjectRef, damage: number): void {
 		const inv: InvRef = player.get_inventory();
 		let recalc: boolean = false;
 
