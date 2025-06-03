@@ -1,3 +1,4 @@
+namespace crafter {
 core.register_abm({
 	label: "Lava cooling",
 	nodenames: ["crafter:lava"],
@@ -21,3 +22,4 @@ core.register_abm({
 		core.set_node(pos, { name: "crafter:cobble" });
 	},
 });
+}
