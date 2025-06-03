@@ -1,8 +1,8 @@
 namespace armor {
 
 
-// local get_item_group = core.get_item_group
-// local get_itemdef    = core.get_itemdef
+const get_item_group = core.get_item_group
+
 
 
 // local ceil  = math.ceil
