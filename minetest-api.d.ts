@@ -178,7 +178,7 @@ interface core {
 			action: string,
 			inventory: InvRef,
 			inventoryInfo: ActionDefinition
-		) => void
+		) => void | number
 	): void;
 	register_on_player_inventory_action(
 		fun: (
