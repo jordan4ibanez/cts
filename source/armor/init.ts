@@ -209,33 +209,40 @@ namespace armor {
 	);
 
 	// Only allow players to put armor in the right slots to stop exploiting chestplates.
-	// core.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
-	//     if inventory_info.to_list == "armor_head" then
-	//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-	//         item = stack:get_name()
-	//         if get_item_group(item, "helmet") == 0 then
-	//             return(0)
-	//         end
-	//     elseif inventory_info.to_list == "armor_torso" then
-	//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-	//         item = stack:get_name()
-	//         if get_item_group(item, "chestplate") == 0 then
-	//             return(0)
-	//         end
-	//     elseif inventory_info.to_list == "armor_legs" then
-	//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-	//         item = stack:get_name()
-	//         if get_item_group(item, "leggings") == 0 then
-	//             return(0)
-	//         end
-	//     elseif inventory_info.to_list == "armor_feet" then
-	//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
-	//         item = stack:get_name()
-	//         if get_item_group(item, "boots") == 0 then
-	//             return(0)
-	//         end
-	//     end
-	// end)
+	core.register_allow_player_inventory_action(
+		(
+			player: ObjectRef,
+			action: string,
+			inventory: string,
+			inventory_info: ActionDefinition
+		) => {
+			//     if inventory_info.to_list == "armor_head" then
+			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
+			//         item = stack:get_name()
+			//         if get_item_group(item, "helmet") == 0 then
+			//             return(0)
+			//         end
+			//     elseif inventory_info.to_list == "armor_torso" then
+			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
+			//         item = stack:get_name()
+			//         if get_item_group(item, "chestplate") == 0 then
+			//             return(0)
+			//         end
+			//     elseif inventory_info.to_list == "armor_legs" then
+			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
+			//         item = stack:get_name()
+			//         if get_item_group(item, "leggings") == 0 then
+			//             return(0)
+			//         end
+			//     elseif inventory_info.to_list == "armor_feet" then
+			//         stack = inventory:get_stack(inventory_info.from_list,inventory_info.from_index)
+			//         item = stack:get_name()
+			//         if get_item_group(item, "boots") == 0 then
+			//             return(0)
+			//         end
+			//     end
+		}
+	);
 
 	// local materials = {["coal"]=1,["lapis"]=2,["iron"]=3,["chain"]=4,["gold"]=2,["diamond"]=5,["emerald"]=6,["sapphire"]=7,["ruby"]=8} //max 8
 	// local armor_type = {["helmet"]=2,["chestplate"]=4,["leggings"]=3,["boots"]=1} //max 4
