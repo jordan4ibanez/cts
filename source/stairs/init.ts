@@ -128,7 +128,7 @@ namespace stairs {
 		}
 	}
 
-	//////////////////////////////////////////////////////- slabs
+	/////////////////////////////////////////////////////// slabs
 
 	// This does not use the global placenode sound mechanic because it's custom.
 	function place_slab_sound(pos: Vec3, newnode: string): void {
