@@ -29,7 +29,11 @@ namespace skins {
 
 	export function get_skin(player: ObjectRef): string {
 		const name = player.get_player_name();
-		return pool.get(name) || "player.png";
+		const data: string | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		return data;
 	}
 
 	// Fancy debug wrapper to download an URL.
@@ -317,13 +321,21 @@ namespace skins {
 	// end)
 	core.register_on_joinplayer((player: ObjectRef) => {
 		// todo: add_cape(player)
+
+		const name: string = player.get_player_name();
+		pool.set(name, "player.png");
+
 		if (core.is_singleplayer()) {
 			return;
 		}
-		core.after(0, () => {
-			fetch_function(player.get_player_name());
-			// todo: depends on crafter armor
-			// recalculate_armor(player)
-		});
+		core.after(
+			0,
+			() => {
+				fetch_function(name);
+				// todo: depends on crafter armor
+				// recalculate_armor(player)
+			},
+			name
+		);
 	});
 }
