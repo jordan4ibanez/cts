@@ -368,6 +368,7 @@ namespace playerMechanics {
 	}
 
 	// Handle player suffocating inside solid node.
+	// Damages players 4 times a second.
 	function handle_player_suffocation(player: ObjectRef, dtime: number): void {
 		if (player.get_hp() <= 0) {
 			return;
@@ -375,46 +376,19 @@ namespace playerMechanics {
 		const name: string = player.get_player_name();
 		const data: PlayerEnvironment | undefined = pool.get(name);
 		if (data == null) {
-			return;
+			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 		const headNode: string = data.head;
 
 		if (core.registered_nodes[headNode]?.drawtype == Drawtype.normal) {
-			handle_suffocation_hurt(player, 1, dtime);
+			data.suffocation_ticker -= dtime;
+			if (data.suffocation_ticker <= 0) {
+				player.set_hp(player.get_hp() - 1);
+				data.suffocation_ticker += 0.25;
+			}
 		} else {
 			data.suffocation_ticker = 0.25;
 		}
-	}
-
-	// Damages players 4 times a second.
-	function handle_suffocation_hurt(
-		player: ObjectRef,
-		damage: number,
-		dtime: number
-	): void {
-		const name: string = player.get_player_name();
-		const data: PlayerEnvironment | undefined = pool.get(name);
-		if (data == null) {
-			throw new Error("Player data became null.");
-		}
-		const tick: number = data.suffocation_ticker;
-
-		// 	if environment_class.tick then
-		// 		environment_class.tick = environment_class.tick.suffocation_ticker
-		// 	end
-		
-		// 	if not environment_class.tick then
-		// 		environment_class.set_data(player,{suffocation_ticker = 0.25})
-		// 		player:set_hp(player:get_hp()-damage)
-		// 	else
-		// 		environment_class.tick = environment_class.tick - dtime
-		// 		if environment_class.tick <= 0 then
-		// 			player:set_hp(player:get_hp()-damage)
-		// 			environment_class.set_data(player,{suffocation_ticker = 0.25})
-		// 		else
-		// 			environment_class.set_data(player,{suffocation_ticker = environment_class.tick})
-		// 		end
-		// 	end
 	}
 
 	// Environment indexing.
