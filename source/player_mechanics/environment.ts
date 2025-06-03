@@ -372,7 +372,7 @@ namespace playerMechanics {
 		}
 		const name = player.get_player_name();
 		const data: string | undefined = pool.get(name)?.head;
-		// 	if data then
+			if data then
 		// 		data = data.head
 		// 		if minetest.get_nodedef(data, "drawtype") == "normal" then
 		// 			environment_class.handle_suffocation_hurt(player,1,dtime)
@@ -380,7 +380,8 @@ namespace playerMechanics {
 		// 			environment_class.set_data(player,{suffocation_ticker = 0})
 		// 		end
 		// 	end
-		// end
+	}
+
 		// Damages players 4 times a second.
 		// environment_class.handle_suffocation_hurt = function(player,damage,dtime)
 		// 	environment_class.tick = environment_class.get_data(player,{"suffocation_ticker"})
@@ -399,7 +400,7 @@ namespace playerMechanics {
 		// 			environment_class.set_data(player,{suffocation_ticker = environment_class.tick})
 		// 		end
 		// 	end
-	}
+	// }
 
 	// Environment indexing.
 
