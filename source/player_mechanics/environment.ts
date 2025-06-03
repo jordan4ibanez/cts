@@ -81,7 +81,7 @@ namespace playerMechanics {
 			swim_check: "",
 			touch_hurt_ticker: 0,
 			hurt_inside_ticker: 0,
-			suffocation_ticker: 0,
+			suffocation_ticker: 0.25,
 		});
 	});
 
@@ -382,7 +382,7 @@ namespace playerMechanics {
 		if (core.registered_nodes[headNode]?.drawtype == Drawtype.normal) {
 			handle_suffocation_hurt(player, 1, dtime);
 		} else {
-			data.suffocation_ticker = 0;
+			data.suffocation_ticker = 0.25;
 		}
 	}
 
@@ -402,6 +402,7 @@ namespace playerMechanics {
 		// 	if environment_class.tick then
 		// 		environment_class.tick = environment_class.tick.suffocation_ticker
 		// 	end
+		
 		// 	if not environment_class.tick then
 		// 		environment_class.set_data(player,{suffocation_ticker = 0.25})
 		// 		player:set_hp(player:get_hp()-damage)
