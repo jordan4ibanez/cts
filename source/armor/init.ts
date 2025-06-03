@@ -169,11 +169,11 @@ namespace armor {
 			size: { x: 24, y: 24 },
 			offset: { x: -10 * 24 - 25, y: -(48 + 50 + 39) },
 		});
-		//     inv = player:get_inventory()
-		//     inv:set_size("armor_head" ,1)
-		//     inv:set_size("armor_torso",1)
-		//     inv:set_size("armor_legs" ,1)
-		//     inv:set_size("armor_feet" ,1)
+		const inv: InvRef = player.get_inventory();
+		inv.set_size("armor_head", 1);
+		inv.set_size("armor_torso", 1);
+		inv.set_size("armor_legs", 1);
+		inv.set_size("armor_feet", 1);
 	});
 
 	// core.register_on_dieplayer(function(player)
