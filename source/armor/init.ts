@@ -266,10 +266,9 @@ namespace armor {
 		boots: 1,
 	};
 
-	// local function bool_int(state)
-	//     if state == true then return(1) end
-	//     if state == false or not state then return(0) end
-	// end
+	function bool_int(state: boolean): number {
+		return state ? 1 : 0;
+	}
 
 	// for material_id,material in pairs(materials) do
 	//     for armor_id,armor in pairs(armor_type) do
