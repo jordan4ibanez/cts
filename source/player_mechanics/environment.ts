@@ -7,6 +7,7 @@ namespace playerMechanics {
 		swim_check: string;
 		touch_hurt_ticker: number;
 		hurt_inside_ticker: number;
+		suffocation_ticker: number;
 	}
 
 	const pool = new Map<string, PlayerEnvironment>();
@@ -80,6 +81,7 @@ namespace playerMechanics {
 			swim_check: "",
 			touch_hurt_ticker: 0,
 			hurt_inside_ticker: 0,
+			suffocation_ticker: 0,
 		});
 	});
 
