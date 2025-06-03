@@ -1,3 +1,4 @@
+namespace serverUtilities {
 // local minetest,os = minetest,os
 // local mod_storage = minetest.get_mod_storage()
 // local pool = {}
@@ -60,3 +61,4 @@
 // 		end
 // 	end,
 // })
+}
