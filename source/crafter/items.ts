@@ -1,3 +1,4 @@
+namespace crafter{
 // Item definition.
 
 // fixme: depends on the food mod!
@@ -74,3 +75,4 @@ core.register_craftitem("crafter:ruby", {
 	description: "Ruby",
 	inventory_image: "ruby.png",
 });
+}
