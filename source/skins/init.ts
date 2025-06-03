@@ -337,8 +337,6 @@ namespace skins {
 					return;
 				}
 				fetch_function(player.get_player_name());
-				// todo: depends on crafter armor
-				// recalculate_armor(player)
 			},
 			player
 		);
