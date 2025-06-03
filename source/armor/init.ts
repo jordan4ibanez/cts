@@ -347,7 +347,6 @@ namespace armor {
 				core.register_craft({
 					output: "armor:" + material_id + "_" + armor_id,
 					recipe: [
-						["", "", ""],
 						["main:" + material_id, "", "main:" + material_id],
 						["main:" + material_id, "", "main:" + material_id],
 					],
