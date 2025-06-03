@@ -208,7 +208,7 @@ namespace armor {
 		}
 	);
 
-	// //only allow players to put armor in the right slots to stop exploiting chestplates
+	// Only allow players to put armor in the right slots to stop exploiting chestplates.
 	// local stack
 	// local item
 	// core.register_allow_player_inventory_action(function(player, action, inventory, inventory_info)
