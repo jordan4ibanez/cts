@@ -274,31 +274,34 @@ namespace armor {
 		for (const [armor_id, armor] of pairs(armor_type)) {
 			// print(material_id, material, "|", armor_id, armor);
 
-			core.register_tool("armor:" + material_id + "_" + armor_id, {
-				description:
-					string.gsub(material_id, "^%l", string.upper)[0] +
-					" " +
-					string.gsub(armor_id, "^%l", string.upper)[0],
-				groups: {
-					armor: 1,
-					armor_level: material,
-					armor_defense: armor,
-					helmet: bool_int(armor_id == "helmet"),
-					chestplate: bool_int(armor_id == "chestplate"),
-					leggings: bool_int(armor_id == "leggings"),
-					boots: bool_int(armor_id == "boots"),
-				},
-				inventory_image: material_id + "_" + armor_id + "_item.png",
-				stack_max: 1,
-				wearing_texture: material_id + "_" + armor_id + ".png",
-				tool_capabilities: {
-					full_punch_interval: 0,
-					max_drop_level: 0,
-					groupcaps: {},
-					damage_groups: {},
-					punch_attack_uses: 0,
-				},
-			});
+			core.register_tool(
+				"crafter_armor:" + material_id + "_" + armor_id,
+				{
+					description:
+						string.gsub(material_id, "^%l", string.upper)[0] +
+						" " +
+						string.gsub(armor_id, "^%l", string.upper)[0],
+					groups: {
+						armor: 1,
+						armor_level: material,
+						armor_defense: armor,
+						helmet: bool_int(armor_id == "helmet"),
+						chestplate: bool_int(armor_id == "chestplate"),
+						leggings: bool_int(armor_id == "leggings"),
+						boots: bool_int(armor_id == "boots"),
+					},
+					inventory_image: material_id + "_" + armor_id + "_item.png",
+					stack_max: 1,
+					wearing_texture: material_id + "_" + armor_id + ".png",
+					tool_capabilities: {
+						full_punch_interval: 0,
+						max_drop_level: 0,
+						groupcaps: {},
+						damage_groups: {},
+						punch_attack_uses: 0,
+					},
+				}
+			);
 
 			if (armor_id == "helmet") {
 				core.register_craft({
@@ -309,14 +312,22 @@ namespace armor {
 							"crafter:" + material_id,
 							"crafter:" + material_id,
 						],
-						["crafter:" + material_id, "", "crafter:" + material_id],
+						[
+							"crafter:" + material_id,
+							"",
+							"crafter:" + material_id,
+						],
 					],
 				});
 			} else if (armor_id == "chestplate") {
 				core.register_craft({
 					output: "armor:" + material_id + "_" + armor_id,
 					recipe: [
-						["crafter:" + material_id, "", "crafter:" + material_id],
+						[
+							"crafter:" + material_id,
+							"",
+							"crafter:" + material_id,
+						],
 						[
 							"crafter:" + material_id,
 							"crafter:" + material_id,
@@ -338,16 +349,32 @@ namespace armor {
 							"crafter:" + material_id,
 							"crafter:" + material_id,
 						],
-						["crafter:" + material_id, "", "crafter:" + material_id],
-						["crafter:" + material_id, "", "crafter:" + material_id],
+						[
+							"crafter:" + material_id,
+							"",
+							"crafter:" + material_id,
+						],
+						[
+							"crafter:" + material_id,
+							"",
+							"crafter:" + material_id,
+						],
 					],
 				});
 			} else if (armor_id == "boots") {
 				core.register_craft({
 					output: "armor:" + material_id + "_" + armor_id,
 					recipe: [
-						["crafter:" + material_id, "", "crafter:" + material_id],
-						["crafter:" + material_id, "", "crafter:" + material_id],
+						[
+							"crafter:" + material_id,
+							"",
+							"crafter:" + material_id,
+						],
+						[
+							"crafter:" + material_id,
+							"",
+							"crafter:" + material_id,
+						],
 					],
 				});
 
