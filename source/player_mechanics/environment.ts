@@ -421,32 +421,27 @@ namespace playerMechanics {
 
 			const pos: Vec3 = player.get_pos();
 
-			// fixme: a nice global from...somwhere?
-			// const swimming: boolean = is_player_swimming(player)
+			const swimming: boolean = is_player_swimming(player);
 
-			// if swimming then
-			// 	--this is where the legs would be
-			// 	temp_pool.under = minetest.get_node(pos).name
+			if (swimming) {
+				// 	--this is where the legs would be
+				// 	temp_pool.under = minetest.get_node(pos).name
+				// 	--legs and head are in the same position
+				// 	pos.y = pos.y + 1.35
+				// 	temp_pool.legs = minetest.get_node(pos).name
+				// 	temp_pool.head = minetest.get_node(pos).name
+				// 	pos.y = pos.y + 0.7
+				// 	temp_pool.swim_check = minetest.get_node(pos).name
+			} else {
+				pos.y = pos.y - 0.1;
+				data.under = core.get_node(pos).name;
 
-			// 	--legs and head are in the same position
-			// 	pos.y = pos.y + 1.35
-			// 	temp_pool.legs = minetest.get_node(pos).name
-			// 	temp_pool.head = minetest.get_node(pos).name
+				pos.y = pos.y + 0.6;
+				data.legs = core.get_node(pos).name;
 
-			// 	pos.y = pos.y + 0.7
-			// 	temp_pool.swim_check = minetest.get_node(pos).name
-			// else
-
-			pos.y = pos.y - 0.1;
-			data.under = core.get_node(pos).name;
-
-			pos.y = pos.y + 0.6;
-			data.legs = core.get_node(pos).name;
-
-			pos.y = pos.y + 0.94;
-			data.head = core.get_node(pos).name;
-			// fixme: another part of the global if statement.
-			//end
+				pos.y = pos.y + 0.94;
+				data.head = core.get_node(pos).name;
+			}
 
 			hurt_collide(player, dtime);
 
