@@ -27,7 +27,7 @@ namespace armor {
 		}
 
 		{
-			//? Torso Piece.
+			//? Chest plate.
 
 			const stack: string = inv.get_stack("armor_torso", 1).get_name();
 			if (stack != "" && get_item_group(stack, "chestplate") > 0) {
