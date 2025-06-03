@@ -24,11 +24,13 @@ namespace armor {
 			}
 		}
 
+        { //? Cuirass, vambrace and gauntlet.
 		//     stack = inv:get_stack("armor_torso",1):get_name()
 		//     if stack ~= "" and get_item_group(stack,"chestplate") > 0 then
 		//         skin_element = get_itemdef(stack, "wearing_texture")
 		//         armor_skin = armor_skin+"^"+skin_element
 		//     end
+        }
 
 		//     stack = inv:get_stack("armor_legs",1):get_name()
 		//     if stack ~= "" and get_item_group(stack,"leggings") > 0 then
