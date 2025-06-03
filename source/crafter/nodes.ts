@@ -1,4 +1,4 @@
-// local minetest,pairs = minetest,pairs
+namespace crafter {
 
 // Ore def with required tool.
 
@@ -820,3 +820,4 @@ core.register_node("crafter:ladder", {
 		return itemstack;
 	},
 });
+}
