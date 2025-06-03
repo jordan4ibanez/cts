@@ -453,7 +453,7 @@ namespace playerMechanics {
 			// if is_player_on_fire(player) then
 			// 	extinguish(player)
 			// end
-			// --handle_player_suffocation(player,dtime)
+			handle_player_suffocation(player, dtime);
 		}
 	}
 
