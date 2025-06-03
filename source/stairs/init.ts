@@ -239,7 +239,6 @@ namespace stairs {
 					(!rightsideup && !upsidedown) ||
 					ydiff == 0
 				) {
-					// todo: check if this still works, _ used to be itemstack
 					const [_, worked] = core.item_place(
 						itemstack,
 						placer,
