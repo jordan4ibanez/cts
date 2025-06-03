@@ -27,7 +27,7 @@ namespace armor {
 		}
 
 		{
-			//? Cuirass, vambrace and gauntlet. Torso Piece.
+			//? Torso Piece.
 
 			const stack: string = inv.get_stack("armor_torso", 1).get_name();
 			if (stack != "" && get_item_group(stack, "chestplate") > 0) {
@@ -40,11 +40,18 @@ namespace armor {
 			}
 		}
 
-		//     stack = inv:get_stack("armor_legs",1):get_name()
-		//     if stack ~= "" and get_item_group(stack,"leggings") > 0 then
-		//         skin_element = get_itemdef(stack, "wearing_texture")
-		//         armor_skin = armor_skin+"^"+skin_element
-		//     end
+		{
+			//? Leg piece.
+			const stack: string = inv.get_stack("armor_legs", 1).get_name();
+			if (stack != "" && get_item_group(stack, "leggings") > 0) {
+				const skinElement: string | undefined =
+					core.registered_items[stack]?.wearing_texture;
+				if (skinElement == null) {
+					throw new Error(`Wearing texture for [${stack}] is null.`);
+				}
+				armor_skin += "^" + skinElement;
+			}
+		}
 
 		//     stack = inv:get_stack("armor_feet",1):get_name()
 		//     if stack ~= "" and get_item_group(stack,"boots") > 0 then
