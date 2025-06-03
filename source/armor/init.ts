@@ -4,7 +4,7 @@ namespace armor {
 	const ceil = math.ceil;
 	const random = math.random;
 
-	// function recalculate_armor(player)
+	export function recalculate_armor(player: ObjectRef) {
 
 	//     if not player or (player and not player:is_player()) then return end
 
@@ -37,7 +37,7 @@ namespace armor {
 	//         armor_skin = armor_skin.."^"..skin_element
 	//     end
 	//     player:set_properties({textures = {player_skin,armor_skin}})
-	// end
+    }
 
 	// local inv
 	// local armor_absorbtion
