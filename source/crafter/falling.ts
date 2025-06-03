@@ -316,12 +316,10 @@ namespace crafter {
 					);
 					if (drops && drops.length > 0) {
 						for (const [_, droppy] of pairs(drops)) {
-							// fixme: this was engine custom.
-							// core.throw_item(np,droppy)
+							item_handling.throw_item(np, droppy as string);
 						}
 					} else {
-						// fixme: this was engine custom.
-						// core.throw_item(np,self.node)
+						item_handling.throw_item(np, this.node.name);
 					}
 					this.object.remove();
 					return;
