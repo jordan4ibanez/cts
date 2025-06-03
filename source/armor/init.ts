@@ -213,7 +213,7 @@ namespace armor {
 		(
 			player: ObjectRef,
 			action: string,
-			inventory: string,
+			inventory: InvRef,
 			inventory_info: ActionDefinition
 		) => {
 			//     if inventory_info.to_list == "armor_head" then
