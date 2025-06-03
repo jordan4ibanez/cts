@@ -331,14 +331,18 @@ namespace armor {
 					],
 				});
 			} else if (armor_id == "leggings") {
-				//             core.register_craft({
-				//                 output = "armor:"+material_id+"_"+armor_id,
-				//                 recipe = {
-				//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
-				//                     {"main:"+material_id, ""                  , "main:"+material_id},
-				//                     {"main:"+material_id, ""                  , "main:"+material_id}
-				//                 }
-				//             })
+				core.register_craft({
+					output: "armor:" + material_id + "_" + armor_id,
+					recipe: [
+						[
+							"main:" + material_id,
+							"main:" + material_id,
+							"main:" + material_id,
+						],
+						["main:" + material_id, "", "main:" + material_id],
+						["main:" + material_id, "", "main:" + material_id],
+					],
+				});
 			} else if (armor_id == "boots") {
 				//             core.register_craft({
 				//                 output = "armor:"+material_id+"_"+armor_id,
