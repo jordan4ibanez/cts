@@ -302,11 +302,10 @@ namespace armor {
 					},
 				}
 			);
-			
 
 			if (armor_id == "helmet") {
 				core.register_craft({
-					output: "armor:" + material_id + "_" + armor_id,
+					output: "crafter_armor:" + material_id + "_" + armor_id,
 					recipe: [
 						[
 							"crafter:" + material_id,
@@ -322,7 +321,7 @@ namespace armor {
 				});
 			} else if (armor_id == "chestplate") {
 				core.register_craft({
-					output: "armor:" + material_id + "_" + armor_id,
+					output: "crafter_armor:" + material_id + "_" + armor_id,
 					recipe: [
 						[
 							"crafter:" + material_id,
@@ -343,7 +342,7 @@ namespace armor {
 				});
 			} else if (armor_id == "leggings") {
 				core.register_craft({
-					output: "armor:" + material_id + "_" + armor_id,
+					output: "crafter_armor:" + material_id + "_" + armor_id,
 					recipe: [
 						[
 							"crafter:" + material_id,
@@ -364,7 +363,7 @@ namespace armor {
 				});
 			} else if (armor_id == "boots") {
 				core.register_craft({
-					output: "armor:" + material_id + "_" + armor_id,
+					output: "crafter_armor:" + material_id + "_" + armor_id,
 					recipe: [
 						[
 							"crafter:" + material_id,
