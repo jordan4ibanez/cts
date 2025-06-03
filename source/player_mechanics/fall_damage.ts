@@ -90,9 +90,9 @@ namespace playerMechanics {
 					gain: 1,
 					pitch: math.random(80, 100) / 100,
 				});
-				// todo: this depends on crafter armor.
-				// recalculate_armor(player)
-				// set_armor_gui(player)
+
+				armor.recalculate_armor(player);
+				armor.set_armor_gui(player);
 
 				// The boots survived and get a special sound.
 			} else if (core.get_item_group(new_stack, "boots") > 0) {
