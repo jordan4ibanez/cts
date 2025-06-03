@@ -302,6 +302,7 @@ namespace armor {
 					},
 				}
 			);
+			
 
 			if (armor_id == "helmet") {
 				core.register_craft({
@@ -378,16 +379,23 @@ namespace armor {
 					],
 				});
 
-				//             core.register_node("armor:"+material_id+"_"+armor_id+"particletexture", {
-				//                 description = "NIL",
-				//                 tiles = {material_id+"_"+armor_id+"_item.png"},
-				//                 groups = {},
-				//                 drop = "",
-				//                 drawtype = "allfaces",
-				//                 on_construct = function(pos)
-				//                     core.remove_node(pos)
-				//                 end,
-				//             })
+				core.register_node(
+					"crafter_armor:" +
+						material_id +
+						"_" +
+						armor_id +
+						"particletexture",
+					{
+						description: "NIL",
+						tiles: [material_id + "_" + armor_id + "_item.png"],
+						groups: {},
+						drop: "",
+						drawtype: Drawtype.allfaces,
+						on_construct: (pos) => {
+							core.remove_node(pos);
+						},
+					}
+				);
 			}
 		}
 	}
