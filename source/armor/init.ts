@@ -118,17 +118,28 @@ namespace armor {
 			"armor_feet",
 		];
 
-		//     stack = inv:get_stack("armor_head",1)
-		//     name = stack:get_name()
-		//     if name ~= "" then
-		//         wear_level = ((9-get_item_group(name,"armor_level"))*8)*(5-get_item_group(name,"armor_type"))*damage
-		//         stack:add_wear(wear_level)
-		//         inv:set_stack("armor_head", 1, stack)
-		//         new_stack = inv:get_stack("armor_head",1):get_name()
-		//         if new_stack == "" then
-		//             recalc = true
-		//         end
-		//     end
+		for (let i = 0; i < slots.length; i++) {
+			const slot: string = slots[i];
+			const stack: ItemStackObject = inv.get_stack(slot, 1);
+			const name: string = stack.name;
+			if (name != "") {
+				const mult: number | undefined = multiplier[i];
+				if (mult == null) {
+					throw new Error("How");
+				}
+				const wear_level =
+					(9 - get_item_group(name, "armor_level")) *
+					mult *
+					(5 - get_item_group(name, "armor_type")) *
+					damage;
+				stack.add_wear(wear_level);
+				inv.set_stack(slot, 1, stack);
+				const new_stack: string = inv.get_stack(slot, 1).get_name();
+				if (new_stack == "") {
+					recalc = true;
+				}
+			}
+		}
 
 		//     stack = inv:get_stack("armor_torso",1)
 		//     name = stack:get_name()
@@ -163,6 +174,7 @@ namespace armor {
 		//             recalc = true
 		//         end
 		//     end
+
 		//     if recalc == true then
 		//         core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=random(80,100)/100})
 		//         recalculate_armor(player)
