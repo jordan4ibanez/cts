@@ -279,15 +279,15 @@ namespace armor {
 					string.gsub(material_id, "^%l", string.upper)[0] +
 					" " +
 					string.gsub(armor_id, "^%l", string.upper)[0],
-				//             groups = {
-				//                 armor         = 1,
-				//                 armor_level   = material,
-				//                 armor_defense = armor,
-				//                 helmet        = bool_int(armor_id == "helmet"),
-				//                 chestplate    = bool_int(armor_id == "chestplate"),
-				//                 leggings      = bool_int(armor_id == "leggings"),
-				//                 boots         = bool_int(armor_id == "boots"),
-				//             },
+				groups: {
+					armor: 1,
+					armor_level: material,
+					armor_defense: armor,
+					helmet: bool_int(armor_id == "helmet"),
+					chestplate: bool_int(armor_id == "chestplate"),
+					leggings: bool_int(armor_id == "leggings"),
+					boots: bool_int(armor_id == "boots"),
+				},
 				//             inventory_image = material_id+"_"+armor_id+"_item.png",
 				//             stack_max = 1,
 				//             wearing_texture = material_id+"_"+armor_id+".png",
