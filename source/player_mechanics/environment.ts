@@ -367,10 +367,11 @@ namespace playerMechanics {
 
 	// Handle player suffocating inside solid node.
 	function handle_player_suffocation(player: ObjectRef, dtime: number): void {
-		// 	if player:get_hp() <= 0 then
-		// 		return
-		// 	end
-		// 	local data = environment_class.get_data(player,{"head"})
+		if (player.get_hp() <= 0) {
+			return;
+		}
+		const name = player.get_player_name();
+		const data: string | undefined = pool.get(name)?.head;
 		// 	if data then
 		// 		data = data.head
 		// 		if minetest.get_nodedef(data, "drawtype") == "normal" then
