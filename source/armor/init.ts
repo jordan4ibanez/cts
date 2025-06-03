@@ -300,53 +300,53 @@ namespace armor {
 				},
 			});
 
-			//         if armor_id == "helmet" then
-			//             core.register_craft({
-			//                 output = "armor:"+material_id+"_"+armor_id,
-			//                 recipe = {
-			//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
-			//                     {"main:"+material_id, ""                  , "main:"+material_id},
-			//                     {""                  , ""                  , ""                  }
-			//                 }
-			//             })
-			//         elseif armor_id == "chestplate" then
-			//             core.register_craft({
-			//                 output = "armor:"+material_id+"_"+armor_id,
-			//                 recipe = {
-			//                     {"main:"+material_id, ""                  , "main:"+material_id},
-			//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
-			//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id}
-			//                 }
-			//             })
-			//         elseif armor_id == "leggings" then
-			//             core.register_craft({
-			//                 output = "armor:"+material_id+"_"+armor_id,
-			//                 recipe = {
-			//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
-			//                     {"main:"+material_id, ""                  , "main:"+material_id},
-			//                     {"main:"+material_id, ""                  , "main:"+material_id}
-			//                 }
-			//             })
-			//         elseif armor_id == "boots" then
-			//             core.register_craft({
-			//                 output = "armor:"+material_id+"_"+armor_id,
-			//                 recipe = {
-			//                     {""                  , "", ""                  },
-			//                     {"main:"+material_id, "", "main:"+material_id},
-			//                     {"main:"+material_id, "", "main:"+material_id}
-			//                 }
-			//             })
-			//             core.register_node("armor:"+material_id+"_"+armor_id+"particletexture", {
-			//                 description = "NIL",
-			//                 tiles = {material_id+"_"+armor_id+"_item.png"},
-			//                 groups = {},
-			//                 drop = "",
-			//                 drawtype = "allfaces",
-			//                 on_construct = function(pos)
-			//                     core.remove_node(pos)
-			//                 end,
-			//             })
-			//         end
+			if (armor_id == "helmet") {
+				//             core.register_craft({
+				//                 output = "armor:"+material_id+"_"+armor_id,
+				//                 recipe = {
+				//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
+				//                     {"main:"+material_id, ""                  , "main:"+material_id},
+				//                     {""                  , ""                  , ""                  }
+				//                 }
+				//             })
+			} else if (armor_id == "chestplate") {
+				//             core.register_craft({
+				//                 output = "armor:"+material_id+"_"+armor_id,
+				//                 recipe = {
+				//                     {"main:"+material_id, ""                  , "main:"+material_id},
+				//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
+				//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id}
+				//                 }
+				//             })
+			} else if (armor_id == "leggings") {
+				//             core.register_craft({
+				//                 output = "armor:"+material_id+"_"+armor_id,
+				//                 recipe = {
+				//                     {"main:"+material_id, "main:"+material_id, "main:"+material_id},
+				//                     {"main:"+material_id, ""                  , "main:"+material_id},
+				//                     {"main:"+material_id, ""                  , "main:"+material_id}
+				//                 }
+				//             })
+			} else if (armor_id == "boots") {
+				//             core.register_craft({
+				//                 output = "armor:"+material_id+"_"+armor_id,
+				//                 recipe = {
+				//                     {""                  , "", ""                  },
+				//                     {"main:"+material_id, "", "main:"+material_id},
+				//                     {"main:"+material_id, "", "main:"+material_id}
+				//                 }
+				//             })
+				//             core.register_node("armor:"+material_id+"_"+armor_id+"particletexture", {
+				//                 description = "NIL",
+				//                 tiles = {material_id+"_"+armor_id+"_item.png"},
+				//                 groups = {},
+				//                 drop = "",
+				//                 drawtype = "allfaces",
+				//                 on_construct = function(pos)
+				//                     core.remove_node(pos)
+				//                 end,
+				//             })
+			}
 		}
 	}
 }
