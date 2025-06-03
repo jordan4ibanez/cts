@@ -317,6 +317,9 @@ namespace skins {
 	// end)
 	core.register_on_joinplayer((player: ObjectRef) => {
 		// todo: add_cape(player)
+		if (core.is_singleplayer()) {
+			return;
+		}
 		core.after(0, () => {
 			fetch_function(player.get_player_name());
 			// todo: depends on crafter armor
