@@ -305,27 +305,27 @@ namespace armor {
 					output: "armor:" + material_id + "_" + armor_id,
 					recipe: [
 						[
-							"main:" + material_id,
-							"main:" + material_id,
-							"main:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
 						],
-						["main:" + material_id, "", "main:" + material_id],
+						["crafter:" + material_id, "", "crafter:" + material_id],
 					],
 				});
 			} else if (armor_id == "chestplate") {
 				core.register_craft({
 					output: "armor:" + material_id + "_" + armor_id,
 					recipe: [
-						["main:" + material_id, "", "main:" + material_id],
+						["crafter:" + material_id, "", "crafter:" + material_id],
 						[
-							"main:" + material_id,
-							"main:" + material_id,
-							"main:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
 						],
 						[
-							"main:" + material_id,
-							"main:" + material_id,
-							"main:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
 						],
 					],
 				});
@@ -334,20 +334,20 @@ namespace armor {
 					output: "armor:" + material_id + "_" + armor_id,
 					recipe: [
 						[
-							"main:" + material_id,
-							"main:" + material_id,
-							"main:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
+							"crafter:" + material_id,
 						],
-						["main:" + material_id, "", "main:" + material_id],
-						["main:" + material_id, "", "main:" + material_id],
+						["crafter:" + material_id, "", "crafter:" + material_id],
+						["crafter:" + material_id, "", "crafter:" + material_id],
 					],
 				});
 			} else if (armor_id == "boots") {
 				core.register_craft({
 					output: "armor:" + material_id + "_" + armor_id,
 					recipe: [
-						["main:" + material_id, "", "main:" + material_id],
-						["main:" + material_id, "", "main:" + material_id],
+						["crafter:" + material_id, "", "crafter:" + material_id],
+						["crafter:" + material_id, "", "crafter:" + material_id],
 					],
 				});
 
