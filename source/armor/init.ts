@@ -288,18 +288,16 @@ namespace armor {
 					leggings: bool_int(armor_id == "leggings"),
 					boots: bool_int(armor_id == "boots"),
 				},
-				//             inventory_image = material_id+"_"+armor_id+"_item.png",
-				//             stack_max = 1,
-				//             wearing_texture = material_id+"_"+armor_id+".png",
-				//             tool_capabilities = {
-				//                 full_punch_interval = 0,
-				//                 max_drop_level = 0,
-				//                 groupcaps = {
-				//                 },
-				//                 damage_groups = {
-				//                 },
-				//                 punch_attack_uses = 0,
-				//             }
+				inventory_image: material_id + "_" + armor_id + "_item.png",
+				stack_max: 1,
+				wearing_texture: material_id + "_" + armor_id + ".png",
+				tool_capabilities: {
+					full_punch_interval: 0,
+					max_drop_level: 0,
+					groupcaps: {},
+					damage_groups: {},
+					punch_attack_uses: 0,
+				},
 			});
 
 			//         if armor_id == "helmet" then
