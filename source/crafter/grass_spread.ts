@@ -1,5 +1,5 @@
 // Grass spread abm.
-
+namespace crafter{
 core.register_abm({
 	label: "Grass Grow",
 	nodenames: ["crafter:dirt"],
@@ -15,3 +15,4 @@ core.register_abm({
 		core.set_node(pos, { name: "crafter:grass" });
 	},
 });
+}
