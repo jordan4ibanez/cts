@@ -141,40 +141,6 @@ namespace armor {
 			}
 		}
 
-		//     stack = inv:get_stack("armor_torso",1)
-		//     name = stack:get_name()
-		//     if name ~= "" then
-		//         wear_level = ((9-get_item_group(name,"armor_level"))*4)*(5-get_item_group(name,"armor_type"))*damage
-		//         stack:add_wear(wear_level)
-		//         inv:set_stack("armor_torso", 1, stack)
-		//         new_stack = inv:get_stack("armor_torso",1):get_name()
-		//         if new_stack == "" then
-		//             recalc = true
-		//         end
-		//     end
-		//     stack = inv:get_stack("armor_legs",1)
-		//     name = stack:get_name()
-		//     if name ~= "" then
-		//         wear_level = ((9-get_item_group(name,"armor_level"))*6)*(5-get_item_group(name,"armor_type"))*damage
-		//         stack:add_wear(wear_level)
-		//         inv:set_stack("armor_legs", 1, stack)
-		//         new_stack = inv:get_stack("armor_legs",1):get_name()
-		//         if new_stack == "" then
-		//             recalc = true
-		//         end
-		//     end
-		//     stack = inv:get_stack("armor_feet",1)
-		//     name = stack:get_name()
-		//     if name ~= "" then
-		//         wear_level = ((9-get_item_group(name,"armor_level"))*10)*(5-get_item_group(name,"armor_type"))*damage
-		//         stack:add_wear(wear_level)
-		//         inv:set_stack("armor_feet", 1, stack)
-		//         new_stack = inv:get_stack("armor_feet",1):get_name()
-		//         if new_stack == "" then
-		//             recalc = true
-		//         end
-		//     end
-
 		//     if recalc == true then
 		//         core.sound_play("armor_break",{to_player=player:get_player_name(),gain=1,pitch=random(80,100)/100})
 		//         recalculate_armor(player)
