@@ -72,15 +72,15 @@ namespace armor {
 	}
 
 	export function calculate_armor_absorbtion(player: ObjectRef) {
-		//     if not player or (player and not player:is_player()) then return end
-		//     inv = player:get_inventory()
-		//     armor_absorbtion = 0
-		//     stack = inv:get_stack("armor_head",1):get_name()
-		//     if stack ~= "" then
-		//         level = get_item_group(stack,"armor_level")
-		//         defense = get_item_group(stack,"armor_defense")
-		//         armor_absorbtion = armor_absorbtion + (level*defense)
-		//     end
+		const inv: InvRef = player.get_inventory();
+		let armor_absorbtion: number = 0;
+		const stack: string = inv.get_stack("armor_head", 1).get_name();
+		    if (stack != "") {
+		        level = get_item_group(stack,"armor_level")
+		        defense = get_item_group(stack,"armor_defense")
+		        armor_absorbtion = armor_absorbtion + (level*defense)
+            }
+
 		//     stack = inv:get_stack("armor_torso",1):get_name()
 		//     if stack ~= "" then
 		//         level = get_item_group(stack,"armor_level")
