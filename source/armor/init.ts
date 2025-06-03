@@ -270,7 +270,7 @@ namespace armor {
 		return state ? 1 : 0;
 	}
 
-	// for material_id,material in pairs(materials) do
+	for (const [material_id,material] of pairs(materials)) {
 	//     for armor_id,armor in pairs(armor_type) do
 	//         //print(material_id,material,"|",armor_id,armor)
 	//         core.register_tool("armor:"..material_id.."_"..armor_id,{
@@ -349,5 +349,5 @@ namespace armor {
 	//         end
 
 	//     end
-	// end
+	}
 }
