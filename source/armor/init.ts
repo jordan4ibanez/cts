@@ -76,9 +76,9 @@ namespace armor {
 		let armor_absorbtion: number = 0;
 		const stack: string = inv.get_stack("armor_head", 1).get_name();
 		    if (stack != "") {
-		        level = get_item_group(stack,"armor_level")
-		        defense = get_item_group(stack,"armor_defense")
-		        armor_absorbtion = armor_absorbtion + (level*defense)
+		        // level = get_item_group(stack,"armor_level")
+		        // defense = get_item_group(stack,"armor_defense")
+		        // armor_absorbtion = armor_absorbtion + (level*defense)
             }
 
 		//     stack = inv:get_stack("armor_torso",1):get_name()
