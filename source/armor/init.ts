@@ -275,7 +275,10 @@ namespace armor {
 			//print(material_id,material,"|",armor_id,armor)
 
 			core.register_tool("armor:" + material_id + "_" + armor_id, {
-				//             description = material_id:gsub("^%l", string.upper)+" "+armor_id:gsub("^%l", string.upper),
+				description:
+					string.gsub(material_id, "^%l", string.upper)[0] +
+					" " +
+					string.gsub(armor_id, "^%l", string.upper)[0],
 				//             groups = {
 				//                 armor         = 1,
 				//                 armor_level   = material,
