@@ -258,7 +258,13 @@ namespace armor {
 		["ruby"]: 8,
 	};
 
-	// local armor_type = {["helmet"]=2,["chestplate"]=4,["leggings"]=3,["boots"]=1} //max 4
+	// Max 4.
+	const armor_type: Dictionary<string, number> = {
+		["helmet"]: 2,
+		["chestplate"]: 4,
+		["leggings"]: 3,
+		["boots"]: 1,
+	};
 
 	// local function bool_int(state)
 	//     if state == true then return(1) end
