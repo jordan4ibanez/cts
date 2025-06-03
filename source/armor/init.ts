@@ -176,9 +176,9 @@ namespace armor {
 		inv.set_size("armor_feet", 1);
 	});
 
-	// core.register_on_dieplayer(function(player)
-	//     set_armor_gui(player)
-	// end)
+	core.register_on_dieplayer((player) => {
+		set_armor_gui(player);
+	});
 
 	// local acceptable = {
 	//     ["armor_head"]  = true,
