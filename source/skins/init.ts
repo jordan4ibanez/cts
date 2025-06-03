@@ -94,8 +94,7 @@ namespace skins {
 
 				pool.set(name, fileName);
 
-				// Todo: this needs the crafter armor mod.
-				// recalculate_armor(player)
+				armor.recalculate_armor(player);
 			}
 		);
 	}
