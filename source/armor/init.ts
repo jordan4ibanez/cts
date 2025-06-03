@@ -1,8 +1,5 @@
 namespace armor {
-// local
-// minetest,math,pairs
-// =
-// minetest,math,pairs
+
 
 // local get_item_group = minetest.get_item_group
 // local get_itemdef    = minetest.get_itemdef
