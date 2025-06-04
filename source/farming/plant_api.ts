@@ -415,14 +415,23 @@ namespace farming {
 				drop: def.fruit_drop,
 				// This is hardcoded to work no matter what.
 				paramtype2: ParamType2.facedir,
-				after_destruct: (pos, oldnode) => {
-					// local facedir = oldnode.param2
-					// facedir = core.facedir_to_dir(facedir)
-					// local dir = vector.multiply(facedir,-1)
-					// local stem_pos = vector.add(dir,pos)
-					// if core.get_node(stem_pos).name == "farming:"+name+"_complete" then
-					//     core.set_node(stem_pos, {name = "farming:"+name+"_1"})
-					// end
+				after_destruct: (pos: Vec3, oldnode: NodeTable) => {
+					const facedir: number = oldnode.param2 || 0;
+
+					const dir: Vec3 = vector.multiply(
+						core.facedir_to_dir(facedir),
+						-1
+					);
+
+					const stem_pos: Vec3 = vector.add(dir, pos);
+					if (
+						core.get_node(stem_pos).name ==
+						"farming:" + name + "_complete"
+					) {
+						core.set_node(stem_pos, {
+							name: "farming:" + name + "_1",
+						});
+					}
 				},
 			});
 		}
