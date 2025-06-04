@@ -52,15 +52,38 @@ namespace farming {
 					timer.start(math.random(10, 25) + math.random());
 				} else {
 					core.set_node(pos, { name: "crafter:dirt" });
-					if (
-						core.get_item_group(
-							core.get_node(
-								vector.create3d(pos.x, pos.y + 1, pos.z)
-							).name,
-							"plant"
-						) > 0
-					) {
+
+					const aboveNodeName: string = core.get_node(
+						vector.create3d(pos.x, pos.y + 1, pos.z)
+					).name;
+
+					if (core.get_item_group(aboveNodeName, "plant") > 0) {
 						core.dig_node(vector.create3d(pos.x, pos.y + 1, pos.z));
+						core.add_particlespawner({
+							amount: 20,
+							time: 0.0001,
+							minpos: vector.create3d({
+								x: abovePos.x - 0.5,
+								y: abovePos.y - 0.5,
+								z: abovePos.z - 0.5,
+							}),
+							maxpos: vector.create3d({
+								x: abovePos.x + 0.5,
+								y: abovePos.y + 0.5,
+								z: abovePos.z + 0.5,
+							}),
+							minvel: vector.create3d(-1, 0, -1),
+							maxvel: vector.create3d(1, 0, 1),
+							minacc: vector.create3d({ x: 0, y: -9.81, z: 0 }),
+							maxacc: vector.create3d({ x: 0, y: -9.81, z: 0 }),
+							minexptime: 0.5,
+							maxexptime: 1.5,
+							minsize: 0,
+							maxsize: 0,
+							collisiondetection: true,
+							vertical: false,
+							node: { name: nodeAboveName },
+						});
 					}
 				}
 			};
