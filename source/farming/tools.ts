@@ -20,16 +20,17 @@ namespace farming {
 			throw new Error("How");
 		}
 		const wear: number = 100 * (6 - level);
-			let groupcaps2: GroupCap | undefined
+			let groupcaps2: Dictionary<string, GroupCap> | undefined
+            let damage: number = 0;
 
 			if (material == "wood") {
-		// 		groupcaps2={
-		// 			dirt =  {times={[1]=0.4,[2]=1.5,[3]=3,[4]=6,[5]=12},    uses=59, maxlevel=1},
-		// 			snow =  {times={[1]=0.4,[2]=1.5,[3]=3,[4]=6,[5]=12},    uses=59, maxlevel=1},
-		// 			grass = {times={[1]=0.45,[2]=1.5,[3]=3,[4]=6,[5]=12},   uses=59, maxlevel=1},
-		// 			sand =  {times={[1]=0.4,[2]=1.5,[3]=3,[4]=6,[5]=12},    uses=59, maxlevel=1},
-		// 		}
-		// 		damage = 2.5
+				groupcaps2={
+					dirt :  {times:{[1]:0.4,[2]:1.5,[3]:3,[4]:6,[5]:12},    uses:59, maxlevel:1},
+					snow :  {times:{[1]:0.4,[2]:1.5,[3]:3,[4]:6,[5]:12},    uses:59, maxlevel:1},
+					grass : {times:{[1]:0.45,[2]:1.5,[3]:3,[4]:6,[5]:12},   uses:59, maxlevel:1},
+					sand :  {times:{[1]:0.4,[2]:1.5,[3]:3,[4]:6,[5]:12},    uses:59, maxlevel:1},
+				}
+				damage = 2.5
             } else if (material == "stone") {
 		// 		groupcaps2={
 		// 			dirt =  {times={[1]=0.2,[2]=0.2,[3]=1.5,[4]=3,[5]=6},   uses=131, maxlevel=1},
