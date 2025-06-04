@@ -52,6 +52,8 @@ namespace farming {
 		// This part is for the fruit.
 		fruit_name?: string;
 		fruit_description?: string;
+		fruit_tiles?: string[];
+		fruit_groups?: Dictionary<string, number>;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
