@@ -139,7 +139,7 @@ namespace farming {
 		seed_plants: "farming:wheat_1",
 	});
 
-	// core.register_plant("melon_stem", {
+	farming.register_plant("melon_stem", {
 	// 	    description = "Melon Stem",
 	// 	    drawtype = "plantlike",
 	// 		waving = 1,
@@ -236,7 +236,7 @@ namespace farming {
 	// 	texture = "melon_slice.png",
 	// 	satiation=1,
 	// 	hunger=1,
-	// })
+	})
 
 	// core.register_plant("pumpkin_stem", {
 	// 	    description = "Pumpkin Stem",
