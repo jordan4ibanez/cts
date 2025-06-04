@@ -103,15 +103,21 @@ namespace farming {
 					}
 				};
 
-				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
-				// 				pos.y = pos.y - 1
-				// 				local noder = core.get_node(pos).name
-				// 				local found = core.get_node_group(noder, "soil") > 0
-				// 				if not found then
-				// 					pos.y = pos.y + 1
-				// 					core.dig_node(pos)
-				// 				end
-				// 			end
+				after_place_node = (
+					pos: Vec3,
+					placer: ObjectRef,
+					itemstack: ItemStackObject,
+					pointed_thing: PointedThing
+				) => {
+					pos.y = pos.y - 1;
+					const noder: string = core.get_node(pos).name;
+					const found: boolean =
+						core.get_item_group(noder, "soil") > 0;
+					if (!found) {
+						pos.y = pos.y + 1;
+						core.dig_node(pos);
+					}
+				};
 				// 		//for plants that grow in place
 			} else if (def.grows == PlantGrowth.inPlace) {
 				// 			on_abm = function(pos)
