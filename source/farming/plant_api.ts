@@ -16,7 +16,7 @@ namespace farming {
 	// todo: Break this up into 3 interfaces.
 
 	interface PlantDefinition {
-		stages: number;
+		stages?: number;
 		grows: PlantGrowth;
 		grownNode?: string;
 		drop: string;
@@ -65,7 +65,7 @@ namespace farming {
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
-		const max: number = def.stages;
+		const max: number = def.stages || 1;
 
 		if (max <= 0) {
 			throw new Error(`Invalid stages for [${name}]`);
@@ -80,7 +80,7 @@ namespace farming {
 		for (const i of $range(1, max)) {
 			let nodename: string = "";
 
-			if (def.stages > 1) {
+			if (max > 1) {
 				nodename = "crafter_farming:" + name + "_" + i;
 			} else {
 				nodename = "crafter_farming:" + name;
