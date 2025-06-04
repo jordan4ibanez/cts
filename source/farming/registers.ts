@@ -17,22 +17,22 @@ namespace farming {
 // 	buildable_to = false,
 	
 // 	waving            = 0,
-// 	--inventory_image   = def.inventory_image,
-// 	--walkable          = def.walkable,
-// 	--climbable         = def.climbable,
-// 	--paramtype2        = def.paramtype2,
-// 	--buildable_to      = def.buildable_to,
-// 	--selection_box     = def.selection_box,
-// 	--drop              = def.drop,
+// 	//inventory_image   = def.inventory_image,
+// 	//walkable          = def.walkable,
+// 	//climbable         = def.climbable,
+// 	//paramtype2        = def.paramtype2,
+// 	//buildable_to      = def.buildable_to,
+// 	//selection_box     = def.selection_box,
+// 	//drop              = def.drop,
 // 	grows             = "up",
 // 	node_box = {
 // 		type = "fixed",
 // 		fixed = {
-// 			{-7/16, -8/16, -7/16,  7/16, 8/16,  7/16}, -- Main body
-// 			{-8/16, -8/16, -7/16,  8/16, 8/16, -7/16}, -- Spikes
-// 			{-8/16, -8/16,  7/16,  8/16, 8/16,  7/16}, -- Spikes
-// 			{-7/16, -8/16, -8/16, -7/16, 8/16,  8/16}, -- Spikes
-// 			{7/16,  -8/16,  8/16,  7/16, 8/16, -8/16}, -- Spikes
+// 			{-7/16, -8/16, -7/16,  7/16, 8/16,  7/16}, // Main body
+// 			{-8/16, -8/16, -7/16,  8/16, 8/16, -7/16}, // Spikes
+// 			{-8/16, -8/16,  7/16,  8/16, 8/16,  7/16}, // Spikes
+// 			{-7/16, -8/16, -8/16, -7/16, 8/16,  8/16}, // Spikes
+// 			{7/16,  -8/16,  8/16,  7/16, 8/16, -8/16}, // Spikes
 // 		},
 // 	},
 // })
@@ -59,13 +59,13 @@ namespace farming {
 // 	waving = 1,
 	
 // 	walkable = false,
-// 	--inventory_image   = def.inventory_image,
-// 	--walkable          = def.walkable,
-// 	--climbable         = def.climbable,
-// 	--paramtype2        = def.paramtype2,
-// 	--buildable_to      = def.buildable_to,
-// 	--selection_box     = def.selection_box,
-// 	--drop              = def.drop,
+// 	//inventory_image   = def.inventory_image,
+// 	//walkable          = def.walkable,
+// 	//climbable         = def.climbable,
+// 	//paramtype2        = def.paramtype2,
+// 	//buildable_to      = def.buildable_to,
+// 	//selection_box     = def.selection_box,
+// 	//drop              = def.drop,
 // 	grows             = "up",
 // 	selection_box = {
 // 		type = "fixed",
@@ -119,7 +119,7 @@ namespace farming {
 // 		climbable = false,
 // 		paramtype = "light",
 // 		is_ground_content = false,	
-// 	    tiles = {"wheat_stage"}, --automatically adds _X.png
+// 	    tiles = {"wheat_stage"}, //automatically adds _X.png
 // 	    paramtype2 = "degrotate",
 // 	    buildable_to = false,
 // 	    groups = {leaves = 1, plant = 1, axe = 1, hand = 0,dig_immediate=1,attached_node=1,crops=1},
@@ -135,31 +135,31 @@ namespace farming {
 // 			max_items = 2,
 // 			items= {
 // 			 {
-// 				-- Only drop if using a tool whose name is identical to one
-// 				-- of these.
-// 				--rarity = 10,
+// 				// Only drop if using a tool whose name is identical to one
+// 				// of these.
+// 				//rarity = 10,
 // 				items = {"farming:wheat"},
-// 				-- Whether all items in the dropped item list inherit the
-// 				-- hardware coloring palette color from the dug node.
-// 				-- Default is 'false'.
-// 				--inherit_color = true,
+// 				// Whether all items in the dropped item list inherit the
+// 				// hardware coloring palette color from the dug node.
+// 				// Default is 'false'.
+// 				//inherit_color = true,
 // 			},
 // 			{
-// 				-- Only drop if using a tool whose name is identical to one
-// 				-- of these.
+// 				// Only drop if using a tool whose name is identical to one
+// 				// of these.
 // 				rarity = 2,
 // 				items = {"farming:wheat_seeds"},
-// 				-- Whether all items in the dropped item list inherit the
-// 				-- hardware coloring palette color from the dug node.
-// 				-- Default is 'false'.
-// 				--inherit_color = true,
+// 				// Whether all items in the dropped item list inherit the
+// 				// hardware coloring palette color from the dug node.
+// 				// Default is 'false'.
+// 				//inherit_color = true,
 // 			},
 // 			},
 // 			},
 		
 		
-// 		--seed definition
-// 		--"farming:wheat_1"
+// 		//seed definition
+// 		//"farming:wheat_1"
 // 		seed_name = "wheat",
 // 		seed_description = "Wheat Seeds",
 // 		seed_inventory_image = "wheat_seeds.png",
@@ -175,7 +175,7 @@ namespace farming {
 // 		paramtype = "light",
 // 		sunlight_propagates = true,
 // 		is_ground_content = false,	
-// 	    tiles = {"melon_stage"}, --automatically adds _X.png
+// 	    tiles = {"melon_stage"}, //automatically adds _X.png
 // 	    buildable_to = false,
 // 	    groups = {leaves = 1,plant=1, stem = 1, axe = 1, hand = 0,dig_immediate=1,attached_node=1,crops=1},
 // 	    sounds = main.grassSound(),
@@ -186,7 +186,7 @@ namespace farming {
 // 		grows = "in_place_yields",
 // 		grown_node="farming:melon",
 // 		stages = 7,
-// 		--stem stage complete definition (fully grown and budding)
+// 		//stem stage complete definition (fully grown and budding)
 // 		stem_description = "",
 // 		stem_tiles = {"nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png",},
 // 		stem_drawtype = "nodebox",
@@ -218,7 +218,7 @@ namespace farming {
 // 	    stem_groups = {plant=1,dig_immediate=1,attached_node=1,crops=1},
 // 	    stem_sounds = main.woodSound(),
 	    
-// 	    --fruit definition (what the stem creates)
+// 	    //fruit definition (what the stem creates)
 // 	    fruit_name        = "melon",
 // 	    fruit_description = "Melon",
 // 	    fruit_tiles = {"melon_top.png","melon_top.png","melon_side.png","melon_side.png","melon_side.png","melon_side.png"},
@@ -250,8 +250,8 @@ namespace farming {
 // 			},
 // 		},
 		
-// 		--seed definition
-// 		--"farming:wheat_1"
+// 		//seed definition
+// 		//"farming:wheat_1"
 // 		seed_name = "melon",
 // 		seed_description = "Melon Seeds",
 // 		seed_inventory_image = "melon_seeds.png",
@@ -275,7 +275,7 @@ namespace farming {
 // 		paramtype = "light",
 // 		sunlight_propagates = true,
 // 		is_ground_content = false,	
-// 	    tiles = {"melon_stage"}, --automatically adds _X.png
+// 	    tiles = {"melon_stage"}, //automatically adds _X.png
 // 	    buildable_to = false,
 // 	    groups = {leaves = 1,plant=1, stem = 1, axe = 1, hand = 0,dig_immediate=1,attached_node=1,crops=1},
 // 	    sounds = main.grassSound(),
@@ -287,7 +287,7 @@ namespace farming {
 // 		grown_node="farming:pumpkin",
 // 		stages = 7,
 		
-// 		--stem stage complete definition (fully grown and budding)
+// 		//stem stage complete definition (fully grown and budding)
 // 		stem_description = "",
 // 		stem_tiles = {"nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png",},
 // 		stem_drawtype = "nodebox",
@@ -319,14 +319,14 @@ namespace farming {
 // 	    stem_groups = {plant=1,dig_immediate=1,attached_node=1,crops=1},
 // 	    stem_sounds = main.woodSound(),
 	    
-// 	    --fruit definition (what the stem creates)
+// 	    //fruit definition (what the stem creates)
 // 	    fruit_name        = "pumpkin",
 // 	    fruit_description = "Pumpkin",
 // 	    fruit_tiles = {"pumpkin_top.png","pumpkin_top.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png"},
 // 	    fruit_groups = {pathable = 1,wood=1,flammable=1},
 // 	    fruit_sounds = main.woodSound(),
-// 		--seed definition
-// 		--"farming:wheat_1"
+// 		//seed definition
+// 		//"farming:wheat_1"
 // 		seed_name = "pumpkin",
 // 		seed_description = "Pumpkin Seeds",
 // 		seed_inventory_image = "pumpkin_seeds.png",
@@ -410,7 +410,7 @@ namespace farming {
 // 	fill_ratio = 0.5,
 // 	param2 = 0,
 // 	param2_max = 179,
-// 	--biomes = {"grassland"},
+// 	//biomes = {"grassland"},
 // 	decoration = "farming:grass",
 // 	height = 1,
 // })	
