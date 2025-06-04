@@ -53,16 +53,21 @@ namespace farming {
 				} else {
 					core.set_node(pos, { name: "crafter:dirt" });
 
+					core.sound_play("dirt", {
+						pos: pos,
+						gain: 0.3,
+					});
+
 					const abovePos: Vec3 = vector.create3d(
 						pos.x,
 						pos.y + 1,
 						pos.z
 					);
 
-					const aboveNodeName: string = core.get_node(abovePos).name;
+					const nodeAboveName: string = core.get_node(abovePos).name;
 
-					if (core.get_item_group(aboveNodeName, "plant") > 0) {
-						core.dig_node(vector.create3d(pos.x, pos.y + 1, pos.z));
+					if (core.get_item_group(nodeAboveName, "plant") > 0) {
+						core.dig_node(abovePos);
 						core.add_particlespawner({
 							amount: 20,
 							time: 0.0001,
