@@ -11,13 +11,19 @@ namespace farming {
 	export function register_plant(name: string, def: PlantDefinition) {
 		const max: number = def.stages;
 
+		if (max <= 0) {
+			throw new Error(`Invalid stages for [${name}]`);
+		}
+
 		for (const i of $range(1, max)) {
-			// 		local nodename
-			// 		if def.stages then
-			// 			nodename = "farming:"..name.."_"..i
-			// 		else
-			// 			nodename = "farming:"..name
-			// 		end
+			let nodename: string = "";
+
+			if (def.stages > 1) {
+							nodename = "farming:"+name+"_"+i
+			} else {
+				// 			nodename = "farming:"+name
+			}
+
 			// 		 local after_dig_node
 			// 		 local on_abm
 			// 		 local on_construct
@@ -37,7 +43,7 @@ namespace farming {
 			// 			end
 			// 			on_abm = function(pos)
 			// 				if core.get_node_light(pos, nil) < 10 then
-			// 					//print("failed to grow at "..dump(pos))
+			// 					//print("failed to grow at "+dump(pos))
 			// 					return
 			// 				end
 			// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
@@ -48,7 +54,7 @@ namespace farming {
 			// 				if found and (found_soil or found_self) then
 			// 					pos.y = pos.y + 2
 			// 					if core.get_node(pos).name == "air" then
-			// 						core.set_node(pos,{name="farming:"..name})
+			// 						core.set_node(pos,{name="farming:"+name})
 			// 					end
 			// 				elseif not found_self then
 			// 					pos.y = pos.y + 1
@@ -71,7 +77,7 @@ namespace farming {
 			// 				if core.get_node_light(pos, nil) < 10 then
 			// 					core.dig_node(pos)
 			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 					//print("failed to grow at "..dump(pos))
+			// 					//print("failed to grow at "+dump(pos))
 			// 					return
 			// 				end
 			// 				pos.y = pos.y - 1
@@ -80,7 +86,7 @@ namespace farming {
 			// 				if found then
 			// 					if i < max then
 			// 						pos.y = pos.y + 1
-			// 						core.set_node(pos,{name="farming:"..name.."_"..(i+1)})
+			// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
 			// 					end
 			// 				//if not found farmland
 			// 				else
@@ -102,7 +108,7 @@ namespace farming {
 			// 				if core.get_node_light(pos, nil) < 10 then
 			// 					core.dig_node(pos)
 			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 					//print("failed to grow at "..dump(pos))
+			// 					//print("failed to grow at "+dump(pos))
 			// 					return
 			// 				end
 			// 				pos.y = pos.y - 1
@@ -111,7 +117,7 @@ namespace farming {
 			// 				if found then
 			// 					if i < max then
 			// 						pos.y = pos.y + 1
-			// 						core.set_node(pos,{name="farming:"..name.."_"..(i+1)})
+			// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
 			// 					else
 			// 						pos.y = pos.y + 1
 			// 						local found = false
@@ -134,7 +140,7 @@ namespace farming {
 			// 							core.add_node(add_node,{name=def.grown_node,param2=param2})
 			// 							local facedir = core.facedir_to_dir(param2)
 			// 							local inverted_facedir = vector.multiply(facedir,-1)
-			// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"..name.."_complete", param2=core.dir_to_facedir(facedir)})
+			// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
 			// 						end
 			// 					end
 			// 				//if not found farmland
@@ -164,7 +170,7 @@ namespace farming {
 			// 		end
 			// 		local tiles
 			// 		if max > 1 then
-			// 			tiles = {def.tiles[1].."_"..i..".png"}
+			// 			tiles = {def.tiles[1]+"_"+i+".png"}
 			// 		else
 			// 			tiles = def.tiles
 			// 		end
@@ -200,7 +206,7 @@ namespace farming {
 			// 		})
 			// 		if on_abm then
 			// 			core.register_abm({
-			// 				label = nodename.." Grow",
+			// 				label = nodename+" Grow",
 			// 				nodenames = {nodename},
 			// 				neighbors = {"air"},
 			// 				interval = 6,
@@ -215,7 +221,7 @@ namespace farming {
 
 		// 	//create final stage for grow in place plant stems that create food
 		// 	if def.grows == "in_place_yields" then
-		// 		core.register_node("farming:"..name.."_complete", {
+		// 		core.register_node("farming:"+name+"_complete", {
 		// 		    description         = def.stem_description,
 		// 		    tiles               = def.stem_tiles,
 		// 		    drawtype            = def.stem_drawtype,
@@ -229,7 +235,7 @@ namespace farming {
 		// 		    selection_box       = def.stem_selection_box,
 		// 		    paramtype2          = "facedir",
 		// 		})
-		// 		core.register_node("farming:"..def.fruit_name, {
+		// 		core.register_node("farming:"+def.fruit_name, {
 		// 		    description = def.fruit_description,
 		// 		    tiles       = def.fruit_tiles,
 		// 		    groups      = def.fruit_groups,
@@ -242,14 +248,14 @@ namespace farming {
 		// 			    facedir = core.facedir_to_dir(facedir)
 		// 			    local dir = vector.multiply(facedir,-1)
 		// 			    local stem_pos = vector.add(dir,pos)
-		// 			    if core.get_node(stem_pos).name == "farming:"..name.."_complete" then
-		// 				    core.set_node(stem_pos, {name = "farming:"..name.."_1"})
+		// 			    if core.get_node(stem_pos).name == "farming:"+name+"_complete" then
+		// 				    core.set_node(stem_pos, {name = "farming:"+name+"_1"})
 		// 			    end
 		// 		    end
 		// 		})
 		// 	end
 		// 	if def.seed_name then
-		// 		core.register_craftitem("farming:"..def.seed_name.."_seeds", {
+		// 		core.register_craftitem("farming:"+def.seed_name+"_seeds", {
 		// 			description = def.seed_description,
 		// 			inventory_image = def.seed_inventory_image,
 		// 			on_place = function(itemstack, placer, pointed_thing)
@@ -271,7 +277,7 @@ namespace farming {
 		// 					return itemstack
 		// 				end
 		// 				itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
-		// 				itemstack:set_name("farming:"..def.seed_name.."_seeds")
+		// 				itemstack:set_name("farming:"+def.seed_name+"_seeds")
 		// 				if retval then
 		// 					core.sound_play("leaves", {pos=pointed_thing.above, gain = 1.0})
 		// 				end
