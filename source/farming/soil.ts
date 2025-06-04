@@ -39,17 +39,24 @@ namespace farming {
 				timer.start(math.random(10, 25));
 			};
 			on_timer = (pos: Vec3) => {
-				// 			local found = table.getn(core.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
-				// 			if found then
-				// 				core.set_node(pos,{name="farming:farmland_wet"})
-				// 				local timer = core.get_node_timer(pos)
-				// 				timer:start(1)
-				// 			else
-				// 				core.set_node(pos,{name="main:dirt"})
-				// 				if core.get_node_group(core.get_node(vector.new(pos.x,pos.y+1,pos.z)).name, "plant") > 0 then
-				// 					core.dig_node(vector.new(pos.x,pos.y+1,pos.z))
-				// 				end
-				// 			end
+				const found: boolean = soilHasWater(pos);
+				if (found) {
+					core.set_node(pos, { name: "farming:farmland_wet" });
+					const timer: NodeTimerObject = core.get_node_timer(pos);
+					timer.start(1);
+				} else {
+					core.set_node(pos, { name: "main:dirt" });
+					if (
+						core.get_item_group(
+							core.get_node(
+								vector.create3d(pos.x, pos.y + 1, pos.z)
+							).name,
+							"plant"
+						) > 0
+					) {
+						core.dig_node(vector.create3d(pos.x, pos.y + 1, pos.z));
+					}
+				}
 			};
 		}
 		// 	core.register_node("farming:farmland_"..dryness,{
