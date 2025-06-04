@@ -6,19 +6,18 @@ namespace farming {
 		inventory_image: "wheat_harvested.png",
 	});
 
-    // Todo: depends on the crafter hunger mod.
-	// farming.register_food("crafter_farming:bread", {
-	// 	description: "Bread",
-	// 	texture: "bread.png",
-	// 	satiation: 6,
-	// 	hunger: 2,
-	// });
-	// farming.register_food("crafter_farming:toast", {
-	// 	description: "Toast",
-	// 	texture: "bread.png^[colorize:black:100",
-	// 	satiation: 12,
-	// 	hunger: 4,
-	// });
+	hunger.register_food("crafter_farming:bread", {
+		description: "Bread",
+		texture: "bread.png",
+		satiation: 6,
+		hunger: 2,
+	});
+	hunger.register_food("crafter_farming:toast", {
+		description: "Toast",
+		texture: "bread.png^[colorize:black:100",
+		satiation: 12,
+		hunger: 4,
+	});
 
 	core.register_craft({
 		output: "crafter_farming:bread",
