@@ -1,7 +1,7 @@
 namespace farming {
 	//Quick definition of hoes
 	const material: string[] = ["wood", "stone", "iron", "gold", "diamond"];
-	// local construct = {"wood","cobble","iron","gold","diamond"}
+	const construct: string[] = ["wood", "cobble", "iron", "gold", "diamond"];
 	// local function till_soil(pos)
 	// 	local nodey = core.get_node(pos).name
 	// 	local is_dirt = (nodey == "main:dirt" or nodey == "main:grass")
