@@ -140,16 +140,16 @@ namespace farming {
 							"farmland"
 						) > 0;
 					// If farmland is found below.
-					// 				if found then
-					// 					if i < max then
-					// 						pos.y = pos.y + 1
-					// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
-					// 					end
-					// 				//if not found farmland
-					// 				else
-					// 					core.dig_node(pos)
-					// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-					// 				end
+					if (found) {
+						// 					if i < max then
+						// 						pos.y = pos.y + 1
+						// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
+						// 					end
+						// If farmland is not found.
+					} else {
+						// 					core.dig_node(pos)
+						// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+					}
 				};
 
 				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
