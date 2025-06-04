@@ -13,7 +13,7 @@ namespace farming {
 		inPlaceYields,
 	}
 
-	// todo: Break this up into 2 interfaces.
+	// todo: Break this up into 3 interfaces.
 
 	interface PlantDefinition {
 		stages: number;
@@ -403,7 +403,7 @@ namespace farming {
 			}
 
 			core.register_node("farming:" + def.fruit_name, {
-				// 		    description = def.fruit_description,
+						    description = def.fruit_description,
 				// 		    tiles       = def.fruit_tiles,
 				// 		    groups      = def.fruit_groups,
 				// 		    sounds      = def.fruit_sounds,
