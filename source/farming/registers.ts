@@ -251,13 +251,12 @@ namespace farming {
 		seed_plants: "crafter_farming:melon_stem_1",
 	});
 
-	// Todo: requires the hunger mod.
-	// core.register_food("crafter_farming:melon_slice",{
-	// 	description = "Melon Slice",
-	// 	texture = "melon_slice.png",
-	// 	satiation=1,
-	// 	hunger=1,
-	// })
+	hunger.register_food("crafter_farming:melon_slice", {
+		description: "Melon Slice",
+		texture: "melon_slice.png",
+		satiation: 1,
+		hunger: 1,
+	});
 
 	farming.register_plant("pumpkin_stem", {
 		description: "Pumpkin Stem",
