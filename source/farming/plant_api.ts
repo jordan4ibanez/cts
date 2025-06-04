@@ -19,9 +19,9 @@ namespace farming {
 			let nodename: string = "";
 
 			if (def.stages > 1) {
-							nodename = "farming:"+name+"_"+i
+				nodename = "farming:" + name + "_" + i;
 			} else {
-				// 			nodename = "farming:"+name
+				nodename = "farming:" + name;
 			}
 
 			// 		 local after_dig_node
