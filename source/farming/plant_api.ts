@@ -5,8 +5,11 @@ namespace farming {
 	const plant_max: number = 240;
 
 	export enum PlantGrowth {
+		// Sugar cane style.
 		up,
+		// Wheat style.
 		inPlace,
+		// Pumpkin style.
 		inPlaceYields,
 	}
 
@@ -360,7 +363,7 @@ namespace farming {
 			}
 		}
 
-		// 	//create final stage for grow in place plant stems that create food
+		// Create final stage for grow in place plant stems that create food.
 		// 	if def.grows == "in_place_yields" then
 		// 		core.register_node("farming:"+name+"_complete", {
 		// 		    description         = def.stem_description,
