@@ -76,20 +76,22 @@ namespace farming {
 						"crafter:water",
 						"crafter:waterflow",
 					]);
-					// 				pos.y = pos.y - 1
-					// 				local noder = core.get_node(pos).name
-					// 				local found_soil = core.get_item_group(noder, "soil") > 0
-					// 				local found_self//[[this is deep]]= (noder == nodename)
-					// 				if found and (found_soil or found_self) then
-					// 					pos.y = pos.y + 2
-					// 					if core.get_node(pos).name == "air" then
-					// 						core.set_node(pos,{name="farming:"+name})
-					// 					end
-					// 				elseif not found_self then
-					// 					pos.y = pos.y + 1
-					// 					core.dig_node(pos)
-					// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-					// 				end
+					pos.y = pos.y - 1;
+
+					const noder: string = core.get_node(pos).name;
+					const found_soil: boolean =
+						core.get_item_group(noder, "soil") > 0;
+					const found_self: boolean = noder == nodename;
+					if (found && (found_soil || found_self)) {
+						// 					pos.y = pos.y + 2
+						// 					if core.get_node(pos).name == "air" then
+						// 						core.set_node(pos,{name="farming:"+name})
+						// 					end
+					} else if (!found_self) {
+						// 					pos.y = pos.y + 1
+						// 					core.dig_node(pos)
+						// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+					}
 				};
 
 				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
