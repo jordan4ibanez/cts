@@ -46,12 +46,12 @@ namespace farming {
 			// Do custom functions for each node
 			// whether growing in place or up.
 			if (def.grows == PlantGrowth.up) {
-				after_dig_node = function (
+				after_dig_node = (
 					pos: Vec3,
 					node: NodeTable,
 					metadata: MetaRef,
 					digger: ObjectRef
-				) {
+				) => {
 					const np = vector.create3d({
 						x: pos.x,
 						y: pos.y + 1,
