@@ -23,6 +23,8 @@ namespace serverUtilities {
 		pool.delete(player.get_player_name());
 	});
 
+	const travelHomeQueue = new Map<string, number>();
+
 	core.register_chatcommand("sethome", {
 		params: "nil",
 		description:
