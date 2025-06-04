@@ -299,7 +299,7 @@ namespace hunger {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 
-		const itemName = item.name;
+		const itemName = item.get_name();
 		const satiation: number = core.get_item_group(itemName, "satiation");
 		const hunger: number = core.get_item_group(itemName, "hunger");
 
