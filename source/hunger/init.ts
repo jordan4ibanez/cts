@@ -139,10 +139,8 @@ namespace hunger {
 		});
 	});
 
-	// // resets the players hunger settings to max
-	// local name
-	// local temp_pool
-	// core.register_on_respawnplayer(function(player)
+	// Resets the players hunger settings to max.
+	core.register_on_respawnplayer((player) => {
 	// 	name = player:get_player_name()
 	// 	temp_pool = pool[name]
 	// 	temp_pool.hunger                = 20
@@ -155,7 +153,8 @@ namespace hunger {
 	// 		element   = "number",
 	// 		data      =  temp_pool.hunger
 	// 	})
-	// end)
+})
+
 	// local exhaustion_peak  = 512
 	// local hunger_peak      = 128
 	// local temp_pool
