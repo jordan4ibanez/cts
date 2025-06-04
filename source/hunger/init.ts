@@ -256,13 +256,14 @@ namespace hunger {
 		}
 	}
 
-	let timeCalc = 0;
+	let timeCalc: number = 0;
+	const intervalTimer: number = 1;
 	core.register_globalstep((delta: number) => {
 		timeCalc += delta;
-		if (timeCalc < 0.5) {
+		if (timeCalc < intervalTimer) {
 			return;
 		}
-		timeCalc -= 0.5;
+		timeCalc -= intervalTimer;
 		hunger_update();
 	});
 
