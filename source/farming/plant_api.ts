@@ -72,7 +72,10 @@ namespace farming {
 							return;
 						}
 					}
-					// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
+					const found: Vec3 | null = core.find_node_near(pos, 3, [
+						"crafter:water",
+						"crafter:waterflow",
+					]);
 					// 				pos.y = pos.y - 1
 					// 				local noder = core.get_node(pos).name
 					// 				local found_soil = core.get_item_group(noder, "soil") > 0
