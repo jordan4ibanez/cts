@@ -4,11 +4,13 @@ namespace farming {
 	const plant_min: number = 60;
 	const plant_max: number = 240;
 
-	export function register_plant(name: string, def: any) {
-		// 	local max = 1
-		// 	 if def.stages then
-		// 		 max = def.stages
-		// 	 end
+	interface PlantDefinition {
+		stages: number;
+	}
+
+	export function register_plant(name: string, def: PlantDefinition) {
+		const max: number = def.stages;
+
 		// 	 for i = 1,max do
 		// 		local nodename
 		// 		if def.stages then
