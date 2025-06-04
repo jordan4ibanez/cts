@@ -198,7 +198,7 @@ namespace farming {
 						`Node [${nodeName}] is undefined.`
 					);
 				}
-				// 			local sneak = placer:get_player_control().sneak
+				const sneak: boolean = placer.get_player_control().sneak;
 
 				// 			if not sneak and noddef.on_rightclick then
 				// 				core.item_place(itemstack, placer, pointed_thing)
