@@ -180,11 +180,11 @@ namespace farming {
 				max_items : 2,
 				items: [
 				{
-					items : {"farming:melon_seeds"},
+					items : ["farming:melon_seeds"],
 				},
 				{
 					rarity : 2,
-					items : {"farming:melon_seeds"},
+					items : ["farming:melon_seeds"],
 				},
             ],
 			},
