@@ -85,7 +85,7 @@ namespace farming {
 			walkable : false,
 			climbable : false,
 			paramtype : ParamType1.light,
-			is_ground_content : false,
+			
 		    tiles : ["wheat_stage"], //automatically adds _X.png
 		    paramtype2 : ParamType2.degrotate,
 		    buildable_to : false,
