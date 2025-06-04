@@ -35,7 +35,6 @@ namespace farming {
 		selection_box?: NodeBox;
 		node_box?: NodeBox;
 		sunlight_propagates?: boolean;
-		seed_name?: string;
 
 		// This part is for the stem.
 		stem_description?: string;
@@ -57,6 +56,11 @@ namespace farming {
 		fruit_groups?: Dictionary<string, number>;
 		fruit_sounds?: NodeSoundSpec;
 		fruit_drop?: string;
+
+		// This part is for the seeds.
+		seed_name?: string;
+		seed_description?: string;
+		seed_inventory_image?: string;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -438,35 +442,35 @@ namespace farming {
 		}
 
 		if (def.seed_name != null) {
-			// 		core.register_craftitem("farming:"+def.seed_name+"_seeds", {
-			// 			description = def.seed_description,
-			// 			inventory_image = def.seed_inventory_image,
-			// 			on_place = function(itemstack, placer, pointed_thing)
-			// 				if pointed_thing.type ~= "node" then
-			// 					return itemstack
-			// 				end
-			// 				local pointed_thing_diff = pointed_thing.above.y - pointed_thing.under.y
-			// 				if pointed_thing_diff < 1 then return end
-			// 				if core.get_node(pointed_thing.above).name ~= "air" then return end
-			// 				local pb = pointed_thing.above
-			// 				if core.get_node_group(core.get_node(vector.new(pb.x,pb.y-1,pb.z)).name, "farmland") == 0 or core.get_node(pointed_thing.above).name ~= "air"  then
-			// 					return itemstack
-			// 				end
-			// 				local wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
-			// 				local fakestack = itemstack
-			// 				local retval = false
-			// 				retval = fakestack:set_name(def.seed_plants)
-			// 				if not retval then
-			// 					return itemstack
-			// 				end
-			// 				itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
-			// 				itemstack:set_name("farming:"+def.seed_name+"_seeds")
-			// 				if retval then
-			// 					core.sound_play("leaves", {pos=pointed_thing.above, gain = 1.0})
-			// 				end
-			// 				return itemstack
-			// 			end
-			// 		})
+			core.register_craftitem("farming:" + def.seed_name + "_seeds", {
+				description: def.seed_description,
+				inventory_image: def.seed_inventory_image,
+				// 			on_place = function(itemstack, placer, pointed_thing)
+				// 				if pointed_thing.type ~= "node" then
+				// 					return itemstack
+				// 				end
+				// 				local pointed_thing_diff = pointed_thing.above.y - pointed_thing.under.y
+				// 				if pointed_thing_diff < 1 then return end
+				// 				if core.get_node(pointed_thing.above).name ~= "air" then return end
+				// 				local pb = pointed_thing.above
+				// 				if core.get_node_group(core.get_node(vector.new(pb.x,pb.y-1,pb.z)).name, "farmland") == 0 or core.get_node(pointed_thing.above).name ~= "air"  then
+				// 					return itemstack
+				// 				end
+				// 				local wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
+				// 				local fakestack = itemstack
+				// 				local retval = false
+				// 				retval = fakestack:set_name(def.seed_plants)
+				// 				if not retval then
+				// 					return itemstack
+				// 				end
+				// 				itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
+				// 				itemstack:set_name("farming:"+def.seed_name+"_seeds")
+				// 				if retval then
+				// 					core.sound_play("leaves", {pos=pointed_thing.above, gain = 1.0})
+				// 				end
+				// 				return itemstack
+				// 			end
+			});
 		}
 	}
 }
