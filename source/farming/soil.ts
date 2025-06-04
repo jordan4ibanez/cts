@@ -1,4 +1,13 @@
 namespace farming {
+	function soilHasWater(pos: Vec3): boolean {
+		const [a, _] = core.find_nodes_in_area(
+			vector.create3d(pos.x - 3, pos.y, pos.z - 3),
+			vector.create3d(pos.x + 3, pos.y, pos.z + 3),
+			["main:water", "main:waterflow"]
+		);
+		return a.length > 0;
+	}
+
 	for (const [level, dryness] of pairs(["wet", "dry"])) {
 		if (typeof level != "number") {
 			throw new Error("how");
@@ -11,28 +20,27 @@ namespace farming {
 
 		if (dryness == "wet") {
 			on_construct = (pos: Vec3) => {
-				const [a, _] = core.find_nodes_in_area(
-					vector.create3d(pos.x - 3, pos.y, pos.z - 3),
-					vector.create3d(pos.x + 3, pos.y, pos.z + 3),
-					["main:water", "main:waterflow"]
-				);
-				const found = a.length > 0;
-
-				if (!found) {
+				if (!soilHasWater(pos)) {
 					core.set_node(pos, { name: "farming:farmland_dry" });
 				}
 
 				const timer: NodeTimerObject = core.get_node_timer(pos);
 				timer.start(1);
 			};
-			// 		on_timer = function(pos)
-			// 			local found = table.getn(core.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
-			// 			if not found then
-			// 				core.set_node(pos,{name="farming:farmland_dry"})
-			// 			end
-			// 			local timer = core.get_node_timer(pos)
-			// 			timer:start(math.random(10,25))
-			// 		end
+			on_timer = (pos) => {
+				const [a, _] = core.find_nodes_in_area(
+					vector.create3d(pos.x - 3, pos.y, pos.z - 3),
+					vector.create3d(pos.x + 3, pos.y, pos.z + 3),
+					["main:water", "main:waterflow"]
+				);
+				const found: boolean = a.length > 0;
+				// 			if not found then
+				// 				core.set_node(pos,{name="farming:farmland_dry"})
+				// 			end
+
+				// 			local timer = core.get_node_timer(pos)
+				// 			timer:start(math.random(10,25))
+			};
 		} else {
 			// 		on_construct = function(pos)
 			// 			local timer = core.get_node_timer(pos)
