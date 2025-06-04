@@ -31,7 +31,13 @@ namespace farming {
 				nodename = "farming:" + name;
 			}
 
-			// 		 local after_dig_node
+			let after_dig_node: (
+				pos: Vec3,
+				node: NodeTable,
+				metadata: MetaRef,
+				digger: ObjectRef
+			) => void = () => {};
+
 			// 		 local on_abm
 			// 		 local on_construct
 			// 		 local after_destruct
@@ -40,15 +46,23 @@ namespace farming {
 			// Do custom functions for each node
 			// whether growing in place or up.
 			if (def.grows == PlantGrowth.up) {
-				// 			 after_dig_node = function(pos, node, metadata, digger)
-				// 				if digger == nil then return end
-				// 				local np = {x = pos.x, y = pos.y + 1, z = pos.z}
-				// 				local nn = core.get_node(np)
-				// 				if nn.name == node.name then
-				// 					core.node_dig(np, nn, digger)
-				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-				// 				end
-				// 			end
+				after_dig_node = function (
+					pos: Vec3,
+					node: NodeTable,
+					metadata: MetaRef,
+					digger: ObjectRef
+				) {
+					const np = vector.create3d({
+						x: pos.x,
+						y: pos.y + 1,
+						z: pos.z,
+					});
+					const nn: NodeTable = core.get_node(np);
+					if (nn.name == node.name) {
+						core.node_dig(np, nn, digger);
+						core.sound_play("dirt", { pos: pos, gain: 0.2 });
+					}
+				};
 				// 			on_abm = function(pos)
 				// 				if core.get_node_light(pos, nil) < 10 then
 				// 					//print("failed to grow at "+dump(pos))
