@@ -43,7 +43,7 @@ namespace farming {
 		stem_walkable?: boolean;
 		stem_sunlight_propagates?: boolean;
 		stem_paramtype?: ParamType1;
-		stem_drop?: string;
+		stem_drop?: string | NodeDropSpec;
 		stem_groups?: Dictionary<string, number>;
 		stem_sounds?: NodeSoundSpec;
 		stem_node_box?: NodeBox;
