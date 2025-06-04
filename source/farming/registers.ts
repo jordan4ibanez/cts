@@ -1,3 +1,4 @@
+namespace farming {
 // minetest.register_plant("cactus", {
 // 	description = "Cactus",
 	
@@ -413,3 +414,4 @@
 // 	decoration = "farming:grass",
 // 	height = 1,
 // })	
+}
