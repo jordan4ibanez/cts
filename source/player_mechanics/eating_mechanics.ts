@@ -88,8 +88,7 @@ namespace playerMechanics {
 	function finish_eating(player: ObjectRef, timer: number): number {
 		if (timer >= 1) {
 			const item: ItemStackObject = player.get_wielded_item();
-			// todo: this was dependant on the hunger mod.
-			// player_eat_food(player,item)
+			hunger.player_eat_food(player, item);
 			core.sound_play("eat_finish", {
 				object: player,
 				gain: 0.025,
