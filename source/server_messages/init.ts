@@ -1,20 +1,20 @@
 namespace serverMessages {
 	// local pool = {}
 
-    if (!core.is_singleplayer()){
-	core.register_on_joinplayer((player: ObjectRef) => {
-		const meta: MetaRef = player.get_meta();
-		const welcomed: boolean = meta.get_int("welcomed") == 1;
-		const name: string = player.get_player_name();
-		// pool[name] = core.get_us_time()/1000000
-		if (!welcomed) {
-			core.chat_send_all("Welcome " + name + " to the server!");
-			meta.set_int("welcomed", 1);
-		} else {
-			core.chat_send_all("Welcome back " + name + "!");
-		}
-	});
-}
+	if (!core.is_singleplayer()) {
+		core.register_on_joinplayer((player: ObjectRef) => {
+			const meta: MetaRef = player.get_meta();
+			const welcomed: boolean = meta.get_int("welcomed") == 1;
+			const name: string = player.get_player_name();
+			// pool[name] = core.get_us_time()/1000000
+			if (!welcomed) {
+				core.chat_send_all("Welcome " + name + " to the server!");
+				meta.set_int("welcomed", 1);
+			} else {
+				core.chat_send_all("Welcome back " + name + "!");
+			}
+		});
+	}
 
 	const death_messages: string[] = [
 		" got smoked!",
