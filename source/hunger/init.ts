@@ -164,8 +164,10 @@ namespace hunger {
 
 	function hunger_update() {
 		for (const [_, player] of ipairs(core.get_connected_players())) {
-			// 		//do not regen player's health if dead - this will be reused for 1up apples
-			// 		if player:get_hp() > 0 then
+			// Do not regen player's health if dead - // todo: this will be reused for 1up apples.
+			if (player.get_hp() <= 0) {
+				continue;
+			}
 			// 			name = player:get_player_name()
 			// 			temp_pool = pool[name]
 			// 			//movement state
@@ -227,7 +229,6 @@ namespace hunger {
 			// 			else
 			// 				temp_pool.regeneration_interval = 0
 			// 			end
-			// 		end
 		}
 		// 	core.after(0.5, function()
 		// 		hunger_update()
