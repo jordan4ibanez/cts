@@ -1,3 +1,4 @@
+namespace farming {
 //  --plant growth time contants (in seconds)
 //  local plant_min = 60
 //  local plant_max = 240
@@ -303,3 +304,4 @@
 // 		})
 // 	end
 // end
+}
