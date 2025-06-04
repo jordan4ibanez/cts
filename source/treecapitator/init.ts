@@ -72,6 +72,14 @@ namespace treecapitator {
 	// 	radius = 2,
 	// })
 
+    	const acceptable_soil: { [id: string]: boolean } = {
+		"crafter:dirt": true,
+		"crafter:grass": true,
+		"aether:dirt": true,
+		"aether:grass": true,
+	};
+
+
 	core.override_item("crafter:tree", {
 		on_dig: (pos: Vec3, node: NodeTable, digger: ObjectRef) => {
 			//bvav_create_vessel(pos,core.facedir_to_dir(core.dir_to_facedir(core.yaw_to_dir(digger:get_look_horizontal()+(math.pi/2)))))

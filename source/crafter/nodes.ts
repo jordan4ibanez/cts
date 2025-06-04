@@ -352,12 +352,6 @@ namespace crafter {
 		},
 	});
 
-	const acceptable_soil: { [id: string]: boolean } = {
-		"crafter:dirt": true,
-		"crafter:grass": true,
-		"aether:dirt": true,
-		"aether:grass": true,
-	};
 
 	core.register_node("crafter:tree", {
 		description: "Tree",
