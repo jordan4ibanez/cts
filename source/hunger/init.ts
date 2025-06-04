@@ -1,11 +1,17 @@
 namespace hunger {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
-	interface HungerData {
+	class HungerData {
 		hunger: number;
 		satiation: number;
 		regeneration_interval: number;
 		exhaustion: number;
+		constructor() {
+			this.hunger = 0;
+			this.satiation = 0;
+			this.regeneration_interval = 0;
+			this.exhaustion = 0;
+		}
 	}
 
 	const pool = new Map<string, HungerData>();
@@ -16,17 +22,20 @@ namespace hunger {
 		const name: string = player.get_player_name();
 		// 	pool[name] = {}
 		// 	temp_pool = pool[name]
-		// 	if mod_storage:get_int(name+"h_save") > 0 then
-		// 		temp_pool.hunger                = mod_storage:get_int(name+"hunger"               )
-		// 		temp_pool.satiation             = mod_storage:get_int(name+"satiation"            )
-		// 		temp_pool.exhaustion            = mod_storage:get_int(name+"exhaustion"           )
-		// 		temp_pool.regeneration_interval = mod_storage:get_int(name+"regeneration_interval")
-		// 	else
-		// 		temp_pool.hunger                = 20
-		// 		temp_pool.satiation             = 20
-		// 		temp_pool.regeneration_interval = 0
-		// 		temp_pool.exhaustion            = 0
-		// 	end
+
+		let newData = new HungerData();
+
+		if (mod_storage.get_int(name + "h_save") > 0) {
+			// 		temp_pool.hunger                = mod_storage:get_int(name+"hunger"               )
+			// 		temp_pool.satiation             = mod_storage:get_int(name+"satiation"            )
+			// 		temp_pool.exhaustion            = mod_storage:get_int(name+"exhaustion"           )
+			// 		temp_pool.regeneration_interval = mod_storage:get_int(name+"regeneration_interval")
+		} else {
+			// 		temp_pool.hunger                = 20
+			// 		temp_pool.satiation             = 20
+			// 		temp_pool.regeneration_interval = 0
+			// 		temp_pool.exhaustion            = 0
+		}
 	}
 
 	// // saves data to be utilized on next login
