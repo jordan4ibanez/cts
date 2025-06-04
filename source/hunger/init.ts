@@ -275,12 +275,14 @@ namespace hunger {
 			}
 		}
 	);
+
 	// Take the eaten food.
 	function take_food(player: ObjectRef): void {
 		const item: ItemStackObject = player.get_wielded_item();
 		item.take_item();
 		player.set_wielded_item(item);
 	}
+
 	// // players eat food
 	// local name
 	// local temp_pool
