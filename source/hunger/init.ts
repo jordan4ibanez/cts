@@ -107,30 +107,38 @@ namespace hunger {
 		save_all();
 	});
 
-	// // create new data for hunger per player
-	// local name
-	// core.register_on_joinplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	load_data(player)
-	// 	hud_manager.add_hud(player,"hunger_bg",{
-	// 		hud_elem_type = "statbar",
-	// 		position      = {x = 0.5, y = 1},
-	// 		text          = "hunger_icon_bg.png",
-	// 		number        = 20,
-	// 		direction     = 1,
-	// 		size          = {x = 24, y = 24},
-	// 		offset        = {x = 24*10, y= -(48 + 24 + 39)},
-	// 	})
-	// 	hud_manager.add_hud(player,"hunger",{
-	// 		hud_elem_type = "statbar",
-	// 		position      = {x = 0.5, y = 1},
-	// 		text          = "hunger_icon.png",
-	// 		number        = pool[name].hunger,
-	// 		direction     = 1,
-	// 		size          = {x = 24, y = 24},
-	// 		offset        = {x = 24*10, y= -(48 + 24 + 39)},
-	// 	})
-	// end)
+	// Create new data for hunger per player.
+
+	core.register_on_joinplayer((player: ObjectRef) => {
+		const name = player.get_player_name();
+		load_data(player);
+
+		const data: HungerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		hudManager.add_hud(player, "hunger_bg", {
+			type: HudElementType.statbar,
+			position: { x: 0.5, y: 1 },
+			text: "hunger_icon_bg.png",
+			number: 20,
+			direction: 1,
+			size: { x: 24, y: 24 },
+			offset: { x: 24 * 10, y: -(48 + 24 + 39) },
+		});
+
+		hudManager.add_hud(player, "hunger", {
+			type: HudElementType.statbar,
+			position: { x: 0.5, y: 1 },
+			text: "hunger_icon.png",
+			number: data.hunger,
+			direction: 1,
+			size: { x: 24, y: 24 },
+			offset: { x: 24 * 10, y: -(48 + 24 + 39) },
+		});
+	});
+
 	// // resets the players hunger settings to max
 	// local name
 	// local temp_pool
