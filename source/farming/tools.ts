@@ -5,7 +5,7 @@ namespace farming {
 
 	function till_soil(pos: Vec3): boolean {
 		const nodey: string = core.get_node(pos).name;
-		const is_dirt: boolean = nodey == "main:dirt" || nodey == "main:grass";
+		const is_dirt: boolean = nodey == "crafter:dirt" || nodey == "crafter:grass";
 		if (is_dirt) {
 			core.sound_play("dirt", { pos: pos });
 			core.set_node(pos, { name: "farming:farmland_dry" });
@@ -93,17 +93,17 @@ namespace farming {
 	// 	core.register_craft({
 	// 		output = "farming:"..material.."hoe",
 	// 		recipe = {
-	// 			{"","main:"..construct[level], "main:"..construct[level]},
-	// 			{"","main:stick", ""},
-	// 			{"", "main:stick", ""}
+	// 			{"","crafter:"..construct[level], "crafter:"..construct[level]},
+	// 			{"","crafter:stick", ""},
+	// 			{"", "crafter:stick", ""}
 	// 		}
 	// 	})
 	// 	core.register_craft({
 	// 		output = "farming:"..material.."hoe",
 	// 		recipe = {
-	// 			{"main:"..construct[level],"main:"..construct[level], ""},
-	// 			{"","main:stick", ""},
-	// 			{"", "main:stick", ""}
+	// 			{"crafter:"..construct[level],"crafter:"..construct[level], ""},
+	// 			{"","crafter:stick", ""},
+	// 			{"", "crafter:stick", ""}
 	// 		}
 	// 	})
 	// end
