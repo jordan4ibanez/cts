@@ -1006,7 +1006,7 @@ declare global {
 			itemStack: ItemStackObject,
 			placer: ObjectRef,
 			pointedThing: PointedThing
-		): void;
+		): ItemStackObject | void;
 		on_secondary_use?(
 			itemStack: ItemStackObject,
 			user: ObjectRef,
