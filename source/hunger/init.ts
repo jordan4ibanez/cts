@@ -159,13 +159,9 @@ namespace hunger {
 		});
 	});
 
-	// local exhaustion_peak  = 512
-	// local hunger_peak      = 128
-	// local temp_pool
-	// local state
-	// local input
-	// local hp
-	// local drowning
+	const exhaustion_peak: number = 512;
+	const hunger_peak: number = 128;
+
 	// hunger_update = function()
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		//do not regen player's health if dead - this will be reused for 1up apples
