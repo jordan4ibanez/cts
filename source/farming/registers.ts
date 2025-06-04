@@ -2,11 +2,11 @@ namespace farming {
 farming.register_plant("cactus", {
 	description : "Cactus",
 	
-	tiles : {"cactus_top.png", "cactus_bottom.png", "cactus_side.png"},
+	tiles : ["cactus_top.png", "cactus_bottom.png", "cactus_side.png"],
 	
 	groups : {dig_immediate:1,flammable:1,touch_hurt:1},
 	
-	sounds : main.dirtSound(),
+	sounds : crafter.dirtSound(),
 	
 	paramtype : "light",
 	
