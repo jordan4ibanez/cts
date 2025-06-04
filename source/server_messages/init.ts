@@ -4,7 +4,11 @@ namespace serverMessages {
 		const welcomed: boolean = meta.get_int("welcomed") == 1;
 		const name: string = player.get_player_name();
 		if (!welcomed) {
-			core.chat_send_all("Welcome " + name + " to the server!");
+			if (core.is_singleplayer()) {
+				core.chat_send_all("Welcome " + name + " to crafter!");
+			} else {
+				core.chat_send_all("Welcome " + name + " to the server!");
+			}
 			meta.set_int("welcomed", 1);
 		} else {
 			core.chat_send_all("Welcome back " + name + "!");
