@@ -1,6 +1,11 @@
 namespace serverUtilities {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
+	interface HomeTimeout {
+		setHome: number;
+		home: number;
+	}
+
 	const pool = new Map<string, number>();
 
 	const home_timeout: number = 60;
@@ -30,18 +35,23 @@ namespace serverUtilities {
 				return;
 			}
 
-			// 		local pos = player:get_pos()
+			const pos: Vec3 = player.get_pos();
+
 			// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
+
 			// 			mod_storage:set_string(name+"home", core.serialize(pos))
 			// 			pool[name] = time
 			// 			core.chat_send_player(name, "Home set.")
+
 			// 		elseif pool[name] then
+
 			// 			local diff = home_timeout-math.ceil(time-pool[name])+1
 			// 			local s = "s"
 			// 			if diff == 1 then
 			// 				s = ""
 			// 			end
 			// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
+
 			// 		end
 		},
 	});
