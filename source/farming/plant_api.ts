@@ -233,13 +233,25 @@ namespace farming {
 								}
 							}
 
-							// 						if found == true and add_node then
-							// 							local param2 = core.dir_to_facedir(vector.direction(pos,add_node))
-							// 							core.add_node(add_node,{name=def.grown_node,param2=param2})
-							// 							local facedir = core.facedir_to_dir(param2)
-							// 							local inverted_facedir = vector.multiply(facedir,-1)
-							// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
-							// 						end
+							if (found == true && add_node != null) {
+								const param2: number = core.dir_to_facedir(
+									vector.direction(pos, add_node)
+								);
+
+								if (def.grownNode == null) {
+									throw new Error(
+										`API failure for [${name}]`
+									);
+								}
+
+								core.add_node(add_node, {
+									name: def.grownNode,
+									param2: param2,
+								});
+								// 							local facedir = core.facedir_to_dir(param2)
+								// 							local inverted_facedir = vector.multiply(facedir,-1)
+								// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
+							}
 						}
 
 						// If not found farmland.
