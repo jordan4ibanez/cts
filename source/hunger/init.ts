@@ -27,19 +27,15 @@ namespace hunger {
 	}
 
 	// Saves data to be utilized on next login.
-	 function save_data (name: string) {
-	// 	if type(name) ~= "string" and name:is_player() then
-	// 		name = name:get_player_name()
-	// 	end
-    
-	// 	temp_pool = pool[name]
-	// 	mod_storage:set_int(name+"hunger",               temp_pool.hunger               )
-	// 	mod_storage:set_int(name+"satiation",            temp_pool.satiation            )
-	// 	mod_storage:set_int(name+"exhaustion",           temp_pool.exhaustion           )
-	// 	mod_storage:set_int(name+"regeneration_interval",temp_pool.regeneration_interval)
-	// 	mod_storage:set_int(name+"h_save",1)
-	// 	pool[name] = nil
-     }
+	function save_data(name: string): void {
+		// 	temp_pool = pool[name]
+		// 	mod_storage:set_int(name+"hunger",               temp_pool.hunger               )
+		// 	mod_storage:set_int(name+"satiation",            temp_pool.satiation            )
+		// 	mod_storage:set_int(name+"exhaustion",           temp_pool.exhaustion           )
+		// 	mod_storage:set_int(name+"regeneration_interval",temp_pool.regeneration_interval)
+		// 	mod_storage:set_int(name+"h_save",1)
+		// 	pool[name] = nil
+	}
 
 	// // is used for shutdowns to save all data
 	// local save_all = function()
