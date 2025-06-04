@@ -175,7 +175,15 @@ namespace serverUtilities {
 				continue;
 			}
 
-			// print(name, node);
+			if (!vector.equals(player.get_pos(), node.position)) {
+				core.chat_send_player(
+					name,
+					"You moved. Travel home cancelled."
+				);
+				removalQueue.push(name);
+				continue;
+			}
+
 			const oldTime = math.ceil(node.timer);
 			node.timer -= delta;
 			const newTime = math.ceil(node.timer);
