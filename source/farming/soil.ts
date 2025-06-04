@@ -26,7 +26,7 @@ namespace farming {
 				const timer: NodeTimerObject = core.get_node_timer(pos);
 				timer.start(1);
 			};
-			on_timer = (pos) => {
+			on_timer = (pos: Vec3) => {
 				if (!soilHasWater(pos)) {
 					core.set_node(pos, { name: "farming:farmland_dry" });
 				}
