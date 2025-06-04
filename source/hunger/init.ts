@@ -87,12 +87,16 @@ namespace hunger {
 		return exhaustion + hun;
 	}
 
-	// // allows other mods to set hunger data
-	// local name
-	// get_player_hunger = function(player)
-	// 	name = player:get_player_name()
-	// 	return(pool[name].hunger)
-	// end
+	// Allows other mods to set hunger data.
+	export function get_player_hunger(player: ObjectRef) {
+		const name = player.get_player_name();
+		const data: HungerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		return data.hunger;
+	}
+
 	// // saves specific users data for when they relog
 	// core.register_on_leaveplayer(function(player)
 	// 	save_data(player)
