@@ -121,7 +121,7 @@ namespace armor {
 		for (let i = 0; i < slots.length; i++) {
 			const slot: string = slots[i];
 			const stack: ItemStackObject = inv.get_stack(slot, 1);
-			const name: string = stack.name;
+			const name: string = stack.get_name();
 			if (name != "") {
 				const mult: number | undefined = multiplier[i];
 				if (mult == null) {
