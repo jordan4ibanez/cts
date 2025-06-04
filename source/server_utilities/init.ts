@@ -124,15 +124,6 @@ namespace serverUtilities {
 					return;
 				}
 
-				const newpos: Vec3 | null = core.deserialize(
-					serializedData
-				) as Vec3 | null;
-
-				if (newpos == null) {
-					core.chat_send_player(name, "No home set.");
-					return;
-				}
-
 				travelHomeQueue.set(name, new TravelNode(player));
 			} else {
 				const s = diff == 1 ? "" : "s";
