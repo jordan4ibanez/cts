@@ -156,13 +156,8 @@ namespace serverUtilities {
 		},
 	});
 
-	let tick: boolean = true;
 	const removalQueue: string[] = [];
 	core.register_globalstep((delta: number) => {
-		tick = !tick;
-		if (!tick) {
-			return;
-		}
 		if (travelHomeQueue.size == 0) {
 			return;
 		}
@@ -188,54 +183,51 @@ namespace serverUtilities {
 			node.timer -= delta;
 			const newTime = math.ceil(node.timer);
 
-			if (oldTime != newTime) {
-				if (newTime == 0) {
-					const serializedData: string = mod_storage.get_string(
-						name + ":crafter_home"
-					);
-					// This is a double check.
-					if (serializedData == "") {
-						core.log(
-							LogLevel.warning,
-							`Player [${name}] was in queue with no home set.`
-						);
-						core.chat_send_player(
-							name,
-							"No home set. Report this bug."
-						);
-						continue;
-					}
-					const newpos: Vec3 | null = core.deserialize(
-						serializedData
-					) as Vec3 | null;
-					if (newpos == null) {
-						core.log(
-							LogLevel.warning,
-							`Player [${name}] was in queue with no home set.`
-						);
-						core.chat_send_player(
-							name,
-							"No home set. Report this bug."
-						);
-						continue;
-					}
-					// End double check.
+			if (oldTime == newTime) {
+				continue;
+			}
+
+			if (newTime == 0) {
+				const serializedData: string = mod_storage.get_string(
+					name + ":crafter_home"
+				);
+				// This is a double check.
+				if (serializedData == "") {
 					core.log(
-						LogLevel.action,
-						`Player [${name}] teleported home.`
+						LogLevel.warning,
+						`Player [${name}] was in queue with no home set.`
 					);
-					core.chat_send_player(name, "Sending you home.");
-					player.add_velocity(
-						vector.multiply(player.get_velocity(), -1)
-					);
-					player.move_to(newpos);
-					removalQueue.push(name);
-				} else {
 					core.chat_send_player(
 						name,
-						`${tostring(math.abs(newTime))}...`
+						"No home set. Report this bug."
 					);
+					continue;
 				}
+				const newpos: Vec3 | null = core.deserialize(
+					serializedData
+				) as Vec3 | null;
+				if (newpos == null) {
+					core.log(
+						LogLevel.warning,
+						`Player [${name}] was in queue with no home set.`
+					);
+					core.chat_send_player(
+						name,
+						"No home set. Report this bug."
+					);
+					continue;
+				}
+				// End double check.
+				core.log(LogLevel.action, `Player [${name}] teleported home.`);
+				core.chat_send_player(name, "Sending you home.");
+				player.add_velocity(vector.multiply(player.get_velocity(), -1));
+				player.move_to(newpos);
+				removalQueue.push(name);
+			} else {
+				core.chat_send_player(
+					name,
+					`${tostring(math.abs(newTime))}...`
+				);
 			}
 		}
 
