@@ -190,7 +190,7 @@ namespace farming {
 				itemstack: ItemStackObject,
 				placer: ObjectRef,
 				pointed_thing: PointedThing
-			) => {
+			): ItemStackObject | void => {
 				const nodeName: string = core.get_node(
 					pointed_thing.under
 				).name;
@@ -233,11 +233,11 @@ namespace farming {
 					}
 					itemstack.add_wear(wear);
 				}
-				// 			local damage = itemstack:get_wear()
-				// 			if damage <= 0 and tilled == true  then
-				// 				core.sound_play("tool_break",{object=placer})
-				// 			end
-				// 			return(itemstack)
+				const damage: number = itemstack.get_wear();
+				if (damage <= 0 && tilled) {
+					core.sound_play("tool_break", { object: placer });
+				}
+				return itemstack;
 			},
 		});
 		// 	core.register_craft({
