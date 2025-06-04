@@ -461,10 +461,17 @@ namespace farming {
 					if (core.get_node(pointed_thing.above).name != "air") {
 						return;
 					}
-					// 				local pb = pointed_thing.above
-					// 				if core.get_node_group(core.get_node(vector.new(pb.x,pb.y-1,pb.z)).name, "farmland") == 0 or core.get_node(pointed_thing.above).name ~= "air"  then
-					// 					return itemstack
-					// 				end
+					const pb: Vec3 = pointed_thing.above;
+					if (
+						core.get_item_group(
+							core.get_node(vector.create3d(pb.x, pb.y - 1, pb.z))
+								.name,
+							"farmland"
+						) == 0 ||
+						core.get_node(pointed_thing.above).name != "air"
+					) {
+						return itemstack;
+					}
 					// 				local wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
 					// 				local fakestack = itemstack
 					// 				local retval = false
