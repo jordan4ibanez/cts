@@ -120,7 +120,7 @@ namespace farming {
 				};
 				// For plants that grow in place.
 			} else if (def.grows == PlantGrowth.inPlace) {
-				// 			on_abm = function(pos)
+							on_abm = (pos: Vec3) => {
 				// 				if core.get_node_light(pos, nil) < 10 then
 				// 					core.dig_node(pos)
 				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
@@ -140,7 +140,8 @@ namespace farming {
 				// 					core.dig_node(pos)
 				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
 				// 				end
-				// 			end
+							}
+
 				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
 				// 				pos.y = pos.y - 1
 				// 				local noder = core.get_node(pos).name
