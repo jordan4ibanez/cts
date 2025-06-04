@@ -76,7 +76,7 @@ namespace farming {
 				on_abm = (pos) => {
 					{
 						const possibleLight = core.get_node_light(pos, null);
-						if (!possibleLight || possibleLight < 10) {
+						if (possibleLight == null || possibleLight < 10) {
 							// print("failed to grow at " + dump(pos));
 							return;
 						}
