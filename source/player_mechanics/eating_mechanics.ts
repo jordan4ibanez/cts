@@ -99,7 +99,7 @@ namespace playerMechanics {
 		return timer;
 	}
 
-	function manage_eating(player: ObjectRef, dtime: number) {
+	function manage_eating(player: ObjectRef, dtime: number): void {
 		const control: PlayerControlObject = player.get_player_control();
 		const name: string = player.get_player_name();
 		const data: FoodData | undefined = food_control_pool.get(name);
