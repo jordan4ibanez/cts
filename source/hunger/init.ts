@@ -334,21 +334,32 @@ namespace hunger {
 		});
 	}
 
-	// core.register_chatcommand("hungry", {
-	// 	params = "<mob>",
-	// 	description = "A debug command to test food",
-	// 	privs = {server = true},
-	// 	func = function(name)
-	// 		local temp_pool = pool[name]
-	// 		temp_pool.exhaustion = 0
-	// 		temp_pool.hunger     = 1
-	// 		temp_pool.satiation  = 0
-	// 		hud_manager.change_hud({
-	// 			player    =  core.get_player_by_name(name) ,
-	// 			hud_name  = "hunger",
-	// 			element   = "number",
-	// 			data      =  temp_pool.hunger
-	// 		})
-	// 	end
-	// })
+	core.register_chatcommand("hungry", {
+		params: "<mob>",
+		description: "A debug command to test food",
+		privs: { server: true },
+		func: (name: string) => {
+			const player: ObjectRef | null = core.get_player_by_name(name);
+			if (player == null) {
+				throw new Error(`Ghost player [${name}] ran a command.`);
+			}
+
+			const data = pool.get(name);
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added to the pool.`
+				);
+			}
+			data.exhaustion = 0;
+			data.hunger = 1;
+			data.satiation = 0;
+
+			hudManager.change_hud({
+				player: player,
+				hudName: "hunger",
+				element: "number",
+				data: data.hunger,
+			});
+		},
+	});
 }
