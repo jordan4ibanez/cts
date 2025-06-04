@@ -7,8 +7,8 @@ namespace hunger {
 		regeneration_interval: number;
 		exhaustion: number;
 		constructor() {
-			this.hunger = 0;
-			this.satiation = 0;
+			this.hunger = 20;
+			this.satiation = 20;
 			this.regeneration_interval = 0;
 			this.exhaustion = 0;
 		}
@@ -26,10 +26,12 @@ namespace hunger {
 		let newData = new HungerData();
 
 		if (mod_storage.get_int(name + "h_save") > 0) {
-			// 		temp_pool.hunger                = mod_storage:get_int(name+"hunger"               )
-			// 		temp_pool.satiation             = mod_storage:get_int(name+"satiation"            )
-			// 		temp_pool.exhaustion            = mod_storage:get_int(name+"exhaustion"           )
-			// 		temp_pool.regeneration_interval = mod_storage:get_int(name+"regeneration_interval")
+			newData.hunger = mod_storage.get_int(name + "hunger");
+			newData.satiation = mod_storage.get_int(name + "satiation");
+			newData.exhaustion = mod_storage.get_int(name + "exhaustion");
+			newData.regeneration_interval = mod_storage.get_int(
+				name + "regeneration_interval"
+			);
 		} else {
 			// 		temp_pool.hunger                = 20
 			// 		temp_pool.satiation             = 20
