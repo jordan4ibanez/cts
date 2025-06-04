@@ -19,11 +19,11 @@ namespace treecapitator {
 				def.leaves
 			)
 		)) {
-			// 		local node = core.get_node(v)
-			// 		local timer = core.get_node_timer(v)
-			// 		if node.param2 ~= 1 and not timer:is_started() then
-			// 			timer:start(math.random()+math.random()+math.random())
-			// 		end
+			const node: NodeTable = core.get_node(v);
+			const timer: NodeTimerObject = core.get_node_timer(v);
+			if (node.param2 != 1 && !timer.is_started()) {
+				timer.start(math.random() + math.random() + math.random());
+			}
 		}
 	}
 
