@@ -16,9 +16,10 @@ namespace farming {
 	}
 
 	for (const [level, material] of pairs(__materials)) {
-		if (typeof level != "number") {
+		if (typeof level != "number" || typeof material != "string") {
 			throw new Error("How");
 		}
+        
 		const wear: number = 100 * (6 - level);
 			let groupcaps2: Dictionary<string, GroupCap> | undefined
             let damage: number = 0;
@@ -40,29 +41,29 @@ namespace farming {
 				}
 				damage = 3.5
             } else if (material == "iron") {
-		// 		groupcaps2={
-		// 			dirt =  {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
-		// 			snow =  {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
-		// 			grass = {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
-		// 			sand =  {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
-		// 		}
-		// 		damage = 4.5
+				groupcaps2={
+					dirt :  {times:{[1]:0.15,[2]:0.15,[3]:0.15,[4]:1.5,[5]:3}, uses:250, maxlevel:1},
+					snow :  {times:{[1]:0.15,[2]:0.15,[3]:0.15,[4]:1.5,[5]:3}, uses:250, maxlevel:1},
+					grass : {times:{[1]:0.15,[2]:0.15,[3]:0.15,[4]:1.5,[5]:3}, uses:250, maxlevel:1},
+					sand :  {times:{[1]:0.15,[2]:0.15,[3]:0.15,[4]:1.5,[5]:3}, uses:250, maxlevel:1},
+				}
+				damage = 4.5
             } else if (material == "gold") {
-		// 		groupcaps2={
-		// 			dirt =  {times={[1]=0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5}, uses=32, maxlevel=1},
-		// 			snow =  {times={[1]=0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5}, uses=32, maxlevel=1},
-		// 			grass = {times={[1]=0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5}, uses=32, maxlevel=1},
-		// 			sand =  {times={[1]=0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5}, uses=32, maxlevel=1},
-		// 		}
-		// 		damage = 2.5
+				groupcaps2={
+					dirt :  {times:{[1]:0.1,[2]:0.1,[3]:0.1,[4]:0.1,[5]:1.5}, uses:32, maxlevel:1},
+					snow :  {times:{[1]:0.1,[2]:0.1,[3]:0.1,[4]:0.1,[5]:1.5}, uses:32, maxlevel:1},
+					grass : {times:{[1]:0.1,[2]:0.1,[3]:0.1,[4]:0.1,[5]:1.5}, uses:32, maxlevel:1},
+					sand :  {times:{[1]:0.1,[2]:0.1,[3]:0.1,[4]:0.1,[5]:1.5}, uses:32, maxlevel:1},
+				}
+				damage = 2.5
             } else if (material == "diamond") {
-		// 		groupcaps2={
-		// 			dirt =  {times={[1]= 0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5},     uses=1561, maxlevel=1},
-		// 			snow =  {times={[1]= 0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5},     uses=1561, maxlevel=1},
-		// 			grass = {times={[1]= 0.15,[2]=0.15,[3]=0.15,[4]=0.15,[5]=1.5}, uses=1561, maxlevel=1},
-		// 			sand =  {times={[1]= 0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5},     uses=1561, maxlevel=1},
-		// 		}
-		// 		damage = 5.5
+				groupcaps2={
+					dirt :  {times:{[1]: 0.1,[2]:0.1,[3]:0.1,[4]:0.1,[5]:1.5},     uses:1561, maxlevel:1},
+					snow :  {times:{[1]: 0.1,[2]:0.1,[3]:0.1,[4]:0.1,[5]:1.5},     uses:1561, maxlevel:1},
+					grass : {times:{[1]: 0.15,[2]:0.15,[3]:0.15,[4]:0.15,[5]:1.5}, uses:1561, maxlevel:1},
+					sand :  {times:{[1]: 0.1,[2]:0.1,[3]:0.1,[4]:0.1,[5]:1.5},     uses:1561, maxlevel:1},
+				}
+				damage = 5.5
             }
 		// 	core.register_tool("crafter_farming:"..material.."hoe", {
 		// 		description = material:gsub("^%l", string.upper).." Hoe",
