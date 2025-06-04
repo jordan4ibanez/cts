@@ -187,12 +187,24 @@ namespace farming {
 			sound: { breaks: { name: "tool_break", gain: 0.4 } }, // todo: change this <- to what?
 			groups: { flammable: 2, tool: 1 },
 			on_place: (itemstack, placer, pointed_thing) => {
-				// 			local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
+				const nodeName: string = core.get_node(
+					pointed_thing.under
+				).name;
+				const noddef: NodeDefinition | undefined =
+					core.registered_nodes[nodeName];
+				if (noddef == null) {
+					core.log(
+						LogLevel.warning,
+						`Node [${nodeName}] is undefined.`
+					);
+				}
 				// 			local sneak = placer:get_player_control().sneak
+
 				// 			if not sneak and noddef.on_rightclick then
 				// 				core.item_place(itemstack, placer, pointed_thing)
 				// 				return
 				// 			end
+
 				// 			local tilled = till_soil(pointed_thing.under)
 				// 			if tilled == true then
 				// 				if core.registered_nodes[core.get_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z)).name].buildable_to then
