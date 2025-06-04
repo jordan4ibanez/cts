@@ -1,5 +1,4 @@
 namespace farming {
-	 // Plant growth time contants (in seconds).
 	// Plant growth time contants (in seconds).
 
 	const plant_min: number = 60;
