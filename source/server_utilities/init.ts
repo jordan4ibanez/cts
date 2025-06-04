@@ -135,6 +135,13 @@ namespace serverUtilities {
 				}
 
 				travelHomeQueue.set(name, new TravelNode(player));
+
+				core.chat_send_player(
+					name,
+					`Traveling home. Stand still or this will cancel. In ${tostring(
+						3
+					)}...`
+				);
 			} else {
 				const s = diff == 1 ? "" : "s";
 
