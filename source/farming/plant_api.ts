@@ -13,6 +13,7 @@ namespace farming {
 	interface PlantDefinition {
 		stages: number;
 		grows: PlantGrowth;
+		grownNode?: string;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -20,6 +21,12 @@ namespace farming {
 
 		if (max <= 0) {
 			throw new Error(`Invalid stages for [${name}]`);
+		}
+
+		if (def.grows == PlantGrowth.inPlaceYields && def.grownNode == null) {
+			throw new Error(
+				`Plant [${name}] uses in place yields. Requires grown node.`
+			);
 		}
 
 		for (const i of $range(1, max)) {
