@@ -221,12 +221,12 @@ namespace hunger {
 				}
 				// Hurt the player if hunger bar empty.
 			} else if (data.hunger <= 0) {
-				//     temp_pool.exhaustion = temp_pool.exhaustion + 1
-				//     hp = player:get_hp()
-				//     if hp > 0 and temp_pool.exhaustion >= 2 then
-				//         player:set_hp( hp - 1 )
-				//         temp_pool.exhaustion = 0
-				//     end
+				data.exhaustion += 1;
+				const hp: number = player.get_hp();
+				if (hp > 0 && data.exhaustion >= 2) {
+					player.set_hp(hp - 1);
+					data.exhaustion = 0;
+				}
 			}
 			// hp = player:get_hp()
 			// drowning = is_player_drowning(player)
