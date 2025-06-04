@@ -162,7 +162,7 @@ namespace hunger {
 	const exhaustion_peak: number = 512;
 	const hunger_peak: number = 128;
 
-	function hunger_update() {
+	function hunger_update(): void {
 		for (const [_, player] of ipairs(core.get_connected_players())) {
 			// Do not regen player's health if dead - // todo: this will be reused for 1up apples.
 			if (player.get_hp() <= 0) {
@@ -248,16 +248,18 @@ namespace hunger {
 				data.regeneration_interval = 0;
 			}
 		}
-		core.after(0.5, () => {
-			hunger_update();
-		});
 	}
 
-	// core.register_on_mods_loaded(function()
-	// 	core.after(0.5,function()
-	// 		hunger_update()
-	// 	end)
-	// end)
+	let timeCalc = 0;
+	core.register_globalstep((delta: number) => {
+		timeCalc += delta;
+		if (timeCalc < 0.5) {
+			return;
+		}
+		timeCalc -= 0.5;
+		hunger_update();
+	});
+
 	// //take away hunger and satiation randomly while mining
 	// local name
 	// core.register_on_dignode(function(pos, oldnode, digger)
