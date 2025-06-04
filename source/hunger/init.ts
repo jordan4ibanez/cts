@@ -8,12 +8,18 @@ namespace hunger {
 		exhaustion: number = 0;
 		constructor(player: ObjectRef) {
 			const name: string = player.get_player_name();
-			if (mod_storage.get_int(name + "h_save") > 0) {
-				this.hunger = mod_storage.get_int(name + "hunger");
-				this.satiation = mod_storage.get_int(name + "satiation");
-				this.exhaustion = mod_storage.get_int(name + "exhaustion");
+			if (mod_storage.get_int(name + "crafter_hunger_saved") > 0) {
+				this.hunger = mod_storage.get_int(
+					name + ":crafter_hunger_hunger"
+				);
+				this.satiation = mod_storage.get_int(
+					name + ":crafter_hunger_satiation"
+				);
+				this.exhaustion = mod_storage.get_int(
+					name + ":crafter_hunger_exhaustion"
+				);
 				this.regeneration_interval = mod_storage.get_int(
-					name + "regeneration_interval"
+					name + "crafter_hunger_regeneration_interval"
 				);
 			}
 		}
@@ -33,14 +39,14 @@ namespace hunger {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 
-		mod_storage.set_int(name + "hunger", data.hunger);
-		mod_storage.set_int(name + "satiation", data.satiation);
+		mod_storage.set_int(name + ":crafter_hunger_hunger", data.hunger);
+		mod_storage.set_int(name + ":crafter_hunger_satiation", data.satiation);
 		mod_storage.set_int(name + "exhaustion", data.exhaustion);
 		mod_storage.set_int(
-			name + "regeneration_interval",
+			name + "crafter_hunger_regeneration_interval",
 			data.regeneration_interval
 		);
-		mod_storage.set_int(name + "h_save", 1);
+		mod_storage.set_int(name + "crafter_hunger_saved", 1);
 		pool.delete(name);
 	}
 
