@@ -6,7 +6,7 @@ namespace farming {
 		inventory_image: "wheat_harvested.png",
 	});
 
-    // Todo: depends on the crafter food mod.
+    // Todo: depends on the crafter hunger mod.
 	// farming.register_food("farming:bread", {
 	// 	description: "Bread",
 	// 	texture: "bread.png",
