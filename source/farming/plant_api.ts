@@ -16,6 +16,7 @@ namespace farming {
 		grownNode?: string;
 		drop: string;
 		tiles: string[];
+		groups: Dictionary<string, number>;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -304,7 +305,7 @@ namespace farming {
 			} else {
 				tiles = def.tiles;
 			}
-			// 		def.groups.plants = 1
+			def.groups.plants = 1;
 			// 		core.register_node(nodename, {
 			// 			description               = def.description,
 			// 			drawtype                  = def.drawtype,
