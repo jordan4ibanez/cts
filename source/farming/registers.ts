@@ -41,7 +41,7 @@ namespace farming {
 		},
 	});
 
-	// core.register_plant("grass", {
+	farming.register_plant("grass", {
 	//     description = "Tall Grass",
 	//     drawtype = "plantlike",
 	// 	waving = 1,
@@ -77,7 +77,7 @@ namespace farming {
 	// 		},
 	// 		},
 	// 	},
-	// })
+	})
 
 	// core.register_plant("wheat", {
 	// 	    description = "Wheat",
