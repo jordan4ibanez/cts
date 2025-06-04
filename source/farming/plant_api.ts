@@ -68,7 +68,7 @@ namespace farming {
 					{
 						const possibleLight = core.get_node_light(pos, null);
 						if (!possibleLight || possibleLight < 10) {
-							//print("failed to grow at "+dump(pos))
+							// print("failed to grow at " + dump(pos));
 							return;
 						}
 					}
