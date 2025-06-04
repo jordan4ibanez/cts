@@ -51,9 +51,9 @@ namespace farming {
 		//buildable_to      : def.buildable_to,
 		//selection_box     : def.selection_box,
 		//drop              : def.drop,
-		grows             : "up",
+		grows             : PlantGrowth.up,
 		selection_box : {
-			type : "fixed",
+			type : Nodeboxtype.fixed,
 			fixed : [-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16]
 		},
 	})
