@@ -53,13 +53,13 @@ namespace serverMessages {
 		" left the matrix.",
 		" is out.",
 	];
-	// core.register_on_dieplayer(function(player)
-	//     local name = player:get_player_name()
-	//     if (core.get_us_time()/1000000)-pool[name] > 0.001 then
-	//         core.chat_send_all(name+death_messages[math.random(1,table.getn(death_messages))])
-	//         pool[name] = core.get_us_time()/1000000
-	//     end
-	// end)
+	core.register_on_dieplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		core.chat_send_all(
+			name + death_messages[math.random(0, death_messages.length)]
+		);
+	});
+
 	// core.register_on_leaveplayer(function(player)
 	//     local name = player:get_player_name()
 	//     core.chat_send_all(name+leave_messages[math.random(1,table.getn(leave_messages))])
