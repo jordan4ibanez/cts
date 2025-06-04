@@ -168,6 +168,7 @@ namespace serverUtilities {
 					const serializedData: string = mod_storage.get_string(
 						name + ":crafter_home"
 					);
+					// This is a double check.
 					if (serializedData == "") {
 						core.log(
 							LogLevel.warning,
@@ -182,7 +183,6 @@ namespace serverUtilities {
 					const newpos: Vec3 | null = core.deserialize(
 						serializedData
 					) as Vec3 | null;
-
 					if (newpos == null) {
 						core.log(
 							LogLevel.warning,
@@ -194,6 +194,7 @@ namespace serverUtilities {
 						);
 						continue;
 					}
+					// End double check.
 					core.log(
 						LogLevel.action,
 						`Player [${name}] teleported home.`
