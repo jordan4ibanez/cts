@@ -50,32 +50,32 @@ namespace farming {
 		climbable : false,
 		paramtype : "light",
 		is_ground_content : false,
-	    tiles : {"tallgrass.png"},
-	    paramtype2 : "degrotate",
+	    tiles : ["tallgrass.png"],
+	    paramtype2 : ParamType2.degrotate,
 	    buildable_to : true,
 	    sunlight_propagates : true,
 	    groups : {dig_immediate:1,attached_node:1,flammable:1},
-	    sounds : main.grassSound(),
+	    sounds : crafter.grassSound(),
 	    selection_box : {
 			type : "fixed",
-			fixed : {-4 / 16, -0.5, -4 / 16, 4 / 16, 4 / 16, 4 / 16}
+			fixed : [-4 / 16, -0.5, -4 / 16, 4 / 16, 4 / 16, 4 / 16]
 		},
 		drop :  {
 			max_items : 1,
-			items: {
+			items: [
 			{
 				rarity : 10,
-				items : {"farming:melon_seeds"},
-			},
-			{
-				rarity : 10,
-				items : {"farming:pumpkin_seeds"},
+				items : ["farming:melon_seeds"],
 			},
 			{
 				rarity : 10,
-				items : {"farming:wheat_seeds"},
+				items : ["farming:pumpkin_seeds"],
 			},
+			{
+				rarity : 10,
+				items : ["farming:wheat_seeds"],
 			},
+        ],
 		},
 	})
 
