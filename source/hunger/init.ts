@@ -14,9 +14,6 @@ namespace hunger {
 
 	function load_data(player: ObjectRef): void {
 		const name: string = player.get_player_name();
-		// 	pool[name] = {}
-		// 	temp_pool = pool[name]
-
 		let newData = new HungerData();
 
 		if (mod_storage.get_int(name + "h_save") > 0) {
@@ -27,6 +24,8 @@ namespace hunger {
 				name + "regeneration_interval"
 			);
 		}
+        
+		pool.set(name, newData);
 	}
 
 	// // saves data to be utilized on next login
