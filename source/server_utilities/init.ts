@@ -48,6 +48,15 @@ namespace serverUtilities {
 				);
 				return;
 			}
+
+			if (travelHomeQueue.has(name)) {
+				core.chat_send_player(
+					name,
+					"You are currently in the travel queue. Cannot set home."
+				);
+				return;
+			}
+
 			const data: HomeTimeout | undefined = pool.get(name);
 			if (data == null) {
 				throw new Error(
