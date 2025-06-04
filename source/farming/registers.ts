@@ -364,13 +364,12 @@ namespace farming {
 		cooktime: 2,
 	});
 
-	// todo: depends on the hunger mod.
-	// core.register_food("crafter_farming:pumpkin_pie",{
-	// 	description = "Pumpkin Pie",
-	// 	texture = "pumpkin_pie.png",
-	// 	satiation=6,
-	// 	hunger=3,
-	// })
+	hunger.register_food("crafter_farming:pumpkin_pie", {
+		description: "Pumpkin Pie",
+		texture: "pumpkin_pie.png",
+		satiation: 6,
+		hunger: 3,
+	});
 
 	core.register_decoration({
 		name: "crafter_farming:sugarcane",
