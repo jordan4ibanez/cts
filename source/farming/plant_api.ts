@@ -15,6 +15,7 @@ namespace farming {
 		grows: PlantGrowth;
 		grownNode?: string;
 		drop: string;
+		tiles: string[];
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -297,12 +298,12 @@ namespace farming {
 				drop = def.drop;
 			}
 
-			// 		local tiles
-			// 		if max > 1 then
-			// 			tiles = {def.tiles[1]+"_"+i+".png"}
-			// 		else
-			// 			tiles = def.tiles
-			// 		end
+			let tiles: string[] = [];
+			if (max > 1) {
+				tiles = [def.tiles[0] + "_" + i + ".png"];
+			} else {
+				tiles = def.tiles;
+			}
 			// 		def.groups.plants = 1
 			// 		core.register_node(nodename, {
 			// 			description               = def.description,
