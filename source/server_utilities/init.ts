@@ -1,6 +1,8 @@
 namespace serverUtilities {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
+	const timeout = 60;
+
 	class HomeTimeout {
 		setHome: number;
 		home: number;
@@ -12,8 +14,6 @@ namespace serverUtilities {
 	}
 
 	const pool = new Map<string, HomeTimeout>();
-
-	const home_timeout: number = 60;
 
 	core.register_on_joinplayer((player: ObjectRef) => {
 		pool.set(player.get_player_name(), new HomeTimeout());
