@@ -133,4 +133,15 @@ namespace serverUtilities {
 			}
 		},
 	});
+
+	let thisTick: boolean = true;
+	core.register_globalstep((delta: number) => {
+		thisTick = !thisTick;
+		if (!thisTick) {
+			return;
+		}
+		if (travelHomeQueue.size == 0) {
+			return;
+		}
+	});
 }
