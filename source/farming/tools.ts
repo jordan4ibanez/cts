@@ -1,6 +1,6 @@
 namespace farming {
 	// Quick definition of hoes.
-	const material: string[] = ["wood", "stone", "iron", "gold", "diamond"];
+	const __materials: string[] = ["wood", "stone", "iron", "gold", "diamond"];
 	const construct: string[] = ["wood", "cobble", "iron", "gold", "diamond"];
 
 	function till_soil(pos: Vec3): boolean {
@@ -15,7 +15,7 @@ namespace farming {
 		return false;
 	}
 
-	for (const [level, material] of pairs(material)) {
+	for (const [level, material] of pairs(__materials)) {
 		// 	local wear = 100*(6-level)
 		// 	local groupcaps2
 		// 	if material == "wood" then
