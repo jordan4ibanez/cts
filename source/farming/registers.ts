@@ -23,27 +23,27 @@ namespace farming {
 	});
 
 	farming.register_plant("sugarcane", {
-		description : "Sugarcane",
+		description: "Sugarcane",
 
-		inventory_image : "sugarcane.png",
+		inventory_image: "sugarcane.png",
 
-		tiles : ["sugarcane.png"],
+		tiles: ["sugarcane.png"],
 
-		groups : {dig_immediate:1,flammable:1},
+		groups: { dig_immediate: 1, flammable: 1 },
 
-		sounds : crafter.grassSound(),
+		sounds: crafter.grassSound(),
 
-		paramtype : ParamType1.light,
+		paramtype: ParamType1.light,
 
-		sunlight_propagates : true,
+		sunlight_propagates: true,
 
-		drawtype : Drawtype.plantlike,
+		drawtype: Drawtype.plantlike,
 
-		buildable_to : false,
+		buildable_to: false,
 
-		waving : 1,
+		waving: 1,
 
-		walkable : false,
+		walkable: false,
 		//inventory_image   : def.inventory_image,
 		//walkable          : def.walkable,
 		//climbable         : def.climbable,
@@ -51,12 +51,12 @@ namespace farming {
 		//buildable_to      : def.buildable_to,
 		//selection_box     : def.selection_box,
 		//drop              : def.drop,
-		grows             : PlantGrowth.up,
-		selection_box : {
-			type : Nodeboxtype.fixed,
-			fixed : [-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16]
+		grows: PlantGrowth.up,
+		selection_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16],
 		},
-	})
+	});
 
 	// core.register_plant("grass", {
 	//     description = "Tall Grass",
