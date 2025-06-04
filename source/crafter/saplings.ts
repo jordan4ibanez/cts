@@ -167,6 +167,8 @@ namespace crafter {
 				core.item_place(itemstack, placer, pointed_thing);
 				return itemstack;
 			}
+
+			// todo: figure out what this is.
 			//place sapling
 			const pos: Vec3 = pointed_thing.above;
 			if (
@@ -177,6 +179,7 @@ namespace crafter {
 				) > 0 &&
 				core.get_node(pointed_thing.above).name == "air"
 			) {
+				throw new Error("found it");
 				core.set_node(pointed_thing.above, { name: "crafter:sapling" });
 				core.sound_play("dirt", { pos: pointed_thing.above });
 				itemstack.take_item(1);
