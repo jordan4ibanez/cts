@@ -22,18 +22,16 @@ namespace hunger {
 	const pool = new Map<string, HungerData>();
 
 	// Loads data from mod storage.
-
 	function load_data(player: ObjectRef): void {
 		pool.set(player.get_player_name(), new HungerData(player));
 	}
 
-	// // saves data to be utilized on next login
-	// local name
-	// local temp_pool
-	// local save_data = function(name)
+	// Saves data to be utilized on next login.
+	 function save_data (name: string) {
 	// 	if type(name) ~= "string" and name:is_player() then
 	// 		name = name:get_player_name()
 	// 	end
+    
 	// 	temp_pool = pool[name]
 	// 	mod_storage:set_int(name+"hunger",               temp_pool.hunger               )
 	// 	mod_storage:set_int(name+"satiation",            temp_pool.satiation            )
@@ -41,7 +39,8 @@ namespace hunger {
 	// 	mod_storage:set_int(name+"regeneration_interval",temp_pool.regeneration_interval)
 	// 	mod_storage:set_int(name+"h_save",1)
 	// 	pool[name] = nil
-	// end
+     }
+
 	// // is used for shutdowns to save all data
 	// local save_all = function()
 	// 	for name,_ in pairs(pool) do
