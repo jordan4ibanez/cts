@@ -212,17 +212,20 @@ namespace farming {
 
 				const tilled: boolean = till_soil(pointed_thing.under);
 				if (tilled == true) {
-					if (
-						core.registered_nodes[
-							core.get_node(
+					const nodeName: string = core.get_node(
 								vector.create3d(
 									pointed_thing.under.x,
 									pointed_thing.under.y + 1,
 									pointed_thing.under.z
 								)
-							).name
+							).name;
+
+					if (
+						core.registered_nodes[nodeName
+							
 						]?.buildable_to
 					) {
+						
 						core.dig_node(
 							vector.create3d(
 								pointed_thing.under.x,
