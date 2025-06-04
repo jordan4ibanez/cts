@@ -118,7 +118,7 @@ namespace farming {
 						core.dig_node(pos);
 					}
 				};
-				// 		//for plants that grow in place
+				// For plants that grow in place.
 			} else if (def.grows == PlantGrowth.inPlace) {
 				// 			on_abm = function(pos)
 				// 				if core.get_node_light(pos, nil) < 10 then
