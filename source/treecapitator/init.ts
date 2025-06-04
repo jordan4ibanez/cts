@@ -33,25 +33,33 @@ namespace treecapitator {
 			return false;
 		}
 
-		// 	core.dig_node(pos)
+		core.dig_node(pos);
 
-		// 	core.add_particlespawner({
-		// 		amount = 20,
-		// 		time = 0.0001,
-		// 		minpos = {x=pos.x-0.5, y=pos.y-0.5, z=pos.z-0.5},
-		// 		maxpos = {x=pos.x+0.5, y=pos.y+0.5, z=pos.z+0.5},
-		// 		minvel = vector.new(-1,0,-1),
-		// 		maxvel = vector.new(1,0,1),
-		// 		minacc = {x=0, y=-9.81, z=0},
-		// 		maxacc = {x=0, y=-9.81, z=0},
-		// 		minexptime = 0.5,
-		// 		maxexptime = 1.5,
-		// 		minsize = 0,
-		// 		maxsize = 0,
-		// 		collisiondetection = true,
-		// 		vertical = false,
-		// 		node = {name= def.leaves[1]},
-		// 	})
+		core.add_particlespawner({
+			amount: 20,
+			time: 0.0001,
+			minpos: vector.create3d({
+				x: pos.x - 0.5,
+				y: pos.y - 0.5,
+				z: pos.z - 0.5,
+			}),
+			maxpos: vector.create3d({
+				x: pos.x + 0.5,
+				y: pos.y + 0.5,
+				z: pos.z + 0.5,
+			}),
+			minvel: vector.create3d(-1, 0, -1),
+			maxvel: vector.create3d(1, 0, 1),
+			minacc: vector.create3d({ x: 0, y: -9.81, z: 0 }),
+			maxacc: vector.create3d({ x: 0, y: -9.81, z: 0 }),
+			minexptime: 0.5,
+			maxexptime: 1.5,
+			minsize: 0,
+			maxsize: 0,
+			collisiondetection: true,
+			vertical: false,
+			node: { name: def.leaves[1] },
+		});
 		// 	core.sound_play("leaves", {pos=pos, gain = 0.2, max_hear_distance = 60,pitch = math.random(70,100)/100})
 	}
 
