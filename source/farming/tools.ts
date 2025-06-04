@@ -240,14 +240,20 @@ namespace farming {
 				return itemstack;
 			},
 		});
-		// 	core.register_craft({
-		// 		output = "crafter_farming:"+material+"hoe",
-		// 		recipe = {
-		// 			{"","crafter:"+construct[level], "crafter:"+construct[level]},
-		// 			{"","crafter:stick", ""},
-		// 			{"", "crafter:stick", ""}
-		// 		}
-		// 	})
+
+		core.register_craft({
+			output: "crafter_farming:" + material + "hoe",
+			recipe: [
+				[
+					"",
+					"crafter:" + construct[level],
+					"crafter:" + construct[level],
+				],
+				["", "crafter:stick", ""],
+				["", "crafter:stick", ""],
+			],
+		});
+
 		// 	core.register_craft({
 		// 		output = "crafter_farming:"+material+"hoe",
 		// 		recipe = {
