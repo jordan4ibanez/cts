@@ -14,6 +14,7 @@ namespace farming {
 		stages: number;
 		grows: PlantGrowth;
 		grownNode?: string;
+		drop: string;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -290,11 +291,11 @@ namespace farming {
 			// Allow plants to only drop item at max stage.
 			let drop: string = "";
 
-			// 		if i == max and def.grows ~= "in_place_yields" then
-			// 			drop = def.drop
-			// 		elseif max == 1 then
-			// 			drop = def.drop
-			// 		end
+			if (i == max && def.grows != PlantGrowth.inPlaceYields) {
+				drop = def.drop;
+			} else if (max == 1) {
+				drop = def.drop;
+			}
 
 			// 		local tiles
 			// 		if max > 1 then
