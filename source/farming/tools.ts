@@ -7,10 +7,23 @@ namespace farming {
 		const nodey: string = core.get_node(pos).name;
 		const is_dirt: boolean =
 			nodey == "crafter:dirt" || nodey == "crafter:grass";
+
 		if (is_dirt) {
-			core.sound_play("dirt", { pos: pos });
-			core.set_node(pos, { name: "crafter_farming:farmland_dry" });
-			return true;
+			let clearToTill: boolean = false;
+
+			const nodeAbove: string = core.get_node(
+				vector.create3d(pos.x, pos.y + 1, pos.z)
+			).name;
+			const nodeAboveDef: NodeDefinition | undefined =
+				core.registered_nodes[nodeAbove];
+			if (nodeAboveDef != null) {
+				clearToTill = nodeAboveDef.walkable != true;
+			}
+			if (clearToTill) {
+				core.sound_play("dirt", { pos: pos });
+				core.set_node(pos, { name: "crafter_farming:farmland_dry" });
+				return true;
+			}
 		}
 		return false;
 	}
