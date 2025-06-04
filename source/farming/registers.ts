@@ -267,7 +267,7 @@ namespace farming {
 			climbable : false,
 			paramtype : ParamType1.light,
 			sunlight_propagates : true,
-			is_ground_content : false,
+			
 		    tiles : ["melon_stage"], //automatically adds _X.png
 		    buildable_to : false,
 		    groups : {leaves : 1,plant:1, stem : 1, axe : 1, hand : 0,dig_immediate:1,attached_node:1,crops:1},
