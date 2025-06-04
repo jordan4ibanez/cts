@@ -19,7 +19,7 @@ namespace farming {
 		stages?: number;
 		grows: PlantGrowth;
 		grownNode?: string;
-		drop: string;
+		drop?: string;
 		tiles: string[];
 		groups: Dictionary<string, number>;
 		description: string;
@@ -147,7 +147,9 @@ namespace farming {
 					if (found && (found_soil || found_self)) {
 						pos.y = pos.y + 2;
 						if (core.get_node(pos).name == "air") {
-							core.set_node(pos, { name: "crafter_farming:" + name });
+							core.set_node(pos, {
+								name: "crafter_farming:" + name,
+							});
 						}
 					} else if (!found_self) {
 						pos.y = pos.y + 1;
@@ -197,7 +199,11 @@ namespace farming {
 						if (i < max) {
 							pos.y = pos.y + 1;
 							core.set_node(pos, {
-								name: "crafter_farming:" + name + "_" + tostring(i + 1),
+								name:
+									"crafter_farming:" +
+									name +
+									"_" +
+									tostring(i + 1),
 							});
 						}
 						// If farmland is not found.
@@ -303,7 +309,10 @@ namespace farming {
 								core.set_node(
 									vector.add(inverted_facedir, add_node),
 									{
-										name: "crafter_farming:" + name + "_complete",
+										name:
+											"crafter_farming:" +
+											name +
+											"_complete",
 										param2: core.dir_to_facedir(facedir),
 									}
 								);
@@ -334,7 +343,7 @@ namespace farming {
 				};
 			}
 			// Allow plants to only drop item at max stage.
-			let drop: string = "";
+			let drop: string | undefined;
 
 			if (i == max && def.grows != PlantGrowth.inPlaceYields) {
 				drop = def.drop;
@@ -446,70 +455,74 @@ namespace farming {
 			if (def.seed_plants == null) {
 				throw new Error(`Plant [${name}] seed plants is required.`);
 			}
-			core.register_craftitem("crafter_farming:" + def.seed_name + "_seeds", {
-				description: def.seed_description,
-				inventory_image: def.seed_inventory_image,
-				on_place: (
-					itemstack: ItemStackObject,
-					placer: ObjectRef,
-					pointed_thing: PointedThing
-				): ItemStackObject | void => {
-					if (pointed_thing.type != "node") {
-						return itemstack;
-					}
-					const pointed_thing_diff: number =
-						pointed_thing.above.y - pointed_thing.under.y;
-					if (pointed_thing_diff < 1) {
-						return;
-					}
-					if (core.get_node(pointed_thing.above).name != "air") {
-						return;
-					}
-					const pb: Vec3 = pointed_thing.above;
-					if (
-						core.get_item_group(
-							core.get_node(vector.create3d(pb.x, pb.y - 1, pb.z))
-								.name,
-							"farmland"
-						) == 0 ||
-						core.get_node(pointed_thing.above).name != "air"
-					) {
-						return itemstack;
-					}
-					const wdir: number = core.dir_to_wallmounted(
-						vector.subtract(
-							pointed_thing.under,
-							pointed_thing.above
-						)
-					);
-					const fakestack = itemstack;
-					{
-						let retval: boolean = false;
-						retval = fakestack.set_name(def.seed_plants!);
-						if (!retval) {
+			core.register_craftitem(
+				"crafter_farming:" + def.seed_name + "_seeds",
+				{
+					description: def.seed_description,
+					inventory_image: def.seed_inventory_image,
+					on_place: (
+						itemstack: ItemStackObject,
+						placer: ObjectRef,
+						pointed_thing: PointedThing
+					): ItemStackObject | void => {
+						if (pointed_thing.type != "node") {
 							return itemstack;
 						}
-					}
-					let [itemstack2, _] = core.item_place(
-						fakestack,
-						placer,
-						pointed_thing,
-						wdir
-					);
+						const pointed_thing_diff: number =
+							pointed_thing.above.y - pointed_thing.under.y;
+						if (pointed_thing_diff < 1) {
+							return;
+						}
+						if (core.get_node(pointed_thing.above).name != "air") {
+							return;
+						}
+						const pb: Vec3 = pointed_thing.above;
+						if (
+							core.get_item_group(
+								core.get_node(
+									vector.create3d(pb.x, pb.y - 1, pb.z)
+								).name,
+								"farmland"
+							) == 0 ||
+							core.get_node(pointed_thing.above).name != "air"
+						) {
+							return itemstack;
+						}
+						const wdir: number = core.dir_to_wallmounted(
+							vector.subtract(
+								pointed_thing.under,
+								pointed_thing.above
+							)
+						);
+						const fakestack = itemstack;
+						{
+							let retval: boolean = false;
+							retval = fakestack.set_name(def.seed_plants!);
+							if (!retval) {
+								return itemstack;
+							}
+						}
+						let [itemstack2, _] = core.item_place(
+							fakestack,
+							placer,
+							pointed_thing,
+							wdir
+						);
 
-					if (
-						itemstack2.set_name(
-							"crafter_farming:" + def.seed_name + "_seeds"
-						)
-					) {
-						core.sound_play("leaves", {
-							pos: pointed_thing.above,
-							gain: 1.0,
-						});
-					}
-					return itemstack;
-				},
-			});
+						if (
+							itemstack2.set_name(
+								"crafter_farming:" + def.seed_name + "_seeds"
+							)
+						) {
+							core.sound_play("leaves", {
+								pos: pointed_thing.above,
+								gain: 1.0,
+							});
+						}
+						return itemstack;
+					},
+				}
+			);
 		}
 	}
 }
