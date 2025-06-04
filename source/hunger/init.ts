@@ -1,5 +1,4 @@
 namespace hunger {
-	// local minetest,math = minetest,math
 	// local mod_storage = minetest.get_mod_storage()
 	// local pool        = {}
 	// -- loads data from mod storage
