@@ -55,7 +55,7 @@ namespace farming {
 		fruit_tiles?: string[];
 		fruit_groups?: Dictionary<string, number>;
 		fruit_sounds?: NodeSoundSpec;
-		fruit_drop?: string;
+		fruit_drop?: string | NodeDropSpec;
 
 		// This part is for the seeds.
 		seed_plants?: string;
