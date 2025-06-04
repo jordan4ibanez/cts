@@ -72,28 +72,45 @@ namespace serverUtilities {
 	core.register_chatcommand("home", {
 		params: "nil",
 		description:
-			"Use this to go to your home. You can do this by running /sethome",
+			"Use this to go to your home. You can set your home by running /sethome",
 		privs: {},
 		func: (name: string) => {
-			// 		local time = core.get_us_time()/1000000
-			// 		local player = core.get_player_by_name(name)
-			// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
-			// 			local newpos = core.deserialize(mod_storage:get_string(name+":crafter_home"))
-			// 			if newpos then
-			// 				player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
-			// 				player:move_to(newpos)
-			// 				pool[name] = time
-			// 			else
-			// 				core.chat_send_player(name, "No home set.")
-			// 			end
-			// 		elseif pool[name] then
-			// 			local diff = home_timeout-math.ceil(time-pool[name])+1
-			// 			local s = "s"
-			// 			if diff == 1 then
-			// 				s = ""
-			// 			end
-			// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
-			// 		end
+			const player: ObjectRef | null = core.get_player_by_name(name);
+
+			if (player == null) {
+				core.log(
+					LogLevel.warning,
+					`Player [${name}] ran command and instantly became null.`
+				);
+				return;
+			}
+			const data: HomeTimeout | undefined = pool.get(name);
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added to the pool.`
+				);
+			}
+
+			const time: number = core.get_us_time() / 1000000;
+			const diff = timeout - math.ceil(time - data.home);
+
+			if (diff <= 0) {
+				// 			local newpos = core.deserialize(mod_storage:get_string(name+":crafter_home"))
+				// 			if newpos then
+				// 				player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
+				// 				player:move_to(newpos)
+				// 				pool[name] = time
+				// 			else
+				// 				core.chat_send_player(name, "No home set.")
+				// 			end
+			} else {
+				// 			local diff = home_timeout-math.ceil(time-pool[name])+1
+				// 			local s = "s"
+				// 			if diff == 1 then
+				// 				s = ""
+				// 			end
+				// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
+			}
 		},
 	});
 }
