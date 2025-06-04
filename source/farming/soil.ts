@@ -6,44 +6,45 @@ namespace farming {
 
 		const coloring: number = 160 / level;
 
-		// 	local on_construct
+		let on_construct: ((pos: Vec3) => void) | undefined;
+		let on_timer: ((pos: Vec3) => void) | undefined;
 
-		// 	if dryness == "wet" then
-		// 		on_construct = function(pos)
-		// 			local found = table.getn(minetest.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
-		// 			if not found then
-		// 				minetest.set_node(pos,{name="farming:farmland_dry"})
-		// 			end
-		// 			local timer = minetest.get_node_timer(pos)
-		// 			timer:start(1)
-		// 		end
-		// 		on_timer = function(pos)
-		// 			local found = table.getn(minetest.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
-		// 			if not found then
-		// 				minetest.set_node(pos,{name="farming:farmland_dry"})
-		// 			end
-		// 			local timer = minetest.get_node_timer(pos)
-		// 			timer:start(math.random(10,25))
-		// 		end
-		// 	else
-		// 		on_construct = function(pos)
-		// 			local timer = minetest.get_node_timer(pos)
-		// 			timer:start(math.random(10,25))
-		// 		end
-		// 		on_timer = function(pos)
-		// 			local found = table.getn(minetest.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
-		// 			if found then
-		// 				minetest.set_node(pos,{name="farming:farmland_wet"})
-		// 				local timer = minetest.get_node_timer(pos)
-		// 				timer:start(1)
-		// 			else
-		// 				minetest.set_node(pos,{name="main:dirt"})
-		// 				if minetest.get_node_group(minetest.get_node(vector.new(pos.x,pos.y+1,pos.z)).name, "plant") > 0 then
-		// 					minetest.dig_node(vector.new(pos.x,pos.y+1,pos.z))
-		// 				end
-		// 			end
-		// 		end
-		// 	end
+		if (dryness == "wet") {
+			// 		on_construct = function(pos)
+			// 			local found = table.getn(minetest.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
+			// 			if not found then
+			// 				minetest.set_node(pos,{name="farming:farmland_dry"})
+			// 			end
+			// 			local timer = minetest.get_node_timer(pos)
+			// 			timer:start(1)
+			// 		end
+			// 		on_timer = function(pos)
+			// 			local found = table.getn(minetest.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
+			// 			if not found then
+			// 				minetest.set_node(pos,{name="farming:farmland_dry"})
+			// 			end
+			// 			local timer = minetest.get_node_timer(pos)
+			// 			timer:start(math.random(10,25))
+			// 		end
+		} else {
+			// 		on_construct = function(pos)
+			// 			local timer = minetest.get_node_timer(pos)
+			// 			timer:start(math.random(10,25))
+			// 		end
+			// 		on_timer = function(pos)
+			// 			local found = table.getn(minetest.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
+			// 			if found then
+			// 				minetest.set_node(pos,{name="farming:farmland_wet"})
+			// 				local timer = minetest.get_node_timer(pos)
+			// 				timer:start(1)
+			// 			else
+			// 				minetest.set_node(pos,{name="main:dirt"})
+			// 				if minetest.get_node_group(minetest.get_node(vector.new(pos.x,pos.y+1,pos.z)).name, "plant") > 0 then
+			// 					minetest.dig_node(vector.new(pos.x,pos.y+1,pos.z))
+			// 				end
+			// 			end
+			// 		end
+		}
 		// 	minetest.register_node("farming:farmland_"..dryness,{
 		// 		description = "Farmland",
 		// 		paramtype = "light",
