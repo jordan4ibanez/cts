@@ -1,6 +1,4 @@
 namespace farming {
-	// local farmland =
-
 	for (const [level, dryness] of pairs(["wet", "dry"])) {
 		if (typeof level != "number") {
 			throw new Error("how");
@@ -9,6 +7,7 @@ namespace farming {
 		const coloring: number = 160 / level;
 
 		// 	local on_construct
+
 		// 	if dryness == "wet" then
 		// 		on_construct = function(pos)
 		// 			local found = table.getn(minetest.find_nodes_in_area(vector.new(pos.x-3,pos.y,pos.z-3), vector.new(pos.x+3,pos.y,pos.z+3), {"main:water","main:waterflow"})) > 0
