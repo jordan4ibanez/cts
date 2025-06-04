@@ -192,8 +192,8 @@ namespace hunger {
 					state = 0.5;
 				}
 			}
-			// // count down invisible satiation bar
-			// if temp_pool.satiation > 0 and temp_pool.hunger >= 20 then
+			// Count down invisible satiation bar.
+			if (data.satiation > 0 && data.hunger >= 20) {
 			//     temp_pool.exhaustion = tick_up_satiation(state, temp_pool.exhaustion)
 			//     if temp_pool.exhaustion > exhaustion_peak then
 			//         temp_pool.satiation = temp_pool.satiation - 1
@@ -204,7 +204,7 @@ namespace hunger {
 			//         end
 			//     end
 			// // count down hunger bars
-			// elseif temp_pool.hunger > 0 then
+            } else if (data.hunger > 0) {
 			//     temp_pool.exhaustion = tick_up_hunger(state,temp_pool.exhaustion)
 			//     if temp_pool.exhaustion >= hunger_peak then
 			//         //don't allow hunger to go negative
@@ -220,14 +220,14 @@ namespace hunger {
 			//         })
 			//     end
 			// // hurt the player if hunger bar empty
-			// elseif temp_pool.hunger <= 0 then
+            } else if (data.hunger <= 0) {
 			//     temp_pool.exhaustion = temp_pool.exhaustion + 1
 			//     hp = player:get_hp()
 			//     if hp > 0 and temp_pool.exhaustion >= 2 then
 			//         player:set_hp( hp - 1 )
 			//         temp_pool.exhaustion = 0
 			//     end
-			// end
+            }
 			// hp = player:get_hp()
 			// drowning = is_player_drowning(player)
 			// //make regeneration happen every second
