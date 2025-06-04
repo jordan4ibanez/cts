@@ -238,19 +238,19 @@ namespace hunger {
 				hp < 20
 			) {
 				data.regeneration_interval += 1;
-				//     if temp_pool.regeneration_interval >= 2 then
-				//         player:set_hp( hp + 1 )
-				//         temp_pool.exhaustion = temp_pool.exhaustion + 32
-				//         temp_pool.regeneration_interval = 0
-				//     end
-				// //reset the regen interval
+				if (data.regeneration_interval >= 2) {
+					player.set_hp(hp + 1);
+					data.exhaustion += 32;
+					data.regeneration_interval = 0;
+				}
+				// Reset the regen interval.
 			} else {
-				//     temp_pool.regeneration_interval = 0
+				data.regeneration_interval = 0;
 			}
 		}
-		// 	core.after(0.5, function()
-		// 		hunger_update()
-		// 	end)
+		core.after(0.5, () => {
+			hunger_update();
+		});
 	}
 
 	// core.register_on_mods_loaded(function()
