@@ -48,12 +48,14 @@ namespace serverUtilities {
 			const time: number = core.get_us_time() / 1000000;
 			const diff = timeout - math.ceil(time - data.setHome);
 
-			const pos: Vec3 = player.get_pos();
-
 			if (diff <= 0) {
-				mod_storage.set_string(name + ":crafter_home", core.serialize(pos));
-				// 			pool[name] = time
-				// 			core.chat_send_player(name, "Home set.")
+				const pos: Vec3 = player.get_pos();
+				mod_storage.set_string(
+					name + ":crafter_home",
+					core.serialize(pos)
+				);
+				data.setHome = time;
+				core.chat_send_player(name, "Home set.");
 			} else {
 				const s = diff == 1 ? "s" : "";
 				core.chat_send_player(
