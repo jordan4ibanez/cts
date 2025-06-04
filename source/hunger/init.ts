@@ -61,7 +61,7 @@ namespace hunger {
 	};
 
 	// Ticks up the exhaustion when counting down satiation.
-	function tick_up_satiation(state: number, exhaustion: number) {
+	function tick_up_satiation(state: number, exhaustion: number): number {
 		const sat: number | undefined = satiation_pool[state];
 		if (sat == null) {
 			throw new Error("out of range");
@@ -78,10 +78,15 @@ namespace hunger {
 		[3]: 1,
 	};
 
-	// // ticks up the exhaustion when counting down hunger
-	// local tick_up_hunger = function(state,exhaustion)
-	// 	return(exhaustion + hunger_pool[state])
-	// end
+	// Ticks up the exhaustion when counting down hunger.
+	function tick_up_hunger(state: number, exhaustion: number): number {
+		const hun: number | undefined = hunger_pool[state];
+		if (hun == null) {
+			throw new Error("out of range");
+		}
+		return exhaustion + hun;
+	}
+
 	// // allows other mods to set hunger data
 	// local name
 	// get_player_hunger = function(player)
