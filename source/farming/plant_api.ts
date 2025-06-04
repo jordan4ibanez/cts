@@ -364,40 +364,41 @@ namespace farming {
 		}
 
 		// Create final stage for grow in place plant stems that create food.
-		// 	if def.grows == "in_place_yields" then
-		// 		core.register_node("farming:"+name+"_complete", {
-		// 		    description         = def.stem_description,
-		// 		    tiles               = def.stem_tiles,
-		// 		    drawtype            = def.stem_drawtype,
-		// 		    walkable            = def.stem_walkable,
-		// 		    sunlight_propagates = def.stem_sunlight_propagates,
-		// 		    paramtype           = def.stem_paramtype,
-		// 		    drop                = def.stem_drop,
-		// 			groups              = def.stem_groups,
-		// 			sounds              = def.stem_sounds,
-		// 		    node_box            = def.stem_node_box,
-		// 		    selection_box       = def.stem_selection_box,
-		// 		    paramtype2          = "facedir",
-		// 		})
-		// 		core.register_node("farming:"+def.fruit_name, {
-		// 		    description = def.fruit_description,
-		// 		    tiles       = def.fruit_tiles,
-		// 		    groups      = def.fruit_groups,
-		// 		    sounds      = def.fruit_sounds,
-		// 		    drop        = def.fruit_drop,
-		// 		    //this is hardcoded to work no matter what
-		// 		    paramtype2  = "facedir",
-		// 		    after_destruct = function(pos,oldnode)
-		// 			    local facedir = oldnode.param2
-		// 			    facedir = core.facedir_to_dir(facedir)
-		// 			    local dir = vector.multiply(facedir,-1)
-		// 			    local stem_pos = vector.add(dir,pos)
-		// 			    if core.get_node(stem_pos).name == "farming:"+name+"_complete" then
-		// 				    core.set_node(stem_pos, {name = "farming:"+name+"_1"})
-		// 			    end
-		// 		    end
-		// 		})
-		// 	end
+		if (def.grows == PlantGrowth.inPlaceYields) {
+			// 		core.register_node("farming:"+name+"_complete", {
+			// 		    description         = def.stem_description,
+			// 		    tiles               = def.stem_tiles,
+			// 		    drawtype            = def.stem_drawtype,
+			// 		    walkable            = def.stem_walkable,
+			// 		    sunlight_propagates = def.stem_sunlight_propagates,
+			// 		    paramtype           = def.stem_paramtype,
+			// 		    drop                = def.stem_drop,
+			// 			groups              = def.stem_groups,
+			// 			sounds              = def.stem_sounds,
+			// 		    node_box            = def.stem_node_box,
+			// 		    selection_box       = def.stem_selection_box,
+			// 		    paramtype2          = "facedir",
+			// 		})
+			// 		core.register_node("farming:"+def.fruit_name, {
+			// 		    description = def.fruit_description,
+			// 		    tiles       = def.fruit_tiles,
+			// 		    groups      = def.fruit_groups,
+			// 		    sounds      = def.fruit_sounds,
+			// 		    drop        = def.fruit_drop,
+			// 		    //this is hardcoded to work no matter what
+			// 		    paramtype2  = "facedir",
+			// 		    after_destruct = function(pos,oldnode)
+			// 			    local facedir = oldnode.param2
+			// 			    facedir = core.facedir_to_dir(facedir)
+			// 			    local dir = vector.multiply(facedir,-1)
+			// 			    local stem_pos = vector.add(dir,pos)
+			// 			    if core.get_node(stem_pos).name == "farming:"+name+"_complete" then
+			// 				    core.set_node(stem_pos, {name = "farming:"+name+"_1"})
+			// 			    end
+			// 		    end
+			// 		})
+		}
+
 		// 	if def.seed_name then
 		// 		core.register_craftitem("farming:"+def.seed_name+"_seeds", {
 		// 			description = def.seed_description,
