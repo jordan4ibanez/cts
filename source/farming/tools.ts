@@ -1,12 +1,12 @@
-// --Quick definition of hoes
+// //Quick definition of hoes
 // local material  = {"wood","stone","iron","gold","diamond"}
 // local construct = {"wood","cobble","iron","gold","diamond"}
 // local function till_soil(pos)
-// 	local nodey = minetest.get_node(pos).name
+// 	local nodey = core.get_node(pos).name
 // 	local is_dirt = (nodey == "main:dirt" or nodey == "main:grass")
 // 	if is_dirt then
-// 		minetest.sound_play("dirt",{pos=pos})
-// 		minetest.set_node(pos,{name="farming:farmland_dry"})
+// 		core.sound_play("dirt",{pos=pos})
+// 		core.set_node(pos,{name="farming:farmland_dry"})
 // 		return(true)
 // 	end
 // end
@@ -55,43 +55,43 @@
 // 		}
 // 		damage = 5.5
 // 	end
-// 	minetest.register_tool("farming:"..material.."hoe", {
+// 	core.register_tool("farming:"..material.."hoe", {
 // 		description = material:gsub("^%l", string.upper).." Hoe",
 // 		inventory_image = material.."hoe.png",
 // 		tool_capabilities = {
 // 				full_punch_interval = 0,
-// 				--max_drop_level=0,
+// 				//max_drop_level=0,
 // 				groupcaps=groupcaps2,
 // 				damage_groups = {damage=damage},
 // 			},
-// 		sound = {breaks = {name="tool_break",gain=0.4}}, -- change this
+// 		sound = {breaks = {name="tool_break",gain=0.4}}, // change this
 // 		groups = {flammable = 2, tool=1 },
 		
 // 		on_place = function(itemstack, placer, pointed_thing)
-// 			local noddef = minetest.registered_nodes[minetest.get_node(pointed_thing.under).name]
+// 			local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
 // 			local sneak = placer:get_player_control().sneak
 			
 // 			if not sneak and noddef.on_rightclick then
-// 				minetest.item_place(itemstack, placer, pointed_thing)
+// 				core.item_place(itemstack, placer, pointed_thing)
 // 				return
 // 			end
 		
 // 			local tilled = till_soil(pointed_thing.under)
 // 			if tilled == true then 
-// 				if minetest.registered_nodes[minetest.get_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z)).name].buildable_to then
-// 					minetest.dig_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z))
+// 				if core.registered_nodes[core.get_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z)).name].buildable_to then
+// 					core.dig_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z))
 // 				end
 // 				itemstack:add_wear(wear)
 // 			end
 			
 // 			local damage = itemstack:get_wear()
 // 			if damage <= 0 and tilled == true  then
-// 				minetest.sound_play("tool_break",{object=placer})
+// 				core.sound_play("tool_break",{object=placer})
 // 			end
 // 			return(itemstack)
 // 		end,
 // 	})
-// 	minetest.register_craft({
+// 	core.register_craft({
 // 		output = "farming:"..material.."hoe",
 // 		recipe = {
 // 			{"","main:"..construct[level], "main:"..construct[level]},
@@ -99,7 +99,7 @@
 // 			{"", "main:stick", ""}
 // 		}
 // 	})
-// 	minetest.register_craft({
+// 	core.register_craft({
 // 		output = "farming:"..material.."hoe",
 // 		recipe = {
 // 			{"main:"..construct[level],"main:"..construct[level], ""},
