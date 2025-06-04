@@ -1,6 +1,4 @@
 namespace serverMessages {
-	// local pool = {}
-
 	if (!core.is_singleplayer()) {
 		core.register_on_joinplayer((player: ObjectRef) => {
 			const meta: MetaRef = player.get_meta();
