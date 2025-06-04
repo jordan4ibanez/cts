@@ -49,7 +49,6 @@ namespace farming {
 		walkable: false,
 		climbable: false,
 		paramtype: ParamType1.light,
-		is_ground_content: false,
 		tiles: ["tallgrass.png"],
 		paramtype2: ParamType2.degrotate,
 		buildable_to: true,

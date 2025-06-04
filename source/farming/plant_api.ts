@@ -17,7 +17,7 @@ namespace farming {
 
 	interface PlantDefinition {
 		stages?: number;
-		grows: PlantGrowth;
+		grows?: PlantGrowth;
 		grownNode?: string;
 		drop?: string | NodeDropSpec;
 		tiles: string[];
