@@ -401,7 +401,7 @@ interface core {
 		pointedThing: PointedThing,
 		above: boolean
 	): Vec3 | null;
-	dir_to_facedir(direction: Vec3, is6d: boolean): number;
+	dir_to_facedir(direction: Vec3, is6d?: boolean): number;
 	facedir_to_dir(faceDir: number): Vec3;
 	dir_to_fourdir(direction: Vec3): number;
 	fourdir_to_dir(faceDir: number): Vec3;
