@@ -21,14 +21,14 @@ namespace farming {
 		if (dryness == "wet") {
 			on_construct = (pos: Vec3) => {
 				if (!soilHasWater(pos)) {
-					core.set_node(pos, { name: "farming:farmland_dry" });
+					core.set_node(pos, { name: "crafter_farming:farmland_dry" });
 				}
 				const timer: NodeTimerObject = core.get_node_timer(pos);
 				timer.start(math.random(10, 25) + math.random());
 			};
 			on_timer = (pos: Vec3) => {
 				if (!soilHasWater(pos)) {
-					core.set_node(pos, { name: "farming:farmland_dry" });
+					core.set_node(pos, { name: "crafter_farming:farmland_dry" });
 				}
 				const timer: NodeTimerObject = core.get_node_timer(pos);
 				timer.start(math.random(10, 25) + math.random());
@@ -41,7 +41,7 @@ namespace farming {
 			on_timer = (pos: Vec3) => {
 				const found: boolean = soilHasWater(pos);
 				if (found) {
-					core.set_node(pos, { name: "farming:farmland_wet" });
+					core.set_node(pos, { name: "crafter_farming:farmland_wet" });
 					const timer: NodeTimerObject = core.get_node_timer(pos);
 					timer.start(math.random(10, 25) + math.random());
 				} else {
@@ -59,7 +59,7 @@ namespace farming {
 				}
 			};
 		}
-		core.register_node("farming:farmland_" + dryness, {
+		core.register_node("crafter_farming:farmland_" + dryness, {
 			description: "Farmland",
 			paramtype: ParamType1.light,
 			drawtype: Drawtype.nodebox,
