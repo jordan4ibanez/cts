@@ -241,7 +241,11 @@ namespace serverUtilities {
 
 		// Clear teleported players.
 		if (removalQueue.length > 0) {
-			for (const name of removalQueue) {
+			while (removalQueue.length > 0) {
+				const name: string | undefined = removalQueue.pop();
+				if (name == null) {
+					break;
+				}
 				travelHomeQueue.delete(name);
 			}
 		}
