@@ -65,7 +65,7 @@ namespace treecapitator {
 			maxsize: 0,
 			collisiondetection: true,
 			vertical: false,
-			node: { name: def.leaves[1] },
+			node: { name: def.leaves[0] },
 		});
 		core.sound_play("leaves", {
 			pos: pos,
