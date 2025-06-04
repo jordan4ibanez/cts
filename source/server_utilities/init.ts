@@ -1,7 +1,7 @@
 namespace serverUtilities {
 	// local minetest,os = minetest,os
 
-	// local mod_storage = core.get_mod_storage()
+	const mod_storage: MetaRef = core.get_mod_storage();
 
 	// local pool = {}
 	// local home_timeout = 60
