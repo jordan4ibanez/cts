@@ -219,7 +219,7 @@ namespace serverUtilities {
 				}
 				// End double check.
 				core.log(LogLevel.action, `Player [${name}] teleported home.`);
-				core.chat_send_player(name, "Sending you home.");
+				core.chat_send_player(name, "Traveling home.");
 				player.add_velocity(vector.multiply(player.get_velocity(), -1));
 				player.move_to(newpos);
 				removalQueue.push(name);
