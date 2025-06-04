@@ -7,7 +7,7 @@ namespace serverUtilities {
 		setHome: number;
 		home: number;
 		constructor() {
-			const currentTime = core.get_us_time();
+			const currentTime = core.get_us_time() / 1000000;
 			this.setHome = currentTime;
 			this.home = currentTime;
 		}
@@ -29,7 +29,6 @@ namespace serverUtilities {
 			"Use this to set your home. Can be returned to by setting /home",
 		privs: {},
 		func: (name) => {
-			const time: number = core.get_us_time() / 1000000;
 			const player: ObjectRef | null = core.get_player_by_name(name);
 
 			if (player == null) {
@@ -40,24 +39,34 @@ namespace serverUtilities {
 				return;
 			}
 
+			const data: HomeTimeout | undefined = pool.get(name);
+
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added to the pool.`
+				);
+			}
+
+			const time: number = core.get_us_time() / 1000000;
+
+			const diff = timeout - math.ceil(time - data.setHome);
+
+			print(diff);
+
 			const pos: Vec3 = player.get_pos();
 
-			// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
-
-			// 			mod_storage:set_string(name+"home", core.serialize(pos))
-			// 			pool[name] = time
-			// 			core.chat_send_player(name, "Home set.")
-
-			// 		elseif pool[name] then
-
-			// 			local diff = home_timeout-math.ceil(time-pool[name])+1
-			// 			local s = "s"
-			// 			if diff == 1 then
-			// 				s = ""
-			// 			end
-			// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
-
-			// 		end
+			if (diff <= 0) {
+				// 			mod_storage:set_string(name+"home", core.serialize(pos))
+				// 			pool[name] = time
+				// 			core.chat_send_player(name, "Home set.")
+			} else {
+				// 			local diff = home_timeout
+				// 			local s = "s"
+				// 			if diff == 1 then
+				// 				s = ""
+				// 			end
+				// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
+			}
 		},
 	});
 	// core.register_chatcommand("home", {
