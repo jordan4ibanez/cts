@@ -139,7 +139,7 @@ namespace farming {
 							core.get_node(pos).name,
 							"farmland"
 						) > 0;
-					// 				//if found farmland below
+					// If farmland is found below.
 					// 				if found then
 					// 					if i < max then
 					// 						pos.y = pos.y + 1
