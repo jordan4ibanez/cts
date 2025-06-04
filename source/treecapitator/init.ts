@@ -67,23 +67,21 @@ namespace treecapitator {
 	}
 
 	export function register_leafdecay(def: TreecapitatorDef) {
-		// 	assert(def.leaves)
-		// 	assert(def.trunks)
-		// 	assert(def.radius)
-		// 	for _, v in pairs(def.trunks) do
-		// 		core.override_item(v, {
-		// 			after_destruct = function(pos, oldnode)
-		// 				leafdecay_after_destruct(pos, oldnode, def)
-		// 			end,
-		// 		})
-		// 	end
-		// 	for _, v in pairs(def.leaves) do
-		// 		core.override_item(v, {
-		// 			on_timer = function(pos)
-		// 				leafdecay_on_timer(pos, def)
-		// 			end,
-		// 		})
-		// 	end
+		for (const v of def.trunks) {
+			core.override_item(v, {
+				after_destruct: (pos: Vec3, oldnode: NodeTable) => {
+					leafdecay_after_destruct(pos, oldnode, def);
+				},
+			});
+		}
+
+		for (const v of def.leaves) {
+			core.override_item(v, {
+				on_timer: (pos: Vec3) => {
+					leafdecay_on_timer(pos, def);
+				},
+			});
+		}
 	}
 
 	// ///////////////////////////// registration
