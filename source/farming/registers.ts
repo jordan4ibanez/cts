@@ -141,11 +141,11 @@ namespace farming {
 
 	farming.register_plant("melon_stem", {
 		    description : "Melon Stem",
-		    drawtype : "plantlike",
+		    drawtype : Drawtype.plantlike,
 			waving : 1,
 			walkable : false,
 			climbable : false,
-			paramtype : "light",
+			paramtype : ParamType1.light,
 			sunlight_propagates : true,
 			is_ground_content : false,
 		    tiles : ["melon_stage"], //automatically adds _X.png
@@ -153,27 +153,27 @@ namespace farming {
 		    groups : {leaves : 1,plant:1, stem : 1, axe : 1, hand : 0,dig_immediate:1,attached_node:1,crops:1},
 		    sounds : crafter.grassSound(),
 		    selection_box : {
-				type : "fixed",
+				type : Nodeboxtype.fixed,
 				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
-			grows : "in_place_yields",
+			grows : PlantGrowth.inPlaceYields,
 			grown_node:"farming:melon",
 			stages : 7,
 			//stem stage complete definition (fully grown and budding)
 			stem_description : "",
 			stem_tiles : ["nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png",],
-			stem_drawtype : "nodebox",
+			stem_drawtype : Drawtype.nodebox,
 			stem_walkable : false,
 			stem_sunlight_propagates : true,
-			stem_paramtype : "light",
+			stem_paramtype : ParamType1.light,
 			stem_node_box : {
-				type : "fixed",
-				fixed : {
+				type : Nodeboxtype.fixed,
+				fixed : [
 					[-0/16, -8/16, -7/16,  0/16, 8/16,  7/16]
-				},
+                ],
 			},
 			stem_selection_box : {
-				type : "fixed",
+				type : Nodeboxtype.fixed,
 				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			stem_drop : {
