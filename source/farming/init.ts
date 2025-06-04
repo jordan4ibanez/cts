@@ -1,9 +1,6 @@
 namespace farming {
-	// local path = minetest.get_modpath("farming")
-	// dofile(path.."/plant_api.lua")
-	// dofile(path.."/registers.lua")
-	// dofile(path.."/tools.lua")
-	// dofile(path.."/soil.lua")
+	utility.loadFiles(["plant_api", "registers", "tools", "soil"]);
+
 	// minetest.register_craftitem("farming:wheat", {
 	// 	description = "Wheat",
 	// 	inventory_image = "wheat_harvested.png",
