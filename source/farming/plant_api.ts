@@ -81,9 +81,9 @@ namespace farming {
 			let nodename: string = "";
 
 			if (def.stages > 1) {
-				nodename = "farming:" + name + "_" + i;
+				nodename = "crafter_farming:" + name + "_" + i;
 			} else {
-				nodename = "farming:" + name;
+				nodename = "crafter_farming:" + name;
 			}
 
 			let after_dig_node:
@@ -147,7 +147,7 @@ namespace farming {
 					if (found && (found_soil || found_self)) {
 						pos.y = pos.y + 2;
 						if (core.get_node(pos).name == "air") {
-							core.set_node(pos, { name: "farming:" + name });
+							core.set_node(pos, { name: "crafter_farming:" + name });
 						}
 					} else if (!found_self) {
 						pos.y = pos.y + 1;
@@ -197,7 +197,7 @@ namespace farming {
 						if (i < max) {
 							pos.y = pos.y + 1;
 							core.set_node(pos, {
-								name: "farming:" + name + "_" + tostring(i + 1),
+								name: "crafter_farming:" + name + "_" + tostring(i + 1),
 							});
 						}
 						// If farmland is not found.
@@ -247,7 +247,7 @@ namespace farming {
 						if (i < max) {
 							pos.y = pos.y + 1;
 							core.set_node(pos, {
-								name: "farming:" + name + "_" + (i + 1),
+								name: "crafter_farming:" + name + "_" + (i + 1),
 							});
 						} else {
 							pos.y = pos.y + 1;
@@ -303,7 +303,7 @@ namespace farming {
 								core.set_node(
 									vector.add(inverted_facedir, add_node),
 									{
-										name: "farming:" + name + "_complete",
+										name: "crafter_farming:" + name + "_complete",
 										param2: core.dir_to_facedir(facedir),
 									}
 								);
@@ -394,7 +394,7 @@ namespace farming {
 
 		// Create final stage for grow in place plant stems that create food.
 		if (def.grows == PlantGrowth.inPlaceYields) {
-			core.register_node("farming:" + name + "_complete", {
+			core.register_node("crafter_farming:" + name + "_complete", {
 				description: def.stem_description,
 				tiles: def.stem_tiles,
 				drawtype: def.stem_drawtype,
@@ -413,7 +413,7 @@ namespace farming {
 				throw new Error(`Plant [${name}] fruit is missing a name.`);
 			}
 
-			core.register_node("farming:" + def.fruit_name, {
+			core.register_node("crafter_farming:" + def.fruit_name, {
 				description: def.fruit_description,
 				tiles: def.fruit_tiles,
 				groups: def.fruit_groups,
@@ -432,10 +432,10 @@ namespace farming {
 					const stem_pos: Vec3 = vector.add(dir, pos);
 					if (
 						core.get_node(stem_pos).name ==
-						"farming:" + name + "_complete"
+						"crafter_farming:" + name + "_complete"
 					) {
 						core.set_node(stem_pos, {
-							name: "farming:" + name + "_1",
+							name: "crafter_farming:" + name + "_1",
 						});
 					}
 				},
@@ -446,7 +446,7 @@ namespace farming {
 			if (def.seed_plants == null) {
 				throw new Error(`Plant [${name}] seed plants is required.`);
 			}
-			core.register_craftitem("farming:" + def.seed_name + "_seeds", {
+			core.register_craftitem("crafter_farming:" + def.seed_name + "_seeds", {
 				description: def.seed_description,
 				inventory_image: def.seed_inventory_image,
 				on_place: (
@@ -499,7 +499,7 @@ namespace farming {
 
 					if (
 						itemstack2.set_name(
-							"farming:" + def.seed_name + "_seeds"
+							"crafter_farming:" + def.seed_name + "_seeds"
 						)
 					) {
 						core.sound_play("leaves", {
