@@ -233,7 +233,7 @@ namespace farming {
 								}
 							}
 
-							if (found == true && add_node != null) {
+							if (found && add_node != null) {
 								const param2: number = core.dir_to_facedir(
 									vector.direction(pos, add_node)
 								);
