@@ -13,6 +13,8 @@ namespace farming {
 		inPlaceYields,
 	}
 
+	// todo: Break this up into 2 interfaces.
+
 	interface PlantDefinition {
 		stages: number;
 		grows: PlantGrowth;
@@ -34,6 +36,7 @@ namespace farming {
 		node_box?: NodeBox;
 		sunlight_propagates?: boolean;
 
+		// This part is for the stem.
 		stem_description?: string;
 		stem_tiles?: string[];
 		stem_drawtype?: Drawtype;
