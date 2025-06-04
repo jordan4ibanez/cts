@@ -140,6 +140,7 @@ namespace serverUtilities {
 	});
 
 	let tick: boolean = true;
+	const removalQueue: string[] = [];
 	core.register_globalstep((delta: number) => {
 		tick = !tick;
 		if (!tick) {
@@ -148,14 +149,67 @@ namespace serverUtilities {
 		if (travelHomeQueue.size == 0) {
 			return;
 		}
+		for (const [name, node] of travelHomeQueue) {
+			const player: ObjectRef | null = core.get_player_by_name(name);
 
-		for (const [name, time] of travelHomeQueue) {
-			print(name, time);
+			// The player left.
+			if (player == null) {
+				removalQueue.push(name);
+				continue;
+			}
+
+			// print(name, node);
+			const oldTime = math.ceil(node.timer);
+			node.timer -= delta;
+			const newTime = math.ceil(node.timer);
+
+			if (oldTime != newTime) {
+				if (newTime == 0) {
+					const serializedData: string = mod_storage.get_string(
+						name + ":crafter_home"
+					);
+					if (serializedData == "") {
+						core.log(
+							LogLevel.warning,
+							`Player [${name}] was in queue with no home set.`
+						);
+						core.chat_send_player(
+							name,
+							"No home set. Report this bug."
+						);
+						continue;
+					}
+					const newpos: Vec3 | null = core.deserialize(
+						serializedData
+					) as Vec3 | null;
+
+					if (newpos == null) {
+						core.log(
+							LogLevel.warning,
+							`Player [${name}] was in queue with no home set.`
+						);
+						core.chat_send_player(
+							name,
+							"No home set. Report this bug."
+						);
+						continue;
+					}
+					core.log(
+						LogLevel.action,
+						`Player [${name}] teleported home.`
+					);
+					core.chat_send_player(name, "Sending you home.");
+					player.add_velocity(
+						vector.multiply(player.get_velocity(), -1)
+					);
+					player.move_to(newpos);
+				} else {
+					core.chat_send_player(
+						name,
+						`Keep standing still, ${tostring(math.abs(newTime))}...`
+					);
+				}
+			}
 		}
-
-		// core.chat_send_player(name, "Sending you home.");
-
-		// 		player.add_velocity(vector.multiply(player.get_velocity(), -1));
-		// 		player.move_to(newpos);
 	});
 }
