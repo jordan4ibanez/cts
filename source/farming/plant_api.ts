@@ -64,27 +64,28 @@ namespace farming {
 					}
 				};
 
-				// 			on_abm = function(pos)
-				// 				if core.get_node_light(pos, nil) < 10 then
-				// 					//print("failed to grow at "+dump(pos))
-				// 					return
-				// 				end
-				// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
-				// 				pos.y = pos.y - 1
-				// 				local noder = core.get_node(pos).name
-				// 				local found_soil = core.get_item_group(noder, "soil") > 0
-				// 				local found_self//[[this is deep]]= (noder == nodename)
-				// 				if found and (found_soil or found_self) then
-				// 					pos.y = pos.y + 2
-				// 					if core.get_node(pos).name == "air" then
-				// 						core.set_node(pos,{name="farming:"+name})
-				// 					end
-				// 				elseif not found_self then
-				// 					pos.y = pos.y + 1
-				// 					core.dig_node(pos)
-				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-				// 				end
-				// 			end
+				on_abm = (pos) => {
+					// 				if core.get_node_light(pos, nil) < 10 then
+					// 					//print("failed to grow at "+dump(pos))
+					// 					return
+					// 				end
+					// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
+					// 				pos.y = pos.y - 1
+					// 				local noder = core.get_node(pos).name
+					// 				local found_soil = core.get_item_group(noder, "soil") > 0
+					// 				local found_self//[[this is deep]]= (noder == nodename)
+					// 				if found and (found_soil or found_self) then
+					// 					pos.y = pos.y + 2
+					// 					if core.get_node(pos).name == "air" then
+					// 						core.set_node(pos,{name="farming:"+name})
+					// 					end
+					// 				elseif not found_self then
+					// 					pos.y = pos.y + 1
+					// 					core.dig_node(pos)
+					// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+					// 				end
+				};
+
 				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
 				// 				pos.y = pos.y - 1
 				// 				local noder = core.get_node(pos).name
