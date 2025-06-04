@@ -72,22 +72,33 @@ namespace treecapitator {
 	// 	radius = 2,
 	// })
 
-    	const acceptable_soil: { [id: string]: boolean } = {
+	const acceptable_soil: { [id: string]: boolean } = {
 		"crafter:dirt": true,
 		"crafter:grass": true,
 		"aether:dirt": true,
 		"aether:grass": true,
 	};
 
-
 	core.override_item("crafter:tree", {
 		on_dig: (pos: Vec3, node: NodeTable, digger: ObjectRef) => {
 			//bvav_create_vessel(pos,core.facedir_to_dir(core.dir_to_facedir(core.yaw_to_dir(digger:get_look_horizontal()+(math.pi/2)))))
+
+			if (
+				core.get_item_group(
+					digger.get_wielded_item().get_name(),
+					"treecapitator"
+				) <= 0
+			) {
+				return core.node_dig(pos, node, digger);
+			}
+
 			//check if wielding axe?
 			//turn treecapitator into an enchantment?
-			const meta: MetaRef = core.get_meta(pos);
 			//local tool_meta = digger:get_wielded_item():get_meta()
 			//if tool_meta:get_int("treecapitator") > 0 then
+
+			const meta: MetaRef = core.get_meta(pos);
+
 			if (
 				!meta.contains("placed") &&
 				string.match(digger.get_wielded_item().get_name(), "axe")
