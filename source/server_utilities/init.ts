@@ -1,12 +1,20 @@
 namespace serverUtilities {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
-	// local pool = {}
+	const pool = new Map<string, number>();
 
 	const home_timeout: number = 60;
 
 	// This does not terminate data because player's can spam
 	// leave and come back in to reset the home timout.
+	core.register_on_joinplayer((player: ObjectRef) => {
+		pool.set(player.get_player_name(), core.get_us_time() / 1000000);
+	});
+
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		pool.delete(player.get_player_name());
+	});
+
 	core.register_chatcommand("sethome", {
 		params: "nil",
 		description:
