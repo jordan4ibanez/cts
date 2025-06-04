@@ -53,9 +53,13 @@ namespace farming {
 				} else {
 					core.set_node(pos, { name: "crafter:dirt" });
 
-					const aboveNodeName: string = core.get_node(
-						vector.create3d(pos.x, pos.y + 1, pos.z)
-					).name;
+					const abovePos: Vec3 = vector.create3d(
+						pos.x,
+						pos.y + 1,
+						pos.z
+					);
+
+					const aboveNodeName: string = core.get_node(abovePos).name;
 
 					if (core.get_item_group(aboveNodeName, "plant") > 0) {
 						core.dig_node(vector.create3d(pos.x, pos.y + 1, pos.z));
