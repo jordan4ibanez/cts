@@ -79,33 +79,40 @@ namespace farming {
 	});
 
 	farming.register_plant("wheat", {
-		    description : "Wheat",
-		    drawtype : Drawtype.plantlike,
-			waving : 1,
-			walkable : false,
-			climbable : false,
-			paramtype : ParamType1.light,
-			
-		    tiles : ["wheat_stage"], //automatically adds _X.png
-		    paramtype2 : ParamType2.degrotate,
-		    buildable_to : false,
-		    groups : {leaves : 1, plant : 1, axe : 1, hand : 0,dig_immediate:1,attached_node:1,crops:1},
-		    sounds : crafter.grassSound(),
-		    sunlight_propagates : true,
-		    selection_box : {
-				type : Nodeboxtype.fixed,
-				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
-			},
-			grows : PlantGrowth.inPlace,
-			stages : 7,
-			drop : {
-				max_items : 2,
-				items: [
-				 {
+		description: "Wheat",
+		drawtype: Drawtype.plantlike,
+		waving: 1,
+		walkable: false,
+		climbable: false,
+		paramtype: ParamType1.light,
+		tiles: ["wheat_stage"], //automatically adds _X.png
+		paramtype2: ParamType2.degrotate,
+		buildable_to: false,
+		groups: {
+			leaves: 1,
+			plant: 1,
+			axe: 1,
+			hand: 0,
+			dig_immediate: 1,
+			attached_node: 1,
+			crops: 1,
+		},
+		sounds: crafter.grassSound(),
+		sunlight_propagates: true,
+		selection_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16],
+		},
+		grows: PlantGrowth.inPlace,
+		stages: 7,
+		drop: {
+			max_items: 2,
+			items: [
+				{
 					// Only drop if using a tool whose name is identical to one
 					// of these.
 					//rarity : 10,
-					items : ["farming:wheat"],
+					items: ["farming:wheat"],
 					// Whether all items in the dropped item list inherit the
 					// hardware coloring palette color from the dug node.
 					// Default is 'false'.
@@ -114,23 +121,23 @@ namespace farming {
 				{
 					// Only drop if using a tool whose name is identical to one
 					// of these.
-					rarity : 2,
-					items : ["farming:wheat_seeds"],
+					rarity: 2,
+					items: ["farming:wheat_seeds"],
 					// Whether all items in the dropped item list inherit the
 					// hardware coloring palette color from the dug node.
 					// Default is 'false'.
 					//inherit_color : true,
 				},
-            ],
-				},
+			],
+		},
 
-			//seed definition
-			//"farming:wheat_1"
-			seed_name : "wheat",
-			seed_description : "Wheat Seeds",
-			seed_inventory_image : "wheat_seeds.png",
-			seed_plants : "farming:wheat_1",
-		})
+		//seed definition
+		//"farming:wheat_1"
+		seed_name: "wheat",
+		seed_description: "Wheat Seeds",
+		seed_inventory_image: "wheat_seeds.png",
+		seed_plants: "farming:wheat_1",
+	});
 
 	// core.register_plant("melon_stem", {
 	// 	    description = "Melon Stem",
