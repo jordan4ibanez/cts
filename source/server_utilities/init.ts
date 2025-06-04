@@ -125,6 +125,15 @@ namespace serverUtilities {
 					return;
 				}
 
+				// Prevent any strange behavior.
+				if (travelHomeQueue.has(name)) {
+					core.chat_send_player(
+						name,
+						"You are already in the travel queue."
+					);
+					return;
+				}
+
 				travelHomeQueue.set(name, new TravelNode(player));
 			} else {
 				const s = diff == 1 ? "" : "s";
