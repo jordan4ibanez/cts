@@ -2,16 +2,10 @@ namespace hunger {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
 	class HungerData {
-		hunger: number;
-		satiation: number;
-		regeneration_interval: number;
-		exhaustion: number;
-		constructor() {
-			this.hunger = 20;
-			this.satiation = 20;
-			this.regeneration_interval = 0;
-			this.exhaustion = 0;
-		}
+		hunger: number = 20;
+		satiation: number = 20;
+		regeneration_interval: number = 0;
+		exhaustion: number = 0;
 	}
 
 	const pool = new Map<string, HungerData>();
