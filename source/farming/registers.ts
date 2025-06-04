@@ -86,21 +86,21 @@ namespace farming {
 			climbable : false,
 			paramtype : "light",
 			is_ground_content : false,
-		    tiles : {"wheat_stage"}, //automatically adds _X.png
+		    tiles : ["wheat_stage"], //automatically adds _X.png
 		    paramtype2 : "degrotate",
 		    buildable_to : false,
 		    groups : {leaves : 1, plant : 1, axe : 1, hand : 0,dig_immediate:1,attached_node:1,crops:1},
-		    sounds : main.grassSound(),
+		    sounds : crafter.grassSound(),
 		    sunlight_propagates : true,
 		    selection_box : {
 				type : "fixed",
-				fixed : {-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16}
+				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			grows : "in_place",
 			stages : 7,
 			drop : {
 				max_items : 2,
-				items: {
+				items: [
 				 {
 					// Only drop if using a tool whose name is identical to one
 					// of these.
@@ -121,7 +121,7 @@ namespace farming {
 					// Default is 'false'.
 					//inherit_color : true,
 				},
-				},
+            ],
 				},
 
 			//seed definition
