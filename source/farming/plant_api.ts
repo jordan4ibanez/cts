@@ -211,7 +211,8 @@ namespace farming {
 		// 				end,
 		// 			})
 		// 		end
-		// 	end
+		// 	end //! End for loop
+
 		// 	//create final stage for grow in place plant stems that create food
 		// 	if def.grows == "in_place_yields" then
 		// 		core.register_node("farming:"..name.."_complete", {
