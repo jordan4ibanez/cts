@@ -110,7 +110,12 @@ namespace playerMechanics {
 
 		// Eating.
 		if (control.RMB) {
-			
+			// Do not allow players to overfill hunger bar.
+			if (hunger.get_player_hunger(player) >= 20) {
+				data.eating_step = 0;
+				data.eating_timer = 0;
+				return;
+			}
 
 			const item: string = player.get_wielded_item().get_name();
 			const satiation: number = core.get_item_group(item, "satiation");
