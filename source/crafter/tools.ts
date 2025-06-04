@@ -1428,7 +1428,11 @@ namespace crafter {
 					damage_groups: { damage: damage },
 				},
 				sound: { breaks: { name: "tool_break", gain: 0.4 } }, // change this //todo: figure out what to change this to lol
-				groups: { flammable: 2, tool: 1 },
+				groups: {
+					flammable: 2,
+					tool: 1,
+					treecapitator: tool == "axe" ? 1 : 0,
+				},
 				mob_hit_wear: wear,
 				// torch rightclick - hacked in since api doesn't call on_place correctly // todo: is this true?!
 				on_place: (
