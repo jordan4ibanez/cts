@@ -230,18 +230,24 @@ namespace hunger {
 			}
 			const hp: number = player.get_hp();
 			const isDrowning: boolean = drowning.is_player_drowning(player);
-			// //make regeneration happen every second
-			// if not is_player_on_fire(player) and drowning == 0 and temp_pool.hunger >= 20 and hp < 20 then //  meta:get_int("on_fire") == 0
-			//     temp_pool.regeneration_interval = temp_pool.regeneration_interval + 1
-			//     if temp_pool.regeneration_interval >= 2 then
-			//         player:set_hp( hp + 1 )
-			//         temp_pool.exhaustion = temp_pool.exhaustion + 32
-			//         temp_pool.regeneration_interval = 0
-			//     end
-			// //reset the regen interval
-			// else
-			//     temp_pool.regeneration_interval = 0
-			// end
+			// Make regeneration happen every second.
+			if (
+				/*// todo: depends on fire mod: !is_player_on_fire(player) &&*/
+				!drowning &&
+				data.hunger >= 20 &&
+				hp < 20
+			) {
+				//  meta:get_int("on_fire") == 0
+				data.regeneration_interval += 1;
+				//     if temp_pool.regeneration_interval >= 2 then
+				//         player:set_hp( hp + 1 )
+				//         temp_pool.exhaustion = temp_pool.exhaustion + 32
+				//         temp_pool.regeneration_interval = 0
+				//     end
+				// //reset the regen interval
+			} else {
+				//     temp_pool.regeneration_interval = 0
+			}
 		}
 		// 	core.after(0.5, function()
 		// 		hunger_update()
