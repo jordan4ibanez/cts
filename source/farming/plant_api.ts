@@ -58,6 +58,7 @@ namespace farming {
 		fruit_drop?: string;
 
 		// This part is for the seeds.
+		seed_plants?: string;
 		seed_name?: string;
 		seed_description?: string;
 		seed_inventory_image?: string;
@@ -442,6 +443,9 @@ namespace farming {
 		}
 
 		if (def.seed_name != null) {
+			if (def.seed_plants == null) {
+				throw new Error(`Plant [${name}] seed plants is required.`);
+			}
 			core.register_craftitem("farming:" + def.seed_name + "_seeds", {
 				description: def.seed_description,
 				inventory_image: def.seed_inventory_image,
@@ -472,18 +476,37 @@ namespace farming {
 					) {
 						return itemstack;
 					}
-					// 				local wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
-					// 				local fakestack = itemstack
-					// 				local retval = false
-					// 				retval = fakestack:set_name(def.seed_plants)
-					// 				if not retval then
-					// 					return itemstack
-					// 				end
-					// 				itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
-					// 				itemstack:set_name("farming:"+def.seed_name+"_seeds")
-					// 				if retval then
-					// 					core.sound_play("leaves", {pos=pointed_thing.above, gain = 1.0})
-					// 				end
+					const wdir: number = core.dir_to_wallmounted(
+						vector.subtract(
+							pointed_thing.under,
+							pointed_thing.above
+						)
+					);
+					const fakestack = itemstack;
+					{
+						let retval: boolean = false;
+						retval = fakestack.set_name(def.seed_plants!);
+						if (!retval) {
+							return itemstack;
+						}
+					}
+					let [itemstack2, _] = core.item_place(
+						fakestack,
+						placer,
+						pointed_thing,
+						wdir
+					);
+
+					if (
+						itemstack2.set_name(
+							"farming:" + def.seed_name + "_seeds"
+						)
+					) {
+						core.sound_play("leaves", {
+							pos: pointed_thing.above,
+							gain: 1.0,
+						});
+					}
 					return itemstack;
 				},
 			});
