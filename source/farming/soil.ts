@@ -1,3 +1,4 @@
+namespace farming {
 // local farmland = {"wet","dry"}
 
 // for level,dryness in pairs(farmland) do
@@ -69,3 +70,4 @@
 // 		on_timer = on_timer,
 // 	})
 // end
+}
