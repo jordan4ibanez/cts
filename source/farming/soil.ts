@@ -59,21 +59,21 @@ namespace farming {
 				}
 			};
 		}
-		// 	core.register_node("farming:farmland_"..dryness,{
+			core.register_node("farming:farmland_"+dryness,{
 		// 		description = "Farmland",
 		// 		paramtype = "light",
 		// 		drawtype = "nodebox",
 		// 		sounds = main.dirtSound(),
-		// 		--paramtype2 = "wallmounted",
+		// 		//paramtype2 = "wallmounted",
 		// 		node_box = {
 		// 			type = "fixed",
-		// 			--{xmin, ymin, zmin, xmax, ymax, zmax}
+		// 			//{xmin, ymin, zmin, xmax, ymax, zmax}
 		// 			fixed = {-0.5, -0.5, -0.5, 0.5, 6/16, 0.5},
 		// 		},
 		// 		wetness = math.abs(level-2),
 		// 		collision_box = {
 		// 			type = "fixed",
-		// 			--{xmin, ymin, zmin, xmax, ymax, zmax}
+		// 			//{xmin, ymin, zmin, xmax, ymax, zmax}
 		// 			fixed = {-0.5, -0.5, -0.5, 0.5, 6/16, 0.5},
 		// 		},
 		// 		tiles = {"dirt.png^farmland.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring},
@@ -81,6 +81,6 @@ namespace farming {
 		// 		drop="main:dirt",
 		// 		on_construct = on_construct,
 		// 		on_timer = on_timer,
-		// 	})
+			})
 	}
 }
