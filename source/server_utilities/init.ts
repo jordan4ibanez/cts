@@ -57,7 +57,7 @@ namespace serverUtilities {
 				data.setHome = time;
 				core.chat_send_player(name, "Home set.");
 			} else {
-				const s = diff == 1 ? "s" : "";
+				const s = diff == 1 ? "" : "s";
 				core.chat_send_player(
 					name,
 					tostring(diff) +
