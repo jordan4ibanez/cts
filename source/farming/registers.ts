@@ -268,13 +268,13 @@ namespace farming {
 			paramtype : "light",
 			sunlight_propagates : true,
 			is_ground_content : false,
-		    tiles : {"melon_stage"}, //automatically adds _X.png
+		    tiles : ["melon_stage"], //automatically adds _X.png
 		    buildable_to : false,
 		    groups : {leaves : 1,plant:1, stem : 1, axe : 1, hand : 0,dig_immediate:1,attached_node:1,crops:1},
-		    sounds : main.grassSound(),
+		    sounds : crafter.grassSound(),
 		    selection_box : {
 				type : "fixed",
-				fixed : {-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16}
+				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			grows : "in_place_yields",
 			grown_node:"farming:pumpkin",
@@ -282,16 +282,16 @@ namespace farming {
 
 			//stem stage complete definition (fully grown and budding)
 			stem_description : "",
-			stem_tiles : {"nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png",},
+			stem_tiles : ["nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png"],
 			stem_drawtype : "nodebox",
 			stem_walkable : false,
 			stem_sunlight_propagates : true,
 			stem_paramtype : "light",
 			stem_node_box : {
 				type : "fixed",
-				fixed : {
-					{-0/16, -8/16, -7/16,  0/16, 8/16,  7/16}
-				},
+				fixed : [
+					[-0/16, -8/16, -7/16,  0/16, 8/16,  7/16]
+                ],
 			},
 			stem_selection_box : {
 				type : "fixed",
