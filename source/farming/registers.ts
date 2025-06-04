@@ -347,23 +347,23 @@ namespace farming {
 	});
 
 	core.register_craft({
-		type : "shapeless",
-		output : "farming:pumpkin_seeds",
-		recipe : ["farming:pumpkin"],
-	})
+		type: CraftRecipeType.shapeless,
+		output: "farming:pumpkin_seeds",
+		recipe: ["farming:pumpkin"],
+	});
 
 	core.register_craft({
-		type : "fuel",
-		recipe : "farming:pumpkin",
-		burntime : 3,
-	})
+		type: CraftRecipeType.fuel,
+		recipe: "farming:pumpkin",
+		burntime: 3,
+	});
 
 	core.register_craft({
-		type : "cooking",
-		output : "farming:pumpkin_pie",
-		recipe : "farming:pumpkin",
-		cooktime : 2,
-	})
+		type: CraftRecipeType.cooking,
+		output: "farming:pumpkin_pie",
+		recipe: "farming:pumpkin",
+		cooktime: 2,
+	});
 
 	// core.register_food("farming:pumpkin_pie",{
 	// 	description = "Pumpkin Pie",
