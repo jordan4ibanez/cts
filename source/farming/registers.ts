@@ -131,8 +131,8 @@ namespace farming {
 			],
 		},
 
-		//seed definition
-		//"farming:wheat_1"
+		// Seed definition.
+		// "crafter_farming:wheat_1"
 		seed_name: "wheat",
 		seed_description: "Wheat Seeds",
 		seed_inventory_image: "wheat_seeds.png",
