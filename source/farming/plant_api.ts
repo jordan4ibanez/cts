@@ -17,6 +17,10 @@ namespace farming {
 		drop: string;
 		tiles: string[];
 		groups: Dictionary<string, number>;
+		description: string;
+		drawtype: Drawtype;
+		waving: number;
+		inventory_image?: string;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
