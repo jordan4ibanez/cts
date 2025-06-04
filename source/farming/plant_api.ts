@@ -287,7 +287,7 @@ namespace farming {
 					}
 				};
 			}
-			// 		//allow plants to only drop item at max stage
+			// Allow plants to only drop item at max stage.
 			// 		local drop
 			// 		if i == max and def.grows ~= "in_place_yields" then
 			// 			drop = def.drop
