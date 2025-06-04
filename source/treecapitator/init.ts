@@ -1,3 +1,4 @@
+namespace treecapitator {
 // local
 // minetest,vector,pairs,math
 // =
@@ -71,3 +72,4 @@
 // 	leaves = {"main:leaves"},
 // 	radius = 2,
 // })
+}
