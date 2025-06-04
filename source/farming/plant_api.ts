@@ -191,34 +191,37 @@ namespace farming {
 
 					// If found farmland below.
 					if (found) {
-						// 					if i < max then
-						// 						pos.y = pos.y + 1
-						// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
-						// 					else
-						// 						pos.y = pos.y + 1
-						// 						local found = false
-						// 						local add_node = nil
-						// 						for x = -1,1 do
-						// 							if found == false then
-						// 								for z = -1,1 do
-						// 									if math.abs(x)+math.abs(z) == 1 then
-						// 										local node_get = core.get_node(vector.new(pos.x-x,pos.y,pos.z-z)).name == "air"
-						// 										if node_get then
-						// 											add_node = vector.new(pos.x-x,pos.y,pos.z-z)
-						// 											found = true
-						// 										end
-						// 									end
-						// 								end
-						// 							end
-						// 						end
-						// 						if found == true and add_node then
-						// 							local param2 = core.dir_to_facedir(vector.direction(pos,add_node))
-						// 							core.add_node(add_node,{name=def.grown_node,param2=param2})
-						// 							local facedir = core.facedir_to_dir(param2)
-						// 							local inverted_facedir = vector.multiply(facedir,-1)
-						// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
-						// 						end
-						// 					end
+						if (i < max) {
+							pos.y = pos.y + 1;
+							core.set_node(pos, {
+								name: "farming:" + name + "_" + (i + 1),
+							});
+						} else {
+							// 						pos.y = pos.y + 1
+							// 						local found = false
+							// 						local add_node = nil
+							// 						for x = -1,1 do
+							// 							if found == false then
+							// 								for z = -1,1 do
+							// 									if math.abs(x)+math.abs(z) == 1 then
+							// 										local node_get = core.get_node(vector.new(pos.x-x,pos.y,pos.z-z)).name == "air"
+							// 										if node_get then
+							// 											add_node = vector.new(pos.x-x,pos.y,pos.z-z)
+							// 											found = true
+							// 										end
+							// 									end
+							// 								end
+							// 							end
+							// 						end
+							// 						if found == true and add_node then
+							// 							local param2 = core.dir_to_facedir(vector.direction(pos,add_node))
+							// 							core.add_node(add_node,{name=def.grown_node,param2=param2})
+							// 							local facedir = core.facedir_to_dir(param2)
+							// 							local inverted_facedir = vector.multiply(facedir,-1)
+							// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
+							// 						end
+						}
+
 						// If not found farmland.
 					} else {
 						core.dig_node(pos);
