@@ -365,21 +365,21 @@ namespace farming {
 
 		// Create final stage for grow in place plant stems that create food.
 		if (def.grows == PlantGrowth.inPlaceYields) {
-			// 		core.register_node("farming:"+name+"_complete", {
-			// 		    description         = def.stem_description,
-			// 		    tiles               = def.stem_tiles,
-			// 		    drawtype            = def.stem_drawtype,
-			// 		    walkable            = def.stem_walkable,
-			// 		    sunlight_propagates = def.stem_sunlight_propagates,
-			// 		    paramtype           = def.stem_paramtype,
-			// 		    drop                = def.stem_drop,
-			// 			groups              = def.stem_groups,
-			// 			sounds              = def.stem_sounds,
-			// 		    node_box            = def.stem_node_box,
-			// 		    selection_box       = def.stem_selection_box,
-			// 		    paramtype2          = "facedir",
-			// 		})
-			
+			core.register_node("farming:" + name + "_complete", {
+				description: def.stem_description,
+				tiles: def.stem_tiles,
+				drawtype: def.stem_drawtype,
+				walkable: def.stem_walkable,
+				sunlight_propagates: def.stem_sunlight_propagates,
+				paramtype: def.stem_paramtype,
+				drop: def.stem_drop,
+				groups: def.stem_groups,
+				sounds: def.stem_sounds,
+				node_box: def.stem_node_box,
+				selection_box: def.stem_selection_box,
+				paramtype2: "facedir",
+			});
+
 			// 		core.register_node("farming:"+def.fruit_name, {
 			// 		    description = def.fruit_description,
 			// 		    tiles       = def.fruit_tiles,
