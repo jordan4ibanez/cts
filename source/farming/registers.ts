@@ -201,24 +201,24 @@ namespace farming {
 				max_items : 6,
 				items: [
 					{
-						items : {"farming:melon_slice"},
+						items : ["farming:melon_slice"],
 					},
 					{
-						items : {"farming:melon_slice"},
+						items : ["farming:melon_slice"],
 					},
 					{
-						items : {"farming:melon_slice"},
+						items : ["farming:melon_slice"],
 					},
 					{
-						items : {"farming:melon_slice"},
+						items : ["farming:melon_slice"],
 					},
 					{
 						rarity : 5,
-						items : {"farming:melon_slice"},
+						items : ["farming:melon_slice"],
 					},
 					{
 						rarity : 15,
-						items : {"farming:melon_seeds"},
+						items : ["farming:melon_seeds"],
 					},
                 ],
 			},
