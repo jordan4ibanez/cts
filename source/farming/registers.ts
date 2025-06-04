@@ -277,7 +277,7 @@ namespace farming {
 				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			grows : PlantGrowth.inPlaceYields,
-			grown_node:"farming:pumpkin",
+			grownNode:"farming:pumpkin",
 			stages : 7,
 
 			//stem stage complete definition (fully grown and budding)
