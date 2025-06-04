@@ -110,10 +110,12 @@ namespace playerMechanics {
 
 		// Eating.
 		if (control.RMB) {
+			
+
 			const item: string = player.get_wielded_item().get_name();
 			const satiation: number = core.get_item_group(item, "satiation");
-			const hunger: number = core.get_item_group(item, "hunger");
-			if (hunger > 0 || satiation > 0) {
+			const itemHunger: number = core.get_item_group(item, "hunger");
+			if (itemHunger > 0 || satiation > 0) {
 				data.eating_step += dtime;
 				data.eating_timer += dtime;
 				data.eating_timer = manage_eating_effects(
