@@ -248,9 +248,19 @@ namespace farming {
 									name: def.grownNode,
 									param2: param2,
 								});
-								// 							local facedir = core.facedir_to_dir(param2)
-								// 							local inverted_facedir = vector.multiply(facedir,-1)
-								// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
+								const facedir: Vec3 =
+									core.facedir_to_dir(param2);
+								const inverted_facedir: Vec3 = vector.multiply(
+									facedir,
+									-1
+								);
+								core.set_node(
+									vector.add(inverted_facedir, add_node),
+									{
+										name: "farming:" + name + "_complete",
+										param2: core.dir_to_facedir(facedir),
+									}
+								);
 							}
 						}
 
