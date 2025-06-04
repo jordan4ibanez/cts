@@ -415,15 +415,16 @@ namespace farming {
 		height_max: 4,
 	});
 
-	// core.register_decoration({
-	// 	deco_type = "simple",
-	// 	place_on = "crafter:grass",
-	// 	sidelen = 16,
-	// 	fill_ratio = 0.5,
-	// 	param2 = 0,
-	// 	param2_max = 179,
-	// 	//biomes = {"grassland"},
-	// 	decoration = "farming:grass",
-	// 	height = 1,
-	// })
+	core.register_decoration({
+		name: "farming:grass",
+		deco_type: DecorationType.simple,
+		place_on: "crafter:grass",
+		sidelen: 16,
+		fill_ratio: 0.5,
+		param2: 0,
+		param2_max: 179,
+		//biomes : {"grassland"},
+		decoration: "farming:grass",
+		height: 1,
+	});
 }
