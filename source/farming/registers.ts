@@ -295,29 +295,29 @@ namespace farming {
 			},
 			stem_selection_box : {
 				type : "fixed",
-				fixed : {-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16}
+				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			stem_drop : {
 				max_items : 2,
-				items: {
+				items: [
 				{
-					items : {"farming:pumpkin_seeds"},
+					items : ["farming:pumpkin_seeds"],
 				},
 				{
 					rarity : 2,
-					items : {"farming:pumpkin_seeds"},
+					items : ["farming:pumpkin_seeds"],
 				},
-				},
+            ],
 			},
 		    stem_groups : {plant:1,dig_immediate:1,attached_node:1,crops:1},
-		    stem_sounds : main.woodSound(),
+		    stem_sounds : crafter.woodSound(),
 
 		    //fruit definition (what the stem creates)
 		    fruit_name        : "pumpkin",
 		    fruit_description : "Pumpkin",
-		    fruit_tiles : {"pumpkin_top.png","pumpkin_top.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png"},
+		    fruit_tiles : ["pumpkin_top.png","pumpkin_top.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png"],
 		    fruit_groups : {pathable : 1,wood:1,flammable:1},
-		    fruit_sounds : main.woodSound(),
+		    fruit_sounds : crafter.woodSound(),
 			//seed definition
 			//"farming:wheat_1"
 			seed_name : "pumpkin",
