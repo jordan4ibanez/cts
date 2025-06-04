@@ -76,7 +76,7 @@ namespace farming {
 					//{xmin, ymin, zmin, xmax, ymax, zmax}
 					fixed : {-0.5, -0.5, -0.5, 0.5, 6/16, 0.5},
 				},
-				tiles : {"dirt.png^farmland.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring,"dirt.png^[colorize:black:"..coloring},
+				tiles : {"dirt.png^farmland.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring},
 				groups : {dirt : 1, soft : 1, shovel : 1, hand : 1, soil:1,farmland:1},
 				drop:"main:dirt",
 				on_construct : on_construct,
