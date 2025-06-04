@@ -237,7 +237,6 @@ namespace hunger {
 				data.hunger >= 20 &&
 				hp < 20
 			) {
-				//  meta:get_int("on_fire") == 0
 				data.regeneration_interval += 1;
 				//     if temp_pool.regeneration_interval >= 2 then
 				//         player:set_hp( hp + 1 )
