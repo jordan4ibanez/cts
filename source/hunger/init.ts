@@ -59,10 +59,16 @@ namespace hunger {
 		[2]: 8,
 		[3]: 1,
 	};
-	// // ticks up the exhaustion when counting down satiation
-	// local tick_up_satiation = function(state,exhaustion)
-	// 	return(exhaustion + satiation_pool[state])
-	// end
+
+	// Ticks up the exhaustion when counting down satiation.
+	function tick_up_satiation(state: number, exhaustion: number) {
+		const sat: number | undefined = satiation_pool[state];
+		if (sat == null) {
+			throw new Error("out of range");
+		}
+		return exhaustion + sat;
+	}
+
 	// // an easy translation pool
 	// local hunger_pool = {
 	// 	[0]   = 1,
