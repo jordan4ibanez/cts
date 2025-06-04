@@ -27,11 +27,11 @@ namespace farming {
 
 		inventory_image : "sugarcane.png",
 
-		tiles : {"sugarcane.png"},
+		tiles : ["sugarcane.png"],
 
 		groups : {dig_immediate:1,flammable:1},
 
-		sounds : main.grassSound(),
+		sounds : crafter.grassSound(),
 
 		paramtype : "light",
 
