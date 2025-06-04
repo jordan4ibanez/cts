@@ -4,7 +4,7 @@ namespace farming {
 	const plant_min: number = 60;
 	const plant_max: number = 240;
 
-	//  core.register_plant = function(name,def)
+	 export function register_plant (name: string,def: any) {
 	// 	local max = 1
 	// 	 if def.stages then
 	// 		 max = def.stages
@@ -276,5 +276,5 @@ namespace farming {
 	// 			end
 	// 		})
 	// 	end
-	// end
+     }
 }
