@@ -1,7 +1,14 @@
 namespace hunger {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
-	// local pool        = {}
+	interface HungerData {
+		hunger: number;
+		satiation: number;
+		regeneration_interval: number;
+		exhaustion: number;
+	}
+
+	const pool = new Map<string, HungerData>();
 
 	// Loads data from mod storage.
 
