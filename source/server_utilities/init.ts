@@ -213,5 +213,12 @@ namespace serverUtilities {
 				}
 			}
 		}
+
+		// Clear teleported players.
+		if (removalQueue.length > 0) {
+			for (const name of removalQueue) {
+				travelHomeQueue.delete(name);
+			}
+		}
 	});
 }
