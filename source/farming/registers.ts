@@ -42,38 +42,38 @@ namespace farming {
 	});
 
 	farming.register_plant("grass", {
-	    description = "Tall Grass",
-	    drawtype = "plantlike",
-		waving = 1,
-		inventory_image = "tallgrass.png",
-		walkable = false,
-		climbable = false,
-		paramtype = "light",
-		is_ground_content = false,
-	    tiles = {"tallgrass.png"},
-	    paramtype2 = "degrotate",
-	    buildable_to = true,
-	    sunlight_propagates = true,
-	    groups = {dig_immediate=1,attached_node=1,flammable=1},
-	    sounds = main.grassSound(),
-	    selection_box = {
-			type = "fixed",
-			fixed = {-4 / 16, -0.5, -4 / 16, 4 / 16, 4 / 16, 4 / 16}
+	    description : "Tall Grass",
+	    drawtype : "plantlike",
+		waving : 1,
+		inventory_image : "tallgrass.png",
+		walkable : false,
+		climbable : false,
+		paramtype : "light",
+		is_ground_content : false,
+	    tiles : {"tallgrass.png"},
+	    paramtype2 : "degrotate",
+	    buildable_to : true,
+	    sunlight_propagates : true,
+	    groups : {dig_immediate:1,attached_node:1,flammable:1},
+	    sounds : main.grassSound(),
+	    selection_box : {
+			type : "fixed",
+			fixed : {-4 / 16, -0.5, -4 / 16, 4 / 16, 4 / 16, 4 / 16}
 		},
-		drop =  {
-			max_items = 1,
-			items= {
+		drop :  {
+			max_items : 1,
+			items: {
 			{
-				rarity = 10,
-				items = {"farming:melon_seeds"},
+				rarity : 10,
+				items : {"farming:melon_seeds"},
 			},
 			{
-				rarity = 10,
-				items = {"farming:pumpkin_seeds"},
+				rarity : 10,
+				items : {"farming:pumpkin_seeds"},
 			},
 			{
-				rarity = 10,
-				items = {"farming:wheat_seeds"},
+				rarity : 10,
+				items : {"farming:wheat_seeds"},
 			},
 			},
 		},
