@@ -133,8 +133,12 @@ namespace farming {
 						}
 					}
 
-					// 				pos.y = pos.y - 1
-					// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
+					pos.y = pos.y - 1;
+					const found: boolean =
+						core.get_item_group(
+							core.get_node(pos).name,
+							"farmland"
+						) > 0;
 					// 				//if found farmland below
 					// 				if found then
 					// 					if i < max then
