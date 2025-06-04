@@ -1,8 +1,9 @@
 namespace farming {
 	 // Plant growth time contants (in seconds).
+	// Plant growth time contants (in seconds).
 
-	 const plant_min: number = 60
-	 const plant_max: number = 240
+	const plant_min: number = 60;
+	const plant_max: number = 240;
 
 	//  core.register_plant = function(name,def)
 	// 	local max = 1
