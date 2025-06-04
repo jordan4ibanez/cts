@@ -12,6 +12,7 @@ namespace farming {
 		satiation: 6,
 		hunger: 2,
 	});
+
 	hunger.register_food("crafter_farming:toast", {
 		description: "Toast",
 		texture: "bread.png^[colorize:black:100",
@@ -29,6 +30,7 @@ namespace farming {
 			],
 		],
 	});
+
 	core.register_craft({
 		type: CraftRecipeType.cooking,
 		output: "crafter_farming:toast",
