@@ -365,6 +365,7 @@ namespace farming {
 		cooktime: 2,
 	});
 
+	// todo: depends on the hunger mod.
 	// core.register_food("farming:pumpkin_pie",{
 	// 	description = "Pumpkin Pie",
 	// 	texture = "pumpkin_pie.png",
@@ -372,27 +373,27 @@ namespace farming {
 	// 	hunger=3,
 	// })
 
-	// core.register_decoration({
-	// 	name = "farming:sugarcane",
-	// 	deco_type = "simple",
-	// 	place_on = {"main:dirt","main:grass","main:sand"},
-	// 	sidelen = 16,
-	// 	noise_params = {
-	// 		offset = -0.3,
-	// 		scale = 0.7,
-	// 		spread = {x = 100, y = 100, z = 100},
-	// 		seed = 354,
-	// 		octaves = 3,
-	// 		persist = 0.7
-	// 	},
-	// 	y_max = 1,
-	// 	y_min = 1,
-	// 	decoration = "farming:sugarcane",
-	// 	height = 2,
-	// 	height_max = 5,
-	// 	spawn_by = "main:water",
-	// 	num_spawn_by = 1,
-	// })
+	core.register_decoration({
+		name: "farming:sugarcane",
+		deco_type: DecorationType.simple,
+		place_on: ["main:dirt", "main:grass", "main:sand"],
+		sidelen: 16,
+		noise_params: {
+			offset: -0.3,
+			scale: 0.7,
+			spread: vector.create3d({ x: 100, y: 100, z: 100 }),
+			seed: 354,
+			octaves: 3,
+			persist: 0.7,
+		},
+		y_max: 1,
+		y_min: 1,
+		decoration: "farming:sugarcane",
+		height: 2,
+		height_max: 5,
+		spawn_by: "main:water",
+		num_spawn_by: 1,
+	});
 
 	// core.register_decoration({
 	// 		name = "farming:cactus",
