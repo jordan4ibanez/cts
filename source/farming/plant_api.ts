@@ -379,6 +379,7 @@ namespace farming {
 			// 		    selection_box       = def.stem_selection_box,
 			// 		    paramtype2          = "facedir",
 			// 		})
+			
 			// 		core.register_node("farming:"+def.fruit_name, {
 			// 		    description = def.fruit_description,
 			// 		    tiles       = def.fruit_tiles,
