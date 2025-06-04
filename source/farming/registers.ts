@@ -24,7 +24,7 @@ farming.register_plant("cactus", {
 	//buildable_to      : def.buildable_to,
 	//selection_box     : def.selection_box,
 	//drop              : def.drop,
-	grows             : "up",
+	grows             : PlantGrowth.up,
 	node_box : {
 		type : "fixed",
 		fixed : [
