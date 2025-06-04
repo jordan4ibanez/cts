@@ -120,27 +120,27 @@ namespace farming {
 				};
 				// For plants that grow in place.
 			} else if (def.grows == PlantGrowth.inPlace) {
-							on_abm = (pos: Vec3) => {
-				// 				if core.get_node_light(pos, nil) < 10 then
-				// 					core.dig_node(pos)
-				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-				// 					//print("failed to grow at "+dump(pos))
-				// 					return
-				// 				end
-				// 				pos.y = pos.y - 1
-				// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
-				// 				//if found farmland below
-				// 				if found then
-				// 					if i < max then
-				// 						pos.y = pos.y + 1
-				// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
-				// 					end
-				// 				//if not found farmland
-				// 				else
-				// 					core.dig_node(pos)
-				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-				// 				end
-							}
+				on_abm = (pos: Vec3) => {
+					// 				if core.get_node_light(pos, nil) < 10 then
+					// 					core.dig_node(pos)
+					// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+					// 					//print("failed to grow at "+dump(pos))
+					// 					return
+					// 				end
+					// 				pos.y = pos.y - 1
+					// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
+					// 				//if found farmland below
+					// 				if found then
+					// 					if i < max then
+					// 						pos.y = pos.y + 1
+					// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
+					// 					end
+					// 				//if not found farmland
+					// 				else
+					// 					core.dig_node(pos)
+					// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+					// 				end
+				};
 
 				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
 				// 				pos.y = pos.y - 1
