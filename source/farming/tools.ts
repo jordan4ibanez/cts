@@ -201,13 +201,14 @@ namespace farming {
 						LogLevel.warning,
 						`Node [${nodeName}] is undefined.`
 					);
+					return;
 				}
 				const sneak: boolean = placer.get_player_control().sneak;
 
-				// 			if not sneak and noddef.on_rightclick then
-				// 				core.item_place(itemstack, placer, pointed_thing)
-				// 				return
-				// 			end
+				if (!sneak && noddef.on_rightclick != null) {
+					core.item_place(itemstack, placer, pointed_thing);
+					return;
+				}
 
 				// 			local tilled = till_soil(pointed_thing.under)
 				// 			if tilled == true then
