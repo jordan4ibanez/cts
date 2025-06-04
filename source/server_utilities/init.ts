@@ -204,10 +204,11 @@ namespace serverUtilities {
 						vector.multiply(player.get_velocity(), -1)
 					);
 					player.move_to(newpos);
+					removalQueue.push(name);
 				} else {
 					core.chat_send_player(
 						name,
-						`Keep standing still, ${tostring(math.abs(newTime))}...`
+						`Traveling home in ${tostring(math.abs(newTime))}...`
 					);
 				}
 			}
