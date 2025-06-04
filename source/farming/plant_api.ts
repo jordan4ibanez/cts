@@ -38,7 +38,7 @@ namespace farming {
 				digger: ObjectRef
 			) => void = () => {};
 
-			// 		 local on_abm
+			let on_abm: (pos: Vec3) => void = () => {};
 			// 		 local on_construct
 			// 		 local after_destruct
 			// 		 local after_place_node
@@ -63,6 +63,7 @@ namespace farming {
 						core.sound_play("dirt", { pos: pos, gain: 0.2 });
 					}
 				};
+
 				// 			on_abm = function(pos)
 				// 				if core.get_node_light(pos, nil) < 10 then
 				// 					//print("failed to grow at "+dump(pos))
