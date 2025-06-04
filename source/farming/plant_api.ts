@@ -288,14 +288,14 @@ namespace farming {
 				};
 			}
 			// Allow plants to only drop item at max stage.
-			// 		local drop
+			let drop: string = "";
+
 			// 		if i == max and def.grows ~= "in_place_yields" then
 			// 			drop = def.drop
 			// 		elseif max == 1 then
 			// 			drop = def.drop
-			// 		else
-			// 			drop = ""
 			// 		end
+
 			// 		local tiles
 			// 		if max > 1 then
 			// 			tiles = {def.tiles[1]+"_"+i+".png"}
