@@ -1,7 +1,7 @@
 namespace treecapitator {
 	// local treecaptitator = {}
 
-	// -- Leafdecay
+	// // Leafdecay
 	// local function leafdecay_after_destruct(pos, oldnode, def)
 	// 	for _, v in pairs(core.find_nodes_in_area(vector.subtract(pos, def.radius),
 	// 			vector.add(pos, def.radius), def.leaves)) do
@@ -60,7 +60,7 @@ namespace treecapitator {
 	// 	end
 	// end
 
-	// ----------------------------- registration
+	// ///////////////////////////// registration
 	// treecaptitator.register_leafdecay({
 	// 	trunks = {"main:tree"},
 	// 	leaves = {"main:leaves"},
