@@ -23,7 +23,15 @@ namespace serverUtilities {
 		pool.delete(player.get_player_name());
 	});
 
-	const travelHomeQueue = new Map<string, number>();
+	class TravelNode {
+		position: Vec3;
+		timer: number = 3;
+		constructor(player: ObjectRef) {
+			this.position = player.get_pos();
+		}
+	}
+
+	const travelHomeQueue = new Map<string, TravelNode>();
 
 	core.register_chatcommand("sethome", {
 		params: "nil",
@@ -116,10 +124,7 @@ namespace serverUtilities {
 					return;
 				}
 
-				core.chat_send_player(name, "Sending you home.");
-
-				player.add_velocity(vector.multiply(player.get_velocity(), -1));
-				player.move_to(newpos);
+				travelHomeQueue.set(name, new TravelNode(player));
 			} else {
 				const s = diff == 1 ? "" : "s";
 
@@ -134,9 +139,23 @@ namespace serverUtilities {
 		},
 	});
 
+	let tick: boolean = true;
 	core.register_globalstep((delta: number) => {
+		tick = !tick;
+		if (!tick) {
+			return;
+		}
 		if (travelHomeQueue.size == 0) {
 			return;
 		}
+
+		for (const [name, time] of travelHomeQueue) {
+			print(name, time);
+		}
+
+		// core.chat_send_player(name, "Sending you home.");
+
+		// 		player.add_velocity(vector.multiply(player.get_velocity(), -1));
+		// 		player.move_to(newpos);
 	});
 }
