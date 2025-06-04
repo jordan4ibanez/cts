@@ -5,8 +5,6 @@ namespace serverUtilities {
 
 	const home_timeout: number = 60;
 
-	// This does not terminate data because player's can spam
-	// leave and come back in to reset the home timout.
 	core.register_on_joinplayer((player: ObjectRef) => {
 		pool.set(player.get_player_name(), core.get_us_time() / 1000000);
 	});
