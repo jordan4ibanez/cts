@@ -244,7 +244,10 @@ namespace farming {
 		core.register_craft({
 			output: "crafter_farming:" + material + "hoe",
 			recipe: [
-				["crafter:" + construct[level], "crafter:" + construct[level]],
+				[
+					"crafter:" + construct[level - 1],
+					"crafter:" + construct[level - 1],
+				],
 				["crafter:stick", ""],
 				["crafter:stick", ""],
 			],
@@ -253,7 +256,10 @@ namespace farming {
 		core.register_craft({
 			output: "crafter_farming:" + material + "hoe",
 			recipe: [
-				["crafter:" + construct[level], "crafter:" + construct[level]],
+				[
+					"crafter:" + construct[level - 1],
+					"crafter:" + construct[level - 1],
+				],
 				["", "crafter:stick"],
 				["", "crafter:stick"],
 			],
