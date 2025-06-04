@@ -23,23 +23,15 @@ namespace farming {
 				if (!soilHasWater(pos)) {
 					core.set_node(pos, { name: "farming:farmland_dry" });
 				}
-
 				const timer: NodeTimerObject = core.get_node_timer(pos);
 				timer.start(1);
 			};
 			on_timer = (pos) => {
-				const [a, _] = core.find_nodes_in_area(
-					vector.create3d(pos.x - 3, pos.y, pos.z - 3),
-					vector.create3d(pos.x + 3, pos.y, pos.z + 3),
-					["main:water", "main:waterflow"]
-				);
-				const found: boolean = a.length > 0;
-				// 			if not found then
-				// 				core.set_node(pos,{name="farming:farmland_dry"})
-				// 			end
-
-				// 			local timer = core.get_node_timer(pos)
-				// 			timer:start(math.random(10,25))
+				if (!soilHasWater(pos)) {
+					core.set_node(pos, { name: "farming:farmland_dry" });
+				}
+				const timer: NodeTimerObject = core.get_node_timer(pos);
+				timer.start(math.random(10, 25));
 			};
 		} else {
 			// 		on_construct = function(pos)
