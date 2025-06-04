@@ -31,7 +31,7 @@ namespace farming {
 					core.set_node(pos, { name: "farming:farmland_dry" });
 				}
 				const timer: NodeTimerObject = core.get_node_timer(pos);
-				timer.start(math.random(10, 25));
+				timer.start(math.random(10, 25)+ math.random());
 			};
 		} else {
 			// 		on_construct = function(pos)
