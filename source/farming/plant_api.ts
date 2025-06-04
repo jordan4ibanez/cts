@@ -126,10 +126,10 @@ namespace farming {
 							core.get_node_light(pos, null);
 
 						if (possibleLight == null || possibleLight < 10) {
-							// 					core.dig_node(pos)
-							// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-							// 					//print("failed to grow at "+dump(pos))
-							// 					return
+							core.dig_node(pos);
+							core.sound_play("dirt", { pos: pos, gain: 0.2 });
+							// print("failed to grow at " + dump(pos));
+							return;
 						}
 					}
 
