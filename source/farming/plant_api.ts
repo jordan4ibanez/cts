@@ -4,8 +4,13 @@ namespace farming {
 	const plant_min: number = 60;
 	const plant_max: number = 240;
 
+    export enum PlantGrowth {
+        up, inPlace, inPlaceYields
+    }
+
 	interface PlantDefinition {
 		stages: number;
+        grows: PlantGrowth;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -32,7 +37,7 @@ namespace farming {
 
 			// Do custom functions for each node
 			// whether growing in place or up.
-			// 		 if def.grows == "up" then
+                    if (def.grows == PlantGrowth.up) {
 			// 			 after_dig_node = function(pos, node, metadata, digger)
 			// 				if digger == nil then return end
 			// 				local np = {x = pos.x, y = pos.y + 1, z = pos.z}
@@ -73,7 +78,7 @@ namespace farming {
 			// 				end
 			// 			end
 			// 		//for plants that grow in place
-			// 		elseif def.grows == "in_place" then
+                    } else if (def.grows == PlantGrowth.inPlace) {
 			// 			on_abm = function(pos)
 			// 				if core.get_node_light(pos, nil) < 10 then
 			// 					core.dig_node(pos)
@@ -104,7 +109,7 @@ namespace farming {
 			// 					core.dig_node(pos)
 			// 				end
 			// 			end
-			// 		elseif def.grows == "in_place_yields" then
+                    } else if (def.grows == PlantGrowth.inPlaceYields) {
 			// 			on_abm = function(pos)
 			// 				if core.get_node_light(pos, nil) < 10 then
 			// 					core.dig_node(pos)
@@ -159,7 +164,7 @@ namespace farming {
 			// 					core.dig_node(pos)
 			// 				end
 			// 			end
-			// 		end
+                    }
 			// 		//allow plants to only drop item at max stage
 			// 		local drop
 			// 		if i == max and def.grows ~= "in_place_yields" then
