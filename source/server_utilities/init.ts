@@ -95,14 +95,26 @@ namespace serverUtilities {
 			const diff = timeout - math.ceil(time - data.home);
 
 			if (diff <= 0) {
-				// 			local newpos = core.deserialize(mod_storage:get_string(name+":crafter_home"))
-				// 			if newpos then
-				// 				player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
-				// 				player:move_to(newpos)
-				// 				pool[name] = time
-				// 			else
-				// 				core.chat_send_player(name, "No home set.")
-				// 			end
+				data.home = time;
+				const serializedData: string = mod_storage.get_string(
+					name + ":crafter_home"
+				);
+				if (serializedData == "") {
+					core.chat_send_player(name, "No home set.");
+					return;
+				}
+
+				const newpos: Vec3 | null = core.deserialize(
+					serializedData
+				) as Vec3 | null;
+
+				if (newpos == null) {
+					core.chat_send_player(name, "No home set.");
+					return;
+				}
+
+				player.add_velocity(vector.multiply(player.get_velocity(), -1));
+				player.move_to(newpos);
 			} else {
 				// 			local diff = home_timeout-math.ceil(time-pool[name])+1
 				// 			local s = "s"
