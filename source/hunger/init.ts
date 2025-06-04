@@ -1,5 +1,5 @@
 namespace hunger {
-	// local mod_storage = minetest.get_mod_storage()
+	// local mod_storage = core.get_mod_storage()
 	// local pool        = {}
 	// -- loads data from mod storage
 	// local name
@@ -72,16 +72,16 @@ namespace hunger {
 	// 	return(pool[name].hunger)
 	// end
 	// -- saves specific users data for when they relog
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	// 	save_data(player)
 	// end)
 	// -- save all data to mod storage on shutdown
-	// minetest.register_on_shutdown(function()
+	// core.register_on_shutdown(function()
 	// 	save_all()
 	// end)
 	// -- create new data for hunger per player
 	// local name
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	load_data(player)
 	// 	hud_manager.add_hud(player,"hunger_bg",{
@@ -106,7 +106,7 @@ namespace hunger {
 	// -- resets the players hunger settings to max
 	// local name
 	// local temp_pool
-	// minetest.register_on_respawnplayer(function(player)
+	// core.register_on_respawnplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	temp_pool = pool[name]
 	// 	temp_pool.hunger                = 20
@@ -128,7 +128,7 @@ namespace hunger {
 	// local hp
 	// local drowning
 	// hunger_update = function()
-	// 	for _,player in ipairs(minetest.get_connected_players()) do
+	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		--do not regen player's health if dead - this will be reused for 1up apples
 	// 		if player:get_hp() > 0 then
 	// 			name = player:get_player_name()
@@ -194,18 +194,18 @@ namespace hunger {
 	// 			end
 	// 		end
 	// 	end
-	// 	minetest.after(0.5, function()
+	// 	core.after(0.5, function()
 	// 		hunger_update()
 	// 	end)
 	// end
-	// minetest.register_on_mods_loaded(function()
-	// 	minetest.after(0.5,function()
+	// core.register_on_mods_loaded(function()
+	// 	core.after(0.5,function()
 	// 		hunger_update()
 	// 	end)
 	// end)
 	// --take away hunger and satiation randomly while mining
 	// local name
-	// minetest.register_on_dignode(function(pos, oldnode, digger)
+	// core.register_on_dignode(function(pos, oldnode, digger)
 	// 	if digger and digger:is_player() then
 	// 		name = digger:get_player_name()
 	// 		pool[name].exhaustion = pool[name].exhaustion + math.random(0,2)
@@ -233,8 +233,8 @@ namespace hunger {
 	// 		item = ItemStack(item.name)
 	// 	end
 	// 	item = item:get_name()
-	// 	satiation = minetest.get_item_group( item, "satiation" )
-	// 	hunger    = minetest.get_item_group( item, "hunger"    )
+	// 	satiation = core.get_item_group( item, "satiation" )
+	// 	hunger    = core.get_item_group( item, "hunger"    )
 	// 	temp_pool.hunger = temp_pool.hunger + hunger
 	// 	if temp_pool.hunger > 20 then
 	// 		temp_pool.hunger = 20
@@ -251,18 +251,18 @@ namespace hunger {
 	// 	})
 	// end
 	// -- easily allows mods to register food
-	// minetest.register_food = function(name,def)
-	// 	minetest.register_craftitem(":"..name, {
+	// core.register_food = function(name,def)
+	// 	core.register_craftitem(":"..name, {
 	// 		description = def.description,
 	// 		inventory_image = def.texture,
 	// 		groups = {satiation=def.satiation,hunger=def.hunger},
 	// 	})
-	// 	minetest.register_node(":"..name.."node", {
+	// 	core.register_node(":"..name.."node", {
 	// 		tiles = {def.texture},
 	// 		drawtype = "allfaces",
 	// 	})
 	// end
-	// minetest.register_chatcommand("hungry", {
+	// core.register_chatcommand("hungry", {
 	// 	params = "<mob>",
 	// 	description = "A debug command to test food",
 	// 	privs = {server = true},
@@ -272,7 +272,7 @@ namespace hunger {
 	// 		temp_pool.hunger     = 1
 	// 		temp_pool.satiation  = 0
 	// 		hud_manager.change_hud({
-	// 			player    =  minetest.get_player_by_name(name) ,
+	// 			player    =  core.get_player_by_name(name) ,
 	// 			hud_name  = "hunger",
 	// 			element   = "number",
 	// 			data      =  temp_pool.hunger
