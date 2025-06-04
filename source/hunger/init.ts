@@ -1,25 +1,27 @@
 namespace hunger {
-	// local mod_storage = core.get_mod_storage()
+	const mod_storage: MetaRef = core.get_mod_storage();
+
 	// local pool        = {}
-	// // loads data from mod storage
-	// local name
-	// local temp_pool
-	// local load_data = function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = {}
-	// 	temp_pool = pool[name]
-	// 	if mod_storage:get_int(name+"h_save") > 0 then
-	// 		temp_pool.hunger                = mod_storage:get_int(name+"hunger"               )
-	// 		temp_pool.satiation             = mod_storage:get_int(name+"satiation"            )
-	// 		temp_pool.exhaustion            = mod_storage:get_int(name+"exhaustion"           )
-	// 		temp_pool.regeneration_interval = mod_storage:get_int(name+"regeneration_interval")
-	// 	else
-	// 		temp_pool.hunger                = 20
-	// 		temp_pool.satiation             = 20
-	// 		temp_pool.regeneration_interval = 0
-	// 		temp_pool.exhaustion            = 0
-	// 	end
-	// end
+
+	// Loads data from mod storage.
+
+	function load_data(player: ObjectRef): void {
+		const name: string = player.get_player_name();
+		// 	pool[name] = {}
+		// 	temp_pool = pool[name]
+		// 	if mod_storage:get_int(name+"h_save") > 0 then
+		// 		temp_pool.hunger                = mod_storage:get_int(name+"hunger"               )
+		// 		temp_pool.satiation             = mod_storage:get_int(name+"satiation"            )
+		// 		temp_pool.exhaustion            = mod_storage:get_int(name+"exhaustion"           )
+		// 		temp_pool.regeneration_interval = mod_storage:get_int(name+"regeneration_interval")
+		// 	else
+		// 		temp_pool.hunger                = 20
+		// 		temp_pool.satiation             = 20
+		// 		temp_pool.regeneration_interval = 0
+		// 		temp_pool.exhaustion            = 0
+		// 	end
+	}
+
 	// // saves data to be utilized on next login
 	// local name
 	// local temp_pool
