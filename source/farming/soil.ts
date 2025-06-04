@@ -61,18 +61,18 @@ namespace farming {
 		}
 			core.register_node("farming:farmland_"+dryness,{
 				description : "Farmland",
-				paramtype : "light",
-				drawtype : "nodebox",
+				paramtype : ParamType1.light,
+				drawtype : Drawtype.nodebox,
 				sounds : crafter.dirtSound(),
 				//paramtype2 : "wallmounted",
 				node_box : {
-					type : "fixed",
+					type : Nodeboxtype.fixed,
 					//{xmin, ymin, zmin, xmax, ymax, zmax}
 					fixed : [-0.5, -0.5, -0.5, 0.5, 6/16, 0.5],
 				},
-				wetness : math.abs(level-2),
+				// wetness : math.abs(level-2),
 				collision_box : {
-					type : "fixed",
+					type : Nodeboxtype.fixed,
 					//{xmin, ymin, zmin, xmax, ymax, zmax}
 					fixed : [-0.5, -0.5, -0.5, 0.5, 6/16, 0.5],
 				},
