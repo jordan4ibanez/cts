@@ -8,7 +8,7 @@ namespace farming {
 		const is_dirt: boolean = nodey == "crafter:dirt" || nodey == "crafter:grass";
 		if (is_dirt) {
 			core.sound_play("dirt", { pos: pos });
-			core.set_node(pos, { name: "farming:farmland_dry" });
+			core.set_node(pos, { name: "crafter_farming:farmland_dry" });
 			return true;
 		}
 		return false;
@@ -58,7 +58,7 @@ namespace farming {
 	// 		}
 	// 		damage = 5.5
 	// 	end
-	// 	core.register_tool("farming:"..material.."hoe", {
+	// 	core.register_tool("crafter_farming:"..material.."hoe", {
 	// 		description = material:gsub("^%l", string.upper).." Hoe",
 	// 		inventory_image = material.."hoe.png",
 	// 		tool_capabilities = {
@@ -91,7 +91,7 @@ namespace farming {
 	// 		end,
 	// 	})
 	// 	core.register_craft({
-	// 		output = "farming:"..material.."hoe",
+	// 		output = "crafter_farming:"..material.."hoe",
 	// 		recipe = {
 	// 			{"","crafter:"..construct[level], "crafter:"..construct[level]},
 	// 			{"","crafter:stick", ""},
@@ -99,7 +99,7 @@ namespace farming {
 	// 		}
 	// 	})
 	// 	core.register_craft({
-	// 		output = "farming:"..material.."hoe",
+	// 		output = "crafter_farming:"..material.."hoe",
 	// 		recipe = {
 	// 			{"crafter:"..construct[level],"crafter:"..construct[level], ""},
 	// 			{"","crafter:stick", ""},
