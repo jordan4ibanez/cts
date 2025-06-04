@@ -19,7 +19,7 @@ namespace farming {
 		stages?: number;
 		grows: PlantGrowth;
 		grownNode?: string;
-		drop?: string;
+		drop?: string | NodeDropSpec;
 		tiles: string[];
 		groups: Dictionary<string, number>;
 		description: string;
@@ -343,7 +343,7 @@ namespace farming {
 				};
 			}
 			// Allow plants to only drop item at max stage.
-			let drop: string | undefined;
+			let drop: string | NodeDropSpec | undefined;
 
 			if (i == max && def.grows != PlantGrowth.inPlaceYields) {
 				drop = def.drop;
