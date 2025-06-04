@@ -175,9 +175,9 @@ namespace farming {
 			};
 			damage = 5.5;
 		}
-		// 	core.register_tool("crafter_farming:"..material.."hoe", {
-		// 		description = material:gsub("^%l", string.upper).." Hoe",
-		// 		inventory_image = material.."hoe.png",
+		// 	core.register_tool("crafter_farming:"+material+"hoe", {
+		// 		description = material:gsub("^%l", string.upper)+" Hoe",
+		// 		inventory_image = material+"hoe.png",
 		// 		tool_capabilities = {
 		// 				full_punch_interval = 0,
 		// 				//max_drop_level=0,
@@ -208,17 +208,17 @@ namespace farming {
 		// 		end,
 		// 	})
 		// 	core.register_craft({
-		// 		output = "crafter_farming:"..material.."hoe",
+		// 		output = "crafter_farming:"+material+"hoe",
 		// 		recipe = {
-		// 			{"","crafter:"..construct[level], "crafter:"..construct[level]},
+		// 			{"","crafter:"+construct[level], "crafter:"+construct[level]},
 		// 			{"","crafter:stick", ""},
 		// 			{"", "crafter:stick", ""}
 		// 		}
 		// 	})
 		// 	core.register_craft({
-		// 		output = "crafter_farming:"..material.."hoe",
+		// 		output = "crafter_farming:"+material+"hoe",
 		// 		recipe = {
-		// 			{"crafter:"..construct[level],"crafter:"..construct[level], ""},
+		// 			{"crafter:"+construct[level],"crafter:"+construct[level], ""},
 		// 			{"","crafter:stick", ""},
 		// 			{"", "crafter:stick", ""}
 		// 		}
