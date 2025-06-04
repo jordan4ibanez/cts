@@ -1,7 +1,7 @@
 namespace serverUtilities {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
-	const timeout = 60;
+	const timeout = 3;
 
 	class HomeTimeout {
 		setHome: number;
