@@ -6,7 +6,6 @@ namespace serverMessages {
 			const meta: MetaRef = player.get_meta();
 			const welcomed: boolean = meta.get_int("welcomed") == 1;
 			const name: string = player.get_player_name();
-			// pool[name] = core.get_us_time()/1000000
 			if (!welcomed) {
 				core.chat_send_all("Welcome " + name + " to the server!");
 				meta.set_int("welcomed", 1);
