@@ -26,7 +26,7 @@ farming.register_plant("cactus", {
 	//drop              : def.drop,
 	grows             : PlantGrowth.up,
 	node_box : {
-		type : "fixed",
+		type : Nodeboxtype.fixed,
 		fixed : [
 			[-7/16, -8/16, -7/16,  7/16, 8/16,  7/16], // Main body
 			[-8/16, -8/16, -7/16,  8/16, 8/16, -7/16], // Spikes
