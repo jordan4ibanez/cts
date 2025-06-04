@@ -24,25 +24,15 @@ namespace farming {
 
 	farming.register_plant("sugarcane", {
 		description: "Sugarcane",
-
 		inventory_image: "sugarcane.png",
-
 		tiles: ["sugarcane.png"],
-
 		groups: { dig_immediate: 1, flammable: 1 },
-
 		sounds: crafter.grassSound(),
-
 		paramtype: ParamType1.light,
-
 		sunlight_propagates: true,
-
 		drawtype: Drawtype.plantlike,
-
 		buildable_to: false,
-
 		waving: 1,
-
 		walkable: false,
 		//inventory_image   : def.inventory_image,
 		//walkable          : def.walkable,
