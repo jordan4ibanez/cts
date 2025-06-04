@@ -54,7 +54,7 @@ namespace farming {
 		grows             : "up",
 		selection_box : {
 			type : "fixed",
-			fixed : {-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16}
+			fixed : [-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16]
 		},
 	})
 
