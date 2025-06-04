@@ -1,21 +1,13 @@
 namespace farming {
 	farming.register_plant("cactus", {
 		description: "Cactus",
-
 		tiles: ["cactus_top.png", "cactus_bottom.png", "cactus_side.png"],
-
 		groups: { dig_immediate: 1, flammable: 1, touch_hurt: 1 },
-
 		sounds: crafter.dirtSound(),
-
 		paramtype: ParamType1.light,
-
 		sunlight_propagates: true,
-
 		drawtype: Drawtype.nodebox,
-
 		buildable_to: false,
-
 		waving: 0,
 		//inventory_image   : def.inventory_image,
 		//walkable          : def.walkable,
