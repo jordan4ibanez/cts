@@ -16,23 +16,16 @@ namespace treecapitator {
 			vector.add(pos, def.radius),
 			def.leaves
 		);
-
 		if (a.length <= 0) {
 			return;
 		}
-
 		for (const [_, pos] of ipairs(a)) {
-			print(dump(pos));
-
 			const node: NodeTable = core.get_node(pos);
 			const timer: NodeTimerObject = core.get_node_timer(pos);
 			if (node.param2 != 1 && !timer.is_started()) {
-				print("started timer");
 				timer.start(math.random() + math.random() + math.random());
 			}
 		}
-
-		// 	print(dump(v));
 	}
 
 	function leafdecay_on_timer(pos: Vec3, def: TreecapitatorDef) {
