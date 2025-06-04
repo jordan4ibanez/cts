@@ -186,7 +186,11 @@ namespace farming {
 			},
 			sound: { breaks: { name: "tool_break", gain: 0.4 } }, // todo: change this <- to what?
 			groups: { flammable: 2, tool: 1 },
-			on_place: (itemstack, placer, pointed_thing) => {
+			on_place: (
+				itemstack: ItemStackObject,
+				placer: ObjectRef,
+				pointed_thing: PointedThing
+			) => {
 				const nodeName: string = core.get_node(
 					pointed_thing.under
 				).name;
