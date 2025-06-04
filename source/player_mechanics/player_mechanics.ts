@@ -146,8 +146,7 @@ namespace playerMechanics {
 			return;
 		}
 
-		// todo: this depends on crafter hunger
-		const playerHunger = 0; //get_player_hunger(player)
+		const playerHunger = hunger.get_player_hunger(player);
 		const name: string = player.get_player_name();
 		const data: PlayerState | undefined = pool.get(name);
 		if (data == null) {
@@ -242,7 +241,10 @@ namespace playerMechanics {
 				player.set_physics_override({ speed: 1 });
 				// Preserve network data.
 				send_running_cancellation(player, data.state == 3);
-			} else if ((data.state == 1 || data.state == 2) && playerHunger <= 6) {
+			} else if (
+				(data.state == 1 || data.state == 2) &&
+				playerHunger <= 6
+			) {
 				player.set_fov(1, true, 0.15);
 				player.set_physics_override({ speed: 1 });
 				// Preserve network data.
