@@ -16,7 +16,7 @@ namespace serverUtilities {
 	// 		local player = core.get_player_by_name(name)
 	// 		local pos = player:get_pos()
 	// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
-	// 			mod_storage:set_string(name.."home", core.serialize(pos))
+	// 			mod_storage:set_string(name+"home", core.serialize(pos))
 	// 			pool[name] = time
 	// 			core.chat_send_player(name, "Home set.")
 	// 		elseif pool[name] then
@@ -25,7 +25,7 @@ namespace serverUtilities {
 	// 			if diff == 1 then
 	// 				s = ""
 	// 			end
-	// 			core.chat_send_player(name, diff.." more second"..s.." until you can run that command.")
+	// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
 	// 		end
 	// 	end,
 	// })
@@ -37,7 +37,7 @@ namespace serverUtilities {
 	// 		local time = core.get_us_time()/1000000
 	// 		local player = core.get_player_by_name(name)
 	// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
-	// 			local newpos = core.deserialize(mod_storage:get_string(name.."home"))
+	// 			local newpos = core.deserialize(mod_storage:get_string(name+"home"))
 	// 			if newpos then
 	// 				player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
 	// 				player:move_to(newpos)
@@ -51,7 +51,7 @@ namespace serverUtilities {
 	// 			if diff == 1 then
 	// 				s = ""
 	// 			end
-	// 			core.chat_send_player(name, diff.." more second"..s.." until you can run that command.")
+	// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
 	// 		end
 	// 	end,
 	// })
