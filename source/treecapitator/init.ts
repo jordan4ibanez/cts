@@ -84,12 +84,13 @@ namespace treecapitator {
 		}
 	}
 
-	// ///////////////////////////// registration
-	// treecaptitator.register_leafdecay({
-	// 	trunks = {"main:tree"},
-	// 	leaves = {"main:leaves"},
-	// 	radius = 2,
-	// })
+	// Registration.
+
+	register_leafdecay({
+		trunks: ["main:tree"],
+		leaves: ["main:leaves"],
+		radius: 2,
+	});
 
 	const acceptable_soil: { [id: string]: boolean } = {
 		"crafter:dirt": true,
