@@ -395,25 +395,25 @@ namespace farming {
 		num_spawn_by: 1,
 	});
 
-	// core.register_decoration({
-	// 		name = "farming:cactus",
-	// 		deco_type = "simple",
-	// 		place_on = {"crafter:sand"},
-	// 		sidelen = 16,
-	// 		noise_params = {
-	// 			offset = -0.012,
-	// 			scale = 0.024,
-	// 			spread = {x = 100, y = 100, z = 100},
-	// 			seed = 230,
-	// 			octaves = 3,
-	// 			persist = 0.6
-	// 		},
-	// 		y_max = 30,
-	// 		y_min = 0,
-	// 		decoration = "farming:cactus",
-	// 		height = 3,
-	// 		height_max = 4,
-	// 	})
+	core.register_decoration({
+		name: "farming:cactus",
+		deco_type: DecorationType.simple,
+		place_on: ["crafter:sand"],
+		sidelen: 16,
+		noise_params: {
+			offset: -0.012,
+			scale: 0.024,
+			spread: vector.create3d({ x: 100, y: 100, z: 100 }),
+			seed: 230,
+			octaves: 3,
+			persist: 0.6,
+		},
+		y_max: 30,
+		y_min: 0,
+		decoration: "farming:cactus",
+		height: 3,
+		height_max: 4,
+	});
 
 	// core.register_decoration({
 	// 	deco_type = "simple",
