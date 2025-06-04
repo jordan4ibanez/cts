@@ -97,10 +97,10 @@ namespace hunger {
 		return data.hunger;
 	}
 
-	// // saves specific users data for when they relog
-	// core.register_on_leaveplayer(function(player)
-	// 	save_data(player)
-	// end)
+	// Saves specific users data for when they relog.
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		save_data(player.get_player_name());
+	});
 	// // save all data to mod storage on shutdown
 	// core.register_on_shutdown(function()
 	// 	save_all()
