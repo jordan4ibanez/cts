@@ -1,22 +1,31 @@
 namespace treecapitator {
 	// local treecaptitator = {}
 
-    interface TreecapitatorDef {
-radius: number;
-leaves: string
-    }
+	interface TreecapitatorDef {
+		radius: number;
+		leaves: string;
+	}
 
 	// Leaf decay.
-	 function leafdecay_after_destruct(pos: Vec3, oldnode: NodeTable, def: TreecapitatorDef): void {
-		for (const [_, v] of pairs(core.find_nodes_in_area(vector.subtract(pos, def.radius),
-				vector.add(pos, def.radius), def.leaves))) {
-	// 		local node = core.get_node(v)
-	// 		local timer = core.get_node_timer(v)
-	// 		if node.param2 ~= 1 and not timer:is_started() then
-	// 			timer:start(math.random()+math.random()+math.random())
-	// 		end
-     }
-     }
+	function leafdecay_after_destruct(
+		pos: Vec3,
+		oldnode: NodeTable,
+		def: TreecapitatorDef
+	): void {
+		for (const [_, v] of pairs(
+			core.find_nodes_in_area(
+				vector.subtract(pos, def.radius),
+				vector.add(pos, def.radius),
+				def.leaves
+			)
+		)) {
+			// 		local node = core.get_node(v)
+			// 		local timer = core.get_node_timer(v)
+			// 		if node.param2 ~= 1 and not timer:is_started() then
+			// 			timer:start(math.random()+math.random()+math.random())
+			// 		end
+		}
+	}
 
 	// local function leafdecay_on_timer(pos, def)
 	// 	if core.find_node_near(pos, def.radius, def.trunks) then
