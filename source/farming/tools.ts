@@ -15,7 +15,7 @@ namespace farming {
 		return false;
 	}
 
-	for (const [level, material] of pairs(__materials)) {
+	for (const [level, material] of ipairs(__materials)) {
 		if (typeof level != "number" || typeof material != "string") {
 			throw new Error("How");
 		}
