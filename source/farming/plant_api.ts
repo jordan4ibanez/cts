@@ -149,8 +149,8 @@ namespace farming {
 						}
 						// If farmland is not found.
 					} else {
-						// 					core.dig_node(pos)
-						// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+						core.dig_node(pos);
+						core.sound_play("dirt", { pos: pos, gain: 0.2 });
 					}
 				};
 
