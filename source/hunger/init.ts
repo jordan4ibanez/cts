@@ -328,10 +328,10 @@ namespace hunger {
 			groups: { satiation: def.satiation, hunger: def.hunger },
 		});
 
-		// 	core.register_node(":"+name+"node", {
-		// 		tiles = {def.texture},
-		// 		drawtype = "allfaces",
-		// 	})
+		core.register_node(":" + name + "node", {
+			tiles: [def.texture],
+			drawtype: Drawtype.allfaces,
+		});
 	}
 
 	// core.register_chatcommand("hungry", {
