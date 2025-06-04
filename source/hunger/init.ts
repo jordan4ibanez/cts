@@ -194,40 +194,40 @@ namespace hunger {
 			}
 			// Count down invisible satiation bar.
 			if (data.satiation > 0 && data.hunger >= 20) {
-			//     temp_pool.exhaustion = tick_up_satiation(state, temp_pool.exhaustion)
-			//     if temp_pool.exhaustion > exhaustion_peak then
-			//         temp_pool.satiation = temp_pool.satiation - 1
-			//         temp_pool.exhaustion = temp_pool.exhaustion - exhaustion_peak
-			//         //reset this to use for the hunger tick
-			//         if temp_pool.satiation == 0 then
-			//             temp_pool.exhaustion = 0
-			//         end
-			//     end
-			// // count down hunger bars
-            } else if (data.hunger > 0) {
-			//     temp_pool.exhaustion = tick_up_hunger(state,temp_pool.exhaustion)
-			//     if temp_pool.exhaustion >= hunger_peak then
-			//         //don't allow hunger to go negative
-			//         if temp_pool.hunger > 0 then
-			//             temp_pool.exhaustion = temp_pool.exhaustion - hunger_peak
-			//             temp_pool.hunger = temp_pool.hunger - 1
-			//         end
-			//         hud_manager.change_hud({
-			//             player    =  player ,
-			//             hud_name  = "hunger",
-			//             element   = "number",
-			//             data      =  temp_pool.hunger
-			//         })
-			//     end
-			// // hurt the player if hunger bar empty
-            } else if (data.hunger <= 0) {
-			//     temp_pool.exhaustion = temp_pool.exhaustion + 1
-			//     hp = player:get_hp()
-			//     if hp > 0 and temp_pool.exhaustion >= 2 then
-			//         player:set_hp( hp - 1 )
-			//         temp_pool.exhaustion = 0
-			//     end
-            }
+				//     temp_pool.exhaustion = tick_up_satiation(state, temp_pool.exhaustion)
+				//     if temp_pool.exhaustion > exhaustion_peak then
+				//         temp_pool.satiation = temp_pool.satiation - 1
+				//         temp_pool.exhaustion = temp_pool.exhaustion - exhaustion_peak
+				//         //reset this to use for the hunger tick
+				//         if temp_pool.satiation == 0 then
+				//             temp_pool.exhaustion = 0
+				//         end
+				//     end
+				// Count down hunger bars.
+			} else if (data.hunger > 0) {
+				//     temp_pool.exhaustion = tick_up_hunger(state,temp_pool.exhaustion)
+				//     if temp_pool.exhaustion >= hunger_peak then
+				//         //don't allow hunger to go negative
+				//         if temp_pool.hunger > 0 then
+				//             temp_pool.exhaustion = temp_pool.exhaustion - hunger_peak
+				//             temp_pool.hunger = temp_pool.hunger - 1
+				//         end
+				//         hud_manager.change_hud({
+				//             player    =  player ,
+				//             hud_name  = "hunger",
+				//             element   = "number",
+				//             data      =  temp_pool.hunger
+				//         })
+				//     end
+				// Hurt the player if hunger bar empty.
+			} else if (data.hunger <= 0) {
+				//     temp_pool.exhaustion = temp_pool.exhaustion + 1
+				//     hp = player:get_hp()
+				//     if hp > 0 and temp_pool.exhaustion >= 2 then
+				//         player:set_hp( hp - 1 )
+				//         temp_pool.exhaustion = 0
+				//     end
+			}
 			// hp = player:get_hp()
 			// drowning = is_player_drowning(player)
 			// //make regeneration happen every second
