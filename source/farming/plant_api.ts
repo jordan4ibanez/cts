@@ -2,7 +2,7 @@ namespace farming {
 	//  //plant growth time contants (in seconds)
 	//  local plant_min = 60
 	//  local plant_max = 240
-	//  minetest.register_plant = function(name,def)
+	//  core.register_plant = function(name,def)
 	// 	local max = 1
 	// 	 if def.stages then
 	// 		 max = def.stages
@@ -25,89 +25,89 @@ namespace farming {
 	// 			 after_dig_node = function(pos, node, metadata, digger)
 	// 				if digger == nil then return end
 	// 				local np = {x = pos.x, y = pos.y + 1, z = pos.z}
-	// 				local nn = minetest.get_node(np)
+	// 				local nn = core.get_node(np)
 	// 				if nn.name == node.name then
-	// 					minetest.node_dig(np, nn, digger)
-	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
+	// 					core.node_dig(np, nn, digger)
+	// 					core.sound_play("dirt",{pos=pos,gain=0.2})
 	// 				end
 	// 			end
 	// 			on_abm = function(pos)
-	// 				if minetest.get_node_light(pos, nil) < 10 then
+	// 				if core.get_node_light(pos, nil) < 10 then
 	// 					//print("failed to grow at "..dump(pos))
 	// 					return
 	// 				end
-	// 				local found = minetest.find_node_near(pos, 3, {"main:water","main:waterflow"})
+	// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
 	// 				pos.y = pos.y - 1
-	// 				local noder = minetest.get_node(pos).name
-	// 				local found_soil = minetest.get_item_group(noder, "soil") > 0
+	// 				local noder = core.get_node(pos).name
+	// 				local found_soil = core.get_item_group(noder, "soil") > 0
 	// 				local found_self//[[this is deep]]= (noder == nodename)
 	// 				if found and (found_soil or found_self) then
 	// 					pos.y = pos.y + 2
-	// 					if minetest.get_node(pos).name == "air" then
-	// 						minetest.set_node(pos,{name="farming:"..name})
+	// 					if core.get_node(pos).name == "air" then
+	// 						core.set_node(pos,{name="farming:"..name})
 	// 					end
 	// 				elseif not found_self then
 	// 					pos.y = pos.y + 1
-	// 					minetest.dig_node(pos)
-	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
+	// 					core.dig_node(pos)
+	// 					core.sound_play("dirt",{pos=pos,gain=0.2})
 	// 				end
 	// 			end
 	// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
 	// 				pos.y = pos.y - 1
-	// 				local noder = minetest.get_node(pos).name
-	// 				local found = minetest.get_node_group(noder, "soil") > 0
+	// 				local noder = core.get_node(pos).name
+	// 				local found = core.get_node_group(noder, "soil") > 0
 	// 				if not found then
 	// 					pos.y = pos.y + 1
-	// 					minetest.dig_node(pos)
+	// 					core.dig_node(pos)
 	// 				end
 	// 			end
 	// 		//for plants that grow in place
 	// 		elseif def.grows == "in_place" then
 	// 			on_abm = function(pos)
-	// 				if minetest.get_node_light(pos, nil) < 10 then
-	// 					minetest.dig_node(pos)
-	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
+	// 				if core.get_node_light(pos, nil) < 10 then
+	// 					core.dig_node(pos)
+	// 					core.sound_play("dirt",{pos=pos,gain=0.2})
 	// 					//print("failed to grow at "..dump(pos))
 	// 					return
 	// 				end
 	// 				pos.y = pos.y - 1
-	// 				local found = minetest.get_node_group(minetest.get_node(pos).name, "farmland") > 0
+	// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
 	// 				//if found farmland below
 	// 				if found then
 	// 					if i < max then
 	// 						pos.y = pos.y + 1
-	// 						minetest.set_node(pos,{name="farming:"..name.."_"..(i+1)})
+	// 						core.set_node(pos,{name="farming:"..name.."_"..(i+1)})
 	// 					end
 	// 				//if not found farmland
 	// 				else
-	// 					minetest.dig_node(pos)
-	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
+	// 					core.dig_node(pos)
+	// 					core.sound_play("dirt",{pos=pos,gain=0.2})
 	// 				end
 	// 			end
 	// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
 	// 				pos.y = pos.y - 1
-	// 				local noder = minetest.get_node(pos).name
-	// 				local found = minetest.get_node_group(noder, "farmland") > 0
+	// 				local noder = core.get_node(pos).name
+	// 				local found = core.get_node_group(noder, "farmland") > 0
 	// 				if not found then
 	// 					pos.y = pos.y + 1
-	// 					minetest.dig_node(pos)
+	// 					core.dig_node(pos)
 	// 				end
 	// 			end
 	// 		elseif def.grows == "in_place_yields" then
 	// 			on_abm = function(pos)
-	// 				if minetest.get_node_light(pos, nil) < 10 then
-	// 					minetest.dig_node(pos)
-	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
+	// 				if core.get_node_light(pos, nil) < 10 then
+	// 					core.dig_node(pos)
+	// 					core.sound_play("dirt",{pos=pos,gain=0.2})
 	// 					//print("failed to grow at "..dump(pos))
 	// 					return
 	// 				end
 	// 				pos.y = pos.y - 1
-	// 				local found = minetest.get_node_group(minetest.get_node(pos).name, "farmland") > 0
+	// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
 	// 				//if found farmland below
 	// 				if found then
 	// 					if i < max then
 	// 						pos.y = pos.y + 1
-	// 						minetest.set_node(pos,{name="farming:"..name.."_"..(i+1)})
+	// 						core.set_node(pos,{name="farming:"..name.."_"..(i+1)})
 	// 					else
 	// 						pos.y = pos.y + 1
 	// 						local found = false
@@ -116,7 +116,7 @@ namespace farming {
 	// 							if found == false then
 	// 								for z = -1,1 do
 	// 									if math.abs(x)+math.abs(z) == 1 then
-	// 										local node_get = minetest.get_node(vector.new(pos.x-x,pos.y,pos.z-z)).name == "air"
+	// 										local node_get = core.get_node(vector.new(pos.x-x,pos.y,pos.z-z)).name == "air"
 	// 										if node_get then
 	// 											add_node = vector.new(pos.x-x,pos.y,pos.z-z)
 	// 											found = true
@@ -126,26 +126,26 @@ namespace farming {
 	// 							end
 	// 						end
 	// 						if found == true and add_node then
-	// 							local param2 = minetest.dir_to_facedir(vector.direction(pos,add_node))
-	// 							minetest.add_node(add_node,{name=def.grown_node,param2=param2})
-	// 							local facedir = minetest.facedir_to_dir(param2)
+	// 							local param2 = core.dir_to_facedir(vector.direction(pos,add_node))
+	// 							core.add_node(add_node,{name=def.grown_node,param2=param2})
+	// 							local facedir = core.facedir_to_dir(param2)
 	// 							local inverted_facedir = vector.multiply(facedir,-1)
-	// 							minetest.set_node(vector.add(inverted_facedir,add_node), {name="farming:"..name.."_complete", param2=minetest.dir_to_facedir(facedir)})
+	// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"..name.."_complete", param2=core.dir_to_facedir(facedir)})
 	// 						end
 	// 					end
 	// 				//if not found farmland
 	// 				else
-	// 					minetest.dig_node(pos)
-	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
+	// 					core.dig_node(pos)
+	// 					core.sound_play("dirt",{pos=pos,gain=0.2})
 	// 				end
 	// 			end
 	// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
 	// 				pos.y = pos.y - 1
-	// 				local noder = minetest.get_node(pos).name
-	// 				local found = minetest.get_node_group(noder, "farmland") > 0
+	// 				local noder = core.get_node(pos).name
+	// 				local found = core.get_node_group(noder, "farmland") > 0
 	// 				if not found then
 	// 					pos.y = pos.y + 1
-	// 					minetest.dig_node(pos)
+	// 					core.dig_node(pos)
 	// 				end
 	// 			end
 	// 		end
@@ -165,7 +165,7 @@ namespace farming {
 	// 			tiles = def.tiles
 	// 		end
 	// 		def.groups.plants = 1
-	// 		minetest.register_node(nodename, {
+	// 		core.register_node(nodename, {
 	// 			description               = def.description,
 	// 			drawtype                  = def.drawtype,
 	// 			waving                    = def.waving,
@@ -187,7 +187,7 @@ namespace farming {
 	// 			//flooding function
 	// 			floodable         = true,
 	// 			on_flood = function(pos, oldnode, newnode)
-	// 				 minetest.dig_node(pos)
+	// 				 core.dig_node(pos)
 	// 			end,
 	// 			after_dig_node   = after_dig_node,
 	// 			after_place_node = after_place_node,
@@ -195,7 +195,7 @@ namespace farming {
 	// 			after_destruct   = after_destruct,
 	// 		})
 	// 		if on_abm then
-	// 			minetest.register_abm({
+	// 			core.register_abm({
 	// 				label = nodename.." Grow",
 	// 				nodenames = {nodename},
 	// 				neighbors = {"air"},
@@ -210,7 +210,7 @@ namespace farming {
 	// 	end
 	// 	//create final stage for grow in place plant stems that create food
 	// 	if def.grows == "in_place_yields" then
-	// 		minetest.register_node("farming:"..name.."_complete", {
+	// 		core.register_node("farming:"..name.."_complete", {
 	// 		    description         = def.stem_description,
 	// 		    tiles               = def.stem_tiles,
 	// 		    drawtype            = def.stem_drawtype,
@@ -224,7 +224,7 @@ namespace farming {
 	// 		    selection_box       = def.stem_selection_box,
 	// 		    paramtype2          = "facedir",
 	// 		})
-	// 		minetest.register_node("farming:"..def.fruit_name, {
+	// 		core.register_node("farming:"..def.fruit_name, {
 	// 		    description = def.fruit_description,
 	// 		    tiles       = def.fruit_tiles,
 	// 		    groups      = def.fruit_groups,
@@ -234,17 +234,17 @@ namespace farming {
 	// 		    paramtype2  = "facedir",
 	// 		    after_destruct = function(pos,oldnode)
 	// 			    local facedir = oldnode.param2
-	// 			    facedir = minetest.facedir_to_dir(facedir)
+	// 			    facedir = core.facedir_to_dir(facedir)
 	// 			    local dir = vector.multiply(facedir,-1)
 	// 			    local stem_pos = vector.add(dir,pos)
-	// 			    if minetest.get_node(stem_pos).name == "farming:"..name.."_complete" then
-	// 				    minetest.set_node(stem_pos, {name = "farming:"..name.."_1"})
+	// 			    if core.get_node(stem_pos).name == "farming:"..name.."_complete" then
+	// 				    core.set_node(stem_pos, {name = "farming:"..name.."_1"})
 	// 			    end
 	// 		    end
 	// 		})
 	// 	end
 	// 	if def.seed_name then
-	// 		minetest.register_craftitem("farming:"..def.seed_name.."_seeds", {
+	// 		core.register_craftitem("farming:"..def.seed_name.."_seeds", {
 	// 			description = def.seed_description,
 	// 			inventory_image = def.seed_inventory_image,
 	// 			on_place = function(itemstack, placer, pointed_thing)
@@ -253,22 +253,22 @@ namespace farming {
 	// 				end
 	// 				local pointed_thing_diff = pointed_thing.above.y - pointed_thing.under.y
 	// 				if pointed_thing_diff < 1 then return end
-	// 				if minetest.get_node(pointed_thing.above).name ~= "air" then return end
+	// 				if core.get_node(pointed_thing.above).name ~= "air" then return end
 	// 				local pb = pointed_thing.above
-	// 				if minetest.get_node_group(minetest.get_node(vector.new(pb.x,pb.y-1,pb.z)).name, "farmland") == 0 or minetest.get_node(pointed_thing.above).name ~= "air"  then
+	// 				if core.get_node_group(core.get_node(vector.new(pb.x,pb.y-1,pb.z)).name, "farmland") == 0 or core.get_node(pointed_thing.above).name ~= "air"  then
 	// 					return itemstack
 	// 				end
-	// 				local wdir = minetest.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
+	// 				local wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
 	// 				local fakestack = itemstack
 	// 				local retval = false
 	// 				retval = fakestack:set_name(def.seed_plants)
 	// 				if not retval then
 	// 					return itemstack
 	// 				end
-	// 				itemstack, retval = minetest.item_place(fakestack, placer, pointed_thing, wdir)
+	// 				itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
 	// 				itemstack:set_name("farming:"..def.seed_name.."_seeds")
 	// 				if retval then
-	// 					minetest.sound_play("leaves", {pos=pointed_thing.above, gain = 1.0})
+	// 					core.sound_play("leaves", {pos=pointed_thing.above, gain = 1.0})
 	// 				end
 	// 				return itemstack
 	// 			end
