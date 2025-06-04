@@ -3,7 +3,7 @@ namespace farming {
 		const [a, _] = core.find_nodes_in_area(
 			vector.create3d(pos.x - 3, pos.y, pos.z - 3),
 			vector.create3d(pos.x + 3, pos.y, pos.z + 3),
-			["main:water", "main:waterflow"]
+			["crafter:water", "crafter:waterflow"]
 		);
 		return a.length > 0;
 	}
@@ -45,7 +45,7 @@ namespace farming {
 					const timer: NodeTimerObject = core.get_node_timer(pos);
 					timer.start(math.random(10, 25) + math.random());
 				} else {
-					core.set_node(pos, { name: "main:dirt" });
+					core.set_node(pos, { name: "crafter:dirt" });
 					if (
 						core.get_item_group(
 							core.get_node(
@@ -92,7 +92,7 @@ namespace farming {
 				soil: 1,
 				farmland: 1,
 			},
-			drop: "main:dirt",
+			drop: "crafter:dirt",
 			on_construct: on_construct,
 			on_timer: on_timer,
 		});
