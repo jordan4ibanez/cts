@@ -1,17 +1,22 @@
 namespace serverUtilities {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
-	interface HomeTimeout {
+	class HomeTimeout {
 		setHome: number;
 		home: number;
+		constructor() {
+			const currentTime = core.get_us_time();
+			this.setHome = currentTime;
+			this.home = currentTime;
+		}
 	}
 
-	const pool = new Map<string, number>();
+	const pool = new Map<string, HomeTimeout>();
 
 	const home_timeout: number = 60;
 
 	core.register_on_joinplayer((player: ObjectRef) => {
-		pool.set(player.get_player_name(), core.get_us_time() / 1000000);
+		pool.set(player.get_player_name(), new HomeTimeout());
 	});
 
 	core.register_on_leaveplayer((player: ObjectRef) => {
