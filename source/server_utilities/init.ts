@@ -94,9 +94,9 @@ namespace serverUtilities {
 
 			const time: number = core.get_us_time() / 1000000;
 			const diff = timeout - math.ceil(time - data.home);
+			data.home = time;
 
 			if (diff <= 0) {
-				data.home = time;
 				const serializedData: string = mod_storage.get_string(
 					name + ":crafter_home"
 				);
@@ -113,6 +113,8 @@ namespace serverUtilities {
 					core.chat_send_player(name, "No home set.");
 					return;
 				}
+
+				core.chat_send_player(name, "Sending you home.");
 
 				player.add_velocity(vector.multiply(player.get_velocity(), -1));
 				player.move_to(newpos);
