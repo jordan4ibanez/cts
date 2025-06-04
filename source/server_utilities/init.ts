@@ -16,6 +16,14 @@ namespace serverUtilities {
 			const time: number = core.get_us_time() / 1000000;
 			const player: ObjectRef | null = core.get_player_by_name(name);
 
+			if (player == null) {
+				core.log(
+					LogLevel.warning,
+					`Player [${name}] ran command and instantly became null.`
+				);
+				return;
+			}
+
 			// 		local pos = player:get_pos()
 			// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
 			// 			mod_storage:set_string(name+"home", core.serialize(pos))
