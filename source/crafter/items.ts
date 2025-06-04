@@ -1,20 +1,19 @@
 namespace crafter {
 	// Item definition.
 
-	// todo: depends on the hunger mod!
-	// core.register_food("crafter:apple", {
-	//     description: "Apple",
-	//     texture: "apple.png",
-	//     satiation: 1,
-	//     hunger: 2,
-	// });
+	hunger.register_food("crafter:apple", {
+		description: "Apple",
+		texture: "apple.png",
+		satiation: 1,
+		hunger: 2,
+	});
 
-	// core.register_food("crafter:sugar", {
-	//     description: "Sugar",
-	//     texture: "sugar.png",
-	//     satiation: 1,
-	//     hunger: 1,
-	// });
+	hunger.register_food("crafter:sugar", {
+		description: "Sugar",
+		texture: "sugar.png",
+		satiation: 1,
+		hunger: 1,
+	});
 
 	core.register_craftitem("crafter:stick", {
 		description: "Stick",
