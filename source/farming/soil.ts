@@ -2,7 +2,12 @@ namespace farming {
 	// local farmland =
 
 	for (const [level, dryness] of pairs(["wet", "dry"])) {
-		// 	local coloring = 160/level
+		if (typeof level != "number") {
+			throw new Error("how");
+		}
+
+		const coloring: number = 160 / level;
+
 		// 	local on_construct
 		// 	if dryness == "wet" then
 		// 		on_construct = function(pos)
