@@ -73,6 +73,7 @@ namespace treecapitator {
 // 	radius = 2,
 // })
 
+core.override_item("crafter:tree", {
 		// todo: treecapitator - move treecapitator into own file using override.
 		// on_dig: (pos: Vec3, node: NodeTable, digger: ObjectRef) => {
 		// 	//bvav_create_vessel(pos,core.facedir_to_dir(core.dir_to_facedir(core.yaw_to_dir(digger:get_look_horizontal()+(math.pi/2)))))
@@ -154,4 +155,5 @@ namespace treecapitator {
 		// 		core.node_dig(pos, node, digger);
 		// 	}
 		// },
+})
 }
