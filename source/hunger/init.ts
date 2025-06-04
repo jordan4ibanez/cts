@@ -6,6 +6,17 @@ namespace hunger {
 		satiation: number = 20;
 		regeneration_interval: number = 0;
 		exhaustion: number = 0;
+		constructor(player: ObjectRef) {
+			const name: string = player.get_player_name();
+			if (mod_storage.get_int(name + "h_save") > 0) {
+				this.hunger = mod_storage.get_int(name + "hunger");
+				this.satiation = mod_storage.get_int(name + "satiation");
+				this.exhaustion = mod_storage.get_int(name + "exhaustion");
+				this.regeneration_interval = mod_storage.get_int(
+					name + "regeneration_interval"
+				);
+			}
+		}
 	}
 
 	const pool = new Map<string, HungerData>();
@@ -13,19 +24,7 @@ namespace hunger {
 	// Loads data from mod storage.
 
 	function load_data(player: ObjectRef): void {
-		const name: string = player.get_player_name();
-		let newData = new HungerData();
-
-		if (mod_storage.get_int(name + "h_save") > 0) {
-			newData.hunger = mod_storage.get_int(name + "hunger");
-			newData.satiation = mod_storage.get_int(name + "satiation");
-			newData.exhaustion = mod_storage.get_int(name + "exhaustion");
-			newData.regeneration_interval = mod_storage.get_int(
-				name + "regeneration_interval"
-			);
-		}
-        
-		pool.set(name, newData);
+		pool.set(player.get_player_name(), new HungerData(player));
 	}
 
 	// // saves data to be utilized on next login
