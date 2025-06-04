@@ -28,13 +28,20 @@ namespace hunger {
 
 	// Saves data to be utilized on next login.
 	function save_data(name: string): void {
-		// 	temp_pool = pool[name]
-		// 	mod_storage:set_int(name+"hunger",               temp_pool.hunger               )
-		// 	mod_storage:set_int(name+"satiation",            temp_pool.satiation            )
-		// 	mod_storage:set_int(name+"exhaustion",           temp_pool.exhaustion           )
-		// 	mod_storage:set_int(name+"regeneration_interval",temp_pool.regeneration_interval)
-		// 	mod_storage:set_int(name+"h_save",1)
-		// 	pool[name] = nil
+		const data: HungerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		mod_storage.set_int(name + "hunger", data.hunger);
+		mod_storage.set_int(name + "satiation", data.satiation);
+		mod_storage.set_int(name + "exhaustion", data.exhaustion);
+		mod_storage.set_int(
+			name + "regeneration_interval",
+			data.regeneration_interval
+		);
+		mod_storage.set_int(name + "h_save", 1);
+		pool.delete(name);
 	}
 
 	// // is used for shutdowns to save all data
