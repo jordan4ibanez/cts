@@ -1,7 +1,7 @@
 namespace crafter {
 	// Item definition.
 
-	// fixme: depends on the hunger mod!
+	// todo: depends on the hunger mod!
 	// core.register_food("crafter:apple", {
 	//     description: "Apple",
 	//     texture: "apple.png",
