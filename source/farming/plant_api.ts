@@ -19,8 +19,17 @@ namespace farming {
 		groups: Dictionary<string, number>;
 		description: string;
 		drawtype: Drawtype;
-		waving: number;
+		waving?: number;
 		inventory_image?: string;
+		walkable?: boolean;
+		climbable?: boolean;
+		paramtype?: ParamType1;
+		paramtype2?: ParamType2;
+		buildable_to?: boolean;
+		sounds?: NodeSoundSpec;
+		selection_box?: NodeBox;
+		node_box?: NodeBox;
+		sunlight_propagates?: boolean;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -327,7 +336,7 @@ namespace farming {
 				node_box: def.node_box,
 				node_placement_prediction: "",
 				is_ground_content: false,
-				//flooding function
+				// Flooding function.
 				floodable: true,
 				on_flood: (pos, oldnode, newnode) => {
 					core.dig_node(pos);
