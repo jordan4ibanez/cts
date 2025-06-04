@@ -63,20 +63,20 @@ namespace farming {
 				description : "Farmland",
 				paramtype : "light",
 				drawtype : "nodebox",
-				sounds : main.dirtSound(),
+				sounds : crafter.dirtSound(),
 				//paramtype2 : "wallmounted",
 				node_box : {
 					type : "fixed",
 					//{xmin, ymin, zmin, xmax, ymax, zmax}
-					fixed : {-0.5, -0.5, -0.5, 0.5, 6/16, 0.5},
+					fixed : [-0.5, -0.5, -0.5, 0.5, 6/16, 0.5],
 				},
 				wetness : math.abs(level-2),
 				collision_box : {
 					type : "fixed",
 					//{xmin, ymin, zmin, xmax, ymax, zmax}
-					fixed : {-0.5, -0.5, -0.5, 0.5, 6/16, 0.5},
+					fixed : [-0.5, -0.5, -0.5, 0.5, 6/16, 0.5],
 				},
-				tiles : {"dirt.png^farmland.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring},
+				tiles : ["dirt.png^farmland.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring,"dirt.png^[colorize:black:"+coloring],
 				groups : {dirt : 1, soft : 1, shovel : 1, hand : 1, soil:1,farmland:1},
 				drop:"main:dirt",
 				on_construct : on_construct,
