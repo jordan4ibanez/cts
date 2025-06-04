@@ -32,13 +32,13 @@ namespace farming {
 				}
 				damage = 2.5
             } else if (material == "stone") {
-		// 		groupcaps2={
-		// 			dirt =  {times={[1]=0.2,[2]=0.2,[3]=1.5,[4]=3,[5]=6},   uses=131, maxlevel=1},
-		// 			snow =  {times={[1]=0.2,[2]=0.2,[3]=1.5,[4]=3,[5]=6},   uses=131, maxlevel=1},
-		// 			grass = {times={[1]=0.25,[2]=0.25,[3]=1.5,[4]=3,[5]=6}, uses=131, maxlevel=1},
-		// 			sand =  {times={[1]=0.2,[2]=0.2,[3]=1.5,[4]=3,[5]=6},   uses=131, maxlevel=1},
-		// 		}
-		// 		damage = 3.5
+				groupcaps2={
+					dirt :  {times:{[1]:0.2,[2]:0.2,[3]:1.5,[4]:3,[5]:6},   uses:131, maxlevel:1},
+					snow :  {times:{[1]:0.2,[2]:0.2,[3]:1.5,[4]:3,[5]:6},   uses:131, maxlevel:1},
+					grass : {times:{[1]:0.25,[2]:0.25,[3]:1.5,[4]:3,[5]:6}, uses:131, maxlevel:1},
+					sand :  {times:{[1]:0.2,[2]:0.2,[3]:1.5,[4]:3,[5]:6},   uses:131, maxlevel:1},
+				}
+				damage = 3.5
             } else if (material == "iron") {
 		// 		groupcaps2={
 		// 			dirt =  {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
