@@ -313,18 +313,27 @@ namespace hunger {
 		});
 	}
 
-	// // easily allows mods to register food
-	// core.register_food = function(name,def)
-	// 	core.register_craftitem(":"+name, {
-	// 		description = def.description,
-	// 		inventory_image = def.texture,
-	// 		groups = {satiation=def.satiation,hunger=def.hunger},
-	// 	})
-	// 	core.register_node(":"+name+"node", {
-	// 		tiles = {def.texture},
-	// 		drawtype = "allfaces",
-	// 	})
-	// end
+	interface FoodInterface {
+		description: string;
+		texture: string;
+		satiation: number;
+		hunger: number;
+	}
+
+	// Easily allows mods to register food.
+	export function register_food(name: string, def: FoodInterface): void {
+		core.register_craftitem(":" + name, {
+			description: def.description,
+			inventory_image: def.texture,
+			groups: { satiation: def.satiation, hunger: def.hunger },
+		});
+
+		// 	core.register_node(":"+name+"node", {
+		// 		tiles = {def.texture},
+		// 		drawtype = "allfaces",
+		// 	})
+	}
+
 	// core.register_chatcommand("hungry", {
 	// 	params = "<mob>",
 	// 	description = "A debug command to test food",
