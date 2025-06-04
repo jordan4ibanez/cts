@@ -1,17 +1,19 @@
 namespace serverMessages {
 	// local pool = {}
-	// minetest.register_on_joinplayer(function(player)
+
+	// core.register_on_joinplayer(function(player)
 	//     local meta = player:get_meta()
 	//     local welcomed = (meta:get_int("welcomed") == 1)
 	//     local name = player:get_player_name()
-	//     pool[name] = minetest.get_us_time()/1000000
+	//     pool[name] = core.get_us_time()/1000000
 	//     if not welcomed then
-	//         minetest.chat_send_all("Welcome "..name.." to the server!")
+	//         core.chat_send_all("Welcome "..name.." to the server!")
 	//         meta:set_int("welcomed", 1)
 	//     else
-	//         minetest.chat_send_all("Welcome back "..name.."!")
+	//         core.chat_send_all("Welcome back "..name.."!")
 	//     end
 	// end)
+    
 	// local death_messages = {
 	// " got smoked!",
 	// " didn't see that coming!",
@@ -50,15 +52,15 @@ namespace serverMessages {
 	// " left the matrix.",
 	// " is out.",
 	// }
-	// minetest.register_on_dieplayer(function(player)
+	// core.register_on_dieplayer(function(player)
 	//     local name = player:get_player_name()
-	//     if (minetest.get_us_time()/1000000)-pool[name] > 0.001 then
-	//         minetest.chat_send_all(name..death_messages[math.random(1,table.getn(death_messages))])
-	//         pool[name] = minetest.get_us_time()/1000000
+	//     if (core.get_us_time()/1000000)-pool[name] > 0.001 then
+	//         core.chat_send_all(name..death_messages[math.random(1,table.getn(death_messages))])
+	//         pool[name] = core.get_us_time()/1000000
 	//     end
 	// end)
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	//     local name = player:get_player_name()
-	//     minetest.chat_send_all(name..leave_messages[math.random(1,table.getn(leave_messages))])
+	//     core.chat_send_all(name..leave_messages[math.random(1,table.getn(leave_messages))])
 	// end)
 }
