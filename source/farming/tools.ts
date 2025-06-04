@@ -1,3 +1,4 @@
+namespace farming {
 // //Quick definition of hoes
 // local material  = {"wood","stone","iron","gold","diamond"}
 // local construct = {"wood","cobble","iron","gold","diamond"}
@@ -108,3 +109,4 @@
 // 		}
 // 	})
 // end 
+}
