@@ -38,9 +38,7 @@ namespace serverUtilities {
 				);
 				return;
 			}
-
 			const data: HomeTimeout | undefined = pool.get(name);
-
 			if (data == null) {
 				throw new Error(
 					`Player [${name}] was never added to the pool.`
@@ -48,10 +46,7 @@ namespace serverUtilities {
 			}
 
 			const time: number = core.get_us_time() / 1000000;
-
 			const diff = timeout - math.ceil(time - data.setHome);
-
-			print(diff);
 
 			const pos: Vec3 = player.get_pos();
 
@@ -60,12 +55,14 @@ namespace serverUtilities {
 				// 			pool[name] = time
 				// 			core.chat_send_player(name, "Home set.")
 			} else {
-				// 			local diff = home_timeout
-				// 			local s = "s"
-				// 			if diff == 1 then
-				// 				s = ""
-				// 			end
-				// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
+				const s = diff == 1 ? "s" : "";
+				core.chat_send_player(
+					name,
+					tostring(diff) +
+						" more second" +
+						s +
+						" until you can run that command."
+				);
 			}
 		},
 	});
