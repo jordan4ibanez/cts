@@ -87,8 +87,8 @@ namespace treecapitator {
 	// Registration.
 
 	register_leafdecay({
-		trunks: ["main:tree"],
-		leaves: ["main:leaves"],
+		trunks: ["crafter:tree"],
+		leaves: ["crafter:leaves"],
 		radius: 2,
 	});
 
