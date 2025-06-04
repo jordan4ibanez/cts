@@ -285,30 +285,32 @@ namespace hunger {
 
 	// Players eat food.
 	export function player_eat_food(player: ObjectRef, item: ItemStackObject) {
-		// 	name = player:get_player_name()
-		// 	temp_pool = pool[name]
-		// 	if type(item) == "string" then
-		// 		item = ItemStack(item)
-		// 	elseif type(item) == "table" then
-		// 		item = ItemStack(item.name)
-		// 	end
-		// 	item = item:get_name()
-		// 	satiation = core.get_item_group( item, "satiation" )
-		// 	hunger    = core.get_item_group( item, "hunger"    )
-		// 	temp_pool.hunger = temp_pool.hunger + hunger
-		// 	if temp_pool.hunger > 20 then
-		// 		temp_pool.hunger = 20
-		// 	end
-		// 	// unlimited
-		// 	// this makes the game easier
-		// 	temp_pool.satiation = temp_pool.satiation + satiation
-		// 	take_food(player)
-		// 	hud_manager.change_hud({
-		// 		player    =  player ,
-		// 		hud_name  = "hunger",
-		// 		element   = "number",
-		// 		data      =  temp_pool.hunger
-		// 	})
+		const name: string = player.get_player_name();
+		const data: HungerData | undefined = pool.get(name);
+
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		const itemName = item.name;
+		const satiation: number = core.get_item_group(itemName, "satiation");
+		const hunger: number = core.get_item_group(itemName, "hunger");
+
+		data.hunger += hunger;
+		if (data.hunger > 20) {
+			data.hunger = 20;
+		}
+
+		// Unlimited satiation.
+		// This makes the game easier.
+		data.satiation += satiation;
+		take_food(player);
+		hudManager.change_hud({
+			player: player,
+			hudName: "hunger",
+			element: "number",
+			data: data.hunger,
+		});
 	}
 
 	// // easily allows mods to register food
