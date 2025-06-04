@@ -51,8 +51,6 @@ namespace farming {
 				| undefined;
 
 			let on_abm: ((pos: Vec3) => void) | undefined;
-			// 		 local on_construct
-			// 		 local after_destruct
 			let after_place_node:
 				| ((
 						pos: Vec3,
@@ -332,8 +330,6 @@ namespace farming {
 				},
 				after_dig_node: after_dig_node,
 				after_place_node: after_place_node,
-				on_construct: on_construct,
-				after_destruct: after_destruct,
 			});
 
 			// 		if on_abm then
