@@ -101,10 +101,12 @@ namespace hunger {
 	core.register_on_leaveplayer((player: ObjectRef) => {
 		save_data(player.get_player_name());
 	});
-	// // save all data to mod storage on shutdown
-	// core.register_on_shutdown(function()
-	// 	save_all()
-	// end)
+
+	// Save all data to mod storage on shutdown.
+	core.register_on_shutdown(() => {
+		save_all();
+	});
+
 	// // create new data for hunger per player
 	// local name
 	// core.register_on_joinplayer(function(player)
