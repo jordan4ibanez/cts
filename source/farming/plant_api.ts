@@ -88,9 +88,9 @@ namespace farming {
 							core.set_node(pos, { name: "farming:" + name });
 						}
 					} else if (!found_self) {
-						// 					pos.y = pos.y + 1
-						// 					core.dig_node(pos)
-						// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+						pos.y = pos.y + 1;
+						core.dig_node(pos);
+						core.sound_play("dirt", { pos: pos, gain: 0.2 });
 					}
 				};
 
