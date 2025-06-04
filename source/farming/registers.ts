@@ -34,13 +34,6 @@ namespace farming {
 		buildable_to: false,
 		waving: 1,
 		walkable: false,
-		//inventory_image   : def.inventory_image,
-		//walkable          : def.walkable,
-		//climbable         : def.climbable,
-		//paramtype2        : def.paramtype2,
-		//buildable_to      : def.buildable_to,
-		//selection_box     : def.selection_box,
-		//drop              : def.drop,
 		grows: PlantGrowth.up,
 		selection_box: {
 			type: Nodeboxtype.fixed,
