@@ -60,7 +60,12 @@ namespace treecapitator {
 			vertical: false,
 			node: { name: def.leaves[1] },
 		});
-		// 	core.sound_play("leaves", {pos=pos, gain = 0.2, max_hear_distance = 60,pitch = math.random(70,100)/100})
+		core.sound_play("leaves", {
+			pos: pos,
+			gain: 0.2,
+			max_hear_distance: 60,
+			pitch: math.random(70, 100) / 100,
+		});
 	}
 
 	// function treecaptitator.register_leafdecay(def)
