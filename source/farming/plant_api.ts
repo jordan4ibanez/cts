@@ -307,33 +307,33 @@ namespace farming {
 			}
 			def.groups.plants = 1;
 			core.register_node(nodename, {
-				// 			description               = def.description,
-				// 			drawtype                  = def.drawtype,
-				// 			waving                    = def.waving,
-				// 			inventory_image           = def.inventory_image,
-				// 			walkable                  = def.walkable,
-				// 			climbable                 = def.climbable,
-				// 			paramtype                 = def.paramtype,
-				// 			tiles                     = tiles,
-				// 			paramtype2                = def.paramtype2,
-				// 			buildable_to              = def.buildable_to,
-				// 			groups                    = def.groups,
-				// 			sounds                    = def.sounds,
-				// 			selection_box             = def.selection_box,
-				// 			drop                      = drop,
-				// 			sunlight_propagates       = def.sunlight_propagates,
-				// 			node_box                  = def.node_box,
-				// 			node_placement_prediction = "",
-				// 			is_ground_content         = false,
-				// 			//flooding function
-				// 			floodable         = true,
-				// 			on_flood = function(pos, oldnode, newnode)
-				// 				 core.dig_node(pos)
-				// 			end,
-				// 			after_dig_node   = after_dig_node,
-				// 			after_place_node = after_place_node,
-				// 			on_construct     = on_construct,
-				// 			after_destruct   = after_destruct,
+				description: def.description,
+				drawtype: def.drawtype,
+				waving: def.waving,
+				inventory_image: def.inventory_image,
+				walkable: def.walkable,
+				climbable: def.climbable,
+				paramtype: def.paramtype,
+				tiles: tiles,
+				paramtype2: def.paramtype2,
+				buildable_to: def.buildable_to,
+				groups: def.groups,
+				sounds: def.sounds,
+				selection_box: def.selection_box,
+				drop: drop,
+				sunlight_propagates: def.sunlight_propagates,
+				node_box: def.node_box,
+				node_placement_prediction: "",
+				is_ground_content: false,
+				//flooding function
+				floodable: true,
+				on_flood: (pos, oldnode, newnode) => {
+					core.dig_node(pos);
+				},
+				after_dig_node: after_dig_node,
+				after_place_node: after_place_node,
+				on_construct: on_construct,
+				after_destruct: after_destruct,
 			});
 
 			// 		if on_abm then
