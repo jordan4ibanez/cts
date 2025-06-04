@@ -69,14 +69,15 @@ namespace hunger {
 		return exhaustion + sat;
 	}
 
-	// // an easy translation pool
-	// local hunger_pool = {
-	// 	[0]   = 1,
-	// 	[0.5] = 2,
-	// 	[1]   = 3,
-	// 	[2]   = 4,
-	// 	[3]   = 1
-	// }
+	// An easy translation pool.
+	const hunger_pool: Dictionary<number, number> = {
+		[0]: 1,
+		[0.5]: 2,
+		[1]: 3,
+		[2]: 4,
+		[3]: 1,
+	};
+
 	// // ticks up the exhaustion when counting down hunger
 	// local tick_up_hunger = function(state,exhaustion)
 	// 	return(exhaustion + hunger_pool[state])
