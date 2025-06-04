@@ -13,8 +13,9 @@ namespace serverUtilities {
 			"Use this to set your home. Can be returned to by setting /home",
 		privs: {},
 		func: (name) => {
-			// 		local time = core.get_us_time()/1000000
-			// 		local player = core.get_player_by_name(name)
+			const time: number = core.get_us_time() / 1000000;
+			const player: ObjectRef | null = core.get_player_by_name(name);
+
 			// 		local pos = player:get_pos()
 			// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
 			// 			mod_storage:set_string(name+"home", core.serialize(pos))
