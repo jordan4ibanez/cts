@@ -1,5 +1,5 @@
 namespace farming {
-	//  --plant growth time contants (in seconds)
+	//  //plant growth time contants (in seconds)
 	//  local plant_min = 60
 	//  local plant_max = 240
 	//  minetest.register_plant = function(name,def)
@@ -19,8 +19,8 @@ namespace farming {
 	// 		 local on_construct
 	// 		 local after_destruct
 	// 		 local after_place_node
-	// 		 --do custom functions for each node
-	// 		 --wether growing in place or up
+	// 		 //do custom functions for each node
+	// 		 //wether growing in place or up
 	// 		 if def.grows == "up" then
 	// 			 after_dig_node = function(pos, node, metadata, digger)
 	// 				if digger == nil then return end
@@ -33,14 +33,14 @@ namespace farming {
 	// 			end
 	// 			on_abm = function(pos)
 	// 				if minetest.get_node_light(pos, nil) < 10 then
-	// 					--print("failed to grow at "..dump(pos))
+	// 					//print("failed to grow at "..dump(pos))
 	// 					return
 	// 				end
 	// 				local found = minetest.find_node_near(pos, 3, {"main:water","main:waterflow"})
 	// 				pos.y = pos.y - 1
 	// 				local noder = minetest.get_node(pos).name
 	// 				local found_soil = minetest.get_item_group(noder, "soil") > 0
-	// 				local found_self--[[this is deep]]= (noder == nodename)
+	// 				local found_self//[[this is deep]]= (noder == nodename)
 	// 				if found and (found_soil or found_self) then
 	// 					pos.y = pos.y + 2
 	// 					if minetest.get_node(pos).name == "air" then
@@ -61,24 +61,24 @@ namespace farming {
 	// 					minetest.dig_node(pos)
 	// 				end
 	// 			end
-	// 		--for plants that grow in place
+	// 		//for plants that grow in place
 	// 		elseif def.grows == "in_place" then
 	// 			on_abm = function(pos)
 	// 				if minetest.get_node_light(pos, nil) < 10 then
 	// 					minetest.dig_node(pos)
 	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
-	// 					--print("failed to grow at "..dump(pos))
+	// 					//print("failed to grow at "..dump(pos))
 	// 					return
 	// 				end
 	// 				pos.y = pos.y - 1
 	// 				local found = minetest.get_node_group(minetest.get_node(pos).name, "farmland") > 0
-	// 				--if found farmland below
+	// 				//if found farmland below
 	// 				if found then
 	// 					if i < max then
 	// 						pos.y = pos.y + 1
 	// 						minetest.set_node(pos,{name="farming:"..name.."_"..(i+1)})
 	// 					end
-	// 				--if not found farmland
+	// 				//if not found farmland
 	// 				else
 	// 					minetest.dig_node(pos)
 	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
@@ -98,12 +98,12 @@ namespace farming {
 	// 				if minetest.get_node_light(pos, nil) < 10 then
 	// 					minetest.dig_node(pos)
 	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
-	// 					--print("failed to grow at "..dump(pos))
+	// 					//print("failed to grow at "..dump(pos))
 	// 					return
 	// 				end
 	// 				pos.y = pos.y - 1
 	// 				local found = minetest.get_node_group(minetest.get_node(pos).name, "farmland") > 0
-	// 				--if found farmland below
+	// 				//if found farmland below
 	// 				if found then
 	// 					if i < max then
 	// 						pos.y = pos.y + 1
@@ -133,7 +133,7 @@ namespace farming {
 	// 							minetest.set_node(vector.add(inverted_facedir,add_node), {name="farming:"..name.."_complete", param2=minetest.dir_to_facedir(facedir)})
 	// 						end
 	// 					end
-	// 				--if not found farmland
+	// 				//if not found farmland
 	// 				else
 	// 					minetest.dig_node(pos)
 	// 					minetest.sound_play("dirt",{pos=pos,gain=0.2})
@@ -149,7 +149,7 @@ namespace farming {
 	// 				end
 	// 			end
 	// 		end
-	// 		--allow plants to only drop item at max stage
+	// 		//allow plants to only drop item at max stage
 	// 		local drop
 	// 		if i == max and def.grows ~= "in_place_yields" then
 	// 			drop = def.drop
@@ -184,7 +184,7 @@ namespace farming {
 	// 			node_box                  = def.node_box,
 	// 			node_placement_prediction = "",
 	// 			is_ground_content         = false,
-	// 			--flooding function
+	// 			//flooding function
 	// 			floodable         = true,
 	// 			on_flood = function(pos, oldnode, newnode)
 	// 				 minetest.dig_node(pos)
@@ -208,7 +208,7 @@ namespace farming {
 	// 			})
 	// 		end
 	// 	end
-	// 	--create final stage for grow in place plant stems that create food
+	// 	//create final stage for grow in place plant stems that create food
 	// 	if def.grows == "in_place_yields" then
 	// 		minetest.register_node("farming:"..name.."_complete", {
 	// 		    description         = def.stem_description,
@@ -230,7 +230,7 @@ namespace farming {
 	// 		    groups      = def.fruit_groups,
 	// 		    sounds      = def.fruit_sounds,
 	// 		    drop        = def.fruit_drop,
-	// 		    --this is hardcoded to work no matter what
+	// 		    //this is hardcoded to work no matter what
 	// 		    paramtype2  = "facedir",
 	// 		    after_destruct = function(pos,oldnode)
 	// 			    local facedir = oldnode.param2
