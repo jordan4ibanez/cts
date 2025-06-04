@@ -3,15 +3,15 @@ namespace farming {
 	const material: string[] = ["wood", "stone", "iron", "gold", "diamond"];
 	const construct: string[] = ["wood", "cobble", "iron", "gold", "diamond"];
 
-	// local function till_soil(pos)
-	// 	local nodey = core.get_node(pos).name
-	// 	local is_dirt = (nodey == "main:dirt" or nodey == "main:grass")
-	// 	if is_dirt then
-	// 		core.sound_play("dirt",{pos=pos})
-	// 		core.set_node(pos,{name="farming:farmland_dry"})
-	// 		return(true)
-	// 	end
-	// end
+	function till_soil(pos: Vec3) {
+		const nodey: string = core.get_node(pos).name;
+		const is_dirt: boolean = nodey == "main:dirt" || nodey == "main:grass";
+		// 	if is_dirt then
+		// 		core.sound_play("dirt",{pos=pos})
+		// 		core.set_node(pos,{name="farming:farmland_dry"})
+		// 		return(true)
+		// 	end
+	}
 
 	// for level,material in pairs(material) do
 	// 	local wear = 100*(6-level)
