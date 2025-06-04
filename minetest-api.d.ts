@@ -2139,10 +2139,10 @@ declare global {
 	}
 
 	interface ItemStackObject {
-		name: string;
+		// name: string;
 		// count: number
-		wear: number;
-		metadata: string;
+		// wear: number;
+		// metadata: string;
 
 		is_empty(): boolean;
 		get_name(): string;
