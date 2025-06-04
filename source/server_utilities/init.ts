@@ -49,6 +49,7 @@ namespace serverUtilities {
 				return;
 			}
 
+			// Prevent any strange behavior.
 			if (travelHomeQueue.has(name)) {
 				core.chat_send_player(
 					name,
