@@ -105,7 +105,7 @@ namespace farming {
 					// Only drop if using a tool whose name is identical to one
 					// of these.
 					//rarity : 10,
-					items : {"farming:wheat"},
+					items : ["farming:wheat"],
 					// Whether all items in the dropped item list inherit the
 					// hardware coloring palette color from the dug node.
 					// Default is 'false'.
@@ -115,7 +115,7 @@ namespace farming {
 					// Only drop if using a tool whose name is identical to one
 					// of these.
 					rarity : 2,
-					items : {"farming:wheat_seeds"},
+					items : ["farming:wheat_seeds"],
 					// Whether all items in the dropped item list inherit the
 					// hardware coloring palette color from the dug node.
 					// Default is 'false'.
