@@ -141,10 +141,12 @@ namespace farming {
 						) > 0;
 					// If farmland is found below.
 					if (found) {
-						// 					if i < max then
-						// 						pos.y = pos.y + 1
-						// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
-						// 					end
+						if (i < max) {
+							pos.y = pos.y + 1;
+							core.set_node(pos, {
+								name: "farming:" + name + "_" + (i + 1),
+							});
+						}
 						// If farmland is not found.
 					} else {
 						// 					core.dig_node(pos)
