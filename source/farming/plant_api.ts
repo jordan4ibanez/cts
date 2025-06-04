@@ -31,17 +31,26 @@ namespace farming {
 				nodename = "farming:" + name;
 			}
 
-			let after_dig_node: (
-				pos: Vec3,
-				node: NodeTable,
-				metadata: MetaRef,
-				digger: ObjectRef
-			) => void = () => {};
+			let after_dig_node:
+				| ((
+						pos: Vec3,
+						node: NodeTable,
+						metadata: MetaRef,
+						digger: ObjectRef
+				  ) => void)
+				| undefined;
 
-			let on_abm: (pos: Vec3) => void = () => {};
+			let on_abm: ((pos: Vec3) => void) | undefined;
 			// 		 local on_construct
 			// 		 local after_destruct
-			// 		 local after_place_node
+			let after_place_node:
+				| ((
+						pos: Vec3,
+						placer: ObjectRef,
+						itemstack: ItemStackObject,
+						pointed_thing: PointedThing
+				  ) => void)
+				| undefined;
 
 			// Do custom functions for each node
 			// whether growing in place or up.
