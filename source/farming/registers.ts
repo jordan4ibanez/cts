@@ -22,7 +22,7 @@ namespace farming {
 		},
 	});
 
-	// core.register_plant("sugarcane", {
+	farming.register_plant("sugarcane", {
 	// 	description = "Sugarcane",
 
 	// 	inventory_image = "sugarcane.png",
@@ -56,7 +56,7 @@ namespace farming {
 	// 		type = "fixed",
 	// 		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16}
 	// 	},
-	// })
+	})
 
 	// core.register_plant("grass", {
 	//     description = "Tall Grass",
