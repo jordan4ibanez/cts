@@ -223,14 +223,40 @@ namespace farming {
 					const nodeAboveDef: NodeDefinition | undefined =
 						core.registered_nodes[nodeAboveName];
 
-					if (nodeAboveDef?.buildable_to) {
-						core.dig_node(
-							vector.create3d(
-								pointed_thing.under.x,
-								pointed_thing.under.y + 1,
-								pointed_thing.under.z
-							)
+					if (nodeAboveName != "air" && nodeAboveDef?.buildable_to) {
+						const abovePos: Vec3 = vector.create3d(
+							pointed_thing.under.x,
+							pointed_thing.under.y + 1,
+							pointed_thing.under.z
 						);
+
+						core.dig_node(abovePos);
+
+						core.add_particlespawner({
+							amount: 20,
+							time: 0.0001,
+							minpos: vector.create3d({
+								x: abovePos.x - 0.5,
+								y: abovePos.y - 0.5,
+								z: abovePos.z - 0.5,
+							}),
+							maxpos: vector.create3d({
+								x: abovePos.x + 0.5,
+								y: abovePos.y + 0.5,
+								z: abovePos.z + 0.5,
+							}),
+							minvel: vector.create3d(-1, 0, -1),
+							maxvel: vector.create3d(1, 0, 1),
+							minacc: vector.create3d({ x: 0, y: -9.81, z: 0 }),
+							maxacc: vector.create3d({ x: 0, y: -9.81, z: 0 }),
+							minexptime: 0.5,
+							maxexptime: 1.5,
+							minsize: 0,
+							maxsize: 0,
+							collisiondetection: true,
+							vertical: false,
+							node: { name: nodeAboveName },
+						});
 					}
 
 					itemstack.add_wear(wear);
