@@ -283,38 +283,34 @@ namespace hunger {
 		player.set_wielded_item(item);
 	}
 
-	// // players eat food
-	// local name
-	// local temp_pool
-	// local item
-	// local satiation
-	// local hunger
-	// player_eat_food = function(player,item)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	if type(item) == "string" then
-	// 		item = ItemStack(item)
-	// 	elseif type(item) == "table" then
-	// 		item = ItemStack(item.name)
-	// 	end
-	// 	item = item:get_name()
-	// 	satiation = core.get_item_group( item, "satiation" )
-	// 	hunger    = core.get_item_group( item, "hunger"    )
-	// 	temp_pool.hunger = temp_pool.hunger + hunger
-	// 	if temp_pool.hunger > 20 then
-	// 		temp_pool.hunger = 20
-	// 	end
-	// 	// unlimited
-	// 	// this makes the game easier
-	// 	temp_pool.satiation = temp_pool.satiation + satiation
-	// 	take_food(player)
-	// 	hud_manager.change_hud({
-	// 		player    =  player ,
-	// 		hud_name  = "hunger",
-	// 		element   = "number",
-	// 		data      =  temp_pool.hunger
-	// 	})
-	// end
+	// Players eat food.
+	export function player_eat_food(player: ObjectRef, item: ItemStackObject) {
+		// 	name = player:get_player_name()
+		// 	temp_pool = pool[name]
+		// 	if type(item) == "string" then
+		// 		item = ItemStack(item)
+		// 	elseif type(item) == "table" then
+		// 		item = ItemStack(item.name)
+		// 	end
+		// 	item = item:get_name()
+		// 	satiation = core.get_item_group( item, "satiation" )
+		// 	hunger    = core.get_item_group( item, "hunger"    )
+		// 	temp_pool.hunger = temp_pool.hunger + hunger
+		// 	if temp_pool.hunger > 20 then
+		// 		temp_pool.hunger = 20
+		// 	end
+		// 	// unlimited
+		// 	// this makes the game easier
+		// 	temp_pool.satiation = temp_pool.satiation + satiation
+		// 	take_food(player)
+		// 	hud_manager.change_hud({
+		// 		player    =  player ,
+		// 		hud_name  = "hunger",
+		// 		element   = "number",
+		// 		data      =  temp_pool.hunger
+		// 	})
+	}
+
 	// // easily allows mods to register food
 	// core.register_food = function(name,def)
 	// 	core.register_craftitem(":"+name, {
