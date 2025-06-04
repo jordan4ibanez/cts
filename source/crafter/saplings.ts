@@ -164,7 +164,8 @@ namespace crafter {
 					"soil"
 				) > 0
 			) {
-				return core.item_place(itemstack, placer, pointed_thing);
+				core.item_place(itemstack, placer, pointed_thing);
+				return itemstack;
 			}
 			//place sapling
 			const pos: Vec3 = pointed_thing.above;
