@@ -275,8 +275,8 @@ namespace hunger {
 			}
 		}
 	);
-	// // take the eaten food
-	// local item
+	// Take the eaten food.
+	
 	// local take_food = function(player)
 	// 	item = player:get_wielded_item()
 	// 	item:take_item()
