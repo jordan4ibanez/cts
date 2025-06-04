@@ -12,7 +12,7 @@ farming.register_plant("cactus", {
 	
 	sunlight_propagates : true,
 	
-	drawtype : "nodebox",
+	drawtype : Drawtype.nodebox,
 	
 	buildable_to : false,
 	
