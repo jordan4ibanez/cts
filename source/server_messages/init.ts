@@ -60,8 +60,10 @@ namespace serverMessages {
 		);
 	});
 
-	// core.register_on_leaveplayer(function(player)
-	//     local name = player:get_player_name()
-	//     core.chat_send_all(name+leave_messages[math.random(1,table.getn(leave_messages))])
-	// end)
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		core.chat_send_all(
+			name + leave_messages[math.random(0, leave_messages.length)]
+		);
+	});
 }
