@@ -156,7 +156,7 @@ namespace farming {
 				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			grows : PlantGrowth.inPlaceYields,
-			grown_node:"farming:melon",
+			grownNode:"farming:melon",
 			stages : 7,
 			//stem stage complete definition (fully grown and budding)
 			stem_description : "",
