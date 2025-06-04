@@ -345,19 +345,19 @@ namespace farming {
 				after_place_node: after_place_node,
 			});
 
-			// 		if on_abm then
-			// 			core.register_abm({
-			// 				label = nodename+" Grow",
-			// 				nodenames = {nodename},
-			// 				neighbors = {"air"},
-			// 				interval = 6,
-			// 				chance = 250,
-			// 				catch_up = true,
-			// 				action = function(pos)
-			// 					on_abm(pos)
-			// 				end,
-			// 			})
-			// 		end
+			if (on_abm != null) {
+				core.register_abm({
+					label: nodename + " Grow",
+					nodenames: [nodename],
+					neighbors: ["air"],
+					interval: 6,
+					chance: 250,
+					catch_up: true,
+					action: (pos: Vec3) => {
+						on_abm(pos);
+					},
+				});
+			}
 		}
 
 		// 	//create final stage for grow in place plant stems that create food
