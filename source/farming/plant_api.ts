@@ -1,7 +1,9 @@
 namespace farming {
-	//  //plant growth time contants (in seconds)
-	//  local plant_min = 60
-	//  local plant_max = 240
+	 // Plant growth time contants (in seconds).
+
+	 const plant_min: number = 60
+	 const plant_max: number = 240
+
 	//  core.register_plant = function(name,def)
 	// 	local max = 1
 	// 	 if def.stages then
