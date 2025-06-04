@@ -1,9 +1,4 @@
 namespace treecapitator {
-	// local
-	// minetest,vector,pairs,math
-	// =
-	// minetest,vector,pairs,math
-
 	// local treecaptitator = {}
 
 	// -- Leafdecay
