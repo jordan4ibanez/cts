@@ -16,7 +16,10 @@ namespace farming {
 	}
 
 	for (const [level, material] of pairs(__materials)) {
-		// 	local wear = 100*(6-level)
+		if (typeof level != "number") {
+			throw new Error("How");
+		}
+		const wear: number = 100 * (6 - level);
 		// 	local groupcaps2
 		// 	if material == "wood" then
 		// 		groupcaps2={
