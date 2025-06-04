@@ -205,20 +205,20 @@ namespace hunger {
 				}
 				// Count down hunger bars.
 			} else if (data.hunger > 0) {
-				//     temp_pool.exhaustion = tick_up_hunger(state,temp_pool.exhaustion)
-				//     if temp_pool.exhaustion >= hunger_peak then
-				//         //don't allow hunger to go negative
-				//         if temp_pool.hunger > 0 then
-				//             temp_pool.exhaustion = temp_pool.exhaustion - hunger_peak
-				//             temp_pool.hunger = temp_pool.hunger - 1
-				//         end
-				//         hud_manager.change_hud({
-				//             player    =  player ,
-				//             hud_name  = "hunger",
-				//             element   = "number",
-				//             data      =  temp_pool.hunger
-				//         })
-				//     end
+				data.exhaustion = tick_up_hunger(state, data.exhaustion);
+				if (data.exhaustion >= hunger_peak) {
+					// Don't allow hunger to go negative.
+					if (data.hunger > 0) {
+						data.exhaustion -= hunger_peak;
+						data.hunger -= 1;
+					}
+					hudManager.change_hud({
+						player: player,
+						hudName: "hunger",
+						element: "number",
+						data: data.hunger,
+					});
+				}
 				// Hurt the player if hunger bar empty.
 			} else if (data.hunger <= 0) {
 				//     temp_pool.exhaustion = temp_pool.exhaustion + 1
