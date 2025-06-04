@@ -116,12 +116,15 @@ namespace serverUtilities {
 				player.add_velocity(vector.multiply(player.get_velocity(), -1));
 				player.move_to(newpos);
 			} else {
-				// 			local diff = home_timeout-math.ceil(time-pool[name])+1
-				// 			local s = "s"
-				// 			if diff == 1 then
-				// 				s = ""
-				// 			end
-				// 			core.chat_send_player(name, diff+" more second"+s+" until you can run that command.")
+				const s = diff == 1 ? "" : "s";
+
+				core.chat_send_player(
+					name,
+					diff +
+						" more second" +
+						s +
+						" until you can run that command."
+				);
 			}
 		},
 	});
