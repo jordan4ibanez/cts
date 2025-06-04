@@ -11,7 +11,7 @@ namespace farming {
 	export function register_plant(name: string, def: PlantDefinition) {
 		const max: number = def.stages;
 
-		// 	 for i = 1,max do
+			 for (const i of  $range(1,max)) {
 		// 		local nodename
 		// 		if def.stages then
 		// 			nodename = "farming:"..name.."_"..i
@@ -211,7 +211,7 @@ namespace farming {
 		// 				end,
 		// 			})
 		// 		end
-		// 	end //! End for loop
+             }
 
 		// 	//create final stage for grow in place plant stems that create food
 		// 	if def.grows == "in_place_yields" then
