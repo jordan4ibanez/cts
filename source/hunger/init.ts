@@ -194,7 +194,7 @@ namespace hunger {
 			}
 			// Count down invisible satiation bar.
 			if (data.satiation > 0 && data.hunger >= 20) {
-				//     temp_pool.exhaustion = tick_up_satiation(state, temp_pool.exhaustion)
+				data.exhaustion = tick_up_satiation(state, data.exhaustion);
 				//     if temp_pool.exhaustion > exhaustion_peak then
 				//         temp_pool.satiation = temp_pool.satiation - 1
 				//         temp_pool.exhaustion = temp_pool.exhaustion - exhaustion_peak
