@@ -233,7 +233,7 @@ namespace serverUtilities {
 				} else {
 					core.chat_send_player(
 						name,
-						`Traveling home in ${tostring(math.abs(newTime))}...`
+						`${tostring(math.abs(newTime))}...`
 					);
 				}
 			}
