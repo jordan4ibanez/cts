@@ -8,11 +8,11 @@ namespace hunger {
 	// 	name = player:get_player_name()
 	// 	pool[name] = {}
 	// 	temp_pool = pool[name]
-	// 	if mod_storage:get_int(name.."h_save") > 0 then
-	// 		temp_pool.hunger                = mod_storage:get_int(name.."hunger"               )
-	// 		temp_pool.satiation             = mod_storage:get_int(name.."satiation"            )
-	// 		temp_pool.exhaustion            = mod_storage:get_int(name.."exhaustion"           )
-	// 		temp_pool.regeneration_interval = mod_storage:get_int(name.."regeneration_interval")
+	// 	if mod_storage:get_int(name+"h_save") > 0 then
+	// 		temp_pool.hunger                = mod_storage:get_int(name+"hunger"               )
+	// 		temp_pool.satiation             = mod_storage:get_int(name+"satiation"            )
+	// 		temp_pool.exhaustion            = mod_storage:get_int(name+"exhaustion"           )
+	// 		temp_pool.regeneration_interval = mod_storage:get_int(name+"regeneration_interval")
 	// 	else
 	// 		temp_pool.hunger                = 20
 	// 		temp_pool.satiation             = 20
@@ -28,11 +28,11 @@ namespace hunger {
 	// 		name = name:get_player_name()
 	// 	end
 	// 	temp_pool = pool[name]
-	// 	mod_storage:set_int(name.."hunger",               temp_pool.hunger               )
-	// 	mod_storage:set_int(name.."satiation",            temp_pool.satiation            )
-	// 	mod_storage:set_int(name.."exhaustion",           temp_pool.exhaustion           )
-	// 	mod_storage:set_int(name.."regeneration_interval",temp_pool.regeneration_interval)
-	// 	mod_storage:set_int(name.."h_save",1)
+	// 	mod_storage:set_int(name+"hunger",               temp_pool.hunger               )
+	// 	mod_storage:set_int(name+"satiation",            temp_pool.satiation            )
+	// 	mod_storage:set_int(name+"exhaustion",           temp_pool.exhaustion           )
+	// 	mod_storage:set_int(name+"regeneration_interval",temp_pool.regeneration_interval)
+	// 	mod_storage:set_int(name+"h_save",1)
 	// 	pool[name] = nil
 	// end
 	// // is used for shutdowns to save all data
@@ -252,12 +252,12 @@ namespace hunger {
 	// end
 	// // easily allows mods to register food
 	// core.register_food = function(name,def)
-	// 	core.register_craftitem(":"..name, {
+	// 	core.register_craftitem(":"+name, {
 	// 		description = def.description,
 	// 		inventory_image = def.texture,
 	// 		groups = {satiation=def.satiation,hunger=def.hunger},
 	// 	})
-	// 	core.register_node(":"..name.."node", {
+	// 	core.register_node(":"+name+"node", {
 	// 		tiles = {def.texture},
 	// 		drawtype = "allfaces",
 	// 	})
