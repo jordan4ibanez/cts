@@ -260,70 +260,91 @@ namespace farming {
 	// })
 
 	farming.register_plant("pumpkin_stem", {
-		    description : "Pumpkin Stem",
-		    drawtype : Drawtype.plantlike,
-			waving : 1,
-			walkable : false,
-			climbable : false,
-			paramtype : ParamType1.light,
-			sunlight_propagates : true,
-		    tiles : ["melon_stage"], //automatically adds _X.png
-		    buildable_to : false,
-		    groups : {leaves : 1,plant:1, stem : 1, axe : 1, hand : 0,dig_immediate:1,attached_node:1,crops:1},
-		    sounds : crafter.grassSound(),
-		    selection_box : {
-				type : Nodeboxtype.fixed,
-				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
-			},
-			grows : PlantGrowth.inPlaceYields,
-			grownNode:"farming:pumpkin",
-			stages : 7,
+		description: "Pumpkin Stem",
+		drawtype: Drawtype.plantlike,
+		waving: 1,
+		walkable: false,
+		climbable: false,
+		paramtype: ParamType1.light,
+		sunlight_propagates: true,
+		tiles: ["melon_stage"], //automatically adds _X.png
+		buildable_to: false,
+		groups: {
+			leaves: 1,
+			plant: 1,
+			stem: 1,
+			axe: 1,
+			hand: 0,
+			dig_immediate: 1,
+			attached_node: 1,
+			crops: 1,
+		},
+		sounds: crafter.grassSound(),
+		selection_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16],
+		},
+		grows: PlantGrowth.inPlaceYields,
+		grownNode: "farming:pumpkin",
+		stages: 7,
 
-			//stem stage complete definition (fully grown and budding)
-			stem_description : "",
-			stem_tiles : ["nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png"],
-			stem_drawtype : Drawtype.nodebox,
-			stem_walkable : false,
-			stem_sunlight_propagates : true,
-			stem_paramtype : ParamType1.light,
-			stem_node_box : {
-				type : Nodeboxtype.fixed,
-				fixed : [
-					[-0/16, -8/16, -7/16,  0/16, 8/16,  7/16]
-                ],
-			},
-			stem_selection_box : {
-				type : Nodeboxtype.fixed,
-				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
-			},
-			stem_drop : {
-				max_items : 2,
-				items: [
+		//stem stage complete definition (fully grown and budding)
+		stem_description: "",
+		stem_tiles: [
+			"nothing.png",
+			"nothing.png",
+			"melon_stage_complete.png^[transformFX",
+			"melon_stage_complete.png",
+			"nothing.png",
+			"nothing.png",
+		],
+		stem_drawtype: Drawtype.nodebox,
+		stem_walkable: false,
+		stem_sunlight_propagates: true,
+		stem_paramtype: ParamType1.light,
+		stem_node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [[-0 / 16, -8 / 16, -7 / 16, 0 / 16, 8 / 16, 7 / 16]],
+		},
+		stem_selection_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16],
+		},
+		stem_drop: {
+			max_items: 2,
+			items: [
 				{
-					items : ["farming:pumpkin_seeds"],
+					items: ["farming:pumpkin_seeds"],
 				},
 				{
-					rarity : 2,
-					items : ["farming:pumpkin_seeds"],
+					rarity: 2,
+					items: ["farming:pumpkin_seeds"],
 				},
-            ],
-			},
-		    stem_groups : {plant:1,dig_immediate:1,attached_node:1,crops:1},
-		    stem_sounds : crafter.woodSound(),
+			],
+		},
+		stem_groups: { plant: 1, dig_immediate: 1, attached_node: 1, crops: 1 },
+		stem_sounds: crafter.woodSound(),
 
-		    //fruit definition (what the stem creates)
-		    fruit_name        : "pumpkin",
-		    fruit_description : "Pumpkin",
-		    fruit_tiles : ["pumpkin_top.png","pumpkin_top.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png","pumpkin_side.png"],
-		    fruit_groups : {pathable : 1,wood:1,flammable:1},
-		    fruit_sounds : crafter.woodSound(),
-			//seed definition
-			//"farming:wheat_1"
-			seed_name : "pumpkin",
-			seed_description : "Pumpkin Seeds",
-			seed_inventory_image : "pumpkin_seeds.png",
-			seed_plants : "farming:pumpkin_stem_1",
-	})
+		//fruit definition (what the stem creates)
+		fruit_name: "pumpkin",
+		fruit_description: "Pumpkin",
+		fruit_tiles: [
+			"pumpkin_top.png",
+			"pumpkin_top.png",
+			"pumpkin_side.png",
+			"pumpkin_side.png",
+			"pumpkin_side.png",
+			"pumpkin_side.png",
+		],
+		fruit_groups: { pathable: 1, wood: 1, flammable: 1 },
+		fruit_sounds: crafter.woodSound(),
+		//seed definition
+		//"farming:wheat_1"
+		seed_name: "pumpkin",
+		seed_description: "Pumpkin Seeds",
+		seed_inventory_image: "pumpkin_seeds.png",
+		seed_plants: "farming:pumpkin_stem_1",
+	});
 
 	// core.register_craft({
 	// 	type = "shapeless",
