@@ -22,7 +22,13 @@ namespace farming {
 
 	core.register_craft({
 		output: "crafter_farming:bread",
-		recipe: [["crafter_farming:wheat", "crafter_farming:wheat", "crafter_farming:wheat"]],
+		recipe: [
+			[
+				"crafter_farming:wheat",
+				"crafter_farming:wheat",
+				"crafter_farming:wheat",
+			],
+		],
 	});
 	core.register_craft({
 		type: CraftRecipeType.cooking,
