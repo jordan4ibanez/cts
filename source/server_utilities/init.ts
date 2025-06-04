@@ -5,8 +5,8 @@ namespace serverUtilities {
 
 	// local pool = {}
 	// local home_timeout = 60
-	// --this does not terminate data because player's can spam
-	// --leave and come back in to reset the home timout
+	// //this does not terminate data because player's can spam
+	// //leave and come back in to reset the home timout
 	// core.register_chatcommand("sethome", {
 	// 	params = "nil",
 	// 	description = "Use this to set your home. Can be returned to by setting /home",
