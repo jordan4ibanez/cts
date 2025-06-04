@@ -376,7 +376,7 @@ namespace farming {
 	core.register_decoration({
 		name: "farming:sugarcane",
 		deco_type: DecorationType.simple,
-		place_on: ["main:dirt", "main:grass", "main:sand"],
+		place_on: ["crafter:dirt", "crafter:grass", "crafter:sand"],
 		sidelen: 16,
 		noise_params: {
 			offset: -0.3,
@@ -391,14 +391,14 @@ namespace farming {
 		decoration: "farming:sugarcane",
 		height: 2,
 		height_max: 5,
-		spawn_by: "main:water",
+		spawn_by: "crafter:water",
 		num_spawn_by: 1,
 	});
 
 	// core.register_decoration({
 	// 		name = "farming:cactus",
 	// 		deco_type = "simple",
-	// 		place_on = {"main:sand"},
+	// 		place_on = {"crafter:sand"},
 	// 		sidelen = 16,
 	// 		noise_params = {
 	// 			offset = -0.012,
@@ -417,7 +417,7 @@ namespace farming {
 
 	// core.register_decoration({
 	// 	deco_type = "simple",
-	// 	place_on = "main:grass",
+	// 	place_on = "crafter:grass",
 	// 	sidelen = 16,
 	// 	fill_ratio = 0.5,
 	// 	param2 = 0,
