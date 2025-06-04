@@ -175,16 +175,23 @@ namespace hunger {
 					`Player [${name}] was never added to the pool.`
 				);
 			}
-			// temp_pool = pool[name]
-			// //movement state
-			// state = get_player_state(player)
-			// // if player is moving in state 0 add 0.5
-			// if state == 0 then
-			//     input = player:get_player_control()
-			//     if input.jump or input.right or input.left or input.down or input.up then
-			//         state = 0.5
-			//     end
-			// end
+
+			// Movement state.
+			let state: number = playerMechanics.get_player_state(player);
+
+			// If player is moving in state 0 add 0.5.
+			if (state == 0) {
+				const input: PlayerControlObject = player.get_player_control();
+				if (
+					input.jump ||
+					input.right ||
+					input.left ||
+					input.down ||
+					input.up
+				) {
+					state = 0.5;
+				}
+			}
 			// // count down invisible satiation bar
 			// if temp_pool.satiation > 0 and temp_pool.hunger >= 20 then
 			//     temp_pool.exhaustion = tick_up_satiation(state, temp_pool.exhaustion)
