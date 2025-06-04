@@ -210,13 +210,13 @@ namespace farming {
 					return;
 				}
 
-				// 			local tilled = till_soil(pointed_thing.under)
-				// 			if tilled == true then
-				// 				if core.registered_nodes[core.get_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z)).name].buildable_to then
-				// 					core.dig_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z))
-				// 				end
-				// 				itemstack:add_wear(wear)
-				// 			end
+				const tilled: boolean = till_soil(pointed_thing.under);
+				if (tilled == true) {
+									if (core.registered_nodes[core.get_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z)).name].buildable_to) {
+					// 					core.dig_node(vector.new(pointed_thing.under.x,pointed_thing.under.y+1,pointed_thing.under.z))
+                                    }
+					// 				itemstack:add_wear(wear)
+				}
 				// 			local damage = itemstack:get_wear()
 				// 			if damage <= 0 and tilled == true  then
 				// 				core.sound_play("tool_break",{object=placer})
