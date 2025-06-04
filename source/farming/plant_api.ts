@@ -65,10 +65,13 @@ namespace farming {
 				};
 
 				on_abm = (pos) => {
-					// 				if core.get_node_light(pos, nil) < 10 then
-					// 					//print("failed to grow at "+dump(pos))
-					// 					return
-					// 				end
+					{
+						const possibleLight = core.get_node_light(pos, null);
+						if (!possibleLight || possibleLight < 10) {
+							//print("failed to grow at "+dump(pos))
+							return;
+						}
+					}
 					// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
 					// 				pos.y = pos.y - 1
 					// 				local noder = core.get_node(pos).name
