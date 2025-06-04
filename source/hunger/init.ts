@@ -228,8 +228,8 @@ namespace hunger {
 					data.exhaustion = 0;
 				}
 			}
-			// hp = player:get_hp()
-			// drowning = is_player_drowning(player)
+			const hp: number = player.get_hp();
+			const isDrowning: boolean = drowning.is_player_drowning(player);
 			// //make regeneration happen every second
 			// if not is_player_on_fire(player) and drowning == 0 and temp_pool.hunger >= 20 and hp < 20 then //  meta:get_int("on_fire") == 0
 			//     temp_pool.regeneration_interval = temp_pool.regeneration_interval + 1
