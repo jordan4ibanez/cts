@@ -4,13 +4,15 @@ namespace farming {
 	const plant_min: number = 60;
 	const plant_max: number = 240;
 
-    export enum PlantGrowth {
-        up, inPlace, inPlaceYields
-    }
+	export enum PlantGrowth {
+		up,
+		inPlace,
+		inPlaceYields,
+	}
 
 	interface PlantDefinition {
 		stages: number;
-        grows: PlantGrowth;
+		grows: PlantGrowth;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -37,134 +39,134 @@ namespace farming {
 
 			// Do custom functions for each node
 			// whether growing in place or up.
-                    if (def.grows == PlantGrowth.up) {
-			// 			 after_dig_node = function(pos, node, metadata, digger)
-			// 				if digger == nil then return end
-			// 				local np = {x = pos.x, y = pos.y + 1, z = pos.z}
-			// 				local nn = core.get_node(np)
-			// 				if nn.name == node.name then
-			// 					core.node_dig(np, nn, digger)
-			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 				end
-			// 			end
-			// 			on_abm = function(pos)
-			// 				if core.get_node_light(pos, nil) < 10 then
-			// 					//print("failed to grow at "+dump(pos))
-			// 					return
-			// 				end
-			// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
-			// 				pos.y = pos.y - 1
-			// 				local noder = core.get_node(pos).name
-			// 				local found_soil = core.get_item_group(noder, "soil") > 0
-			// 				local found_self//[[this is deep]]= (noder == nodename)
-			// 				if found and (found_soil or found_self) then
-			// 					pos.y = pos.y + 2
-			// 					if core.get_node(pos).name == "air" then
-			// 						core.set_node(pos,{name="farming:"+name})
-			// 					end
-			// 				elseif not found_self then
-			// 					pos.y = pos.y + 1
-			// 					core.dig_node(pos)
-			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 				end
-			// 			end
-			// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
-			// 				pos.y = pos.y - 1
-			// 				local noder = core.get_node(pos).name
-			// 				local found = core.get_node_group(noder, "soil") > 0
-			// 				if not found then
-			// 					pos.y = pos.y + 1
-			// 					core.dig_node(pos)
-			// 				end
-			// 			end
-			// 		//for plants that grow in place
-                    } else if (def.grows == PlantGrowth.inPlace) {
-			// 			on_abm = function(pos)
-			// 				if core.get_node_light(pos, nil) < 10 then
-			// 					core.dig_node(pos)
-			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 					//print("failed to grow at "+dump(pos))
-			// 					return
-			// 				end
-			// 				pos.y = pos.y - 1
-			// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
-			// 				//if found farmland below
-			// 				if found then
-			// 					if i < max then
-			// 						pos.y = pos.y + 1
-			// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
-			// 					end
-			// 				//if not found farmland
-			// 				else
-			// 					core.dig_node(pos)
-			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 				end
-			// 			end
-			// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
-			// 				pos.y = pos.y - 1
-			// 				local noder = core.get_node(pos).name
-			// 				local found = core.get_node_group(noder, "farmland") > 0
-			// 				if not found then
-			// 					pos.y = pos.y + 1
-			// 					core.dig_node(pos)
-			// 				end
-			// 			end
-                    } else if (def.grows == PlantGrowth.inPlaceYields) {
-			// 			on_abm = function(pos)
-			// 				if core.get_node_light(pos, nil) < 10 then
-			// 					core.dig_node(pos)
-			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 					//print("failed to grow at "+dump(pos))
-			// 					return
-			// 				end
-			// 				pos.y = pos.y - 1
-			// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
-			// 				//if found farmland below
-			// 				if found then
-			// 					if i < max then
-			// 						pos.y = pos.y + 1
-			// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
-			// 					else
-			// 						pos.y = pos.y + 1
-			// 						local found = false
-			// 						local add_node = nil
-			// 						for x = -1,1 do
-			// 							if found == false then
-			// 								for z = -1,1 do
-			// 									if math.abs(x)+math.abs(z) == 1 then
-			// 										local node_get = core.get_node(vector.new(pos.x-x,pos.y,pos.z-z)).name == "air"
-			// 										if node_get then
-			// 											add_node = vector.new(pos.x-x,pos.y,pos.z-z)
-			// 											found = true
-			// 										end
-			// 									end
-			// 								end
-			// 							end
-			// 						end
-			// 						if found == true and add_node then
-			// 							local param2 = core.dir_to_facedir(vector.direction(pos,add_node))
-			// 							core.add_node(add_node,{name=def.grown_node,param2=param2})
-			// 							local facedir = core.facedir_to_dir(param2)
-			// 							local inverted_facedir = vector.multiply(facedir,-1)
-			// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
-			// 						end
-			// 					end
-			// 				//if not found farmland
-			// 				else
-			// 					core.dig_node(pos)
-			// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-			// 				end
-			// 			end
-			// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
-			// 				pos.y = pos.y - 1
-			// 				local noder = core.get_node(pos).name
-			// 				local found = core.get_node_group(noder, "farmland") > 0
-			// 				if not found then
-			// 					pos.y = pos.y + 1
-			// 					core.dig_node(pos)
-			// 				end
-			// 			end
-                    }
+			if (def.grows == PlantGrowth.up) {
+				// 			 after_dig_node = function(pos, node, metadata, digger)
+				// 				if digger == nil then return end
+				// 				local np = {x = pos.x, y = pos.y + 1, z = pos.z}
+				// 				local nn = core.get_node(np)
+				// 				if nn.name == node.name then
+				// 					core.node_dig(np, nn, digger)
+				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+				// 				end
+				// 			end
+				// 			on_abm = function(pos)
+				// 				if core.get_node_light(pos, nil) < 10 then
+				// 					//print("failed to grow at "+dump(pos))
+				// 					return
+				// 				end
+				// 				local found = core.find_node_near(pos, 3, {"main:water","main:waterflow"})
+				// 				pos.y = pos.y - 1
+				// 				local noder = core.get_node(pos).name
+				// 				local found_soil = core.get_item_group(noder, "soil") > 0
+				// 				local found_self//[[this is deep]]= (noder == nodename)
+				// 				if found and (found_soil or found_self) then
+				// 					pos.y = pos.y + 2
+				// 					if core.get_node(pos).name == "air" then
+				// 						core.set_node(pos,{name="farming:"+name})
+				// 					end
+				// 				elseif not found_self then
+				// 					pos.y = pos.y + 1
+				// 					core.dig_node(pos)
+				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+				// 				end
+				// 			end
+				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
+				// 				pos.y = pos.y - 1
+				// 				local noder = core.get_node(pos).name
+				// 				local found = core.get_node_group(noder, "soil") > 0
+				// 				if not found then
+				// 					pos.y = pos.y + 1
+				// 					core.dig_node(pos)
+				// 				end
+				// 			end
+				// 		//for plants that grow in place
+			} else if (def.grows == PlantGrowth.inPlace) {
+				// 			on_abm = function(pos)
+				// 				if core.get_node_light(pos, nil) < 10 then
+				// 					core.dig_node(pos)
+				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+				// 					//print("failed to grow at "+dump(pos))
+				// 					return
+				// 				end
+				// 				pos.y = pos.y - 1
+				// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
+				// 				//if found farmland below
+				// 				if found then
+				// 					if i < max then
+				// 						pos.y = pos.y + 1
+				// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
+				// 					end
+				// 				//if not found farmland
+				// 				else
+				// 					core.dig_node(pos)
+				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+				// 				end
+				// 			end
+				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
+				// 				pos.y = pos.y - 1
+				// 				local noder = core.get_node(pos).name
+				// 				local found = core.get_node_group(noder, "farmland") > 0
+				// 				if not found then
+				// 					pos.y = pos.y + 1
+				// 					core.dig_node(pos)
+				// 				end
+				// 			end
+			} else if (def.grows == PlantGrowth.inPlaceYields) {
+				// 			on_abm = function(pos)
+				// 				if core.get_node_light(pos, nil) < 10 then
+				// 					core.dig_node(pos)
+				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+				// 					//print("failed to grow at "+dump(pos))
+				// 					return
+				// 				end
+				// 				pos.y = pos.y - 1
+				// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
+				// 				//if found farmland below
+				// 				if found then
+				// 					if i < max then
+				// 						pos.y = pos.y + 1
+				// 						core.set_node(pos,{name="farming:"+name+"_"+(i+1)})
+				// 					else
+				// 						pos.y = pos.y + 1
+				// 						local found = false
+				// 						local add_node = nil
+				// 						for x = -1,1 do
+				// 							if found == false then
+				// 								for z = -1,1 do
+				// 									if math.abs(x)+math.abs(z) == 1 then
+				// 										local node_get = core.get_node(vector.new(pos.x-x,pos.y,pos.z-z)).name == "air"
+				// 										if node_get then
+				// 											add_node = vector.new(pos.x-x,pos.y,pos.z-z)
+				// 											found = true
+				// 										end
+				// 									end
+				// 								end
+				// 							end
+				// 						end
+				// 						if found == true and add_node then
+				// 							local param2 = core.dir_to_facedir(vector.direction(pos,add_node))
+				// 							core.add_node(add_node,{name=def.grown_node,param2=param2})
+				// 							local facedir = core.facedir_to_dir(param2)
+				// 							local inverted_facedir = vector.multiply(facedir,-1)
+				// 							core.set_node(vector.add(inverted_facedir,add_node), {name="farming:"+name+"_complete", param2=core.dir_to_facedir(facedir)})
+				// 						end
+				// 					end
+				// 				//if not found farmland
+				// 				else
+				// 					core.dig_node(pos)
+				// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+				// 				end
+				// 			end
+				// 			after_place_node = function(pos, placer, itemstack, pointed_thing)
+				// 				pos.y = pos.y - 1
+				// 				local noder = core.get_node(pos).name
+				// 				local found = core.get_node_group(noder, "farmland") > 0
+				// 				if not found then
+				// 					pos.y = pos.y + 1
+				// 					core.dig_node(pos)
+				// 				end
+				// 			end
+			}
 			// 		//allow plants to only drop item at max stage
 			// 		local drop
 			// 		if i == max and def.grows ~= "in_place_yields" then
