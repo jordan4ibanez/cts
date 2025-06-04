@@ -43,9 +43,9 @@ namespace farming {
 
 			let after_dig_node:
 				| ((
-						pos: Vec3,
-						node: NodeTable,
-						metadata: MetaRef,
+						position: Vec3,
+						oldNode: NodeTable,
+						oldMeta: string,
 						digger: ObjectRef
 				  ) => void)
 				| undefined;
@@ -68,7 +68,7 @@ namespace farming {
 				after_dig_node = (
 					pos: Vec3,
 					node: NodeTable,
-					metadata: MetaRef,
+					metadata: string,
 					digger: ObjectRef
 				) => {
 					const np = vector.create3d({
