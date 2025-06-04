@@ -83,10 +83,10 @@ namespace farming {
 						core.get_item_group(noder, "soil") > 0;
 					const found_self: boolean = noder == nodename;
 					if (found && (found_soil || found_self)) {
-						// 					pos.y = pos.y + 2
-						// 					if core.get_node(pos).name == "air" then
-						// 						core.set_node(pos,{name="farming:"+name})
-						// 					end
+						pos.y = pos.y + 2;
+						if (core.get_node(pos).name == "air") {
+							core.set_node(pos, { name: "farming:" + name });
+						}
 					} else if (!found_self) {
 						// 					pos.y = pos.y + 1
 						// 					core.dig_node(pos)
