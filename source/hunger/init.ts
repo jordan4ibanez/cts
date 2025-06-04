@@ -44,12 +44,13 @@ namespace hunger {
 		pool.delete(name);
 	}
 
-	// // is used for shutdowns to save all data
-	// local save_all = function()
-	// 	for name,_ in pairs(pool) do
-	// 		save_data(name)
-	// 	end
-	// end
+	// Is used for shutdowns to save all data.
+	function save_all(): void {
+		for (const name of pool.keys()) {
+			save_data(name);
+		}
+	}
+
 	// // an easy translation pool
 	// local satiation_pool = {
 	// 	[0]   = 1,
