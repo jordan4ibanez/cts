@@ -1,3 +1,4 @@
+namespace farming {
 // local path = minetest.get_modpath("farming")
 // dofile(path.."/plant_api.lua")
 // dofile(path.."/registers.lua")
@@ -38,3 +39,4 @@
 // 	recipe = "farming:bread",
 // 	cooktime = 3,
 // })
+}
