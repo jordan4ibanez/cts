@@ -148,20 +148,20 @@ namespace farming {
 			paramtype : "light",
 			sunlight_propagates : true,
 			is_ground_content : false,
-		    tiles : {"melon_stage"}, //automatically adds _X.png
+		    tiles : ["melon_stage"], //automatically adds _X.png
 		    buildable_to : false,
 		    groups : {leaves : 1,plant:1, stem : 1, axe : 1, hand : 0,dig_immediate:1,attached_node:1,crops:1},
-		    sounds : main.grassSound(),
+		    sounds : crafter.grassSound(),
 		    selection_box : {
 				type : "fixed",
-				fixed : {-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16}
+				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			grows : "in_place_yields",
 			grown_node:"farming:melon",
 			stages : 7,
 			//stem stage complete definition (fully grown and budding)
 			stem_description : "",
-			stem_tiles : {"nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png",},
+			stem_tiles : ["nothing.png","nothing.png","melon_stage_complete.png^[transformFX","melon_stage_complete.png","nothing.png","nothing.png",],
 			stem_drawtype : "nodebox",
 			stem_walkable : false,
 			stem_sunlight_propagates : true,
@@ -169,16 +169,16 @@ namespace farming {
 			stem_node_box : {
 				type : "fixed",
 				fixed : {
-					{-0/16, -8/16, -7/16,  0/16, 8/16,  7/16}
+					[-0/16, -8/16, -7/16,  0/16, 8/16,  7/16]
 				},
 			},
 			stem_selection_box : {
 				type : "fixed",
-				fixed : {-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16}
+				fixed : [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16]
 			},
 			stem_drop : {
 				max_items : 2,
-				items: {
+				items: [
 				{
 					items : {"farming:melon_seeds"},
 				},
@@ -186,20 +186,20 @@ namespace farming {
 					rarity : 2,
 					items : {"farming:melon_seeds"},
 				},
-				},
+            ],
 			},
 		    stem_groups : {plant:1,dig_immediate:1,attached_node:1,crops:1},
-		    stem_sounds : main.woodSound(),
+		    stem_sounds : crafter.woodSound(),
 
 		    //fruit definition (what the stem creates)
 		    fruit_name        : "melon",
 		    fruit_description : "Melon",
-		    fruit_tiles : {"melon_top.png","melon_top.png","melon_side.png","melon_side.png","melon_side.png","melon_side.png"},
+		    fruit_tiles : ["melon_top.png","melon_top.png","melon_side.png","melon_side.png","melon_side.png","melon_side.png"],
 		    fruit_groups : {pathable : 1,wood:1,flammable:1},
-		    fruit_sounds : main.woodSound(),
+		    fruit_sounds : crafter.woodSound(),
 		    fruit_drop  : {
 				max_items : 6,
-				items: {
+				items: [
 					{
 						items : {"farming:melon_slice"},
 					},
@@ -220,7 +220,7 @@ namespace farming {
 						rarity : 15,
 						items : {"farming:melon_seeds"},
 					},
-				},
+                ],
 			},
 
 			//seed definition
