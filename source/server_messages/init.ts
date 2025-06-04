@@ -1,6 +1,7 @@
 namespace serverMessages {
 	// local pool = {}
 
+    if (!core.is_singleplayer()){
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const meta: MetaRef = player.get_meta();
 		const welcomed: boolean = meta.get_int("welcomed") == 1;
@@ -13,6 +14,7 @@ namespace serverMessages {
 			core.chat_send_all("Welcome back " + name + "!");
 		}
 	});
+}
 
 	const death_messages: string[] = [
 		" got smoked!",
