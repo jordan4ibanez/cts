@@ -259,7 +259,7 @@ namespace farming {
 	// 	hunger=1,
 	// })
 
-	// core.register_plant("pumpkin_stem", {
+	farming.register_plant("pumpkin_stem", {
 	// 	    description = "Pumpkin Stem",
 	// 	    drawtype = "plantlike",
 	// 		waving = 1,
@@ -324,7 +324,7 @@ namespace farming {
 	// 		seed_description = "Pumpkin Seeds",
 	// 		seed_inventory_image = "pumpkin_seeds.png",
 	// 		seed_plants = "farming:pumpkin_stem_1",
-	// })
+	})
 
 	// core.register_craft({
 	// 	type = "shapeless",
