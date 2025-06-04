@@ -54,6 +54,8 @@ namespace farming {
 		fruit_description?: string;
 		fruit_tiles?: string[];
 		fruit_groups?: Dictionary<string, number>;
+		fruit_sounds?: NodeSoundSpec;
+		fruit_drop?: string;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
