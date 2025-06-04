@@ -144,7 +144,7 @@ namespace farming {
 						if (i < max) {
 							pos.y = pos.y + 1;
 							core.set_node(pos, {
-								name: "farming:" + name + "_" + (i + 1),
+								name: "farming:" + name + "_" + tostring(i + 1),
 							});
 						}
 						// If farmland is not found.
