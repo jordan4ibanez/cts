@@ -146,16 +146,17 @@ namespace hunger {
 		if (data == null) {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
-		// 	temp_pool.hunger                = 20
-		// 	temp_pool.satiation             = 20
-		// 	temp_pool.regeneration_interval = 0
-		// 	temp_pool.exhaustion            = 0
-		// 	hud_manager.change_hud({
-		// 		player    =  player ,
-		// 		hud_name  = "hunger",
-		// 		element   = "number",
-		// 		data      =  temp_pool.hunger
-		// 	})
+		data.hunger = 20;
+		data.satiation = 20;
+		data.regeneration_interval = 0;
+		data.exhaustion = 0;
+
+		hudManager.change_hud({
+			player: player,
+			hudName: "hunger",
+			element: "number",
+			data: data.hunger,
+		});
 	});
 
 	// local exhaustion_peak  = 512
