@@ -20,8 +20,9 @@ namespace farming {
 			throw new Error("How");
 		}
 		const wear: number = 100 * (6 - level);
-		// 	local groupcaps2
-		// 	if material == "wood" then
+			let groupcaps2: GroupCap | undefined
+
+			if (material == "wood") {
 		// 		groupcaps2={
 		// 			dirt =  {times={[1]=0.4,[2]=1.5,[3]=3,[4]=6,[5]=12},    uses=59, maxlevel=1},
 		// 			snow =  {times={[1]=0.4,[2]=1.5,[3]=3,[4]=6,[5]=12},    uses=59, maxlevel=1},
@@ -29,7 +30,7 @@ namespace farming {
 		// 			sand =  {times={[1]=0.4,[2]=1.5,[3]=3,[4]=6,[5]=12},    uses=59, maxlevel=1},
 		// 		}
 		// 		damage = 2.5
-		// 	elseif material == "stone" then
+            } else if (material == "stone") {
 		// 		groupcaps2={
 		// 			dirt =  {times={[1]=0.2,[2]=0.2,[3]=1.5,[4]=3,[5]=6},   uses=131, maxlevel=1},
 		// 			snow =  {times={[1]=0.2,[2]=0.2,[3]=1.5,[4]=3,[5]=6},   uses=131, maxlevel=1},
@@ -37,7 +38,7 @@ namespace farming {
 		// 			sand =  {times={[1]=0.2,[2]=0.2,[3]=1.5,[4]=3,[5]=6},   uses=131, maxlevel=1},
 		// 		}
 		// 		damage = 3.5
-		// 	elseif material == "iron" then
+            } else if (material == "iron") {
 		// 		groupcaps2={
 		// 			dirt =  {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
 		// 			snow =  {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
@@ -45,7 +46,7 @@ namespace farming {
 		// 			sand =  {times={[1]=0.15,[2]=0.15,[3]=0.15,[4]=1.5,[5]=3}, uses=250, maxlevel=1},
 		// 		}
 		// 		damage = 4.5
-		// 	elseif material == "gold" then
+            } else if (material == "gold") {
 		// 		groupcaps2={
 		// 			dirt =  {times={[1]=0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5}, uses=32, maxlevel=1},
 		// 			snow =  {times={[1]=0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5}, uses=32, maxlevel=1},
@@ -53,7 +54,7 @@ namespace farming {
 		// 			sand =  {times={[1]=0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5}, uses=32, maxlevel=1},
 		// 		}
 		// 		damage = 2.5
-		// 	elseif material == "diamond" then
+            } else if (material == "diamond") {
 		// 		groupcaps2={
 		// 			dirt =  {times={[1]= 0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5},     uses=1561, maxlevel=1},
 		// 			snow =  {times={[1]= 0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5},     uses=1561, maxlevel=1},
@@ -61,7 +62,7 @@ namespace farming {
 		// 			sand =  {times={[1]= 0.1,[2]=0.1,[3]=0.1,[4]=0.1,[5]=1.5},     uses=1561, maxlevel=1},
 		// 		}
 		// 		damage = 5.5
-		// 	end
+            }
 		// 	core.register_tool("crafter_farming:"..material.."hoe", {
 		// 		description = material:gsub("^%l", string.upper).." Hoe",
 		// 		inventory_image = material.."hoe.png",
