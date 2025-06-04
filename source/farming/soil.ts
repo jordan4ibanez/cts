@@ -24,7 +24,7 @@ namespace farming {
 					core.set_node(pos, { name: "farming:farmland_dry" });
 				}
 				const timer: NodeTimerObject = core.get_node_timer(pos);
-				timer.start(1);
+				timer.start(math.random(10, 25) + math.random());
 			};
 			on_timer = (pos: Vec3) => {
 				if (!soilHasWater(pos)) {
@@ -43,7 +43,7 @@ namespace farming {
 				if (found) {
 					core.set_node(pos, { name: "farming:farmland_wet" });
 					const timer: NodeTimerObject = core.get_node_timer(pos);
-					timer.start(1);
+					timer.start(math.random(10, 25) + math.random());
 				} else {
 					core.set_node(pos, { name: "main:dirt" });
 					if (
