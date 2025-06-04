@@ -33,11 +33,11 @@ namespace farming {
 
 		sounds : crafter.grassSound(),
 
-		paramtype : "light",
+		paramtype : ParamType1.light,
 
 		sunlight_propagates : true,
 
-		drawtype : "plantlike",
+		drawtype : Drawtype.plantlike,
 
 		buildable_to : false,
 
