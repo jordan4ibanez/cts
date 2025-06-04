@@ -212,7 +212,7 @@ namespace farming {
 
 				const tilled: boolean = till_soil(pointed_thing.under);
 				if (tilled == true) {
-					const nodeName: string = core.get_node(
+					const nodeAboveName: string = core.get_node(
 						vector.create3d(
 							pointed_thing.under.x,
 							pointed_thing.under.y + 1,
@@ -220,7 +220,10 @@ namespace farming {
 						)
 					).name;
 
-					if (core.registered_nodes[nodeName]?.buildable_to) {
+					const nodeAboveDef: NodeDefinition | undefined =
+						core.registered_nodes[nodeAboveName];
+
+					if (nodeAboveDef?.buildable_to) {
 						core.dig_node(
 							vector.create3d(
 								pointed_thing.under.x,
@@ -229,6 +232,7 @@ namespace farming {
 							)
 						);
 					}
+
 					itemstack.add_wear(wear);
 				}
 				const damage: number = itemstack.get_wear();
