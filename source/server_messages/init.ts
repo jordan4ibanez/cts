@@ -42,17 +42,17 @@ namespace serverMessages {
 		" is shutting down!",
 	];
 
-	// local leave_messages = {
-	// " logged out.",
-	// " gave up.",
-	// " rage quit.",
-	// "'s game probably crashed.",
-	// " got bored.",
-	// " left.",
-	// " is going IRL.",
-	// " left the matrix.",
-	// " is out.",
-	// }
+	const leave_messages: string[] = [
+		" logged out.",
+		" gave up.",
+		" rage quit.",
+		"'s game probably crashed.",
+		" got bored.",
+		" left.",
+		" is going IRL.",
+		" left the matrix.",
+		" is out.",
+	];
 	// core.register_on_dieplayer(function(player)
 	//     local name = player:get_player_name()
 	//     if (core.get_us_time()/1000000)-pool[name] > 0.001 then
