@@ -53,6 +53,7 @@ namespace serverMessages {
 		" left the matrix.",
 		" is out.",
 	];
+
 	core.register_on_dieplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 		core.chat_send_all(
@@ -60,10 +61,12 @@ namespace serverMessages {
 		);
 	});
 
-	core.register_on_leaveplayer((player: ObjectRef) => {
-		const name: string = player.get_player_name();
-		core.chat_send_all(
-			name + leave_messages[math.random(0, leave_messages.length)]
-		);
-	});
+	if (!core.is_singleplayer()) {
+		core.register_on_leaveplayer((player: ObjectRef) => {
+			const name: string = player.get_player_name();
+			core.chat_send_all(
+				name + leave_messages[math.random(0, leave_messages.length)]
+			);
+		});
+	}
 }
