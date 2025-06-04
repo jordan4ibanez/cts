@@ -3,14 +3,15 @@ namespace farming {
 	const material: string[] = ["wood", "stone", "iron", "gold", "diamond"];
 	const construct: string[] = ["wood", "cobble", "iron", "gold", "diamond"];
 
-	function till_soil(pos: Vec3) {
+	function till_soil(pos: Vec3): boolean {
 		const nodey: string = core.get_node(pos).name;
 		const is_dirt: boolean = nodey == "main:dirt" || nodey == "main:grass";
-		// 	if is_dirt then
-		// 		core.sound_play("dirt",{pos=pos})
-		// 		core.set_node(pos,{name="farming:farmland_dry"})
-		// 		return(true)
-		// 	end
+		if (is_dirt) {
+			core.sound_play("dirt", { pos: pos });
+			core.set_node(pos, { name: "farming:farmland_dry" });
+			return true;
+		}
+		return false;
 	}
 
 	// for level,material in pairs(material) do
