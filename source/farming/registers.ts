@@ -8,7 +8,7 @@ farming.register_plant("cactus", {
 	
 	sounds : crafter.dirtSound(),
 	
-	paramtype : "light",
+	paramtype : ParamType1.light,
 	
 	sunlight_propagates : true,
 	
