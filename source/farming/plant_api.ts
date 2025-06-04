@@ -33,6 +33,18 @@ namespace farming {
 		selection_box?: NodeBox;
 		node_box?: NodeBox;
 		sunlight_propagates?: boolean;
+
+		stem_description?: string;
+		stem_tiles?: string[];
+		stem_drawtype?: Drawtype;
+		stem_walkable?: boolean;
+		stem_sunlight_propagates?: boolean;
+		stem_paramtype?: ParamType1;
+		stem_drop?: string;
+		stem_groups?: Dictionary<string, number>;
+		stem_sounds?: NodeSoundSpec;
+		stem_node_box?: NodeBox;
+		stem_selection_box?: NodeBox;
 	}
 
 	export function register_plant(name: string, def: PlantDefinition) {
@@ -377,7 +389,7 @@ namespace farming {
 				sounds: def.stem_sounds,
 				node_box: def.stem_node_box,
 				selection_box: def.stem_selection_box,
-				paramtype2: "facedir",
+				paramtype2: ParamType2.facedir,
 			});
 
 			// 		core.register_node("farming:"+def.fruit_name, {
