@@ -1,5 +1,5 @@
 namespace farming {
-// minetest.register_plant("cactus", {
+// core.register_plant("cactus", {
 // 	description = "Cactus",
 	
 // 	tiles = {"cactus_top.png", "cactus_bottom.png", "cactus_side.png"},
@@ -37,7 +37,7 @@ namespace farming {
 // 	},
 // })
 
-// minetest.register_plant("sugarcane", {
+// core.register_plant("sugarcane", {
 // 	description = "Sugarcane",
 	
 // 	inventory_image = "sugarcane.png",
@@ -73,7 +73,7 @@ namespace farming {
 // 	},
 // })
 
-// minetest.register_plant("grass", {
+// core.register_plant("grass", {
 //     description = "Tall Grass",
 //     drawtype = "plantlike",
 // 	waving = 1,
@@ -111,7 +111,7 @@ namespace farming {
 // 	},
 // })
 
-// minetest.register_plant("wheat", {
+// core.register_plant("wheat", {
 // 	    description = "Wheat",
 // 	    drawtype = "plantlike",
 // 		waving = 1,
@@ -166,7 +166,7 @@ namespace farming {
 // 		seed_plants = "farming:wheat_1",
 // 	})
 
-// minetest.register_plant("melon_stem", {
+// core.register_plant("melon_stem", {
 // 	    description = "Melon Stem",
 // 	    drawtype = "plantlike",
 // 		waving = 1,
@@ -258,7 +258,7 @@ namespace farming {
 // 		seed_plants = "farming:melon_stem_1",
 // })
 
-// minetest.register_food("farming:melon_slice",{
+// core.register_food("farming:melon_slice",{
 // 	description = "Melon Slice",
 // 	texture = "melon_slice.png",
 // 	satiation=1,
@@ -266,7 +266,7 @@ namespace farming {
 // })
 
 
-// minetest.register_plant("pumpkin_stem", {
+// core.register_plant("pumpkin_stem", {
 // 	    description = "Pumpkin Stem",
 // 	    drawtype = "plantlike",
 // 		waving = 1,
@@ -333,18 +333,18 @@ namespace farming {
 // 		seed_plants = "farming:pumpkin_stem_1",
 // })
 
-// minetest.register_craft({
+// core.register_craft({
 // 	type = "shapeless",
 // 	output = "farming:pumpkin_seeds",
 // 	recipe = {"farming:pumpkin"},
 // })
-// minetest.register_craft({
+// core.register_craft({
 // 	type = "fuel",
 // 	recipe = "farming:pumpkin",
 // 	burntime = 3,
 // })
 
-// minetest.register_craft({
+// core.register_craft({
 // 	type = "cooking",
 // 	output = "farming:pumpkin_pie",
 // 	recipe = "farming:pumpkin",
@@ -352,14 +352,14 @@ namespace farming {
 // })
 
 
-// minetest.register_food("farming:pumpkin_pie",{
+// core.register_food("farming:pumpkin_pie",{
 // 	description = "Pumpkin Pie",
 // 	texture = "pumpkin_pie.png",
 // 	satiation=6,
 // 	hunger=3,
 // })
 
-// minetest.register_decoration({
+// core.register_decoration({
 // 	name = "farming:sugarcane",
 // 	deco_type = "simple",
 // 	place_on = {"main:dirt","main:grass","main:sand"},
@@ -382,7 +382,7 @@ namespace farming {
 // })
 
 
-// minetest.register_decoration({
+// core.register_decoration({
 // 		name = "farming:cactus",
 // 		deco_type = "simple",
 // 		place_on = {"main:sand"},
@@ -403,7 +403,7 @@ namespace farming {
 // 	})
 
 
-// minetest.register_decoration({
+// core.register_decoration({
 // 	deco_type = "simple",
 // 	place_on = "main:grass",
 // 	sidelen = 16,
