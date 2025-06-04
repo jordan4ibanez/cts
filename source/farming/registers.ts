@@ -1,77 +1,77 @@
 namespace farming {
 farming.register_plant("cactus", {
-	description = "Cactus",
+	description : "Cactus",
 	
-	tiles = {"cactus_top.png", "cactus_bottom.png", "cactus_side.png"},
+	tiles : {"cactus_top.png", "cactus_bottom.png", "cactus_side.png"},
 	
-	groups = {dig_immediate=1,flammable=1,touch_hurt=1},
+	groups : {dig_immediate:1,flammable:1,touch_hurt:1},
 	
-	sounds = main.dirtSound(),
+	sounds : main.dirtSound(),
 	
-	paramtype = "light",
+	paramtype : "light",
 	
-	sunlight_propagates = true,
+	sunlight_propagates : true,
 	
-	drawtype = "nodebox",
+	drawtype : "nodebox",
 	
-	buildable_to = false,
+	buildable_to : false,
 	
-	waving            = 0,
-	//inventory_image   = def.inventory_image,
-	//walkable          = def.walkable,
-	//climbable         = def.climbable,
-	//paramtype2        = def.paramtype2,
-	//buildable_to      = def.buildable_to,
-	//selection_box     = def.selection_box,
-	//drop              = def.drop,
-	grows             = "up",
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-7/16, -8/16, -7/16,  7/16, 8/16,  7/16}, // Main body
-			{-8/16, -8/16, -7/16,  8/16, 8/16, -7/16}, // Spikes
-			{-8/16, -8/16,  7/16,  8/16, 8/16,  7/16}, // Spikes
-			{-7/16, -8/16, -8/16, -7/16, 8/16,  8/16}, // Spikes
-			{7/16,  -8/16,  8/16,  7/16, 8/16, -8/16}, // Spikes
-		},
+	waving            : 0,
+	//inventory_image   : def.inventory_image,
+	//walkable          : def.walkable,
+	//climbable         : def.climbable,
+	//paramtype2        : def.paramtype2,
+	//buildable_to      : def.buildable_to,
+	//selection_box     : def.selection_box,
+	//drop              : def.drop,
+	grows             : "up",
+	node_box : {
+		type : "fixed",
+		fixed : [
+			[-7/16, -8/16, -7/16,  7/16, 8/16,  7/16], // Main body
+			[-8/16, -8/16, -7/16,  8/16, 8/16, -7/16], // Spikes
+			[-8/16, -8/16,  7/16,  8/16, 8/16,  7/16], // Spikes
+			[-7/16, -8/16, -8/16, -7/16, 8/16,  8/16], // Spikes
+			[7/16,  -8/16,  8/16,  7/16, 8/16, -8/16], // Spikes
+        ],
 	},
 })
 
-core.register_plant("sugarcane", {
-	description = "Sugarcane",
+// core.register_plant("sugarcane", {
+// 	description = "Sugarcane",
 	
-	inventory_image = "sugarcane.png",
+// 	inventory_image = "sugarcane.png",
 	
-	tiles = {"sugarcane.png"},
+// 	tiles = {"sugarcane.png"},
 	
-	groups = {dig_immediate=1,flammable=1},
+// 	groups = {dig_immediate=1,flammable=1},
 	
-	sounds = main.grassSound(),
+// 	sounds = main.grassSound(),
 	
-	paramtype = "light",
+// 	paramtype = "light",
 	
-	sunlight_propagates = true,
+// 	sunlight_propagates = true,
 	
-	drawtype = "plantlike",
+// 	drawtype = "plantlike",
 	
-	buildable_to = false,
+// 	buildable_to = false,
 	
-	waving = 1,
+// 	waving = 1,
 	
-	walkable = false,
-	//inventory_image   = def.inventory_image,
-	//walkable          = def.walkable,
-	//climbable         = def.climbable,
-	//paramtype2        = def.paramtype2,
-	//buildable_to      = def.buildable_to,
-	//selection_box     = def.selection_box,
-	//drop              = def.drop,
-	grows             = "up",
-	selection_box = {
-		type = "fixed",
-		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16}
-	},
-})
+// 	walkable = false,
+// 	//inventory_image   = def.inventory_image,
+// 	//walkable          = def.walkable,
+// 	//climbable         = def.climbable,
+// 	//paramtype2        = def.paramtype2,
+// 	//buildable_to      = def.buildable_to,
+// 	//selection_box     = def.selection_box,
+// 	//drop              = def.drop,
+// 	grows             = "up",
+// 	selection_box = {
+// 		type = "fixed",
+// 		fixed = {-7 / 16, -0.5, -7 / 16, 7 / 16, 0.5, 7 / 16}
+// 	},
+// })
 
 // core.register_plant("grass", {
 //     description = "Tall Grass",
