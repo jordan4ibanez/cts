@@ -147,7 +147,7 @@ namespace playerMechanics {
 		}
 
 		// todo: this depends on crafter hunger
-		const hunger = 0; //get_player_hunger(player)
+		const playerHunger = 0; //get_player_hunger(player)
 		const name: string = player.get_player_name();
 		const data: PlayerState | undefined = pool.get(name);
 		if (data == null) {
@@ -191,7 +191,7 @@ namespace playerMechanics {
 		if (
 			in_water != data.was_in_water ||
 			data.state != data.old_state ||
-			((data.state == 1 || data.state == 2) && hunger <= 6)
+			((data.state == 1 || data.state == 2) && playerHunger <= 6)
 		) {
 			if (!in_water && data.was_in_water) {
 				player.set_physics_override({
@@ -218,7 +218,7 @@ namespace playerMechanics {
 			}
 
 			// Running/swimming fov modifier.
-			if (hunger > 6 && (data.state == 1 || data.state == 2)) {
+			if (playerHunger > 6 && (data.state == 1 || data.state == 2)) {
 				player.set_fov(1.25, true, 0.15);
 				if (data.state == 2) {
 					player.set_physics_override({ speed: 1.75 });
@@ -242,7 +242,7 @@ namespace playerMechanics {
 				player.set_physics_override({ speed: 1 });
 				// Preserve network data.
 				send_running_cancellation(player, data.state == 3);
-			} else if ((data.state == 1 || data.state == 2) && hunger <= 6) {
+			} else if ((data.state == 1 || data.state == 2) && playerHunger <= 6) {
 				player.set_fov(1, true, 0.15);
 				player.set_physics_override({ speed: 1 });
 				// Preserve network data.
