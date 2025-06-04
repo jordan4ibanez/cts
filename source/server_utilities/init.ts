@@ -51,7 +51,7 @@ namespace serverUtilities {
 			const pos: Vec3 = player.get_pos();
 
 			if (diff <= 0) {
-				// 			mod_storage:set_string(name+"home", core.serialize(pos))
+				mod_storage.set_string(name + ":crafter_home", core.serialize(pos));
 				// 			pool[name] = time
 				// 			core.chat_send_player(name, "Home set.")
 			} else {
@@ -74,7 +74,7 @@ namespace serverUtilities {
 	// 		local time = core.get_us_time()/1000000
 	// 		local player = core.get_player_by_name(name)
 	// 		if not pool[name] or pool[name] and time-pool[name] > home_timeout then
-	// 			local newpos = core.deserialize(mod_storage:get_string(name+"home"))
+	// 			local newpos = core.deserialize(mod_storage:get_string(name+":crafter_home"))
 	// 			if newpos then
 	// 				player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
 	// 				player:move_to(newpos)
