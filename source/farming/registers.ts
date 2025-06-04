@@ -78,7 +78,7 @@ namespace farming {
 		},
 	});
 
-	// core.register_plant("wheat", {
+	farming.register_plant("wheat", {
 	// 	    description = "Wheat",
 	// 	    drawtype = "plantlike",
 	// 		waving = 1,
@@ -130,7 +130,7 @@ namespace farming {
 	// 		seed_description = "Wheat Seeds",
 	// 		seed_inventory_image = "wheat_seeds.png",
 	// 		seed_plants = "farming:wheat_1",
-	// 	})
+		})
 
 	// core.register_plant("melon_stem", {
 	// 	    description = "Melon Stem",
