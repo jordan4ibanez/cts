@@ -260,14 +260,19 @@ namespace hunger {
 		hunger_update();
 	});
 
-	// //take away hunger and satiation randomly while mining
-	// local name
-	// core.register_on_dignode(function(pos, oldnode, digger)
-	// 	if digger and digger:is_player() then
-	// 		name = digger:get_player_name()
-	// 		pool[name].exhaustion = pool[name].exhaustion + math.random(0,2)
-	// 	end
-	// end)
+	// Take away hunger and satiation randomly while mining.
+	core.register_on_dignode((pos, oldnode, digger) => {
+		if (digger.is_player()) {
+			const name = digger.get_player_name();
+			const data: HungerData | undefined = pool.get(name);
+			if (data == null) {
+				throw new Error(
+					`Player [${name}] was never added into the pool.`
+				);
+			}
+			data.exhaustion += math.random(0, 2);
+		}
+	});
 	// // take the eaten food
 	// local item
 	// local take_food = function(player)
