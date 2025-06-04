@@ -26,11 +26,6 @@ namespace hunger {
 			newData.regeneration_interval = mod_storage.get_int(
 				name + "regeneration_interval"
 			);
-		} else {
-			// 		temp_pool.hunger                = 20
-			// 		temp_pool.satiation             = 20
-			// 		temp_pool.regeneration_interval = 0
-			// 		temp_pool.exhaustion            = 0
 		}
 	}
 
