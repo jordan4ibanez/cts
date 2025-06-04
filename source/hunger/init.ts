@@ -141,19 +141,22 @@ namespace hunger {
 
 	// Resets the players hunger settings to max.
 	core.register_on_respawnplayer((player) => {
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	temp_pool.hunger                = 20
-	// 	temp_pool.satiation             = 20
-	// 	temp_pool.regeneration_interval = 0
-	// 	temp_pool.exhaustion            = 0
-	// 	hud_manager.change_hud({
-	// 		player    =  player ,
-	// 		hud_name  = "hunger",
-	// 		element   = "number",
-	// 		data      =  temp_pool.hunger
-	// 	})
-})
+		const name: string = player.get_player_name();
+		const data: HungerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		// 	temp_pool.hunger                = 20
+		// 	temp_pool.satiation             = 20
+		// 	temp_pool.regeneration_interval = 0
+		// 	temp_pool.exhaustion            = 0
+		// 	hud_manager.change_hud({
+		// 		player    =  player ,
+		// 		hud_name  = "hunger",
+		// 		element   = "number",
+		// 		data      =  temp_pool.hunger
+		// 	})
+	});
 
 	// local exhaustion_peak  = 512
 	// local hunger_peak      = 128
