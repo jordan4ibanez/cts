@@ -121,12 +121,18 @@ namespace farming {
 				// For plants that grow in place.
 			} else if (def.grows == PlantGrowth.inPlace) {
 				on_abm = (pos: Vec3) => {
-					// 				if core.get_node_light(pos, nil) < 10 then
-					// 					core.dig_node(pos)
-					// 					core.sound_play("dirt",{pos=pos,gain=0.2})
-					// 					//print("failed to grow at "+dump(pos))
-					// 					return
-					// 				end
+					{
+						const possibleLight: number | null =
+							core.get_node_light(pos, null);
+
+						if (possibleLight == null || possibleLight < 10) {
+							// 					core.dig_node(pos)
+							// 					core.sound_play("dirt",{pos=pos,gain=0.2})
+							// 					//print("failed to grow at "+dump(pos))
+							// 					return
+						}
+					}
+
 					// 				pos.y = pos.y - 1
 					// 				local found = core.get_node_group(core.get_node(pos).name, "farmland") > 0
 					// 				//if found farmland below
