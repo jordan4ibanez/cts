@@ -64,15 +64,15 @@ namespace farming {
 			items: [
 				{
 					rarity: 10,
-					items: ["farming:melon_seeds"],
+					items: ["crafter_farming:melon_seeds"],
 				},
 				{
 					rarity: 10,
-					items: ["farming:pumpkin_seeds"],
+					items: ["crafter_farming:pumpkin_seeds"],
 				},
 				{
 					rarity: 10,
-					items: ["farming:wheat_seeds"],
+					items: ["crafter_farming:wheat_seeds"],
 				},
 			],
 		},
@@ -112,7 +112,7 @@ namespace farming {
 					// Only drop if using a tool whose name is identical to one
 					// of these.
 					//rarity : 10,
-					items: ["farming:wheat"],
+					items: ["crafter_farming:wheat"],
 					// Whether all items in the dropped item list inherit the
 					// hardware coloring palette color from the dug node.
 					// Default is 'false'.
@@ -122,7 +122,7 @@ namespace farming {
 					// Only drop if using a tool whose name is identical to one
 					// of these.
 					rarity: 2,
-					items: ["farming:wheat_seeds"],
+					items: ["crafter_farming:wheat_seeds"],
 					// Whether all items in the dropped item list inherit the
 					// hardware coloring palette color from the dug node.
 					// Default is 'false'.
@@ -136,7 +136,7 @@ namespace farming {
 		seed_name: "wheat",
 		seed_description: "Wheat Seeds",
 		seed_inventory_image: "wheat_seeds.png",
-		seed_plants: "farming:wheat_1",
+		seed_plants: "crafter_farming:wheat_1",
 	});
 
 	farming.register_plant("melon_stem", {
@@ -165,7 +165,7 @@ namespace farming {
 			fixed: [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16],
 		},
 		grows: PlantGrowth.inPlaceYields,
-		grownNode: "farming:melon",
+		grownNode: "crafter_farming:melon",
 		stages: 7,
 		//stem stage complete definition (fully grown and budding)
 		stem_description: "",
@@ -193,11 +193,11 @@ namespace farming {
 			max_items: 2,
 			items: [
 				{
-					items: ["farming:melon_seeds"],
+					items: ["crafter_farming:melon_seeds"],
 				},
 				{
 					rarity: 2,
-					items: ["farming:melon_seeds"],
+					items: ["crafter_farming:melon_seeds"],
 				},
 			],
 		},
@@ -221,38 +221,38 @@ namespace farming {
 			max_items: 6,
 			items: [
 				{
-					items: ["farming:melon_slice"],
+					items: ["crafter_farming:melon_slice"],
 				},
 				{
-					items: ["farming:melon_slice"],
+					items: ["crafter_farming:melon_slice"],
 				},
 				{
-					items: ["farming:melon_slice"],
+					items: ["crafter_farming:melon_slice"],
 				},
 				{
-					items: ["farming:melon_slice"],
+					items: ["crafter_farming:melon_slice"],
 				},
 				{
 					rarity: 5,
-					items: ["farming:melon_slice"],
+					items: ["crafter_farming:melon_slice"],
 				},
 				{
 					rarity: 15,
-					items: ["farming:melon_seeds"],
+					items: ["crafter_farming:melon_seeds"],
 				},
 			],
 		},
 
 		//seed definition
-		//"farming:wheat_1"
+		//"crafter_farming:wheat_1"
 		seed_name: "melon",
 		seed_description: "Melon Seeds",
 		seed_inventory_image: "melon_seeds.png",
-		seed_plants: "farming:melon_stem_1",
+		seed_plants: "crafter_farming:melon_stem_1",
 	});
 
 	// Todo: requires the hunger mod.
-	// core.register_food("farming:melon_slice",{
+	// core.register_food("crafter_farming:melon_slice",{
 	// 	description = "Melon Slice",
 	// 	texture = "melon_slice.png",
 	// 	satiation=1,
@@ -285,7 +285,7 @@ namespace farming {
 			fixed: [-6 / 16, -0.5, -6 / 16, 6 / 16, -6 / 16, 6 / 16],
 		},
 		grows: PlantGrowth.inPlaceYields,
-		grownNode: "farming:pumpkin",
+		grownNode: "crafter_farming:pumpkin",
 		stages: 7,
 
 		//stem stage complete definition (fully grown and budding)
@@ -314,11 +314,11 @@ namespace farming {
 			max_items: 2,
 			items: [
 				{
-					items: ["farming:pumpkin_seeds"],
+					items: ["crafter_farming:pumpkin_seeds"],
 				},
 				{
 					rarity: 2,
-					items: ["farming:pumpkin_seeds"],
+					items: ["crafter_farming:pumpkin_seeds"],
 				},
 			],
 		},
@@ -339,34 +339,34 @@ namespace farming {
 		fruit_groups: { pathable: 1, wood: 1, flammable: 1 },
 		fruit_sounds: crafter.woodSound(),
 		//seed definition
-		//"farming:wheat_1"
+		//"crafter_farming:wheat_1"
 		seed_name: "pumpkin",
 		seed_description: "Pumpkin Seeds",
 		seed_inventory_image: "pumpkin_seeds.png",
-		seed_plants: "farming:pumpkin_stem_1",
+		seed_plants: "crafter_farming:pumpkin_stem_1",
 	});
 
 	core.register_craft({
 		type: CraftRecipeType.shapeless,
-		output: "farming:pumpkin_seeds",
-		recipe: ["farming:pumpkin"],
+		output: "crafter_farming:pumpkin_seeds",
+		recipe: ["crafter_farming:pumpkin"],
 	});
 
 	core.register_craft({
 		type: CraftRecipeType.fuel,
-		recipe: "farming:pumpkin",
+		recipe: "crafter_farming:pumpkin",
 		burntime: 3,
 	});
 
 	core.register_craft({
 		type: CraftRecipeType.cooking,
-		output: "farming:pumpkin_pie",
-		recipe: "farming:pumpkin",
+		output: "crafter_farming:pumpkin_pie",
+		recipe: "crafter_farming:pumpkin",
 		cooktime: 2,
 	});
 
 	// todo: depends on the hunger mod.
-	// core.register_food("farming:pumpkin_pie",{
+	// core.register_food("crafter_farming:pumpkin_pie",{
 	// 	description = "Pumpkin Pie",
 	// 	texture = "pumpkin_pie.png",
 	// 	satiation=6,
@@ -374,7 +374,7 @@ namespace farming {
 	// })
 
 	core.register_decoration({
-		name: "farming:sugarcane",
+		name: "crafter_farming:sugarcane",
 		deco_type: DecorationType.simple,
 		place_on: ["crafter:dirt", "crafter:grass", "crafter:sand"],
 		sidelen: 16,
@@ -388,7 +388,7 @@ namespace farming {
 		},
 		y_max: 1,
 		y_min: 1,
-		decoration: "farming:sugarcane",
+		decoration: "crafter_farming:sugarcane",
 		height: 2,
 		height_max: 5,
 		spawn_by: "crafter:water",
@@ -396,7 +396,7 @@ namespace farming {
 	});
 
 	core.register_decoration({
-		name: "farming:cactus",
+		name: "crafter_farming:cactus",
 		deco_type: DecorationType.simple,
 		place_on: ["crafter:sand"],
 		sidelen: 16,
@@ -410,13 +410,13 @@ namespace farming {
 		},
 		y_max: 30,
 		y_min: 0,
-		decoration: "farming:cactus",
+		decoration: "crafter_farming:cactus",
 		height: 3,
 		height_max: 4,
 	});
 
 	core.register_decoration({
-		name: "farming:grass",
+		name: "crafter_farming:grass",
 		deco_type: DecorationType.simple,
 		place_on: "crafter:grass",
 		sidelen: 16,
@@ -424,7 +424,7 @@ namespace farming {
 		param2: 0,
 		param2_max: 179,
 		//biomes : {"grassland"},
-		decoration: "farming:grass",
+		decoration: "crafter_farming:grass",
 		height: 1,
 	});
 }
