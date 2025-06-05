@@ -161,17 +161,18 @@ namespace experience {
 			z_index: 0,
 		});
 
-		//     hud_manager.add_hud(player,"experience_bar",{
-		//         hud_elem_type = "statbar",
-		//         position = {x=0.5, y=1},
-		//         name = "experience bar",
-		//         text = "experience_bar.png",
-		//         number = temp_pool.xp_bar,
-		//         direction = 0,
-		//         offset = {x = (-8 * 28) - 29, y = -(48 + 24 + 16)},
-		//         size = { x=28, y=28 },
-		//         z_index = 0,
-		//     })
+		hudManager.add_hud(player, "experience_bar", {
+			type: HudElementType.statbar,
+			position: { x: 0.5, y: 1 },
+			name: "experience bar",
+			text: "experience_bar.png",
+			number: data.xp_bar,
+			direction: 0,
+			offset: { x: -8 * 28 - 29, y: -(48 + 24 + 16) },
+			size: { x: 28, y: 28 },
+			z_index: 0,
+		});
+
 		//     hud_manager.add_hud(player,"xp_level_bg",{
 		//         hud_elem_type = "text",
 		//         position = {x=0.5, y=1},
