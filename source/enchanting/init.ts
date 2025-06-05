@@ -129,6 +129,10 @@ namespace enchanting {
 											groupcaps == null ||
 											groupcaps[name] == null
 										) {
+											core.log(
+												LogLevel.warning,
+												`Missing [${name}]`
+											);
 											continue;
 										}
 
@@ -139,9 +143,21 @@ namespace enchanting {
 							}
 
 							if (new_enchant == "durable") {
-								// 						for index,table in pairs(groupcaps) do
-								// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
-								// 						end
+								for (const [name, table] of pairs(groupcaps)) {
+									const groupcaps:
+										| Dictionary<string, GroupCap>
+										| undefined = tool_caps.groupcaps;
+									if (
+										groupcaps == null ||
+										groupcaps[name] == null ||
+										table == null
+									) {
+										continue;
+									}
+
+									groupcaps[name].uses =
+										table!.uses! * (level + 1);
+								}
 							}
 							// 					if new_enchant == "sharpness" then
 							// 						for index,data in pairs(tool_caps.damage_groups) do
