@@ -437,16 +437,16 @@ namespace experience {
 				this.object.remove();
 				return;
 			}
-			// 	pos = this.object:get_pos()
-			// 	if pos then
-			// 		node = get_node_or_nil({
-			// 			x = pos.x,
-			// 			y = pos.y -0.25,
-			// 			z = pos.z
-			// 		})
-			// 	else
-			// 		return
-			// 	end
+			const pos: Vec3 = this.object.get_pos();
+
+			const node: NodeTable | null = get_node_or_nil(
+				new_vec({
+					x: pos.x,
+					y: pos.y - 0.25,
+					z: pos.z,
+				})
+			);
+
 			// 	// Remove nodes in 'ignore'
 			// 	if node and node.name == "ignore" then
 			// 		this.object:remove()
