@@ -75,8 +75,8 @@ namespace enchanting {
 						return;
 					}
 					const able_enchantments: string[] = [...enchantment_list];
-					// todo: this depends on the crafter experience mod.
-					let player_level: number = 100; //get_player_xp_level(clicker)
+					let player_level: number =
+						experience.get_player_xp_level(clicker);
 					let enchants_available: number = math.floor(
 						player_level / 5
 					);
