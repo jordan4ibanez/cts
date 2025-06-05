@@ -327,7 +327,7 @@ namespace experience {
 		collected: boolean = false;
 		delete_timer: number = 0;
 		radius: number = 4;
-		collector: ObjectRef | null = null;
+		collector: string | null = null;
 
 		on_step(dtime: number) {
 			// If orb set to be collected then only execute go to player.
@@ -338,6 +338,7 @@ namespace experience {
 				}
 
 				// 		collector = get_player_by_name(this.collector)
+
 				// 		if collector and collector:get_hp() > 0 and vec_distance(this.object:get_pos(),collector:get_pos()) < 5 then
 				// 			temp_pool = pool[this.collector]
 				// 			this.object:set_acceleration(new_vec(0,0,0))
