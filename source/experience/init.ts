@@ -94,24 +94,31 @@ namespace experience {
 		return data.xp_level;
 	}
 
-	// local name
-	// local temp_pool
-	// function set_player_xp_level(player,level)
-	// 	name = player:get_player_name()
-	// 	pool[name].xp_level = level
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "xp_level_fg",
-	// 		element  = "text",
-	// 		data     = tostring(level)
-	// 	})
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "xp_level_bg",
-	// 		element  = "text",
-	// 		data     = tostring(level)
-	// 	})
-	// end
+	export function set_player_xp_level(
+		player: ObjectRef,
+		level: number
+	): void {
+		const name: string = player.get_player_name();
+		const data: ExpData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		data.xp_level = level;
+
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "xp_level_fg",
+		// 		element  = "text",
+		// 		data     = tostring(level)
+		// 	})
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "xp_level_bg",
+		// 		element  = "text",
+		// 		data     = tostring(level)
+		// 	})
+	}
+
 	// core.hud_replace_builtin("health",{
 	//     hud_elem_type = "statbar",
 	//     position = {x = 0.5, y = 1},
@@ -121,6 +128,7 @@ namespace experience {
 	//     size = {x = 24, y = 24},
 	//     offset = {x = (-10 * 24) - 25, y = -(48 + 24 + 38)},
 	// })
+
 	// local name
 	// local temp_pool
 	// core.register_on_joinplayer(function(player)
