@@ -551,15 +551,22 @@ namespace experience {
 		}
 	}
 	utility.registerTSEntity(ExperienceEntity);
-	// core.register_chatcommand("xp", {
-	// 	params = "nil",
-	// 	description = "Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
-	// 	privs = {server=true},
-	// 	func = function(name)
-	// 		local player = get_player_by_name(name)
-	// 		local pos = player:get_pos()
-	// 		pos.y = pos.y + 1.2
-	// 		core.throw_experience(pos, 1000)
-	// 	end,
-	// })
+
+	core.register_chatcommand("xp", {
+		params: "nil",
+		description:
+			"Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
+		privs: { server: true },
+		func: (name: string) => {
+			const player: ObjectRef | null = get_player_by_name(name);
+			if (player == null) {
+				throw new Error(
+					`Player [${name}] does not exist and they ran a command.`
+				);
+			}
+			const pos: Vec3 = player.get_pos();
+			pos.y = pos.y + 1.2;
+			item_handling.throw_experience(pos, 1000);
+		},
+	});
 }
