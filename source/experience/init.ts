@@ -30,25 +30,23 @@ namespace experience {
 
 	// local pool = {}
 
-	// // loads data from mod storage
-	// local name
-	// local temp_pool
-	// local load_data = function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = {}
-	// 	temp_pool = pool[name]
-	// 	if mod_storage:get_int(name.."xp_save") > 0 then
-	// 		temp_pool.xp_level = mod_storage:get_int(name.."xp_level")
-	// 		temp_pool.xp_bar   = mod_storage:get_int(name.."xp_bar"  )
-	// 		temp_pool.buffer   = 0
-	// 		temp_pool.last_time= get_time()/1000000
-	// 	else
-	// 		temp_pool.xp_level = 0
-	// 		temp_pool.xp_bar   = 0
-	// 		temp_pool.buffer   = 0
-	// 		temp_pool.last_time= get_time()/1000000
-	// 	end
-	// end
+	// Loads data from mod storage.
+	function load_data(player: ObjectRef) {
+		// 	name = player:get_player_name()
+		// 	pool[name] = {}
+		// 	temp_pool = pool[name]
+		// 	if mod_storage:get_int(name.."xp_save") > 0 then
+		// 		temp_pool.xp_level = mod_storage:get_int(name.."xp_level")
+		// 		temp_pool.xp_bar   = mod_storage:get_int(name.."xp_bar"  )
+		// 		temp_pool.buffer   = 0
+		// 		temp_pool.last_time= get_time()/1000000
+		// 	else
+		// 		temp_pool.xp_level = 0
+		// 		temp_pool.xp_bar   = 0
+		// 		temp_pool.buffer   = 0
+		// 		temp_pool.last_time= get_time()/1000000
+		// 	end
+	}
 	// // saves data to be utilized on next login
 	// local name
 	// local temp_pool
