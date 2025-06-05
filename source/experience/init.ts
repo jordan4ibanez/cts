@@ -453,9 +453,10 @@ namespace experience {
 				return;
 			}
 
-			// 	if not this.physical_state then
-			// 		return // Don't do anything
-			// 	end
+			if (!this.physical_state) {
+				// Don't do anything.
+				return;
+			}
 
 			// 	// Slide on slippery nodes
 			// 	vel = this.object:get_velocity()
