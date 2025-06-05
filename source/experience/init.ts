@@ -173,15 +173,16 @@ namespace experience {
 			z_index: 0,
 		});
 
-		//     hud_manager.add_hud(player,"xp_level_bg",{
-		//         hud_elem_type = "text",
-		//         position = {x=0.5, y=1},
-		//         name = "xp_level_bg",
-		//         text = tostring(temp_pool.xp_level),
-		//         number = 0x000000,
-		//         offset = {x = 0, y = -(48 + 24 + 24)},
-		//         z_index = 0,
-		//     })
+		hudManager.add_hud(player, "xp_level_bg", {
+			type: HudElementType.text,
+			position: { x: 0.5, y: 1 },
+			name: "xp_level_bg",
+			text: tostring(data.xp_level),
+			number: 0x000000,
+			offset: { x: 0, y: -(48 + 24 + 24) },
+			z_index: 0,
+		});
+
 		//     hud_manager.add_hud(player,"xp_level_fg",{
 		//         hud_elem_type = "text",
 		//         position = {x=0.5, y=1},
