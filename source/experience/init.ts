@@ -289,6 +289,10 @@ namespace experience {
 		item_handling.throw_experience(player.get_pos(), xp_amount);
 	});
 
+    class ExperienceEntity extends types.Entity {
+        name: string = "crafter_experience:orb"
+    }
+
 	
 	// local function xp_step(self, dtime)
 	// 	//if item set to be collected then only execute go to player
