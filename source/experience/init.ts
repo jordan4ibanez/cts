@@ -509,8 +509,6 @@ namespace experience {
 			}
 		}
 
-		
-
 		// 	on_activate = function(self, staticdata, dtime_s)
 		// 		self.object:set_velocity(new_vec(
 		// 			random(-2,2)*random(),
@@ -543,10 +541,6 @@ namespace experience {
 		// 			self.object:set_acceleration({x=0, y=0, z=0})
 		// 		end
 		// 	end,
-		// 	on_step = function(self, dtime)
-		// 		xp_step(self, dtime)
-		// 	end,
-		
 	}
 	utility.registerTSEntity(ExperienceEntity);
 	// core.register_chatcommand("xp", {
