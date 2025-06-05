@@ -217,32 +217,30 @@ namespace experience {
 		});
 	}
 
-	
-
-	 function add_experience(player,experience) {
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	temp_pool.xp_bar = temp_pool.xp_bar + experience
-	// 	if temp_pool.xp_bar > 36 then
-	// 		if get_time()/1000000 - temp_pool.last_time > 0.04 then
-	// 			play_sound("level_up",{gain=0.2,to_player = name})
-	// 			temp_pool.last_time = get_time()/1000000
-	// 		end
-	//         temp_pool.xp_bar = temp_pool.xp_bar - 36
-	// 		level_up_experience(player)
-	// 	else
-	// 		if get_time()/1000000 - temp_pool.last_time > 0.01 then
-	// 			temp_pool.last_time = get_time()/1000000
-	// 			play_sound("experience",{gain=0.1,to_player = name,pitch=random(75,99)/100})
-	// 		end
-	// 	end
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "experience_bar",
-	// 		element  = "number",
-	// 		data     = temp_pool.xp_bar
-	// 	})
-     }
+	function add_experience(player, experience) {
+		// 	name = player:get_player_name()
+		// 	temp_pool = pool[name]
+		// 	temp_pool.xp_bar = temp_pool.xp_bar + experience
+		// 	if temp_pool.xp_bar > 36 then
+		// 		if get_time()/1000000 - temp_pool.last_time > 0.04 then
+		// 			play_sound("level_up",{gain=0.2,to_player = name})
+		// 			temp_pool.last_time = get_time()/1000000
+		// 		end
+		//         temp_pool.xp_bar = temp_pool.xp_bar - 36
+		// 		level_up_experience(player)
+		// 	else
+		// 		if get_time()/1000000 - temp_pool.last_time > 0.01 then
+		// 			temp_pool.last_time = get_time()/1000000
+		// 			play_sound("experience",{gain=0.1,to_player = name,pitch=random(75,99)/100})
+		// 		end
+		// 	end
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "experience_bar",
+		// 		element  = "number",
+		// 		data     = temp_pool.xp_bar
+		// 	})
+	}
 
 	// //reset player level
 	// local name
