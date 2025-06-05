@@ -432,11 +432,11 @@ namespace experience {
 				}
 			}
 
-			// 	this.age = this.age + dtime
-			// 	if this.age > 300 then
-			// 		this.object:remove()
-			// 		return
-			// 	end
+			this.age += dtime;
+			if (this.age > 300) {
+				// 		this.object:remove()
+				// 		return
+			}
 			// 	pos = this.object:get_pos()
 			// 	if pos then
 			// 		node = get_node_or_nil({
