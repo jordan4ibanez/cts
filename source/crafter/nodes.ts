@@ -300,6 +300,7 @@ namespace crafter {
 		use_texture_alpha: TextureAlpha.opaque,
 		drop: "",
 		canSilkTouch: true,
+		silkTouchSpecialDrop: "crafter:ice",
 	});
 
 	core.register_node("crafter:dirt", {
