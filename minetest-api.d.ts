@@ -1047,7 +1047,7 @@ declare global {
 		redstone_activation?: (pos: Vec3) => void;
 		redstone_deactivation?: (pos: Vec3) => void;
 		canSilkTouch?: boolean;
-		silkTouchSpecialDrop?: NodeDropSpec | string;
+		silkTouchSpecialDrop?: string;
 
 		// -- <all fields allowed in item definitions>
 		description?: string;
