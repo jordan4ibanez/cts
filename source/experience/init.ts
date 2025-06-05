@@ -291,7 +291,7 @@ namespace experience {
 
     class ExperienceEntity extends types.Entity {
         name: string = "crafter_experience:orb"
-    }
+    
 
 	
 	// local function xp_step(self, dtime)
@@ -467,6 +467,8 @@ namespace experience {
 	// 		xp_step(self, dtime)
 	// 	end,
 	// })
+
+    }
 	// core.register_chatcommand("xp", {
 	// 	params = "nil",
 	// 	description = "Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
