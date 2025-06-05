@@ -17,14 +17,26 @@ namespace item_handling {
 			digger: ObjectRef
 		) => {
 			const meta: MetaRef = digger.get_wielded_item().get_meta();
-			//careful = meta:get_int("careful")
+			const careful: boolean = meta.get_int("careful") != 0;
+			
 			// todo: why is the fortune enchant disabled?
 			const fortune: number = 1; //meta:get_int("fortune") + 1
+
 			const autorepair: number = meta.get_int("autorepair");
-			// todo: why is careful enchant disabled?
-			//if careful > 0 then
-			//	drops = {core.get_node(pos).name}
-			//end
+
+			if (careful) {
+				const name: string = core.get_node(pos).name;
+
+				const def: NodeDefinition | undefined =
+					core.registered_nodes[name];
+				if (def == null) {
+					throw new Error(`Node [${name}] does not exist`);
+				}
+
+				if (def.canSilkTouch) {
+					drops = [name];
+				}
+			}
 
 			let count: number = 0;
 			let name: string | null = null;
