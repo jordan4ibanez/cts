@@ -305,20 +305,20 @@ namespace experience {
 		// 		pointable = false,
 		// 		static_save = false,
 		// 	},
-		// 	moving_state = true,
-		// 	slippery_state = false,
-		// 	physical_state = true,
-		// 	// Item expiry
-		// 	age = 0,
-		// 	// Pushing item out of solid nodes
-		// 	force_out = nil,
-		// 	force_out_start = nil,
-		// 	//Collection Variables
-		// 	collectable = false,
-		// 	try_timer = 0,
-		// 	collected = false,
-		// 	delete_timer = 0,
-		// 	radius = 4,
+			moving_state = true,
+			slippery_state = false,
+			physical_state = true,
+			// Item expiry
+			age = 0,
+			// Pushing item out of solid nodes
+			force_out = nil,
+			force_out_start = nil,
+			//Collection Variables
+			collectable = false,
+			try_timer = 0,
+			collected = false,
+			delete_timer = 0,
+			radius = 4,
 
 		// local function xp_step(self, dtime)
 		// 	//if item set to be collected then only execute go to player
