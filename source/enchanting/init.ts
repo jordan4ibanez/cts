@@ -46,7 +46,7 @@ namespace enchanting {
 		"9",
 		"0",
 	];
-	core.register_node("enchanting:table", {
+	core.register_node("crafter_enchanting:table", {
 		description: "Enchanting Table",
 		tiles: ["bedrock.png"], // todo: Bedrock??
 		groups: { wood: 1, pathable: 1 },
@@ -111,7 +111,7 @@ namespace enchanting {
 	});
 
 	core.register_craft({
-		output: "enchanting:table",
+		output: "crafter_enchanting:table",
 		recipe: [
 			["nether:obsidian", "nether:obsidian", "nether:obsidian"],
 			["nether:obsidian", "main:diamond", "nether:obsidian"],
