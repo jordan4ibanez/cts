@@ -53,8 +53,8 @@ namespace experience {
 	function load_data(player: ObjectRef) {
 		pool.set(player.get_player_name(), new ExpData(player));
 	}
-	// Saves data to be utilized on next login.
 
+	// Saves data to be utilized on next login.
 	function save_data(name: string): void {
 		const data: ExpData | undefined = pool.get(name);
 		if (data == null) {
