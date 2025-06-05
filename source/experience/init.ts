@@ -328,7 +328,7 @@ namespace experience {
 		delete_timer: number = 0;
 		radius: number = 4;
 
-		// local function xp_step(self, dtime)
+		on_step( dtime: number) {
 		// 	//if item set to be collected then only execute go to player
 		// 	if self.collected == true then
 		// 		if not self.collector then
@@ -435,7 +435,8 @@ namespace experience {
 		// 		self.object:set_acceleration({x = 0, y = 0, z = 0})
 		// 		self.object:set_velocity({x = 0, y = 0, z = 0})
 		// 	end
-		// end
+        }
+
 		// core.register_entity("experience:orb", {
 
 		// 	on_activate = function(self, staticdata, dtime_s)
