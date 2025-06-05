@@ -256,28 +256,32 @@ namespace experience {
 	// Reset player level.
 	core.register_on_dieplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
+		const data: ExpData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
 
-		// 	temp_pool = pool[name]
-		// 	xp_amount = temp_pool.xp_level
-		// 	temp_pool.xp_bar   = 0
-		// 	temp_pool.xp_level = 0
+		
+		// 	xp_amount = data.xp_level
+		// 	data.xp_bar   = 0
+		// 	data.xp_level = 0
 		// 	hud_manager.change_hud({
 		// 		player   = player,
 		// 		hud_name = "xp_level_fg",
 		// 		element  = "text",
-		// 		data     = tostring(temp_pool.xp_level)
+		// 		data     = tostring(data.xp_level)
 		// 	})
 		// 	hud_manager.change_hud({
 		// 		player   = player,
 		// 		hud_name = "xp_level_bg",
 		// 		element  = "text",
-		// 		data     = tostring(temp_pool.xp_level)
+		// 		data     = tostring(data.xp_level)
 		// 	})
 		// 	hud_manager.change_hud({
 		// 		player   = player,
 		// 		hud_name = "experience_bar",
 		// 		element  = "number",
-		// 		data     = temp_pool.xp_bar
+		// 		data     = data.xp_bar
 		// 	})
 		//     core.throw_experience(player:get_pos(), xp_amount)
 	});
