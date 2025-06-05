@@ -341,7 +341,7 @@ namespace experience {
 					this.collector
 				);
 
-						if (collector and collector:get_hp() > 0 and vec_distance(this.object:get_pos(),collector:get_pos()) < 5) {
+						if (collector && collector.get_hp() > 0 && vec_distance(this.object.get_pos(),collector.get_pos()) < 5) {
 				// 			temp_pool = pool[this.collector]
 				// 			this.object:set_acceleration(new_vec(0,0,0))
 				// 			this.disable_physics(self)
