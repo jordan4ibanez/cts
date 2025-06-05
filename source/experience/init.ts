@@ -201,12 +201,14 @@ namespace experience {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 		data.xp_level += 1;
-		// 	hud_manager.change_hud({
-		// 		player   = player,
-		// 		hud_name = "xp_level_fg",
-		// 		element  = "text",
-		// 		data     = tostring(temp_pool.xp_level)
-		// 	})
+
+		hudManager.change_hud({
+			player: player,
+			hudName: "xp_level_fg",
+			element: "text",
+			data: tostring(data.xp_level),
+		});
+
 		// 	hud_manager.change_hud({
 		// 		player   = player,
 		// 		hud_name = "xp_level_bg",
