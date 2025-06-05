@@ -8,17 +8,17 @@ namespace playerMechanics {
 	const new_vec = vector.create3d;
 	const multiply_vec = vector.multiply;
 
-	// Hurt sound and disable fall damage group handling.
-	// todo: was this sound playing twice?
-	// core.register_on_player_hpchange(function(player, hp_change, reason)
-	// 	if reason.type == "fall" then
-	// 		//fall damage is handled on another globalstep calc
-	// 		return(0)
-	// 	elseif hp_change < 0 and reason.reason ~= "correction" then
-	// 		play_sound("hurt", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
-	// 	end
-	// 	return(hp_change)
-	// end, true)
+	// Hurt sound.
+	core.register_on_player_hpchange((player, hp_change, reason) => {
+		if (hp_change < 0) {
+			play_sound("hurt", {
+				object: player,
+				gain: 1.0,
+				max_hear_distance: 60,
+				pitch: random(80, 100) / 100,
+			});
+		}
+	}, false);
 
 	// Throw all items on death.
 	// local pos
