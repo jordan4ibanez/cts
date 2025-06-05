@@ -1,18 +1,18 @@
 namespace experience {
-	// local mod_storage = minetest.get_mod_storage()
+	// local mod_storage = core.get_mod_storage()
 	// -- minetest library
-	// local get_node_or_nil    = minetest.get_node_or_nil
-	// local get_time           = minetest.get_us_time
-	// local get_player_by_name = minetest.get_player_by_name
-	// local yaw_to_dir         = minetest.yaw_to_dir
-	// local dir_to_yaw         = minetest.dir_to_yaw
-	// local get_item_group     = minetest.get_item_group
-	// local serialize          = minetest.serialize
-	// local deserialize        = minetest.deserialize
-	// local play_sound         = minetest.sound_play
+	// local get_node_or_nil    = core.get_node_or_nil
+	// local get_time           = core.get_us_time
+	// local get_player_by_name = core.get_player_by_name
+	// local yaw_to_dir         = core.yaw_to_dir
+	// local dir_to_yaw         = core.dir_to_yaw
+	// local get_item_group     = core.get_item_group
+	// local serialize          = core.serialize
+	// local deserialize        = core.deserialize
+	// local play_sound         = core.sound_play
 	// local registered_nodes
-	// minetest.register_on_mods_loaded(function()
-	// 	registered_nodes = minetest.registered_nodes
+	// core.register_on_mods_loaded(function()
+	// 	registered_nodes = core.registered_nodes
 	// end)
 	// -- vector library
 	// local new_vec       = vector.new
@@ -61,7 +61,7 @@ namespace experience {
 	// 	pool[name] = nil
 	// end
 	// -- saves specific users data for when they relog
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	// 	save_data(player)
 	// end)
 	// -- is used for shutdowns to save all data
@@ -71,7 +71,7 @@ namespace experience {
 	// 	end
 	// end
 	// -- save all data to mod storage on shutdown
-	// minetest.register_on_shutdown(function()
+	// core.register_on_shutdown(function()
 	// 	save_all()
 	// end)
 	// local name
@@ -97,7 +97,7 @@ namespace experience {
 	// 		data     = tostring(level)
 	// 	})
 	// end
-	// minetest.hud_replace_builtin("health",{
+	// core.hud_replace_builtin("health",{
 	//     hud_elem_type = "statbar",
 	//     position = {x = 0.5, y = 1},
 	//     text = "heart.png",
@@ -108,7 +108,7 @@ namespace experience {
 	// })
 	// local name
 	// local temp_pool
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	load_data(player)
 	// 	name = player:get_player_name()
 	// 	temp_pool = pool[name]
@@ -211,7 +211,7 @@ namespace experience {
 	// local name
 	// local temp_pool
 	// local xp_amount
-	// minetest.register_on_dieplayer(function(player)
+	// core.register_on_dieplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	temp_pool = pool[name]
 	// 	xp_amount = temp_pool.xp_level
@@ -235,7 +235,7 @@ namespace experience {
 	// 		element  = "number",
 	// 		data     = temp_pool.xp_bar
 	// 	})
-	//     minetest.throw_experience(player:get_pos(), xp_amount)
+	//     core.throw_experience(player:get_pos(), xp_amount)
 	// end)
 	// local name
 	// local temp_pool
@@ -367,7 +367,7 @@ namespace experience {
 	// 		self.object:set_velocity({x = 0, y = 0, z = 0})
 	// 	end
 	// end
-	// minetest.register_entity("experience:orb", {
+	// core.register_entity("experience:orb", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -432,7 +432,7 @@ namespace experience {
 	// 		xp_step(self, dtime)
 	// 	end,
 	// })
-	// minetest.register_chatcommand("xp", {
+	// core.register_chatcommand("xp", {
 	// 	params = "nil",
 	// 	description = "Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
 	// 	privs = {server=true},
@@ -440,7 +440,7 @@ namespace experience {
 	// 		local player = get_player_by_name(name)
 	// 		local pos = player:get_pos()
 	// 		pos.y = pos.y + 1.2
-	// 		minetest.throw_experience(pos, 1000)
+	// 		core.throw_experience(pos, 1000)
 	// 	end,
 	// })
 }
