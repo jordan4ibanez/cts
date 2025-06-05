@@ -341,48 +341,52 @@ namespace experience {
 					this.collector
 				);
 
-						if (collector && collector.get_hp() > 0 && vec_distance(this.object.get_pos(),collector.get_pos()) < 5) {
-				// 			temp_pool = pool[this.collector]
-				// 			this.object:set_acceleration(new_vec(0,0,0))
-				// 			this.disable_physics(self)
-				// 			//get the variables
-				// 			pos = this.object:get_pos()
-				// 			pos2 = collector:get_pos()
-				// 			player_velocity = collector:get_player_velocity()
-				// 			pos2.y = pos2.y + 0.8
-				// 			direction = vec_direction(pos,pos2)
-				// 			distance = vec_distance(pos2,pos)
-				// 			multiplier = distance
-				// 			if multiplier < 1 then
-				// 				multiplier = 1
-				// 			end
-				// 			goal = multiply_vec(direction,multiplier)
-				// 			currentvel = this.object:get_velocity()
-				// 			if distance > 1 then
-				// 				multiplier = 20 - distance
-				// 				velocity = multiply_vec(direction,multiplier)
-				// 				goal = velocity
-				// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-				// 				this.object:add_velocity(add_vec(acceleration,player_velocity))
-				// 			elseif distance > 0.9 and temp_pool.buffer > 0 then
-				// 				temp_pool.buffer = temp_pool.buffer - dtime
-				// 				multiplier = 20 - distance
-				// 				velocity = multiply_vec(direction,multiplier)
-				// 				goal = multiply_vec(yaw_to_dir(dir_to_yaw(vec_direction(new_vec(pos.x,0,pos.z),new_vec(pos2.x,0,pos2.z)))+pi/2),10)
-				// 				goal = add_vec(player_velocity,goal)
-				// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-				// 				this.object:add_velocity(acceleration)
-				// 			end
-				// 			if distance < 0.4 and temp_pool.buffer <= 0 then
-				// 				temp_pool.buffer = 0.04
-				// 				add_experience(collector,2)
-				// 				this.object:remove()
-				// 			end
-				// 			return
-                        }else{
-				// 			this.collector = nil
-				// 			this.enable_physics(self)
-                        }
+				if (
+					collector &&
+					collector.get_hp() > 0 &&
+					vec_distance(this.object.get_pos(), collector.get_pos()) < 5
+				) {
+					// 			temp_pool = pool[this.collector]
+					// 			this.object:set_acceleration(new_vec(0,0,0))
+					// 			this.disable_physics(self)
+					// 			//get the variables
+					// 			pos = this.object:get_pos()
+					// 			pos2 = collector:get_pos()
+					// 			player_velocity = collector:get_player_velocity()
+					// 			pos2.y = pos2.y + 0.8
+					// 			direction = vec_direction(pos,pos2)
+					// 			distance = vec_distance(pos2,pos)
+					// 			multiplier = distance
+					// 			if multiplier < 1 then
+					// 				multiplier = 1
+					// 			end
+					// 			goal = multiply_vec(direction,multiplier)
+					// 			currentvel = this.object:get_velocity()
+					// 			if distance > 1 then
+					// 				multiplier = 20 - distance
+					// 				velocity = multiply_vec(direction,multiplier)
+					// 				goal = velocity
+					// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
+					// 				this.object:add_velocity(add_vec(acceleration,player_velocity))
+					// 			elseif distance > 0.9 and temp_pool.buffer > 0 then
+					// 				temp_pool.buffer = temp_pool.buffer - dtime
+					// 				multiplier = 20 - distance
+					// 				velocity = multiply_vec(direction,multiplier)
+					// 				goal = multiply_vec(yaw_to_dir(dir_to_yaw(vec_direction(new_vec(pos.x,0,pos.z),new_vec(pos2.x,0,pos2.z)))+pi/2),10)
+					// 				goal = add_vec(player_velocity,goal)
+					// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
+					// 				this.object:add_velocity(acceleration)
+					// 			end
+					// 			if distance < 0.4 and temp_pool.buffer <= 0 then
+					// 				temp_pool.buffer = 0.04
+					// 				add_experience(collector,2)
+					// 				this.object:remove()
+					// 			end
+					// 			return
+				} else {
+					// 			this.collector = nil
+					// 			this.enable_physics(self)
+				}
 			}
 
 			// 	this.age = this.age + dtime
