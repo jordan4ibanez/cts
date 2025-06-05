@@ -1,15 +1,15 @@
 namespace enchanting {
-	// --[[
-	// swiftness - how fast you mine
-	// hardness - allows the tool to go way above it's level
-	// durable - makes the tool last longer
-	// slippery - you drop the tool randomly
-	// careful - "not silk touch"
-	// fortune - drops extra items and experience
-	// autorepair - tool will repair itself randomly
-	// spiky - the tool will randomly hurt you when used
-	// sharpness - the tool does more damage
-	// ]]--
+	/*
+	swiftness - how fast you mine
+	hardness - allows the tool to go way above it's level
+	durable - makes the tool last longer
+	slippery - you drop the tool randomly
+	careful - "not silk touch"
+	fortune - drops extra items and experience
+	autorepair - tool will repair itself randomly
+	spiky - the tool will randomly hurt you when used
+	sharpness - the tool does more damage
+	*/
 	// local enchantment_list = {"swiftness", "durable", "careful", "fortune", "autorepair",  "sharpness"}
 	// local temp_names = {"Monster", "Behemoth", "Ultra", "Wow!", "Oh Em Gee", "The Ultimatum", "Holy Moly!", "Infinity"}
 	// local hexer = {"a","b","c","d","e","f","1","2","3","4","5","6","7","8","9","0"}
