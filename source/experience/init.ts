@@ -362,14 +362,14 @@ namespace experience {
 				vector.create3d({ x: 0, y: -9.81, z: 0 })
 			);
 		}
-		// 	disable_physics = function(self)
-		// 		if this.physical_state then
-		// 			this.physical_state = false
-		// 			this.object.set_properties({physical = false})
-		// 			this.object.set_velocity({x=0, y=0, z=0})
-		// 			this.object.set_acceleration({x=0, y=0, z=0})
-		// 		end
-		// 	end,
+		disable_physics() {
+			// 		if this.physical_state then
+			// 			this.physical_state = false
+			// 			this.object.set_properties({physical = false})
+			// 			this.object.set_velocity({x=0, y=0, z=0})
+			// 			this.object.set_acceleration({x=0, y=0, z=0})
+			// 		end
+		}
 
 		on_step(dtime: number) {
 			// If orb set to be collected then only execute go to player.
