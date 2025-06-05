@@ -53,60 +53,71 @@ namespace enchanting {
 		sounds: crafter.stoneSound(),
 		is_ground_content: false,
 		on_rightclick: (pos, node, clicker, itemstack, pointed_thing) => {
-			// 		core.after(0,function(clicker)
-			// 			local stack = clicker:get_wielded_item()
-			// 			local meta = stack:get_meta()
-			// 			if meta:get_string("enchanted") == "true" then return end
-			// 			if not core.registered_tools[itemstack:get_name()] then return end
-			// 			local tool_caps = itemstack:get_tool_capabilities()
-			// 			local groupcaps = tool_caps.groupcaps
-			// 			if not groupcaps then return end
-			// 			local able_enchantments = table.copy(enchantment_list)
-			// 			local player_level = get_player_xp_level(clicker)
-			// 			local enchants_available = math.floor(player_level/5)
-			// 			local max_enchant_level = math.floor(player_level/5)
-			// 			if enchants_available <= 0 then return end
-			// 			if enchants_available > 3 then enchants_available = 3 end
-			// 			local stock_name = core.registered_tools[stack:get_name()].name
-			// 			local description = core.registered_tools[stack:get_name()].description//temp_names[math.random(1,table.getn(temp_names))]
-			// 			for i = 1,enchants_available do
-			// 				local new_enchant = enchantment_list[math.random(1,table.getn(enchantment_list))]
-			// 				local level = math.random(1,max_enchant_level)
-			// 				if meta:get_int(new_enchant) == 0 then
-			// 					player_level = player_level - 5
-			// 					meta:set_int(new_enchant, level)
-			// 					description = description.."\n"..new_enchant:gsub("^%l", string.upper)..": "..tostring(level)
-			// 					if new_enchant == "swiftness" then
-			// 						for index,table in pairs(groupcaps) do
-			// 							for index2,time in pairs(table.times) do
-			// 								tool_caps["groupcaps"][index]["times"][index2] = time/(level+1)
-			// 							end
-			// 						end
-			// 					end
-			// 					if new_enchant == "durable" then
-			// 						for index,table in pairs(groupcaps) do
-			// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
-			// 						end
-			// 					end
-			// 					if new_enchant == "sharpness" then
-			// 						for index,data in pairs(tool_caps.damage_groups) do
-			// 							tool_caps.damage_groups[index] = data*(level+1)
-			// 						end
-			// 					end
-			// 				end
-			// 			end
-			// 			meta:set_string("description", "Enchanted "..description)
-			// 			meta:set_string("enchanted", "true")
-			// 			meta:set_tool_capabilities(tool_caps)
-			// 			set_player_xp_level(clicker,player_level)
-			// 			//create truly random hex
-			// 			local colorstring = "#"
-			// 			for i = 1,6 do
-			// 				colorstring = colorstring..hexer[math.random(1,16)]
-			// 			end
-			// 			stack = core.itemstring_with_color(stack, colorstring)
-			// 			clicker:set_wielded_item(stack)
-			// 		end,clicker)
+			core.after(
+				0,
+				(clicker: ObjectRef) => {
+					if (!clicker.is_player()) {
+						return;
+					}
+					const stack = clicker.get_wielded_item();
+					const meta: MetaRef = stack.get_meta();
+					if (meta.get_string("enchanted") == "true") {
+						return;
+					}
+					if (core.registered_tools[itemstack.get_name()] == null) {
+						return;
+					}
+					// 			local tool_caps = itemstack:get_tool_capabilities()
+					// 			local groupcaps = tool_caps.groupcaps
+					// 			if not groupcaps then return end
+					// 			local able_enchantments = table.copy(enchantment_list)
+					// 			local player_level = get_player_xp_level(clicker)
+					// 			local enchants_available = math.floor(player_level/5)
+					// 			local max_enchant_level = math.floor(player_level/5)
+					// 			if enchants_available <= 0 then return end
+					// 			if enchants_available > 3 then enchants_available = 3 end
+					// 			local stock_name = core.registered_tools[stack:get_name()].name
+					// 			local description = core.registered_tools[stack:get_name()].description//temp_names[math.random(1,table.getn(temp_names))]
+					// 			for i = 1,enchants_available do
+					// 				local new_enchant = enchantment_list[math.random(1,table.getn(enchantment_list))]
+					// 				local level = math.random(1,max_enchant_level)
+					// 				if meta:get_int(new_enchant) == 0 then
+					// 					player_level = player_level - 5
+					// 					meta:set_int(new_enchant, level)
+					// 					description = description.."\n"..new_enchant:gsub("^%l", string.upper)..": "..tostring(level)
+					// 					if new_enchant == "swiftness" then
+					// 						for index,table in pairs(groupcaps) do
+					// 							for index2,time in pairs(table.times) do
+					// 								tool_caps["groupcaps"][index]["times"][index2] = time/(level+1)
+					// 							end
+					// 						end
+					// 					end
+					// 					if new_enchant == "durable" then
+					// 						for index,table in pairs(groupcaps) do
+					// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
+					// 						end
+					// 					end
+					// 					if new_enchant == "sharpness" then
+					// 						for index,data in pairs(tool_caps.damage_groups) do
+					// 							tool_caps.damage_groups[index] = data*(level+1)
+					// 						end
+					// 					end
+					// 				end
+					// 			end
+					// 			meta:set_string("description", "Enchanted "..description)
+					// 			meta:set_string("enchanted", "true")
+					// 			meta:set_tool_capabilities(tool_caps)
+					// 			set_player_xp_level(clicker,player_level)
+					// 			//create truly random hex
+					// 			local colorstring = "#"
+					// 			for i = 1,6 do
+					// 				colorstring = colorstring..hexer[math.random(1,16)]
+					// 			end
+					// 			stack = core.itemstring_with_color(stack, colorstring)
+					// 			clicker:set_wielded_item(stack)
+				},
+				clicker
+			);
 		},
 	});
 
