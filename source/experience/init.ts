@@ -36,8 +36,12 @@ namespace experience {
 		constructor(player: ObjectRef) {
 			const name = player.get_player_name();
 			if (mod_storage.get_int(name + ":crafter_experience_save") > 0) {
-				this.xp_level = mod_storage.get_int(name + ":crafter_experience_level");
-				this.xp_bar = mod_storage.get_int(name + ":crafter_experience_bar");
+				this.xp_level = mod_storage.get_int(
+					name + ":crafter_experience_level"
+				);
+				this.xp_bar = mod_storage.get_int(
+					name + ":crafter_experience_bar"
+				);
 			}
 			this.last_time = get_time() / 1000000;
 		}
