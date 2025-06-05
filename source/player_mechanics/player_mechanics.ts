@@ -170,6 +170,7 @@ namespace playerMechanics {
 		if (head) {
 			in_water = true;
 			data.swimming = true;
+			// You can hit shift when standing in water to start swimming.
 		} else if (legs && player.get_player_control().sneak) {
 			in_water = true;
 			data.swimming = true;
