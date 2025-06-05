@@ -341,10 +341,12 @@ namespace experience {
 					this.collector
 				);
 
+				const pos: Vec3 = this.object.get_pos();
+
 				if (
 					collector &&
 					collector.get_hp() > 0 &&
-					vec_distance(this.object.get_pos(), collector.get_pos()) < 5
+					vec_distance(pos, collector.get_pos()) < 5
 				) {
 					const data: ExpData | undefined = pool.get(this.collector);
 					if (data == null) {
