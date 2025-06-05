@@ -253,7 +253,7 @@ namespace experience {
 		});
 	}
 
-	// //reset player level
+	// Reset player level.
 	// local name
 	// local temp_pool
 	// local xp_amount
