@@ -330,11 +330,13 @@ namespace experience {
 		collector: string | null = null;
 
 		on_activate(staticdata: string, dtime_s: number) {
-					this.object.set_velocity(new_vec(
-						random(-2,2)*random(),
-						random(2,5),
-						random(-2,2)*random()
-					))
+			this.object.set_velocity(
+				new_vec(
+					random(-2, 2) * random(),
+					random(2, 5),
+					random(-2, 2) * random()
+				)
+			);
 
 			// 		this.object.set_armor_groups({immortal = 1})
 			// 		this.object.set_velocity({x = 0, y = 2, z = 0})
