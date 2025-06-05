@@ -194,25 +194,24 @@ namespace experience {
 		});
 	});
 
-	// local name
-	// local temp_pool
-	// local function level_up_experience(player)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	//     temp_pool.xp_level = temp_pool.xp_level + 1
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "xp_level_fg",
-	// 		element  = "text",
-	// 		data     = tostring(temp_pool.xp_level)
-	// 	})
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "xp_level_bg",
-	// 		element  = "text",
-	// 		data     = tostring(temp_pool.xp_level)
-	// 	})
-	// end
+	function level_up_experience(player: ObjectRef): void {
+		// 	name = player:get_player_name()
+		// 	temp_pool = pool[name]
+		//     temp_pool.xp_level = temp_pool.xp_level + 1
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "xp_level_fg",
+		// 		element  = "text",
+		// 		data     = tostring(temp_pool.xp_level)
+		// 	})
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "xp_level_bg",
+		// 		element  = "text",
+		// 		data     = tostring(temp_pool.xp_level)
+		// 	})
+	}
+
 	// local name
 	// local temp_pool
 	// local function add_experience(player,experience)
