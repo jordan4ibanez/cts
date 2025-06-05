@@ -408,9 +408,13 @@ namespace experience {
 							),
 							10
 						);
-						// 				goal = add_vec(player_velocity,goal)
-						// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-						// 				this.object:add_velocity(acceleration)
+						goal = add_vec(player_velocity, goal);
+						const acceleration: Vec3 = new_vec(
+							goal.x - currentvel.x,
+							goal.y - currentvel.y,
+							goal.z - currentvel.z
+						);
+						this.object.add_velocity(acceleration);
 					}
 
 					// 			if distance < 0.4 and temp_pool.buffer <= 0 then
