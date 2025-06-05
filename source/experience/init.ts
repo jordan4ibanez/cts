@@ -73,12 +73,12 @@ namespace experience {
 		save_data(player.get_player_name());
 	});
 
-	// // is used for shutdowns to save all data
-	// local save_all = function()
-	// 	for name,_ in pairs(pool) do
-	// 		save_data(name)
-	// 	end
-	// end
+	// Is used for shutdowns to save all data.
+	function save_all(): void {
+		for (const name of pool.keys()) {
+			save_data(name);
+		}
+	}
 	// // save all data to mod storage on shutdown
 	// core.register_on_shutdown(function()
 	// 	save_all()
