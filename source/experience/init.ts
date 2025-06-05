@@ -130,8 +130,6 @@ namespace experience {
 		offset: { x: -10 * 24 - 25, y: -(48 + 24 + 38) },
 	});
 
-	// local name
-	// local temp_pool
 	// core.register_on_joinplayer(function(player)
 	// 	load_data(player)
 	// 	name = player:get_player_name()
