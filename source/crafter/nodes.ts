@@ -156,6 +156,7 @@ namespace crafter {
 					},
 				],
 			},
+			canSilkTouch: true,
 		});
 
 		core.register_node(":nether:" + ore + "ore", {
@@ -191,6 +192,7 @@ namespace crafter {
 					);
 				}
 			},
+			canSilkTouch: true,
 		});
 	}
 
@@ -209,6 +211,7 @@ namespace crafter {
 				},
 			],
 		},
+		canSilkTouch: true,
 	});
 
 	core.register_node("crafter:cobble", {
@@ -259,6 +262,7 @@ namespace crafter {
 			dug: { name: "break_glass", gain: 0.4 },
 		}),
 		drop: "",
+		canSilkTouch: true,
 	});
 
 	core.register_node("crafter:ice", {
@@ -279,6 +283,7 @@ namespace crafter {
 		after_destruct: (pos: Vec3) => {
 			core.set_node(pos, { name: "crafter:water" });
 		},
+		canSilkTouch: true,
 	});
 
 	core.register_node("crafter:ice_mapgen", {
@@ -294,6 +299,7 @@ namespace crafter {
 		}),
 		use_texture_alpha: TextureAlpha.opaque,
 		drop: "",
+		canSilkTouch: true,
 	});
 
 	core.register_node("crafter:dirt", {
@@ -310,6 +316,7 @@ namespace crafter {
 		groups: { grass: 1, soil: 1, pathable: 1, farm_tillable: 1 },
 		sounds: crafter.dirtSound(),
 		drop: "crafter:dirt",
+		canSilkTouch: true,
 	});
 
 	core.register_node("crafter:sand", {
@@ -352,7 +359,6 @@ namespace crafter {
 		},
 	});
 
-
 	core.register_node("crafter:tree", {
 		description: "Tree",
 		tiles: [
@@ -390,7 +396,7 @@ namespace crafter {
 			meta.set_string("placed", "true");
 			return itemstack;
 		},
-
+		canSilkTouch: true,
 	});
 
 	core.register_node("crafter:wood", {

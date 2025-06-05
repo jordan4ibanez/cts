@@ -18,7 +18,7 @@ namespace item_handling {
 		) => {
 			const meta: MetaRef = digger.get_wielded_item().get_meta();
 			const careful: boolean = meta.get_int("careful") != 0;
-			
+
 			// todo: why is the fortune enchant disabled?
 			const fortune: number = 1; //meta:get_int("fortune") + 1
 
