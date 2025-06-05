@@ -295,7 +295,7 @@ namespace experience {
 				hp_max : 1,
 				physical : true,
 				collide_with_objects : false,
-				collisionbox : {-0.2, -0.2, -0.2, 0.2, 0.2, 0.2},
+				collisionbox : [-0.2, -0.2, -0.2, 0.2, 0.2, 0.2],
 				visual : "sprite",
 				visual_size : {x : 0.4, y : 0.4},
 				textures : {name:"experience_orb.png", animation:{type:"vertical_frames", aspect_w:16, aspect_h:16, length:2.0}},
