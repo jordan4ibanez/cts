@@ -447,14 +447,16 @@ namespace experience {
 				})
 			);
 
-			// 	// Remove nodes in 'ignore'
-			// 	if node and node.name == "ignore" then
-			// 		this.object:remove()
-			// 		return
-			// 	end
+			// Remove nodes in 'ignore'.
+			if (node != null && node.name == "ignore") {
+				// 		this.object:remove()
+				// 		return
+			}
+
 			// 	if not this.physical_state then
 			// 		return // Don't do anything
 			// 	end
+
 			// 	// Slide on slippery nodes
 			// 	vel = this.object:get_velocity()
 			// 	def = node and registered_nodes[node.name]
