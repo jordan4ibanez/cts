@@ -289,28 +289,7 @@ namespace experience {
 		item_handling.throw_experience(player.get_pos(), xp_amount);
 	});
 
-	// local name
-	// local temp_pool
-	// local collector
-	// local pos
-	// local pos2
-	// local direction
-	// local distance
-	// local player_velocity
-	// local goal
-	// local currentvel
-	// local acceleration
-	// local multiplier
-	// local velocity
-	// local node
-	// local vel
-	// local def
-	// local is_moving
-	// local is_slippery
-	// local slippery
-	// local slip_factor
-	// local size
-	// local data
+	
 	// local function xp_step(self, dtime)
 	// 	//if item set to be collected then only execute go to player
 	// 	if self.collected == true then
