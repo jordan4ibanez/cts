@@ -1,6 +1,6 @@
 namespace experience {
 	// local mod_storage = core.get_mod_storage()
-	// -- minetest library
+	// // minetest library
 	// local get_node_or_nil    = core.get_node_or_nil
 	// local get_time           = core.get_us_time
 	// local get_player_by_name = core.get_player_by_name
@@ -14,21 +14,21 @@ namespace experience {
 	// core.register_on_mods_loaded(function()
 	// 	registered_nodes = core.registered_nodes
 	// end)
-	// -- vector library
+	// // vector library
 	// local new_vec       = vector.new
 	// local vec_distance  = vector.distance
 	// local add_vec       = vector.add
 	// local multiply_vec  = vector.multiply
 	// local vec_direction = vector.direction
-	// -- math library
+	// // math library
 	// local pi     = math.pi
 	// local random = math.random
 	// local abs    = math.abs
-	// -- string library
+	// // string library
 	// local s_sub  = string.sub
 	// local s_len  = string.len
 	// local pool = {}
-	// -- loads data from mod storage
+	// // loads data from mod storage
 	// local name
 	// local temp_pool
 	// local load_data = function(player)
@@ -47,7 +47,7 @@ namespace experience {
 	// 		temp_pool.last_time= get_time()/1000000
 	// 	end
 	// end
-	// -- saves data to be utilized on next login
+	// // saves data to be utilized on next login
 	// local name
 	// local temp_pool
 	// local save_data = function(name)
@@ -60,17 +60,17 @@ namespace experience {
 	// 	mod_storage:set_int(name.."xp_save",1)
 	// 	pool[name] = nil
 	// end
-	// -- saves specific users data for when they relog
+	// // saves specific users data for when they relog
 	// core.register_on_leaveplayer(function(player)
 	// 	save_data(player)
 	// end)
-	// -- is used for shutdowns to save all data
+	// // is used for shutdowns to save all data
 	// local save_all = function()
 	// 	for name,_ in pairs(pool) do
 	// 		save_data(name)
 	// 	end
 	// end
-	// -- save all data to mod storage on shutdown
+	// // save all data to mod storage on shutdown
 	// core.register_on_shutdown(function()
 	// 	save_all()
 	// end)
@@ -207,7 +207,7 @@ namespace experience {
 	// 		data     = temp_pool.xp_bar
 	// 	})
 	// end
-	// --reset player level
+	// //reset player level
 	// local name
 	// local temp_pool
 	// local xp_amount
@@ -260,7 +260,7 @@ namespace experience {
 	// local size
 	// local data
 	// local function xp_step(self, dtime)
-	// 	--if item set to be collected then only execute go to player
+	// 	//if item set to be collected then only execute go to player
 	// 	if self.collected == true then
 	// 		if not self.collector then
 	// 			self.collected = false
@@ -271,7 +271,7 @@ namespace experience {
 	// 			temp_pool = pool[self.collector]
 	// 			self.object:set_acceleration(new_vec(0,0,0))
 	// 			self.disable_physics(self)
-	// 			--get the variables
+	// 			//get the variables
 	// 			pos = self.object:get_pos()
 	// 			pos2 = collector:get_pos()
 	// 			player_velocity = collector:get_player_velocity()
@@ -325,15 +325,15 @@ namespace experience {
 	// 	else
 	// 		return
 	// 	end
-	// 	-- Remove nodes in 'ignore'
+	// 	// Remove nodes in 'ignore'
 	// 	if node and node.name == "ignore" then
 	// 		self.object:remove()
 	// 		return
 	// 	end
 	// 	if not self.physical_state then
-	// 		return -- Don't do anything
+	// 		return // Don't do anything
 	// 	end
-	// 	-- Slide on slippery nodes
+	// 	// Slide on slippery nodes
 	// 	vel = self.object:get_velocity()
 	// 	def = node and registered_nodes[node.name]
 	// 	is_moving = (def and not def.walkable) or
@@ -343,7 +343,7 @@ namespace experience {
 	// 		slippery = get_item_group(node.name, "slippery")
 	// 		is_slippery = slippery ~= 0
 	// 		if is_slippery and (abs(vel.x) > 0.2 or abs(vel.z) > 0.2) then
-	// 			-- Horizontal deceleration
+	// 			// Horizontal deceleration
 	// 			slip_factor = 4.0 / (slippery + 4)
 	// 			self.object:set_acceleration({
 	// 				x = -vel.x * slip_factor,
@@ -355,7 +355,7 @@ namespace experience {
 	// 		end
 	// 	end
 	// 	if self.moving_state == is_moving and self.slippery_state == is_slippery then
-	// 		-- Do not update anything until the moving state changes
+	// 		// Do not update anything until the moving state changes
 	// 		return
 	// 	end
 	// 	self.moving_state = is_moving
@@ -385,12 +385,12 @@ namespace experience {
 	// 	moving_state = true,
 	// 	slippery_state = false,
 	// 	physical_state = true,
-	// 	-- Item expiry
+	// 	// Item expiry
 	// 	age = 0,
-	// 	-- Pushing item out of solid nodes
+	// 	// Pushing item out of solid nodes
 	// 	force_out = nil,
 	// 	force_out_start = nil,
-	// 	--Collection Variables
+	// 	//Collection Variables
 	// 	collectable = false,
 	// 	try_timer = 0,
 	// 	collected = false,
