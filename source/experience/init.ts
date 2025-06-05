@@ -311,8 +311,8 @@ namespace experience {
 		// Item expiry.
 		age: number = 0;
 		// Pushing item out of solid nodes.
-		force_out = null;
-		force_out_start = null;
+		force_out: string | null = null;
+		force_out_start: string | null = null;
 		//Collection Variables
 		collectable: boolean = false;
 		try_timer = 0;
