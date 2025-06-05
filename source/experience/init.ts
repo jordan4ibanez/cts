@@ -291,6 +291,34 @@ namespace experience {
 
 	class ExperienceEntity extends types.Entity {
 		name: string = "crafter_experience:orb";
+		// 	initial_properties = {
+		// 		hp_max = 1,
+		// 		physical = true,
+		// 		collide_with_objects = false,
+		// 		collisionbox = {-0.2, -0.2, -0.2, 0.2, 0.2, 0.2},
+		// 		visual = "sprite",
+		// 		visual_size = {x = 0.4, y = 0.4},
+		// 		textures = {name="experience_orb.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0}},
+		// 		spritediv = {x = 1, y = 14},
+		// 		initial_sprite_basepos = {x = 0, y = 0},
+		// 		is_visible = true,
+		// 		pointable = false,
+		// 		static_save = false,
+		// 	},
+		// 	moving_state = true,
+		// 	slippery_state = false,
+		// 	physical_state = true,
+		// 	// Item expiry
+		// 	age = 0,
+		// 	// Pushing item out of solid nodes
+		// 	force_out = nil,
+		// 	force_out_start = nil,
+		// 	//Collection Variables
+		// 	collectable = false,
+		// 	try_timer = 0,
+		// 	collected = false,
+		// 	delete_timer = 0,
+		// 	radius = 4,
 
 		// local function xp_step(self, dtime)
 		// 	//if item set to be collected then only execute go to player
@@ -401,34 +429,7 @@ namespace experience {
 		// 	end
 		// end
 		// core.register_entity("experience:orb", {
-		// 	initial_properties = {
-		// 		hp_max = 1,
-		// 		physical = true,
-		// 		collide_with_objects = false,
-		// 		collisionbox = {-0.2, -0.2, -0.2, 0.2, 0.2, 0.2},
-		// 		visual = "sprite",
-		// 		visual_size = {x = 0.4, y = 0.4},
-		// 		textures = {name="experience_orb.png", animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=2.0}},
-		// 		spritediv = {x = 1, y = 14},
-		// 		initial_sprite_basepos = {x = 0, y = 0},
-		// 		is_visible = true,
-		// 		pointable = false,
-		// 		static_save = false,
-		// 	},
-		// 	moving_state = true,
-		// 	slippery_state = false,
-		// 	physical_state = true,
-		// 	// Item expiry
-		// 	age = 0,
-		// 	// Pushing item out of solid nodes
-		// 	force_out = nil,
-		// 	force_out_start = nil,
-		// 	//Collection Variables
-		// 	collectable = false,
-		// 	try_timer = 0,
-		// 	collected = false,
-		// 	delete_timer = 0,
-		// 	radius = 4,
+
 		// 	on_activate = function(self, staticdata, dtime_s)
 		// 		self.object:set_velocity(new_vec(
 		// 			random(-2,2)*random(),
