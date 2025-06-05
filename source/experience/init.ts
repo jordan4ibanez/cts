@@ -400,8 +400,7 @@ namespace experience {
 
 					this.object.set_acceleration(new_vec(0, 0, 0));
 
-					// todo: enable this.
-					// this.disable_physics(self)
+					this.disable_physics();
 
 					// Get the variables.
 
@@ -470,8 +469,7 @@ namespace experience {
 				} else {
 					this.collector = null;
 
-					// todo: enable this.
-					// this.enable_physics(self)
+					this.enable_physics();
 				}
 			}
 
