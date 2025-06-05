@@ -67,9 +67,13 @@ namespace enchanting {
 					if (core.registered_tools[itemstack.get_name()] == null) {
 						return;
 					}
-					// 			local tool_caps = itemstack:get_tool_capabilities()
-					// 			local groupcaps = tool_caps.groupcaps
-					// 			if not groupcaps then return end
+					const tool_caps: ToolCapabilities =
+						itemstack.get_tool_capabilities();
+					const groupcaps: Dictionary<string, GroupCap> | undefined =
+						tool_caps.groupcaps;
+					if (groupcaps == null) {
+						return;
+					}
 					// 			local able_enchantments = table.copy(enchantment_list)
 					// 			local player_level = get_player_xp_level(clicker)
 					// 			local enchants_available = math.floor(player_level/5)
