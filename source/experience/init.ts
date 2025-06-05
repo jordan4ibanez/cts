@@ -378,7 +378,8 @@ namespace experience {
 			// 			self.collector = nil
 			// 			self.enable_physics(self)
 			// 		end
-			// 	end
+			// 	end // ! End if
+
 			// 	self.age = self.age + dtime
 			// 	if self.age > 300 then
 			// 		self.object:remove()
