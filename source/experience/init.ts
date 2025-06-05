@@ -79,7 +79,8 @@ namespace experience {
 			save_data(name);
 		}
 	}
-	// // save all data to mod storage on shutdown
+
+	// Save all data to mod storage on shutdown.
 	// core.register_on_shutdown(function()
 	// 	save_all()
 	// end)
