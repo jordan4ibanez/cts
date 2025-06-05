@@ -226,18 +226,24 @@ namespace experience {
 
 		data.xp_bar += experience;
 
+		const time: number = get_time() / 1000000;
+
 		if (data.xp_bar > 36) {
-			if (get_time() / 1000000 - data.last_time > 0.04) {
+			if (time - data.last_time > 0.04) {
 				play_sound("level_up", { gain: 0.2, to_player: name });
-				data.last_time = get_time() / 1000000;
+				data.last_time = time;
 			}
 			data.xp_bar -= 36;
 			level_up_experience(player);
 		} else {
-			// 		if get_time()/1000000 - data.last_time > 0.01 then
-			// 			data.last_time = get_time()/1000000
-			// 			play_sound("experience",{gain=0.1,to_player = name,pitch=random(75,99)/100})
-			// 		end
+			if (time - data.last_time > 0.01) {
+				data.last_time = time;
+				play_sound("experience", {
+					gain: 0.1,
+					to_player: name,
+					pitch: random(75, 99) / 100,
+				});
+			}
 		}
 		// 	hud_manager.change_hud({
 		// 		player   = player,
