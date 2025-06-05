@@ -19,14 +19,17 @@ namespace experience {
 	const multiply_vec = vector.multiply;
 	const vec_direction = vector.direction;
 
-	// // math library
-	// local pi     = math.pi
-	// local random = math.random
-	// local abs    = math.abs
-	// // string library
-	// local s_sub  = string.sub
-	// local s_len  = string.len
+	// Math library.
+	const pi = math.pi;
+	const random = math.random;
+	const abs = math.abs;
+
+	// String library.
+	const s_sub = string.sub;
+	const s_len = string.len;
+
 	// local pool = {}
+
 	// // loads data from mod storage
 	// local name
 	// local temp_pool
