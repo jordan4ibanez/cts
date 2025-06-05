@@ -117,13 +117,27 @@ namespace enchanting {
 								)[0] +
 								": " +
 								tostring(level);
-							// 					if new_enchant == "swiftness" then
-							// 						for index,table in pairs(groupcaps) do
-							// 							for index2,time in pairs(table.times) do
-							// 								tool_caps["groupcaps"][index]["times"][index2] = time/(level+1)
-							// 							end
-							// 						end
-							// 					end
+							if (new_enchant == "swiftness") {
+								for (const [name, table] of pairs(groupcaps)) {
+									for (const [index2, time] of pairs(
+										table.times
+									)) {
+										const groupcaps:
+											| Dictionary<string, GroupCap>
+											| undefined = tool_caps.groupcaps;
+										if (
+											groupcaps == null ||
+											groupcaps[name] == null
+										) {
+											continue;
+										}
+
+										groupcaps[name]!.times[index2] =
+											time / (level + 1);
+									}
+								}
+							}
+
 							// 					if new_enchant == "durable" then
 							// 						for index,table in pairs(groupcaps) do
 							// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
