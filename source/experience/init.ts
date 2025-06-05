@@ -227,12 +227,12 @@ namespace experience {
 		data.xp_bar += experience;
 
 		if (data.xp_bar > 36) {
-			// 		if get_time()/1000000 - data.last_time > 0.04 then
-			// 			play_sound("level_up",{gain=0.2,to_player = name})
-			// 			data.last_time = get_time()/1000000
-			// 		end
-			//         data.xp_bar = data.xp_bar - 36
-			// 		level_up_experience(player)
+			if (get_time() / 1000000 - data.last_time > 0.04) {
+				play_sound("level_up", { gain: 0.2, to_player: name });
+				data.last_time = get_time() / 1000000;
+			}
+			data.xp_bar -= 36;
+			level_up_experience(player);
 		} else {
 			// 		if get_time()/1000000 - data.last_time > 0.01 then
 			// 			data.last_time = get_time()/1000000
