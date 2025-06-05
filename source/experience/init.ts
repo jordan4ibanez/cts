@@ -330,7 +330,7 @@ namespace experience {
 
 		on_step(dtime: number) {
 				// If orb set to be collected then only execute go to player.
-			// 	if this.collected == true then
+				if (this.collected == true) {
 			// 		if not this.collector then
 			// 			this.collected = false
 			// 			return
@@ -378,7 +378,7 @@ namespace experience {
 			// 			this.collector = nil
 			// 			this.enable_physics(self)
 			// 		end
-			// 	end // ! End if
+                }
 
 			// 	this.age = this.age + dtime
 			// 	if this.age > 300 then
