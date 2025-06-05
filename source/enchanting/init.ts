@@ -10,9 +10,42 @@ namespace enchanting {
 	spiky - the tool will randomly hurt you when used
 	sharpness - the tool does more damage
 	*/
-	// local enchantment_list = {"swiftness", "durable", "careful", "fortune", "autorepair",  "sharpness"}
-	// local temp_names = {"Monster", "Behemoth", "Ultra", "Wow!", "Oh Em Gee", "The Ultimatum", "Holy Moly!", "Infinity"}
-	// local hexer = {"a","b","c","d","e","f","1","2","3","4","5","6","7","8","9","0"}
+	const enchantment_list: string[] = [
+		"swiftness",
+		"durable",
+		"careful",
+		"fortune",
+		"autorepair",
+		"sharpness",
+	];
+	const temp_names: string[] = [
+		"Monster",
+		"Behemoth",
+		"Ultra",
+		"Wow!",
+		"Oh Em Gee",
+		"The Ultimatum",
+		"Holy Moly!",
+		"Infinity",
+	];
+	const hexer: string[] = [
+		"a",
+		"b",
+		"c",
+		"d",
+		"e",
+		"f",
+		"1",
+		"2",
+		"3",
+		"4",
+		"5",
+		"6",
+		"7",
+		"8",
+		"9",
+		"0",
+	];
 	// core.register_node("enchanting:table", {
 	// 	description = "Enchanting Table",
 	// 	tiles = {"bedrock.png"},
