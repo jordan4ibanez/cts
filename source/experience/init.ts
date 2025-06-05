@@ -131,8 +131,9 @@ namespace experience {
 	});
 
 	core.register_on_joinplayer((player: ObjectRef) => {
-		// 	load_data(player)
-		// 	name = player:get_player_name()
+		load_data(player);
+
+		const name: string = player.get_player_name();
 		// 	temp_pool = pool[name]
 		//     hud_manager.add_hud(player,"heart_bar_bg",{
 		//         hud_elem_type = "statbar",
@@ -143,6 +144,7 @@ namespace experience {
 		//         size = {x = 24, y = 24},
 		//         offset = {x = (-10 * 24) - 25, y = -(48 + 24 + 38)},
 		// 	})
+
 		//     hud_manager.add_hud(player,"experience_bar_background",{
 		//         hud_elem_type = "statbar",
 		//         position = {x=0.5, y=1},
