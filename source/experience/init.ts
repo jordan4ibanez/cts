@@ -254,35 +254,33 @@ namespace experience {
 	}
 
 	// Reset player level.
-	// local name
-	// local temp_pool
-	// local xp_amount
-	// core.register_on_dieplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	temp_pool = pool[name]
-	// 	xp_amount = temp_pool.xp_level
-	// 	temp_pool.xp_bar   = 0
-	// 	temp_pool.xp_level = 0
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "xp_level_fg",
-	// 		element  = "text",
-	// 		data     = tostring(temp_pool.xp_level)
-	// 	})
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "xp_level_bg",
-	// 		element  = "text",
-	// 		data     = tostring(temp_pool.xp_level)
-	// 	})
-	// 	hud_manager.change_hud({
-	// 		player   = player,
-	// 		hud_name = "experience_bar",
-	// 		element  = "number",
-	// 		data     = temp_pool.xp_bar
-	// 	})
-	//     core.throw_experience(player:get_pos(), xp_amount)
-	// end)
+	core.register_on_dieplayer((player: ObjectRef) => {
+		// 	name = player:get_player_name()
+		// 	temp_pool = pool[name]
+		// 	xp_amount = temp_pool.xp_level
+		// 	temp_pool.xp_bar   = 0
+		// 	temp_pool.xp_level = 0
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "xp_level_fg",
+		// 		element  = "text",
+		// 		data     = tostring(temp_pool.xp_level)
+		// 	})
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "xp_level_bg",
+		// 		element  = "text",
+		// 		data     = tostring(temp_pool.xp_level)
+		// 	})
+		// 	hud_manager.change_hud({
+		// 		player   = player,
+		// 		hud_name = "experience_bar",
+		// 		element  = "number",
+		// 		data     = temp_pool.xp_bar
+		// 	})
+		//     core.throw_experience(player:get_pos(), xp_amount)
+	});
+
 	// local name
 	// local temp_pool
 	// local collector
