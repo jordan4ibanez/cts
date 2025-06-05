@@ -217,9 +217,9 @@ namespace experience {
 		});
 	}
 
-	// local name
-	// local temp_pool
-	// local function add_experience(player,experience)
+	
+
+	 function add_experience(player,experience) {
 	// 	name = player:get_player_name()
 	// 	temp_pool = pool[name]
 	// 	temp_pool.xp_bar = temp_pool.xp_bar + experience
@@ -242,7 +242,8 @@ namespace experience {
 	// 		element  = "number",
 	// 		data     = temp_pool.xp_bar
 	// 	})
-	// end
+     }
+
 	// //reset player level
 	// local name
 	// local temp_pool
