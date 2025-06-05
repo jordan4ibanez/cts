@@ -498,10 +498,10 @@ namespace experience {
 			this.moving_state = is_moving;
 			this.slippery_state = is_slippery;
 			if (is_moving) {
-						this.object:set_acceleration({x = 0, y = -9.81, z = 0})
+						this.object.set_acceleration({x = 0, y = -9.81, z = 0})
 			} else {
-						this.object:set_acceleration({x = 0, y = 0, z = 0})
-						this.object:set_velocity({x = 0, y = 0, z = 0})
+						this.object.set_acceleration({x = 0, y = 0, z = 0})
+						this.object.set_velocity({x = 0, y = 0, z = 0})
 			}
 		}
 
