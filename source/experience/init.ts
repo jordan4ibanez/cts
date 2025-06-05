@@ -462,9 +462,12 @@ namespace experience {
 			const vel: Vec3 = this.object.get_velocity();
 			const def: NodeDefinition | undefined =
 				core.registered_nodes[node.name];
-                
-			// 	is_moving = (def and not def.walkable) or
-			// 		vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0
+
+			const is_moving =
+				(def != null && !def.walkable) ||
+				vel.x != 0 ||
+				vel.y != 0 ||
+				vel.z != 0;
 			// 	is_slippery = false
 			// 	if def and def.walkable then
 			// 		slippery = get_item_group(node.name, "slippery")
