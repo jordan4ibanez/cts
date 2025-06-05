@@ -1,3 +1,4 @@
+namespace enchanting {
 // --[[
 // swiftness - how fast you mine
 // hardness - allows the tool to go way above it's level
@@ -100,3 +101,4 @@
 // 		{"nether:obsidian", "nether:obsidian", "nether:obsidian"},
 // 	},
 // })
+}
