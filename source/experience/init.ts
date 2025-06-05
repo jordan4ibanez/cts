@@ -209,12 +209,12 @@ namespace experience {
 			data: tostring(data.xp_level),
 		});
 
-		// 	hud_manager.change_hud({
-		// 		player   = player,
-		// 		hud_name = "xp_level_bg",
-		// 		element  = "text",
-		// 		data     = tostring(temp_pool.xp_level)
-		// 	})
+		hudManager.change_hud({
+			player: player,
+			hudName: "xp_level_bg",
+			element: "text",
+			data: tostring(data.xp_level),
+		});
 	}
 
 	// local name
