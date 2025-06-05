@@ -328,114 +328,114 @@ namespace experience {
 		delete_timer: number = 0;
 		radius: number = 4;
 
-		on_step( dtime: number) {
-		// 	//if item set to be collected then only execute go to player
-		// 	if self.collected == true then
-		// 		if not self.collector then
-		// 			self.collected = false
-		// 			return
-		// 		end
-		// 		collector = get_player_by_name(self.collector)
-		// 		if collector and collector:get_hp() > 0 and vec_distance(self.object:get_pos(),collector:get_pos()) < 5 then
-		// 			temp_pool = pool[self.collector]
-		// 			self.object:set_acceleration(new_vec(0,0,0))
-		// 			self.disable_physics(self)
-		// 			//get the variables
-		// 			pos = self.object:get_pos()
-		// 			pos2 = collector:get_pos()
-		// 			player_velocity = collector:get_player_velocity()
-		// 			pos2.y = pos2.y + 0.8
-		// 			direction = vec_direction(pos,pos2)
-		// 			distance = vec_distance(pos2,pos)
-		// 			multiplier = distance
-		// 			if multiplier < 1 then
-		// 				multiplier = 1
-		// 			end
-		// 			goal = multiply_vec(direction,multiplier)
-		// 			currentvel = self.object:get_velocity()
-		// 			if distance > 1 then
-		// 				multiplier = 20 - distance
-		// 				velocity = multiply_vec(direction,multiplier)
-		// 				goal = velocity
-		// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-		// 				self.object:add_velocity(add_vec(acceleration,player_velocity))
-		// 			elseif distance > 0.9 and temp_pool.buffer > 0 then
-		// 				temp_pool.buffer = temp_pool.buffer - dtime
-		// 				multiplier = 20 - distance
-		// 				velocity = multiply_vec(direction,multiplier)
-		// 				goal = multiply_vec(yaw_to_dir(dir_to_yaw(vec_direction(new_vec(pos.x,0,pos.z),new_vec(pos2.x,0,pos2.z)))+pi/2),10)
-		// 				goal = add_vec(player_velocity,goal)
-		// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-		// 				self.object:add_velocity(acceleration)
-		// 			end
-		// 			if distance < 0.4 and temp_pool.buffer <= 0 then
-		// 				temp_pool.buffer = 0.04
-		// 				add_experience(collector,2)
-		// 				self.object:remove()
-		// 			end
-		// 			return
-		// 		else
-		// 			self.collector = nil
-		// 			self.enable_physics(self)
-		// 		end
-		// 	end
-		// 	self.age = self.age + dtime
-		// 	if self.age > 300 then
-		// 		self.object:remove()
-		// 		return
-		// 	end
-		// 	pos = self.object:get_pos()
-		// 	if pos then
-		// 		node = get_node_or_nil({
-		// 			x = pos.x,
-		// 			y = pos.y -0.25,
-		// 			z = pos.z
-		// 		})
-		// 	else
-		// 		return
-		// 	end
-		// 	// Remove nodes in 'ignore'
-		// 	if node and node.name == "ignore" then
-		// 		self.object:remove()
-		// 		return
-		// 	end
-		// 	if not self.physical_state then
-		// 		return // Don't do anything
-		// 	end
-		// 	// Slide on slippery nodes
-		// 	vel = self.object:get_velocity()
-		// 	def = node and registered_nodes[node.name]
-		// 	is_moving = (def and not def.walkable) or
-		// 		vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0
-		// 	is_slippery = false
-		// 	if def and def.walkable then
-		// 		slippery = get_item_group(node.name, "slippery")
-		// 		is_slippery = slippery ~= 0
-		// 		if is_slippery and (abs(vel.x) > 0.2 or abs(vel.z) > 0.2) then
-		// 			// Horizontal deceleration
-		// 			slip_factor = 4.0 / (slippery + 4)
-		// 			self.object:set_acceleration({
-		// 				x = -vel.x * slip_factor,
-		// 				y = 0,
-		// 				z = -vel.z * slip_factor
-		// 			})
-		// 		elseif vel.y == 0 then
-		// 			is_moving = false
-		// 		end
-		// 	end
-		// 	if self.moving_state == is_moving and self.slippery_state == is_slippery then
-		// 		// Do not update anything until the moving state changes
-		// 		return
-		// 	end
-		// 	self.moving_state = is_moving
-		// 	self.slippery_state = is_slippery
-		// 	if is_moving then
-		// 		self.object:set_acceleration({x = 0, y = -9.81, z = 0})
-		// 	else
-		// 		self.object:set_acceleration({x = 0, y = 0, z = 0})
-		// 		self.object:set_velocity({x = 0, y = 0, z = 0})
-		// 	end
-        }
+		on_step(dtime: number) {
+			// 	//if item set to be collected then only execute go to player
+			// 	if self.collected == true then
+			// 		if not self.collector then
+			// 			self.collected = false
+			// 			return
+			// 		end
+			// 		collector = get_player_by_name(self.collector)
+			// 		if collector and collector:get_hp() > 0 and vec_distance(self.object:get_pos(),collector:get_pos()) < 5 then
+			// 			temp_pool = pool[self.collector]
+			// 			self.object:set_acceleration(new_vec(0,0,0))
+			// 			self.disable_physics(self)
+			// 			//get the variables
+			// 			pos = self.object:get_pos()
+			// 			pos2 = collector:get_pos()
+			// 			player_velocity = collector:get_player_velocity()
+			// 			pos2.y = pos2.y + 0.8
+			// 			direction = vec_direction(pos,pos2)
+			// 			distance = vec_distance(pos2,pos)
+			// 			multiplier = distance
+			// 			if multiplier < 1 then
+			// 				multiplier = 1
+			// 			end
+			// 			goal = multiply_vec(direction,multiplier)
+			// 			currentvel = self.object:get_velocity()
+			// 			if distance > 1 then
+			// 				multiplier = 20 - distance
+			// 				velocity = multiply_vec(direction,multiplier)
+			// 				goal = velocity
+			// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
+			// 				self.object:add_velocity(add_vec(acceleration,player_velocity))
+			// 			elseif distance > 0.9 and temp_pool.buffer > 0 then
+			// 				temp_pool.buffer = temp_pool.buffer - dtime
+			// 				multiplier = 20 - distance
+			// 				velocity = multiply_vec(direction,multiplier)
+			// 				goal = multiply_vec(yaw_to_dir(dir_to_yaw(vec_direction(new_vec(pos.x,0,pos.z),new_vec(pos2.x,0,pos2.z)))+pi/2),10)
+			// 				goal = add_vec(player_velocity,goal)
+			// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
+			// 				self.object:add_velocity(acceleration)
+			// 			end
+			// 			if distance < 0.4 and temp_pool.buffer <= 0 then
+			// 				temp_pool.buffer = 0.04
+			// 				add_experience(collector,2)
+			// 				self.object:remove()
+			// 			end
+			// 			return
+			// 		else
+			// 			self.collector = nil
+			// 			self.enable_physics(self)
+			// 		end
+			// 	end
+			// 	self.age = self.age + dtime
+			// 	if self.age > 300 then
+			// 		self.object:remove()
+			// 		return
+			// 	end
+			// 	pos = self.object:get_pos()
+			// 	if pos then
+			// 		node = get_node_or_nil({
+			// 			x = pos.x,
+			// 			y = pos.y -0.25,
+			// 			z = pos.z
+			// 		})
+			// 	else
+			// 		return
+			// 	end
+			// 	// Remove nodes in 'ignore'
+			// 	if node and node.name == "ignore" then
+			// 		self.object:remove()
+			// 		return
+			// 	end
+			// 	if not self.physical_state then
+			// 		return // Don't do anything
+			// 	end
+			// 	// Slide on slippery nodes
+			// 	vel = self.object:get_velocity()
+			// 	def = node and registered_nodes[node.name]
+			// 	is_moving = (def and not def.walkable) or
+			// 		vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0
+			// 	is_slippery = false
+			// 	if def and def.walkable then
+			// 		slippery = get_item_group(node.name, "slippery")
+			// 		is_slippery = slippery ~= 0
+			// 		if is_slippery and (abs(vel.x) > 0.2 or abs(vel.z) > 0.2) then
+			// 			// Horizontal deceleration
+			// 			slip_factor = 4.0 / (slippery + 4)
+			// 			self.object:set_acceleration({
+			// 				x = -vel.x * slip_factor,
+			// 				y = 0,
+			// 				z = -vel.z * slip_factor
+			// 			})
+			// 		elseif vel.y == 0 then
+			// 			is_moving = false
+			// 		end
+			// 	end
+			// 	if self.moving_state == is_moving and self.slippery_state == is_slippery then
+			// 		// Do not update anything until the moving state changes
+			// 		return
+			// 	end
+			// 	self.moving_state = is_moving
+			// 	self.slippery_state = is_slippery
+			// 	if is_moving then
+			// 		self.object:set_acceleration({x = 0, y = -9.81, z = 0})
+			// 	else
+			// 		self.object:set_acceleration({x = 0, y = 0, z = 0})
+			// 		self.object:set_velocity({x = 0, y = 0, z = 0})
+			// 	end
+		}
 
 		// core.register_entity("experience:orb", {
 
