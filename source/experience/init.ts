@@ -64,7 +64,7 @@ namespace experience {
 		pool.delete(name);
 	}
 
-	// // saves specific users data for when they relog
+	// Saves specific users data for when they relog.
 	// core.register_on_leaveplayer(function(player)
 	// 	save_data(player)
 	// end)
