@@ -487,10 +487,11 @@ namespace experience {
 				}
 			}
 
-			// 	if this.moving_state == is_moving and this.slippery_state == is_slippery then
+				if (this.moving_state == is_moving && this.slippery_state == is_slippery) {
 			// 		// Do not update anything until the moving state changes
 			// 		return
-			// 	end
+                }
+
 			// 	this.moving_state = is_moving
 			// 	this.slippery_state = is_slippery
 			// 	if is_moving then
