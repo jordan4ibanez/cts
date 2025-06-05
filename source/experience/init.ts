@@ -255,7 +255,8 @@ namespace experience {
 
 	// Reset player level.
 	core.register_on_dieplayer((player: ObjectRef) => {
-		// 	name = player:get_player_name()
+		const name: string = player.get_player_name();
+
 		// 	temp_pool = pool[name]
 		// 	xp_amount = temp_pool.xp_level
 		// 	temp_pool.xp_bar   = 0
