@@ -54,9 +54,9 @@ namespace experience {
 	function save_data(name: string): void {
 		const data: ExpData | undefined = pool.get(name);
 		// 	temp_pool = pool[name]
-		// 	mod_storage:set_int(name.."xp_level",temp_pool.xp_level)
-		// 	mod_storage:set_int(name.."xp_bar",  temp_pool.xp_bar  )
-		// 	mod_storage:set_int(name.."xp_save",1)
+		// 	mod_storage:set_int(name+"xp_level",temp_pool.xp_level)
+		// 	mod_storage:set_int(name+"xp_bar",  temp_pool.xp_bar  )
+		// 	mod_storage:set_int(name+"xp_save",1)
 		// 	pool[name] = nil
 	}
 
