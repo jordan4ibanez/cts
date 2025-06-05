@@ -110,12 +110,12 @@ namespace enchanting {
 		},
 	});
 
-	// core.register_craft({
-	// 	output = "enchanting:table",
-	// 	recipe = {
-	// 		{"nether:obsidian", "nether:obsidian", "nether:obsidian"},
-	// 		{"nether:obsidian", "main:diamond", "nether:obsidian"},
-	// 		{"nether:obsidian", "nether:obsidian", "nether:obsidian"},
-	// 	},
-	// })
+	core.register_craft({
+		output: "enchanting:table",
+		recipe: [
+			["nether:obsidian", "nether:obsidian", "nether:obsidian"],
+			["nether:obsidian", "main:diamond", "nether:obsidian"],
+			["nether:obsidian", "nether:obsidian", "nether:obsidian"],
+		],
+	});
 }
