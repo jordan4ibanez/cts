@@ -152,11 +152,23 @@ namespace enchanting {
 										groupcaps[name] == null ||
 										table == null
 									) {
+										core.log(
+											LogLevel.warning,
+											`Missing [${name}]`
+										);
 										continue;
 									}
 
-									groupcaps[name].uses =
-										table!.uses! * (level + 1);
+									const use: number | undefined = table.uses;
+									if (use == null) {
+										core.log(
+											LogLevel.warning,
+											`Missing [${name}] use`
+										);
+										continue;
+									}
+
+									groupcaps[name].uses = use * (level + 1);
 								}
 							}
 							// 					if new_enchant == "sharpness" then
