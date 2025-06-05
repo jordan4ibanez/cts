@@ -74,10 +74,15 @@ namespace enchanting {
 					if (groupcaps == null) {
 						return;
 					}
-					// 			local able_enchantments = table.copy(enchantment_list)
-					// 			local player_level = get_player_xp_level(clicker)
-					// 			local enchants_available = math.floor(player_level/5)
-					// 			local max_enchant_level = math.floor(player_level/5)
+					const able_enchantments: string[] = [...enchantment_list];
+					// todo: this depends on the experience mod.
+					const player_level: number = 0; //get_player_xp_level(clicker)
+					const enchants_available: number = math.floor(
+						player_level / 5
+					);
+					const max_enchant_level: number = math.floor(
+						player_level / 5
+					);
 					// 			if enchants_available <= 0 then return end
 					// 			if enchants_available > 3 then enchants_available = 3 end
 					// 			local stock_name = core.registered_tools[stack:get_name()].name
