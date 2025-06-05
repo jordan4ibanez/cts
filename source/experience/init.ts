@@ -35,9 +35,9 @@ namespace experience {
 		last_time: number = 0;
 		constructor(player: ObjectRef) {
 			const name = player.get_player_name();
-			if (mod_storage.get_int(name + "xp_save") > 0) {
-				this.xp_level = mod_storage.get_int(name + "xp_level");
-				this.xp_bar = mod_storage.get_int(name + "xp_bar");
+			if (mod_storage.get_int(name + ":crafter_experience_save") > 0) {
+				this.xp_level = mod_storage.get_int(name + ":crafter_experience_level");
+				this.xp_bar = mod_storage.get_int(name + ":crafter_experience_bar");
 			}
 			this.last_time = get_time() / 1000000;
 		}
@@ -57,9 +57,9 @@ namespace experience {
 			throw new Error(`Player [${name}] was never added to the pool.`);
 		}
 
-		mod_storage.set_int(name + "xp_level", data.xp_level);
-		mod_storage.set_int(name + "xp_bar", data.xp_bar);
-		mod_storage.set_int(name + "xp_save", 1);
+		mod_storage.set_int(name + ":crafter_experience_level", data.xp_level);
+		mod_storage.set_int(name + ":crafter_experience_bar", data.xp_bar);
+		mod_storage.set_int(name + ":crafter_experience_save", 1);
 
 		pool.delete(name);
 	}
