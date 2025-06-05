@@ -1766,7 +1766,7 @@ declare global {
 		visual?: EntityVisual;
 		visual_size?: Vec3 | Vec2;
 		mesh?: string;
-		textures?: string[];
+		textures?: string[] | (string | TileDefinition)[] | TileDefinition;
 		colors?: DynamicColorSpec[];
 		use_texture_alpha?: boolean;
 		spritediv?: Vec2;
