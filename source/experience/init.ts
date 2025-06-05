@@ -447,8 +447,8 @@ namespace experience {
 				})
 			);
 
-			// Remove nodes in 'ignore'.
-			if (node != null && node.name == "ignore") {
+			// Remove nodes in 'ignore' or unloaded areas.
+			if (node == null || node.name == "ignore") {
 				this.object.remove();
 				return;
 			}
