@@ -329,7 +329,7 @@ namespace experience {
 		radius: number = 4;
 
 		on_step(dtime: number) {
-			// 	//if item set to be collected then only execute go to player
+				// If orb set to be collected then only execute go to player.
 			// 	if self.collected == true then
 			// 		if not self.collector then
 			// 			self.collected = false
