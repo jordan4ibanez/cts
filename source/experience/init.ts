@@ -183,15 +183,15 @@ namespace experience {
 			z_index: 0,
 		});
 
-		//     hud_manager.add_hud(player,"xp_level_fg",{
-		//         hud_elem_type = "text",
-		//         position = {x=0.5, y=1},
-		//         name = "xp_level_fg",
-		//         text = tostring(temp_pool.xp_level),
-		//         number = 0xFFFFFF,
-		//         offset = {x = -1, y = -(48 + 24 + 25)},
-		//         z_index = 0,
-		// 	})
+		hudManager.add_hud(player, "xp_level_fg", {
+			type: HudElementType.text,
+			position: { x: 0.5, y: 1 },
+			name: "xp_level_fg",
+			text: tostring(data.xp_level),
+			number: 0xffffff,
+			offset: { x: -1, y: -(48 + 24 + 25) },
+			z_index: 0,
+		});
 	});
 
 	// local name
