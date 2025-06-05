@@ -461,7 +461,6 @@ namespace experience {
 
 					if (distance < 0.4 && data.buffer <= 0) {
 						data.buffer = 0.04;
-						print("adding 1");
 						add_experience(collector, 2);
 						this.object.remove();
 					}
