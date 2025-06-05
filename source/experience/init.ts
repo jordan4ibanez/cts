@@ -305,18 +305,18 @@ namespace experience {
 		// 		pointable = false,
 		// 		static_save = false,
 		// 	},
-		moving_state = true;
-		slippery_state = false;
-		physical_state = true;
+		moving_state: boolean = true;
+		slippery_state: boolean = false;
+		physical_state: boolean = true;
 		// Item expiry.
-		age = 0;
+		age: number = 0;
 		// Pushing item out of solid nodes.
 		force_out = null;
 		force_out_start = null;
 		//Collection Variables
-		collectable = false;
+		collectable: boolean = false;
 		try_timer = 0;
-		collected = false;
+		collected: boolean = false;
 		delete_timer = 0;
 		radius = 4;
 
