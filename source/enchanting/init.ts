@@ -46,7 +46,7 @@ namespace enchanting {
 		"9",
 		"0",
 	];
-	// core.register_node("enchanting:table", {
+	core.register_node("enchanting:table", {
 	// 	description = "Enchanting Table",
 	// 	tiles = {"bedrock.png"},
 	// 	groups = {wood = 1, pathable = 1},
@@ -108,7 +108,8 @@ namespace enchanting {
 	// 			clicker:set_wielded_item(stack)
 	// 		end,clicker)
 	// 	end
-	// })
+	})
+
 	// core.register_craft({
 	// 	output = "enchanting:table",
 	// 	recipe = {
