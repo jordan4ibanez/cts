@@ -363,12 +363,13 @@ namespace experience {
 			);
 		}
 		disable_physics() {
-			// 		if this.physical_state then
-			// 			this.physical_state = false
-			// 			this.object.set_properties({physical = false})
-			// 			this.object.set_velocity({x=0, y=0, z=0})
-			// 			this.object.set_acceleration({x=0, y=0, z=0})
-			// 		end
+			if (!this.physical_state) {
+				return;
+			}
+			this.physical_state = false;
+			this.object.set_properties({ physical: false });
+			this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
+			this.object.set_acceleration(vector.create3d({ x: 0, y: 0, z: 0 }));
 		}
 
 		on_step(dtime: number) {
