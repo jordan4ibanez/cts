@@ -142,7 +142,7 @@ namespace item_handling {
 		for (let i = 1; i <= amount; i++) {
 			const object: ObjectRef | null = core.add_entity(
 				pos,
-				"experience:orb"
+				"crafter_experience:orb"
 			);
 			if (object == null) {
 				print(
