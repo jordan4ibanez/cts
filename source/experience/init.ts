@@ -149,17 +149,18 @@ namespace experience {
 			offset: { x: -10 * 24 - 25, y: -(48 + 24 + 38) },
 		});
 
-		//     hud_manager.add_hud(player,"experience_bar_background",{
-		//         hud_elem_type = "statbar",
-		//         position = {x=0.5, y=1},
-		//         name = "experience bar background",
-		//         text = "experience_bar_background.png",
-		//         number = 36,
-		//         direction = 0,
-		//         offset = {x = (-8 * 28) - 29, y = -(48 + 24 + 16)},
-		//         size = { x=28, y=28 },
-		//         z_index = 0,
-		// 	})
+		hudManager.add_hud(player, "experience_bar_background", {
+			type: HudElementType.statbar,
+			position: { x: 0.5, y: 1 },
+			name: "experience bar background",
+			text: "experience_bar_background.png",
+			number: 36,
+			direction: 0,
+			offset: { x: -8 * 28 - 29, y: -(48 + 24 + 16) },
+			size: { x: 28, y: 28 },
+			z_index: 0,
+		});
+
 		//     hud_manager.add_hud(player,"experience_bar",{
 		//         hud_elem_type = "statbar",
 		//         position = {x=0.5, y=1},
