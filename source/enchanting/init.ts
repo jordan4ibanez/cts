@@ -100,30 +100,33 @@ namespace enchanting {
 						rawToolDef.description; // temp_names[math.random(1,table.getn(temp_names))]
 
 					for (const i of $range(1, enchants_available)) {
-						// 				local new_enchant = enchantment_list[math.random(1,table.getn(enchantment_list))]
-						// 				local level = math.random(1,max_enchant_level)
-						// 				if meta:get_int(new_enchant) == 0 then
-						// 					player_level = player_level - 5
-						// 					meta:set_int(new_enchant, level)
-						// 					description = description.."\n"..new_enchant:gsub("^%l", string.upper)..": "..tostring(level)
-						// 					if new_enchant == "swiftness" then
-						// 						for index,table in pairs(groupcaps) do
-						// 							for index2,time in pairs(table.times) do
-						// 								tool_caps["groupcaps"][index]["times"][index2] = time/(level+1)
-						// 							end
-						// 						end
-						// 					end
-						// 					if new_enchant == "durable" then
-						// 						for index,table in pairs(groupcaps) do
-						// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
-						// 						end
-						// 					end
-						// 					if new_enchant == "sharpness" then
-						// 						for index,data in pairs(tool_caps.damage_groups) do
-						// 							tool_caps.damage_groups[index] = data*(level+1)
-						// 						end
-						// 					end
-						// 				end
+						const new_enchant: string =
+							enchantment_list[
+								math.random(0, enchantment_list.length - 1)
+							];
+						const level = math.random(1, max_enchant_level);
+						if (meta.get_int(new_enchant) == 0) {
+							// 					player_level = player_level - 5
+							// 					meta:set_int(new_enchant, level)
+							// 					description = description.."\n"..new_enchant:gsub("^%l", string.upper)..": "..tostring(level)
+							// 					if new_enchant == "swiftness" then
+							// 						for index,table in pairs(groupcaps) do
+							// 							for index2,time in pairs(table.times) do
+							// 								tool_caps["groupcaps"][index]["times"][index2] = time/(level+1)
+							// 							end
+							// 						end
+							// 					end
+							// 					if new_enchant == "durable" then
+							// 						for index,table in pairs(groupcaps) do
+							// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
+							// 						end
+							// 					end
+							// 					if new_enchant == "sharpness" then
+							// 						for index,data in pairs(tool_caps.damage_groups) do
+							// 							tool_caps.damage_groups[index] = data*(level+1)
+							// 						end
+							// 					end
+						}
 					}
 					// 			meta:set_string("description", "Enchanted "..description)
 					// 			meta:set_string("enchanted", "true")
