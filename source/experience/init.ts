@@ -286,7 +286,7 @@ namespace experience {
 			data: data.xp_bar,
 		});
 
-		//     core.throw_experience(player:get_pos(), xp_amount)
+		item_handling.throw_experience(player.get_pos(), xp_amount);
 	});
 
 	// local name
