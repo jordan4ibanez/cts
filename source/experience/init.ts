@@ -458,9 +458,11 @@ namespace experience {
 				return;
 			}
 
-			// 	// Slide on slippery nodes
-			// 	vel = this.object:get_velocity()
-			// 	def = node and registered_nodes[node.name]
+			// Slide on slippery nodes.
+			const vel: Vec3 = this.object.get_velocity();
+			const def: NodeDefinition | undefined =
+				core.registered_nodes[node.name];
+                
 			// 	is_moving = (def and not def.walkable) or
 			// 		vel.x ~= 0 or vel.y ~= 0 or vel.z ~= 0
 			// 	is_slippery = false
