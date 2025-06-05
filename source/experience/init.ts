@@ -69,9 +69,10 @@ namespace experience {
 	}
 
 	// Saves specific users data for when they relog.
-	// core.register_on_leaveplayer(function(player)
-	// 	save_data(player)
-	// end)
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		save_data(player.get_player_name());
+	});
+
 	// // is used for shutdowns to save all data
 	// local save_all = function()
 	// 	for name,_ in pairs(pool) do
