@@ -77,14 +77,18 @@ namespace enchanting {
 					const able_enchantments: string[] = [...enchantment_list];
 					// todo: this depends on the experience mod.
 					const player_level: number = 0; //get_player_xp_level(clicker)
-					const enchants_available: number = math.floor(
+					let enchants_available: number = math.floor(
 						player_level / 5
 					);
 					const max_enchant_level: number = math.floor(
 						player_level / 5
 					);
-					// 			if enchants_available <= 0 then return end
-					// 			if enchants_available > 3 then enchants_available = 3 end
+					if (enchants_available <= 0) {
+						return;
+					}
+					if (enchants_available > 3) {
+						enchants_available = 3;
+					}
 					// 			local stock_name = core.registered_tools[stack:get_name()].name
 					// 			local description = core.registered_tools[stack:get_name()].description//temp_names[math.random(1,table.getn(temp_names))]
 					// 			for i = 1,enchants_available do
