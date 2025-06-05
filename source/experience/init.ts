@@ -1,8 +1,4 @@
 namespace experience {
-	// local
-	// minetest,math,vector,os,pairs,type
-	// =
-	// minetest,math,vector,os,pairs,type
 	// local mod_storage = minetest.get_mod_storage()
 	// -- minetest library
 	// local get_node_or_nil    = minetest.get_node_or_nil
