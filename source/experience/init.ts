@@ -12,12 +12,13 @@ namespace experience {
 	const deserialize = core.deserialize;
 	const play_sound = core.sound_play;
 
-	// // vector library
-	// local new_vec       = vector.new
-	// local vec_distance  = vector.distance
-	// local add_vec       = vector.add
-	// local multiply_vec  = vector.multiply
-	// local vec_direction = vector.direction
+	// Vector library.
+	const new_vec = vector.create3d;
+	const vec_distance = vector.distance;
+	const add_vec = vector.add;
+	const multiply_vec = vector.multiply;
+	const vec_direction = vector.direction;
+
 	// // math library
 	// local pi     = math.pi
 	// local random = math.random
