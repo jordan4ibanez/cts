@@ -138,11 +138,11 @@ namespace enchanting {
 								}
 							}
 
-							// 					if new_enchant == "durable" then
-							// 						for index,table in pairs(groupcaps) do
-							// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
-							// 						end
-							// 					end
+							if (new_enchant == "durable") {
+								// 						for index,table in pairs(groupcaps) do
+								// 							tool_caps["groupcaps"][index]["uses"] = table.uses*(level+1)
+								// 						end
+							}
 							// 					if new_enchant == "sharpness" then
 							// 						for index,data in pairs(tool_caps.damage_groups) do
 							// 							tool_caps.damage_groups[index] = data*(level+1)
