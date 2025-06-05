@@ -76,7 +76,7 @@ namespace enchanting {
 					}
 					const able_enchantments: string[] = [...enchantment_list];
 					// todo: this depends on the experience mod.
-					const player_level: number = 100; //get_player_xp_level(clicker)
+					let player_level: number = 100; //get_player_xp_level(clicker)
 					let enchants_available: number = math.floor(
 						player_level / 5
 					);
@@ -96,7 +96,7 @@ namespace enchanting {
 						return;
 					}
 
-					const description: string | undefined =
+					let description: string | undefined =
 						rawToolDef.description; // temp_names[math.random(1,table.getn(temp_names))]
 
 					for (const i of $range(1, enchants_available)) {
@@ -106,9 +106,17 @@ namespace enchanting {
 							];
 						const level = math.random(1, max_enchant_level);
 						if (meta.get_int(new_enchant) == 0) {
-							// 					player_level = player_level - 5
-							// 					meta:set_int(new_enchant, level)
-							// 					description = description.."\n"..new_enchant:gsub("^%l", string.upper)..": "..tostring(level)
+							player_level = player_level - 5;
+							meta.set_int(new_enchant, level);
+							description +=
+								"\n" +
+								string.gsub(
+									new_enchant,
+									"^%l",
+									string.upper
+								)[0] +
+								": " +
+								tostring(level);
 							// 					if new_enchant == "swiftness" then
 							// 						for index,table in pairs(groupcaps) do
 							// 							for index2,time in pairs(table.times) do
@@ -128,14 +136,14 @@ namespace enchanting {
 							// 					end
 						}
 					}
-					// 			meta:set_string("description", "Enchanted "..description)
+					// 			meta:set_string("description", "Enchanted "+description)
 					// 			meta:set_string("enchanted", "true")
 					// 			meta:set_tool_capabilities(tool_caps)
 					// 			set_player_xp_level(clicker,player_level)
 					// 			//create truly random hex
 					// 			local colorstring = "#"
 					// 			for i = 1,6 do
-					// 				colorstring = colorstring..hexer[math.random(1,16)]
+					// 				colorstring = colorstring+hexer[math.random(1,16)]
 					// 			end
 					// 			stack = core.itemstring_with_color(stack, colorstring)
 					// 			clicker:set_wielded_item(stack)
