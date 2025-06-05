@@ -357,14 +357,14 @@ namespace experience {
 
 					this.object.set_acceleration(new_vec(0, 0, 0));
 
-					// Todo: enable this.
+					// todo: enable this.
 					// this.disable_physics(self)
 
-					// 			//get the variables
-					// 			pos = this.object:get_pos()
-					// 			pos2 = collector:get_pos()
-					// 			player_velocity = collector:get_player_velocity()
-					// 			pos2.y = pos2.y + 0.8
+					// Get the variables.
+
+					const pos2: Vec3 = collector.get_pos();
+					const player_velocity: Vec3 = collector.get_velocity();
+					pos2.y += 0.8;
 					// 			direction = vec_direction(pos,pos2)
 					// 			distance = vec_distance(pos2,pos)
 					// 			multiplier = distance
