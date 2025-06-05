@@ -463,7 +463,7 @@ namespace experience {
 			const def: NodeDefinition | undefined =
 				core.registered_nodes[node.name];
 
-			const is_moving: boolean =
+			let is_moving: boolean =
 				(def != null && !def.walkable) ||
 				vel.x != 0 ||
 				vel.y != 0 ||
@@ -483,7 +483,7 @@ namespace experience {
 						})
 					);
 				} else if (vel.y == 0) {
-					// 			is_moving = false
+					is_moving = false;
 				}
 			}
 
