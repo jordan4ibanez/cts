@@ -119,7 +119,7 @@ namespace enchanting {
 								tostring(level);
 							if (new_enchant == "swiftness") {
 								for (const [name, table] of pairs(groupcaps)) {
-									for (const [index2, time] of pairs(
+									for (const [timeIndex, time] of pairs(
 										table.times
 									)) {
 										const groupcaps:
@@ -132,7 +132,7 @@ namespace enchanting {
 											continue;
 										}
 
-										groupcaps[name]!.times[index2] =
+										groupcaps[name]!.times[timeIndex] =
 											time / (level + 1);
 									}
 								}
