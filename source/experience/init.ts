@@ -217,28 +217,33 @@ namespace experience {
 		});
 	}
 
-	function add_experience(player, experience) {
-		// 	name = player:get_player_name()
-		// 	temp_pool = pool[name]
-		// 	temp_pool.xp_bar = temp_pool.xp_bar + experience
-		// 	if temp_pool.xp_bar > 36 then
-		// 		if get_time()/1000000 - temp_pool.last_time > 0.04 then
-		// 			play_sound("level_up",{gain=0.2,to_player = name})
-		// 			temp_pool.last_time = get_time()/1000000
-		// 		end
-		//         temp_pool.xp_bar = temp_pool.xp_bar - 36
-		// 		level_up_experience(player)
-		// 	else
-		// 		if get_time()/1000000 - temp_pool.last_time > 0.01 then
-		// 			temp_pool.last_time = get_time()/1000000
-		// 			play_sound("experience",{gain=0.1,to_player = name,pitch=random(75,99)/100})
-		// 		end
-		// 	end
+	function add_experience(player: ObjectRef, experience: number): void {
+		const name: string = player.get_player_name();
+		const data: ExpData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		data.xp_bar += experience;
+
+		if (data.xp_bar > 36) {
+			// 		if get_time()/1000000 - data.last_time > 0.04 then
+			// 			play_sound("level_up",{gain=0.2,to_player = name})
+			// 			data.last_time = get_time()/1000000
+			// 		end
+			//         data.xp_bar = data.xp_bar - 36
+			// 		level_up_experience(player)
+		} else {
+			// 		if get_time()/1000000 - data.last_time > 0.01 then
+			// 			data.last_time = get_time()/1000000
+			// 			play_sound("experience",{gain=0.1,to_player = name,pitch=random(75,99)/100})
+			// 		end
+		}
 		// 	hud_manager.change_hud({
 		// 		player   = player,
 		// 		hud_name = "experience_bar",
 		// 		element  = "number",
-		// 		data     = temp_pool.xp_bar
+		// 		data     = data.xp_bar
 		// 	})
 	}
 
