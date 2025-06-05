@@ -53,11 +53,15 @@ namespace experience {
 
 	function save_data(name: string): void {
 		const data: ExpData | undefined = pool.get(name);
-		// 	temp_pool = pool[name]
-		// 	mod_storage:set_int(name+"xp_level",temp_pool.xp_level)
-		// 	mod_storage:set_int(name+"xp_bar",  temp_pool.xp_bar  )
-		// 	mod_storage:set_int(name+"xp_save",1)
-		// 	pool[name] = nil
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
+		mod_storage.set_int(name + "xp_level", data.xp_level);
+		mod_storage.set_int(name + "xp_bar", data.xp_bar);
+		mod_storage.set_int(name + "xp_save", 1);
+
+		pool.delete(name);
 	}
 
 	// // saves specific users data for when they relog
