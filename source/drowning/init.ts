@@ -180,7 +180,7 @@ namespace drowning {
 			} else if (data.breath <= 0 && data.ticker >= 1.3) {
 				data.drowning = 1;
 				if (hp > 0) {
-					player.set_hp(hp - 2);
+					player.set_hp(hp - 2, { type: HPChangeReasonType.drown });
 				}
 			}
 			if (data.ticker >= 1.3) {
