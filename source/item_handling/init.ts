@@ -34,7 +34,11 @@ namespace item_handling {
 				}
 
 				if (def.canSilkTouch) {
-					drops = [name];
+					if (def.silkTouchSpecialDrop != null) {
+						drops = [def.silkTouchSpecialDrop];
+					} else {
+						drops = [name];
+					}
 				}
 			}
 
