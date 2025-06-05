@@ -375,11 +375,20 @@ namespace experience {
 					const currentvel = this.object.get_velocity();
 
 					if (distance > 1) {
-						// 				multiplier = 20 - distance
-						// 				velocity = multiply_vec(direction,multiplier)
-						// 				goal = velocity
-						// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-						// 				this.object:add_velocity(add_vec(acceleration,player_velocity))
+						multiplier = 20 - distance;
+						const velocity: Vec3 = multiply_vec(
+							direction,
+							multiplier
+						);
+						const goal: Vec3 = velocity;
+						const acceleration: Vec3 = new_vec(
+							goal.x - currentvel.x,
+							goal.y - currentvel.y,
+							goal.z - currentvel.z
+						);
+						this.object.add_velocity(
+							add_vec(acceleration, player_velocity)
+						);
 					} else if (distance > 0.9 && data.buffer > 0) {
 						// 				temp_pool.buffer = temp_pool.buffer - dtime
 						// 				multiplier = 20 - distance
