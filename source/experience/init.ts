@@ -417,12 +417,13 @@ namespace experience {
 						this.object.add_velocity(acceleration);
 					}
 
-					// 			if distance < 0.4 and temp_pool.buffer <= 0 then
-					// 				temp_pool.buffer = 0.04
-					// 				add_experience(collector,2)
-					// 				this.object:remove()
-					// 			end
-					// 			return
+					if (distance < 0.4 && data.buffer <= 0) {
+						data.buffer = 0.04;
+						print("adding 1");
+						add_experience(collector, 2);
+						this.object.remove();
+					}
+					return;
 				} else {
 					this.collector = null;
 
