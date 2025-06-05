@@ -96,7 +96,9 @@ namespace enchanting {
 						return;
 					}
 
-					// 			local description = core.registered_tools[stack:get_name()].description//temp_names[math.random(1,table.getn(temp_names))]
+					const description: string | undefined =
+						rawToolDef.description; // temp_names[math.random(1,table.getn(temp_names))]
+                        
 					// 			for i = 1,enchants_available do
 					// 				local new_enchant = enchantment_list[math.random(1,table.getn(enchantment_list))]
 					// 				local level = math.random(1,max_enchant_level)
