@@ -134,7 +134,11 @@ namespace experience {
 		load_data(player);
 
 		const name: string = player.get_player_name();
-		// 	temp_pool = pool[name]
+		const data: ExpData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+
 		//     hud_manager.add_hud(player,"heart_bar_bg",{
 		//         hud_elem_type = "statbar",
 		//         position = {x = 0.5, y = 1},
