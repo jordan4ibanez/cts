@@ -81,9 +81,10 @@ namespace experience {
 	}
 
 	// Save all data to mod storage on shutdown.
-	// core.register_on_shutdown(function()
-	// 	save_all()
-	// end)
+	core.register_on_shutdown(() => {
+		save_all();
+	});
+
 	// local name
 	// function get_player_xp_level(player)
 	// 	name = player:get_player_name()
