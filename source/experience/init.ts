@@ -291,20 +291,28 @@ namespace experience {
 
 	class ExperienceEntity extends types.Entity {
 		name: string = "crafter_experience:orb";
-			initial_properties = {
-				hp_max : 1,
-				physical : true,
-				collide_with_objects : false,
-				collisionbox : [-0.2, -0.2, -0.2, 0.2, 0.2, 0.2],
-				visual : "sprite",
-				visual_size : {x : 0.4, y : 0.4},
-				textures : {name:"experience_orb.png", animation:{type:"vertical_frames", aspect_w:16, aspect_h:16, length:2.0}},
-				spritediv : {x : 1, y : 14},
-				initial_sprite_basepos : {x : 0, y : 0},
-				is_visible : true,
-				pointable : false,
-				static_save : false,
-			}
+		initial_properties = {
+			hp_max: 1,
+			physical: true,
+			collide_with_objects: false,
+			collisionbox: [-0.2, -0.2, -0.2, 0.2, 0.2, 0.2],
+			visual: "sprite",
+			visual_size: { x: 0.4, y: 0.4 },
+			textures: {
+				name: "experience_orb.png",
+				animation: {
+					type: "vertical_frames",
+					aspect_w: 16,
+					aspect_h: 16,
+					length: 2.0,
+				},
+			},
+			spritediv: { x: 1, y: 14 },
+			initial_sprite_basepos: { x: 0, y: 0 },
+			is_visible: true,
+			pointable: false,
+			static_save: false,
+		};
 		moving_state: boolean = true;
 		slippery_state: boolean = false;
 		physical_state: boolean = true;
