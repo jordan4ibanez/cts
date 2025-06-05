@@ -384,8 +384,10 @@ namespace experience {
 					// 			end
 					// 			return
 				} else {
-					// 			this.collector = nil
-					// 			this.enable_physics(self)
+					this.collector = null;
+
+					// todo: enable this.
+					// this.enable_physics(self)
 				}
 			}
 
