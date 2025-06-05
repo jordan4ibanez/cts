@@ -1,3 +1,4 @@
+namespace experience {
 // local
 // minetest,math,vector,os,pairs,type
 // =
@@ -510,3 +511,4 @@
 // 		minetest.throw_experience(pos, 1000)
 // 	end,
 // })
+}
