@@ -390,10 +390,24 @@ namespace experience {
 							add_vec(acceleration, player_velocity)
 						);
 					} else if (distance > 0.9 && data.buffer > 0) {
-						// 				temp_pool.buffer = temp_pool.buffer - dtime
-						// 				multiplier = 20 - distance
-						// 				velocity = multiply_vec(direction,multiplier)
-						// 				goal = multiply_vec(yaw_to_dir(dir_to_yaw(vec_direction(new_vec(pos.x,0,pos.z),new_vec(pos2.x,0,pos2.z)))+pi/2),10)
+						data.buffer -= dtime;
+						multiplier = 20 - distance;
+						const velocity: Vec3 = multiply_vec(
+							direction,
+							multiplier
+						);
+						let goal: Vec3 = multiply_vec(
+							yaw_to_dir(
+								dir_to_yaw(
+									vec_direction(
+										new_vec(pos.x, 0, pos.z),
+										new_vec(pos2.x, 0, pos2.z)
+									)
+								) +
+									pi / 2
+							),
+							10
+						);
 						// 				goal = add_vec(player_velocity,goal)
 						// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
 						// 				this.object:add_velocity(acceleration)
