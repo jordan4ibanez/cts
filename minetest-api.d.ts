@@ -1767,7 +1767,7 @@ declare global {
 		visual_size?: Vec3 | Vec2;
 		mesh?: string;
 		//! This may not be correct!
-		textures?: string[] | (string | TileDefinition)[] | TileDefinition;
+		textures?: (string | TileDefinition)[] | TileDefinition;
 		colors?: DynamicColorSpec[];
 		use_texture_alpha?: boolean;
 		spritediv?: Vec2;
