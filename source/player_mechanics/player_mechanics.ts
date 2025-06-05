@@ -166,6 +166,7 @@ namespace playerMechanics {
 		// Check if in water.
 		let in_water: boolean = data.swimming;
 
+		// If head is detected in water, you are automatically swimming.
 		if (head) {
 			in_water = true;
 			data.swimming = true;
