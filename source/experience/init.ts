@@ -12,10 +12,6 @@ namespace experience {
 	const deserialize = core.deserialize;
 	const play_sound = core.sound_play;
 
-	// local registered_nodes
-	// core.register_on_mods_loaded(function()
-	// 	registered_nodes = core.registered_nodes
-	// end)
 	// // vector library
 	// local new_vec       = vector.new
 	// local vec_distance  = vector.distance
