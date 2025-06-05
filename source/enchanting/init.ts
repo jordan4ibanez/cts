@@ -171,11 +171,29 @@ namespace enchanting {
 									groupcaps[name].uses = use * (level + 1);
 								}
 							}
-							// 					if new_enchant == "sharpness" then
-							// 						for index,data in pairs(tool_caps.damage_groups) do
-							// 							tool_caps.damage_groups[index] = data*(level+1)
-							// 						end
-							// 					end
+							if (new_enchant == "sharpness") {
+								for (const [index, data] of pairs(
+									tool_caps.damage_groups
+								)) {
+									const damage_groups:
+										| Dictionary<number, number>
+										| undefined = tool_caps.damage_groups;
+
+									if (
+										damage_groups == null ||
+										damage_groups[index] == null ||
+										table == null
+									) {
+										core.log(
+											LogLevel.warning,
+											`Missing [${index}]`
+										);
+										continue;
+									}
+
+									damage_groups[index] = data * (level + 1);
+								}
+							}
 						}
 					}
 					// 			meta:set_string("description", "Enchanted "+description)
