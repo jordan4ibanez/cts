@@ -365,14 +365,14 @@ namespace experience {
 					const pos2: Vec3 = collector.get_pos();
 					const player_velocity: Vec3 = collector.get_velocity();
 					pos2.y += 0.8;
-					// 			direction = vec_direction(pos,pos2)
-					// 			distance = vec_distance(pos2,pos)
-					// 			multiplier = distance
-					// 			if multiplier < 1 then
-					// 				multiplier = 1
-					// 			end
-					// 			goal = multiply_vec(direction,multiplier)
-					// 			currentvel = this.object:get_velocity()
+					const direction: Vec3 = vec_direction(pos, pos2);
+					const distance: number = vec_distance(pos2, pos);
+					let multiplier: number = distance;
+					if (multiplier < 1) {
+						multiplier = 1;
+					}
+					const goal: Vec3 = multiply_vec(direction, multiplier);
+					const currentvel = this.object.get_velocity();
 
 					// 			if distance > 1 then
 					// 				multiplier = 20 - distance
