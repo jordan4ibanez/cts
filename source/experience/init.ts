@@ -343,12 +343,12 @@ namespace experience {
 			this.object.set_acceleration(
 				vector.create3d({ x: 0, y: -9.81, z: 0 })
 			);
-			//         size = random(20,36)/100
-			//         this.object.set_properties({
-			// 			visual_size = {x = size, y = size},
-			// 			glow = 14,
-			// 		})
-			// 		this.object.set_sprite({x=1,y=random(1,14)}, 14, 0.05, false)
+			const size: number = random(20, 36) / 100;
+			this.object.set_properties({
+				visual_size: { x: size, y: size },
+				glow: 14,
+			});
+			this.object.set_sprite({ x: 1, y: random(1, 14) }, 14, 0.05, false);
 		}
 
 		// 	enable_physics = function(self)
