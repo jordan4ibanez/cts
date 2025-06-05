@@ -76,7 +76,7 @@ namespace enchanting {
 					}
 					const able_enchantments: string[] = [...enchantment_list];
 					// todo: this depends on the experience mod.
-					const player_level: number = 0; //get_player_xp_level(clicker)
+					const player_level: number = 100; //get_player_xp_level(clicker)
 					let enchants_available: number = math.floor(
 						player_level / 5
 					);
