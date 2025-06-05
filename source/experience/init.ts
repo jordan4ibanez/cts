@@ -330,37 +330,37 @@ namespace experience {
 		collector: string | null = null;
 
 		on_activate(staticdata: string, dtime_s: number) {
-					this.object:set_velocity(new_vec(
+					this.object.set_velocity(new_vec(
 						random(-2,2)*random(),
 						random(2,5),
 						random(-2,2)*random()
 					))
 
-			// 		this.object:set_armor_groups({immortal = 1})
-			// 		this.object:set_velocity({x = 0, y = 2, z = 0})
-			// 		this.object:set_acceleration({x = 0, y = -9.81, z = 0})
+			// 		this.object.set_armor_groups({immortal = 1})
+			// 		this.object.set_velocity({x = 0, y = 2, z = 0})
+			// 		this.object.set_acceleration({x = 0, y = -9.81, z = 0})
 			//         size = random(20,36)/100
-			//         this.object:set_properties({
+			//         this.object.set_properties({
 			// 			visual_size = {x = size, y = size},
 			// 			glow = 14,
 			// 		})
-			// 		this.object:set_sprite({x=1,y=random(1,14)}, 14, 0.05, false)
+			// 		this.object.set_sprite({x=1,y=random(1,14)}, 14, 0.05, false)
 		}
 
 		// 	enable_physics = function(self)
 		// 		if not this.physical_state then
 		// 			this.physical_state = true
-		// 			this.object:set_properties({physical = true})
-		// 			this.object:set_velocity({x=0, y=0, z=0})
-		// 			this.object:set_acceleration({x=0, y=-9.81, z=0})
+		// 			this.object.set_properties({physical = true})
+		// 			this.object.set_velocity({x=0, y=0, z=0})
+		// 			this.object.set_acceleration({x=0, y=-9.81, z=0})
 		// 		end
 		// 	end,
 		// 	disable_physics = function(self)
 		// 		if this.physical_state then
 		// 			this.physical_state = false
-		// 			this.object:set_properties({physical = false})
-		// 			this.object:set_velocity({x=0, y=0, z=0})
-		// 			this.object:set_acceleration({x=0, y=0, z=0})
+		// 			this.object.set_properties({physical = false})
+		// 			this.object.set_velocity({x=0, y=0, z=0})
+		// 			this.object.set_acceleration({x=0, y=0, z=0})
 		// 		end
 		// 	end,
 
