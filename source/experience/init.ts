@@ -341,7 +341,7 @@ namespace experience {
 					this.collector
 				);
 
-				// 		if collector and collector:get_hp() > 0 and vec_distance(this.object:get_pos(),collector:get_pos()) < 5 then
+						if (collector and collector:get_hp() > 0 and vec_distance(this.object:get_pos(),collector:get_pos()) < 5) {
 				// 			temp_pool = pool[this.collector]
 				// 			this.object:set_acceleration(new_vec(0,0,0))
 				// 			this.disable_physics(self)
@@ -379,10 +379,10 @@ namespace experience {
 				// 				this.object:remove()
 				// 			end
 				// 			return
-				// 		else
+                        }else{
 				// 			this.collector = nil
 				// 			this.enable_physics(self)
-				// 		end
+                        }
 			}
 
 			// 	this.age = this.age + dtime
