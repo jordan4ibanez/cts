@@ -353,8 +353,11 @@ namespace experience {
 						);
 					}
 
-					// 			this.object:set_acceleration(new_vec(0,0,0))
-					// 			this.disable_physics(self)
+					this.object.set_acceleration(new_vec(0, 0, 0));
+
+					// Todo: enable this.
+					// this.disable_physics(self)
+
 					// 			//get the variables
 					// 			pos = this.object:get_pos()
 					// 			pos2 = collector:get_pos()
