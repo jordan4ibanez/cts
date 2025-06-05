@@ -374,21 +374,22 @@ namespace experience {
 					const goal: Vec3 = multiply_vec(direction, multiplier);
 					const currentvel = this.object.get_velocity();
 
-					// 			if distance > 1 then
-					// 				multiplier = 20 - distance
-					// 				velocity = multiply_vec(direction,multiplier)
-					// 				goal = velocity
-					// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-					// 				this.object:add_velocity(add_vec(acceleration,player_velocity))
-					// 			elseif distance > 0.9 and temp_pool.buffer > 0 then
-					// 				temp_pool.buffer = temp_pool.buffer - dtime
-					// 				multiplier = 20 - distance
-					// 				velocity = multiply_vec(direction,multiplier)
-					// 				goal = multiply_vec(yaw_to_dir(dir_to_yaw(vec_direction(new_vec(pos.x,0,pos.z),new_vec(pos2.x,0,pos2.z)))+pi/2),10)
-					// 				goal = add_vec(player_velocity,goal)
-					// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
-					// 				this.object:add_velocity(acceleration)
-					// 			end
+					if (distance > 1) {
+						// 				multiplier = 20 - distance
+						// 				velocity = multiply_vec(direction,multiplier)
+						// 				goal = velocity
+						// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
+						// 				this.object:add_velocity(add_vec(acceleration,player_velocity))
+					} else if (distance > 0.9 && data.buffer > 0) {
+						// 				temp_pool.buffer = temp_pool.buffer - dtime
+						// 				multiplier = 20 - distance
+						// 				velocity = multiply_vec(direction,multiplier)
+						// 				goal = multiply_vec(yaw_to_dir(dir_to_yaw(vec_direction(new_vec(pos.x,0,pos.z),new_vec(pos2.x,0,pos2.z)))+pi/2),10)
+						// 				goal = add_vec(player_velocity,goal)
+						// 				acceleration = new_vec(goal.x-currentvel.x,goal.y-currentvel.y,goal.z-currentvel.z)
+						// 				this.object:add_velocity(acceleration)
+					}
+
 					// 			if distance < 0.4 and temp_pool.buffer <= 0 then
 					// 				temp_pool.buffer = 0.04
 					// 				add_experience(collector,2)
