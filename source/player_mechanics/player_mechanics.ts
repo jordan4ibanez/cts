@@ -170,6 +170,12 @@ namespace playerMechanics {
 		if (head) {
 			in_water = true;
 			data.swimming = true;
+		} else if (legs && player.get_player_control().sneak) {
+			in_water = true;
+			data.swimming = true;
+			const pos = player.get_pos();
+			pos.y -= 0.8;
+			player.move_to(pos);
 		} else if (data.swimming == true) {
 			let swim_unlock: boolean = player_swim_under_check(player);
 			let swim_bump: boolean = player_swim_check(player);
