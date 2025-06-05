@@ -85,11 +85,15 @@ namespace experience {
 		save_all();
 	});
 
-	// local name
-	// function get_player_xp_level(player)
-	// 	name = player:get_player_name()
-	// 	return(pool[name].xp_level)
-	// end
+	export function get_player_xp_level(player: ObjectRef): number {
+		const name: string = player.get_player_name();
+		const data: ExpData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player [${name}] was never added to the pool.`);
+		}
+		return data.xp_level;
+	}
+
 	// local name
 	// local temp_pool
 	// function set_player_xp_level(player,level)
