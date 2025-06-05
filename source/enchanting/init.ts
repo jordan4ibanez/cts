@@ -199,8 +199,8 @@ namespace enchanting {
 					meta.set_string("description", "Enchanted " + description);
 					meta.set_string("enchanted", "true");
 					meta.set_tool_capabilities(tool_caps);
-					// todo: requires crafter experience
-					// 			set_player_xp_level(clicker,player_level)
+
+					experience.set_player_xp_level(clicker, player_level);
 
 					// Create truly random hex.
 					let colorstring: string = "#";
