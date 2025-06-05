@@ -1046,6 +1046,7 @@ declare global {
 		//? Crafter custom.
 		redstone_activation?: (pos: Vec3) => void;
 		redstone_deactivation?: (pos: Vec3) => void;
+		canSilkTouch?: boolean
 
 		// -- <all fields allowed in item definitions>
 		description?: string;
