@@ -329,22 +329,23 @@ namespace experience {
 		radius: number = 4;
 		collector: string | null = null;
 
-		// 	on_activate = function(self, staticdata, dtime_s)
-		// 		self.object:set_velocity(new_vec(
-		// 			random(-2,2)*random(),
-		// 			random(2,5),
-		// 			random(-2,2)*random()
-		// 		))
-		// 		self.object:set_armor_groups({immortal = 1})
-		// 		self.object:set_velocity({x = 0, y = 2, z = 0})
-		// 		self.object:set_acceleration({x = 0, y = -9.81, z = 0})
-		//         size = random(20,36)/100
-		//         self.object:set_properties({
-		// 			visual_size = {x = size, y = size},
-		// 			glow = 14,
-		// 		})
-		// 		self.object:set_sprite({x=1,y=random(1,14)}, 14, 0.05, false)
-		// 	end,
+		on_activate(staticdata: string, dtime_s: number) {
+			// 		self.object:set_velocity(new_vec(
+			// 			random(-2,2)*random(),
+			// 			random(2,5),
+			// 			random(-2,2)*random()
+			// 		))
+			// 		self.object:set_armor_groups({immortal = 1})
+			// 		self.object:set_velocity({x = 0, y = 2, z = 0})
+			// 		self.object:set_acceleration({x = 0, y = -9.81, z = 0})
+			//         size = random(20,36)/100
+			//         self.object:set_properties({
+			// 			visual_size = {x = size, y = size},
+			// 			glow = 14,
+			// 		})
+			// 		self.object:set_sprite({x=1,y=random(1,14)}, 14, 0.05, false)
+		}
+
 		// 	enable_physics = function(self)
 		// 		if not self.physical_state then
 		// 			self.physical_state = true
