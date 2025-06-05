@@ -59,7 +59,7 @@ namespace item_handling {
 			if (
 				__entity == null ||
 				(__entity.name != "__builtin:item" &&
-					__entity.name != "experience:orb")
+					__entity.name != "crafter_experience:orb")
 			) {
 				continue;
 			}
@@ -82,7 +82,7 @@ namespace item_handling {
 					entity.collected = true;
 					entity.trigger_collection_calculation();
 				}
-			} else if (entity.name == "experience:orb") {
+			} else if (entity.name == "crafter_experience:orb") {
 				entity.collector = player.get_player_name();
 				entity.collected = true;
 			}
