@@ -315,10 +315,10 @@ namespace experience {
 		force_out_start: string | null = null;
 		//Collection Variables
 		collectable: boolean = false;
-		try_timer = 0;
+		try_timer: number = 0;
 		collected: boolean = false;
-		delete_timer = 0;
-		radius = 4;
+		delete_timer: number = 0;
+		radius: number = 4;
 
 		// local function xp_step(self, dtime)
 		// 	//if item set to be collected then only execute go to player
