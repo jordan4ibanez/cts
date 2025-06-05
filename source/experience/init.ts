@@ -337,7 +337,9 @@ namespace experience {
 					return;
 				}
 
-				// 		collector = get_player_by_name(this.collector)
+				const collector: ObjectRef | null = get_player_by_name(
+					this.collector
+				);
 
 				// 		if collector and collector:get_hp() > 0 and vec_distance(this.object:get_pos(),collector:get_pos()) < 5 then
 				// 			temp_pool = pool[this.collector]
