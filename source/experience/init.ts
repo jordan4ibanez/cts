@@ -351,14 +351,17 @@ namespace experience {
 			this.object.set_sprite({ x: 1, y: random(1, 14) }, 14, 0.05, false);
 		}
 
-		// 	enable_physics = function(self)
-		// 		if not this.physical_state then
-		// 			this.physical_state = true
-		// 			this.object.set_properties({physical = true})
-		// 			this.object.set_velocity({x=0, y=0, z=0})
-		// 			this.object.set_acceleration({x=0, y=-9.81, z=0})
-		// 		end
-		// 	end,
+		enable_physics() {
+			if (this.physical_state) {
+				return;
+			}
+			this.physical_state = true;
+			this.object.set_properties({ physical: true });
+			this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
+			this.object.set_acceleration(
+				vector.create3d({ x: 0, y: -9.81, z: 0 })
+			);
+		}
 		// 	disable_physics = function(self)
 		// 		if this.physical_state then
 		// 			this.physical_state = false
