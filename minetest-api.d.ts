@@ -930,8 +930,7 @@ declare global {
 
 	/** @noSelf **/ interface GroupCap {
 		// Allow the end programmer to do it their way.
-		// todo: is this even correct to have it as an array?
-		times: number[] | Dictionary<number, number>;
+		times: Dictionary<number, number>;
 		uses?: number;
 		maxlevel?: number;
 		// This is a bolt on specifically for Forgotten Lands. You can still use it though, but it won't do anything without implementation.
