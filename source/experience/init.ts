@@ -475,6 +475,7 @@ namespace experience {
 		// 	end,
 		// })
 	}
+	utility.registerTSEntity(ExperienceEntity);
 	// core.register_chatcommand("xp", {
 	// 	params = "nil",
 	// 	description = "Spawn x amount of a mob, used as /spawn 'mob' 10 or /spawn 'mob' for one",
