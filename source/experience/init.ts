@@ -468,22 +468,23 @@ namespace experience {
 				vel.x != 0 ||
 				vel.y != 0 ||
 				vel.z != 0;
-			// 	is_slippery = false
-			// 	if def and def.walkable then
-			// 		slippery = get_item_group(node.name, "slippery")
-			// 		is_slippery = slippery ~= 0
-			// 		if is_slippery and (abs(vel.x) > 0.2 or abs(vel.z) > 0.2) then
-			// 			// Horizontal deceleration
-			// 			slip_factor = 4.0 / (slippery + 4)
-			// 			this.object:set_acceleration({
-			// 				x = -vel.x * slip_factor,
-			// 				y = 0,
-			// 				z = -vel.z * slip_factor
-			// 			})
-			// 		elseif vel.y == 0 then
-			// 			is_moving = false
-			// 		end
-			// 	end
+			let is_slippery: boolean = false;
+			if (def != null && def.walkable) {
+				// 		slippery = get_item_group(node.name, "slippery")
+				// 		is_slippery = slippery ~= 0
+				// 		if is_slippery and (abs(vel.x) > 0.2 or abs(vel.z) > 0.2) then
+				// 			// Horizontal deceleration
+				// 			slip_factor = 4.0 / (slippery + 4)
+				// 			this.object:set_acceleration({
+				// 				x = -vel.x * slip_factor,
+				// 				y = 0,
+				// 				z = -vel.z * slip_factor
+				// 			})
+				// 		elseif vel.y == 0 then
+				// 			is_moving = false
+				// 		end
+			}
+
 			// 	if this.moving_state == is_moving and this.slippery_state == is_slippery then
 			// 		// Do not update anything until the moving state changes
 			// 		return
