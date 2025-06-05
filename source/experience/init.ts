@@ -1,15 +1,17 @@
 namespace experience {
-	// local mod_storage = core.get_mod_storage()
-	// // minetest library
-	// local get_node_or_nil    = core.get_node_or_nil
-	// local get_time           = core.get_us_time
-	// local get_player_by_name = core.get_player_by_name
-	// local yaw_to_dir         = core.yaw_to_dir
-	// local dir_to_yaw         = core.dir_to_yaw
-	// local get_item_group     = core.get_item_group
-	// local serialize          = core.serialize
-	// local deserialize        = core.deserialize
-	// local play_sound         = core.sound_play
+	const mod_storage: MetaRef = core.get_mod_storage();
+
+	// Minetest library.
+	const get_node_or_nil = core.get_node_or_nil;
+	const get_time = core.get_us_time;
+	const get_player_by_name = core.get_player_by_name;
+	const yaw_to_dir = core.yaw_to_dir;
+	const dir_to_yaw = core.dir_to_yaw;
+	const get_item_group = core.get_item_group;
+	const serialize = core.serialize;
+	const deserialize = core.deserialize;
+	const play_sound = core.sound_play;
+
 	// local registered_nodes
 	// core.register_on_mods_loaded(function()
 	// 	registered_nodes = core.registered_nodes
