@@ -205,7 +205,7 @@ namespace enchanting {
 					// Create truly random hex.
 					let colorstring: string = "#";
 					for (const i of $range(1, 6)) {
-						colorstring += hexer[math.random(0, hexer.length)];
+						colorstring += hexer[math.random(0, hexer.length - 1)];
 					}
 
 					clicker.set_wielded_item(
