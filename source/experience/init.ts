@@ -509,7 +509,7 @@ namespace experience {
 			}
 		}
 
-		// core.register_entity("experience:orb", {
+		
 
 		// 	on_activate = function(self, staticdata, dtime_s)
 		// 		self.object:set_velocity(new_vec(
@@ -546,7 +546,7 @@ namespace experience {
 		// 	on_step = function(self, dtime)
 		// 		xp_step(self, dtime)
 		// 	end,
-		// })
+		
 	}
 	utility.registerTSEntity(ExperienceEntity);
 	// core.register_chatcommand("xp", {
