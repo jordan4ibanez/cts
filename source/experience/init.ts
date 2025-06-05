@@ -120,15 +120,15 @@ namespace experience {
 		});
 	}
 
-	// core.hud_replace_builtin("health",{
-	//     hud_elem_type = "statbar",
-	//     position = {x = 0.5, y = 1},
-	//     text = "heart.png",
-	//     number = core.PLAYER_MAX_HP_DEFAULT,
-	//     direction = 0,
-	//     size = {x = 24, y = 24},
-	//     offset = {x = (-10 * 24) - 25, y = -(48 + 24 + 38)},
-	// })
+	core.hud_replace_builtin(HudReplaceBuiltinOption.health, {
+		type: HudElementType.statbar,
+		position: { x: 0.5, y: 1 },
+		text: "heart.png",
+		number: core.PLAYER_MAX_HP_DEFAULT,
+		direction: 0,
+		size: { x: 24, y: 24 },
+		offset: { x: -10 * 24 - 25, y: -(48 + 24 + 38) },
+	});
 
 	// local name
 	// local temp_pool
