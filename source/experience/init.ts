@@ -329,6 +329,39 @@ namespace experience {
 		radius: number = 4;
 		collector: string | null = null;
 
+		// 	on_activate = function(self, staticdata, dtime_s)
+		// 		self.object:set_velocity(new_vec(
+		// 			random(-2,2)*random(),
+		// 			random(2,5),
+		// 			random(-2,2)*random()
+		// 		))
+		// 		self.object:set_armor_groups({immortal = 1})
+		// 		self.object:set_velocity({x = 0, y = 2, z = 0})
+		// 		self.object:set_acceleration({x = 0, y = -9.81, z = 0})
+		//         size = random(20,36)/100
+		//         self.object:set_properties({
+		// 			visual_size = {x = size, y = size},
+		// 			glow = 14,
+		// 		})
+		// 		self.object:set_sprite({x=1,y=random(1,14)}, 14, 0.05, false)
+		// 	end,
+		// 	enable_physics = function(self)
+		// 		if not self.physical_state then
+		// 			self.physical_state = true
+		// 			self.object:set_properties({physical = true})
+		// 			self.object:set_velocity({x=0, y=0, z=0})
+		// 			self.object:set_acceleration({x=0, y=-9.81, z=0})
+		// 		end
+		// 	end,
+		// 	disable_physics = function(self)
+		// 		if self.physical_state then
+		// 			self.physical_state = false
+		// 			self.object:set_properties({physical = false})
+		// 			self.object:set_velocity({x=0, y=0, z=0})
+		// 			self.object:set_acceleration({x=0, y=0, z=0})
+		// 		end
+		// 	end,
+
 		on_step(dtime: number) {
 			// If orb set to be collected then only execute go to player.
 			if (this.collected == true) {
@@ -508,39 +541,6 @@ namespace experience {
 				this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
 			}
 		}
-
-		// 	on_activate = function(self, staticdata, dtime_s)
-		// 		self.object:set_velocity(new_vec(
-		// 			random(-2,2)*random(),
-		// 			random(2,5),
-		// 			random(-2,2)*random()
-		// 		))
-		// 		self.object:set_armor_groups({immortal = 1})
-		// 		self.object:set_velocity({x = 0, y = 2, z = 0})
-		// 		self.object:set_acceleration({x = 0, y = -9.81, z = 0})
-		//         size = random(20,36)/100
-		//         self.object:set_properties({
-		// 			visual_size = {x = size, y = size},
-		// 			glow = 14,
-		// 		})
-		// 		self.object:set_sprite({x=1,y=random(1,14)}, 14, 0.05, false)
-		// 	end,
-		// 	enable_physics = function(self)
-		// 		if not self.physical_state then
-		// 			self.physical_state = true
-		// 			self.object:set_properties({physical = true})
-		// 			self.object:set_velocity({x=0, y=0, z=0})
-		// 			self.object:set_acceleration({x=0, y=-9.81, z=0})
-		// 		end
-		// 	end,
-		// 	disable_physics = function(self)
-		// 		if self.physical_state then
-		// 			self.physical_state = false
-		// 			self.object:set_properties({physical = false})
-		// 			self.object:set_velocity({x=0, y=0, z=0})
-		// 			self.object:set_acceleration({x=0, y=0, z=0})
-		// 		end
-		// 	end,
 	}
 	utility.registerTSEntity(ExperienceEntity);
 	// core.register_chatcommand("xp", {
