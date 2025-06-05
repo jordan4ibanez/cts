@@ -105,18 +105,19 @@ namespace experience {
 		}
 		data.xp_level = level;
 
-		// 	hud_manager.change_hud({
-		// 		player   = player,
-		// 		hud_name = "xp_level_fg",
-		// 		element  = "text",
-		// 		data     = tostring(level)
-		// 	})
-		// 	hud_manager.change_hud({
-		// 		player   = player,
-		// 		hud_name = "xp_level_bg",
-		// 		element  = "text",
-		// 		data     = tostring(level)
-		// 	})
+		hudManager.change_hud({
+			player: player,
+			hudName: "xp_level_fg",
+			element: "text",
+			data: tostring(level),
+		});
+
+		hudManager.change_hud({
+			player: player,
+			hudName: "xp_level_bg",
+			element: "text",
+			data: tostring(level),
+		});
 	}
 
 	// core.hud_replace_builtin("health",{
