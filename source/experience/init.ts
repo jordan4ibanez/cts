@@ -346,7 +346,13 @@ namespace experience {
 					collector.get_hp() > 0 &&
 					vec_distance(this.object.get_pos(), collector.get_pos()) < 5
 				) {
-					// 			temp_pool = pool[this.collector]
+					const data: ExpData | undefined = pool.get(this.collector);
+					if (data == null) {
+						throw new Error(
+							`Player [${this.collector}] was never added to the pool.`
+						);
+					}
+
 					// 			this.object:set_acceleration(new_vec(0,0,0))
 					// 			this.disable_physics(self)
 					// 			//get the variables
@@ -362,6 +368,7 @@ namespace experience {
 					// 			end
 					// 			goal = multiply_vec(direction,multiplier)
 					// 			currentvel = this.object:get_velocity()
+
 					// 			if distance > 1 then
 					// 				multiplier = 20 - distance
 					// 				velocity = multiply_vec(direction,multiplier)
