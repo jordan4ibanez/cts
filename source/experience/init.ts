@@ -49,19 +49,17 @@ namespace experience {
 	function load_data(player: ObjectRef) {
 		pool.set(player.get_player_name(), new ExpData(player));
 	}
-	// // saves data to be utilized on next login
-	// local name
-	// local temp_pool
-	// local save_data = function(name)
-	// 	if type(name) ~= "string" and name:is_player() then
-	// 		name = name:get_player_name()
-	// 	end
-	// 	temp_pool = pool[name]
-	// 	mod_storage:set_int(name.."xp_level",temp_pool.xp_level)
-	// 	mod_storage:set_int(name.."xp_bar",  temp_pool.xp_bar  )
-	// 	mod_storage:set_int(name.."xp_save",1)
-	// 	pool[name] = nil
-	// end
+	// Saves data to be utilized on next login.
+
+	function save_data(name: string): void {
+		const data: ExpData | undefined = pool.get(name);
+		// 	temp_pool = pool[name]
+		// 	mod_storage:set_int(name.."xp_level",temp_pool.xp_level)
+		// 	mod_storage:set_int(name.."xp_bar",  temp_pool.xp_bar  )
+		// 	mod_storage:set_int(name.."xp_save",1)
+		// 	pool[name] = nil
+	}
+
 	// // saves specific users data for when they relog
 	// core.register_on_leaveplayer(function(player)
 	// 	save_data(player)
