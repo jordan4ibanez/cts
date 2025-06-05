@@ -265,12 +265,12 @@ namespace experience {
 		data.xp_bar = 0;
 		data.xp_level = 0;
 
-		// 	hud_manager.change_hud({
-		// 		player   = player,
-		// 		hud_name = "xp_level_fg",
-		// 		element  = "text",
-		// 		data     = tostring(data.xp_level)
-		// 	})
+		hudManager.change_hud({
+			player: player,
+			hudName: "xp_level_fg",
+			element: "text",
+			data: tostring(data.xp_level),
+		});
 
 		// 	hud_manager.change_hud({
 		// 		player   = player,
@@ -285,7 +285,7 @@ namespace experience {
 		// 		element  = "number",
 		// 		data     = data.xp_bar
 		// 	})
-        
+
 		//     core.throw_experience(player:get_pos(), xp_amount)
 	});
 
