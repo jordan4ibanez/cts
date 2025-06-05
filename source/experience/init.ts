@@ -346,7 +346,7 @@ namespace experience {
 			const size: number = random(20, 36) / 100;
 			this.object.set_properties({
 				visual_size: { x: size, y: size },
-				glow: 14,
+				glow: 10,
 			});
 			this.object.set_sprite({ x: 1, y: random(1, 14) }, 14, 0.05, false);
 		}
