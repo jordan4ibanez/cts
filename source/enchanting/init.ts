@@ -59,7 +59,7 @@ namespace enchanting {
 					if (!clicker.is_player()) {
 						return;
 					}
-					const stack = clicker.get_wielded_item();
+					const stack: ItemStackObject = clicker.get_wielded_item();
 					const meta: MetaRef = stack.get_meta();
 					if (meta.get_string("enchanted") == "true") {
 						return;
@@ -75,7 +75,7 @@ namespace enchanting {
 						return;
 					}
 					const able_enchantments: string[] = [...enchantment_list];
-					// todo: this depends on the experience mod.
+					// todo: this depends on the crafter experience mod.
 					let player_level: number = 100; //get_player_xp_level(clicker)
 					let enchants_available: number = math.floor(
 						player_level / 5
@@ -196,17 +196,23 @@ namespace enchanting {
 							}
 						}
 					}
-					// 			meta:set_string("description", "Enchanted "+description)
-					// 			meta:set_string("enchanted", "true")
-					// 			meta:set_tool_capabilities(tool_caps)
+					meta.set_string("description", "Enchanted " + description);
+					meta.set_string("enchanted", "true");
+					meta.set_tool_capabilities(tool_caps);
+					// todo: requires crafter experience
 					// 			set_player_xp_level(clicker,player_level)
-					// 			//create truly random hex
-					// 			local colorstring = "#"
-					// 			for i = 1,6 do
-					// 				colorstring = colorstring+hexer[math.random(1,16)]
-					// 			end
-					// 			stack = core.itemstring_with_color(stack, colorstring)
-					// 			clicker:set_wielded_item(stack)
+
+					// Create truly random hex.
+					let colorstring: string = "#";
+					for (const i of $range(1, 6)) {
+						colorstring += hexer[math.random(0, hexer.length)];
+					}
+
+					clicker.set_wielded_item(
+						ItemStack(
+							core.itemstring_with_color(stack, colorstring)
+						)
+					);
 				},
 				clicker
 			);
