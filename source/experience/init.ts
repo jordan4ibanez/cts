@@ -473,13 +473,15 @@ namespace experience {
 				const slippery = get_item_group(node.name, "slippery");
 				is_slippery = slippery != 0;
 				if (is_slippery && (abs(vel.x) > 0.2 || abs(vel.z) > 0.2)) {
-					// 			// Horizontal deceleration
-					// 			slip_factor = 4.0 / (slippery + 4)
-					// 			this.object:set_acceleration({
-					// 				x = -vel.x * slip_factor,
-					// 				y = 0,
-					// 				z = -vel.z * slip_factor
-					// 			})
+					// Horizontal deceleration.
+					const slip_factor: number = 4.0 / (slippery + 4);
+					this.object.set_acceleration(
+						vector.create3d({
+							x: -vel.x * slip_factor,
+							y: 0,
+							z: -vel.z * slip_factor,
+						})
+					);
 				} else if (vel.y == 0) {
 					// 			is_moving = false
 				}
