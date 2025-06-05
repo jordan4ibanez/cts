@@ -122,7 +122,7 @@ interface core {
 			player: ObjectRef,
 			hpChange: number,
 			reason: HPChangeReasonDefinition
-		) => void,
+		) => boolean | void,
 		modifier: boolean
 	): void;
 	register_on_dieplayer(
