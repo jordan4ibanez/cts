@@ -449,8 +449,8 @@ namespace experience {
 
 			// Remove nodes in 'ignore'.
 			if (node != null && node.name == "ignore") {
-				// 		this.object:remove()
-				// 		return
+				this.object.remove();
+				return;
 			}
 
 			// 	if not this.physical_state then
