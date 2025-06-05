@@ -28,11 +28,19 @@ namespace experience {
 	const s_sub = string.sub;
 	const s_len = string.len;
 
-	// local pool = {}
+	class ExpData {
+		xp_level = 0;
+		xp_bar = 0;
+		buffer = 0;
+		last_time = get_time() / 1000000;
+	}
+
+	const pool = new Map<string, ExpData>();
 
 	// Loads data from mod storage.
 	function load_data(player: ObjectRef) {
-		// 	name = player:get_player_name()
+		const name = player.get_player_name();
+
 		// 	pool[name] = {}
 		// 	temp_pool = pool[name]
 		// 	if mod_storage:get_int(name.."xp_save") > 0 then
