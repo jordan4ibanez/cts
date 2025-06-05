@@ -29,31 +29,25 @@ namespace experience {
 	const s_len = string.len;
 
 	class ExpData {
-		xp_level = 0;
-		xp_bar = 0;
-		buffer = 0;
-		last_time = get_time() / 1000000;
+		xp_level: number = 0;
+		xp_bar: number = 0;
+		buffer: number = 0;
+		last_time: number = 0;
+		constructor(player: ObjectRef) {
+			const name = player.get_player_name();
+			if (mod_storage.get_int(name + "xp_save") > 0) {
+				this.xp_level = mod_storage.get_int(name + "xp_level");
+				this.xp_bar = mod_storage.get_int(name + "xp_bar");
+			}
+			this.last_time = get_time() / 1000000;
+		}
 	}
 
 	const pool = new Map<string, ExpData>();
 
 	// Loads data from mod storage.
 	function load_data(player: ObjectRef) {
-		const name = player.get_player_name();
-
-		// 	pool[name] = {}
-		// 	temp_pool = pool[name]
-		// 	if mod_storage:get_int(name.."xp_save") > 0 then
-		// 		temp_pool.xp_level = mod_storage:get_int(name.."xp_level")
-		// 		temp_pool.xp_bar   = mod_storage:get_int(name.."xp_bar"  )
-		// 		temp_pool.buffer   = 0
-		// 		temp_pool.last_time= get_time()/1000000
-		// 	else
-		// 		temp_pool.xp_level = 0
-		// 		temp_pool.xp_bar   = 0
-		// 		temp_pool.buffer   = 0
-		// 		temp_pool.last_time= get_time()/1000000
-		// 	end
+		pool.set(player.get_player_name(), new ExpData(player));
 	}
 	// // saves data to be utilized on next login
 	// local name
