@@ -434,8 +434,8 @@ namespace experience {
 
 			this.age += dtime;
 			if (this.age > 300) {
-				// 		this.object:remove()
-				// 		return
+				this.object.remove();
+				return;
 			}
 			// 	pos = this.object:get_pos()
 			// 	if pos then
