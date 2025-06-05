@@ -47,11 +47,11 @@ namespace enchanting {
 		"0",
 	];
 	core.register_node("enchanting:table", {
-	// 	description = "Enchanting Table",
-	// 	tiles = {"bedrock.png"},
-	// 	groups = {wood = 1, pathable = 1},
-	// 	sounds = main.stoneSound(),
-	// 	is_ground_content = false,
+		description : "Enchanting Table",
+		tiles : ["bedrock.png"], // todo: Bedrock??
+		groups : {wood : 1, pathable : 1},
+		sounds : crafter.stoneSound(),
+		is_ground_content : false,
 	// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 	// 		core.after(0,function(clicker)
 	// 			local stack = clicker:get_wielded_item()
