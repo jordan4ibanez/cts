@@ -83,6 +83,7 @@ namespace item_handling {
 					entity.trigger_collection_calculation();
 				}
 			} else if (entity.name == "crafter_experience:orb") {
+				print("collected??");
 				entity.collector = player.get_player_name();
 				entity.collected = true;
 			}
