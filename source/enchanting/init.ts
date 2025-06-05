@@ -89,7 +89,13 @@ namespace enchanting {
 					if (enchants_available > 3) {
 						enchants_available = 3;
 					}
-					// 			local stock_name = core.registered_tools[stack:get_name()].name
+					const stock_name: string = stack.get_name();
+					const rawToolDef: ItemDefinition | undefined =
+						core.registered_tools[stock_name];
+					if (rawToolDef == null) {
+						return;
+					}
+
 					// 			local description = core.registered_tools[stack:get_name()].description//temp_names[math.random(1,table.getn(temp_names))]
 					// 			for i = 1,enchants_available do
 					// 				local new_enchant = enchantment_list[math.random(1,table.getn(enchantment_list))]
