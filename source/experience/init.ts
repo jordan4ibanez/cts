@@ -296,7 +296,7 @@ namespace experience {
 			physical: true,
 			collide_with_objects: false,
 			collisionbox: [-0.2, -0.2, -0.2, 0.2, 0.2, 0.2],
-			visual: "sprite",
+			visual: EntityVisual.sprite,
 			visual_size: { x: 0.4, y: 0.4 },
 			textures: {
 				name: "experience_orb.png",
