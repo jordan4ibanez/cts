@@ -13,18 +13,18 @@ namespace enchanting {
 	// local enchantment_list = {"swiftness", "durable", "careful", "fortune", "autorepair",  "sharpness"}
 	// local temp_names = {"Monster", "Behemoth", "Ultra", "Wow!", "Oh Em Gee", "The Ultimatum", "Holy Moly!", "Infinity"}
 	// local hexer = {"a","b","c","d","e","f","1","2","3","4","5","6","7","8","9","0"}
-	// minetest.register_node("enchanting:table", {
+	// core.register_node("enchanting:table", {
 	// 	description = "Enchanting Table",
 	// 	tiles = {"bedrock.png"},
 	// 	groups = {wood = 1, pathable = 1},
 	// 	sounds = main.stoneSound(),
 	// 	is_ground_content = false,
 	// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-	// 		minetest.after(0,function(clicker)
+	// 		core.after(0,function(clicker)
 	// 			local stack = clicker:get_wielded_item()
 	// 			local meta = stack:get_meta()
 	// 			if meta:get_string("enchanted") == "true" then return end
-	// 			if not minetest.registered_tools[itemstack:get_name()] then return end
+	// 			if not core.registered_tools[itemstack:get_name()] then return end
 	// 			local tool_caps = itemstack:get_tool_capabilities()
 	// 			local groupcaps = tool_caps.groupcaps
 	// 			if not groupcaps then return end
@@ -34,8 +34,8 @@ namespace enchanting {
 	// 			local max_enchant_level = math.floor(player_level/5)
 	// 			if enchants_available <= 0 then return end
 	// 			if enchants_available > 3 then enchants_available = 3 end
-	// 			local stock_name = minetest.registered_tools[stack:get_name()].name
-	// 			local description = minetest.registered_tools[stack:get_name()].description--temp_names[math.random(1,table.getn(temp_names))]
+	// 			local stock_name = core.registered_tools[stack:get_name()].name
+	// 			local description = core.registered_tools[stack:get_name()].description//temp_names[math.random(1,table.getn(temp_names))]
 	// 			for i = 1,enchants_available do
 	// 				local new_enchant = enchantment_list[math.random(1,table.getn(enchantment_list))]
 	// 				local level = math.random(1,max_enchant_level)
@@ -66,17 +66,17 @@ namespace enchanting {
 	// 			meta:set_string("enchanted", "true")
 	// 			meta:set_tool_capabilities(tool_caps)
 	// 			set_player_xp_level(clicker,player_level)
-	// 			--create truly random hex
+	// 			//create truly random hex
 	// 			local colorstring = "#"
 	// 			for i = 1,6 do
 	// 				colorstring = colorstring..hexer[math.random(1,16)]
 	// 			end
-	// 			stack = minetest.itemstring_with_color(stack, colorstring)
+	// 			stack = core.itemstring_with_color(stack, colorstring)
 	// 			clicker:set_wielded_item(stack)
 	// 		end,clicker)
 	// 	end
 	// })
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "enchanting:table",
 	// 	recipe = {
 	// 		{"nether:obsidian", "nether:obsidian", "nether:obsidian"},
