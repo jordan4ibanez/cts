@@ -340,7 +340,9 @@ namespace experience {
 
 			this.object.set_armor_groups({ immortal: 1 });
 			this.object.set_velocity(vector.create3d({ x: 0, y: 2, z: 0 }));
-			// 		this.object.set_acceleration({x = 0, y = -9.81, z = 0})
+			this.object.set_acceleration(
+				vector.create3d({ x: 0, y: -9.81, z: 0 })
+			);
 			//         size = random(20,36)/100
 			//         this.object.set_properties({
 			// 			visual_size = {x = size, y = size},
