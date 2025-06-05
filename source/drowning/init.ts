@@ -60,9 +60,15 @@ namespace drowning {
 		};
 
 		if (mod_storage.get_int("crafter_drown_" + name + "_save") > 0) {
-			data.breath = mod_storage.get_float(name + "breath");
-			data.ticker = mod_storage.get_float(name + "breath_ticker");
-			data.drowning = mod_storage.get_float(name + "drowning");
+			data.breath = mod_storage.get_float(
+				"crafter_drown_" + name + "breath"
+			);
+			data.ticker = mod_storage.get_float(
+				"crafter_drown_" + name + "breath_ticker"
+			);
+			data.drowning = mod_storage.get_float(
+				"crafter_drown_" + name + "drowning"
+			);
 		} else {
 			data.breath = 21;
 			data.ticker = 0;
