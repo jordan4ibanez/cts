@@ -1,13 +1,13 @@
 namespace bed {
-	// local mod_storage = minetest.get_mod_storage()
+	// local mod_storage = core.get_mod_storage()
 	// local time_night = {begin = 19000, ending = 5500}
 	// local sleep_channel = {}
 	// local pool = {}
 	// local sleep_loop = false
 	// local name
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
-	// 	sleep_channel[name] = minetest.mod_channel_join(name..":sleep_channel")
+	// 	sleep_channel[name] = core.mod_channel_join(name..":sleep_channel")
 	// end)
 	// local name
 	// local function csm_send_player_to_sleep(player)
@@ -19,7 +19,7 @@ namespace bed {
 	// 	name = player:get_player_name()
 	// 	sleep_channel[name]:send_all("0")
 	// end
-	// minetest.register_on_modchannel_message(function(channel_name, sender, message)
+	// core.register_on_modchannel_message(function(channel_name, sender, message)
 	// 	local channel_decyphered = channel_name:gsub(sender,"")
 	// 	if channel_decyphered == ":sleep_channel" then
 	// 		if pool[sender] then
@@ -33,20 +33,20 @@ namespace bed {
 	// 	player_is_sleeping(player,false)
 	// 	player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
 	// 	pool[name] = nil
-	// 	minetest.close_formspec(name, "bed")
+	// 	core.close_formspec(name, "bed")
 	// 	csm_wake_player_up(player)
 	// end
 	// local function global_sleep_check()
 	// 	sleep_loop = true
-	// 	--minetest.chat_send_all("sleep looping"..tostring(math.random()))
+	// 	--core.chat_send_all("sleep looping"..tostring(math.random()))
 	// 	local sleep_table = {}
-	// 	for _,player in ipairs(minetest.get_connected_players()) do
+	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		local name = player:get_player_name()
 	// 		sleep_table[name] = true
 	// 	end
 	// 	local bed_count = 0
 	// 	for name,data in pairs(pool) do
-	// 		local player = minetest.get_player_by_name(name)
+	// 		local player = core.get_player_by_name(name)
 	// 		if player then
 	// 			bed_count = bed_count + 1
 	// 			if data.sleeping then
@@ -64,8 +64,8 @@ namespace bed {
 	// 		count = count + 1
 	// 	end
 	// 	if count == 0 then
-	// 		minetest.set_timeofday(time_night.ending/24000)
-	// 		for _,player in ipairs(minetest.get_connected_players()) do
+	// 		core.set_timeofday(time_night.ending/24000)
+	// 		for _,player in ipairs(core.get_connected_players()) do
 	// 			wake_up(player)
 	// 		end
 	// 		sleep_loop = false
@@ -76,7 +76,7 @@ namespace bed {
 	// 	end
 	// end
 	// local global_step_timer = 0
-	// minetest.register_globalstep(function(dtime)
+	// core.register_globalstep(function(dtime)
 	// 	if sleep_loop then
 	// 		global_step_timer = global_step_timer + dtime
 	// 		if global_step_timer > 0.25 then
@@ -87,7 +87,7 @@ namespace bed {
 	// end)
 	// -- delete data on player leaving
 	// local name
-	// minetest.register_on_leaveplayer(function(player)
+	// core.register_on_leaveplayer(function(player)
 	// 	name = player:get_player_name()
 	// 	pool[name] = nil
 	// end)
@@ -104,16 +104,16 @@ namespace bed {
 	// local name
 	// local time
 	// local do_sleep = function(player,pos,dir)
-	// 	time = minetest.get_timeofday() * 24000
+	// 	time = core.get_timeofday() * 24000
 	// 	name = player:get_player_name()
 	// 	if time > time_night.begin or time < time_night.ending then
-	// 		local real_dir = minetest.facedir_to_dir(dir)
+	// 		local real_dir = core.facedir_to_dir(dir)
 	// 		player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
 	// 		local new_pos = vector.subtract(pos,vector.divide(real_dir,2))
 	// 		player:move_to(new_pos)
 	// 		player:set_look_vertical(0)
 	// 		player:set_look_horizontal(yaw_translation[dir])
-	// 		minetest.show_formspec(name, "bed", bed_gui)
+	// 		core.show_formspec(name, "bed", bed_gui)
 	// 		player_is_sleeping(player,true)
 	// 		set_player_animation(player,"lay",0,false)
 	// 		player:set_eye_offset({x=0,y=-12,z=-7},{x=0,y=0,z=0})
@@ -121,19 +121,19 @@ namespace bed {
 	// 		csm_send_player_to_sleep(player)
 	// 		sleep_loop = true
 	// 	else
-	// 		minetest.chat_send_player(name, "You can only sleep at night")
+	// 		core.chat_send_player(name, "You can only sleep at night")
 	// 	end
 	// end
-	// minetest.register_on_player_receive_fields(function(player, formname, fields)
+	// core.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if formname and formname == "bed" then
 	// 		wake_up(player)
 	// 	end
 	// end)
-	// minetest.register_on_respawnplayer(function(player)
+	// core.register_on_respawnplayer(function(player)
 	// 	wake_up(player)
 	// end)
 	// --these are beds
-	// minetest.register_node("bed:bed", {
+	// core.register_node("bed:bed", {
 	//     description = "Bed",
 	//     inventory_image = "bed.png",
 	//     wield_image = "bed.png",
@@ -148,23 +148,23 @@ namespace bed {
 	// 			return
 	// 		end
 	// 		local sneak = placer:get_player_control().sneak
-	// 		local noddef = minetest.registered_nodes[minetest.get_node(pointed_thing.under).name]
+	// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
 	// 		if not sneak and noddef.on_rightclick then
-	// 			minetest.item_place(itemstack, placer, pointed_thing)
+	// 			core.item_place(itemstack, placer, pointed_thing)
 	// 			return
 	// 		end
-	// 		local _,pos = minetest.item_place_node(ItemStack("bed:bed_front"), placer, pointed_thing)
+	// 		local _,pos = core.item_place_node(ItemStack("bed:bed_front"), placer, pointed_thing)
 	// 		if pos then
-	// 			local param2 = minetest.get_node(pos).param2
-	// 			local pos2 = vector.add(pos, vector.multiply(minetest.facedir_to_dir(param2),-1))
-	// 			local buildable = minetest.registered_nodes[minetest.get_node(pos2).name].buildable_to
+	// 			local param2 = core.get_node(pos).param2
+	// 			local pos2 = vector.add(pos, vector.multiply(core.facedir_to_dir(param2),-1))
+	// 			local buildable = core.registered_nodes[core.get_node(pos2).name].buildable_to
 	// 			if not buildable then
-	// 				minetest.remove_node(pos)
+	// 				core.remove_node(pos)
 	// 				return(itemstack)
 	// 			else
-	// 				minetest.add_node(pos2,{name="bed:bed_back", param2=param2})
+	// 				core.add_node(pos2,{name="bed:bed_back", param2=param2})
 	// 				itemstack:take_item()
-	// 				minetest.sound_play("wood", {
+	// 				core.sound_play("wood", {
 	// 					  pos = pos,
 	// 				})
 	// 				return(itemstack)
@@ -173,7 +173,7 @@ namespace bed {
 	// 		return(itemstack)
 	// 	end,
 	// })
-	// minetest.register_node("bed:bed_front", {
+	// core.register_node("bed:bed_front", {
 	//     description = "Bed",
 	//     paramtype = "light",
 	//     paramtype2 = "facedir",
@@ -192,26 +192,26 @@ namespace bed {
 	// 	node_placement_prediction = "",
 	// 	drop = "bed:bed",
 	// 	on_dig = function(pos, node, digger)
-	// 		local param2 = minetest.get_node(pos).param2
-	// 		local facedir = minetest.facedir_to_dir(param2)
+	// 		local param2 = core.get_node(pos).param2
+	// 		local facedir = core.facedir_to_dir(param2)
 	// 		facedir = vector.multiply(facedir,-1)
-	// 		local obj = minetest.add_item(pos, "bed:bed")
-	// 		minetest.remove_node(pos)
-	// 		minetest.remove_node(vector.add(pos,facedir))
+	// 		local obj = core.add_item(pos, "bed:bed")
+	// 		core.remove_node(pos)
+	// 		core.remove_node(vector.add(pos,facedir))
 	// 		--remove_spawnpoint(pos,digger)
 	// 		--remove_spawnpoint(vector.add(pos,facedir),digger)
-	// 		minetest.punch_node(vector.new(pos.x,pos.y+1,pos.z))
+	// 		core.punch_node(vector.new(pos.x,pos.y+1,pos.z))
 	// 	end,
 	// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 	// 		if pos.y <= -10033 then
 	// 			tnt(pos,10)
 	// 			return
 	// 		end
-	// 		local param2 = minetest.get_node(pos).param2
+	// 		local param2 = core.get_node(pos).param2
 	// 		do_sleep(clicker,pos,param2)
 	// 	end,
 	// })
-	// minetest.register_node("bed:bed_back", {
+	// core.register_node("bed:bed_back", {
 	//     description = "Bed",
 	//     paramtype = "light",
 	//     paramtype2 = "facedir",
@@ -230,26 +230,26 @@ namespace bed {
 	// 		},
 	// 	drop = "",
 	// 	on_dig = function(pos, node, digger)
-	// 		local param2 = minetest.get_node(pos).param2
-	// 		local facedir = minetest.facedir_to_dir(param2)
-	// 		local obj = minetest.add_item(pos, "bed:bed")
-	// 		minetest.remove_node(pos)
-	// 		minetest.remove_node(vector.add(pos,facedir))
+	// 		local param2 = core.get_node(pos).param2
+	// 		local facedir = core.facedir_to_dir(param2)
+	// 		local obj = core.add_item(pos, "bed:bed")
+	// 		core.remove_node(pos)
+	// 		core.remove_node(vector.add(pos,facedir))
 	// 		--remove_spawnpoint(pos,digger)
 	// 		--remove_spawnpoint(vector.add(pos,facedir),digger)
-	// 		minetest.punch_node(vector.new(pos.x,pos.y+1,pos.z))
+	// 		core.punch_node(vector.new(pos.x,pos.y+1,pos.z))
 	// 	end,
 	// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 	// 		if pos.y <= -10033 then
 	// 			tnt(pos,10)
 	// 			return
 	// 		end
-	// 		local param2 = minetest.get_node(pos).param2
-	// 		local dir = minetest.facedir_to_dir(param2)
+	// 		local param2 = core.get_node(pos).param2
+	// 		local dir = core.facedir_to_dir(param2)
 	// 		do_sleep(clicker,vector.add(pos,dir),param2)
 	// 	end,
 	// })
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "bed:bed",
 	// 	recipe = {
 	// 		{"main:dropped_leaves", "main:dropped_leaves", "main:dropped_leaves"},
