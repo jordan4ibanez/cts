@@ -1,3 +1,4 @@
+namespace bed {
 // local mod_storage = minetest.get_mod_storage()
 // local time_night = {begin = 19000, ending = 5500}
 // local sleep_channel = {}
@@ -295,3 +296,4 @@
 // 		{"main:wood"          , "main:wood"          , "main:wood"          },
 // 	},
 // })
+}
