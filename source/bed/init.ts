@@ -38,7 +38,7 @@ namespace bed {
 	// end
 	// local function global_sleep_check()
 	// 	sleep_loop = true
-	// 	--core.chat_send_all("sleep looping"..tostring(math.random()))
+	// 	//core.chat_send_all("sleep looping"..tostring(math.random()))
 	// 	local sleep_table = {}
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		local name = player:get_player_name()
@@ -85,7 +85,7 @@ namespace bed {
 	// 		end
 	// 	end
 	// end)
-	// -- delete data on player leaving
+	// // delete data on player leaving
 	// local name
 	// core.register_on_leaveplayer(function(player)
 	// 	name = player:get_player_name()
@@ -132,7 +132,7 @@ namespace bed {
 	// core.register_on_respawnplayer(function(player)
 	// 	wake_up(player)
 	// end)
-	// --these are beds
+	// //these are beds
 	// core.register_node("bed:bed", {
 	//     description = "Bed",
 	//     inventory_image = "bed.png",
@@ -198,8 +198,8 @@ namespace bed {
 	// 		local obj = core.add_item(pos, "bed:bed")
 	// 		core.remove_node(pos)
 	// 		core.remove_node(vector.add(pos,facedir))
-	// 		--remove_spawnpoint(pos,digger)
-	// 		--remove_spawnpoint(vector.add(pos,facedir),digger)
+	// 		//remove_spawnpoint(pos,digger)
+	// 		//remove_spawnpoint(vector.add(pos,facedir),digger)
 	// 		core.punch_node(vector.new(pos.x,pos.y+1,pos.z))
 	// 	end,
 	// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
@@ -235,8 +235,8 @@ namespace bed {
 	// 		local obj = core.add_item(pos, "bed:bed")
 	// 		core.remove_node(pos)
 	// 		core.remove_node(vector.add(pos,facedir))
-	// 		--remove_spawnpoint(pos,digger)
-	// 		--remove_spawnpoint(vector.add(pos,facedir),digger)
+	// 		//remove_spawnpoint(pos,digger)
+	// 		//remove_spawnpoint(vector.add(pos,facedir),digger)
 	// 		core.punch_node(vector.new(pos.x,pos.y+1,pos.z))
 	// 	end,
 	// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
