@@ -1,5 +1,6 @@
 namespace bed {
-	// local mod_storage = core.get_mod_storage()
+	const mod_storage: MetaRef = core.get_mod_storage();
+
 	// local time_night = {begin = 19000, ending = 5500}
 	// local sleep_channel = {}
 	// local pool = {}
