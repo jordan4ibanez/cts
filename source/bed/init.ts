@@ -21,8 +21,12 @@ namespace bed {
 
 	function csm_send_player_to_sleep(player: ObjectRef): void {
 		const name: string = player.get_player_name();
+		const channel: ModChannel | undefined = sleep_channel.get(name);
+		if (channel == null) {
+			throw new Error(`Player [${name}] has no sleep channel.`);
+		}
 
-		// 	sleep_channel[name]:send_all("1")
+		channel.send_all("1");
 	}
 
 	// local name
