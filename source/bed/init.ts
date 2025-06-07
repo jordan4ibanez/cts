@@ -36,14 +36,20 @@ namespace bed {
 		channel.send_all("0");
 	}
 
-	// core.register_on_modchannel_message(function(channel_name, sender, message)
-	// 	local channel_decyphered = channel_name:gsub(sender,"")
-	// 	if channel_decyphered == ":crafter_sleep_channel" then
-	// 		if pool[sender] then
-	// 			pool[sender].sleeping = true
-	// 		end
-	// 	end
-	// end)
+	core.register_on_modchannel_message((channel_name, sender, message) => {
+		const channel_decyphered: string = string.gsub(
+			channel_name,
+			sender,
+			""
+		)[0];
+
+		// if channel_decyphered == ":crafter_sleep_channel" then
+		// 	if pool[sender] then
+		// 		pool[sender].sleeping = true
+		// 	end
+		// end
+	});
+
 	// local name
 	// local wake_up = function(player)
 	// 	name = player:get_player_name()
