@@ -12,7 +12,6 @@ namespace bed {
 
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
-
 		sleep_channel.set(
 			name,
 			core.mod_channel_join(name + ":crafter_sleep_channel")
