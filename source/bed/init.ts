@@ -4,9 +4,12 @@ namespace bed {
 	const timeNightBegin = 19000;
 	const timeNightEnd = 5500;
 
-	// local sleep_channel = {}
-	// local pool = {}
-	// local sleep_loop = false
+	const sleep_channel = {};
+
+	const pool = {};
+
+	const sleep_loop: boolean = false;
+
 	// local name
 	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
