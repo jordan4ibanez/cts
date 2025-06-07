@@ -45,7 +45,7 @@ namespace bed {
 	// end
 	// local function global_sleep_check()
 	// 	sleep_loop = true
-	// 	//core.chat_send_all("sleep looping"..tostring(math.random()))
+	// 	//core.chat_send_all("sleep looping"+tostring(math.random()))
 	// 	local sleep_table = {}
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		local name = player:get_player_name()
@@ -98,9 +98,9 @@ namespace bed {
 	// 	name = player:get_player_name()
 	// 	pool[name] = nil
 	// end)
-	// local bed_gui = "size[16,12]"..
-	// "position[0.5,0.5]"..
-	// "bgcolor[#00000000]"..
+	// local bed_gui = "size[16,12]"+
+	// "position[0.5,0.5]"+
+	// "bgcolor[#00000000]"+
 	// "button[5.5,8.5;5,2;button;leave bed]"
 	// local yaw_translation = {
 	// 	[0] = math.pi,
