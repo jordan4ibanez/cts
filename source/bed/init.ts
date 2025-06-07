@@ -27,11 +27,15 @@ namespace bed {
 		channel.send_all("1");
 	}
 
-	// local name
-	// local function csm_wake_player_up(player)
-	// 	name = player:get_player_name()
-	// 	sleep_channel[name]:send_all("0")
-	// end
+	function csm_wake_player_up(player: ObjectRef): void {
+		const name: string = player.get_player_name();
+		const channel: ModChannel | undefined = sleep_channel.get(name);
+		if (channel == null) {
+			throw new Error(`Player [${name}] has no sleep channel.`);
+		}
+		channel.send_all("0");
+	}
+
 	// core.register_on_modchannel_message(function(channel_name, sender, message)
 	// 	local channel_decyphered = channel_name:gsub(sender,"")
 	// 	if channel_decyphered == ":crafter_sleep_channel" then
