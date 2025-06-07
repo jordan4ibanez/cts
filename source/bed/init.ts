@@ -4,17 +4,18 @@ namespace bed {
 	const timeNightBegin = 19000;
 	const timeNightEnd = 5500;
 
-	const sleep_channel = {};
+	const sleep_channel = new Map<string, ModChannel>();
 
 	const pool = {};
 
 	const sleep_loop: boolean = false;
 
-	// local name
-	// core.register_on_joinplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	sleep_channel[name] = core.mod_channel_join(name..":sleep_channel")
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+
+		sleep_channel.set(name, core.mod_channel_join(name + ":sleep_channel"));
+	});
+
 	// local name
 	// local function csm_send_player_to_sleep(player)
 	// 	name = player:get_player_name()
