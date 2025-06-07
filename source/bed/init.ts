@@ -6,7 +6,11 @@ namespace bed {
 
 	const sleep_channel = new Map<string, ModChannel>();
 
-	const pool = {};
+	interface SleepData {
+		sleeping: boolean;
+	}
+
+	const pool = new Map<string, SleepData>();
 
 	const sleep_loop: boolean = false;
 
@@ -42,12 +46,15 @@ namespace bed {
 			sender,
 			""
 		)[0];
-
-		// if channel_decyphered == ":crafter_sleep_channel" then
-		// 	if pool[sender] then
-		// 		pool[sender].sleeping = true
-		// 	end
-		// end
+		if (channel_decyphered == ":crafter_sleep_channel") {
+			const data: SleepData | undefined = pool.get(sender);
+			if (!data) {
+				throw new Error(
+					`Player [${sender}] was never added to the pool`
+				);
+			}
+			data.sleeping = true;
+		}
 	});
 
 	// local name
