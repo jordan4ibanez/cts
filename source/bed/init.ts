@@ -25,7 +25,6 @@ namespace bed {
 		if (channel == null) {
 			throw new Error(`Player [${name}] has no sleep channel.`);
 		}
-
 		channel.send_all("1");
 	}
 
