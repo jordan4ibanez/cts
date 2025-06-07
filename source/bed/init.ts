@@ -13,7 +13,7 @@ namespace bed {
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 
-		sleep_channel.set(name, core.mod_channel_join(name + ":sleep_channel"));
+		sleep_channel.set(name, core.mod_channel_join(name + ":crafter_sleep_channel"));
 	});
 
 	// local name
@@ -28,7 +28,7 @@ namespace bed {
 	// end
 	// core.register_on_modchannel_message(function(channel_name, sender, message)
 	// 	local channel_decyphered = channel_name:gsub(sender,"")
-	// 	if channel_decyphered == ":sleep_channel" then
+	// 	if channel_decyphered == ":crafter_sleep_channel" then
 	// 		if pool[sender] then
 	// 			pool[sender].sleeping = true
 	// 		end
