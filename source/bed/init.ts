@@ -13,14 +13,18 @@ namespace bed {
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
 
-		sleep_channel.set(name, core.mod_channel_join(name + ":crafter_sleep_channel"));
+		sleep_channel.set(
+			name,
+			core.mod_channel_join(name + ":crafter_sleep_channel")
+		);
 	});
 
-	// local name
-	// local function csm_send_player_to_sleep(player)
-	// 	name = player:get_player_name()
-	// 	sleep_channel[name]:send_all("1")
-	// end
+	function csm_send_player_to_sleep(player: ObjectRef): void {
+		const name: string = player.get_player_name();
+
+		// 	sleep_channel[name]:send_all("1")
+	}
+
 	// local name
 	// local function csm_wake_player_up(player)
 	// 	name = player:get_player_name()
