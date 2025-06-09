@@ -99,10 +99,8 @@ namespace bed {
 				player.move_to(data.pos);
 			}
 		}
-		let count: number = 0;
-		// 	for name,val in pairs(sleep_table) do
-		// 		count = count + 1
-		// 	end
+		let count: number = sleep_table.size;
+
 		// 	if count == 0 then
 		// 		core.set_timeofday(time_night.ending/24000)
 		// 		for _,player in ipairs(core.get_connected_players()) do
