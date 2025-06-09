@@ -126,7 +126,7 @@ namespace bed {
 		global_step_timer = 0;
 		global_sleep_check();
 	});
-	// // delete data on player leaving
+	// Delete data on player leaving.
 	// local name
 	// core.register_on_leaveplayer(function(player)
 	// 	name = player:get_player_name()
