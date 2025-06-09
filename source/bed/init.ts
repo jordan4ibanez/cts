@@ -118,11 +118,14 @@ namespace bed {
 		if (!sleep_loop) {
 			return;
 		}
-		// 		global_step_timer = global_step_timer + dtime
-		// 		if global_step_timer > 0.25 then
+		global_step_timer += dtime;
+		if (global_step_timer < 0.25) {
+			return;
+		}
+		
 		// 			global_step_timer = 0
 		// 			global_sleep_check()
-		// 		end
+		
 	});
 	// // delete data on player leaving
 	// local name
