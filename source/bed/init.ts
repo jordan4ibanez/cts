@@ -81,8 +81,10 @@ namespace bed {
 		}
 		let bed_count: number = 0;
 		for (const [name, data] of pairs(pool)) {
-			// 		local player = core.get_player_by_name(name)
-			// 		if player then
+			if (typeof name != "string") {
+				throw new Error("how");
+			}
+					
 			// 			bed_count = bed_count + 1
 			// 			if data.sleeping then
 			// 				sleep_table[name] = nil
@@ -90,9 +92,7 @@ namespace bed {
 			// 			if data.pos then
 			// 				player:move_to(data.pos)
 			// 			end
-			// 		else
-			// 			pool[name] = nil
-			// 		end
+			
 		}
 		// 	local count = 0
 		// 	for name,val in pairs(sleep_table) do
