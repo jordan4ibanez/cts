@@ -113,16 +113,16 @@ namespace bed {
 		}
 	}
 
-	// local global_step_timer = 0
-	// core.register_globalstep(function(dtime)
-	// 	if sleep_loop then
-	// 		global_step_timer = global_step_timer + dtime
-	// 		if global_step_timer > 0.25 then
-	// 			global_step_timer = 0
-	// 			global_sleep_check()
-	// 		end
-	// 	end
-	// end)
+	let global_step_timer: number = 0;
+	core.register_globalstep((dtime: number) => {
+		// 	if sleep_loop then
+		// 		global_step_timer = global_step_timer + dtime
+		// 		if global_step_timer > 0.25 then
+		// 			global_step_timer = 0
+		// 			global_sleep_check()
+		// 		end
+		// 	end
+	});
 	// // delete data on player leaving
 	// local name
 	// core.register_on_leaveplayer(function(player)
