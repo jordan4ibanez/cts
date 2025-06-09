@@ -57,14 +57,16 @@ namespace bed {
 		}
 	});
 
-	
-	function wake_up (player: ObjectRef): void {
-		name = player:get_player_name()
-		player_is_sleeping(player,false)
-		player:set_eye_offset({x=0,y=0,z=0},{x=0,y=0,z=0})
-		pool[name] = nil
-		core.close_formspec(name, "bed")
-		csm_wake_player_up(player)
+	function wake_up(player: ObjectRef): void {
+		const name: string = player.get_player_name();
+		playerAPI.player_is_sleeping(player, false);
+		player.set_eye_offset(
+			vector.create3d({ x: 0, y: 0, z: 0 }),
+			vector.create3d({ x: 0, y: 0, z: 0 })
+		);
+		pool.delete(name);
+		core.close_formspec(name, "bed");
+		csm_wake_player_up(player);
 	}
 
 	// local function global_sleep_check()
