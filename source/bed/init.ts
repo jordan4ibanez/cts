@@ -8,6 +8,7 @@ namespace bed {
 
 	interface SleepData {
 		sleeping: boolean;
+		pos: Vec3;
 	}
 
 	const pool = new Map<string, SleepData>();
@@ -79,19 +80,24 @@ namespace bed {
 			const name: string = player.get_player_name();
 			sleep_table.add(name);
 		}
+
 		let bed_count: number = 0;
-		for (const [name, data] of pairs(pool)) {
+
+		for (const [name, data] of pool) {
 			if (typeof name != "string") {
 				throw new Error("how");
 			}
-0
+			const player: ObjectRef | null = core.get_player_by_name(name);
+			if (player == null) {
+				throw new Error("Null player in pool.");
+			}
 			bed_count += 1;
-			// if data.sleeping then
-			// 	sleep_table[name] = nil
-			// end
-			// if data.pos then
-			// 	player:move_to(data.pos)
-			// end
+			if (data.sleeping) {
+				sleep_table.delete(name);
+			}
+			if (data.pos) {
+				player.move_to(data.pos);
+			}
 		}
 		// 	local count = 0
 		// 	for name,val in pairs(sleep_table) do
