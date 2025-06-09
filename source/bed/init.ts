@@ -12,7 +12,7 @@ namespace bed {
 
 	const pool = new Map<string, SleepData>();
 
-	const sleep_loop: boolean = false;
+	let sleep_loop: boolean = false;
 
 	core.register_on_joinplayer((player: ObjectRef) => {
 		const name: string = player.get_player_name();
@@ -69,45 +69,46 @@ namespace bed {
 		csm_wake_player_up(player);
 	}
 
-	// local function global_sleep_check()
-	// 	sleep_loop = true
-	// 	//core.chat_send_all("sleep looping"+tostring(math.random()))
-	// 	local sleep_table = {}
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		local name = player:get_player_name()
-	// 		sleep_table[name] = true
-	// 	end
-	// 	local bed_count = 0
-	// 	for name,data in pairs(pool) do
-	// 		local player = core.get_player_by_name(name)
-	// 		if player then
-	// 			bed_count = bed_count + 1
-	// 			if data.sleeping then
-	// 				sleep_table[name] = nil
-	// 			end
-	// 			if data.pos then
-	// 				player:move_to(data.pos)
-	// 			end
-	// 		else
-	// 			pool[name] = nil
-	// 		end
-	// 	end
-	// 	local count = 0
-	// 	for name,val in pairs(sleep_table) do
-	// 		count = count + 1
-	// 	end
-	// 	if count == 0 then
-	// 		core.set_timeofday(time_night.ending/24000)
-	// 		for _,player in ipairs(core.get_connected_players()) do
-	// 			wake_up(player)
-	// 		end
-	// 		sleep_loop = false
-	// 		return
-	// 	end
-	// 	if bed_count == 0 then
-	// 		sleep_loop = false
-	// 	end
-	// end
+	function global_sleep_check(): void {
+		sleep_loop = true;
+		// 	//core.chat_send_all("sleep looping"+tostring(math.random()))
+		// 	local sleep_table = {}
+		// 	for _,player in ipairs(core.get_connected_players()) do
+		// 		local name = player:get_player_name()
+		// 		sleep_table[name] = true
+		// 	end
+		// 	local bed_count = 0
+		// 	for name,data in pairs(pool) do
+		// 		local player = core.get_player_by_name(name)
+		// 		if player then
+		// 			bed_count = bed_count + 1
+		// 			if data.sleeping then
+		// 				sleep_table[name] = nil
+		// 			end
+		// 			if data.pos then
+		// 				player:move_to(data.pos)
+		// 			end
+		// 		else
+		// 			pool[name] = nil
+		// 		end
+		// 	end
+		// 	local count = 0
+		// 	for name,val in pairs(sleep_table) do
+		// 		count = count + 1
+		// 	end
+		// 	if count == 0 then
+		// 		core.set_timeofday(time_night.ending/24000)
+		// 		for _,player in ipairs(core.get_connected_players()) do
+		// 			wake_up(player)
+		// 		end
+		// 		sleep_loop = false
+		// 		return
+		// 	end
+		// 	if bed_count == 0 then
+		// 		sleep_loop = false
+		// 	end
+	}
+
 	// local global_step_timer = 0
 	// core.register_globalstep(function(dtime)
 	// 	if sleep_loop then
