@@ -127,11 +127,12 @@ namespace bed {
 		global_sleep_check();
 	});
 	// Delete data on player leaving.
-	// local name
-	// core.register_on_leaveplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	pool[name] = nil
-	// end)
+
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		pool.delete(name);
+	});
+
 	// local bed_gui = "size[16,12]"+
 	// "position[0.5,0.5]"+
 	// "bgcolor[#00000000]"+
