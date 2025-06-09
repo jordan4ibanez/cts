@@ -95,9 +95,7 @@ namespace bed {
 			if (data.sleeping) {
 				sleep_table.delete(name);
 			}
-			if (data.pos) {
-				player.move_to(data.pos);
-			}
+			player.move_to(data.pos);
 		}
 		let count: number = sleep_table.size;
 
