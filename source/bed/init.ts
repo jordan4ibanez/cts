@@ -106,8 +106,8 @@ namespace bed {
 			for (const [_, player] of ipairs(core.get_connected_players())) {
 				wake_up(player);
 			}
-			// sleep_loop = false
-			// return
+			sleep_loop = false;
+			return;
 		}
 
 		// 	if bed_count == 0 then
