@@ -103,9 +103,9 @@ namespace bed {
 
 		if (count == 0) {
 			core.set_timeofday(timeNightEnd / 24000);
-			// for _,player in ipairs(core.get_connected_players()) do
-			// 	wake_up(player)
-			// end
+			for (const [_, player] of ipairs(core.get_connected_players())) {
+				wake_up(player);
+			}
 			// sleep_loop = false
 			// return
 		}
