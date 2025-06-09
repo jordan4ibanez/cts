@@ -71,7 +71,7 @@ namespace bed {
 
 	function global_sleep_check(): void {
 		sleep_loop = true;
-		// 	//core.chat_send_all("sleep looping"+tostring(math.random()))
+		// core.chat_send_all("sleep looping" + tostring(math.random()));
 		// 	local sleep_table = {}
 		// 	for _,player in ipairs(core.get_connected_players()) do
 		// 		local name = player:get_player_name()
