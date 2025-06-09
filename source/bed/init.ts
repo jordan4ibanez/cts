@@ -116,16 +116,15 @@ namespace bed {
 	let global_step_timer: number = 0;
 	core.register_globalstep((dtime: number) => {
 		if (!sleep_loop) {
+			global_step_timer = 0;
 			return;
 		}
 		global_step_timer += dtime;
 		if (global_step_timer < 0.25) {
 			return;
 		}
-		
-		// 			global_step_timer = 0
-		// 			global_sleep_check()
-		
+		global_step_timer = 0;
+		global_sleep_check();
 	});
 	// // delete data on player leaving
 	// local name
