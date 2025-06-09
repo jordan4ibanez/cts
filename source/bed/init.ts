@@ -79,21 +79,21 @@ namespace bed {
 			const name: string = player.get_player_name();
 			sleep_table.add(name);
 		}
-		// 	local bed_count = 0
-		// 	for name,data in pairs(pool) do
-		// 		local player = core.get_player_by_name(name)
-		// 		if player then
-		// 			bed_count = bed_count + 1
-		// 			if data.sleeping then
-		// 				sleep_table[name] = nil
-		// 			end
-		// 			if data.pos then
-		// 				player:move_to(data.pos)
-		// 			end
-		// 		else
-		// 			pool[name] = nil
-		// 		end
-		// 	end
+		let bed_count: number = 0;
+		for (const [name, data] of pairs(pool)) {
+			// 		local player = core.get_player_by_name(name)
+			// 		if player then
+			// 			bed_count = bed_count + 1
+			// 			if data.sleeping then
+			// 				sleep_table[name] = nil
+			// 			end
+			// 			if data.pos then
+			// 				player:move_to(data.pos)
+			// 			end
+			// 		else
+			// 			pool[name] = nil
+			// 		end
+		}
 		// 	local count = 0
 		// 	for name,val in pairs(sleep_table) do
 		// 		count = count + 1
