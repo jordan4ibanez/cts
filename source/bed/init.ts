@@ -101,14 +101,15 @@ namespace bed {
 		}
 		let count: number = sleep_table.size;
 
-		// 	if count == 0 then
-		// 		core.set_timeofday(time_night.ending/24000)
-		// 		for _,player in ipairs(core.get_connected_players()) do
-		// 			wake_up(player)
-		// 		end
-		// 		sleep_loop = false
-		// 		return
-		// 	end
+		if (count == 0) {
+			core.set_timeofday(timeNightEnd / 24000);
+			// for _,player in ipairs(core.get_connected_players()) do
+			// 	wake_up(player)
+			// end
+			// sleep_loop = false
+			// return
+		}
+
 		// 	if bed_count == 0 then
 		// 		sleep_loop = false
 		// 	end
