@@ -110,9 +110,9 @@ namespace bed {
 			return;
 		}
 
-		// 	if bed_count == 0 then
-		// 		sleep_loop = false
-		// 	end
+		if (bed_count == 0) {
+			sleep_loop = false;
+		}
 	}
 
 	// local global_step_timer = 0
