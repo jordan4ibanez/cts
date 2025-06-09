@@ -84,15 +84,14 @@ namespace bed {
 			if (typeof name != "string") {
 				throw new Error("how");
 			}
-					
-			// 			bed_count = bed_count + 1
-			// 			if data.sleeping then
-			// 				sleep_table[name] = nil
-			// 			end
-			// 			if data.pos then
-			// 				player:move_to(data.pos)
-			// 			end
-			
+0
+			bed_count += 1;
+			// if data.sleeping then
+			// 	sleep_table[name] = nil
+			// end
+			// if data.pos then
+			// 	player:move_to(data.pos)
+			// end
 		}
 		// 	local count = 0
 		// 	for name,val in pairs(sleep_table) do
