@@ -72,11 +72,13 @@ namespace bed {
 	function global_sleep_check(): void {
 		sleep_loop = true;
 		// core.chat_send_all("sleep looping" + tostring(math.random()));
-		// 	local sleep_table = {}
-		// 	for _,player in ipairs(core.get_connected_players()) do
-		// 		local name = player:get_player_name()
-		// 		sleep_table[name] = true
-		// 	end
+
+		const sleep_table = new Set<string>();
+
+		for (const [_, player] of ipairs(core.get_connected_players())) {
+			const name: string = player.get_player_name();
+			sleep_table.add(name);
+		}
 		// 	local bed_count = 0
 		// 	for name,data in pairs(pool) do
 		// 		local player = core.get_player_by_name(name)
