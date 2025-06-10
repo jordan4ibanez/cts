@@ -44,7 +44,7 @@ namespace bow {
 	const pool = new Map<string, BowData>();
 
 	// This is a very complicated function which makes the bow work.
-	function arrow_check(name: string, dtime: number): void {
+	function arrow_check(name: string, delta: number): void {
 		const player: ObjectRef | null = core.get_player_by_name(name);
 		if (player == null) {
 			return;
@@ -83,17 +83,15 @@ namespace bow {
 			return;
 		}
 
-			
-
-		// 	// if player doesn't have any arrows
-		// 	if not inv:contains_item("main", ItemStack("bow:arrow")) then
-		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-		// 		pool[name] = nil
-		// 		return
-		// 	end
-		// 	// count steps using dtime
+		// If player doesn't have any arrows.
+		if (!inv.contains_item("main", ItemStack("bow:arrow"))) {
+			inv.set_stack("main", data.index, ItemStack("bow:bow_empty"));
+			pool.delete(name);
+			return;
+		}
+			// Count steps using delta.
 		// 	if temp_pool.step < 5 then
-		// 	temp_pool.float = temp_pool.float + dtime
+		// 	temp_pool.float = temp_pool.float + delta
 		// 	if temp_pool.float > 0.05 then
 		// 		temp_pool.float = 0
 		// 		temp_pool.step  = temp_pool.step + 1
@@ -118,9 +116,9 @@ namespace bow {
 		// 	//gradually increase fatigue until cap is reached
 	}
 
-	// core.register_globalstep(function(dtime)
+	// core.register_globalstep(function(delta)
 	// 	for name in pairs(pool) do
-	// 		arrow_check(name,dtime)
+	// 		arrow_check(name,delta)
 	// 	end
 	// end)
 	// //[[
@@ -145,8 +143,8 @@ namespace bow {
 	// local dir
 	// local y
 	// local x
-	// local function arrow_step(self, dtime,moveresult)
-	// 	self.timer = self.timer + dtime
+	// local function arrow_step(self, delta,moveresult)
+	// 	self.timer = self.timer + delta
 	// 	pos = self.object:get_pos()
 	// 	vel = self.object:get_velocity()
 	// 	if self.collecting == true then
@@ -230,7 +228,7 @@ namespace bow {
 	// 			end
 	// 		end
 	// 		if not self.stuck and pos and self.oldpos then
-	// 			self.spin = self.spin + (dtime*10)
+	// 			self.spin = self.spin + (delta*10)
 	// 			if self.spin > pi then
 	// 				self.spin = -pi
 	// 			end
@@ -268,7 +266,7 @@ namespace bow {
 	// 	//automatic_face_movement_dir = 0.0,
 	// 	//automatic_face_movement_max_rotation_per_sec = 600,
 	// }
-	// arrow.on_activate = function(self, staticdata, dtime_s)
+	// arrow.on_activate = function(self, staticdata, delta_s)
 	// 	//self.object:set_animation({x=0,y=180}, 15, 0, true)
 	// 	local vel = nil
 	// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
@@ -308,8 +306,8 @@ namespace bow {
 	// arrow.collecting = false
 	// arrow.collection_height = 0.5
 	// arrow.radius = 2
-	// arrow.on_step = function(self, dtime,moveresult)
-	// 	arrow_step(self, dtime,moveresult)
+	// arrow.on_step = function(self, delta,moveresult)
+	// 	arrow_step(self, delta,moveresult)
 	// end
 	// core.register_entity("bow:arrow", arrow)
 	// //[[
