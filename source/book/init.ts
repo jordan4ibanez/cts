@@ -62,9 +62,9 @@ namespace book {
 				return;
 			}
 			if (
-				fields["book.book_write"] &&
-				fields["book.book_text"] &&
-				fields["book.book_text"]
+				fields["book.book_write"] != null &&
+				fields["book.book_text"] != null &&
+				fields["book.book_text"] != null
 			) {
 				// 		local itemstack = ItemStack("book:book")
 				// 		local meta = itemstack:get_meta()
@@ -75,9 +75,9 @@ namespace book {
 				// 		core.close_formspec(player:get_player_name(), "book.book_gui")
 				// 		core.sound_play("book_write", {to_player=player:get_player_name()})
 			} else if (
-				fields["book.book_ink"] &&
-				fields["book.book_text"] &&
-				fields["book.book_text"]
+				fields["book.book_ink"] != null &&
+				fields["book.book_text"] != null &&
+				fields["book.book_text"] != null
 			) {
 				// 		local itemstack = ItemStack("book:book_written")
 				// 		local meta = itemstack:get_meta()
