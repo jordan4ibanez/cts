@@ -86,7 +86,7 @@ namespace playerMechanics {
 		const pos: Vec3 = player.get_pos();
 		const inv: InvRef | null = player.get_inventory();
 		if (inv == null) {
-			throw new Error("Not a player.")
+			throw new Error("Not a player.");
 		}
 		for (const i of $range(1, inv.get_size("craft"))) {
 			const stack: ItemStackObject = inv.get_stack("craft", i);
