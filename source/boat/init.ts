@@ -58,7 +58,7 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
-		lag_check: boolean = false;
+		lag_check: number = 0;
 		swimming: boolean = false;
 		moving: boolean = false;
 		on_land: boolean = false;
@@ -74,6 +74,7 @@ namespace boat {
 			this.object.set_armor_groups({ immortal: 1 });
 			this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
 			this.object.set_acceleration(vector.create3d({ x: 0, y: 0, z: 0 }));
+			this.lag_check = core.get_us_time() / 1000000;
 		}
 
 		on_punch(): void {
