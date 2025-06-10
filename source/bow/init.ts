@@ -3,14 +3,15 @@ namespace bow {
 	// minetest,math,vector,ipairs,string,type
 	// =
 	// minetest,math,vector,ipairs,string,type
+
 	// -- minetest library
-	// local get_connected_players     = minetest.get_connected_players
-	// local get_player_by_name        = minetest.get_player_by_name
-	// local get_objects_inside_radius = minetest.get_objects_inside_radius
-	// local create_raycast            = minetest.raycast
-	// local dir_to_yaw                = minetest.dir_to_yaw
-	// local deserialize               = minetest.deserialize
-	// local serialize                 = minetest.serialize
+	// local get_connected_players     = core.get_connected_players
+	// local get_player_by_name        = core.get_player_by_name
+	// local get_objects_inside_radius = core.get_objects_inside_radius
+	// local create_raycast            = core.raycast
+	// local dir_to_yaw                = core.dir_to_yaw
+	// local deserialize               = core.deserialize
+	// local serialize                 = core.serialize
 	// -- string library
 	// local s_sub  = string.sub
 	// local s_len  = string.len
@@ -66,7 +67,7 @@ namespace bow {
 	// 		return
 	// 	end
 	// 	-- if player isn't holding a bow
-	// 	if minetest.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
+	// 	if core.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
 	// 		pool[name] = nil
 	// 		return
 	// 	end
@@ -91,11 +92,11 @@ namespace bow {
 	// 		vel = multiply_vec(dir,50)
 	// 		pos = player:get_pos()
 	// 		pos.y = pos.y + 1.5
-	// 		object = minetest.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
+	// 		object = core.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
 	// 		object:set_velocity(vel)
 	// 		object:get_luaentity().owner  = name
 	// 		object:get_luaentity().oldpos = pos
-	// 		minetest.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
+	// 		core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
 	// 		inv:remove_item("main", ItemStack("bow:arrow"))
 	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
 	// 		pool[name] = nil
@@ -103,7 +104,7 @@ namespace bow {
 	// 	--add hand fatigue timer
 	// 	--gradually increase fatigue until cap is reached
 	// end
-	// minetest.register_globalstep(function(dtime)
+	// core.register_globalstep(function(dtime)
 	// 	for name in pairs(pool) do
 	// 		arrow_check(name,dtime)
 	// 	end
@@ -177,14 +178,14 @@ namespace bow {
 	// 				local inv = object:get_inventory()
 	// 				if inv and inv:room_for_item("main", ItemStack("bow:arrow")) then
 	// 					inv:add_item("main",ItemStack("bow:arrow"))
-	// 					minetest.sound_play("pickup", {
+	// 					core.sound_play("pickup", {
 	// 						to_player = object:get_player_name(),
 	// 						gain = 0.4,
 	// 						pitch = random(60,100)/100
 	// 					})
 	// 				else
 	// 					self.object:remove()
-	// 					minetest.throw_item(pos,"bow:arrow")
+	// 					core.throw_item(pos,"bow:arrow")
 	// 				end
 	// 			end
 	// 		end
@@ -202,7 +203,7 @@ namespace bow {
 	// 				self.object:set_pos(collision.new_pos)
 	// 			end
 	// 			--print(dump(collision.new_pos))
-	// 			minetest.sound_play("arrow_hit",{object=self.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
+	// 			core.sound_play("arrow_hit",{object=self.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
 	// 			self.stuck = true
 	// 			self.object:set_velocity(new_vec(0,0,0))
 	// 			self.object:set_acceleration(new_vec(0,0,0))
@@ -296,7 +297,7 @@ namespace bow {
 	// arrow.on_step = function(self, dtime,moveresult)
 	// 	arrow_step(self, dtime,moveresult)
 	// end
-	// minetest.register_entity("bow:arrow", arrow)
+	// core.register_entity("bow:arrow", arrow)
 	// --[[
 	// ██╗████████╗███████╗███╗   ███╗███████╗
 	// ██║╚══██╔══╝██╔════╝████╗ ████║██╔════╝
@@ -314,10 +315,10 @@ namespace bow {
 	// 		pool[name].index = player:get_wield_index()
 	// 		pool[name].float = 0
 	// 		pool[name].step  = 0
-	// 		minetest.sound_play("bow_pull_back", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(70,110)/100})
+	// 		core.sound_play("bow_pull_back", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(70,110)/100})
 	// 	end
 	// end
-	// minetest.register_craftitem("bow:bow_empty", {
+	// core.register_craftitem("bow:bow_empty", {
 	// 	description = "Bow",
 	// 	inventory_image = "bow.png",
 	// 	stack_max = 1,
@@ -331,7 +332,7 @@ namespace bow {
 	// 	end,
 	// })
 	// for i = 1,5 do
-	// 	minetest.register_craftitem("bow:bow_"..i, {
+	// 	core.register_craftitem("bow:bow_"..i, {
 	// 		description = "Bow",
 	// 		inventory_image = "bow_"..i..".png",
 	// 		stack_max = 1,
@@ -339,12 +340,12 @@ namespace bow {
 	// 		range = 0,
 	// 		on_drop = function(itemstack, dropper, pos)
 	// 			itemstack = ItemStack("bow:bow_empty")
-	// 			minetest.item_drop(itemstack, dropper, pos)
+	// 			core.item_drop(itemstack, dropper, pos)
 	// 			return(itemstack)
 	// 		end,
 	// 	})
 	// end
-	// minetest.register_craftitem("bow:arrow", {
+	// core.register_craftitem("bow:arrow", {
 	// 	description = "Arrow",
 	// 	inventory_image = "arrow_item.png",
 	// })
@@ -356,7 +357,7 @@ namespace bow {
 	// ╚██████╗██║  ██║██║  ██║██║        ██║   ██║██║ ╚████║╚██████╔╝
 	//  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝
 	// ]]--
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "bow:bow_empty",
 	// 	recipe = {
 	// 		{""           , "main:stick", "mob:string"},
@@ -364,7 +365,7 @@ namespace bow {
 	// 		{""           , "main:stick", "mob:string"},
 	// 	},
 	// })
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "bow:arrow 16",
 	// 	recipe = {
 	// 		{"main:iron", ""          , ""           },
