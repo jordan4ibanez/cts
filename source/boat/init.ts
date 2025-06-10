@@ -58,6 +58,7 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
+		swimming: boolean = false;
 		moving: boolean = false;
 		on_land: boolean = false;
 		rider: string | null = null;
@@ -199,9 +200,9 @@ namespace boat {
 
 		// Makes the boat float.
 		float(): void {
-			// local pos = this.object.get_pos()
-			// local node = core.get_node(pos).name
-			// this.swimming = false
+			const pos: Vec3 = this.object.get_pos();
+			const node: string = core.get_node(pos).name;
+			this.swimming = false;
 			// //flow normally if floating else don't
 			// if node == "main:water" or node =="main:waterflow" then
 			// 	this.object.set_acceleration(vector.new(0,0,0))
