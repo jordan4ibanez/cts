@@ -1,5 +1,5 @@
 namespace boat {
-	// function lavaflow(self: ObjectRef): void {
+	// function lavaflow(): void {
 		// pos = self.object:get_pos()
 		// pos.y = pos.y + self.object:get_properties().collisionbox[2]
 		// pos = vector.round(pos)
