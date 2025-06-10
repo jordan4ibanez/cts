@@ -166,9 +166,7 @@ namespace bed {
 		// 		pool[name] = {pos=new_pos,sleeping=false}
 		// 		csm_send_player_to_sleep(player)
 		// 		sleep_loop = true
-		// 	else
-
-		// 	end
+		
 	}
 
 	// core.register_on_player_receive_fields(function(player, formname, fields)
