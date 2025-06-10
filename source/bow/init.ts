@@ -65,7 +65,7 @@ namespace bow {
 
 		// If player changes selected item.
 		if (new_index != data.index) {
-			inv.set_stack("main", data.index, ItemStack("bow:bow_empty"));
+			inv.set_stack("main", data.index, ItemStack("crafter_bow:bow_empty"));
 			pool.delete(name);
 			return;
 		}
@@ -74,7 +74,7 @@ namespace bow {
 
 		// If player lets go of rightclick.
 		if (data.step != 5 && !rightclick) {
-			inv.set_stack("main", data.index, ItemStack("bow:bow_empty"));
+			inv.set_stack("main", data.index, ItemStack("crafter_bow:bow_empty"));
 			pool.delete(name);
 			return;
 		}
@@ -88,8 +88,8 @@ namespace bow {
 		}
 
 		// If player doesn't have any arrows.
-		if (!inv.contains_item("main", ItemStack("bow:arrow"))) {
-			inv.set_stack("main", data.index, ItemStack("bow:bow_empty"));
+		if (!inv.contains_item("main", ItemStack("crafter_bow:arrow"))) {
+			inv.set_stack("main", data.index, ItemStack("crafter_bow:bow_empty"));
 			pool.delete(name);
 			return;
 		}
@@ -99,7 +99,7 @@ namespace bow {
 			if (data.float > 0.05) {
 				data.float = 0;
 				data.step += 1;
-				player.set_wielded_item(ItemStack("bow:bow_" + data.step));
+				player.set_wielded_item(ItemStack("crafter_bow:bow_" + data.step));
 			}
 		}
 
@@ -110,7 +110,7 @@ namespace bow {
 			pos.y += 1.5;
 			const object: ObjectRef | null = core.add_entity(
 				add_vec(pos, divide_vec(dir, 10)),
-				"bow:arrow"
+				"crafter_bow:arrow"
 			);
 			if (object != null) {
 				object.set_velocity(vel);
@@ -127,11 +127,11 @@ namespace bow {
 						max_hear_distance: 60,
 						pitch: random(80, 100) / 100,
 					});
-					inv.remove_item("main", ItemStack("bow:arrow"));
+					inv.remove_item("main", ItemStack("crafter_bow:arrow"));
 					inv.set_stack(
 						"main",
 						data.index,
-						ItemStack("bow:bow_empty")
+						ItemStack("crafter_bow:bow_empty")
 					);
 				}
 			}
@@ -169,7 +169,7 @@ namespace bow {
 			//automatic_face_movement_max_rotation_per_sec : 600,
 		};
 
-		name: string = "bow:arrow";
+		name: string = "crafter_bow:arrow";
 		owner: string | null = null;
 		oldpos: Vec3 | null = null;
 		timer: number = 0;
@@ -253,8 +253,8 @@ namespace bow {
 						if (inv == null) {
 							throw new Error("Not a player.");
 						}
-						if (inv.room_for_item("main", ItemStack("bow:arrow"))) {
-							inv.add_item("main", ItemStack("bow:arrow"));
+						if (inv.room_for_item("main", ItemStack("crafter_bow:arrow"))) {
+							inv.add_item("main", ItemStack("crafter_bow:arrow"));
 							core.sound_play("pickup", {
 								object: object,
 								gain: 0.4,
@@ -262,7 +262,7 @@ namespace bow {
 							});
 						} else {
 							this.object.remove();
-							item_handling.throw_item(pos, "bow:arrow");
+							item_handling.throw_item(pos, "crafter_bow:arrow");
 						}
 					}
 				}
@@ -410,7 +410,7 @@ namespace bow {
 		if (inv == null) {
 			throw new Error("Not a player.");
 		}
-		if (inv.contains_item("main", ItemStack("bow:arrow"))) {
+		if (inv.contains_item("main", ItemStack("crafter_bow:arrow"))) {
 			const name = player.get_player_name();
 			const newData: BowData = {
 				index: player.get_wield_index(),
@@ -428,7 +428,7 @@ namespace bow {
 		}
 	}
 
-	core.register_craftitem("bow:bow_empty", {
+	core.register_craftitem("crafter_bow:bow_empty", {
 		description: "Bow",
 		inventory_image: "bow.png",
 		stack_max: 1,
@@ -453,20 +453,20 @@ namespace bow {
 	});
 
 	for (const i of $range(1, 5)) {
-		core.register_craftitem("bow:bow_" + i, {
+		core.register_craftitem("crafter_bow:bow_" + i, {
 			description: "Bow",
 			inventory_image: "bow_" + i + ".png",
 			stack_max: 1,
 			groups: { bow: 1, bow_loaded: i },
 			range: 0,
 			on_drop: (itemstack, dropper, pos) => {
-				itemstack = ItemStack("bow:bow_empty");
+				itemstack = ItemStack("crafter_bow:bow_empty");
 				core.item_drop(itemstack, dropper, pos);
 				return itemstack;
 			},
 		});
 	}
-	core.register_craftitem("bow:arrow", {
+	core.register_craftitem("crafter_bow:arrow", {
 		description: "Arrow",
 		inventory_image: "arrow_item.png",
 	});
@@ -479,7 +479,7 @@ namespace bow {
 	//  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝
 
 	core.register_craft({
-		output: "bow:bow_empty",
+		output: "crafter_bow:bow_empty",
 		recipe: [
 			["", "crafter:stick", "crafter_mob:string"],
 			["crafter:stick", "", "crafter_mob:string"],
@@ -488,7 +488,7 @@ namespace bow {
 	});
 
 	core.register_craft({
-		output: "bow:arrow 16",
+		output: "crafter_bow:arrow 16",
 		recipe: [
 			["crafter:iron", "", ""],
 			["", "crafter:stick", ""],
