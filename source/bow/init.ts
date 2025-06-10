@@ -384,17 +384,17 @@ namespace bow {
 			}
 		}
 
-		// arrow.get_staticdata = function(self)
-		// 	return serialize({
-		// 		spin       = this.spin,
-		// 		owner      = this.owner,
-		// 		stuck      = this.stuck,
-		// 		timer      = this.timer,
-		// 		collecting = this.collecting,
-		// 		check_dir  = this.check_dir,
-		// 		vel        = this.object.get_velocity()
-		// 	})
-		// end
+		get_staticdata(): string {
+			return serialize({
+				spin: this.spin,
+				owner: this.owner,
+				stuck: this.stuck,
+				timer: this.timer,
+				collecting: this.collecting,
+				check_dir: this.check_dir,
+				vel: this.object.get_velocity(),
+			});
+		}
 
 		// arrow.on_step = function(self, delta,moveresult)
 		// 	arrow_step(self, delta,moveresult)
