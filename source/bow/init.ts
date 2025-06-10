@@ -71,11 +71,14 @@ namespace bow {
 			pool.delete(name);
 			return;
 		}
-		// 	// if player isn't holding a bow
-		// 	if core.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
-		// 		pool[name] = nil
-		// 		return
-		// 	end
+		// If player isn't holding a bow.
+		if (
+			core.get_item_group(player.get_wielded_item().get_name(), "bow") ==
+			0
+		) {
+			pool.delete(name);
+			return;
+		}
 		// 	inv = player:get_inventory()
 		// 	// if player doesn't have any arrows
 		// 	if not inv:contains_item("main", ItemStack("bow:arrow")) then
