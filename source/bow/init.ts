@@ -157,105 +157,108 @@ namespace bow {
 		owner: string | null = null;
 		oldpos: Vec3 | null = null;
 
-		on_step( delta: number,moveresult: MoveResult): void {
-		// 	self.timer = self.timer + delta
-		// 	pos = self.object:get_pos()
-		// 	vel = self.object:get_velocity()
-		// 	if self.collecting == true then
-		// 		owner = get_player_by_name(self.owner)
-		// 		for _,object in ipairs(get_objects_inside_radius(pos, self.radius)) do
-		// 			if owner then
-		// 				self.object:set_acceleration(new_vec(0,0,0))
-		// 				//get the variables
-		// 				pos2 = owner:get_pos()
-		// 				player_velocity = owner:get_player_velocity()
-		// 				pos2.y = pos2.y + self.collection_height
-		// 				direction = normalize_vec(sub_vec(pos2,pos))
-		// 				distance = vec_distance(pos2,pos)
-		// 				//remove if too far away
-		// 				if distance > self.radius then
-		// 					distance = 0
-		// 				end
-		// 				multiplier = (self.radius*5) - distance
-		// 				velocity = multiply_vec(direction,multiplier)
-		// 				velocity = add_vec(player_velocity,velocity)
-		// 				self.object:set_velocity(velocity)
-		// 				if distance < 0.2 then
-		// 					self.object:remove()
-		// 				end
-		// 				return
-		// 			else
-		// 				print(self.owner.." does not exist")
-		// 				self.object:remove()
-		// 			end
-		// 		end
-		// 	else
-		// 		for _,object in ipairs(get_objects_inside_radius(pos, 2)) do
-		// 			if self.stuck == false and ((object:is_player() and object:get_player_name() ~= self.owner and object:get_hp() > 0) or (object:get_luaentity() and object:get_luaentity().mobname)) then
-		// 				object:punch(self.object, 2,
-		// 					{
-		// 					full_punch_interval=1.5,
-		// 					damage_groups = {damage=3},
-		// 				})
-		// 				self.object:remove()
-		// 				return
-		// 			elseif self.timer > 3 and (object:is_player() and object:get_player_name() == self.owner) then
-		// 				self.collecting = true
-		// 				local inv = object:get_inventory()
-		// 				if inv and inv:room_for_item("main", ItemStack("bow:arrow")) then
-		// 					inv:add_item("main",ItemStack("bow:arrow"))
-		// 					core.sound_play("pickup", {
-		// 						to_player = object:get_player_name(),
-		// 						gain = 0.4,
-		// 						pitch = random(60,100)/100
-		// 					})
-		// 				else
-		// 					self.object:remove()
-		// 					core.throw_item(pos,"bow:arrow")
-		// 				end
-		// 			end
-		// 		end
-		// 		if moveresult and moveresult.collides and moveresult.collisions and moveresult.collisions[1] and moveresult.collisions[1].new_velocity and self.stuck == false then
-		// 			collision = moveresult.collisions[1]
-		// 			if collision.new_velocity.x == 0 and collision.old_velocity.x ~= 0 then
-		// 				self.check_dir = vec_direction(new_vec(pos.x,0,0),new_vec(collision.node_pos.x,0,0))
-		// 			elseif collision.new_velocity.y == 0 and collision.old_velocity.y ~= 0 then
-		// 				self.check_dir = vec_direction(new_vec(0,pos.y,0),new_vec(0,collision.node_pos.y,0))
-		// 			elseif collision.new_velocity.z == 0 and collision.old_velocity.z ~= 0 then
-		// 				self.check_dir = vec_direction(new_vec(0,0,pos.z),new_vec(0,0,collision.node_pos.z))
-		// 			end
-		// 			if collision.new_pos then
-		// 				//print(dump(collision.new_pos))
-		// 				self.object:set_pos(collision.new_pos)
-		// 			end
-		// 			//print(dump(collision.new_pos))
-		// 			core.sound_play("arrow_hit",{object=self.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
-		// 			self.stuck = true
-		// 			self.object:set_velocity(new_vec(0,0,0))
-		// 			self.object:set_acceleration(new_vec(0,0,0))
-		// 		elseif self.stuck == true and self.check_dir then
-		// 			pos2 = add_vec(pos,multiply_vec(self.check_dir,0.2))
-		// 			ray = create_raycast(pos, pos2, false, false)
-		// 			if not ray:next() then
-		// 				self.stuck = false
-		// 				self.object:set_acceleration(new_vec(0,-9.81,0))
-		// 			end
-		// 		end
-		// 		if not self.stuck and pos and self.oldpos then
-		// 			self.spin = self.spin + (delta*10)
-		// 			if self.spin > pi then
-		// 				self.spin = -pi
-		// 			end
-		// 			dir = normalize_vec(sub_vec(pos,self.oldpos))
-		// 			y = dir_to_yaw(dir)
-		// 			x = (dir_to_yaw(new_vec(vec_distance(new_vec(pos.x,0,pos.z),new_vec(self.oldpos.x,0,self.oldpos.z)),0,pos.y-self.oldpos.y))+(pi/2))
-		// 			self.object:set_rotation(new_vec(x,y,self.spin))
-		// 		end
-		// 		if self.stuck == false then
-		// 			self.oldpos = pos
-		// 			self.oldvel = vel
-		// 		end
-		// 	end
+		on_step(delta: number, moveresult: MoveResult): void {
+
+			// 	this.timer = this.timer + delta
+			
+			// 	pos = this.object:get_pos()
+			// 	vel = this.object:get_velocity()
+
+			// 	if this.collecting == true then
+			// 		owner = get_player_by_name(this.owner)
+			// 		for _,object in ipairs(get_objects_inside_radius(pos, this.radius)) do
+			// 			if owner then
+			// 				this.object:set_acceleration(new_vec(0,0,0))
+			// 				//get the variables
+			// 				pos2 = owner:get_pos()
+			// 				player_velocity = owner:get_player_velocity()
+			// 				pos2.y = pos2.y + this.collection_height
+			// 				direction = normalize_vec(sub_vec(pos2,pos))
+			// 				distance = vec_distance(pos2,pos)
+			// 				//remove if too far away
+			// 				if distance > this.radius then
+			// 					distance = 0
+			// 				end
+			// 				multiplier = (this.radius*5) - distance
+			// 				velocity = multiply_vec(direction,multiplier)
+			// 				velocity = add_vec(player_velocity,velocity)
+			// 				this.object:set_velocity(velocity)
+			// 				if distance < 0.2 then
+			// 					this.object:remove()
+			// 				end
+			// 				return
+			// 			else
+			// 				print(this.owner.." does not exist")
+			// 				this.object:remove()
+			// 			end
+			// 		end
+			// 	else
+			// 		for _,object in ipairs(get_objects_inside_radius(pos, 2)) do
+			// 			if this.stuck == false and ((object:is_player() and object:get_player_name() ~= this.owner and object:get_hp() > 0) or (object:get_luaentity() and object:get_luaentity().mobname)) then
+			// 				object:punch(this.object, 2,
+			// 					{
+			// 					full_punch_interval=1.5,
+			// 					damage_groups = {damage=3},
+			// 				})
+			// 				this.object:remove()
+			// 				return
+			// 			elseif this.timer > 3 and (object:is_player() and object:get_player_name() == this.owner) then
+			// 				this.collecting = true
+			// 				local inv = object:get_inventory()
+			// 				if inv and inv:room_for_item("main", ItemStack("bow:arrow")) then
+			// 					inv:add_item("main",ItemStack("bow:arrow"))
+			// 					core.sound_play("pickup", {
+			// 						to_player = object:get_player_name(),
+			// 						gain = 0.4,
+			// 						pitch = random(60,100)/100
+			// 					})
+			// 				else
+			// 					this.object:remove()
+			// 					core.throw_item(pos,"bow:arrow")
+			// 				end
+			// 			end
+			// 		end
+			// 		if moveresult and moveresult.collides and moveresult.collisions and moveresult.collisions[1] and moveresult.collisions[1].new_velocity and this.stuck == false then
+			// 			collision = moveresult.collisions[1]
+			// 			if collision.new_velocity.x == 0 and collision.old_velocity.x ~= 0 then
+			// 				this.check_dir = vec_direction(new_vec(pos.x,0,0),new_vec(collision.node_pos.x,0,0))
+			// 			elseif collision.new_velocity.y == 0 and collision.old_velocity.y ~= 0 then
+			// 				this.check_dir = vec_direction(new_vec(0,pos.y,0),new_vec(0,collision.node_pos.y,0))
+			// 			elseif collision.new_velocity.z == 0 and collision.old_velocity.z ~= 0 then
+			// 				this.check_dir = vec_direction(new_vec(0,0,pos.z),new_vec(0,0,collision.node_pos.z))
+			// 			end
+			// 			if collision.new_pos then
+			// 				//print(dump(collision.new_pos))
+			// 				this.object:set_pos(collision.new_pos)
+			// 			end
+			// 			//print(dump(collision.new_pos))
+			// 			core.sound_play("arrow_hit",{object=this.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
+			// 			this.stuck = true
+			// 			this.object:set_velocity(new_vec(0,0,0))
+			// 			this.object:set_acceleration(new_vec(0,0,0))
+			// 		elseif this.stuck == true and this.check_dir then
+			// 			pos2 = add_vec(pos,multiply_vec(this.check_dir,0.2))
+			// 			ray = create_raycast(pos, pos2, false, false)
+			// 			if not ray:next() then
+			// 				this.stuck = false
+			// 				this.object:set_acceleration(new_vec(0,-9.81,0))
+			// 			end
+			// 		end
+			// 		if not this.stuck and pos and this.oldpos then
+			// 			this.spin = this.spin + (delta*10)
+			// 			if this.spin > pi then
+			// 				this.spin = -pi
+			// 			end
+			// 			dir = normalize_vec(sub_vec(pos,this.oldpos))
+			// 			y = dir_to_yaw(dir)
+			// 			x = (dir_to_yaw(new_vec(vec_distance(new_vec(pos.x,0,pos.z),new_vec(this.oldpos.x,0,this.oldpos.z)),0,pos.y-this.oldpos.y))+(pi/2))
+			// 			this.object:set_rotation(new_vec(x,y,this.spin))
+			// 		end
+			// 		if this.stuck == false then
+			// 			this.oldpos = pos
+			// 			this.oldvel = vel
+			// 		end
+			// 	end
 		}
 
 		// local arrow = {}
@@ -274,36 +277,36 @@ namespace bow {
 		// 	//automatic_face_movement_max_rotation_per_sec = 600,
 		// }
 		// arrow.on_activate = function(self, staticdata, delta_s)
-		// 	//self.object:set_animation({x=0,y=180}, 15, 0, true)
+		// 	//this.object:set_animation({x=0,y=180}, 15, 0, true)
 		// 	local vel = nil
 		// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
 		// 		local data = deserialize(staticdata)
 		// 		if data and type(data) == "table" then
-		// 			self.spin       = data.spin
-		// 			self.owner      = data.owner
-		// 			self.stuck      = data.stuck
-		// 			self.timer      = data.timer
-		// 			self.collecting = data.collecting
-		// 			self.check_dir  = data.check_dir
+		// 			this.spin       = data.spin
+		// 			this.owner      = data.owner
+		// 			this.stuck      = data.stuck
+		// 			this.timer      = data.timer
+		// 			this.collecting = data.collecting
+		// 			this.check_dir  = data.check_dir
 		// 			vel             = data.vel
 		// 		end
 		// 	end
-		// 	if not self.stuck then
-		// 		self.object:set_acceleration(new_vec(0,-9.81,0))
+		// 	if not this.stuck then
+		// 		this.object:set_acceleration(new_vec(0,-9.81,0))
 		// 		if vel then
-		// 			self.object:set_velocity(vel)
+		// 			this.object:set_velocity(vel)
 		// 		end
 		// 	end
 		// end
 		// arrow.get_staticdata = function(self)
 		// 	return serialize({
-		// 		spin       = self.spin,
-		// 		owner      = self.owner,
-		// 		stuck      = self.stuck,
-		// 		timer      = self.timer,
-		// 		collecting = self.collecting,
-		// 		check_dir  = self.check_dir,
-		// 		vel        = self.object:get_velocity()
+		// 		spin       = this.spin,
+		// 		owner      = this.owner,
+		// 		stuck      = this.stuck,
+		// 		timer      = this.timer,
+		// 		collecting = this.collecting,
+		// 		check_dir  = this.check_dir,
+		// 		vel        = this.object:get_velocity()
 		// 	})
 		// end
 		// arrow.spin = 0
