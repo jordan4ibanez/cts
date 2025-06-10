@@ -42,7 +42,7 @@ namespace boat {
 	// //core.get_node_level(pos)
 
 	class BoatEntity extends types.Entity {
-		name: string = "boat:boat";
+		name: string = "crafter_boat:boat";
 
 		initial_properties = {
 			hp_max: 1,
@@ -84,7 +84,7 @@ namespace boat {
 
 		on_punch(): void {
 			const pos: Vec3 = this.object.get_pos();
-			core.add_item(pos, "boat:boat");
+			core.add_item(pos, "crafter_boat:boat");
 			this.object.remove();
 		}
 
@@ -287,7 +287,7 @@ namespace boat {
 		}
 	}
 
-	core.register_craftitem("boat:boat", {
+	core.register_craftitem("crafter_boat:boat", {
 		description: "Boat",
 		inventory_image: "boatitem.png",
 		wield_image: "boatitem.png",
@@ -304,14 +304,14 @@ namespace boat {
 				core.item_place(itemstack, placer, pointed_thing);
 				return;
 			}
-			core.add_entity(pointed_thing.above, "boat:boat");
+			core.add_entity(pointed_thing.above, "crafter_boat:boat");
 			itemstack.take_item();
 			return itemstack;
 		},
 	});
 
 	core.register_craft({
-		output: "boat:boat",
+		output: "crafter_boat:boat",
 		recipe: [
 			["main:wood", "", "main:wood"],
 			["main:wood", "main:wood", "main:wood"],
@@ -319,7 +319,7 @@ namespace boat {
 	});
 
 	// //////////////////////////////////
-	// core.register_entity("boat:iron_boat", {
+	// core.register_entity("crafter_boat:iron_boat", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -355,7 +355,7 @@ namespace boat {
 	// 	end,
 	// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 	// 		local pos = this.object.get_pos()
-	// 		core.add_item(pos, "boat:iron_boat")
+	// 		core.add_item(pos, "crafter_boat:iron_boat")
 	// 		this.object.remove()
 	// 	end,
 	// 	on_rightclick = function(self,clicker)
@@ -487,7 +487,7 @@ namespace boat {
 	// 		this.lag_correction(self,dtime)
 	// 	end,
 	// })
-	// core.register_craftitem("boat:iron_boat", {
+	// core.register_craftitem("crafter_boat:iron_boat", {
 	// 	description = "Nether Iron Boat",
 	// 	inventory_image = "iron_boatitem.png",
 	// 	wield_image = "iron_boatitem.png",
@@ -502,13 +502,13 @@ namespace boat {
 	// 			core.item_place(itemstack, placer, pointed_thing)
 	// 			return
 	// 		end
-	// 		core.add_entity(pointed_thing.above, "boat:iron_boat")
+	// 		core.add_entity(pointed_thing.above, "crafter_boat:iron_boat")
 	// 		itemstack:take_item()
 	// 		return itemstack
 	// 	end,
 	// })
 	// core.register_craft({
-	// 	output = "boat:iron_boat",
+	// 	output = "crafter_boat:iron_boat",
 	// 	recipe = {
 	// 		{"main:iron", "main:coal", "main:iron"},
 	// 		{"main:iron", "main:iron", "main:iron"},
