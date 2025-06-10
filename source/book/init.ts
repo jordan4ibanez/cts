@@ -114,7 +114,7 @@ namespace book {
 				core.item_place(itemstack, user, pointed_thing);
 				return;
 			}
-			// Todo: make books placable on the ground.
+			// todo: make books placable on the ground.
 			// print("make books placable on the ground");
 			open_book_gui(itemstack, user);
 		},
@@ -127,29 +127,31 @@ namespace book {
 		},
 	});
 
-	// //permenantly written books
-	// core.register_craftitem("book:book_written",{
-	// 	description = "Book",
-	// 	groups = {book = 1, written = 1},
-	// 	stack_max = 1,
-	// 	inventory_image = "book_written.png",
-	// 	on_place = function(itemstack, user, pointed_thing)
-	// 		if not pointed_thing.type == "node" then
-	// 			return
-	// 		end
-	// 		local sneak = user:get_player_control().sneak
-	// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
-	// 		if not sneak and noddef.on_rightclick then
-	// 			core.item_place(itemstack, user, pointed_thing)
-	// 			return
-	// 		end
-	// 		//print("make books placable on the ground")
-	// 		open_book_inked_gui(itemstack, user)
-	// 	end,
-	// 	on_secondary_use = function(itemstack, user, pointed_thing)
-	// 		open_book_inked_gui(itemstack, user)
-	// 	end,
-	// })
+	// Permenantly written books.
+	core.register_craftitem("book:book_written", {
+		description: "Book",
+		groups: { book: 1, written: 1 },
+		stack_max: 1,
+		inventory_image: "book_written.png",
+		on_place: (itemstack, user, pointed_thing) => {
+			if (pointed_thing.type != "node") {
+				return;
+			}
+			const sneak: boolean = user.get_player_control().sneak;
+			const noddef: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pointed_thing.under).name];
+			if (!sneak && noddef?.on_rightclick) {
+				core.item_place(itemstack, user, pointed_thing);
+				return;
+			}
+			// todo: make books placable on the ground.
+			//print("make books placable on the ground")
+			open_book_inked_gui(itemstack, user);
+		},
+		// 	on_secondary_use = function(itemstack, user, pointed_thing)
+		// 		open_book_inked_gui(itemstack, user)
+		// 	end,
+	});
 	// //change this to paper
 	// core.register_craft({
 	// 	output = "book:book",
