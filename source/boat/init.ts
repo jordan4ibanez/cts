@@ -1,7 +1,5 @@
 namespace boat {
-
-
-	
+	const materials: string[] = ["wood", "iron"];
 
 	class BoatEntity extends types.Entity {
 		name: string = "crafter_boat:boat";
