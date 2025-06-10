@@ -169,7 +169,10 @@ namespace armor {
 			size: { x: 24, y: 24 },
 			offset: { x: -10 * 24 - 25, y: -(48 + 50 + 39) },
 		});
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 		inv.set_size("armor_head", 1);
 		inv.set_size("armor_torso", 1);
 		inv.set_size("armor_legs", 1);
