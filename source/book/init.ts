@@ -66,7 +66,8 @@ namespace book {
 				fields["book.book_text"] != null &&
 				fields["book.book_text"] != null
 			) {
-				const itemstack: ItemStackObject = ItemStack("crafter_book:book");
+				const itemstack: ItemStackObject =
+					ItemStack("crafter_book:book");
 				const meta: MetaRef = itemstack.get_meta();
 				meta.set_string("book.book_text", fields["book.book_text"]);
 				meta.set_string("book.book_title", fields["book.book_title"]);
@@ -79,8 +80,9 @@ namespace book {
 				fields["book.book_text"] != null &&
 				fields["book.book_text"] != null
 			) {
-				const itemstack: ItemStackObject =
-					ItemStack("crafter_book:book_written");
+				const itemstack: ItemStackObject = ItemStack(
+					"crafter_book:book_written"
+				);
 				const meta: MetaRef = itemstack.get_meta();
 				meta.set_string("book.book_text", fields["book.book_text"]);
 				meta.set_string("book.book_title", fields["book.book_title"]);
