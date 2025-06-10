@@ -193,7 +193,6 @@ namespace bow {
 				for (const [_, object] of ipairs(
 					get_objects_inside_radius(pos, this.radius)
 				)) {
-					// 			if owner then
 					// 				this.object.set_acceleration(new_vec(0,0,0))
 					// 				//get the variables
 					// 				pos2 = owner:get_pos()
@@ -213,10 +212,6 @@ namespace bow {
 					// 					this.object.remove()
 					// 				end
 					// 				return
-					// 			else
-					// 				print(this.owner+" does not exist")
-					// 				this.object.remove()
-					// 			end
 				}
 			} else {
 				// 		for _,object in ipairs(get_objects_inside_radius(pos, 2)) do
