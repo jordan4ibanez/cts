@@ -160,9 +160,9 @@ namespace book {
 	core.register_craft({
 		output: "crafter_book:book",
 		recipe: [
-			["main:wood", "main:wood", "main:wood"],
-			["main:paper", "main:paper", "main:paper"],
-			["main:wood", "main:wood", "main:wood"],
+			["crafter:wood", "crafter:wood", "crafter:wood"],
+			["crafter:paper", "crafter:paper", "crafter:paper"],
+			["crafter:wood", "crafter:wood", "crafter:wood"],
 		],
 	});
 }
