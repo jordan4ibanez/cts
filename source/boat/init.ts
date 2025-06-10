@@ -174,7 +174,7 @@ namespace boat {
 			)) {
 				if (
 					!object.is_player() ||
-					object.get_player_name() != this.rider
+					object.get_player_name() == this.rider
 				) {
 					continue;
 				}
