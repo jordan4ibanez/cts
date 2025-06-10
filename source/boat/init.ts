@@ -1,10 +1,15 @@
 namespace boat {
-	const names: string[] = ["Wooden", "Iron"];
-	const materials: string[] = ["wood", "iron"];
+	const identifiers: string[] = ["wooden", "iron"];
+	const descriptions: string[] = ["Wooden", "Iron"];
+	const boatTextures: string[] = ["boat.png", "iron_boat.png"];
+	const wieldImages: string[] = ["boatitem.png", "iron_boatitem.png"];
+	const materials: string[] = ["crafter:wood", "crafter:iron"];
 
 	for (const i of $range(0, 1)) {
+		const entityName: string = `crafter_boat:${identifiers[i]}_boat`;
+
 		class BoatEntity extends types.Entity {
-			name: string = "crafter_boat:boat";
+			name: string = entityName;
 
 			initial_properties = {
 				hp_max: 1,
@@ -13,7 +18,7 @@ namespace boat {
 				collisionbox: [-0.4, 0, -0.4, 0.4, 0.5, 0.4],
 				visual: EntityVisual.mesh,
 				mesh: "boat.x",
-				textures: ["boat.png"],
+				textures: [boatTextures[i]],
 				visual_size: vector.create3d({ x: 1, y: 1, z: 1 }),
 				is_visible: true,
 				automatic_face_movement_dir: -90.0,
@@ -43,7 +48,7 @@ namespace boat {
 
 			on_punch(): void {
 				const pos: Vec3 = this.object.get_pos();
-				core.add_item(pos, "crafter_boat:boat");
+				core.add_item(pos, entityName);
 				this.object.remove();
 			}
 
@@ -247,10 +252,10 @@ namespace boat {
 
 		utility.registerTSEntity(BoatEntity);
 
-		core.register_craftitem("crafter_boat:boat", {
-			description: "Boat",
-			inventory_image: "boatitem.png",
-			wield_image: "boatitem.png",
+		core.register_craftitem(entityName, {
+			description: `${descriptions[i]} Boat`,
+			inventory_image: wieldImages[i],
+			wield_image: wieldImages[i],
 			liquids_pointable: true,
 			on_place: (itemstack, placer, pointed_thing) => {
 				if (pointed_thing.type != "node") {
@@ -266,17 +271,19 @@ namespace boat {
 					core.item_place(itemstack, placer, pointed_thing);
 					return;
 				}
-				core.add_entity(pointed_thing.above, "crafter_boat:boat");
+				core.add_entity(pointed_thing.above, entityName);
 				itemstack.take_item();
 				return itemstack;
 			},
 		});
 
+		const currentMaterial = materials[i];
+
 		core.register_craft({
-			output: "crafter_boat:boat",
+			output: entityName,
 			recipe: [
-				["crafter:wood", "", "crafter:wood"],
-				["crafter:wood", "crafter:wood", "crafter:wood"],
+				[currentMaterial, "", currentMaterial],
+				[currentMaterial, currentMaterial, currentMaterial],
 			],
 		});
 	}
