@@ -1,25 +1,25 @@
 namespace book {
 	// This is the gui for un-inked books.
-	// local open_book_gui = function(itemstack, user)
-	// 	core.sound_play("book_open", {to_player=user:get_player_name()})
-	// 	local meta = itemstack:get_meta()
-	// 	local book_text = meta:get_string("book.book_text")
-	// 	if book_text == "" then
-	// 		book_text = "Text here"
-	// 	end
-	// 	local book_title = meta:get_string("book.book_title")
-	// 	if book_title == "" then
-	// 		book_title = "Title here"
-	// 	end
-	// 	book_writing_formspec = "size[9,8.75]"..
-	// 		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"..
-	// 		"style[book.book_text,book.book_title;textcolor=black;border=false;noclip=false]"..
-	// 		"textarea[0.3,0;9,0.5;book.book_title;;"..book_title.."]"..
-	// 		"textarea[0.3,0.3;9,9;book.book_text;;"..book_text.."]"..
-	// 		"button[-0.2,8.3;1,1;book.book_write;write]"..
-	// 		"button[8.25,8.3;1,1;book.book_ink;ink  ]"
-	// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
-	// end
+	function open_book_gui(itemstack: ItemStackObject, user: ObjectRef): void {
+		// 	core.sound_play("book_open", {to_player=user:get_player_name()})
+		// 	local meta = itemstack:get_meta()
+		// 	local book_text = meta:get_string("book.book_text")
+		// 	if book_text == "" then
+		// 		book_text = "Text here"
+		// 	end
+		// 	local book_title = meta:get_string("book.book_title")
+		// 	if book_title == "" then
+		// 		book_title = "Title here"
+		// 	end
+		// 	book_writing_formspec = "size[9,8.75]"..
+		// 		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"..
+		// 		"style[book.book_text,book.book_title;textcolor=black;border=false;noclip=false]"..
+		// 		"textarea[0.3,0;9,0.5;book.book_title;;"..book_title.."]"..
+		// 		"textarea[0.3,0.3;9,9;book.book_text;;"..book_text.."]"..
+		// 		"button[-0.2,8.3;1,1;book.book_write;write]"..
+		// 		"button[8.25,8.3;1,1;book.book_ink;ink  ]"
+		// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
+	}
 
 	// //this is the gui for permenantly written books
 	// local open_book_inked_gui = function(itemstack, user)
