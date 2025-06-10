@@ -2296,7 +2296,7 @@ declare global {
 			puncher: ObjectRef,
 			timeFromLastPunch: number,
 			toolCapabilities: ToolCapabilities,
-			dir: Vec3
+			dir?: Vec3
 		): void;
 		right_click(clicker: ObjectRef): void;
 		get_hp(): number;
