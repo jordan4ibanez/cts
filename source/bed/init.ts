@@ -154,7 +154,7 @@ namespace bed {
 			return;
 		}
 		const real_dir: Vec3 = core.facedir_to_dir(dir);
-		// player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
+		player.add_velocity(vector.multiply(player.get_velocity(), -1));
 		// local new_pos = vector.subtract(pos,vector.divide(real_dir,2))
 		// player:move_to(new_pos)
 		// player:set_look_vertical(0)
