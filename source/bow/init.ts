@@ -40,7 +40,7 @@ namespace bow {
 
 	// This is a very complicated function which makes the bow work.
 
-	// local function arrow_check(name,dtime)
+	 function arrow_check(name: string,dtime: number): void {
 	// 	temp_pool = pool[name]
 	// 	player = get_player_by_name(name)
 	// 	rightclick = player:get_player_control().RMB
@@ -94,7 +94,8 @@ namespace bow {
 	// 	end
 	// 	//add hand fatigue timer
 	// 	//gradually increase fatigue until cap is reached
-	// end
+	 }
+
 	// core.register_globalstep(function(dtime)
 	// 	for name in pairs(pool) do
 	// 		arrow_check(name,dtime)
