@@ -17,8 +17,8 @@ namespace boat {
 	for (const i of $range(0, 1)) {
 		const entityName: string = `crafter_boat:${identifiers[i]}_boat`;
 
-		const currentLiquidSource = liquids[i].source;
-		const currentLiquidFlow = liquids[i].flow;
+		const currentLiquidSource: string = liquids[i].source;
+		const currentLiquidFlow: string = liquids[i].flow;
 
 		class BoatEntity extends types.Entity {
 			name: string = entityName;
