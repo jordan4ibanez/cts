@@ -24,7 +24,7 @@ namespace book {
 			"]" +
 			"button[-0.2,8.3;1,1;book.book_write;write]" +
 			"button[8.25,8.3;1,1;book.book_ink;ink  ]";
-		// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
+		core.show_formspec(name, "book.book_gui", book_writing_formspec);
 	}
 
 	// //this is the gui for permenantly written books
