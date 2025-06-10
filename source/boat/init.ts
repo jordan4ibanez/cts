@@ -180,16 +180,20 @@ namespace boat {
 				const player_pos: Vec3 = object.get_pos();
 				pos.y = 0;
 				player_pos.y = 0;
-				// local currentvel = this.object.get_velocity()
-				// local vel = vector.subtract(pos, player_pos)
-				// vel = vector.normalize(vel)
-				// local distance = vector.distance(pos,player_pos)
-				// distance = (1-distance)*10
-				// vel = vector.multiply(vel,distance)
-				// local acceleration = vector.new(vel.x-currentvel.x,0,vel.z-currentvel.z)
-				// this.object.add_velocity(acceleration)
-				// acceleration = vector.multiply(acceleration, -1)
-				// object:add_player_velocity(acceleration)
+				const currentvel: Vec3 = this.object.get_velocity();
+				let vel: Vec3 = vector.subtract(pos, player_pos);
+				vel = vector.normalize(vel);
+				let distance: number = vector.distance(pos, player_pos);
+				distance = (1 - distance) * 10;
+				vel = vector.multiply(vel, distance);
+				let acceleration: Vec3 = vector.create3d(
+					vel.x - currentvel.x,
+					0,
+					vel.z - currentvel.z
+				);
+				this.object.add_velocity(acceleration);
+				acceleration = vector.multiply(acceleration, -1);
+				object.add_velocity(acceleration);
 			}
 		}
 
