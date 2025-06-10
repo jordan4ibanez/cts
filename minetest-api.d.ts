@@ -2301,7 +2301,7 @@ declare global {
 		right_click(clicker: ObjectRef): void;
 		get_hp(): number;
 		set_hp(hp: number, reason?: HPChangeReasonDefinition): void;
-		get_inventory(): InvRef;
+		get_inventory(): InvRef | null;
 		get_wield_list(): string;
 		get_wield_index(): number;
 		get_wielded_item(): ItemStackObject;
