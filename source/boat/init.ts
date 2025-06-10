@@ -240,11 +240,11 @@ namespace boat {
 			this.object.add_velocity(deceleration);
 		}
 
-		lag_correction(dtime: number): void {
+		lag_correction(delta: number): void {
 			const pos: Vec3 = this.object.get_pos();
 			const velocity: Vec3 = this.object.get_velocity();
 
-			if (dtime > 0.06) {
+			if (delta > 0.06) {
 				this.object.move_to(this.old_pos);
 				this.object.set_velocity(this.old_velocity);
 			}
@@ -270,14 +270,14 @@ namespace boat {
 			this.object.add_velocity(acceleration);
 		}
 
-		on_step(dtime: number): void {
+		on_step(delta: number): void {
 			this.check_if_on_land();
 			this.push();
 			this.drive();
 			this.float();
 			this.flow();
 			this.slowdown();
-			this.lag_correction(dtime);
+			this.lag_correction(delta);
 		}
 	}
 
@@ -336,7 +336,7 @@ namespace boat {
 	// 			//itemstring = this.itemstring,
 	// 		})
 	// 	end,
-	// 	on_activate = function(self, staticdata, dtime_s)
+	// 	on_activate = function(self, staticdata, delta_s)
 	// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
 	// 			local data = core.deserialize(staticdata)
 	// 			if data and type(data) == "table" then
@@ -458,7 +458,7 @@ namespace boat {
 	// 			this.object.add_velocity(deceleration)
 	// 		end
 	// 	end,
-	// 	lag_correction = function(self,dtime)
+	// 	lag_correction = function(self,delta)
 	// 		local pos = this.object.get_pos()
 	// 		local velocity = this.object.get_velocity()
 	// 		if this.lag_check then
@@ -473,14 +473,14 @@ namespace boat {
 	// 		this.old_velocity = velocity
 	// 		this.lag_check = core.get_us_time()/1000000
 	// 	end,
-	// 	on_step = function(self, dtime)
+	// 	on_step = function(self, delta)
 	// 		this.check_if_on_land(self)
 	// 		this.push(self)
 	// 		this.drive(self)
 	// 		this.float(self)
 	// 		lavaflow(self)
 	// 		this.slowdown(self)
-	// 		this.lag_correction(self,dtime)
+	// 		this.lag_correction(self,delta)
 	// 	end,
 	// })
 	// core.register_craftitem("crafter_boat:iron_boat", {
