@@ -175,15 +175,18 @@ namespace bed {
 		sleep_loop = true;
 	}
 
-	core.register_on_player_receive_fields((player, formname) => {
-		if (formname == "bed") {
-			wake_up(player);
+	core.register_on_player_receive_fields(
+		(player: ObjectRef, formname: string) => {
+			if (formname == "bed") {
+				wake_up(player);
+			}
 		}
+	);
+
+	core.register_on_respawnplayer((player: ObjectRef) => {
+		wake_up(player);
 	});
 
-	// core.register_on_respawnplayer(function(player)
-	// 	wake_up(player)
-	// end)
 	// //these are beds
 	// core.register_node("bed:bed", {
 	//     description = "Bed",
