@@ -1,5 +1,5 @@
 namespace boat {
-	function lavaflow(self: ObjectRef): void {
+	// function lavaflow(self: ObjectRef): void {
 		// pos = self.object:get_pos()
 		// pos.y = pos.y + self.object:get_properties().collisionbox[2]
 		// pos = vector.round(pos)
@@ -37,7 +37,7 @@ namespace boat {
 		// 		self.object:add_velocity(acceleration)
 		// 	end
 		// end
-	}
+	// }
 
 	// --minetest.get_node_level(pos)
 	// minetest.register_entity("boat:boat", {
