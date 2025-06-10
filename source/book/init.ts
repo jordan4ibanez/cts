@@ -87,7 +87,7 @@ namespace book {
 				// 		player:set_wielded_item(itemstack)
 				// 		core.close_formspec(player:get_player_name(), "book.book_gui")
 				// 		core.sound_play("book_close", {to_player=player:get_player_name()})
-			} else if (fields["book.book_close"]) {
+			} else if (fields["book.book_close"] != null) {
 				// 		core.sound_play("book_close", {to_player=player:get_player_name()})
 			}
 		}
