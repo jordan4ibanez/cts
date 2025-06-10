@@ -133,16 +133,19 @@ namespace bed {
 		pool.delete(name);
 	});
 
-	// local bed_gui = "size[16,12]"+
-	// "position[0.5,0.5]"+
-	// "bgcolor[#00000000]"+
-	// "button[5.5,8.5;5,2;button;leave bed]"
-	// local yaw_translation = {
-	// 	[0] = math.pi,
-	// 	[1] = math.pi/2,
-	// 	[2] = 0,
-	// 	[3] = math.pi*1.5,
-	// }
+	const bed_gui: string =
+		"size[16,12]" +
+		"position[0.5,0.5]" +
+		"bgcolor[#00000000]" +
+		"button[5.5,8.5;5,2;button;leave bed]";
+
+	const yaw_translation: Dictionary<number, number> = {
+		[0]: math.pi,
+		[1]: math.pi / 2,
+		[2]: 0,
+		[3]: math.pi * 1.5,
+	};
+
 	// local name
 	// local time
 	// local do_sleep = function(player,pos,dir)
