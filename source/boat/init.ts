@@ -154,14 +154,14 @@ namespace boat {
 			} else {
 				goal = vector.multiply(goal, 20);
 			}
-			const acceleration: Vec3 = vector.create3d(
+			let acceleration: Vec3 = vector.create3d(
 				goal.x - currentvel.x,
 				0,
 				goal.z - currentvel.z
 			);
-			// 	acceleration = vector.multiply(acceleration, 0.01)
-			// 	this.object.add_velocity(acceleration)
-			// 	this.moving = true
+			acceleration = vector.multiply(acceleration, 0.01);
+			this.object.add_velocity(acceleration);
+			this.moving = true;
 		}
 		// 	//players push boat
 		// 	push = function(self)
