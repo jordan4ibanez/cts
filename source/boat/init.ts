@@ -8,7 +8,7 @@ namespace boat {
 	// goalx = 0
 	// goalz = 0
 	// found = false
-	// if node == "main:lavaflow" then
+	// if node == "crafter:lavaflow" then
 	// 	currentvel = this.object.get_velocity()
 	// 	level = core.get_node_level(pos)
 	// 	for x = -1,1 do
@@ -16,7 +16,7 @@ namespace boat {
 	// 			if found == false then
 	// 				nodename = core.get_node(vector.new(pos.x+x,pos.y,pos.z+z)).name
 	// 				level2 = core.get_node_level(vector.new(pos.x+x,pos.y,pos.z+z))
-	// 				if level2 > level and nodename == "main:lavaflow" or nodename == "main:lava" then
+	// 				if level2 > level and nodename == "crafter:lavaflow" or nodename == "crafter:lava" then
 	// 					goalx = -x
 	// 					goalz = -z
 	// 					//diagonal flow
@@ -123,8 +123,8 @@ namespace boat {
 			pos.y -= 0.37;
 			const bottom_node: string = core.get_node(pos).name;
 			if (
-				bottom_node == "main:water" ||
-				bottom_node == "main:waterflow" ||
+				bottom_node == "crafter:water" ||
+				bottom_node == "crafter:waterflow" ||
 				bottom_node == "air"
 			) {
 				this.on_land = false;
@@ -212,7 +212,7 @@ namespace boat {
 			this.swimming = false;
 
 			// Flow normally if floating else don't.
-			if (node != "main:water" && node != "main:waterflow") {
+			if (node != "crafter:water" && node != "crafter:waterflow") {
 				this.object.set_acceleration(vector.create3d(0, -10, 0));
 				return;
 			}
@@ -313,8 +313,8 @@ namespace boat {
 	core.register_craft({
 		output: "crafter_boat:boat",
 		recipe: [
-			["main:wood", "", "main:wood"],
-			["main:wood", "main:wood", "main:wood"],
+			["crafter:wood", "", "crafter:wood"],
+			["crafter:wood", "crafter:wood", "crafter:wood"],
 		],
 	});
 
@@ -510,8 +510,8 @@ namespace boat {
 	// core.register_craft({
 	// 	output = "crafter_boat:iron_boat",
 	// 	recipe = {
-	// 		{"main:iron", "main:coal", "main:iron"},
-	// 		{"main:iron", "main:iron", "main:iron"},
+	// 		{"crafter:iron", "crafter:coal", "crafter:iron"},
+	// 		{"crafter:iron", "crafter:iron", "crafter:iron"},
 	// 	},
 	// })
 }
