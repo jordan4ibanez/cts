@@ -171,8 +171,8 @@ namespace bed {
 			vector.create3d({ x: 0, y: 0, z: 0 })
 		);
 		pool.set(name, { pos: new_pos, sleeping: false });
-		// csm_send_player_to_sleep(player)
-		// sleep_loop = true
+		csm_send_player_to_sleep(player);
+		sleep_loop = true;
 	}
 
 	// core.register_on_player_receive_fields(function(player, formname, fields)
