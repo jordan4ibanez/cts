@@ -114,13 +114,22 @@ namespace bow {
 
 				const entity: Arrow | null =
 					object.get_luaentity() as Arrow | null;
-					
+
 				if (entity != null) {
 					entity.owner = name;
-					// object:get_luaentity().oldpos = pos
-					// core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
-					// inv:remove_item("main", ItemStack("bow:arrow"))
-					// inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+					entity.oldpos = pos;
+					core.sound_play("bow", {
+						object: player,
+						gain: 1.0,
+						max_hear_distance: 60,
+						pitch: random(80, 100) / 100,
+					});
+					inv.remove_item("main", ItemStack("bow:arrow"));
+					inv.set_stack(
+						"main",
+						data.index,
+						ItemStack("bow:bow_empty")
+					);
 				}
 			}
 			// pool[name] = nil
@@ -132,6 +141,7 @@ namespace bow {
 	class Arrow extends types.Entity {
 		name: string = "bow:arrow";
 		owner: string | null = null;
+		oldpos: Vec3 | null = null;
 	}
 
 	// core.register_globalstep(function(delta)
