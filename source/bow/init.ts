@@ -4,7 +4,7 @@ namespace bow {
 	// =
 	// minetest,math,vector,ipairs,string,type
 
-	// -- minetest library
+	// // minetest library
 	// local get_connected_players     = core.get_connected_players
 	// local get_player_by_name        = core.get_player_by_name
 	// local get_objects_inside_radius = core.get_objects_inside_radius
@@ -12,14 +12,14 @@ namespace bow {
 	// local dir_to_yaw                = core.dir_to_yaw
 	// local deserialize               = core.deserialize
 	// local serialize                 = core.serialize
-	// -- string library
+	// // string library
 	// local s_sub  = string.sub
 	// local s_len  = string.len
-	// -- math library
+	// // math library
 	// local pi     = math.pi
 	// local random = math.random
 	// local floor  = math.floor
-	// -- vector library
+	// // vector library
 	// local new_vec       = vector.new
 	// local floor_vec     = vector.floor
 	// local vec_distance  = vector.distance
@@ -29,17 +29,17 @@ namespace bow {
 	// local multiply_vec  = vector.multiply
 	// local divide_vec    = vector.divide
 	// local vec_direction = vector.direction
-	// --[[
+	// //[[
 	// ██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗     ██████╗  █████╗ ██████╗ ████████╗
 	// ██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝
 	// ██████╔╝██║     ███████║ ╚████╔╝ █████╗  ██████╔╝    ██████╔╝███████║██████╔╝   ██║
 	// ██╔═══╝ ██║     ██╔══██║  ╚██╔╝  ██╔══╝  ██╔══██╗    ██╔═══╝ ██╔══██║██╔══██╗   ██║
 	// ██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║    ██║     ██║  ██║██║  ██║   ██║
 	// ╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝
-	// ]]--
-	// -- data pool
+	// ]]//
+	// // data pool
 	// local pool = {}
-	// --this is a very complicated function which makes the bow work
+	// //this is a very complicated function which makes the bow work
 	// local temp_pool
 	// local player
 	// local new_index
@@ -54,31 +54,31 @@ namespace bow {
 	// 	player = get_player_by_name(name)
 	// 	rightclick = player:get_player_control().RMB
 	// 	new_index = player:get_wield_index()
-	// 	-- if player changes selected item
+	// 	// if player changes selected item
 	// 	if new_index ~= temp_pool.index then
 	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
 	// 		pool[name] = nil
 	// 		return
 	// 	end
-	// 	-- if player lets go of rightclick
+	// 	// if player lets go of rightclick
 	// 	if temp_pool.step ~= 5 and not rightclick then
 	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
 	// 		pool[name] = nil
 	// 		return
 	// 	end
-	// 	-- if player isn't holding a bow
+	// 	// if player isn't holding a bow
 	// 	if core.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
 	// 		pool[name] = nil
 	// 		return
 	// 	end
 	// 	inv = player:get_inventory()
-	// 	-- if player doesn't have any arrows
+	// 	// if player doesn't have any arrows
 	// 	if not inv:contains_item("main", ItemStack("bow:arrow")) then
 	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
 	// 		pool[name] = nil
 	// 		return
 	// 	end
-	// 	-- count steps using dtime
+	// 	// count steps using dtime
 	// 	if temp_pool.step < 5 then
 	// 	temp_pool.float = temp_pool.float + dtime
 	// 	if temp_pool.float > 0.05 then
@@ -101,22 +101,22 @@ namespace bow {
 	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
 	// 		pool[name] = nil
 	// 	end
-	// 	--add hand fatigue timer
-	// 	--gradually increase fatigue until cap is reached
+	// 	//add hand fatigue timer
+	// 	//gradually increase fatigue until cap is reached
 	// end
 	// core.register_globalstep(function(dtime)
 	// 	for name in pairs(pool) do
 	// 		arrow_check(name,dtime)
 	// 	end
 	// end)
-	// --[[
+	// //[[
 	//  █████╗ ██████╗ ██████╗  ██████╗ ██╗    ██╗    ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
 	// ██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██║    ██║    ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
 	// ███████║██████╔╝██████╔╝██║   ██║██║ █╗ ██║    █████╗  ██║   ██║██╔██╗ ██║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗
 	// ██╔══██║██╔══██╗██╔══██╗██║   ██║██║███╗██║    ██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║
 	// ██║  ██║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝    ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
 	// ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝     ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
-	// ]]--
+	// ]]//
 	// local pos
 	// local vel
 	// local owner
@@ -140,13 +140,13 @@ namespace bow {
 	// 		for _,object in ipairs(get_objects_inside_radius(pos, self.radius)) do
 	// 			if owner then
 	// 				self.object:set_acceleration(new_vec(0,0,0))
-	// 				--get the variables
+	// 				//get the variables
 	// 				pos2 = owner:get_pos()
 	// 				player_velocity = owner:get_player_velocity()
 	// 				pos2.y = pos2.y + self.collection_height
 	// 				direction = normalize_vec(sub_vec(pos2,pos))
 	// 				distance = vec_distance(pos2,pos)
-	// 				--remove if too far away
+	// 				//remove if too far away
 	// 				if distance > self.radius then
 	// 					distance = 0
 	// 				end
@@ -199,10 +199,10 @@ namespace bow {
 	// 				self.check_dir = vec_direction(new_vec(0,0,pos.z),new_vec(0,0,collision.node_pos.z))
 	// 			end
 	// 			if collision.new_pos then
-	// 				--print(dump(collision.new_pos))
+	// 				//print(dump(collision.new_pos))
 	// 				self.object:set_pos(collision.new_pos)
 	// 			end
-	// 			--print(dump(collision.new_pos))
+	// 			//print(dump(collision.new_pos))
 	// 			core.sound_play("arrow_hit",{object=self.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
 	// 			self.stuck = true
 	// 			self.object:set_velocity(new_vec(0,0,0))
@@ -231,14 +231,14 @@ namespace bow {
 	// 		end
 	// 	end
 	// end
-	// --[[
+	// //[[
 	//  █████╗ ██████╗ ██████╗  ██████╗ ██╗    ██╗    ███████╗███╗   ██╗████████╗██╗████████╗██╗   ██╗
 	// ██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██║    ██║    ██╔════╝████╗  ██║╚══██╔══╝██║╚══██╔══╝╚██╗ ██╔╝
 	// ███████║██████╔╝██████╔╝██║   ██║██║ █╗ ██║    █████╗  ██╔██╗ ██║   ██║   ██║   ██║    ╚████╔╝
 	// ██╔══██║██╔══██╗██╔══██╗██║   ██║██║███╗██║    ██╔══╝  ██║╚██╗██║   ██║   ██║   ██║     ╚██╔╝
 	// ██║  ██║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝    ███████╗██║ ╚████║   ██║   ██║   ██║      ██║
 	// ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝     ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝   ╚═╝      ╚═╝
-	// ]]--
+	// ]]//
 	// local arrow = {}
 	// arrow.initial_properties = {
 	// 	physical = true,
@@ -251,11 +251,11 @@ namespace bow {
 	// 		"basic_bow_arrow_uv.png"
 	// 	},
 	// 	pointable = false,
-	// 	--automatic_face_movement_dir = 0.0,
-	// 	--automatic_face_movement_max_rotation_per_sec = 600,
+	// 	//automatic_face_movement_dir = 0.0,
+	// 	//automatic_face_movement_max_rotation_per_sec = 600,
 	// }
 	// arrow.on_activate = function(self, staticdata, dtime_s)
-	// 	--self.object:set_animation({x=0,y=180}, 15, 0, true)
+	// 	//self.object:set_animation({x=0,y=180}, 15, 0, true)
 	// 	local vel = nil
 	// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
 	// 		local data = deserialize(staticdata)
@@ -298,14 +298,14 @@ namespace bow {
 	// 	arrow_step(self, dtime,moveresult)
 	// end
 	// core.register_entity("bow:arrow", arrow)
-	// --[[
+	// //[[
 	// ██╗████████╗███████╗███╗   ███╗███████╗
 	// ██║╚══██╔══╝██╔════╝████╗ ████║██╔════╝
 	// ██║   ██║   █████╗  ██╔████╔██║███████╗
 	// ██║   ██║   ██╔══╝  ██║╚██╔╝██║╚════██║
 	// ██║   ██║   ███████╗██║ ╚═╝ ██║███████║
 	// ╚═╝   ╚═╝   ╚══════╝╚═╝     ╚═╝╚══════╝
-	// ]]--
+	// ]]//
 	// local inv
 	// local function initialize_pullback(player)
 	// 	inv = player:get_inventory()
@@ -349,14 +349,14 @@ namespace bow {
 	// 	description = "Arrow",
 	// 	inventory_image = "arrow_item.png",
 	// })
-	// --[[
+	// //[[
 	//  ██████╗██████╗  █████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗
 	// ██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝
 	// ██║     ██████╔╝███████║█████╗     ██║   ██║██╔██╗ ██║██║  ███╗
 	// ██║     ██╔══██╗██╔══██║██╔══╝     ██║   ██║██║╚██╗██║██║   ██║
 	// ╚██████╗██║  ██║██║  ██║██║        ██║   ██║██║ ╚████║╚██████╔╝
 	//  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝
-	// ]]--
+	// ]]//
 	// core.register_craft({
 	// 	output = "bow:bow_empty",
 	// 	recipe = {
