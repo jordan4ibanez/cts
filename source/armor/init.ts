@@ -72,7 +72,10 @@ namespace armor {
 	}
 
 	export function calculate_armor_absorbtion(player: ObjectRef): number {
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 
 		let armor_absorbtion: number = 0;
 
