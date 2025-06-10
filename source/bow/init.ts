@@ -112,8 +112,8 @@ namespace bow {
 			if (object != null) {
 				object.set_velocity(vel);
 
-				const entity: Arrow | null =
-					object.get_luaentity() as Arrow | null;
+				const entity: ArrowEntity | null =
+					object.get_luaentity() as ArrowEntity | null;
 
 				if (entity != null) {
 					entity.owner = name;
@@ -154,7 +154,7 @@ namespace bow {
 	// ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝     ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝   ╚═╝      ╚═╝
 	// ]]//
 
-	class Arrow extends types.Entity {
+	class ArrowEntity extends types.Entity {
 		name: string = "bow:arrow";
 		owner: string | null = null;
 		oldpos: Vec3 | null = null;
