@@ -66,7 +66,7 @@ namespace book {
 				fields["book.book_text"] != null &&
 				fields["book.book_text"] != null
 			) {
-				const itemstack: ItemStackObject = ItemStack("book:book");
+				const itemstack: ItemStackObject = ItemStack("crafter_book:book");
 				const meta: MetaRef = itemstack.get_meta();
 				meta.set_string("book.book_text", fields["book.book_text"]);
 				meta.set_string("book.book_title", fields["book.book_title"]);
@@ -80,7 +80,7 @@ namespace book {
 				fields["book.book_text"] != null
 			) {
 				const itemstack: ItemStackObject =
-					ItemStack("book:book_written");
+					ItemStack("crafter_book:book_written");
 				const meta: MetaRef = itemstack.get_meta();
 				meta.set_string("book.book_text", fields["book.book_text"]);
 				meta.set_string("book.book_title", fields["book.book_title"]);
@@ -94,7 +94,7 @@ namespace book {
 		}
 	);
 	// This is the book item.
-	core.register_craftitem("book:book", {
+	core.register_craftitem("crafter_book:book", {
 		description: "Book",
 		groups: { book: 1, written: 0 },
 		stack_max: 1,
@@ -128,7 +128,7 @@ namespace book {
 	});
 
 	// Permenantly written books.
-	core.register_craftitem("book:book_written", {
+	core.register_craftitem("crafter_book:book_written", {
 		description: "Book",
 		groups: { book: 1, written: 1 },
 		stack_max: 1,
@@ -158,7 +158,7 @@ namespace book {
 	});
 
 	core.register_craft({
-		output: "book:book",
+		output: "crafter_book:book",
 		recipe: [
 			["main:wood", "main:wood", "main:wood"],
 			["main:paper", "main:paper", "main:paper"],
