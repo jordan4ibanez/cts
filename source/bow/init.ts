@@ -288,10 +288,10 @@ namespace bow {
 							new_vec(0, 0, collision.node_pos.z)
 						);
 					}
-					// if collision.new_pos then
-					// 	//print(dump(collision.new_pos))
-					// 	this.object.set_pos(collision.new_pos)
-					// end
+
+					// print(dump(collision.new_pos));
+					this.object.set_pos(collision.new_pos);
+
 					// //print(dump(collision.new_pos))
 					// core.sound_play("arrow_hit",{object=this.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
 					// this.stuck = true
