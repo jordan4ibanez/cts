@@ -93,29 +93,34 @@ namespace book {
 			}
 		}
 	);
-	// //this is the book item
-	// core.register_craftitem("book:book",{
-	// 	description = "Book",
-	// 	groups = {book = 1, written = 0},
-	// 	stack_max = 1,
-	// 	inventory_image = "book.png",
-	// 	on_place = function(itemstack, user, pointed_thing)
-	// 		if not pointed_thing.type == "node" then
-	// 			return
-	// 		end
-	// 		local sneak = user:get_player_control().sneak
-	// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
-	// 		if not sneak and noddef.on_rightclick then
-	// 			core.item_place(itemstack, user, pointed_thing)
-	// 			return
-	// 		end
-	// 		//print("make books placable on the ground")
-	// 		open_book_gui(itemstack, user)
-	// 	end,
-	// 	on_secondary_use = function(itemstack, user, pointed_thing)
-	// 		open_book_gui(itemstack, user)
-	// 	end,
-	// })
+	// This is the book item.
+	core.register_craftitem("book:book", {
+		description: "Book",
+		groups: { book: 1, written: 0 },
+		stack_max: 1,
+		inventory_image: "book.png",
+		on_place: (
+			itemstack: ItemStackObject,
+			user: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			// 		if not pointed_thing.type == "node" then
+			// 			return
+			// 		end
+			// 		local sneak = user:get_player_control().sneak
+			// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
+			// 		if not sneak and noddef.on_rightclick then
+			// 			core.item_place(itemstack, user, pointed_thing)
+			// 			return
+			// 		end
+			// 		//print("make books placable on the ground")
+			// 		open_book_gui(itemstack, user)
+		},
+		// 	on_secondary_use = function(itemstack, user, pointed_thing)
+		// 		open_book_gui(itemstack, user)
+		// 	end,
+	});
+
 	// //permenantly written books
 	// core.register_craftitem("book:book_written",{
 	// 	description = "Book",
