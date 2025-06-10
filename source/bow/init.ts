@@ -184,7 +184,6 @@ namespace bow {
 			this.timer += delta;
 
 			const pos: Vec3 = this.object.get_pos();
-			const vel: Vec3 = this.object.get_velocity();
 
 			if (this.collecting) {
 				if (this.owner == null) {
