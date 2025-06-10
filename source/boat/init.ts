@@ -65,10 +65,6 @@ namespace boat {
 		old_pos: Vec3 = vector.create3d();
 		old_velocity: Vec3 = vector.create3d();
 
-		// todo: These variables may be useless.
-		lag_check: number = 0;
-		boat: boolean = true;
-
 		get_staticdata(): string {
 			return "";
 		}
@@ -77,7 +73,6 @@ namespace boat {
 			this.object.set_armor_groups({ immortal: 1 });
 			this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
 			this.object.set_acceleration(vector.create3d({ x: 0, y: 0, z: 0 }));
-			this.lag_check = core.get_us_time() / 1000000;
 			this.old_pos = this.object.get_pos();
 			this.old_velocity = this.object.get_velocity();
 		}
@@ -251,7 +246,6 @@ namespace boat {
 
 			this.old_pos = pos;
 			this.old_velocity = velocity;
-			this.lag_check = core.get_us_time() / 1000000;
 		}
 
 		flow(): void {
