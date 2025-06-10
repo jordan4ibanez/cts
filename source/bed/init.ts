@@ -210,12 +210,14 @@ namespace bed {
 				return;
 			}
 
-			// local sneak = placer:get_player_control().sneak
-			// local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
-			// if not sneak and noddef.on_rightclick then
-			// 	core.item_place(itemstack, placer, pointed_thing)
-			// 	return
-			// end
+			const sneak: boolean = placer.get_player_control().sneak;
+			const noddef: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pointed_thing.under).name];
+
+			if (!sneak && noddef?.on_rightclick) {
+				core.item_place(itemstack, placer, pointed_thing);
+				return;
+			}
 			// local _,pos = core.item_place_node(ItemStack("bed:bed_front"), placer, pointed_thing)
 			// if pos then
 			// 	local param2 = core.get_node(pos).param2
