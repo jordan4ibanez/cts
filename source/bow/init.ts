@@ -35,8 +35,10 @@ namespace bow {
 	// ██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║    ██║     ██║  ██║██║  ██║   ██║
 	// ╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝
 
+	interface BowData {}
+
 	// Data pool.
-	const pool = {};
+	const pool = new Map<string, BowData>();
 
 	// This is a very complicated function which makes the bow work.
 
