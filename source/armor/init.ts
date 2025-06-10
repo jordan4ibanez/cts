@@ -5,7 +5,10 @@ namespace armor {
 	const random = math.random;
 
 	export function recalculate_armor(player: ObjectRef): void {
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 
 		let player_skin: string = skins.get_skin(player);
 
