@@ -241,12 +241,12 @@ namespace bow {
 							throw new Error("Not a player.");
 						}
 						if (inv.room_for_item("main", ItemStack("bow:arrow"))) {
-							// 		inv:add_item("main",ItemStack("bow:arrow"))
-							// 		core.sound_play("pickup", {
-							// 			to_player = object:get_player_name(),
-							// 			gain = 0.4,
-							// 			pitch = random(60,100)/100
-							// 		})
+							inv.add_item("main", ItemStack("bow:arrow"));
+							core.sound_play("pickup", {
+								object: object,
+								gain: 0.4,
+								pitch: random(60, 100) / 100,
+							});
 						} else {
 							// 		this.object.remove()
 							// 		core.throw_item(pos,"bow:arrow")
