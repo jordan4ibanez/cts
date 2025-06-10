@@ -368,7 +368,10 @@ namespace tooManyItems {
 				core.sound_play("lever", { to_player: name, gain: 0.7 });
 				// This resets the craft table.
 			} else if (fields.quit) {
-				const inv: InvRef = player.get_inventory();
+				const inv: InvRef | null = player.get_inventory();
+				if (inv == null) {
+					throw new Error("Not a player.");
+				}
 
 				playerMechanics.dump_craft(player);
 
