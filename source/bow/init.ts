@@ -341,10 +341,9 @@ namespace bow {
 					this.object.set_rotation(new_vec(x, y, this.spin));
 				}
 
-				// 		if this.stuck == false then
-				// 			this.oldpos = pos
-				// 			this.oldvel = vel
-				// 		end
+				if (!this.stuck) {
+					this.oldpos = pos;
+				}
 			}
 		}
 
