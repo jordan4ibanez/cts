@@ -4,6 +4,7 @@
 (Don't tell anyone that this is crafter)
 
 todo: This thing needs the blocks put in it's own mod because this is a disaster.
+todo: redo vec2 and vec3 as a TS class instead of the current mess.
 
 ---
 
