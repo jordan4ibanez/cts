@@ -66,7 +66,6 @@ namespace boat {
 		old_pos: Vec3 = vector.create3d();
 		old_velocity: Vec3 = vector.create3d();
 
-
 		// todo: boat???
 		boat: boolean = true;
 
@@ -79,7 +78,7 @@ namespace boat {
 			this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
 			this.object.set_acceleration(vector.create3d({ x: 0, y: 0, z: 0 }));
 			this.lag_check = core.get_us_time() / 1000000;
-			this.old_pos = this.object.get_pos()
+			this.old_pos = this.object.get_pos();
 			this.old_velocity = this.object.get_velocity();
 		}
 
@@ -245,14 +244,15 @@ namespace boat {
 			const pos: Vec3 = this.object.get_pos();
 			const velocity: Vec3 = this.object.get_velocity();
 
+			
 			const chugent: number =
 				core.get_us_time() / 1000000 - this.lag_check;
 			// print("lag = " + chugent + " ms");
 
-				if (chugent > 1 &&  this.old_pos && this.old_velocity) {
-			// 		this.object.move_to(this.old_pos)
-			// 		this.object.set_velocity(this.old_velocity)
-				}
+			if (chugent > 1 && this.old_pos && this.old_velocity) {
+				this.object.move_to(this.old_pos);
+				this.object.set_velocity(this.old_velocity);
+			}
 
 			// this.old_pos = pos
 			// this.old_velocity = velocity
