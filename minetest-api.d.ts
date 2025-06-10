@@ -1611,13 +1611,7 @@ declare global {
 		bgcolor?: RGBA;
 	}
 
-	/** @noSelf **/ interface AttachRef {
-		parent: ObjectRef;
-		bone: string;
-		position: Vec3;
-		rotation: Vec3;
-		forced_visible: boolean;
-	}
+	
 
 	/** @noSelf **/ interface BoneOverrideProperty {
 		vec: Vec3;
@@ -2329,7 +2323,7 @@ declare global {
 			rotation: Vec3,
 			forcedVisible?: boolean
 		): void;
-		get_attach(): AttachRef | null;
+		get_attach(): LuaMultiReturn<[ObjectRef?, string?, Vec3?, Vec3?, boolean?]> ;
 		get_children(): ObjectRef[];
 		set_detach(): void;
 		set_bone_override(bone: string, property: BoneOverride | null): void;
