@@ -104,21 +104,27 @@ namespace book {
 			user: ObjectRef,
 			pointed_thing: PointedThing
 		) => {
-			// 		if not pointed_thing.type == "node" then
-			// 			return
-			// 		end
-			// 		local sneak = user:get_player_control().sneak
-			// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
-			// 		if not sneak and noddef.on_rightclick then
-			// 			core.item_place(itemstack, user, pointed_thing)
-			// 			return
-			// 		end
-			// 		//print("make books placable on the ground")
-			// 		open_book_gui(itemstack, user)
+			if (pointed_thing.type != "node") {
+				return;
+			}
+			const sneak: boolean = user.get_player_control().sneak;
+			const noddef: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pointed_thing.under).name];
+			if (!sneak && noddef?.on_rightclick) {
+				core.item_place(itemstack, user, pointed_thing);
+				return;
+			}
+			// Todo: make books placable on the ground.
+			// print("make books placable on the ground");
+			open_book_gui(itemstack, user);
 		},
-		// 	on_secondary_use = function(itemstack, user, pointed_thing)
-		// 		open_book_gui(itemstack, user)
-		// 	end,
+		on_secondary_use: (
+			itemstack: ItemStackObject,
+			user: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			open_book_gui(itemstack, user);
+		},
 	});
 
 	// //permenantly written books
