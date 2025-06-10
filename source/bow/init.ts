@@ -158,21 +158,7 @@ namespace bow {
 	// ██╔══██║██╔══██╗██╔══██╗██║   ██║██║███╗██║    ██╔══╝  ██║   ██║██║╚██╗██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║
 	// ██║  ██║██║  ██║██║  ██║╚██████╔╝╚███╔███╔╝    ██║     ╚██████╔╝██║ ╚████║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
 	// ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝     ╚═╝      ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
-	// ]]//
-	// local pos
-	// local vel
-	// local owner
-	// local pos2
-	// local player_velocity
-	// local direction
-	// local distance
-	// local multiplier
-	// local velocity
-	// local collision
-	// local ray
-	// local dir
-	// local y
-	// local x
+	
 	// local function arrow_step(self, delta,moveresult)
 	// 	self.timer = self.timer + delta
 	// 	pos = self.object:get_pos()
