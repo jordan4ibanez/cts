@@ -288,11 +288,11 @@ namespace boat {
 	}
 
 	core.register_craftitem("boat:boat", {
-		description = "Boat",
-		inventory_image = "boatitem.png",
-		wield_image = "boatitem.png",
-		liquids_pointable = true,
-		on_place = function(itemstack, placer, pointed_thing)
+		description : "Boat",
+		inventory_image : "boatitem.png",
+		wield_image : "boatitem.png",
+		liquids_pointable : true,
+		on_place : function(itemstack, placer, pointed_thing)
 			if not pointed_thing.type == "node" then
 				return
 			end
