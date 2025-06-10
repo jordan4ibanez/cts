@@ -146,14 +146,14 @@ namespace bed {
 		[3]: math.pi * 1.5,
 	};
 
-	function do_sleep(player: ObjectRef, pos: Vec3, dir: Vec3): void {
+	function do_sleep(player: ObjectRef, pos: Vec3, dir: number): void {
 		const time: number = core.get_timeofday() * 24000;
 		const name: string = player.get_player_name();
 		if (time < timeNightBegin && time > timeNightEnd) {
 			core.chat_send_player(name, "You can only sleep at night");
 			return;
 		}
-		// local real_dir = core.facedir_to_dir(dir)
+		const real_dir: Vec3 = core.facedir_to_dir(dir);
 		// player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
 		// local new_pos = vector.subtract(pos,vector.divide(real_dir,2))
 		// player:move_to(new_pos)
