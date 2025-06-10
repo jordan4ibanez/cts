@@ -110,14 +110,14 @@ namespace boat {
 
 		// Check if the boat is stuck on land.
 		check_if_on_land(): void {
-			// 		local pos = this.object.get_pos()
-			// 		pos.y = pos.y - 0.37
-			// 		local bottom_node = core.get_node(pos).name
-			// 		if (bottom_node == "main:water" or bottom_node == "main:waterflow" or bottom_node == "air") then
-			// 			this.on_land = false
-			// 		else
-			// 			this.on_land = true
-			// 		end
+			const pos: Vec3 = this.object.get_pos();
+			pos.y -= 0.37;
+			// local bottom_node = core.get_node(pos).name
+			// if (bottom_node == "main:water" or bottom_node == "main:waterflow" or bottom_node == "air") then
+			// 	this.on_land = false
+			// else
+			// 	this.on_land = true
+			// end
 		}
 		// 	//players drive the baot
 		// 	drive = function(self)
