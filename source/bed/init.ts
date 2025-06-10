@@ -163,10 +163,10 @@ namespace bed {
 			throw new Error("Failure.");
 		}
 		player.set_look_horizontal(newYaw);
-		// core.show_formspec(name, "bed", bed_gui)
-		// player_is_sleeping(player,true)
-		// set_player_animation(player,"lay",0,false)
-		// player:set_eye_offset({x=0,y=-12,z=-7},{x=0,y=0,z=0})
+		core.show_formspec(name, "bed", bed_gui);
+		playerAPI.player_is_sleeping(player, true);
+		playerAPI.set_player_animation(player, "lay", 0, false);
+		player.set_eye_offset(vector.create3d{x=0,y=-12,z=-7},{x=0,y=0,z=0})
 		// pool[name] = {pos=new_pos,sleeping=false}
 		// csm_send_player_to_sleep(player)
 		// sleep_loop = true
