@@ -133,7 +133,14 @@ namespace boat {
 			}
 
 			const rider: ObjectRef | null = core.get_player_by_name(this.rider);
-			// local move = rider:get_player_control().up
+
+			if (rider == null) {
+				this.rider = null;
+				this.moving = false;
+				return;
+			}
+
+			const move = rider.get_player_control().up;
 			// this.moving = nil
 			// if move then
 			// 	local currentvel = this.object.get_velocity()
