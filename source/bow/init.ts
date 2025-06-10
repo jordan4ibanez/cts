@@ -40,61 +40,61 @@ namespace bow {
 
 	// This is a very complicated function which makes the bow work.
 
-	 function arrow_check(name: string,dtime: number): void {
-	// 	temp_pool = pool[name]
-	// 	player = get_player_by_name(name)
-	// 	rightclick = player:get_player_control().RMB
-	// 	new_index = player:get_wield_index()
-	// 	// if player changes selected item
-	// 	if new_index ~= temp_pool.index then
-	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-	// 		pool[name] = nil
-	// 		return
-	// 	end
-	// 	// if player lets go of rightclick
-	// 	if temp_pool.step ~= 5 and not rightclick then
-	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-	// 		pool[name] = nil
-	// 		return
-	// 	end
-	// 	// if player isn't holding a bow
-	// 	if core.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
-	// 		pool[name] = nil
-	// 		return
-	// 	end
-	// 	inv = player:get_inventory()
-	// 	// if player doesn't have any arrows
-	// 	if not inv:contains_item("main", ItemStack("bow:arrow")) then
-	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-	// 		pool[name] = nil
-	// 		return
-	// 	end
-	// 	// count steps using dtime
-	// 	if temp_pool.step < 5 then
-	// 	temp_pool.float = temp_pool.float + dtime
-	// 	if temp_pool.float > 0.05 then
-	// 		temp_pool.float = 0
-	// 		temp_pool.step  = temp_pool.step + 1
-	// 		player:set_wielded_item(ItemStack("bow:bow_"..temp_pool.step))
-	// 	end
-	// 	end
-	// 	if temp_pool.step == 5 and not rightclick then
-	// 		dir = player:get_look_dir()
-	// 		vel = multiply_vec(dir,50)
-	// 		pos = player:get_pos()
-	// 		pos.y = pos.y + 1.5
-	// 		object = core.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
-	// 		object:set_velocity(vel)
-	// 		object:get_luaentity().owner  = name
-	// 		object:get_luaentity().oldpos = pos
-	// 		core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
-	// 		inv:remove_item("main", ItemStack("bow:arrow"))
-	// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-	// 		pool[name] = nil
-	// 	end
-	// 	//add hand fatigue timer
-	// 	//gradually increase fatigue until cap is reached
-	 }
+	function arrow_check(name: string, dtime: number): void {
+		// 	temp_pool = pool[name]
+		// 	player = get_player_by_name(name)
+		// 	rightclick = player:get_player_control().RMB
+		// 	new_index = player:get_wield_index()
+		// 	// if player changes selected item
+		// 	if new_index ~= temp_pool.index then
+		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+		// 		pool[name] = nil
+		// 		return
+		// 	end
+		// 	// if player lets go of rightclick
+		// 	if temp_pool.step ~= 5 and not rightclick then
+		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+		// 		pool[name] = nil
+		// 		return
+		// 	end
+		// 	// if player isn't holding a bow
+		// 	if core.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
+		// 		pool[name] = nil
+		// 		return
+		// 	end
+		// 	inv = player:get_inventory()
+		// 	// if player doesn't have any arrows
+		// 	if not inv:contains_item("main", ItemStack("bow:arrow")) then
+		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+		// 		pool[name] = nil
+		// 		return
+		// 	end
+		// 	// count steps using dtime
+		// 	if temp_pool.step < 5 then
+		// 	temp_pool.float = temp_pool.float + dtime
+		// 	if temp_pool.float > 0.05 then
+		// 		temp_pool.float = 0
+		// 		temp_pool.step  = temp_pool.step + 1
+		// 		player:set_wielded_item(ItemStack("bow:bow_"..temp_pool.step))
+		// 	end
+		// 	end
+		// 	if temp_pool.step == 5 and not rightclick then
+		// 		dir = player:get_look_dir()
+		// 		vel = multiply_vec(dir,50)
+		// 		pos = player:get_pos()
+		// 		pos.y = pos.y + 1.5
+		// 		object = core.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
+		// 		object:set_velocity(vel)
+		// 		object:get_luaentity().owner  = name
+		// 		object:get_luaentity().oldpos = pos
+		// 		core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
+		// 		inv:remove_item("main", ItemStack("bow:arrow"))
+		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+		// 		pool[name] = nil
+		// 	end
+		// 	//add hand fatigue timer
+		// 	//gradually increase fatigue until cap is reached
+	}
 
 	// core.register_globalstep(function(dtime)
 	// 	for name in pairs(pool) do
