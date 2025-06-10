@@ -420,7 +420,10 @@ namespace tooManyItems {
 					""
 				)[0];
 				const stack: ItemStackObject = ItemStack(item + " 64");
-				const inv: InvRef = player.get_inventory();
+				const inv: InvRef | null = player.get_inventory();
+				if (inv == null) {
+					throw new Error("Not a player.");
+				}
 				if (data.cheating && core.get_player_privs(name).give) {
 					// Room for item.
 					if (inv.room_for_item("main", stack)) {
