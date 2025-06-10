@@ -216,8 +216,10 @@ namespace boat {
 			const goal: number = 9;
 			let acceleration: Vec3 = vector.create3d(0, goal - vel.y, 0);
 			acceleration = vector.multiply(acceleration, 0.01);
-			// 	this.object.add_velocity(acceleration)
-			// 	//this.object.set_acceleration(vector.new(0,0,0))
+			this.object.add_velocity(acceleration);
+
+			// Unused code?
+			//this.object.set_acceleration(vector.new(0,0,0))
 		}
 
 		// 	//slows the boat down
