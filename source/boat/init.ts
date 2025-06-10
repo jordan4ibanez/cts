@@ -1,45 +1,7 @@
 namespace boat {
-	// function lavaflow(): void {
-	// pos = this.object.get_pos()
-	// pos.y = pos.y + this.object.get_properties().collisionbox[2]
-	// pos = vector.round(pos)
-	// node = core.get_node(pos).name
-	// node_above = core.get_node(vector.new(pos.x,pos.y+1,pos.z)).name
-	// goalx = 0
-	// goalz = 0
-	// found = false
-	// if node == "crafter:lavaflow" then
-	// 	currentvel = this.object.get_velocity()
-	// 	level = core.get_node_level(pos)
-	// 	for x = -1,1 do
-	// 		for z = -1,1 do
-	// 			if found == false then
-	// 				nodename = core.get_node(vector.new(pos.x+x,pos.y,pos.z+z)).name
-	// 				level2 = core.get_node_level(vector.new(pos.x+x,pos.y,pos.z+z))
-	// 				if level2 > level and nodename == "crafter:lavaflow" or nodename == "crafter:lava" then
-	// 					goalx = -x
-	// 					goalz = -z
-	// 					//diagonal flow
-	// 					if goalx ~= 0 and goalz ~= 0 then
-	// 						found = true
-	// 					end
-	// 				end
-	// 			end
-	// 		end
-	// 	end
-	// 	//only add velocity if there is one
-	// 	//else this stops the player
-	// 	if goalx ~= 0 and goalz ~= 0 then
-	// 		acceleration = vector.new(goalx-currentvel.x,0,goalz-currentvel.z)
-	// 		this.object.add_velocity(acceleration)
-	// 	elseif goalx ~= 0 or goalz ~= 0 then
-	// 		acceleration = vector.new(goalx-currentvel.x,0,goalz-currentvel.z)
-	// 		this.object.add_velocity(acceleration)
-	// 	end
-	// end
-	// }
 
-	// //core.get_node_level(pos)
+
+	
 
 	class BoatEntity extends types.Entity {
 		name: string = "crafter_boat:boat";
