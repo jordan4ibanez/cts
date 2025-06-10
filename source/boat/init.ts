@@ -41,7 +41,10 @@ namespace boat {
 
 	// //core.get_node_level(pos)
 
-	// core.register_entity("boat:boat", {
+    class BoatEntity extends types.Entity {
+        name: string = "boat:boat"
+
+	// core.register_entity(, {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -218,7 +221,8 @@ namespace boat {
 	// 		self.slowdown(self)
 	// 		self.lag_correction(self,dtime)
 	// 	end,
-	// })
+	}
+
 	// core.register_craftitem("boat:boat", {
 	// 	description = "Boat",
 	// 	inventory_image = "boatitem.png",
