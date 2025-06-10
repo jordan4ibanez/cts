@@ -44,7 +44,7 @@ namespace boat {
     class BoatEntity extends types.Entity {
         name: string = "boat:boat"
 
-	// core.register_entity(, {
+	
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
