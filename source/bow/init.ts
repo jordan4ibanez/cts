@@ -196,7 +196,10 @@ namespace bow {
 
 		on_step(delta: number, moveresult: MoveResult): void {
 			this.timer += delta;
-
+			if (this.timer >= 60) {
+				this.object.remove();
+				return;
+			}
 			const pos: Vec3 = this.object.get_pos();
 
 			if (this.collecting) {
