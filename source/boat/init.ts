@@ -1,9 +1,18 @@
 namespace boat {
+	interface LiquidData {
+		source: string;
+		flow: string;
+	}
+
 	const identifiers: string[] = ["wooden", "iron"];
 	const descriptions: string[] = ["Wooden", "Iron"];
 	const boatTextures: string[] = ["boat.png", "iron_boat.png"];
 	const wieldImages: string[] = ["boatitem.png", "iron_boatitem.png"];
 	const materials: string[] = ["crafter:wood", "crafter:iron"];
+	const liquids: LiquidData[] = [
+		{ source: "crafter:water", flow: "crafter:waterflow" },
+		{ source: "crafter:lava", flow: "crafter:lavaflow" },
+	];
 
 	for (const i of $range(0, 1)) {
 		const entityName: string = `crafter_boat:${identifiers[i]}_boat`;
