@@ -58,8 +58,8 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
+		on_land: boolean = false;
 		rider: string | null = null;
-
 		// todo: boat???
 		boat: boolean = true;
 
@@ -112,12 +112,16 @@ namespace boat {
 		check_if_on_land(): void {
 			const pos: Vec3 = this.object.get_pos();
 			pos.y -= 0.37;
-			// local bottom_node = core.get_node(pos).name
-			// if (bottom_node == "main:water" or bottom_node == "main:waterflow" or bottom_node == "air") then
-			// 	this.on_land = false
-			// else
-			// 	this.on_land = true
-			// end
+			const bottom_node: string = core.get_node(pos).name;
+			if (
+				bottom_node == "main:water" ||
+				bottom_node == "main:waterflow" ||
+				bottom_node == "air"
+			) {
+				this.on_land = false;
+			} else {
+				this.on_land = true;
+			}
 		}
 		// 	//players drive the baot
 		// 	drive = function(self)
