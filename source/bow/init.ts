@@ -109,7 +109,7 @@ namespace bow {
 		if (data.step < 5) {
 			data.float += delta;
 			if (data.float > 0.1) {
-				data.float = 0;
+				data.float -= 0.1;
 				data.step += 1;
 				player.set_wielded_item(
 					ItemStack("crafter_bow:bow_" + data.step)
