@@ -203,8 +203,9 @@ namespace boat {
 			const pos: Vec3 = this.object.get_pos();
 			const node: string = core.get_node(pos).name;
 			this.swimming = false;
-			// //flow normally if floating else don't
-			// if node == "main:water" or node =="main:waterflow" then
+			
+			// Flow normally if floating else don't.
+			if (node == "main:water" or node =="main:waterflow") then
 			// 	this.object.set_acceleration(vector.new(0,0,0))
 			// 	this.swimming = true
 			// 	local vel = this.object.get_velocity()
