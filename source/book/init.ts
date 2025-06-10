@@ -1,5 +1,5 @@
 namespace book {
-	// //this is the gui for un-inked books
+	// This is the gui for un-inked books.
 	// local open_book_gui = function(itemstack, user)
 	// 	core.sound_play("book_open", {to_player=user:get_player_name()})
 	// 	local meta = itemstack:get_meta()
@@ -20,6 +20,7 @@ namespace book {
 	// 		"button[8.25,8.3;1,1;book.book_ink;ink  ]"
 	// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
 	// end
+
 	// //this is the gui for permenantly written books
 	// local open_book_inked_gui = function(itemstack, user)
 	// 	core.sound_play("book_open", {to_player=user:get_player_name()})
