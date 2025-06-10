@@ -12,13 +12,18 @@ namespace book {
 		if (book_title == "") {
 			book_title = "Title here";
 		}
-		// 	book_writing_formspec = "size[9,8.75]"+
-		// 		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"+
-		// 		"style[book.book_text,book.book_title;textcolor=black;border=false;noclip=false]"+
-		// 		"textarea[0.3,0;9,0.5;book.book_title;;"+book_title+"]"+
-		// 		"textarea[0.3,0.3;9,9;book.book_text;;"+book_text+"]"+
-		// 		"button[-0.2,8.3;1,1;book.book_write;write]"+
-		// 		"button[8.25,8.3;1,1;book.book_ink;ink  ]"
+		let book_writing_formspec: string =
+			"size[9,8.75]" +
+			"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]" +
+			"style[book.book_text,book.book_title;textcolor=black;border=false;noclip=false]" +
+			"textarea[0.3,0;9,0.5;book.book_title;;" +
+			book_title +
+			"]" +
+			"textarea[0.3,0.3;9,9;book.book_text;;" +
+			book_text +
+			"]" +
+			"button[-0.2,8.3;1,1;book.book_write;write]" +
+			"button[8.25,8.3;1,1;book.book_ink;ink  ]";
 		// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
 	}
 
