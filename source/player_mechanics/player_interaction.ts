@@ -31,7 +31,10 @@ namespace playerMechanics {
 	core.register_on_dieplayer(
 		(player: ObjectRef, reason: HPChangeReasonDefinition) => {
 			const pos: Vec3 = player.get_pos();
-			const inv: InvRef = player.get_inventory();
+			const inv: InvRef | null = player.get_inventory();
+			if (inv == null) {
+				throw new Error("Not a player.");
+			}
 			for (const i of $range(1, inv.get_size("main"))) {
 				const stack: ItemStackObject = inv.get_stack("main", i);
 				const name: string = stack.get_name();
