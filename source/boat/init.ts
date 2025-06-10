@@ -17,6 +17,9 @@ namespace boat {
 	for (const i of $range(0, 1)) {
 		const entityName: string = `crafter_boat:${identifiers[i]}_boat`;
 
+		const currentLiquidSource = liquids[i].source;
+		const currentLiquidFlow = liquids[i].flow;
+
 		class BoatEntity extends types.Entity {
 			name: string = entityName;
 
@@ -96,8 +99,8 @@ namespace boat {
 				pos.y -= 0.37;
 				const bottom_node: string = core.get_node(pos).name;
 				if (
-					bottom_node == "crafter:water" ||
-					bottom_node == "crafter:waterflow" ||
+					bottom_node == currentLiquidSource ||
+					bottom_node == currentLiquidFlow ||
 					bottom_node == "air"
 				) {
 					this.on_land = false;
@@ -191,7 +194,7 @@ namespace boat {
 				this.swimming = false;
 
 				// Flow normally if floating else don't.
-				if (node != "crafter:water" && node != "crafter:waterflow") {
+				if (node != currentLiquidSource && node != currentLiquidFlow) {
 					this.object.set_acceleration(vector.create3d(0, -10, 0));
 					return;
 				}
