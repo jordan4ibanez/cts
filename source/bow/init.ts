@@ -1,3 +1,4 @@
+namespace bow {
 // local 
 // minetest,math,vector,ipairs,string,type
 // = 
@@ -444,3 +445,4 @@
 // 		{""         , ""          , "mob:feather"},
 // 	},
 // })
+}
