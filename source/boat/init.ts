@@ -228,10 +228,10 @@ namespace boat {
 			if (this.moving) {
 				return;
 			}
-			// local vel = this.object.get_velocity()
-			// local acceleration = vector.new(-vel.x,0,-vel.z)
-			// local deceleration = vector.multiply(acceleration, 0.01)
-			// this.object.add_velocity(deceleration)
+			const vel: Vec3 = this.object.get_velocity();
+			const acceleration: Vec3 = vector.create3d(-vel.x, 0, -vel.z);
+			const deceleration: Vec3 = vector.multiply(acceleration, 0.01);
+			this.object.add_velocity(deceleration);
 		}
 
 		// 	lag_correction = function(self,dtime)
