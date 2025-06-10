@@ -398,15 +398,13 @@ namespace bow {
 	}
 	utility.registerTSEntity(ArrowEntity);
 
-	// //[[
 	// ██╗████████╗███████╗███╗   ███╗███████╗
 	// ██║╚══██╔══╝██╔════╝████╗ ████║██╔════╝
 	// ██║   ██║   █████╗  ██╔████╔██║███████╗
 	// ██║   ██║   ██╔══╝  ██║╚██╔╝██║╚════██║
 	// ██║   ██║   ███████╗██║ ╚═╝ ██║███████║
 	// ╚═╝   ╚═╝   ╚══════╝╚═╝     ╚═╝╚══════╝
-	// ]]//
-	// local inv
+
 	// local function initialize_pullback(player)
 	// 	inv = player:get_inventory()
 	// 	if inv:contains_item("main", ItemStack("bow:arrow")) then
