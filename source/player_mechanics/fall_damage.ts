@@ -32,7 +32,10 @@ namespace playerMechanics {
 			return;
 		}
 
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 		const stack: ItemStackObject = inv.get_stack("armor_feet", 1);
 		const name: string = stack.get_name();
 		if (name != "") {
