@@ -1,14 +1,12 @@
 namespace bow {
-	
-
 	// Luanti library.
-	// const get_connected_players     = core.get_connected_players
-	// const get_player_by_name        = core.get_player_by_name
-	// const get_objects_inside_radius = core.get_objects_inside_radius
-	// const create_raycast            = core.raycast
-	// const dir_to_yaw                = core.dir_to_yaw
-	// const deserialize               = core.deserialize
-	// const serialize                 = core.serialize
+	const get_connected_players = core.get_connected_players;
+	const get_player_by_name = core.get_player_by_name;
+	const get_objects_inside_radius = core.get_objects_inside_radius;
+	const create_raycast = core.raycast;
+	const dir_to_yaw = core.dir_to_yaw;
+	const deserialize = core.deserialize;
+	const serialize = core.serialize;
 	// // string library
 	// const s_sub  = string.sub
 	// const s_len  = string.len
