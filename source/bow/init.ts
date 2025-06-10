@@ -411,12 +411,12 @@ namespace bow {
 			throw new Error("Not a player.");
 		}
 		if (inv.contains_item("main", ItemStack("bow:arrow"))) {
-			// 		name = player:get_player_name()
-			// 		pool[name] = {}
-			// 		pool[name].index = player:get_wield_index()
-			// 		pool[name].float = 0
-			// 		pool[name].step  = 0
-			// 		core.sound_play("bow_pull_back", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(70,110)/100})
+			// name = player:get_player_name()
+			// pool[name] = {}
+			// pool[name].index = player:get_wield_index()
+			// pool[name].float = 0
+			// pool[name].step  = 0
+			// core.sound_play("bow_pull_back", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(70,110)/100})
 		}
 	}
 
