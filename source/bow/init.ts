@@ -208,7 +208,7 @@ namespace bow {
 				// 				end
 				// 				return
 				// 			else
-				// 				print(this.owner.." does not exist")
+				// 				print(this.owner+" does not exist")
 				// 				this.object.remove()
 				// 			end
 				// 		end
@@ -377,9 +377,9 @@ namespace bow {
 	// 	end,
 	// })
 	// for i = 1,5 do
-	// 	core.register_craftitem("bow:bow_"..i, {
+	// 	core.register_craftitem("bow:bow_"+i, {
 	// 		description = "Bow",
-	// 		inventory_image = "bow_"..i..".png",
+	// 		inventory_image = "bow_"+i+".png",
 	// 		stack_max = 1,
 	// 		groups = {bow=1,bow_loaded=i},
 	// 		range = 0,
