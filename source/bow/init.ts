@@ -362,19 +362,20 @@ namespace bow {
 		on_activate(staticdata: string, delta_s: number): void {
 			// this.object.set_animation({ x: 0, y: 180 }, 15, 0, true);
 
-			const vel: Vec3 | null = null;
-			// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
-			// 		local data = deserialize(staticdata)
-			// 		if data and type(data) == "table" then
-			// 			this.spin       = data.spin
-			// 			this.owner      = data.owner
-			// 			this.stuck      = data.stuck
-			// 			this.timer      = data.timer
-			// 			this.collecting = data.collecting
-			// 			this.check_dir  = data.check_dir
-			// 			vel             = data.vel
-			// 		end
-			// 	end
+			let vel: Vec3 | null = null;
+			if (s_sub(staticdata, 1, s_len("return")) == "return") {
+				const data = deserialize(staticdata);
+				if (data && typeof data == "object") {
+					this.spin = data.spin;
+					this.owner = data.owner;
+					this.stuck = data.stuck;
+					this.timer = data.timer;
+					this.collecting = data.collecting;
+					this.check_dir = data.check_dir;
+					vel = data.vel;
+				}
+			}
+
 			// 	if not this.stuck then
 			// 		this.object.set_acceleration(new_vec(0,-9.81,0))
 			// 		if vel then
