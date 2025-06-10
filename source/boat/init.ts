@@ -1,15 +1,6 @@
 namespace boat {
-	// local name
-	// local pos
-	// local node
-	// local node_above
-	// local goalx
-	// local goalz
-	// local currentvel
-	// local level
-	// local level2
-	// local nodename
-	// local acceleration
+	
+
 	// local function lavaflow(self)
 	// 	pos = self.object:get_pos()
 	// 	pos.y = pos.y + self.object:get_properties().collisionbox[2]
