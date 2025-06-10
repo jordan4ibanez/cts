@@ -67,19 +67,20 @@ namespace boat {
 			return "";
 		}
 
-		// 	on_activate = function(self, staticdata, dtime_s)
-		// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
-		// 			local data = core.deserialize(staticdata)
-		// 			if data and type(data) == "table" then
-		// 				//self.itemstring = data.itemstring
-		// 			end
-		// 		else
-		// 			//self.itemstring = staticdata
-		// 		end
-		// 		self.object:set_armor_groups({immortal = 1})
-		// 		self.object:set_velocity({x = 0, y = 0, z = 0})
-		// 		self.object:set_acceleration({x = 0, y = 0, z = 0})
-		// 	end,
+		on_activate(staticdata: string, dtime_s: number): void {
+			// if string.sub(staticdata, 1, string.len("return")) == "return" then
+			// 	local data = core.deserialize(staticdata)
+			// 	if data and type(data) == "table" then
+			// 		//self.itemstring = data.itemstring
+			// 	end
+			// else
+			// 	//self.itemstring = staticdata
+			// end
+			// self.object:set_armor_groups({immortal = 1})
+			// self.object:set_velocity({x = 0, y = 0, z = 0})
+			// self.object:set_acceleration({x = 0, y = 0, z = 0})
+		}
+
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 		// 		local pos = self.object:get_pos()
 		// 		core.add_item(pos, "boat:boat")
