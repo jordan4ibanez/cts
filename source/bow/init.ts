@@ -58,7 +58,10 @@ namespace bow {
 		}
 
 		const new_index: number = player.get_wield_index();
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 
 		// If player changes selected item.
 		if (new_index != data.index) {
@@ -232,19 +235,22 @@ namespace bow {
 						object.is_player() &&
 						object.get_player_name() == this.owner
 					) {
-						// 	this.collecting = true
-						// 	local inv = object:get_inventory()
-						// 	if inv and inv:room_for_item("main", ItemStack("bow:arrow")) then
-						// 		inv:add_item("main",ItemStack("bow:arrow"))
-						// 		core.sound_play("pickup", {
-						// 			to_player = object:get_player_name(),
-						// 			gain = 0.4,
-						// 			pitch = random(60,100)/100
-						// 		})
-						// 	else
-						// 		this.object.remove()
-						// 		core.throw_item(pos,"bow:arrow")
-						// 	end
+						this.collecting = true;
+						const inv: InvRef | null = object.get_inventory();
+						if (inv == null) {
+							throw new Error("Not a player.");
+						}
+						if (inv.room_for_item("main", ItemStack("bow:arrow"))) {
+							// 		inv:add_item("main",ItemStack("bow:arrow"))
+							// 		core.sound_play("pickup", {
+							// 			to_player = object:get_player_name(),
+							// 			gain = 0.4,
+							// 			pitch = random(60,100)/100
+							// 		})
+						} else {
+							// 		this.object.remove()
+							// 		core.throw_item(pos,"bow:arrow")
+						}
 					}
 				}
 
