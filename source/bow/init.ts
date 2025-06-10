@@ -101,9 +101,9 @@ namespace bow {
 		}
 
 		if (data.step == 5 && !rightclick) {
-			// dir = player:get_look_dir()
-			// vel = multiply_vec(dir,50)
-			// pos = player:get_pos()
+			const dir: Vec3 = player.get_look_dir()
+			const vel: Vec3 = multiply_vec(dir,50)
+			const pos: Vec3 = player.get_pos()
 			// pos.y = pos.y + 1.5
 			// object = core.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
 			// object:set_velocity(vel)
