@@ -248,8 +248,8 @@ namespace bow {
 								pitch: random(60, 100) / 100,
 							});
 						} else {
-							// 		this.object.remove()
-							// 		core.throw_item(pos,"bow:arrow")
+							this.object.remove();
+							item_handling.throw_item(pos, "bow:arrow");
 						}
 					}
 				}
