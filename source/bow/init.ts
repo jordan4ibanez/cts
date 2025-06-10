@@ -134,8 +134,9 @@ namespace bow {
 			}
 			pool.delete(name);
 		}
-		// 	//add hand fatigue timer
-		// 	//gradually increase fatigue until cap is reached
+
+		//todo: add hand fatigue timer, make the camera shake.
+		//todo: gradually increase fatigue until cap is reached
 	}
 
 	class Arrow extends types.Entity {
