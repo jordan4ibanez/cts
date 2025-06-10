@@ -557,8 +557,13 @@ namespace tooManyItems {
 					return;
 				}
 
-				player.get_inventory().set_width("craft", 3);
-				player.get_inventory().set_size("craft", 9);
+				const inv: InvRef | null = player.get_inventory();
+				if (inv == null) {
+					throw new Error("Not a player.");
+				}
+
+				inv.set_width("craft", 3);
+				inv.set_size("craft", 9);
 				core.show_formspec(
 					name,
 					"crafting",
