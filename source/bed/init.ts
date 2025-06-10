@@ -218,23 +218,27 @@ namespace bed {
 				core.item_place(itemstack, placer, pointed_thing);
 				return;
 			}
-			// local _,pos = core.item_place_node(ItemStack("bed:bed_front"), placer, pointed_thing)
-			// if pos then
-			// 	local param2 = core.get_node(pos).param2
-			// 	local pos2 = vector.add(pos, vector.multiply(core.facedir_to_dir(param2),-1))
-			// 	local buildable = core.registered_nodes[core.get_node(pos2).name].buildable_to
-			// 	if not buildable then
-			// 		core.remove_node(pos)
-			// 		return(itemstack)
-			// 	else
-			// 		core.add_node(pos2,{name="bed:bed_back", param2=param2})
-			// 		itemstack:take_item()
-			// 		core.sound_play("wood", {
-			// 			  pos = pos,
-			// 		})
-			// 		return(itemstack)
-			// 	end
-			// end
+			const [_, pos] = core.item_place_node(
+				ItemStack("bed:bed_front"),
+				placer,
+				pointed_thing
+			);
+			if (pos != null) {
+				// 	local param2 = core.get_node(pos).param2
+				// 	local pos2 = vector.add(pos, vector.multiply(core.facedir_to_dir(param2),-1))
+				// 	local buildable = core.registered_nodes[core.get_node(pos2).name].buildable_to
+				// 	if not buildable then
+				// 		core.remove_node(pos)
+				// 		return(itemstack)
+				// 	else
+				// 		core.add_node(pos2,{name="bed:bed_back", param2=param2})
+				// 		itemstack:take_item()
+				// 		core.sound_play("wood", {
+				// 			  pos = pos,
+				// 		})
+				// 		return(itemstack)
+				// 	end
+			}
 			// return(itemstack)
 		},
 	});
