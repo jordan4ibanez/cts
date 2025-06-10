@@ -158,10 +158,10 @@ namespace bow {
 		oldpos: Vec3 | null = null;
 		timer: number = 0;
 		collecting: boolean = false;
-		spin: number = 0
-		stuck: boolean = false
-		readonly collection_height: number = 0.5
-		readonly radius: number = 2
+		spin: number = 0;
+		stuck: boolean = false;
+		readonly collection_height: number = 0.5;
+		readonly radius: number = 2;
 
 		on_step(delta: number, moveresult: MoveResult): void {
 			this.timer += delta;
@@ -190,32 +190,34 @@ namespace bow {
 					return;
 				}
 
-						for (const [_,object] of ipairs(get_objects_inside_radius(pos, this.radius))) {
-				// 			if owner then
-				// 				this.object.set_acceleration(new_vec(0,0,0))
-				// 				//get the variables
-				// 				pos2 = owner:get_pos()
-				// 				player_velocity = owner:get_player_velocity()
-				// 				pos2.y = pos2.y + this.collection_height
-				// 				direction = normalize_vec(sub_vec(pos2,pos))
-				// 				distance = vec_distance(pos2,pos)
-				// 				//remove if too far away
-				// 				if distance > this.radius then
-				// 					distance = 0
-				// 				end
-				// 				multiplier = (this.radius*5) - distance
-				// 				velocity = multiply_vec(direction,multiplier)
-				// 				velocity = add_vec(player_velocity,velocity)
-				// 				this.object.set_velocity(velocity)
-				// 				if distance < 0.2 then
-				// 					this.object.remove()
-				// 				end
-				// 				return
-				// 			else
-				// 				print(this.owner+" does not exist")
-				// 				this.object.remove()
-				// 			end
-						}
+				for (const [_, object] of ipairs(
+					get_objects_inside_radius(pos, this.radius)
+				)) {
+					// 			if owner then
+					// 				this.object.set_acceleration(new_vec(0,0,0))
+					// 				//get the variables
+					// 				pos2 = owner:get_pos()
+					// 				player_velocity = owner:get_player_velocity()
+					// 				pos2.y = pos2.y + this.collection_height
+					// 				direction = normalize_vec(sub_vec(pos2,pos))
+					// 				distance = vec_distance(pos2,pos)
+					// 				//remove if too far away
+					// 				if distance > this.radius then
+					// 					distance = 0
+					// 				end
+					// 				multiplier = (this.radius*5) - distance
+					// 				velocity = multiply_vec(direction,multiplier)
+					// 				velocity = add_vec(player_velocity,velocity)
+					// 				this.object.set_velocity(velocity)
+					// 				if distance < 0.2 then
+					// 					this.object.remove()
+					// 				end
+					// 				return
+					// 			else
+					// 				print(this.owner+" does not exist")
+					// 				this.object.remove()
+					// 			end
+				}
 			} else {
 				// 		for _,object in ipairs(get_objects_inside_radius(pos, 2)) do
 				// 			if this.stuck == false and ((object:is_player() and object:get_player_name() ~= this.owner and object:get_hp() > 0) or (object:get_luaentity() and object:get_luaentity().mobname)) then
@@ -333,7 +335,7 @@ namespace bow {
 		// 		vel        = this.object.get_velocity()
 		// 	})
 		// end
-		
+
 		// arrow.on_step = function(self, delta,moveresult)
 		// 	arrow_step(self, delta,moveresult)
 		// end
