@@ -213,29 +213,40 @@ namespace bow {
 				for (const [_, object] of ipairs(
 					get_objects_inside_radius(pos, 2)
 				)) {
-					if (!this.stuck  && ((object.is_player() && object.get_player_name() != this.owner && object.get_hp() > 0) || (object.get_luaentity() && (object.get_luaentity() as any)?.mobname))) {
-					// 	object:punch(this.object, 2,
-					// 		{
-					// 		full_punch_interval=1.5,
-					// 		damage_groups = {damage=3},
-					// 	})
-					// 	this.object.remove()
-					// 	return
-					 } else if (this.timer > 3 && (object.is_player() && object.get_player_name() == this.owner)) {
-					// 	this.collecting = true
-					// 	local inv = object:get_inventory()
-					// 	if inv and inv:room_for_item("main", ItemStack("bow:arrow")) then
-					// 		inv:add_item("main",ItemStack("bow:arrow"))
-					// 		core.sound_play("pickup", {
-					// 			to_player = object:get_player_name(),
-					// 			gain = 0.4,
-					// 			pitch = random(60,100)/100
-					// 		})
-					// 	else
-					// 		this.object.remove()
-					// 		core.throw_item(pos,"bow:arrow")
-					// 	end
-					 }
+					if (
+						!this.stuck &&
+						((object.is_player() &&
+							object.get_player_name() != this.owner &&
+							object.get_hp() > 0) ||
+							(object.get_luaentity() &&
+								(object.get_luaentity() as any)?.mobname))
+					) {
+						// 	object:punch(this.object, 2,
+						// 		{
+						// 		full_punch_interval=1.5,
+						// 		damage_groups = {damage=3},
+						// 	})
+						// 	this.object.remove()
+						// 	return
+					} else if (
+						this.timer > 3 &&
+						object.is_player() &&
+						object.get_player_name() == this.owner
+					) {
+						// 	this.collecting = true
+						// 	local inv = object:get_inventory()
+						// 	if inv and inv:room_for_item("main", ItemStack("bow:arrow")) then
+						// 		inv:add_item("main",ItemStack("bow:arrow"))
+						// 		core.sound_play("pickup", {
+						// 			to_player = object:get_player_name(),
+						// 			gain = 0.4,
+						// 			pitch = random(60,100)/100
+						// 		})
+						// 	else
+						// 		this.object.remove()
+						// 		core.throw_item(pos,"bow:arrow")
+						// 	end
+					}
 				}
 
 				// 		if moveresult and moveresult.collides and moveresult.collisions and moveresult.collisions[1] and moveresult.collisions[1].new_velocity and this.stuck == false then
