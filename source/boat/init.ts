@@ -80,9 +80,10 @@ namespace boat {
 		}
 
 		on_rightclick(clicker: ObjectRef): void {
-			// if not clicker or not clicker:is_player() then
-			// 	return
-			// end
+			if (!clicker.is_player()) {
+				return;
+			}
+
 			// local player_name = clicker:get_player_name()
 			// if self.rider and player_name == self.rider then
 			// 	clicker:set_detach()
