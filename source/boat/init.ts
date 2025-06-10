@@ -3,19 +3,19 @@ namespace boat {
 		// pos = self.object:get_pos()
 		// pos.y = pos.y + self.object:get_properties().collisionbox[2]
 		// pos = vector.round(pos)
-		// node = minetest.get_node(pos).name
-		// node_above = minetest.get_node(vector.new(pos.x,pos.y+1,pos.z)).name
+		// node = core.get_node(pos).name
+		// node_above = core.get_node(vector.new(pos.x,pos.y+1,pos.z)).name
 		// goalx = 0
 		// goalz = 0
 		// found = false
 		// if node == "main:lavaflow" then
 		// 	currentvel = self.object:get_velocity()
-		// 	level = minetest.get_node_level(pos)
+		// 	level = core.get_node_level(pos)
 		// 	for x = -1,1 do
 		// 		for z = -1,1 do
 		// 			if found == false then
-		// 				nodename = minetest.get_node(vector.new(pos.x+x,pos.y,pos.z+z)).name
-		// 				level2 = minetest.get_node_level(vector.new(pos.x+x,pos.y,pos.z+z))
+		// 				nodename = core.get_node(vector.new(pos.x+x,pos.y,pos.z+z)).name
+		// 				level2 = core.get_node_level(vector.new(pos.x+x,pos.y,pos.z+z))
 		// 				if level2 > level and nodename == "main:lavaflow" or nodename == "main:lava" then
 		// 					goalx = -x
 		// 					goalz = -z
@@ -39,8 +39,9 @@ namespace boat {
 		// end
 	// }
 
-	// --minetest.get_node_level(pos)
-	// minetest.register_entity("boat:boat", {
+	// --core.get_node_level(pos)
+
+	// core.register_entity("boat:boat", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -57,13 +58,13 @@ namespace boat {
 	// 	rider = nil,
 	// 	boat = true,
 	// 	get_staticdata = function(self)
-	// 		return minetest.serialize({
+	// 		return core.serialize({
 	// 			--itemstring = self.itemstring,
 	// 		})
 	// 	end,
 	// 	on_activate = function(self, staticdata, dtime_s)
 	// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
-	// 			local data = minetest.deserialize(staticdata)
+	// 			local data = core.deserialize(staticdata)
 	// 			if data and type(data) == "table" then
 	// 				--self.itemstring = data.itemstring
 	// 			end
@@ -76,7 +77,7 @@ namespace boat {
 	// 	end,
 	// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 	// 		local pos = self.object:get_pos()
-	// 		minetest.add_item(pos, "boat:boat")
+	// 		core.add_item(pos, "boat:boat")
 	// 		self.object:remove()
 	// 	end,
 	// 	on_rightclick = function(self,clicker)
@@ -104,7 +105,7 @@ namespace boat {
 	// 	check_if_on_land = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		pos.y = pos.y - 0.37
-	// 		local bottom_node = minetest.get_node(pos).name
+	// 		local bottom_node = core.get_node(pos).name
 	// 		if (bottom_node == "main:water" or bottom_node == "main:waterflow" or bottom_node == "air") then
 	// 			self.on_land = false
 	// 		else
@@ -114,7 +115,7 @@ namespace boat {
 	// 	--players drive the baot
 	// 	drive = function(self)
 	// 		if self.rider then
-	// 			local rider = minetest.get_player_by_name(self.rider)
+	// 			local rider = core.get_player_by_name(self.rider)
 	// 			local move = rider:get_player_control().up
 	// 			self.moving = nil
 	// 			if move then
@@ -137,7 +138,7 @@ namespace boat {
 	// 	--players push boat
 	// 	push = function(self)
 	// 		local pos = self.object:get_pos()
-	// 		for _,object in ipairs(minetest.get_objects_inside_radius(pos, 1)) do
+	// 		for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
 	// 			if object:is_player() and object:get_player_name() ~= self.rider then
 	// 				local player_pos = object:get_pos()
 	// 				pos.y = 0
@@ -158,7 +159,7 @@ namespace boat {
 	// 	--makes the boat float
 	// 	float = function(self)
 	// 		local pos = self.object:get_pos()
-	// 		local node = minetest.get_node(pos).name
+	// 		local node = core.get_node(pos).name
 	// 		self.swimming = false
 	// 		--flow normally if floating else don't
 	// 		if node == "main:water" or node =="main:waterflow" then
@@ -187,7 +188,7 @@ namespace boat {
 	// 		local pos = self.object:get_pos()
 	// 		local velocity = self.object:get_velocity()
 	// 		if self.lag_check then
-	// 			local chugent = minetest.get_us_time()/1000000 - self.lag_check
+	// 			local chugent = core.get_us_time()/1000000 - self.lag_check
 	// 			--print("lag = "..chugent.." ms")
 	// 			if chugent > 1 and  self.old_pos and self.old_velocity then
 	// 				self.object:move_to(self.old_pos)
@@ -196,7 +197,7 @@ namespace boat {
 	// 		end
 	// 		self.old_pos = pos
 	// 		self.old_velocity = velocity
-	// 		self.lag_check = minetest.get_us_time()/1000000
+	// 		self.lag_check = core.get_us_time()/1000000
 	// 	end,
 	// 	flow = function(self)
 	// 		local flow_dir = flow(self.object:get_pos())
@@ -218,7 +219,7 @@ namespace boat {
 	// 		self.lag_correction(self,dtime)
 	// 	end,
 	// })
-	// minetest.register_craftitem("boat:boat", {
+	// core.register_craftitem("boat:boat", {
 	// 	description = "Boat",
 	// 	inventory_image = "boatitem.png",
 	// 	wield_image = "boatitem.png",
@@ -228,17 +229,17 @@ namespace boat {
 	// 			return
 	// 		end
 	// 		local sneak = placer:get_player_control().sneak
-	// 		local noddef = minetest.registered_nodes[minetest.get_node(pointed_thing.under).name]
+	// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
 	// 		if not sneak and noddef.on_rightclick then
-	// 			minetest.item_place(itemstack, placer, pointed_thing)
+	// 			core.item_place(itemstack, placer, pointed_thing)
 	// 			return
 	// 		end
-	// 		minetest.add_entity(pointed_thing.above, "boat:boat")
+	// 		core.add_entity(pointed_thing.above, "boat:boat")
 	// 		itemstack:take_item()
 	// 		return itemstack
 	// 	end,
 	// })
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "boat:boat",
 	// 	recipe = {
 	// 		{"main:wood", "", "main:wood"},
@@ -246,7 +247,7 @@ namespace boat {
 	// 	},
 	// })
 	// ----------------------------------
-	// minetest.register_entity("boat:iron_boat", {
+	// core.register_entity("boat:iron_boat", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -263,13 +264,13 @@ namespace boat {
 	// 	rider = nil,
 	// 	iron_boat = true,
 	// 	get_staticdata = function(self)
-	// 		return minetest.serialize({
+	// 		return core.serialize({
 	// 			--itemstring = self.itemstring,
 	// 		})
 	// 	end,
 	// 	on_activate = function(self, staticdata, dtime_s)
 	// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
-	// 			local data = minetest.deserialize(staticdata)
+	// 			local data = core.deserialize(staticdata)
 	// 			if data and type(data) == "table" then
 	// 				--self.itemstring = data.itemstring
 	// 			end
@@ -282,7 +283,7 @@ namespace boat {
 	// 	end,
 	// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 	// 		local pos = self.object:get_pos()
-	// 		minetest.add_item(pos, "boat:iron_boat")
+	// 		core.add_item(pos, "boat:iron_boat")
 	// 		self.object:remove()
 	// 	end,
 	// 	on_rightclick = function(self,clicker)
@@ -310,7 +311,7 @@ namespace boat {
 	// 	check_if_on_land = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		pos.y = pos.y - 0.37
-	// 		local bottom_node = minetest.get_node(pos).name
+	// 		local bottom_node = core.get_node(pos).name
 	// 		if (bottom_node == "nether:lava" or bottom_node == "nether:lavaflow" or bottom_node == "air") then
 	// 			self.on_land = false
 	// 		else
@@ -320,7 +321,7 @@ namespace boat {
 	// 	--players drive the baot
 	// 	drive = function(self)
 	// 		if self.rider and not self.on_land == true then
-	// 			local rider = minetest.get_player_by_name(self.rider)
+	// 			local rider = core.get_player_by_name(self.rider)
 	// 			local move = rider:get_player_control().up
 	// 			self.moving = nil
 	// 			if move then
@@ -339,7 +340,7 @@ namespace boat {
 	// 	--players push boat
 	// 	push = function(self)
 	// 		local pos = self.object:get_pos()
-	// 		for _,object in ipairs(minetest.get_objects_inside_radius(pos, 1)) do
+	// 		for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
 	// 			if object:is_player() and object:get_player_name() ~= self.rider then
 	// 				local player_pos = object:get_pos()
 	// 				pos.y = 0
@@ -360,7 +361,7 @@ namespace boat {
 	// 	--makes the boat float
 	// 	float = function(self)
 	// 		local pos = self.object:get_pos()
-	// 		local node = minetest.get_node(pos).name
+	// 		local node = core.get_node(pos).name
 	// 		self.swimming = false
 	// 		--flow normally if floating else don't
 	// 		if node == "nether:lava" or node =="nether:lavaflow" then
@@ -393,7 +394,7 @@ namespace boat {
 	// 		local pos = self.object:get_pos()
 	// 		local velocity = self.object:get_velocity()
 	// 		if self.lag_check then
-	// 			local chugent = minetest.get_us_time()/1000000- self.lag_check
+	// 			local chugent = core.get_us_time()/1000000- self.lag_check
 	// 			--print("lag = "..chugent.." ms")
 	// 			if chugent > 70 and  self.old_pos and self.old_velocity then
 	// 				self.object:move_to(self.old_pos)
@@ -402,7 +403,7 @@ namespace boat {
 	// 		end
 	// 		self.old_pos = pos
 	// 		self.old_velocity = velocity
-	// 		self.lag_check = minetest.get_us_time()/1000000
+	// 		self.lag_check = core.get_us_time()/1000000
 	// 	end,
 	// 	on_step = function(self, dtime)
 	// 		self.check_if_on_land(self)
@@ -414,7 +415,7 @@ namespace boat {
 	// 		self.lag_correction(self,dtime)
 	// 	end,
 	// })
-	// minetest.register_craftitem("boat:iron_boat", {
+	// core.register_craftitem("boat:iron_boat", {
 	// 	description = "Nether Iron Boat",
 	// 	inventory_image = "iron_boatitem.png",
 	// 	wield_image = "iron_boatitem.png",
@@ -424,17 +425,17 @@ namespace boat {
 	// 			return
 	// 		end
 	// 		local sneak = placer:get_player_control().sneak
-	// 		local noddef = minetest.registered_nodes[minetest.get_node(pointed_thing.under).name]
+	// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
 	// 		if not sneak and noddef.on_rightclick then
-	// 			minetest.item_place(itemstack, placer, pointed_thing)
+	// 			core.item_place(itemstack, placer, pointed_thing)
 	// 			return
 	// 		end
-	// 		minetest.add_entity(pointed_thing.above, "boat:iron_boat")
+	// 		core.add_entity(pointed_thing.above, "boat:iron_boat")
 	// 		itemstack:take_item()
 	// 		return itemstack
 	// 	end,
 	// })
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "boat:iron_boat",
 	// 	recipe = {
 	// 		{"main:iron", "main:coal", "main:iron"},
