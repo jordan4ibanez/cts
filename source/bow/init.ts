@@ -166,7 +166,26 @@ namespace bow {
 			const vel: Vec3 = this.object.get_velocity();
 
 			if (this.collecting) {
-				// 		owner = get_player_by_name(this.owner)
+				if (this.owner == null) {
+					core.log(
+						LogLevel.warning,
+						"Owner logic error! Owner was never set. Report my code to the nearest dumpster."
+					);
+					this.object.remove();
+					return;
+				}
+
+				const owner: ObjectRef | null = get_player_by_name(this.owner);
+
+				if (owner == null) {
+					core.log(
+						LogLevel.warning,
+						`Player ${this.owner} disappeared. `
+					);
+					this.object.remove();
+					return;
+				}
+
 				// 		for _,object in ipairs(get_objects_inside_radius(pos, this.radius)) do
 				// 			if owner then
 				// 				this.object.set_acceleration(new_vec(0,0,0))
