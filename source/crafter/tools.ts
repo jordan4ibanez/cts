@@ -1440,7 +1440,10 @@ namespace crafter {
 					placer: ObjectRef,
 					pointed_thing: PointedThing
 				) => {
-					const inv: InvRef = placer.get_inventory();
+					const inv: InvRef | null = placer.get_inventory();
+					if (inv == null) {
+						throw new Error("Not a player.");
+					}
 					const torch = inv.contains_item("main", "torch:torch");
 					const is_air: boolean =
 						core.get_node(pointed_thing.above).name == "air";
