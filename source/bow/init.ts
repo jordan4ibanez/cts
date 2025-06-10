@@ -38,6 +38,7 @@ namespace bow {
 	interface BowData {
 		index: number;
 		step: number;
+		float: number;
 	}
 
 	// Data pool.
@@ -89,15 +90,16 @@ namespace bow {
 			pool.delete(name);
 			return;
 		}
-			// Count steps using delta.
-		// 	if temp_pool.step < 5 then
-		// 	temp_pool.float = temp_pool.float + delta
-		// 	if temp_pool.float > 0.05 then
-		// 		temp_pool.float = 0
-		// 		temp_pool.step  = temp_pool.step + 1
-		// 		player:set_wielded_item(ItemStack("bow:bow_"..temp_pool.step))
-		// 	end
-		// 	end
+		// Count steps using delta.
+		if (data.step < 5) {
+			data.float += delta;
+			if (data.float > 0.05) {
+				data.float = 0;
+				data.step += 1;
+				player.set_wielded_item(ItemStack("bow:bow_" + data.step));
+			}
+		}
+
 		// 	if temp_pool.step == 5 and not rightclick then
 		// 		dir = player:get_look_dir()
 		// 		vel = multiply_vec(dir,50)
