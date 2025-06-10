@@ -268,14 +268,14 @@ namespace bed {
 		groups: { wood: 1, hard: 1, axe: 1, hand: 3, instant: 1, bouncy: 50 },
 		sounds: crafter.woodSound({ placing: "" }),
 		drawtype: Drawtype.nodebox,
-		//     node_box = {
-		// 		type = "fixed",
-		// 		fixed = {
-		// 				{-0.5, -5/16, -0.5, 0.5, 0.06, 0.5},
-		// 				{-0.5, -0.5, 0.5, -5/16, -5/16, 5/16},
-		// 				{0.5, -0.5, 0.5, 5/16, -5/16, 5/16},
-		// 			},
-		// 		},
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				[-0.5, -5 / 16, -0.5, 0.5, 0.06, 0.5],
+				[-0.5, -0.5, 0.5, -5 / 16, -5 / 16, 5 / 16],
+				[0.5, -0.5, 0.5, 5 / 16, -5 / 16, 5 / 16],
+			],
+		},
 		// 	node_placement_prediction = "",
 		// 	drop = "bed:bed",
 		// 	on_dig = function(pos, node, digger)
