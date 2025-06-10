@@ -328,7 +328,6 @@ namespace bed {
 		on_dig: (pos, node, digger) => {
 			const param2: number = core.get_node(pos).param2 || 0;
 			const facedir: Vec3 = core.facedir_to_dir(param2);
-			const obj = core.add_item(pos, "bed:bed");
 			core.remove_node(pos);
 			core.remove_node(vector.add(pos, facedir));
 			//remove_spawnpoint(pos,digger)
