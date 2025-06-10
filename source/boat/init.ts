@@ -165,24 +165,31 @@ namespace boat {
 		}
 		// Players push boat.
 		push(): void {
-			local pos = this.object.get_pos()
-			// for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
-			// 	if object:is_player() and object:get_player_name() ~= this.rider then
-			// 		local player_pos = object:get_pos()
-			// 		pos.y = 0
-			// 		player_pos.y = 0
-			// 		local currentvel = this.object.get_velocity()
-			// 		local vel = vector.subtract(pos, player_pos)
-			// 		vel = vector.normalize(vel)
-			// 		local distance = vector.distance(pos,player_pos)
-			// 		distance = (1-distance)*10
-			// 		vel = vector.multiply(vel,distance)
-			// 		local acceleration = vector.new(vel.x-currentvel.x,0,vel.z-currentvel.z)
-			// 		this.object.add_velocity(acceleration)
-			// 		acceleration = vector.multiply(acceleration, -1)
-			// 		object:add_player_velocity(acceleration)
-			// 	end
-			// end
+			const pos: Vec3 = this.object.get_pos();
+			for (const [_, object] of ipairs(
+				core.get_objects_inside_radius(pos, 1)
+			)) {
+				if (
+					!object.is_player() ||
+					object.get_player_name() != this.rider
+				) {
+					continue;
+				}
+
+				// 		local player_pos = object:get_pos()
+				// 		pos.y = 0
+				// 		player_pos.y = 0
+				// 		local currentvel = this.object.get_velocity()
+				// 		local vel = vector.subtract(pos, player_pos)
+				// 		vel = vector.normalize(vel)
+				// 		local distance = vector.distance(pos,player_pos)
+				// 		distance = (1-distance)*10
+				// 		vel = vector.multiply(vel,distance)
+				// 		local acceleration = vector.new(vel.x-currentvel.x,0,vel.z-currentvel.z)
+				// 		this.object.add_velocity(acceleration)
+				// 		acceleration = vector.multiply(acceleration, -1)
+				// 		object:add_player_velocity(acceleration)
+			}
 		}
 
 		// 	//makes the boat float
