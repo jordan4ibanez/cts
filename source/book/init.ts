@@ -156,7 +156,7 @@ namespace book {
 			open_book_inked_gui(itemstack, user);
 		},
 	});
-	// //change this to paper
+	
 	// core.register_craft({
 	// 	output = "book:book",
 	// 	recipe = {
@@ -165,5 +165,5 @@ namespace book {
 	// 		{"main:wood","main:wood","main:wood"},
 	// 	}
 	// })
-	// //book book book
+	
 }
