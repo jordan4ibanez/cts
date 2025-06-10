@@ -148,9 +148,13 @@ namespace book {
 			//print("make books placable on the ground")
 			open_book_inked_gui(itemstack, user);
 		},
-		// 	on_secondary_use = function(itemstack, user, pointed_thing)
-		// 		open_book_inked_gui(itemstack, user)
-		// 	end,
+		on_secondary_use: (
+			itemstack: ItemStackObject,
+			user: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			open_book_inked_gui(itemstack, user);
+		},
 	});
 	// //change this to paper
 	// core.register_craft({
