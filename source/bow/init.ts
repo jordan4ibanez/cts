@@ -161,14 +161,14 @@ namespace bow {
 
 			// 	this.timer = this.timer + delta
 			
-			// 	pos = this.object:get_pos()
-			// 	vel = this.object:get_velocity()
+			// 	pos = this.object.get_pos()
+			// 	vel = this.object.get_velocity()
 
 			// 	if this.collecting == true then
 			// 		owner = get_player_by_name(this.owner)
 			// 		for _,object in ipairs(get_objects_inside_radius(pos, this.radius)) do
 			// 			if owner then
-			// 				this.object:set_acceleration(new_vec(0,0,0))
+			// 				this.object.set_acceleration(new_vec(0,0,0))
 			// 				//get the variables
 			// 				pos2 = owner:get_pos()
 			// 				player_velocity = owner:get_player_velocity()
@@ -182,14 +182,14 @@ namespace bow {
 			// 				multiplier = (this.radius*5) - distance
 			// 				velocity = multiply_vec(direction,multiplier)
 			// 				velocity = add_vec(player_velocity,velocity)
-			// 				this.object:set_velocity(velocity)
+			// 				this.object.set_velocity(velocity)
 			// 				if distance < 0.2 then
-			// 					this.object:remove()
+			// 					this.object.remove()
 			// 				end
 			// 				return
 			// 			else
 			// 				print(this.owner.." does not exist")
-			// 				this.object:remove()
+			// 				this.object.remove()
 			// 			end
 			// 		end
 			// 	else
@@ -200,7 +200,7 @@ namespace bow {
 			// 					full_punch_interval=1.5,
 			// 					damage_groups = {damage=3},
 			// 				})
-			// 				this.object:remove()
+			// 				this.object.remove()
 			// 				return
 			// 			elseif this.timer > 3 and (object:is_player() and object:get_player_name() == this.owner) then
 			// 				this.collecting = true
@@ -213,7 +213,7 @@ namespace bow {
 			// 						pitch = random(60,100)/100
 			// 					})
 			// 				else
-			// 					this.object:remove()
+			// 					this.object.remove()
 			// 					core.throw_item(pos,"bow:arrow")
 			// 				end
 			// 			end
@@ -229,19 +229,19 @@ namespace bow {
 			// 			end
 			// 			if collision.new_pos then
 			// 				//print(dump(collision.new_pos))
-			// 				this.object:set_pos(collision.new_pos)
+			// 				this.object.set_pos(collision.new_pos)
 			// 			end
 			// 			//print(dump(collision.new_pos))
 			// 			core.sound_play("arrow_hit",{object=this.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
 			// 			this.stuck = true
-			// 			this.object:set_velocity(new_vec(0,0,0))
-			// 			this.object:set_acceleration(new_vec(0,0,0))
+			// 			this.object.set_velocity(new_vec(0,0,0))
+			// 			this.object.set_acceleration(new_vec(0,0,0))
 			// 		elseif this.stuck == true and this.check_dir then
 			// 			pos2 = add_vec(pos,multiply_vec(this.check_dir,0.2))
 			// 			ray = create_raycast(pos, pos2, false, false)
 			// 			if not ray:next() then
 			// 				this.stuck = false
-			// 				this.object:set_acceleration(new_vec(0,-9.81,0))
+			// 				this.object.set_acceleration(new_vec(0,-9.81,0))
 			// 			end
 			// 		end
 			// 		if not this.stuck and pos and this.oldpos then
@@ -252,7 +252,7 @@ namespace bow {
 			// 			dir = normalize_vec(sub_vec(pos,this.oldpos))
 			// 			y = dir_to_yaw(dir)
 			// 			x = (dir_to_yaw(new_vec(vec_distance(new_vec(pos.x,0,pos.z),new_vec(this.oldpos.x,0,this.oldpos.z)),0,pos.y-this.oldpos.y))+(pi/2))
-			// 			this.object:set_rotation(new_vec(x,y,this.spin))
+			// 			this.object.set_rotation(new_vec(x,y,this.spin))
 			// 		end
 			// 		if this.stuck == false then
 			// 			this.oldpos = pos
@@ -277,7 +277,7 @@ namespace bow {
 		// 	//automatic_face_movement_max_rotation_per_sec = 600,
 		// }
 		// arrow.on_activate = function(self, staticdata, delta_s)
-		// 	//this.object:set_animation({x=0,y=180}, 15, 0, true)
+		// 	//this.object.set_animation({x=0,y=180}, 15, 0, true)
 		// 	local vel = nil
 		// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
 		// 		local data = deserialize(staticdata)
@@ -292,9 +292,9 @@ namespace bow {
 		// 		end
 		// 	end
 		// 	if not this.stuck then
-		// 		this.object:set_acceleration(new_vec(0,-9.81,0))
+		// 		this.object.set_acceleration(new_vec(0,-9.81,0))
 		// 		if vel then
-		// 			this.object:set_velocity(vel)
+		// 			this.object.set_velocity(vel)
 		// 		end
 		// 	end
 		// end
@@ -306,7 +306,7 @@ namespace bow {
 		// 		timer      = this.timer,
 		// 		collecting = this.collecting,
 		// 		check_dir  = this.check_dir,
-		// 		vel        = this.object:get_velocity()
+		// 		vel        = this.object.get_velocity()
 		// 	})
 		// end
 		// arrow.spin = 0
