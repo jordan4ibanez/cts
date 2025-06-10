@@ -197,7 +197,7 @@ namespace playerMechanics {
 
 		if (tick <= 0) {
 			player.set_hp(player.get_hp() - damage);
-			tick = 0.25;
+			tick = 0.5;
 		}
 		data.hurt_inside_ticker = tick;
 	}
