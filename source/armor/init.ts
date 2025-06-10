@@ -107,7 +107,10 @@ namespace armor {
 	}
 
 	export function damage_armor(player: ObjectRef, damage: number): void {
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 		let recalc: boolean = false;
 
 		const multiplier: number[] = [8, 4, 6, 10];
