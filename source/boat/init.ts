@@ -176,19 +176,19 @@ namespace boat {
 					continue;
 				}
 
-				// 		local player_pos = object:get_pos()
-				// 		pos.y = 0
-				// 		player_pos.y = 0
-				// 		local currentvel = this.object.get_velocity()
-				// 		local vel = vector.subtract(pos, player_pos)
-				// 		vel = vector.normalize(vel)
-				// 		local distance = vector.distance(pos,player_pos)
-				// 		distance = (1-distance)*10
-				// 		vel = vector.multiply(vel,distance)
-				// 		local acceleration = vector.new(vel.x-currentvel.x,0,vel.z-currentvel.z)
-				// 		this.object.add_velocity(acceleration)
-				// 		acceleration = vector.multiply(acceleration, -1)
-				// 		object:add_player_velocity(acceleration)
+				// local player_pos = object:get_pos()
+				// pos.y = 0
+				// player_pos.y = 0
+				// local currentvel = this.object.get_velocity()
+				// local vel = vector.subtract(pos, player_pos)
+				// vel = vector.normalize(vel)
+				// local distance = vector.distance(pos,player_pos)
+				// distance = (1-distance)*10
+				// vel = vector.multiply(vel,distance)
+				// local acceleration = vector.new(vel.x-currentvel.x,0,vel.z-currentvel.z)
+				// this.object.add_velocity(acceleration)
+				// acceleration = vector.multiply(acceleration, -1)
+				// object:add_player_velocity(acceleration)
 			}
 		}
 
