@@ -35,7 +35,9 @@ namespace bow {
 	// ██║     ███████╗██║  ██║   ██║   ███████╗██║  ██║    ██║     ██║  ██║██║  ██║   ██║
 	// ╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝
 
-	interface BowData {}
+	interface BowData {
+		index: number;
+	}
 
 	// Data pool.
 	const pool = new Map<string, BowData>();
@@ -45,14 +47,18 @@ namespace bow {
 	function arrow_check(name: string, dtime: number): void {
 		const data: BowData | undefined = pool.get(name);
 
+		if (data == null) {
+			throw new Error(`Player ${name} was never added to the pool.`)
+		}
+
 		const player: ObjectRef | null = get_player_by_name(name);
 		if (player == null) {
 			throw new Error(`Player ${name} does not exist.`);
 		}
-		// 	rightclick = player:get_player_control().RMB
-		// 	new_index = player:get_wield_index()
-		// 	// if player changes selected item
-		// 	if new_index ~= temp_pool.index then
+		const rightclick: boolean = player.get_player_control().RMB;
+		const new_index: number = player.get_wield_index();
+		// If player changes selected item.
+		if (new_index != data.index) then;
 		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
 		// 		pool[name] = nil
 		// 		return
