@@ -203,6 +203,9 @@ namespace playerMechanics {
 	}
 
 	function hurt_inside(player: ObjectRef, dtime: number): void {
+
+		// todo: this is running EVERY server tick. This should be running every 0.5 server ticks.
+
 		const name: string = player.get_player_name();
 		if (player.get_hp() <= 0) {
 			return;
