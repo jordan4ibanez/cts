@@ -244,12 +244,12 @@ namespace boat {
 			const pos: Vec3 = this.object.get_pos();
 			const velocity: Vec3 = this.object.get_velocity();
 
-			
 			const chugent: number =
 				core.get_us_time() / 1000000 - this.lag_check;
 			// print("lag = " + chugent + " ms");
 
-			if (chugent > 1 && this.old_pos && this.old_velocity) {
+			if (dtime > 0.001 && this.old_pos && this.old_velocity) {
+				print("lagging");
 				this.object.move_to(this.old_pos);
 				this.object.set_velocity(this.old_velocity);
 			}
