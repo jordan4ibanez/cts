@@ -37,6 +37,7 @@ namespace bow {
 
 	interface BowData {
 		index: number;
+		step: number;
 	}
 
 	// Data pool.
@@ -64,12 +65,12 @@ namespace bow {
 
 		const rightclick: boolean = player.get_player_control().RMB;
 
-		// 	// if player lets go of rightclick
-		// 	if temp_pool.step ~= 5 and not rightclick then
-		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-		// 		pool[name] = nil
-		// 		return
-		// 	end
+		// If player lets go of rightclick.
+		if (data.step != 5 && !rightclick) {
+			// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+			// 		pool[name] = nil
+			// 		return
+		}
 		// 	// if player isn't holding a bow
 		// 	if core.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
 		// 		pool[name] = nil
