@@ -125,28 +125,28 @@ namespace boat {
 		}
 
 		// Players drive the boat.
-		// 	drive = function(self)
-		// 		if this.rider then
-		// 			local rider = core.get_player_by_name(this.rider)
-		// 			local move = rider:get_player_control().up
-		// 			this.moving = nil
-		// 			if move then
-		// 				local currentvel = this.object.get_velocity()
-		// 				local goal = rider:get_look_dir()
-		// 				if this.on_land == true then
-		// 					goal = vector.multiply(goal,1)
-		// 				else
-		// 					goal = vector.multiply(goal,20)
-		// 				end
-		// 				local acceleration = vector.new(goal.x-currentvel.x,0,goal.z-currentvel.z)
-		// 				acceleration = vector.multiply(acceleration, 0.01)
-		// 				this.object.add_velocity(acceleration)
-		// 				this.moving = true
-		// 			end
-		// 		else
-		// 			this.moving = nil
-		// 		end
-		// 	end,
+		drive(): void {
+			// 		if this.rider then
+			// 			local rider = core.get_player_by_name(this.rider)
+			// 			local move = rider:get_player_control().up
+			// 			this.moving = nil
+			// 			if move then
+			// 				local currentvel = this.object.get_velocity()
+			// 				local goal = rider:get_look_dir()
+			// 				if this.on_land == true then
+			// 					goal = vector.multiply(goal,1)
+			// 				else
+			// 					goal = vector.multiply(goal,20)
+			// 				end
+			// 				local acceleration = vector.new(goal.x-currentvel.x,0,goal.z-currentvel.z)
+			// 				acceleration = vector.multiply(acceleration, 0.01)
+			// 				this.object.add_velocity(acceleration)
+			// 				this.moving = true
+			// 			end
+			// 		else
+			// 			this.moving = nil
+			// 		end
+		}
 		// 	//players push boat
 		// 	push = function(self)
 		// 		local pos = this.object.get_pos()
