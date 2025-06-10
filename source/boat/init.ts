@@ -44,19 +44,19 @@ namespace boat {
 	class BoatEntity extends types.Entity {
 		name: string = "boat:boat";
 
-			initial_properties = {
-				hp_max : 1,
-				physical : true,
-				collide_with_objects : false,
-				collisionbox : [-0.4, 0, -0.4, 0.4, 0.5, 0.4],
-				visual : "mesh",
-				mesh : "boat.x",
-				textures : {"boat.png"},
-				visual_size : {x:1,y:1,z:1},
-				is_visible : true,
-				automatic_face_movement_dir : -90.0,
-				automatic_face_movement_max_rotation_per_sec : 600,
-			},
+		initial_properties = {
+			hp_max: 1,
+			physical: true,
+			collide_with_objects: false,
+			collisionbox: [-0.4, 0, -0.4, 0.4, 0.5, 0.4],
+			visual: EntityVisual.mesh,
+			mesh: "boat.x",
+			textures: ["boat.png"],
+			visual_size: vector.create3d({ x: 1, y: 1, z: 1 }),
+			is_visible: true,
+			automatic_face_movement_dir: -90.0,
+			automatic_face_movement_max_rotation_per_sec: 600,
+		};
 
 		// 	rider = nil,
 		// 	boat = true,
