@@ -27,20 +27,30 @@ namespace book {
 		core.show_formspec(name, "book.book_gui", book_writing_formspec);
 	}
 
-	// //this is the gui for permenantly written books
-	// local open_book_inked_gui = function(itemstack, user)
-	// 	core.sound_play("book_open", {to_player=user:get_player_name()})
-	// 	local meta = itemstack:get_meta()
-	// 	local book_text = meta:get_string("book.book_text")
-	// 	local book_title = meta:get_string("book.book_title")
-	// 	book_writing_formspec = "size[9,8.75]"+
-	// 		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"+
-	// 		"style_type[textarea;textcolor=black;border=false;noclip=false]"+
-	// 		"textarea[0.3,0;9,0.5;;;"+book_title+"]"+
-	// 		"textarea[0.3,0.3;9,9;;;"+book_text+"]"+
-	// 		"button_exit[4,8.3;1,1;book.book_close;close]"
-	// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
-	// end
+	// This is the gui for permenantly written books.
+	function open_book_inked_gui(
+		itemstack: ItemStackObject,
+		user: ObjectRef
+	): void {
+		const name: string = user.get_player_name();
+		core.sound_play("book_open", { object: user });
+		const meta: MetaRef = itemstack.get_meta();
+		const book_text: string = meta.get_string("book.book_text");
+		const book_title: string = meta.get_string("book.book_title");
+		let book_writing_formspec =
+			"size[9,8.75]" +
+			"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]" +
+			"style_type[textarea;textcolor=black;border=false;noclip=false]" +
+			"textarea[0.3,0;9,0.5;;;" +
+			book_title +
+			"]" +
+			"textarea[0.3,0.3;9,9;;;" +
+			book_text +
+			"]" +
+			"button_exit[4,8.3;1,1;book.book_close;close]";
+		core.show_formspec(name, "book.book_gui", book_writing_formspec);
+	}
+
 	// //handle the book gui
 	// core.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if not formname == "book.book_gui" then return end
