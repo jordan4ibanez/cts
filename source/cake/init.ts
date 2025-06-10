@@ -1,3 +1,4 @@
+namespace cake {
 // local
 // minetest,math
 // =
@@ -124,3 +125,4 @@
 // })
 
 
+}
