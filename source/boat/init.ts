@@ -58,8 +58,11 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
-		// 	rider = nil,
-		// 	boat = true,
+		rider: ObjectRef | null = null;
+
+		// todo: boat???
+		boat: boolean = true;
+
 		// 	get_staticdata = function(self)
 		// 		return core.serialize({
 		// 			//itemstring = self.itemstring,
