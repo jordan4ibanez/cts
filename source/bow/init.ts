@@ -2,30 +2,30 @@ namespace bow {
 	
 
 	// Luanti library.
-	// local get_connected_players     = core.get_connected_players
-	// local get_player_by_name        = core.get_player_by_name
-	// local get_objects_inside_radius = core.get_objects_inside_radius
-	// local create_raycast            = core.raycast
-	// local dir_to_yaw                = core.dir_to_yaw
-	// local deserialize               = core.deserialize
-	// local serialize                 = core.serialize
+	// const get_connected_players     = core.get_connected_players
+	// const get_player_by_name        = core.get_player_by_name
+	// const get_objects_inside_radius = core.get_objects_inside_radius
+	// const create_raycast            = core.raycast
+	// const dir_to_yaw                = core.dir_to_yaw
+	// const deserialize               = core.deserialize
+	// const serialize                 = core.serialize
 	// // string library
-	// local s_sub  = string.sub
-	// local s_len  = string.len
+	// const s_sub  = string.sub
+	// const s_len  = string.len
 	// // math library
-	// local pi     = math.pi
-	// local random = math.random
-	// local floor  = math.floor
+	// const pi     = math.pi
+	// const random = math.random
+	// const floor  = math.floor
 	// // vector library
-	// local new_vec       = vector.new
-	// local floor_vec     = vector.floor
-	// local vec_distance  = vector.distance
-	// local normalize_vec = vector.normalize
-	// local add_vec       = vector.add
-	// local sub_vec       = vector.subtract
-	// local multiply_vec  = vector.multiply
-	// local divide_vec    = vector.divide
-	// local vec_direction = vector.direction
+	// const new_vec       = vector.new
+	// const floor_vec     = vector.floor
+	// const vec_distance  = vector.distance
+	// const normalize_vec = vector.normalize
+	// const add_vec       = vector.add
+	// const sub_vec       = vector.subtract
+	// const multiply_vec  = vector.multiply
+	// const divide_vec    = vector.divide
+	// const vec_direction = vector.direction
 	// //[[
 	// ██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗     ██████╗  █████╗ ██████╗ ████████╗
 	// ██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝
