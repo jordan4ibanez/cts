@@ -376,12 +376,12 @@ namespace bow {
 				}
 			}
 
-			// 	if not this.stuck then
-			// 		this.object.set_acceleration(new_vec(0,-9.81,0))
-			// 		if vel then
-			// 			this.object.set_velocity(vel)
-			// 		end
-			// 	end
+			if (!this.stuck) {
+				this.object.set_acceleration(new_vec(0, -9.81, 0));
+				if (vel != null) {
+					this.object.set_velocity(vel);
+				}
+			}
 		}
 
 		// arrow.get_staticdata = function(self)
