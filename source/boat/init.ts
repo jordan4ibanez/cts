@@ -223,7 +223,6 @@ namespace boat {
 		}
 
 		// Slows the boat down.
-
 		slowdown(): void {
 			if (this.moving) {
 				return;
