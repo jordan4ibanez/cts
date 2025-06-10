@@ -13,12 +13,17 @@ namespace boat {
 		{ source: "crafter:water", flow: "crafter:waterflow" },
 		{ source: "crafter:lava", flow: "crafter:lavaflow" },
 	];
+	const flowFuncs: ((pos: Vec3) => Vec3 | null)[] = [
+		flowLib.flow,
+		flowLib.lavaflow,
+	];
 
 	for (const i of $range(0, 1)) {
 		const entityName: string = `crafter_boat:${identifiers[i]}_boat`;
 
 		const currentLiquidSource: string = liquids[i].source;
 		const currentLiquidFlow: string = liquids[i].flow;
+		const flowFunction: (pos: Vec3) => Vec3 | null = flowFuncs[i];
 
 		class BoatEntity extends types.Entity {
 			name: string = entityName;
