@@ -200,7 +200,11 @@ namespace hand {
 
 	//Create a hand list and then enable the hand node
 	core.register_on_joinplayer((player: ObjectRef) => {
-		player.get_inventory().set_size("hand", 1);
-		player.get_inventory().set_stack("hand", 1, "crafter_hand:player");
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
+		inv.set_size("hand", 1);
+		inv.set_stack("hand", 1, "crafter_hand:player");
 	});
 }
