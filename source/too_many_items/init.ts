@@ -577,7 +577,10 @@ namespace tooManyItems {
 			page: 0,
 		};
 
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 		inv.set_width("craft", 2);
 		inv.set_width("main", 9);
 		inv.set_size("main", 9 * 4);
