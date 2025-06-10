@@ -58,7 +58,6 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
-		lag_check: number = 0;
 		swimming: boolean = false;
 		moving: boolean = false;
 		on_land: boolean = false;
@@ -66,7 +65,8 @@ namespace boat {
 		old_pos: Vec3 = vector.create3d();
 		old_velocity: Vec3 = vector.create3d();
 
-		// todo: boat???
+		// todo: These variables may be useless.
+		lag_check: number = 0;
 		boat: boolean = true;
 
 		get_staticdata(): string {
