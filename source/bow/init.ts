@@ -157,7 +157,7 @@ namespace bow {
 		owner: string | null = null;
 		oldpos: Vec3 | null = null;
 
-		// local function arrow_step(self, delta,moveresult)
+		on_step( delta: number,moveresult: MoveResult): void {
 		// 	self.timer = self.timer + delta
 		// 	pos = self.object:get_pos()
 		// 	vel = self.object:get_velocity()
@@ -256,7 +256,7 @@ namespace bow {
 		// 			self.oldvel = vel
 		// 		end
 		// 	end
-		// end
+		}
 
 		// local arrow = {}
 		// arrow.initial_properties = {
