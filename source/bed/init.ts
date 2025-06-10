@@ -149,7 +149,10 @@ namespace bed {
 	function do_sleep(player: ObjectRef, pos: Vec3, dir: Vec3): void {
 		const time: number = core.get_timeofday() * 24000;
 		const name: string = player.get_player_name();
-		// 	if time > time_night.begin or time < time_night.ending then
+		if (time < timeNightBegin && time > timeNightEnd) {
+			core.chat_send_player(name, "You can only sleep at night");
+			return;
+		}
 		// 		local real_dir = core.facedir_to_dir(dir)
 		// 		player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
 		// 		local new_pos = vector.subtract(pos,vector.divide(real_dir,2))
@@ -164,7 +167,7 @@ namespace bed {
 		// 		csm_send_player_to_sleep(player)
 		// 		sleep_loop = true
 		// 	else
-		// 		core.chat_send_player(name, "You can only sleep at night")
+
 		// 	end
 	}
 
