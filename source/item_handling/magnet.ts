@@ -23,7 +23,10 @@ namespace item_handling {
 		}
 
 		const pos: Vec3 = player.get_pos();
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 
 		let curVal = pool.get(name);
 		if (curVal == null) {
