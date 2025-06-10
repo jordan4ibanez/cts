@@ -1,8 +1,4 @@
 namespace boat {
-	// local
-	// minetest,vector,math,pairs
-	// =
-	// minetest,vector,math,pairs
 	// local name
 	// local pos
 	// local node
