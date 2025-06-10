@@ -1,5 +1,7 @@
 namespace bed {
-	const mod_storage: MetaRef = core.get_mod_storage();
+	//? This depends on the crafter client mod.
+
+	// const mod_storage: MetaRef = core.get_mod_storage();
 
 	const timeNightBegin = 19000;
 	const timeNightEnd = 5500;
