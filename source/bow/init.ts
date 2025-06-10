@@ -395,11 +395,6 @@ namespace bow {
 				vel: this.object.get_velocity(),
 			});
 		}
-
-		// arrow.on_step = function(self, delta,moveresult)
-		// 	arrow_step(self, delta,moveresult)
-		// end
-		// core.register_entity("bow:arrow", arrow)
 	}
 	utility.registerTSEntity(ArrowEntity);
 
