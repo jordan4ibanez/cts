@@ -329,6 +329,7 @@ namespace bed {
 	// 		do_sleep(clicker,vector.add(pos,dir),param2)
 	// 	end,
 	// })
+
 	// core.register_craft({
 	// 	output = "bed:bed",
 	// 	recipe = {
