@@ -213,7 +213,7 @@ namespace bow {
 				for (const [_, object] of ipairs(
 					get_objects_inside_radius(pos, 2)
 				)) {
-					// if this.stuck == false and ((object:is_player() and object:get_player_name() ~= this.owner and object:get_hp() > 0) or (object:get_luaentity() and object:get_luaentity().mobname)) then
+					if (!this.stuck  && ((object.is_player() && object.get_player_name() != this.owner && object.get_hp() > 0) || (object.get_luaentity() && (object.get_luaentity() as any?)?.mobname))) {
 					// 	object:punch(this.object, 2,
 					// 		{
 					// 		full_punch_interval=1.5,
@@ -221,7 +221,7 @@ namespace bow {
 					// 	})
 					// 	this.object.remove()
 					// 	return
-					// elseif this.timer > 3 and (object:is_player() and object:get_player_name() == this.owner) then
+					 } elseif this.timer > 3 and (object:is_player() and object:get_player_name() == this.owner) {
 					// 	this.collecting = true
 					// 	local inv = object:get_inventory()
 					// 	if inv and inv:room_for_item("main", ItemStack("bow:arrow")) then
@@ -235,7 +235,7 @@ namespace bow {
 					// 		this.object.remove()
 					// 		core.throw_item(pos,"bow:arrow")
 					// 	end
-					// end
+					 }
 				}
 
 				// 		if moveresult and moveresult.collides and moveresult.collisions and moveresult.collisions[1] and moveresult.collisions[1].new_velocity and this.stuck == false then
