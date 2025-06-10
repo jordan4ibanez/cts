@@ -262,14 +262,23 @@ namespace bow {
 					moveresult.collisions[0]?.new_velocity &&
 					!this.stuck
 				) {
-					// collision = moveresult.collisions[1]
-					// if collision.new_velocity.x == 0 and collision.old_velocity.x ~= 0 then
-					// 	this.check_dir = vec_direction(new_vec(pos.x,0,0),new_vec(collision.node_pos.x,0,0))
-					// elseif collision.new_velocity.y == 0 and collision.old_velocity.y ~= 0 then
-					// 	this.check_dir = vec_direction(new_vec(0,pos.y,0),new_vec(0,collision.node_pos.y,0))
-					// elseif collision.new_velocity.z == 0 and collision.old_velocity.z ~= 0 then
-					// 	this.check_dir = vec_direction(new_vec(0,0,pos.z),new_vec(0,0,collision.node_pos.z))
-					// end
+					const collision: Collision = moveresult.collisions[0];
+					if (
+						collision.new_velocity.x == 0 &&
+						collision.old_velocity.x != 0
+					) {
+						// 	this.check_dir = vec_direction(new_vec(pos.x,0,0),new_vec(collision.node_pos.x,0,0))
+					} else if (
+						collision.new_velocity.y == 0 &&
+						collision.old_velocity.y != 0
+					) {
+						// 	this.check_dir = vec_direction(new_vec(0,pos.y,0),new_vec(0,collision.node_pos.y,0))
+					} else if (
+						collision.new_velocity.z == 0 &&
+						collision.old_velocity.z != 0
+					) {
+						// 	this.check_dir = vec_direction(new_vec(0,0,pos.z),new_vec(0,0,collision.node_pos.z))
+					}
 					// if collision.new_pos then
 					// 	//print(dump(collision.new_pos))
 					// 	this.object.set_pos(collision.new_pos)
