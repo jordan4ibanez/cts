@@ -67,17 +67,18 @@ namespace boat {
 			return "";
 		}
 
-		on_activate(staticdata: string, dtime_s: number): void {
+		on_activate(): void {
 			this.object.set_armor_groups({ immortal: 1 });
 			this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
 			this.object.set_acceleration(vector.create3d({ x: 0, y: 0, z: 0 }));
 		}
 
-		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-		// 		local pos = this.object.get_pos()
-		// 		core.add_item(pos, "boat:boat")
-		// 		this.object.remove()
-		// 	end,
+		on_punch(): void {
+			const pos: Vec3 = this.object.get_pos();
+			core.add_item(pos, "boat:boat");
+			this.object.remove();
+		}
+
 		// 	on_rightclick = function(self,clicker)
 		// 		if not clicker or not clicker:is_player() then
 		// 			return
