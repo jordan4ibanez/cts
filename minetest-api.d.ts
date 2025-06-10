@@ -960,6 +960,8 @@ declare global {
 		object: ObjectRef;
 		old_velocity: Vec3;
 		new_velocity: Vec3;
+		// Available since 5.9.0.
+		new_pos: Vec3
 	}
 
 	/** @noSelf **/ interface MoveResult {
