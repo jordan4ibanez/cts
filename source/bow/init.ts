@@ -428,37 +428,39 @@ namespace bow {
 		}
 	}
 
-	// core.register_craftitem("bow:bow_empty", {
-	// 	description = "Bow",
-	// 	inventory_image = "bow.png",
-	// 	stack_max = 1,
-	// 	groups = {bow=1},
-	// 	range = 0,
-	// 	on_secondary_use = function(itemstack, user, pointed_thing)
-	// 		initialize_pullback(user)
-	// 	end,
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		initialize_pullback(placer)
-	// 	end,
-	// })
-	// for i = 1,5 do
-	// 	core.register_craftitem("bow:bow_"+i, {
-	// 		description = "Bow",
-	// 		inventory_image = "bow_"+i+".png",
-	// 		stack_max = 1,
-	// 		groups = {bow=1,bow_loaded=i},
-	// 		range = 0,
-	// 		on_drop = function(itemstack, dropper, pos)
-	// 			itemstack = ItemStack("bow:bow_empty")
-	// 			core.item_drop(itemstack, dropper, pos)
-	// 			return(itemstack)
-	// 		end,
-	// 	})
-	// end
-	// core.register_craftitem("bow:arrow", {
-	// 	description = "Arrow",
-	// 	inventory_image = "arrow_item.png",
-	// })
+	core.register_craftitem("bow:bow_empty", {
+		description: "Bow",
+		inventory_image: "bow.png",
+		stack_max: 1,
+		groups: { bow: 1 },
+		range: 0,
+
+		// 	on_secondary_use = function(itemstack, user, pointed_thing)
+		// 		initialize_pullback(user)
+		// 	end,
+		// 	on_place = function(itemstack, placer, pointed_thing)
+		// 		initialize_pullback(placer)
+		// 	end,
+		// })
+		// for i = 1,5 do
+		// 	core.register_craftitem("bow:bow_"+i, {
+		// 		description = "Bow",
+		// 		inventory_image = "bow_"+i+".png",
+		// 		stack_max = 1,
+		// 		groups = {bow=1,bow_loaded=i},
+		// 		range = 0,
+		// 		on_drop = function(itemstack, dropper, pos)
+		// 			itemstack = ItemStack("bow:bow_empty")
+		// 			core.item_drop(itemstack, dropper, pos)
+		// 			return(itemstack)
+		// 		end,
+		// 	})
+		// end
+		// core.register_craftitem("bow:arrow", {
+		// 	description = "Arrow",
+		// 	inventory_image = "arrow_item.png",
+	});
+
 	// //[[
 	//  ██████╗██████╗  █████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗
 	// ██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝
