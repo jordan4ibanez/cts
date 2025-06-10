@@ -83,4 +83,65 @@ namespace flowLib {
 		}
 		return null;
 	}
+
+		export function lavaflow(pos: Vec3): Vec3 | null {
+		const c_node = core.get_node(pos).name;
+		if (c_node != "crafter:lavaflow" && c_node != "crafter:lava") {
+			return null;
+		}
+		const data: FlowNode[] = get_nodes(pos);
+		const param2: number | undefined = core.get_node(pos).param2;
+		if (param2 == null) {
+			return null;
+		}
+		if (param2 > 7) {
+			return null;
+		}
+		if (c_node == "crafter:lava") {
+			for (const i of data) {
+				const par2: number | undefined = i.node.param2;
+
+				if (
+					i.node.name == "crafter:lavaflow" &&
+					par2 != null &&
+					par2 == 7
+				) {
+					return vector.subtract(i.pos, pos);
+				}
+			}
+		}
+		for (const i of data) {
+			const par2: number | undefined = i.node.param2;
+			if (
+				i.node.name == "crafter:lavaflow" &&
+				par2 != null &&
+				par2 < param2
+			) {
+				return vector.subtract(i.pos, pos);
+			}
+		}
+		for (const i of data) {
+			const par2: number | undefined = i.node.param2;
+			if (
+				i.node.name == "crafter:lavaflow" &&
+				par2 != null &&
+				par2 >= 11
+			) {
+				return vector.subtract(i.pos, pos);
+			}
+		}
+		for (const i of data) {
+			const name: string = i.node.name;
+			const tmp: NodeDefinition | undefined = core.registered_nodes[name];
+			if (
+				tmp != null &&
+				!tmp.walkable &&
+				name != "crafter:lavaflow" &&
+				name != "crafter:lava"
+			) {
+				return vector.subtract(i.pos, pos);
+			}
+		}
+		return null;
+	}
 }
