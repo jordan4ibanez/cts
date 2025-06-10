@@ -360,28 +360,29 @@ namespace bow {
 			}
 		}
 
-		// arrow.on_activate = function(self, staticdata, delta_s)
-		// 	//this.object.set_animation({x=0,y=180}, 15, 0, true)
-		// 	local vel = nil
-		// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
-		// 		local data = deserialize(staticdata)
-		// 		if data and type(data) == "table" then
-		// 			this.spin       = data.spin
-		// 			this.owner      = data.owner
-		// 			this.stuck      = data.stuck
-		// 			this.timer      = data.timer
-		// 			this.collecting = data.collecting
-		// 			this.check_dir  = data.check_dir
-		// 			vel             = data.vel
-		// 		end
-		// 	end
-		// 	if not this.stuck then
-		// 		this.object.set_acceleration(new_vec(0,-9.81,0))
-		// 		if vel then
-		// 			this.object.set_velocity(vel)
-		// 		end
-		// 	end
-		// end
+		on_activate(staticdata: string, delta_s: number): void {
+			// 	//this.object.set_animation({x=0,y=180}, 15, 0, true)
+			// 	local vel = nil
+			// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
+			// 		local data = deserialize(staticdata)
+			// 		if data and type(data) == "table" then
+			// 			this.spin       = data.spin
+			// 			this.owner      = data.owner
+			// 			this.stuck      = data.stuck
+			// 			this.timer      = data.timer
+			// 			this.collecting = data.collecting
+			// 			this.check_dir  = data.check_dir
+			// 			vel             = data.vel
+			// 		end
+			// 	end
+			// 	if not this.stuck then
+			// 		this.object.set_acceleration(new_vec(0,-9.81,0))
+			// 		if vel then
+			// 			this.object.set_velocity(vel)
+			// 		end
+			// 	end
+		}
+
 		// arrow.get_staticdata = function(self)
 		// 	return serialize({
 		// 		spin       = this.spin,
