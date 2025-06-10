@@ -453,18 +453,18 @@ namespace bow {
 	});
 
 	for (const i of $range(1, 5)) {
-			core.register_craftitem("bow:bow_"+i, {
-				description : "Bow",
-				inventory_image : "bow_"+i+".png",
-				stack_max : 1,
-				groups : {bow:1,bow_loaded:i},
-				range : 0,
-				on_drop = function(itemstack, dropper, pos)
-					itemstack = ItemStack("bow:bow_empty")
-					core.item_drop(itemstack, dropper, pos)
-					return(itemstack)
-				end,
-			})
+		core.register_craftitem("bow:bow_" + i, {
+			description: "Bow",
+			inventory_image: "bow_" + i + ".png",
+			stack_max: 1,
+			groups: { bow: 1, bow_loaded: i },
+			range: 0,
+			on_drop: (itemstack, dropper, pos) => {
+				itemstack = ItemStack("bow:bow_empty");
+				core.item_drop(itemstack, dropper, pos);
+				return itemstack;
+			},
+		});
 	}
 	// core.register_craftitem("bow:arrow", {
 	// 	description = "Arrow",
