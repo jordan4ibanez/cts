@@ -195,8 +195,8 @@ namespace bed {
 	    paramtype2 : ParamType2.facedir,
 	    tiles : ["bed_top.png^[transform1","wood.png","bed_side.png","bed_side.png^[transform4","bed_front.png","nothing.png"],
 	    groups : {wood : 1, hard : 1, axe : 1, hand : 3, instant:1},
-	    sounds : main.woodSound({placing:""}),
-	    drawtype : "nodebox",
+	    sounds : crafter.woodSound({placing:""}),
+	    drawtype : Drawtype.nodebox,
 		node_placement_prediction : "",
 	// 	on_place = function(itemstack, placer, pointed_thing)
 	// 		if not pointed_thing.type == "node" then
