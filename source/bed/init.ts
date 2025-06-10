@@ -146,29 +146,28 @@ namespace bed {
 		[3]: math.pi * 1.5,
 	};
 
-	// local name
-	// local time
-	// local do_sleep = function(player,pos,dir)
-	// 	time = core.get_timeofday() * 24000
-	// 	name = player:get_player_name()
-	// 	if time > time_night.begin or time < time_night.ending then
-	// 		local real_dir = core.facedir_to_dir(dir)
-	// 		player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
-	// 		local new_pos = vector.subtract(pos,vector.divide(real_dir,2))
-	// 		player:move_to(new_pos)
-	// 		player:set_look_vertical(0)
-	// 		player:set_look_horizontal(yaw_translation[dir])
-	// 		core.show_formspec(name, "bed", bed_gui)
-	// 		player_is_sleeping(player,true)
-	// 		set_player_animation(player,"lay",0,false)
-	// 		player:set_eye_offset({x=0,y=-12,z=-7},{x=0,y=0,z=0})
-	// 		pool[name] = {pos=new_pos,sleeping=false}
-	// 		csm_send_player_to_sleep(player)
-	// 		sleep_loop = true
-	// 	else
-	// 		core.chat_send_player(name, "You can only sleep at night")
-	// 	end
-	// end
+	function do_sleep(player: ObjectRef, pos: Vec3, dir: Vec3): void {
+		const time: number = core.get_timeofday() * 24000;
+		const name: string = player.get_player_name();
+		// 	if time > time_night.begin or time < time_night.ending then
+		// 		local real_dir = core.facedir_to_dir(dir)
+		// 		player:add_player_velocity(vector.multiply(player:get_player_velocity(),-1))
+		// 		local new_pos = vector.subtract(pos,vector.divide(real_dir,2))
+		// 		player:move_to(new_pos)
+		// 		player:set_look_vertical(0)
+		// 		player:set_look_horizontal(yaw_translation[dir])
+		// 		core.show_formspec(name, "bed", bed_gui)
+		// 		player_is_sleeping(player,true)
+		// 		set_player_animation(player,"lay",0,false)
+		// 		player:set_eye_offset({x=0,y=-12,z=-7},{x=0,y=0,z=0})
+		// 		pool[name] = {pos=new_pos,sleeping=false}
+		// 		csm_send_player_to_sleep(player)
+		// 		sleep_loop = true
+		// 	else
+		// 		core.chat_send_player(name, "You can only sleep at night")
+		// 	end
+	}
+
 	// core.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if formname and formname == "bed" then
 	// 		wake_up(player)
