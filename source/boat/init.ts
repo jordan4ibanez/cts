@@ -58,6 +58,7 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
+		lag_check: boolean = false;
 		swimming: boolean = false;
 		moving: boolean = false;
 		on_land: boolean = false;
@@ -234,8 +235,8 @@ namespace boat {
 		}
 
 		lag_correction(dtime: number): void {
-			// local pos = this.object.get_pos()
-			// local velocity = this.object.get_velocity()
+			const pos: Vec3 = this.object.get_pos();
+			const velocity: Vec3 = this.object.get_velocity();
 			// if this.lag_check then
 			// 	local chugent = core.get_us_time()/1000000 - this.lag_check
 			// 	//print("lag = "..chugent.." ms")
@@ -244,6 +245,7 @@ namespace boat {
 			// 		this.object.set_velocity(this.old_velocity)
 			// 	end
 			// end
+
 			// this.old_pos = pos
 			// this.old_velocity = velocity
 			// this.lag_check = core.get_us_time()/1000000
