@@ -261,14 +261,15 @@ namespace boat {
 		}
 
 		flow(): void {
-			// local flow_dir = flow(this.object.get_pos())
-			// if flow_dir then
+			const flow_dir: Vec3 | null = flowLib.flow(this.object.get_pos());
+			if (flow_dir == null) {
+				return;
+			}
 			// 	flow_dir = vector.multiply(flow_dir,10)
 			// 	local vel = this.object.get_velocity()
 			// 	local acceleration = vector.new(flow_dir.x-vel.x,flow_dir.y-vel.y,flow_dir.z-vel.z)
 			// 	acceleration = vector.multiply(acceleration, 0.01)
 			// 	this.object.add_velocity(acceleration)
-			// end
 		}
 
 		// 	on_step = function(self, dtime)
