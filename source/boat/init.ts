@@ -276,15 +276,15 @@ namespace boat {
 			this.object.add_velocity(acceleration);
 		}
 
-		// 	on_step = function(self, dtime)
-		// 		this.check_if_on_land(self)
-		// 		this.push(self)
-		// 		this.drive(self)
-		// 		this.float(self)
-		// 		this.flow(self)
-		// 		this.slowdown(self)
-		// 		this.lag_correction(self,dtime)
-		// 	end,
+		on_step(dtime: number): void {
+			// this.check_if_on_land(self)
+			// this.push(self)
+			// this.drive(self)
+			// this.float(self)
+			// this.flow(self)
+			// this.slowdown(self)
+			// this.lag_correction(self,dtime)
+		}
 	}
 
 	// core.register_craftitem("boat:boat", {
