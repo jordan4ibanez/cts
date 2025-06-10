@@ -189,45 +189,52 @@ namespace bed {
 
 	// These are beds.
 	core.register_node("bed:bed", {
-	    description : "Bed",
-	    inventory_image : "bed.png",
-	    wield_image : "bed.png",
-	    paramtype2 : ParamType2.facedir,
-	    tiles : ["bed_top.png^[transform1","wood.png","bed_side.png","bed_side.png^[transform4","bed_front.png","nothing.png"],
-	    groups : {wood : 1, hard : 1, axe : 1, hand : 3, instant:1},
-	    sounds : crafter.woodSound({placing:""}),
-	    drawtype : Drawtype.nodebox,
-		node_placement_prediction : "",
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		if not pointed_thing.type == "node" then
-	// 			return
-	// 		end
-	// 		local sneak = placer:get_player_control().sneak
-	// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
-	// 		if not sneak and noddef.on_rightclick then
-	// 			core.item_place(itemstack, placer, pointed_thing)
-	// 			return
-	// 		end
-	// 		local _,pos = core.item_place_node(ItemStack("bed:bed_front"), placer, pointed_thing)
-	// 		if pos then
-	// 			local param2 = core.get_node(pos).param2
-	// 			local pos2 = vector.add(pos, vector.multiply(core.facedir_to_dir(param2),-1))
-	// 			local buildable = core.registered_nodes[core.get_node(pos2).name].buildable_to
-	// 			if not buildable then
-	// 				core.remove_node(pos)
-	// 				return(itemstack)
-	// 			else
-	// 				core.add_node(pos2,{name="bed:bed_back", param2=param2})
-	// 				itemstack:take_item()
-	// 				core.sound_play("wood", {
-	// 					  pos = pos,
-	// 				})
-	// 				return(itemstack)
-	// 			end
-	// 		end
-	// 		return(itemstack)
-	// 	end,
-	})
+		description: "Bed",
+		inventory_image: "bed.png",
+		wield_image: "bed.png",
+		paramtype2: ParamType2.facedir,
+		tiles: [
+			"bed_top.png^[transform1",
+			"wood.png",
+			"bed_side.png",
+			"bed_side.png^[transform4",
+			"bed_front.png",
+			"nothing.png",
+		],
+		groups: { wood: 1, hard: 1, axe: 1, hand: 3, instant: 1 },
+		sounds: crafter.woodSound({ placing: "" }),
+		drawtype: Drawtype.nodebox,
+		node_placement_prediction: "",
+		// 	on_place = function(itemstack, placer, pointed_thing)
+		// 		if not pointed_thing.type == "node" then
+		// 			return
+		// 		end
+		// 		local sneak = placer:get_player_control().sneak
+		// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
+		// 		if not sneak and noddef.on_rightclick then
+		// 			core.item_place(itemstack, placer, pointed_thing)
+		// 			return
+		// 		end
+		// 		local _,pos = core.item_place_node(ItemStack("bed:bed_front"), placer, pointed_thing)
+		// 		if pos then
+		// 			local param2 = core.get_node(pos).param2
+		// 			local pos2 = vector.add(pos, vector.multiply(core.facedir_to_dir(param2),-1))
+		// 			local buildable = core.registered_nodes[core.get_node(pos2).name].buildable_to
+		// 			if not buildable then
+		// 				core.remove_node(pos)
+		// 				return(itemstack)
+		// 			else
+		// 				core.add_node(pos2,{name="bed:bed_back", param2=param2})
+		// 				itemstack:take_item()
+		// 				core.sound_play("wood", {
+		// 					  pos = pos,
+		// 				})
+		// 				return(itemstack)
+		// 			end
+		// 		end
+		// 		return(itemstack)
+		// 	end,
+	});
 
 	// core.register_node("bed:bed_front", {
 	//     description = "Bed",
