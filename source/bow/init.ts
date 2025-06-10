@@ -52,7 +52,6 @@ namespace bow {
 			throw new Error(`Player ${name} was never added to the pool.`);
 		}
 
-		const rightclick: boolean = player.get_player_control().RMB;
 		const new_index: number = player.get_wield_index();
 		const inv: InvRef = player.get_inventory();
 
@@ -62,6 +61,9 @@ namespace bow {
 			pool.delete(name);
 			return;
 		}
+
+		const rightclick: boolean = player.get_player_control().RMB;
+
 		// 	// if player lets go of rightclick
 		// 	if temp_pool.step ~= 5 and not rightclick then
 		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
