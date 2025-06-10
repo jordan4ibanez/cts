@@ -158,6 +158,10 @@ namespace bow {
 		oldpos: Vec3 | null = null;
 		timer: number = 0;
 		collecting: boolean = false;
+		spin: number = 0
+		stuck: boolean = false
+		readonly collection_height: number = 0.5
+		readonly radius: number = 2
 
 		on_step(delta: number, moveresult: MoveResult): void {
 			this.timer += delta;
@@ -186,7 +190,7 @@ namespace bow {
 					return;
 				}
 
-				// 		for _,object in ipairs(get_objects_inside_radius(pos, this.radius)) do
+						for (const [_,object] of ipairs(get_objects_inside_radius(pos, this.radius))) {
 				// 			if owner then
 				// 				this.object.set_acceleration(new_vec(0,0,0))
 				// 				//get the variables
@@ -211,7 +215,7 @@ namespace bow {
 				// 				print(this.owner+" does not exist")
 				// 				this.object.remove()
 				// 			end
-				// 		end
+						}
 			} else {
 				// 		for _,object in ipairs(get_objects_inside_radius(pos, 2)) do
 				// 			if this.stuck == false and ((object:is_player() and object:get_player_name() ~= this.owner and object:get_hp() > 0) or (object:get_luaentity() and object:get_luaentity().mobname)) then
@@ -329,13 +333,7 @@ namespace bow {
 		// 		vel        = this.object.get_velocity()
 		// 	})
 		// end
-		// arrow.spin = 0
-		// arrow.owner = ""
-		// arrow.stuck = false
-		// arrow.timer = 0
-		// arrow.collecting = false
-		// arrow.collection_height = 0.5
-		// arrow.radius = 2
+		
 		// arrow.on_step = function(self, delta,moveresult)
 		// 	arrow_step(self, delta,moveresult)
 		// end
