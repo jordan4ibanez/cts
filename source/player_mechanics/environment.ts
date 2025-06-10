@@ -203,7 +203,6 @@ namespace playerMechanics {
 	}
 
 	function hurt_inside(player: ObjectRef, dtime: number): void {
-
 		// todo: this is running EVERY server tick. This should be running every 0.5 server ticks.
 
 		const name: string = player.get_player_name();
@@ -245,6 +244,15 @@ namespace playerMechanics {
 		if (real_nodes.length > 0) {
 			let damage_amount: number = 0;
 			for (const node of real_nodes) {
+				// Allow players in an iron boat to be protected from lava.
+				// The reason for this is: because I think that's kinda neat.
+				if (core.get_item_group(node, "lava") > 1) {
+					const [attachment] = player.get_attach();
+					const entityName = attachment?.get_luaentity()?.name;
+					if (entityName == "crafter_boat:iron_boat") {
+						continue;
+					}
+				}
 				damage_amount = core.get_item_group(node, "hurt_inside");
 				if (damage_amount > hurt) {
 					hurt = damage_amount;
