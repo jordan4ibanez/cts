@@ -148,13 +148,17 @@ namespace boat {
 			}
 
 			const currentvel: Vec3 = this.object.get_velocity();
-			const goal: Vec3 = rider.get_look_dir();
-			// 	if this.on_land == true then
-			// 		goal = vector.multiply(goal,1)
-			// 	else
-			// 		goal = vector.multiply(goal,20)
-			// 	end
-			// 	local acceleration = vector.new(goal.x-currentvel.x,0,goal.z-currentvel.z)
+			let goal: Vec3 = rider.get_look_dir();
+			if (this.on_land) {
+				goal = vector.multiply(goal, 1);
+			} else {
+				goal = vector.multiply(goal, 20);
+			}
+			const acceleration: Vec3 = vector.create3d(
+				goal.x - currentvel.x,
+				0,
+				goal.z - currentvel.z
+			);
 			// 	acceleration = vector.multiply(acceleration, 0.01)
 			// 	this.object.add_velocity(acceleration)
 			// 	this.moving = true
