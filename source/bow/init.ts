@@ -101,11 +101,14 @@ namespace bow {
 		}
 
 		if (data.step == 5 && !rightclick) {
-			const dir: Vec3 = player.get_look_dir()
-			const vel: Vec3 = multiply_vec(dir,50)
-			const pos: Vec3 = player.get_pos()
-			// pos.y = pos.y + 1.5
-			// object = core.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
+			const dir: Vec3 = player.get_look_dir();
+			const vel: Vec3 = multiply_vec(dir, 50);
+			const pos: Vec3 = player.get_pos();
+			pos.y += 1.5;
+			const object = core.add_entity(
+				add_vec(pos, divide_vec(dir, 10)),
+				"bow:arrow"
+			);
 			// object:set_velocity(vel)
 			// object:get_luaentity().owner  = name
 			// object:get_luaentity().oldpos = pos
