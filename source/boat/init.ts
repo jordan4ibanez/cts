@@ -148,7 +148,7 @@ namespace boat {
 			}
 
 			const currentvel: Vec3 = this.object.get_velocity();
-			// 	local goal = rider:get_look_dir()
+			const goal: Vec3 = rider.get_look_dir();
 			// 	if this.on_land == true then
 			// 		goal = vector.multiply(goal,1)
 			// 	else
