@@ -190,9 +190,7 @@ namespace bow {
 					return;
 				}
 
-				for (const [_, object] of ipairs(
-					get_objects_inside_radius(pos, this.radius)
-				)) {
+				
 					this.object.set_acceleration(new_vec(0, 0, 0));
 					// Get the variables.
 					const pos2: Vec3 = owner.get_pos();
@@ -212,7 +210,7 @@ namespace bow {
 					// 	this.object.remove()
 					// end
 					// return
-				}
+				
 			} else {
 				// 		for _,object in ipairs(get_objects_inside_radius(pos, 2)) do
 				// 			if this.stuck == false and ((object:is_player() and object:get_player_name() ~= this.owner and object:get_hp() > 0) or (object:get_luaentity() and object:get_luaentity().mobname)) then
