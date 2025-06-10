@@ -20,13 +20,17 @@ core.override_chatcommand("clearinv", {
 		}
 
 		if (player != null) {
-			player.get_inventory().set_list("main", []);
-			player.get_inventory().set_list("craft", []);
-			player.get_inventory().set_list("craftpreview", []);
-			player.get_inventory().set_list("armor_head", []);
-			player.get_inventory().set_list("armor_torso", []);
-			player.get_inventory().set_list("armor_legs", []);
-			player.get_inventory().set_list("armor_feet", []);
+			const inv: InvRef | null = player.get_inventory();
+			if (inv == null) {
+				throw new Error("Not a player.");
+			}
+			inv.set_list("main", []);
+			inv.set_list("craft", []);
+			inv.set_list("craftpreview", []);
+			inv.set_list("armor_head", []);
+			inv.set_list("armor_torso", []);
+			inv.set_list("armor_legs", []);
+			inv.set_list("armor_feet", []);
 
 			core.log(
 				LogLevel.action,
