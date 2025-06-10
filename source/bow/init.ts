@@ -158,7 +158,7 @@ namespace bow {
 		name: string = "bow:arrow";
 		owner: string | null = null;
 		oldpos: Vec3 | null = null;
-	}
+	
 
 	// local function arrow_step(self, delta,moveresult)
 	// 	self.timer = self.timer + delta
@@ -320,6 +320,11 @@ namespace bow {
 	// 	arrow_step(self, delta,moveresult)
 	// end
 	// core.register_entity("bow:arrow", arrow)
+
+	}
+	utility.registerTSEntity(ArrowEntity)
+
+
 	// //[[
 	// ██╗████████╗███████╗███╗   ███╗███████╗
 	// ██║╚══██╔══╝██╔════╝████╗ ████║██╔════╝
