@@ -233,19 +233,23 @@ namespace bed {
 				const buildable: boolean =
 					core.registered_nodes[core.get_node(pos2).name]
 						?.buildable_to || false;
-				// 	if not buildable then
-				// 		core.remove_node(pos)
-				// 		return(itemstack)
-				// 	else
-				// 		core.add_node(pos2,{name="bed:bed_back", param2=param2})
-				// 		itemstack:take_item()
-				// 		core.sound_play("wood", {
-				// 			  pos = pos,
-				// 		})
-				// 		return(itemstack)
-				// 	end
+
+				if (!buildable) {
+					core.remove_node(pos);
+					return itemstack;
+				} else {
+					core.add_node(pos2, {
+						name: "bed:bed_back",
+						param2: param2,
+					});
+					itemstack.take_item();
+					core.sound_play("wood", {
+						pos: pos,
+					});
+					return itemstack;
+				}
 			}
-			// return(itemstack)
+			return itemstack;
 		},
 	});
 
