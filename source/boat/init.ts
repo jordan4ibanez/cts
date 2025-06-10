@@ -123,7 +123,8 @@ namespace boat {
 				this.on_land = true;
 			}
 		}
-		// 	//players drive the baot
+
+		// Players drive the boat.
 		// 	drive = function(self)
 		// 		if this.rider then
 		// 			local rider = core.get_player_by_name(this.rider)
