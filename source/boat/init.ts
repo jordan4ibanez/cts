@@ -19,7 +19,7 @@ namespace boat {
 		// 				if level2 > level and nodename == "main:lavaflow" or nodename == "main:lava" then
 		// 					goalx = -x
 		// 					goalz = -z
-		// 					--diagonal flow
+		// 					//diagonal flow
 		// 					if goalx ~= 0 and goalz ~= 0 then
 		// 						found = true
 		// 					end
@@ -27,8 +27,8 @@ namespace boat {
 		// 			end
 		// 		end
 		// 	end
-		// 	--only add velocity if there is one
-		// 	--else this stops the player
+		// 	//only add velocity if there is one
+		// 	//else this stops the player
 		// 	if goalx ~= 0 and goalz ~= 0 then
 		// 		acceleration = vector.new(goalx-currentvel.x,0,goalz-currentvel.z)
 		// 		self.object:add_velocity(acceleration)
@@ -39,7 +39,7 @@ namespace boat {
 		// end
 	// }
 
-	// --core.get_node_level(pos)
+	// //core.get_node_level(pos)
 
 	// core.register_entity("boat:boat", {
 	// 	initial_properties = {
@@ -59,17 +59,17 @@ namespace boat {
 	// 	boat = true,
 	// 	get_staticdata = function(self)
 	// 		return core.serialize({
-	// 			--itemstring = self.itemstring,
+	// 			//itemstring = self.itemstring,
 	// 		})
 	// 	end,
 	// 	on_activate = function(self, staticdata, dtime_s)
 	// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
 	// 			local data = core.deserialize(staticdata)
 	// 			if data and type(data) == "table" then
-	// 				--self.itemstring = data.itemstring
+	// 				//self.itemstring = data.itemstring
 	// 			end
 	// 		else
-	// 			--self.itemstring = staticdata
+	// 			//self.itemstring = staticdata
 	// 		end
 	// 		self.object:set_armor_groups({immortal = 1})
 	// 		self.object:set_velocity({x = 0, y = 0, z = 0})
@@ -101,7 +101,7 @@ namespace boat {
 	// 			player_is_attached(clicker,true)
 	// 		end
 	// 	end,
-	// 	--check if the boat is stuck on land
+	// 	//check if the boat is stuck on land
 	// 	check_if_on_land = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		pos.y = pos.y - 0.37
@@ -112,7 +112,7 @@ namespace boat {
 	// 			self.on_land = true
 	// 		end
 	// 	end,
-	// 	--players drive the baot
+	// 	//players drive the baot
 	// 	drive = function(self)
 	// 		if self.rider then
 	// 			local rider = core.get_player_by_name(self.rider)
@@ -135,7 +135,7 @@ namespace boat {
 	// 			self.moving = nil
 	// 		end
 	// 	end,
-	// 	--players push boat
+	// 	//players push boat
 	// 	push = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
@@ -156,12 +156,12 @@ namespace boat {
 	// 			end
 	// 		end
 	// 	end,
-	// 	--makes the boat float
+	// 	//makes the boat float
 	// 	float = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		local node = core.get_node(pos).name
 	// 		self.swimming = false
-	// 		--flow normally if floating else don't
+	// 		//flow normally if floating else don't
 	// 		if node == "main:water" or node =="main:waterflow" then
 	// 			self.object:set_acceleration(vector.new(0,0,0))
 	// 			self.swimming = true
@@ -170,12 +170,12 @@ namespace boat {
 	// 			local acceleration = vector.new(0,goal-vel.y,0)
 	// 			acceleration = vector.multiply(acceleration, 0.01)
 	// 			self.object:add_velocity(acceleration)
-	// 			--self.object:set_acceleration(vector.new(0,0,0))
+	// 			//self.object:set_acceleration(vector.new(0,0,0))
 	// 		else
 	// 			self.object:set_acceleration(vector.new(0,-10,0))
 	// 		end
 	// 	end,
-	// 	--slows the boat down
+	// 	//slows the boat down
 	// 	slowdown = function(self)
 	// 		if not self.moving == true then
 	// 			local vel = self.object:get_velocity()
@@ -189,7 +189,7 @@ namespace boat {
 	// 		local velocity = self.object:get_velocity()
 	// 		if self.lag_check then
 	// 			local chugent = core.get_us_time()/1000000 - self.lag_check
-	// 			--print("lag = "..chugent.." ms")
+	// 			//print("lag = "..chugent.." ms")
 	// 			if chugent > 1 and  self.old_pos and self.old_velocity then
 	// 				self.object:move_to(self.old_pos)
 	// 				self.object:set_velocity(self.old_velocity)
@@ -246,7 +246,7 @@ namespace boat {
 	// 		{"main:wood", "main:wood", "main:wood"},
 	// 	},
 	// })
-	// ----------------------------------
+	// //////////////////////////////////
 	// core.register_entity("boat:iron_boat", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
@@ -265,17 +265,17 @@ namespace boat {
 	// 	iron_boat = true,
 	// 	get_staticdata = function(self)
 	// 		return core.serialize({
-	// 			--itemstring = self.itemstring,
+	// 			//itemstring = self.itemstring,
 	// 		})
 	// 	end,
 	// 	on_activate = function(self, staticdata, dtime_s)
 	// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
 	// 			local data = core.deserialize(staticdata)
 	// 			if data and type(data) == "table" then
-	// 				--self.itemstring = data.itemstring
+	// 				//self.itemstring = data.itemstring
 	// 			end
 	// 		else
-	// 			--self.itemstring = staticdata
+	// 			//self.itemstring = staticdata
 	// 		end
 	// 		self.object:set_armor_groups({immortal = 1})
 	// 		self.object:set_velocity({x = 0, y = 0, z = 0})
@@ -307,7 +307,7 @@ namespace boat {
 	// 			player_is_attached(clicker,true)
 	// 		end
 	// 	end,
-	// 	--check if the boat is stuck on land
+	// 	//check if the boat is stuck on land
 	// 	check_if_on_land = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		pos.y = pos.y - 0.37
@@ -318,7 +318,7 @@ namespace boat {
 	// 			self.on_land = true
 	// 		end
 	// 	end,
-	// 	--players drive the baot
+	// 	//players drive the baot
 	// 	drive = function(self)
 	// 		if self.rider and not self.on_land == true then
 	// 			local rider = core.get_player_by_name(self.rider)
@@ -337,7 +337,7 @@ namespace boat {
 	// 			self.moving = nil
 	// 		end
 	// 	end,
-	// 	--players push boat
+	// 	//players push boat
 	// 	push = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
@@ -358,12 +358,12 @@ namespace boat {
 	// 			end
 	// 		end
 	// 	end,
-	// 	--makes the boat float
+	// 	//makes the boat float
 	// 	float = function(self)
 	// 		local pos = self.object:get_pos()
 	// 		local node = core.get_node(pos).name
 	// 		self.swimming = false
-	// 		--flow normally if floating else don't
+	// 		//flow normally if floating else don't
 	// 		if node == "nether:lava" or node =="nether:lavaflow" then
 	// 			self.swimming = true
 	// 			local vel = self.object:get_velocity()
@@ -371,17 +371,17 @@ namespace boat {
 	// 			local acceleration = vector.new(0,goal-vel.y,0)
 	// 			acceleration = vector.multiply(acceleration, 0.01)
 	// 			self.object:add_velocity(acceleration)
-	// 			--self.object:set_acceleration(vector.new(0,0,0))
+	// 			//self.object:set_acceleration(vector.new(0,0,0))
 	// 		else
 	// 			local vel = self.object:get_velocity()
 	// 			local goal = -9.81
 	// 			local acceleration = vector.new(0,goal-vel.y,0)
 	// 			acceleration = vector.multiply(acceleration, 0.01)
 	// 			self.object:add_velocity(acceleration)
-	// 			--self.object:set_acceleration(vector.new(0,0,0))
+	// 			//self.object:set_acceleration(vector.new(0,0,0))
 	// 		end
 	// 	end,
-	// 	--slows the boat down
+	// 	//slows the boat down
 	// 	slowdown = function(self)
 	// 		if not self.moving == true then
 	// 			local vel = self.object:get_velocity()
@@ -395,7 +395,7 @@ namespace boat {
 	// 		local velocity = self.object:get_velocity()
 	// 		if self.lag_check then
 	// 			local chugent = core.get_us_time()/1000000- self.lag_check
-	// 			--print("lag = "..chugent.." ms")
+	// 			//print("lag = "..chugent.." ms")
 	// 			if chugent > 70 and  self.old_pos and self.old_velocity then
 	// 				self.object:move_to(self.old_pos)
 	// 				self.object:set_velocity(self.old_velocity)
