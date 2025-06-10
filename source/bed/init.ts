@@ -253,7 +253,7 @@ namespace bed {
 		},
 	});
 
-	// core.register_node("bed:bed_front", {
+	core.register_node("bed:bed_front", {
 	//     description = "Bed",
 	//     paramtype = "light",
 	//     paramtype2 = "facedir",
@@ -290,7 +290,8 @@ namespace bed {
 	// 		local param2 = core.get_node(pos).param2
 	// 		do_sleep(clicker,pos,param2)
 	// 	end,
-	// })
+	})
+
 	// core.register_node("bed:bed_back", {
 	//     description = "Bed",
 	//     paramtype = "light",
