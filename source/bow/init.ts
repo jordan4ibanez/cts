@@ -105,20 +105,33 @@ namespace bow {
 			const vel: Vec3 = multiply_vec(dir, 50);
 			const pos: Vec3 = player.get_pos();
 			pos.y += 1.5;
-			const object = core.add_entity(
+			const object: ObjectRef | null = core.add_entity(
 				add_vec(pos, divide_vec(dir, 10)),
 				"bow:arrow"
 			);
-			// object:set_velocity(vel)
-			// object:get_luaentity().owner  = name
-			// object:get_luaentity().oldpos = pos
-			// core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
-			// inv:remove_item("main", ItemStack("bow:arrow"))
-			// inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+			if (object != null) {
+				object.set_velocity(vel);
+
+				const entity: Arrow | null =
+					object.get_luaentity() as Arrow | null;
+					
+				if (entity != null) {
+					entity.owner = name;
+					// object:get_luaentity().oldpos = pos
+					// core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
+					// inv:remove_item("main", ItemStack("bow:arrow"))
+					// inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+				}
+			}
 			// pool[name] = nil
 		}
 		// 	//add hand fatigue timer
 		// 	//gradually increase fatigue until cap is reached
+	}
+
+	class Arrow extends types.Entity {
+		name: string = "bow:arrow";
+		owner: string | null = null;
 	}
 
 	// core.register_globalstep(function(delta)
