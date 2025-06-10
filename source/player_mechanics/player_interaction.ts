@@ -333,7 +333,10 @@ namespace playerMechanics {
 
 	core.register_on_respawnplayer((player) => {
 		player.add_velocity(multiply_vec(player.get_velocity(), -1));
-		const inv: InvRef = player.get_inventory();
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
 		inv.set_list("main", []);
 		inv.set_list("craft", []);
 		inv.set_list("craftpreview", []);
