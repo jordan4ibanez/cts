@@ -79,7 +79,9 @@ namespace bow {
 			pool.delete(name);
 			return;
 		}
-		// 	inv = player:get_inventory()
+
+			
+
 		// 	// if player doesn't have any arrows
 		// 	if not inv:contains_item("main", ItemStack("bow:arrow")) then
 		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
