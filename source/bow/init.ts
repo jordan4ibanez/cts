@@ -319,16 +319,27 @@ namespace bow {
 					}
 				}
 
-				// 		if not this.stuck and pos and this.oldpos then
-				// 			this.spin = this.spin + (delta*10)
-				// 			if this.spin > pi then
-				// 				this.spin = -pi
-				// 			end
-				// 			dir = normalize_vec(sub_vec(pos,this.oldpos))
-				// 			y = dir_to_yaw(dir)
-				// 			x = (dir_to_yaw(new_vec(vec_distance(new_vec(pos.x,0,pos.z),new_vec(this.oldpos.x,0,this.oldpos.z)),0,pos.y-this.oldpos.y))+(pi/2))
-				// 			this.object.set_rotation(new_vec(x,y,this.spin))
-				// 		end
+				if (!this.stuck && this.oldpos) {
+					this.spin += delta * 10;
+					if (this.spin > pi) {
+						this.spin = -pi;
+					}
+					const dir: Vec3 = normalize_vec(sub_vec(pos, this.oldpos));
+					const y: number = dir_to_yaw(dir);
+					const x: number =
+						dir_to_yaw(
+							new_vec(
+								vec_distance(
+									new_vec(pos.x, 0, pos.z),
+									new_vec(this.oldpos.x, 0, this.oldpos.z)
+								),
+								0,
+								pos.y - this.oldpos.y
+							)
+						) +
+						pi / 2;
+					this.object.set_rotation(new_vec(x, y, this.spin));
+				}
 
 				// 		if this.stuck == false then
 				// 			this.oldpos = pos
