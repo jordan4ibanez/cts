@@ -206,9 +206,10 @@ namespace bed {
 		drawtype: Drawtype.nodebox,
 		node_placement_prediction: "",
 		on_place: (itemstack, placer, pointed_thing) => {
-			// if not pointed_thing.type == "node" then
-			// 	return
-			// end
+			if (pointed_thing.type != "node") {
+				return;
+			}
+
 			// local sneak = placer:get_player_control().sneak
 			// local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
 			// if not sneak and noddef.on_rightclick then
