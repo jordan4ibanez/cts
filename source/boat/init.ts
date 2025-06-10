@@ -103,8 +103,8 @@ namespace boat {
 					vector.create3d({ x: 0, y: 2, z: 0 }),
 					vector.create3d({ x: 0, y: 0, z: 0 })
 				);
-				// 	set_player_animation(clicker,"sit",0)
-				// 	player_is_attached(clicker,true)
+				playerAPI.set_player_animation(clicker, "sit", 0);
+				playerAPI.player_is_attached(clicker, true);
 			}
 		}
 
