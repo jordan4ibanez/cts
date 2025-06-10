@@ -303,12 +303,20 @@ namespace bow {
 					this.object.set_velocity(new_vec(0, 0, 0));
 					this.object.set_acceleration(new_vec(0, 0, 0));
 				} else if (this.stuck == true && this.check_dir) {
-					// pos2 = add_vec(pos,multiply_vec(this.check_dir,0.2))
-					// ray = create_raycast(pos, pos2, false, false)
-					// if not ray:next() then
-					// 	this.stuck = false
-					// 	this.object.set_acceleration(new_vec(0,-9.81,0))
-					// end
+					const pos2: Vec3 = add_vec(
+						pos,
+						multiply_vec(this.check_dir, 0.2)
+					);
+					const ray: RaycastObject = create_raycast(
+						pos,
+						pos2,
+						false,
+						false
+					);
+					if (ray.next() == null) {
+						this.stuck = false;
+						this.object.set_acceleration(new_vec(0, -9.81, 0));
+					}
 				}
 
 				// 		if not this.stuck and pos and this.oldpos then
