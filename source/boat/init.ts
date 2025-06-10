@@ -312,7 +312,8 @@ namespace boat {
 		],
 	});
 
-	// //////////////////////////////////
+	//////////////////////////////////
+
 	// core.register_entity("crafter_boat:iron_boat", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
