@@ -224,9 +224,15 @@ namespace bed {
 				pointed_thing
 			);
 			if (pos != null) {
-				// 	local param2 = core.get_node(pos).param2
-				// 	local pos2 = vector.add(pos, vector.multiply(core.facedir_to_dir(param2),-1))
-				// 	local buildable = core.registered_nodes[core.get_node(pos2).name].buildable_to
+				const param2: number = core.get_node(pos).param2 || 0;
+
+				const pos2: Vec3 = vector.add(
+					pos,
+					vector.multiply(core.facedir_to_dir(param2), -1)
+				);
+				const buildable: boolean =
+					core.registered_nodes[core.get_node(pos2).name]
+						?.buildable_to || false;
 				// 	if not buildable then
 				// 		core.remove_node(pos)
 				// 		return(itemstack)
