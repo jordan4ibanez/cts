@@ -170,7 +170,8 @@ namespace bed {
 			vector.create3d({ x: 0, y: -12, z: -7 }),
 			vector.create3d({ x: 0, y: 0, z: 0 })
 		);
-		// pool[name] = {pos=new_pos,sleeping=false}
+		const newData: SleepData = { pos: new_pos, sleeping: false };
+		pool.set(name, newData);
 		// csm_send_player_to_sleep(player)
 		// sleep_loop = true
 	}
