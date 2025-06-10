@@ -63,11 +63,9 @@ namespace boat {
 		// todo: boat???
 		boat: boolean = true;
 
-			get_staticdata (): string {
-				return core.serialize({
-					//itemstring = self.itemstring,
-				})
-			}
+		get_staticdata(): string {
+			return "";
+		}
 
 		// 	on_activate = function(self, staticdata, dtime_s)
 		// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
