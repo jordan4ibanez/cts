@@ -156,15 +156,16 @@ namespace bow {
 		name: string = "bow:arrow";
 		owner: string | null = null;
 		oldpos: Vec3 | null = null;
+		timer: number = 0;
+		collecting: boolean = false;
 
 		on_step(delta: number, moveresult: MoveResult): void {
+			this.timer += delta;
 
-			// 	this.timer = this.timer + delta
-			
-			// 	pos = this.object.get_pos()
-			// 	vel = this.object.get_velocity()
+			const pos: Vec3 = this.object.get_pos();
+			const vel: Vec3 = this.object.get_velocity();
 
-			// 	if this.collecting == true then
+				if (this.collecting ) {
 			// 		owner = get_player_by_name(this.owner)
 			// 		for _,object in ipairs(get_objects_inside_radius(pos, this.radius)) do
 			// 			if owner then
@@ -192,7 +193,7 @@ namespace bow {
 			// 				this.object.remove()
 			// 			end
 			// 		end
-			// 	else
+				}else{
 			// 		for _,object in ipairs(get_objects_inside_radius(pos, 2)) do
 			// 			if this.stuck == false and ((object:is_player() and object:get_player_name() ~= this.owner and object:get_hp() > 0) or (object:get_luaentity() and object:get_luaentity().mobname)) then
 			// 				object:punch(this.object, 2,
@@ -258,7 +259,7 @@ namespace bow {
 			// 			this.oldpos = pos
 			// 			this.oldvel = vel
 			// 		end
-			// 	end
+				}
 		}
 
 		// local arrow = {}
