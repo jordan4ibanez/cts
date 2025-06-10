@@ -449,7 +449,7 @@ interface core {
 		pointedThing: PointedThing,
 		param2?: number,
 		preventAfterPlace?: boolean
-	): [ItemStackObject, Vec3 | null];
+	): LuaMultiReturn<[ItemStackObject, Vec3 | null]>;
 	//? Deprecated.
 	// item_place_object(itemStack: ItemStackObject, placer: ObjectRef, pointedThing: PointedThing): ItemStackObject
 	item_place(
