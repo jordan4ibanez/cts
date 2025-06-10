@@ -187,7 +187,7 @@ namespace bed {
 		wake_up(player);
 	});
 
-	// //these are beds
+	// These are beds.
 	// core.register_node("bed:bed", {
 	//     description = "Bed",
 	//     inventory_image = "bed.png",
