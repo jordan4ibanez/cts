@@ -43,8 +43,12 @@ namespace bow {
 	// This is a very complicated function which makes the bow work.
 
 	function arrow_check(name: string, dtime: number): void {
-		// 	temp_pool = pool[name]
-		// 	player = get_player_by_name(name)
+		const data: BowData | undefined = pool.get(name);
+
+		const player: ObjectRef | null = get_player_by_name(name);
+		if (player == null) {
+			throw new Error(`Player ${name} does not exist.`);
+		}
 		// 	rightclick = player:get_player_control().RMB
 		// 	new_index = player:get_wield_index()
 		// 	// if player changes selected item
