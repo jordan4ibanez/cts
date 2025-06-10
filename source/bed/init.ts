@@ -324,7 +324,7 @@ namespace bed {
 				[0.5, -0.5, -0.5, 5 / 16, -5 / 16, -5 / 16],
 			],
 		},
-		// 	drop = "",
+		drop: "",
 		// 	on_dig = function(pos, node, digger)
 		// 		local param2 = core.get_node(pos).param2
 		// 		local facedir = core.facedir_to_dir(param2)
