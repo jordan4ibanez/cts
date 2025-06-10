@@ -209,15 +209,15 @@ namespace boat {
 				this.object.set_acceleration(vector.create3d(0, -10, 0));
 				return;
 			}
-			// 	this.object.set_acceleration(vector.new(0,0,0))
-			// 	this.swimming = true
-			// 	local vel = this.object.get_velocity()
-			// 	local goal = 9
-			// 	local acceleration = vector.new(0,goal-vel.y,0)
-			// 	acceleration = vector.multiply(acceleration, 0.01)
+
+			this.object.set_acceleration(vector.create3d(0, 0, 0));
+			this.swimming = true;
+			const vel: Vec3 = this.object.get_velocity();
+			const goal: number = 9;
+			let acceleration: Vec3 = vector.create3d(0, goal - vel.y, 0);
+			acceleration = vector.multiply(acceleration, 0.01);
 			// 	this.object.add_velocity(acceleration)
 			// 	//this.object.set_acceleration(vector.new(0,0,0))
-			
 		}
 
 		// 	//slows the boat down
