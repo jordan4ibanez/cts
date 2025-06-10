@@ -336,10 +336,11 @@ namespace bed {
 		},
 
 			on_rightclick : (pos, node, clicker, itemstack, pointed_thing) => {
-				if pos.y <= -10033 then
-					tnt(pos,10)
+				if (pos.y <= -10033) {
+					// todo: depends on the tnt mod.
+					// tnt(pos,10)
 					return
-				end
+				}
 				local param2 = core.get_node(pos).param2
 				local dir = core.facedir_to_dir(param2)
 				do_sleep(clicker,vector.add(pos,dir),param2)
