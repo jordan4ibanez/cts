@@ -79,16 +79,17 @@ namespace book {
 				fields["book.book_text"] != null &&
 				fields["book.book_text"] != null
 			) {
-				// 		local itemstack = ItemStack("book:book_written")
-				// 		local meta = itemstack:get_meta()
-				// 		meta:set_string("book.book_text", fields["book.book_text"])
-				// 		meta:set_string("book.book_title", fields["book.book_title"])
-				// 		meta:set_string("description", fields["book.book_title"])
-				// 		player:set_wielded_item(itemstack)
-				// 		core.close_formspec(player:get_player_name(), "book.book_gui")
-				// 		core.sound_play("book_close", {to_player=player:get_player_name()})
+				const itemstack: ItemStackObject =
+					ItemStack("book:book_written");
+				const meta: MetaRef = itemstack.get_meta();
+				meta.set_string("book.book_text", fields["book.book_text"]);
+				meta.set_string("book.book_title", fields["book.book_title"]);
+				meta.set_string("description", fields["book.book_title"]);
+				player.set_wielded_item(itemstack);
+				core.close_formspec(player.get_player_name(), "book.book_gui");
+				core.sound_play("book_close", { object: player });
 			} else if (fields["book.book_close"] != null) {
-				// 		core.sound_play("book_close", {to_player=player:get_player_name()})
+				core.sound_play("book_close", { object: player });
 			}
 		}
 	);
