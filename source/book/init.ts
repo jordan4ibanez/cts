@@ -61,27 +61,35 @@ namespace book {
 			if (formname != "book.book_gui") {
 				return;
 			}
-			// 	if fields["book.book_write"] and fields["book.book_text"] and fields["book.book_text"] then
-			// 		local itemstack = ItemStack("book:book")
-			// 		local meta = itemstack:get_meta()
-			// 		meta:set_string("book.book_text", fields["book.book_text"])
-			// 		meta:set_string("book.book_title", fields["book.book_title"])
-			// 		meta:set_string("description", fields["book.book_title"])
-			// 		player:set_wielded_item(itemstack)
-			// 		core.close_formspec(player:get_player_name(), "book.book_gui")
-			// 		core.sound_play("book_write", {to_player=player:get_player_name()})
-			// 	elseif fields["book.book_ink"] and fields["book.book_text"] and fields["book.book_text"] then
-			// 		local itemstack = ItemStack("book:book_written")
-			// 		local meta = itemstack:get_meta()
-			// 		meta:set_string("book.book_text", fields["book.book_text"])
-			// 		meta:set_string("book.book_title", fields["book.book_title"])
-			// 		meta:set_string("description", fields["book.book_title"])
-			// 		player:set_wielded_item(itemstack)
-			// 		core.close_formspec(player:get_player_name(), "book.book_gui")
-			// 		core.sound_play("book_close", {to_player=player:get_player_name()})
-			// 	elseif fields["book.book_close"] then
-			// 		core.sound_play("book_close", {to_player=player:get_player_name()})
-			// 	end
+			if (
+				fields["book.book_write"] &&
+				fields["book.book_text"] &&
+				fields["book.book_text"]
+			) {
+				// 		local itemstack = ItemStack("book:book")
+				// 		local meta = itemstack:get_meta()
+				// 		meta:set_string("book.book_text", fields["book.book_text"])
+				// 		meta:set_string("book.book_title", fields["book.book_title"])
+				// 		meta:set_string("description", fields["book.book_title"])
+				// 		player:set_wielded_item(itemstack)
+				// 		core.close_formspec(player:get_player_name(), "book.book_gui")
+				// 		core.sound_play("book_write", {to_player=player:get_player_name()})
+			} else if (
+				fields["book.book_ink"] &&
+				fields["book.book_text"] &&
+				fields["book.book_text"]
+			) {
+				// 		local itemstack = ItemStack("book:book_written")
+				// 		local meta = itemstack:get_meta()
+				// 		meta:set_string("book.book_text", fields["book.book_text"])
+				// 		meta:set_string("book.book_title", fields["book.book_title"])
+				// 		meta:set_string("description", fields["book.book_title"])
+				// 		player:set_wielded_item(itemstack)
+				// 		core.close_formspec(player:get_player_name(), "book.book_gui")
+				// 		core.sound_play("book_close", {to_player=player:get_player_name()})
+			} else if (fields["book.book_close"]) {
+				// 		core.sound_play("book_close", {to_player=player:get_player_name()})
+			}
 		}
 	);
 	// //this is the book item
