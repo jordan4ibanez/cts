@@ -108,7 +108,7 @@ namespace bow {
 		// Count steps using delta.
 		if (data.step < 5) {
 			data.float += delta;
-			if (data.float > 0.05) {
+			if (data.float > 0.1) {
 				data.float = 0;
 				data.step += 1;
 				player.set_wielded_item(
