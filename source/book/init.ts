@@ -58,7 +58,9 @@ namespace book {
 			formname: string,
 			fields: Dictionary<string, any>
 		) => {
-			// 	if not formname == "book.book_gui" then return end
+			if (formname != "book.book_gui") {
+				return;
+			}
 			// 	if fields["book.book_write"] and fields["book.book_text"] and fields["book.book_text"] then
 			// 		local itemstack = ItemStack("book:book")
 			// 		local meta = itemstack:get_meta()
