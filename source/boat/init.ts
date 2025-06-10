@@ -297,14 +297,16 @@ namespace boat {
 				return;
 			}
 			const sneak: boolean = placer.get_player_control().sneak;
-			// local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
-			// if not sneak and noddef.on_rightclick then
-			// 	core.item_place(itemstack, placer, pointed_thing)
-			// 	return
-			// end
-			// core.add_entity(pointed_thing.above, "boat:boat")
-			// itemstack:take_item()
-			// return itemstack
+			const noddef: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pointed_thing.under).name];
+
+			if (!sneak && noddef?.on_rightclick) {
+				core.item_place(itemstack, placer, pointed_thing);
+				return;
+			}
+			core.add_entity(pointed_thing.above, "boat:boat");
+			itemstack.take_item();
+			return itemstack;
 		},
 	});
 
