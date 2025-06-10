@@ -157,13 +157,13 @@ namespace book {
 		},
 	});
 	
-	// core.register_craft({
-	// 	output = "book:book",
-	// 	recipe = {
-	// 		{"main:wood","main:wood","main:wood"},
-	// 		{"main:paper","main:paper","main:paper"},
-	// 		{"main:wood","main:wood","main:wood"},
-	// 	}
-	// })
+	core.register_craft({
+		output : "book:book",
+		recipe : {
+			{"main:wood","main:wood","main:wood"},
+			{"main:paper","main:paper","main:paper"},
+			{"main:wood","main:wood","main:wood"},
+		}
+	})
 	
 }
