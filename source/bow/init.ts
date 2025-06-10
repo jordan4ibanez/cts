@@ -7,23 +7,23 @@ namespace bow {
 	const dir_to_yaw = core.dir_to_yaw;
 	const deserialize = core.deserialize;
 	const serialize = core.serialize;
-	// // string library
-	// const s_sub  = string.sub
-	// const s_len  = string.len
-	// // math library
-	// const pi     = math.pi
-	// const random = math.random
-	// const floor  = math.floor
-	// // vector library
-	// const new_vec       = vector.new
-	// const floor_vec     = vector.floor
-	// const vec_distance  = vector.distance
-	// const normalize_vec = vector.normalize
-	// const add_vec       = vector.add
-	// const sub_vec       = vector.subtract
-	// const multiply_vec  = vector.multiply
-	// const divide_vec    = vector.divide
-	// const vec_direction = vector.direction
+	// String library.
+	const s_sub = string.sub;
+	const s_len = string.len;
+	// Math library.
+	const pi = math.pi;
+	const random = math.random;
+	const floor = math.floor;
+	// Vector library.
+	const new_vec = vector.create3d;
+	const floor_vec = vector.floor;
+	const vec_distance = vector.distance;
+	const normalize_vec = vector.normalize;
+	const add_vec = vector.add;
+	const sub_vec = vector.subtract;
+	const multiply_vec = vector.multiply;
+	const divide_vec = vector.divide;
+	const vec_direction = vector.direction;
 	// //[[
 	// ██████╗ ██╗      █████╗ ██╗   ██╗███████╗██████╗     ██████╗  █████╗ ██████╗ ████████╗
 	// ██╔══██╗██║     ██╔══██╗╚██╗ ██╔╝██╔════╝██╔══██╗    ██╔══██╗██╔══██╗██╔══██╗╚══██╔══╝
