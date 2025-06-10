@@ -35,7 +35,7 @@ namespace item_handling {
 
 		if (tick == true && curVal > 0) {
 			core.sound_play("pickup", {
-				to_player: player.get_player_name(),
+				object: player,
 				gain: 0.4,
 				pitch: math.random(60, 100) / 100,
 			});
