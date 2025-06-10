@@ -405,17 +405,21 @@ namespace bow {
 	// ██║   ██║   ███████╗██║ ╚═╝ ██║███████║
 	// ╚═╝   ╚═╝   ╚══════╝╚═╝     ╚═╝╚══════╝
 
-	// local function initialize_pullback(player)
-	// 	inv = player:get_inventory()
-	// 	if inv:contains_item("main", ItemStack("bow:arrow")) then
-	// 		name = player:get_player_name()
-	// 		pool[name] = {}
-	// 		pool[name].index = player:get_wield_index()
-	// 		pool[name].float = 0
-	// 		pool[name].step  = 0
-	// 		core.sound_play("bow_pull_back", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(70,110)/100})
-	// 	end
-	// end
+	function initialize_pullback(player: ObjectRef): void {
+		const inv: InvRef | null = player.get_inventory();
+		if (inv == null) {
+			throw new Error("Not a player.");
+		}
+		// 	if inv:contains_item("main", ItemStack("bow:arrow")) then
+		// 		name = player:get_player_name()
+		// 		pool[name] = {}
+		// 		pool[name].index = player:get_wield_index()
+		// 		pool[name].float = 0
+		// 		pool[name].step  = 0
+		// 		core.sound_play("bow_pull_back", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(70,110)/100})
+		// 	end
+	}
+
 	// core.register_craftitem("bow:bow_empty", {
 	// 	description = "Bow",
 	// 	inventory_image = "bow.png",
