@@ -2325,7 +2325,9 @@ declare global {
 			rotation: Vec3,
 			forcedVisible?: boolean
 		): void;
-		get_attach(): LuaMultiReturn<[ObjectRef?, string?, Vec3?, Vec3?, boolean?]> ;
+		get_attach(): LuaMultiReturn<
+			[ObjectRef?, string?, Vec3?, Vec3?, boolean?]
+		>;
 		get_children(): ObjectRef[];
 		set_detach(): void;
 		set_bone_override(bone: string, property: BoneOverride | null): void;
