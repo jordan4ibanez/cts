@@ -2208,7 +2208,9 @@ declare global {
 		iterp(minp: Vec3, maxp: Vec3): Iterator<number>;
 	}
 
-	interface RaycastObject extends LuaIterable<PointedThing> {}
+	interface RaycastObject extends LuaIterable<PointedThing> {
+		next(): PointedThing | null;
+	}
 
 	interface SecureRandomObject {
 		next_bytes(count: number): string;
