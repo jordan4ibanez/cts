@@ -175,8 +175,8 @@ namespace bed {
 		sleep_loop = true;
 	}
 
-	core.register_on_player_receive_fields((player, formname, fields) => {
-		if (formname && formname == "bed") {
+	core.register_on_player_receive_fields((player, formname) => {
+		if (formname == "bed") {
 			wake_up(player);
 		}
 	});
