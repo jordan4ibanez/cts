@@ -54,6 +54,8 @@ namespace bow {
 
 		const rightclick: boolean = player.get_player_control().RMB;
 		const new_index: number = player.get_wield_index();
+		const inv: InvRef = player.get_inventory();
+
 		// If player changes selected item.
 		if (new_index != data.index) {
 			// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
