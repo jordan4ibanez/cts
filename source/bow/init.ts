@@ -1,10 +1,7 @@
 namespace bow {
-	// local
-	// minetest,math,vector,ipairs,string,type
-	// =
-	// minetest,math,vector,ipairs,string,type
+	
 
-	// // minetest library
+	// Luanti library.
 	// local get_connected_players     = core.get_connected_players
 	// local get_player_by_name        = core.get_player_by_name
 	// local get_objects_inside_radius = core.get_objects_inside_radius
