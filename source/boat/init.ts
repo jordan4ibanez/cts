@@ -198,24 +198,25 @@ namespace boat {
 		}
 
 		// Makes the boat float.
-		// 	float = function(self)
-		// 		local pos = this.object.get_pos()
-		// 		local node = core.get_node(pos).name
-		// 		this.swimming = false
-		// 		//flow normally if floating else don't
-		// 		if node == "main:water" or node =="main:waterflow" then
-		// 			this.object.set_acceleration(vector.new(0,0,0))
-		// 			this.swimming = true
-		// 			local vel = this.object.get_velocity()
-		// 			local goal = 9
-		// 			local acceleration = vector.new(0,goal-vel.y,0)
-		// 			acceleration = vector.multiply(acceleration, 0.01)
-		// 			this.object.add_velocity(acceleration)
-		// 			//this.object.set_acceleration(vector.new(0,0,0))
-		// 		else
-		// 			this.object.set_acceleration(vector.new(0,-10,0))
-		// 		end
-		// 	end,
+		float(): void {
+			// 		local pos = this.object.get_pos()
+			// 		local node = core.get_node(pos).name
+			// 		this.swimming = false
+			// 		//flow normally if floating else don't
+			// 		if node == "main:water" or node =="main:waterflow" then
+			// 			this.object.set_acceleration(vector.new(0,0,0))
+			// 			this.swimming = true
+			// 			local vel = this.object.get_velocity()
+			// 			local goal = 9
+			// 			local acceleration = vector.new(0,goal-vel.y,0)
+			// 			acceleration = vector.multiply(acceleration, 0.01)
+			// 			this.object.add_velocity(acceleration)
+			// 			//this.object.set_acceleration(vector.new(0,0,0))
+			// 		else
+			// 			this.object.set_acceleration(vector.new(0,-10,0))
+			// 		end
+		}
+
 		// 	//slows the boat down
 		// 	slowdown = function(self)
 		// 		if not this.moving == true then
