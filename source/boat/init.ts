@@ -176,9 +176,10 @@ namespace boat {
 					continue;
 				}
 
-				// local player_pos = object:get_pos()
-				// pos.y = 0
-				// player_pos.y = 0
+				// Convert to 2d.
+				const player_pos: Vec3 = object.get_pos();
+				pos.y = 0;
+				player_pos.y = 0;
 				// local currentvel = this.object.get_velocity()
 				// local vel = vector.subtract(pos, player_pos)
 				// vel = vector.normalize(vel)
