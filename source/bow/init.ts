@@ -44,9 +44,12 @@ namespace bow {
 	const pool = new Map<string, BowData>();
 
 	// This is a very complicated function which makes the bow work.
+	function arrow_check(name: string, dtime: number): void {
+		const player: ObjectRef | null = core.get_player_by_name(name);
+		if (player == null) {
+			return;
+		}
 
-	function arrow_check(player: ObjectRef, dtime: number): void {
-		const name: string = player.get_player_name();
 		const data: BowData | undefined = pool.get(name);
 
 		if (data == null) {
