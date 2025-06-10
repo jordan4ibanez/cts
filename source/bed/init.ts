@@ -347,11 +347,11 @@ namespace bed {
 		},
 	});
 
-	// core.register_craft({
-	// 	output = "bed:bed",
-	// 	recipe = {
-	// 		{"main:dropped_leaves", "main:dropped_leaves", "main:dropped_leaves"},
-	// 		{"main:wood"          , "main:wood"          , "main:wood"          },
-	// 	},
-	// })
+	core.register_craft({
+		output : "bed:bed",
+		recipe : {
+			{"main:dropped_leaves", "main:dropped_leaves", "main:dropped_leaves"},
+			{"main:wood"          , "main:wood"          , "main:wood"          },
+		},
+	})
 }
