@@ -67,9 +67,9 @@ namespace bow {
 
 		// If player lets go of rightclick.
 		if (data.step != 5 && !rightclick) {
-			// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-			// 		pool[name] = nil
-			// 		return
+			inv.set_stack("main", data.index, ItemStack("bow:bow_empty"));
+			pool.delete(name);
+			return;
 		}
 		// 	// if player isn't holding a bow
 		// 	if core.get_item_group(player:get_wielded_item():get_name(), "bow") == 0 then
