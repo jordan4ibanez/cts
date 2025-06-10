@@ -177,7 +177,10 @@ namespace playerMechanics {
 					}
 					let newItem = placer.get_wielded_item().get_name();
 					if (old != newItem && newItem == "") {
-						const inv: InvRef = placer.get_inventory();
+						const inv: InvRef | null = placer.get_inventory();
+						if (inv == null) {
+							throw new Error("Not a player.");
+						}
 						// Check if another stack.
 						if (inv.contains_item("main", old)) {
 							// print("moving stack")
