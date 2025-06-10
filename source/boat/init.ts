@@ -58,6 +58,7 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
+		moving: boolean = false;
 		on_land: boolean = false;
 		rider: string | null = null;
 		// todo: boat???
@@ -126,7 +127,12 @@ namespace boat {
 
 		// Players drive the boat.
 		drive(): void {
-			// 		if this.rider then
+
+			if (this.rider == null) {
+				this.moving = false;
+			}
+
+			
 			// 			local rider = core.get_player_by_name(this.rider)
 			// 			local move = rider:get_player_control().up
 			// 			this.moving = nil
@@ -143,9 +149,7 @@ namespace boat {
 			// 				this.object.add_velocity(acceleration)
 			// 				this.moving = true
 			// 			end
-			// 		else
-			// 			this.moving = nil
-			// 		end
+			
 		}
 		// 	//players push boat
 		// 	push = function(self)
