@@ -219,15 +219,14 @@ namespace bow {
 							object.get_player_name() != this.owner &&
 							object.get_hp() > 0) ||
 							(object.get_luaentity() &&
-								(object.get_luaentity() as any)?.mobname))
+								(object.get_luaentity() as any)?.mobname)) // todo: cast this into a mob when the mob api is implemented.
 					) {
-						// 	object:punch(this.object, 2,
-						// 		{
-						// 		full_punch_interval=1.5,
-						// 		damage_groups = {damage=3},
-						// 	})
-						// 	this.object.remove()
-						// 	return
+						object.punch(this.object, 2, {
+							full_punch_interval: 1.5,
+							damage_groups: { damage: 3 },
+						});
+						this.object.remove();
+						return;
 					} else if (
 						this.timer > 3 &&
 						object.is_player() &&
