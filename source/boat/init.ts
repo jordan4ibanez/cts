@@ -310,13 +310,14 @@ namespace boat {
 		},
 	});
 
-	// core.register_craft({
-	// 	output = "boat:boat",
-	// 	recipe = {
-	// 		{"main:wood", "", "main:wood"},
-	// 		{"main:wood", "main:wood", "main:wood"},
-	// 	},
-	// })
+	core.register_craft({
+		output: "boat:boat",
+		recipe: [
+			["main:wood", "", "main:wood"],
+			["main:wood", "main:wood", "main:wood"],
+		],
+	});
+
 	// //////////////////////////////////
 	// core.register_entity("boat:iron_boat", {
 	// 	initial_properties = {
