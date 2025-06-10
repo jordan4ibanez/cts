@@ -129,9 +129,10 @@ namespace boat {
 		drive(): void {
 			if (this.rider == null) {
 				this.moving = false;
+				return;
 			}
 
-			// local rider = core.get_player_by_name(this.rider)
+			const rider: ObjectRef | null = core.get_player_by_name(this.rider);
 			// local move = rider:get_player_control().up
 			// this.moving = nil
 			// if move then
