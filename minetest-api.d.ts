@@ -1613,8 +1613,6 @@ declare global {
 		bgcolor?: RGBA;
 	}
 
-	
-
 	/** @noSelf **/ interface BoneOverrideProperty {
 		vec: Vec3;
 		interpolation?: number;
