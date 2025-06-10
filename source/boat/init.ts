@@ -222,15 +222,17 @@ namespace boat {
 			//this.object.set_acceleration(vector.new(0,0,0))
 		}
 
-		// 	//slows the boat down
-		// 	slowdown = function(self)
-		// 		if not this.moving == true then
-		// 			local vel = this.object.get_velocity()
-		// 			local acceleration = vector.new(-vel.x,0,-vel.z)
-		// 			local deceleration = vector.multiply(acceleration, 0.01)
-		// 			this.object.add_velocity(deceleration)
-		// 		end
-		// 	end,
+		// Slows the boat down.
+
+		slowdown(): void {
+			// 		if not this.moving == true then
+			// 			local vel = this.object.get_velocity()
+			// 			local acceleration = vector.new(-vel.x,0,-vel.z)
+			// 			local deceleration = vector.multiply(acceleration, 0.01)
+			// 			this.object.add_velocity(deceleration)
+			// 		end
+		}
+
 		// 	lag_correction = function(self,dtime)
 		// 		local pos = this.object.get_pos()
 		// 		local velocity = this.object.get_velocity()
