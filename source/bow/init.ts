@@ -361,7 +361,7 @@ namespace bow {
 		}
 
 		on_activate(staticdata: string, delta_s: number): void {
-			// 	//this.object.set_animation({x=0,y=180}, 15, 0, true)
+			// this.object.set_animation({ x: 0, y: 180 }, 15, 0, true);
 			// 	local vel = nil
 			// 	if s_sub(staticdata, 1, s_len("return")) == "return" then
 			// 		local data = deserialize(staticdata)
