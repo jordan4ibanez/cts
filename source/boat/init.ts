@@ -68,11 +68,9 @@ namespace boat {
 		}
 
 		on_activate(staticdata: string, dtime_s: number): void {
-			
-
-			// this.object.set_armor_groups({immortal = 1})
-			// this.object.set_velocity({x = 0, y = 0, z = 0})
-			// this.object.set_acceleration({x = 0, y = 0, z = 0})
+			this.object.set_armor_groups({ immortal: 1 });
+			this.object.set_velocity(vector.create3d({ x: 0, y: 0, z: 0 }));
+			this.object.set_acceleration(vector.create3d({ x: 0, y: 0, z: 0 }));
 		}
 
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
