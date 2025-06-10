@@ -207,7 +207,7 @@ namespace playerAPI {
 		player: ObjectRef,
 		animation: string,
 		speed: number,
-		loop: boolean
+		loop?: boolean
 	): void {
 		set_animation(player, animation, speed, loop);
 	}
