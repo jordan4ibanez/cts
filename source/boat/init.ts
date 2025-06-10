@@ -80,25 +80,25 @@ namespace boat {
 		}
 
 		on_rightclick(clicker: ObjectRef): void {
-			// 		if not clicker or not clicker:is_player() then
-			// 			return
-			// 		end
-			// 		local player_name = clicker:get_player_name()
-			// 		if self.rider and player_name == self.rider then
-			// 			clicker:set_detach()
-			// 			local pos = this.object.get_pos()
-			// 			pos.y = pos.y + 1
-			// 			clicker:move_to(pos)
-			// 			clicker:add_player_velocity(vector.new(0,11,0))
-			// 			self.rider = nil
-			// 			player_is_attached(clicker,false)
-			// 			force_update_animation(clicker)
-			// 		elseif not self.rider then
-			// 			self.rider = player_name
-			// 			clicker:set_attach(self.object, "", {x=0, y=2, z=0}, {x=0, y=0, z=0})
-			// 			set_player_animation(clicker,"sit",0)
-			// 			player_is_attached(clicker,true)
-			// 		end
+			// if not clicker or not clicker:is_player() then
+			// 	return
+			// end
+			// local player_name = clicker:get_player_name()
+			// if self.rider and player_name == self.rider then
+			// 	clicker:set_detach()
+			// 	local pos = this.object.get_pos()
+			// 	pos.y = pos.y + 1
+			// 	clicker:move_to(pos)
+			// 	clicker:add_player_velocity(vector.new(0,11,0))
+			// 	self.rider = nil
+			// 	player_is_attached(clicker,false)
+			// 	force_update_animation(clicker)
+			// elseif not self.rider then
+			// 	self.rider = player_name
+			// 	clicker:set_attach(self.object, "", {x=0, y=2, z=0}, {x=0, y=0, z=0})
+			// 	set_player_animation(clicker,"sit",0)
+			// 	player_is_attached(clicker,true)
+			// end
 		}
 
 		// 	//check if the boat is stuck on land
