@@ -1,4 +1,4 @@
-
+namespace boat {
 // local
 // minetest,vector,math,pairs
 // =
@@ -515,3 +515,4 @@
 // 		{"main:iron", "main:iron", "main:iron"},
 // 	},
 // })
+}
