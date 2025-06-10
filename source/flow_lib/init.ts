@@ -84,7 +84,7 @@ namespace flowLib {
 		return null;
 	}
 
-		export function lavaflow(pos: Vec3): Vec3 | null {
+	export function lavaflow(pos: Vec3): Vec3 | null {
 		const c_node = core.get_node(pos).name;
 		if (c_node != "crafter:lavaflow" && c_node != "crafter:lava") {
 			return null;
