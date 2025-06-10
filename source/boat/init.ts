@@ -241,7 +241,7 @@ namespace boat {
 
 			const chugent: number =
 				core.get_us_time() / 1000000 - this.lag_check;
-			// 	//print("lag = "..chugent.." ms")
+				//print("lag = "+chugent+" ms")
 			// 	if chugent > 1 and  this.old_pos and this.old_velocity then
 			// 		this.object.move_to(this.old_pos)
 			// 		this.object.set_velocity(this.old_velocity)
@@ -449,7 +449,7 @@ namespace boat {
 	// 		local velocity = this.object.get_velocity()
 	// 		if this.lag_check then
 	// 			local chugent = core.get_us_time()/1000000- this.lag_check
-	// 			//print("lag = "..chugent.." ms")
+	// 			//print("lag = "+chugent+" ms")
 	// 			if chugent > 70 and  this.old_pos and this.old_velocity then
 	// 				this.object.move_to(this.old_pos)
 	// 				this.object.set_velocity(this.old_velocity)
