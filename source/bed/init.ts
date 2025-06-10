@@ -175,11 +175,12 @@ namespace bed {
 		sleep_loop = true;
 	}
 
-	// core.register_on_player_receive_fields(function(player, formname, fields)
-	// 	if formname and formname == "bed" then
-	// 		wake_up(player)
-	// 	end
-	// end)
+	core.register_on_player_receive_fields((player, formname, fields) => {
+		if (formname && formname == "bed") {
+			wake_up(player);
+		}
+	});
+
 	// core.register_on_respawnplayer(function(player)
 	// 	wake_up(player)
 	// end)
