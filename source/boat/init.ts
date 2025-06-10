@@ -225,7 +225,7 @@ namespace boat {
 		// Slows the boat down.
 
 		slowdown(): void {
-			// 		if not this.moving == true then
+					if not this.moving == true then
 			// 			local vel = this.object.get_velocity()
 			// 			local acceleration = vector.new(-vel.x,0,-vel.z)
 			// 			local deceleration = vector.multiply(acceleration, 0.01)
