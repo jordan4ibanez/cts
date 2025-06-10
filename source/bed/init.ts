@@ -188,7 +188,7 @@ namespace bed {
 	});
 
 	// These are beds.
-	core.register_node("bed:bed", {
+	core.register_node("crafter_bed:bed", {
 		description: "Bed",
 		inventory_image: "bed.png",
 		wield_image: "bed.png",
@@ -219,7 +219,7 @@ namespace bed {
 				return;
 			}
 			const [_, pos] = core.item_place_node(
-				ItemStack("bed:bed_front"),
+				ItemStack("crafter_bed:bed_front"),
 				placer,
 				pointed_thing
 			);
@@ -239,7 +239,7 @@ namespace bed {
 					return itemstack;
 				} else {
 					core.add_node(pos2, {
-						name: "bed:bed_back",
+						name: "crafter_bed:bed_back",
 						param2: param2,
 					});
 					itemstack.take_item();
@@ -253,7 +253,7 @@ namespace bed {
 		},
 	});
 
-	core.register_node("bed:bed_front", {
+	core.register_node("crafter_bed:bed_front", {
 		description: "Bed",
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2.facedir,
@@ -277,7 +277,7 @@ namespace bed {
 			],
 		},
 		node_placement_prediction: "",
-		drop: "bed:bed",
+		drop: "crafter_bed:bed",
 		on_dig: (pos, node, digger) => {
 			const param2: number = core.get_node(pos).param2 || 0;
 			let facedir: Vec3 = core.facedir_to_dir(param2);
@@ -300,7 +300,7 @@ namespace bed {
 		},
 	});
 
-	core.register_node("bed:bed_back", {
+	core.register_node("crafter_bed:bed_back", {
 		description: "Bed",
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2.facedir,
@@ -348,7 +348,7 @@ namespace bed {
 	});
 
 	core.register_craft({
-		output: "bed:bed",
+		output: "crafter_bed:bed",
 		recipe: [
 			[
 				"crafter:dropped_leaves",
