@@ -132,7 +132,7 @@ namespace bow {
 					);
 				}
 			}
-			// pool[name] = nil
+			pool.delete(name);
 		}
 		// 	//add hand fatigue timer
 		// 	//gradually increase fatigue until cap is reached
