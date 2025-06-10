@@ -100,20 +100,20 @@ namespace bow {
 			}
 		}
 
-		// 	if temp_pool.step == 5 and not rightclick then
-		// 		dir = player:get_look_dir()
-		// 		vel = multiply_vec(dir,50)
-		// 		pos = player:get_pos()
-		// 		pos.y = pos.y + 1.5
-		// 		object = core.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
-		// 		object:set_velocity(vel)
-		// 		object:get_luaentity().owner  = name
-		// 		object:get_luaentity().oldpos = pos
-		// 		core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
-		// 		inv:remove_item("main", ItemStack("bow:arrow"))
-		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-		// 		pool[name] = nil
-		// 	end
+		if (data.step == 5 && !rightclick) {
+			// 		dir = player:get_look_dir()
+			// 		vel = multiply_vec(dir,50)
+			// 		pos = player:get_pos()
+			// 		pos.y = pos.y + 1.5
+			// 		object = core.add_entity(add_vec(pos,divide_vec(dir,10)),"bow:arrow")
+			// 		object:set_velocity(vel)
+			// 		object:get_luaentity().owner  = name
+			// 		object:get_luaentity().oldpos = pos
+			// 		core.sound_play("bow", {object=player, gain = 1.0, max_hear_distance = 60,pitch = random(80,100)/100})
+			// 		inv:remove_item("main", ItemStack("bow:arrow"))
+			// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+			// 		pool[name] = nil
+		}
 		// 	//add hand fatigue timer
 		// 	//gradually increase fatigue until cap is reached
 	}
