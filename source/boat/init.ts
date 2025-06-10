@@ -86,18 +86,18 @@ namespace boat {
 
 			const player_name: string = clicker.get_player_name();
 
-			if self.rider and player_name == self.rider then
+			if this.rider and player_name == this.rider then
 			// 	clicker:set_detach()
 			// 	local pos = this.object.get_pos()
 			// 	pos.y = pos.y + 1
 			// 	clicker:move_to(pos)
 			// 	clicker:add_player_velocity(vector.new(0,11,0))
-			// 	self.rider = nil
+			// 	this.rider = nil
 			// 	player_is_attached(clicker,false)
 			// 	force_update_animation(clicker)
-			// elseif not self.rider then
-			// 	self.rider = player_name
-			// 	clicker:set_attach(self.object, "", {x=0, y=2, z=0}, {x=0, y=0, z=0})
+			// elseif not this.rider then
+			// 	this.rider = player_name
+			// 	clicker:set_attach(this.object, "", {x=0, y=2, z=0}, {x=0, y=0, z=0})
 			// 	set_player_animation(clicker,"sit",0)
 			// 	player_is_attached(clicker,true)
 			// end
@@ -109,21 +109,21 @@ namespace boat {
 		// 		pos.y = pos.y - 0.37
 		// 		local bottom_node = core.get_node(pos).name
 		// 		if (bottom_node == "main:water" or bottom_node == "main:waterflow" or bottom_node == "air") then
-		// 			self.on_land = false
+		// 			this.on_land = false
 		// 		else
-		// 			self.on_land = true
+		// 			this.on_land = true
 		// 		end
 		// 	end,
 		// 	//players drive the baot
 		// 	drive = function(self)
-		// 		if self.rider then
-		// 			local rider = core.get_player_by_name(self.rider)
+		// 		if this.rider then
+		// 			local rider = core.get_player_by_name(this.rider)
 		// 			local move = rider:get_player_control().up
-		// 			self.moving = nil
+		// 			this.moving = nil
 		// 			if move then
 		// 				local currentvel = this.object.get_velocity()
 		// 				local goal = rider:get_look_dir()
-		// 				if self.on_land == true then
+		// 				if this.on_land == true then
 		// 					goal = vector.multiply(goal,1)
 		// 				else
 		// 					goal = vector.multiply(goal,20)
@@ -131,17 +131,17 @@ namespace boat {
 		// 				local acceleration = vector.new(goal.x-currentvel.x,0,goal.z-currentvel.z)
 		// 				acceleration = vector.multiply(acceleration, 0.01)
 		// 				this.object.add_velocity(acceleration)
-		// 				self.moving = true
+		// 				this.moving = true
 		// 			end
 		// 		else
-		// 			self.moving = nil
+		// 			this.moving = nil
 		// 		end
 		// 	end,
 		// 	//players push boat
 		// 	push = function(self)
 		// 		local pos = this.object.get_pos()
 		// 		for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
-		// 			if object:is_player() and object:get_player_name() ~= self.rider then
+		// 			if object:is_player() and object:get_player_name() ~= this.rider then
 		// 				local player_pos = object:get_pos()
 		// 				pos.y = 0
 		// 				player_pos.y = 0
@@ -162,11 +162,11 @@ namespace boat {
 		// 	float = function(self)
 		// 		local pos = this.object.get_pos()
 		// 		local node = core.get_node(pos).name
-		// 		self.swimming = false
+		// 		this.swimming = false
 		// 		//flow normally if floating else don't
 		// 		if node == "main:water" or node =="main:waterflow" then
 		// 			this.object.set_acceleration(vector.new(0,0,0))
-		// 			self.swimming = true
+		// 			this.swimming = true
 		// 			local vel = this.object.get_velocity()
 		// 			local goal = 9
 		// 			local acceleration = vector.new(0,goal-vel.y,0)
@@ -179,7 +179,7 @@ namespace boat {
 		// 	end,
 		// 	//slows the boat down
 		// 	slowdown = function(self)
-		// 		if not self.moving == true then
+		// 		if not this.moving == true then
 		// 			local vel = this.object.get_velocity()
 		// 			local acceleration = vector.new(-vel.x,0,-vel.z)
 		// 			local deceleration = vector.multiply(acceleration, 0.01)
@@ -189,17 +189,17 @@ namespace boat {
 		// 	lag_correction = function(self,dtime)
 		// 		local pos = this.object.get_pos()
 		// 		local velocity = this.object.get_velocity()
-		// 		if self.lag_check then
-		// 			local chugent = core.get_us_time()/1000000 - self.lag_check
+		// 		if this.lag_check then
+		// 			local chugent = core.get_us_time()/1000000 - this.lag_check
 		// 			//print("lag = "..chugent.." ms")
-		// 			if chugent > 1 and  self.old_pos and self.old_velocity then
-		// 				this.object.move_to(self.old_pos)
-		// 				this.object.set_velocity(self.old_velocity)
+		// 			if chugent > 1 and  this.old_pos and this.old_velocity then
+		// 				this.object.move_to(this.old_pos)
+		// 				this.object.set_velocity(this.old_velocity)
 		// 			end
 		// 		end
-		// 		self.old_pos = pos
-		// 		self.old_velocity = velocity
-		// 		self.lag_check = core.get_us_time()/1000000
+		// 		this.old_pos = pos
+		// 		this.old_velocity = velocity
+		// 		this.lag_check = core.get_us_time()/1000000
 		// 	end,
 		// 	flow = function(self)
 		// 		local flow_dir = flow(this.object.get_pos())
@@ -212,13 +212,13 @@ namespace boat {
 		// 		end
 		// 	end,
 		// 	on_step = function(self, dtime)
-		// 		self.check_if_on_land(self)
-		// 		self.push(self)
-		// 		self.drive(self)
-		// 		self.float(self)
-		// 		self.flow(self)
-		// 		self.slowdown(self)
-		// 		self.lag_correction(self,dtime)
+		// 		this.check_if_on_land(self)
+		// 		this.push(self)
+		// 		this.drive(self)
+		// 		this.float(self)
+		// 		this.flow(self)
+		// 		this.slowdown(self)
+		// 		this.lag_correction(self,dtime)
 		// 	end,
 	}
 
@@ -268,17 +268,17 @@ namespace boat {
 	// 	iron_boat = true,
 	// 	get_staticdata = function(self)
 	// 		return core.serialize({
-	// 			//itemstring = self.itemstring,
+	// 			//itemstring = this.itemstring,
 	// 		})
 	// 	end,
 	// 	on_activate = function(self, staticdata, dtime_s)
 	// 		if string.sub(staticdata, 1, string.len("return")) == "return" then
 	// 			local data = core.deserialize(staticdata)
 	// 			if data and type(data) == "table" then
-	// 				//self.itemstring = data.itemstring
+	// 				//this.itemstring = data.itemstring
 	// 			end
 	// 		else
-	// 			//self.itemstring = staticdata
+	// 			//this.itemstring = staticdata
 	// 		end
 	// 		this.object.set_armor_groups({immortal = 1})
 	// 		this.object.set_velocity({x = 0, y = 0, z = 0})
@@ -294,18 +294,18 @@ namespace boat {
 	// 			return
 	// 		end
 	// 		local player_name = clicker:get_player_name()
-	// 		if self.rider and player_name == self.rider then
+	// 		if this.rider and player_name == this.rider then
 	// 			clicker:set_detach()
 	// 			local pos = this.object.get_pos()
 	// 			pos.y = pos.y + 1
 	// 			clicker:move_to(pos)
 	// 			clicker:add_player_velocity(vector.new(0,11,0))
-	// 			self.rider = nil
+	// 			this.rider = nil
 	// 			player_is_attached(clicker,false)
 	// 			force_update_animation(clicker)
-	// 		elseif not self.rider then
-	// 			self.rider = player_name
-	// 			clicker:set_attach(self.object, "", {x=0, y=2, z=0}, {x=0, y=0, z=0})
+	// 		elseif not this.rider then
+	// 			this.rider = player_name
+	// 			clicker:set_attach(this.object, "", {x=0, y=2, z=0}, {x=0, y=0, z=0})
 	// 			set_player_animation(clicker,"sit",0)
 	// 			player_is_attached(clicker,true)
 	// 		end
@@ -316,17 +316,17 @@ namespace boat {
 	// 		pos.y = pos.y - 0.37
 	// 		local bottom_node = core.get_node(pos).name
 	// 		if (bottom_node == "nether:lava" or bottom_node == "nether:lavaflow" or bottom_node == "air") then
-	// 			self.on_land = false
+	// 			this.on_land = false
 	// 		else
-	// 			self.on_land = true
+	// 			this.on_land = true
 	// 		end
 	// 	end,
 	// 	//players drive the baot
 	// 	drive = function(self)
-	// 		if self.rider and not self.on_land == true then
-	// 			local rider = core.get_player_by_name(self.rider)
+	// 		if this.rider and not this.on_land == true then
+	// 			local rider = core.get_player_by_name(this.rider)
 	// 			local move = rider:get_player_control().up
-	// 			self.moving = nil
+	// 			this.moving = nil
 	// 			if move then
 	// 				local currentvel = this.object.get_velocity()
 	// 				local goal = rider:get_look_dir()
@@ -334,17 +334,17 @@ namespace boat {
 	// 				local acceleration = vector.new(goal.x-currentvel.x,0,goal.z-currentvel.z)
 	// 				acceleration = vector.multiply(acceleration, 0.01)
 	// 				this.object.add_velocity(acceleration)
-	// 				self.moving = true
+	// 				this.moving = true
 	// 			end
 	// 		else
-	// 			self.moving = nil
+	// 			this.moving = nil
 	// 		end
 	// 	end,
 	// 	//players push boat
 	// 	push = function(self)
 	// 		local pos = this.object.get_pos()
 	// 		for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
-	// 			if object:is_player() and object:get_player_name() ~= self.rider then
+	// 			if object:is_player() and object:get_player_name() ~= this.rider then
 	// 				local player_pos = object:get_pos()
 	// 				pos.y = 0
 	// 				player_pos.y = 0
@@ -365,10 +365,10 @@ namespace boat {
 	// 	float = function(self)
 	// 		local pos = this.object.get_pos()
 	// 		local node = core.get_node(pos).name
-	// 		self.swimming = false
+	// 		this.swimming = false
 	// 		//flow normally if floating else don't
 	// 		if node == "nether:lava" or node =="nether:lavaflow" then
-	// 			self.swimming = true
+	// 			this.swimming = true
 	// 			local vel = this.object.get_velocity()
 	// 			local goal = 9
 	// 			local acceleration = vector.new(0,goal-vel.y,0)
@@ -386,7 +386,7 @@ namespace boat {
 	// 	end,
 	// 	//slows the boat down
 	// 	slowdown = function(self)
-	// 		if not self.moving == true then
+	// 		if not this.moving == true then
 	// 			local vel = this.object.get_velocity()
 	// 			local acceleration = vector.new(-vel.x,0,-vel.z)
 	// 			local deceleration = vector.multiply(acceleration, 0.01)
@@ -396,26 +396,26 @@ namespace boat {
 	// 	lag_correction = function(self,dtime)
 	// 		local pos = this.object.get_pos()
 	// 		local velocity = this.object.get_velocity()
-	// 		if self.lag_check then
-	// 			local chugent = core.get_us_time()/1000000- self.lag_check
+	// 		if this.lag_check then
+	// 			local chugent = core.get_us_time()/1000000- this.lag_check
 	// 			//print("lag = "..chugent.." ms")
-	// 			if chugent > 70 and  self.old_pos and self.old_velocity then
-	// 				this.object.move_to(self.old_pos)
-	// 				this.object.set_velocity(self.old_velocity)
+	// 			if chugent > 70 and  this.old_pos and this.old_velocity then
+	// 				this.object.move_to(this.old_pos)
+	// 				this.object.set_velocity(this.old_velocity)
 	// 			end
 	// 		end
-	// 		self.old_pos = pos
-	// 		self.old_velocity = velocity
-	// 		self.lag_check = core.get_us_time()/1000000
+	// 		this.old_pos = pos
+	// 		this.old_velocity = velocity
+	// 		this.lag_check = core.get_us_time()/1000000
 	// 	end,
 	// 	on_step = function(self, dtime)
-	// 		self.check_if_on_land(self)
-	// 		self.push(self)
-	// 		self.drive(self)
-	// 		self.float(self)
+	// 		this.check_if_on_land(self)
+	// 		this.push(self)
+	// 		this.drive(self)
+	// 		this.float(self)
 	// 		lavaflow(self)
-	// 		self.slowdown(self)
-	// 		self.lag_correction(self,dtime)
+	// 		this.slowdown(self)
+	// 		this.lag_correction(self,dtime)
 	// 	end,
 	// })
 	// core.register_craftitem("boat:iron_boat", {
