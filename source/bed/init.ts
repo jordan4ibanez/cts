@@ -188,7 +188,7 @@ namespace bed {
 	});
 
 	// These are beds.
-	// core.register_node("bed:bed", {
+	core.register_node("bed:bed", {
 	//     description = "Bed",
 	//     inventory_image = "bed.png",
 	//     wield_image = "bed.png",
@@ -227,7 +227,8 @@ namespace bed {
 	// 		end
 	// 		return(itemstack)
 	// 	end,
-	// })
+	})
+
 	// core.register_node("bed:bed_front", {
 	//     description = "Bed",
 	//     paramtype = "light",
