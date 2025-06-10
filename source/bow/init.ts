@@ -255,32 +255,38 @@ namespace bow {
 					}
 				}
 
-						if (moveresult && moveresult.collides && moveresult.collisions && moveresult.collisions[0]?.new_velocity && !this.stuck ) {
-				// 			collision = moveresult.collisions[1]
-				// 			if collision.new_velocity.x == 0 and collision.old_velocity.x ~= 0 then
-				// 				this.check_dir = vec_direction(new_vec(pos.x,0,0),new_vec(collision.node_pos.x,0,0))
-				// 			elseif collision.new_velocity.y == 0 and collision.old_velocity.y ~= 0 then
-				// 				this.check_dir = vec_direction(new_vec(0,pos.y,0),new_vec(0,collision.node_pos.y,0))
-				// 			elseif collision.new_velocity.z == 0 and collision.old_velocity.z ~= 0 then
-				// 				this.check_dir = vec_direction(new_vec(0,0,pos.z),new_vec(0,0,collision.node_pos.z))
-				// 			end
-				// 			if collision.new_pos then
-				// 				//print(dump(collision.new_pos))
-				// 				this.object.set_pos(collision.new_pos)
-				// 			end
-				// 			//print(dump(collision.new_pos))
-				// 			core.sound_play("arrow_hit",{object=this.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
-				// 			this.stuck = true
-				// 			this.object.set_velocity(new_vec(0,0,0))
-				// 			this.object.set_acceleration(new_vec(0,0,0))
-						} else if (this.stuck == true && this.check_dir) {
-				// 			pos2 = add_vec(pos,multiply_vec(this.check_dir,0.2))
-				// 			ray = create_raycast(pos, pos2, false, false)
-				// 			if not ray:next() then
-				// 				this.stuck = false
-				// 				this.object.set_acceleration(new_vec(0,-9.81,0))
-				// 			end
-						}
+				if (
+					moveresult &&
+					moveresult.collides &&
+					moveresult.collisions &&
+					moveresult.collisions[0]?.new_velocity &&
+					!this.stuck
+				) {
+					// 			collision = moveresult.collisions[1]
+					// 			if collision.new_velocity.x == 0 and collision.old_velocity.x ~= 0 then
+					// 				this.check_dir = vec_direction(new_vec(pos.x,0,0),new_vec(collision.node_pos.x,0,0))
+					// 			elseif collision.new_velocity.y == 0 and collision.old_velocity.y ~= 0 then
+					// 				this.check_dir = vec_direction(new_vec(0,pos.y,0),new_vec(0,collision.node_pos.y,0))
+					// 			elseif collision.new_velocity.z == 0 and collision.old_velocity.z ~= 0 then
+					// 				this.check_dir = vec_direction(new_vec(0,0,pos.z),new_vec(0,0,collision.node_pos.z))
+					// 			end
+					// 			if collision.new_pos then
+					// 				//print(dump(collision.new_pos))
+					// 				this.object.set_pos(collision.new_pos)
+					// 			end
+					// 			//print(dump(collision.new_pos))
+					// 			core.sound_play("arrow_hit",{object=this.object,gain=1,pitch=random(80,100)/100,max_hear_distance=64})
+					// 			this.stuck = true
+					// 			this.object.set_velocity(new_vec(0,0,0))
+					// 			this.object.set_acceleration(new_vec(0,0,0))
+				} else if (this.stuck == true && this.check_dir) {
+					// 			pos2 = add_vec(pos,multiply_vec(this.check_dir,0.2))
+					// 			ray = create_raycast(pos, pos2, false, false)
+					// 			if not ray:next() then
+					// 				this.stuck = false
+					// 				this.object.set_acceleration(new_vec(0,-9.81,0))
+					// 			end
+				}
 
 				// 		if not this.stuck and pos and this.oldpos then
 				// 			this.spin = this.spin + (delta*10)
@@ -292,7 +298,7 @@ namespace bow {
 				// 			x = (dir_to_yaw(new_vec(vec_distance(new_vec(pos.x,0,pos.z),new_vec(this.oldpos.x,0,this.oldpos.z)),0,pos.y-this.oldpos.y))+(pi/2))
 				// 			this.object.set_rotation(new_vec(x,y,this.spin))
 				// 		end
-				
+
 				// 		if this.stuck == false then
 				// 			this.oldpos = pos
 				// 			this.oldvel = vel
