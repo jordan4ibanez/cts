@@ -145,11 +145,12 @@ namespace bow {
 		oldpos: Vec3 | null = null;
 	}
 
-	// core.register_globalstep(function(delta)
-	// 	for name in pairs(pool) do
-	// 		arrow_check(name,delta)
-	// 	end
-	// end)
+	core.register_globalstep((delta: number) => {
+		for (const name of pool.keys()) {
+			arrow_check(name, delta);
+		}
+	});
+
 	// //[[
 	//  █████╗ ██████╗ ██████╗  ██████╗ ██╗    ██╗    ███████╗██╗   ██╗███╗   ██╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
 	// ██╔══██╗██╔══██╗██╔══██╗██╔═══██╗██║    ██║    ██╔════╝██║   ██║████╗  ██║██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
