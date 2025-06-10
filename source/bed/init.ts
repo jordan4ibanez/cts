@@ -254,43 +254,43 @@ namespace bed {
 	});
 
 	core.register_node("bed:bed_front", {
-	//     description = "Bed",
-	//     paramtype = "light",
-	//     paramtype2 = "facedir",
-	//     tiles = {"bed_top.png^[transform1","wood.png","bed_side.png","bed_side.png^[transform4","bed_front.png","nothing.png"},
-	//     groups = {wood = 1, hard = 1, axe = 1, hand = 3, instant=1,bouncy=50},
-	//     sounds = main.woodSound({placing=""}),
-	//     drawtype = "nodebox",
-	//     node_box = {
-	// 		type = "fixed",
-	// 		fixed = {
-	// 				{-0.5, -5/16, -0.5, 0.5, 0.06, 0.5},
-	// 				{-0.5, -0.5, 0.5, -5/16, -5/16, 5/16},
-	// 				{0.5, -0.5, 0.5, 5/16, -5/16, 5/16},
-	// 			},
-	// 		},
-	// 	node_placement_prediction = "",
-	// 	drop = "bed:bed",
-	// 	on_dig = function(pos, node, digger)
-	// 		local param2 = core.get_node(pos).param2
-	// 		local facedir = core.facedir_to_dir(param2)
-	// 		facedir = vector.multiply(facedir,-1)
-	// 		local obj = core.add_item(pos, "bed:bed")
-	// 		core.remove_node(pos)
-	// 		core.remove_node(vector.add(pos,facedir))
-	// 		//remove_spawnpoint(pos,digger)
-	// 		//remove_spawnpoint(vector.add(pos,facedir),digger)
-	// 		core.punch_node(vector.new(pos.x,pos.y+1,pos.z))
-	// 	end,
-	// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-	// 		if pos.y <= -10033 then
-	// 			tnt(pos,10)
-	// 			return
-	// 		end
-	// 		local param2 = core.get_node(pos).param2
-	// 		do_sleep(clicker,pos,param2)
-	// 	end,
-	})
+		//     description = "Bed",
+		//     paramtype = "light",
+		//     paramtype2 = "facedir",
+		//     tiles = {"bed_top.png^[transform1","wood.png","bed_side.png","bed_side.png^[transform4","bed_front.png","nothing.png"},
+		//     groups = {wood = 1, hard = 1, axe = 1, hand = 3, instant=1,bouncy=50},
+		//     sounds = main.woodSound({placing=""}),
+		//     drawtype = "nodebox",
+		//     node_box = {
+		// 		type = "fixed",
+		// 		fixed = {
+		// 				{-0.5, -5/16, -0.5, 0.5, 0.06, 0.5},
+		// 				{-0.5, -0.5, 0.5, -5/16, -5/16, 5/16},
+		// 				{0.5, -0.5, 0.5, 5/16, -5/16, 5/16},
+		// 			},
+		// 		},
+		// 	node_placement_prediction = "",
+		// 	drop = "bed:bed",
+		// 	on_dig = function(pos, node, digger)
+		// 		local param2 = core.get_node(pos).param2
+		// 		local facedir = core.facedir_to_dir(param2)
+		// 		facedir = vector.multiply(facedir,-1)
+		// 		local obj = core.add_item(pos, "bed:bed")
+		// 		core.remove_node(pos)
+		// 		core.remove_node(vector.add(pos,facedir))
+		// 		//remove_spawnpoint(pos,digger)
+		// 		//remove_spawnpoint(vector.add(pos,facedir),digger)
+		// 		core.punch_node(vector.new(pos.x,pos.y+1,pos.z))
+		// 	end,
+		// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		// 		if pos.y <= -10033 then
+		// 			tnt(pos,10)
+		// 			return
+		// 		end
+		// 		local param2 = core.get_node(pos).param2
+		// 		do_sleep(clicker,pos,param2)
+		// 	end,
+	});
 
 	// core.register_node("bed:bed_back", {
 	//     description = "Bed",
