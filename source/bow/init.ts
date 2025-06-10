@@ -487,12 +487,12 @@ namespace bow {
 		],
 	});
 
-	// core.register_craft({
-	// 	output = "bow:arrow 16",
-	// 	recipe = {
-	// 		{"main:iron", ""          , ""           },
-	// 		{""         , "main:stick", ""           },
-	// 		{""         , ""          , "mob:feather"},
-	// 	},
-	// })
+	core.register_craft({
+		output: "bow:arrow 16",
+		recipe: [
+			["main:iron", "", ""],
+			["", "main:stick", ""],
+			["", "", "mob:feather"],
+		],
+	});
 }
