@@ -466,10 +466,10 @@ namespace bow {
 			},
 		});
 	}
-	// core.register_craftitem("bow:arrow", {
-	// 	description = "Arrow",
-	// 	inventory_image = "arrow_item.png",
-	// });
+	core.register_craftitem("bow:arrow", {
+		description: "Arrow",
+		inventory_image: "arrow_item.png",
+	});
 
 	// //[[
 	//  ██████╗██████╗  █████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗
