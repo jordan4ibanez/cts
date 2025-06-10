@@ -44,25 +44,22 @@ namespace bow {
 
 	// This is a very complicated function which makes the bow work.
 
-	function arrow_check(name: string, dtime: number): void {
+	function arrow_check(player: ObjectRef, dtime: number): void {
+		const name: string = player.get_player_name();
 		const data: BowData | undefined = pool.get(name);
 
 		if (data == null) {
-			throw new Error(`Player ${name} was never added to the pool.`)
+			throw new Error(`Player ${name} was never added to the pool.`);
 		}
 
-		const player: ObjectRef | null = get_player_by_name(name);
-		if (player == null) {
-			throw new Error(`Player ${name} does not exist.`);
-		}
 		const rightclick: boolean = player.get_player_control().RMB;
 		const new_index: number = player.get_wield_index();
 		// If player changes selected item.
-		if (new_index != data.index) then;
-		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-		// 		pool[name] = nil
-		// 		return
-		// 	end
+		if (new_index != data.index) {
+			// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
+			// 		pool[name] = nil
+			// 		return
+		}
 		// 	// if player lets go of rightclick
 		// 	if temp_pool.step ~= 5 and not rightclick then
 		// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
