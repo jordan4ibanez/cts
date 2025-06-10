@@ -8,13 +8,11 @@ namespace flowLib {
 
 	function get_nodes(pos: Vec3): FlowNode[] {
 		const tab: FlowNode[] = [];
-
 		for (let i = -1; i <= 1; i += 2) {
 			const data = [
 				vector.create3d({ x: pos.x + i, y: pos.y, z: pos.z }),
 				vector.create3d({ x: pos.x, y: pos.y, z: pos.z + i }),
 			];
-
 			for (const p of data) {
 				tab.push({
 					pos: p,
@@ -22,29 +20,22 @@ namespace flowLib {
 				});
 			}
 		}
-
 		return tab;
 	}
 
 	export function flow(pos: Vec3): Vec3 | null {
 		const c_node = core.get_node(pos).name;
-
 		if (c_node != "crafter:waterflow" && c_node != "crafter:water") {
 			return null;
 		}
-
 		const data: FlowNode[] = get_nodes(pos);
-
 		const param2: number | undefined = core.get_node(pos).param2;
-
 		if (param2 == null) {
 			return null;
 		}
-
 		if (param2 > 7) {
 			return null;
 		}
-
 		if (c_node == "crafter:water") {
 			for (const i of data) {
 				const par2: number | undefined = i.node.param2;
@@ -58,7 +49,6 @@ namespace flowLib {
 				}
 			}
 		}
-
 		for (const i of data) {
 			const par2: number | undefined = i.node.param2;
 			if (
@@ -69,7 +59,6 @@ namespace flowLib {
 				return vector.subtract(i.pos, pos);
 			}
 		}
-
 		for (const i of data) {
 			const par2: number | undefined = i.node.param2;
 			if (
@@ -80,7 +69,6 @@ namespace flowLib {
 				return vector.subtract(i.pos, pos);
 			}
 		}
-
 		for (const i of data) {
 			const name: string = i.node.name;
 			const tmp: NodeDefinition | undefined = core.registered_nodes[name];
@@ -93,7 +81,6 @@ namespace flowLib {
 				return vector.subtract(i.pos, pos);
 			}
 		}
-
 		return null;
 	}
 }
