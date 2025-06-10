@@ -65,7 +65,11 @@ namespace bow {
 
 		// If player changes selected item.
 		if (new_index != data.index) {
-			inv.set_stack("main", data.index, ItemStack("crafter_bow:bow_empty"));
+			inv.set_stack(
+				"main",
+				data.index,
+				ItemStack("crafter_bow:bow_empty")
+			);
 			pool.delete(name);
 			return;
 		}
@@ -74,7 +78,11 @@ namespace bow {
 
 		// If player lets go of rightclick.
 		if (data.step != 5 && !rightclick) {
-			inv.set_stack("main", data.index, ItemStack("crafter_bow:bow_empty"));
+			inv.set_stack(
+				"main",
+				data.index,
+				ItemStack("crafter_bow:bow_empty")
+			);
 			pool.delete(name);
 			return;
 		}
@@ -89,7 +97,11 @@ namespace bow {
 
 		// If player doesn't have any arrows.
 		if (!inv.contains_item("main", ItemStack("crafter_bow:arrow"))) {
-			inv.set_stack("main", data.index, ItemStack("crafter_bow:bow_empty"));
+			inv.set_stack(
+				"main",
+				data.index,
+				ItemStack("crafter_bow:bow_empty")
+			);
 			pool.delete(name);
 			return;
 		}
@@ -99,7 +111,9 @@ namespace bow {
 			if (data.float > 0.05) {
 				data.float = 0;
 				data.step += 1;
-				player.set_wielded_item(ItemStack("crafter_bow:bow_" + data.step));
+				player.set_wielded_item(
+					ItemStack("crafter_bow:bow_" + data.step)
+				);
 			}
 		}
 
@@ -254,8 +268,16 @@ namespace bow {
 						if (inv == null) {
 							throw new Error("Not a player.");
 						}
-						if (inv.room_for_item("main", ItemStack("crafter_bow:arrow"))) {
-							inv.add_item("main", ItemStack("crafter_bow:arrow"));
+						if (
+							inv.room_for_item(
+								"main",
+								ItemStack("crafter_bow:arrow")
+							)
+						) {
+							inv.add_item(
+								"main",
+								ItemStack("crafter_bow:arrow")
+							);
 							core.sound_play("pickup", {
 								object: object,
 								gain: 0.4,
