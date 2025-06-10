@@ -197,7 +197,7 @@ namespace boat {
 			}
 		}
 
-		// 	//makes the boat float
+		// Makes the boat float.
 		// 	float = function(self)
 		// 		local pos = this.object.get_pos()
 		// 		local node = core.get_node(pos).name
