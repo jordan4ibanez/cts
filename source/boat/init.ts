@@ -58,7 +58,7 @@ namespace boat {
 			automatic_face_movement_max_rotation_per_sec: 600,
 		};
 
-		rider: ObjectRef | null = null;
+		rider: string | null = null;
 
 		// todo: boat???
 		boat: boolean = true;
@@ -84,8 +84,9 @@ namespace boat {
 				return;
 			}
 
-			// local player_name = clicker:get_player_name()
-			// if self.rider and player_name == self.rider then
+			const player_name: string = clicker.get_player_name();
+
+			if self.rider and player_name == self.rider then
 			// 	clicker:set_detach()
 			// 	local pos = this.object.get_pos()
 			// 	pos.y = pos.y + 1
