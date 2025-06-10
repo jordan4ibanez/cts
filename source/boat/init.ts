@@ -287,26 +287,27 @@ namespace boat {
 		}
 	}
 
-	// core.register_craftitem("boat:boat", {
-	// 	description = "Boat",
-	// 	inventory_image = "boatitem.png",
-	// 	wield_image = "boatitem.png",
-	// 	liquids_pointable = true,
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		if not pointed_thing.type == "node" then
-	// 			return
-	// 		end
-	// 		local sneak = placer:get_player_control().sneak
-	// 		local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
-	// 		if not sneak and noddef.on_rightclick then
-	// 			core.item_place(itemstack, placer, pointed_thing)
-	// 			return
-	// 		end
-	// 		core.add_entity(pointed_thing.above, "boat:boat")
-	// 		itemstack:take_item()
-	// 		return itemstack
-	// 	end,
-	// })
+	core.register_craftitem("boat:boat", {
+		description = "Boat",
+		inventory_image = "boatitem.png",
+		wield_image = "boatitem.png",
+		liquids_pointable = true,
+		on_place = function(itemstack, placer, pointed_thing)
+			if not pointed_thing.type == "node" then
+				return
+			end
+			local sneak = placer:get_player_control().sneak
+			local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
+			if not sneak and noddef.on_rightclick then
+				core.item_place(itemstack, placer, pointed_thing)
+				return
+			end
+			core.add_entity(pointed_thing.above, "boat:boat")
+			itemstack:take_item()
+			return itemstack
+		end,
+	})
+	
 	// core.register_craft({
 	// 	output = "boat:boat",
 	// 	recipe = {
