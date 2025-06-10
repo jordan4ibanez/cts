@@ -1,5 +1,5 @@
 namespace book {
-	// --this is the gui for un-inked books
+	// //this is the gui for un-inked books
 	// local open_book_gui = function(itemstack, user)
 	// 	core.sound_play("book_open", {to_player=user:get_player_name()})
 	// 	local meta = itemstack:get_meta()
@@ -20,7 +20,7 @@ namespace book {
 	// 		"button[8.25,8.3;1,1;book.book_ink;ink  ]"
 	// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
 	// end
-	// --this is the gui for permenantly written books
+	// //this is the gui for permenantly written books
 	// local open_book_inked_gui = function(itemstack, user)
 	// 	core.sound_play("book_open", {to_player=user:get_player_name()})
 	// 	local meta = itemstack:get_meta()
@@ -34,7 +34,7 @@ namespace book {
 	// 		"button_exit[4,8.3;1,1;book.book_close;close]"
 	// 	core.show_formspec(user:get_player_name(), "book.book_gui", book_writing_formspec)
 	// end
-	// --handle the book gui
+	// //handle the book gui
 	// core.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if not formname == "book.book_gui" then return end
 	// 	if fields["book.book_write"] and fields["book.book_text"] and fields["book.book_text"] then
@@ -59,7 +59,7 @@ namespace book {
 	// 		core.sound_play("book_close", {to_player=player:get_player_name()})
 	// 	end
 	// end)
-	// --this is the book item
+	// //this is the book item
 	// core.register_craftitem("book:book",{
 	// 	description = "Book",
 	// 	groups = {book = 1, written = 0},
@@ -75,14 +75,14 @@ namespace book {
 	// 			core.item_place(itemstack, user, pointed_thing)
 	// 			return
 	// 		end
-	// 		--print("make books placable on the ground")
+	// 		//print("make books placable on the ground")
 	// 		open_book_gui(itemstack, user)
 	// 	end,
 	// 	on_secondary_use = function(itemstack, user, pointed_thing)
 	// 		open_book_gui(itemstack, user)
 	// 	end,
 	// })
-	// --permenantly written books
+	// //permenantly written books
 	// core.register_craftitem("book:book_written",{
 	// 	description = "Book",
 	// 	groups = {book = 1, written = 1},
@@ -98,14 +98,14 @@ namespace book {
 	// 			core.item_place(itemstack, user, pointed_thing)
 	// 			return
 	// 		end
-	// 		--print("make books placable on the ground")
+	// 		//print("make books placable on the ground")
 	// 		open_book_inked_gui(itemstack, user)
 	// 	end,
 	// 	on_secondary_use = function(itemstack, user, pointed_thing)
 	// 		open_book_inked_gui(itemstack, user)
 	// 	end,
 	// })
-	// --change this to paper
+	// //change this to paper
 	// core.register_craft({
 	// 	output = "book:book",
 	// 	recipe = {
@@ -114,5 +114,5 @@ namespace book {
 	// 		{"main:wood","main:wood","main:wood"},
 	// 	}
 	// })
-	// --book book book
+	// //book book book
 }
