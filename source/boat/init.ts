@@ -141,12 +141,13 @@ namespace boat {
 			}
 
 			const move: boolean = rider.get_player_control().up;
-			this.moving = false
+			this.moving = false;
 
 			if (!move) {
-				return
+				return;
 			}
-			// 	local currentvel = this.object.get_velocity()
+
+			const currentvel: Vec3 = this.object.get_velocity();
 			// 	local goal = rider:get_look_dir()
 			// 	if this.on_land == true then
 			// 		goal = vector.multiply(goal,1)
@@ -157,7 +158,6 @@ namespace boat {
 			// 	acceleration = vector.multiply(acceleration, 0.01)
 			// 	this.object.add_velocity(acceleration)
 			// 	this.moving = true
-			
 		}
 		// 	//players push boat
 		// 	push = function(self)
