@@ -234,19 +234,19 @@ namespace boat {
 		}
 
 		lag_correction(dtime: number): void {
-			// 		local pos = this.object.get_pos()
-			// 		local velocity = this.object.get_velocity()
-			// 		if this.lag_check then
-			// 			local chugent = core.get_us_time()/1000000 - this.lag_check
-			// 			//print("lag = "..chugent.." ms")
-			// 			if chugent > 1 and  this.old_pos and this.old_velocity then
-			// 				this.object.move_to(this.old_pos)
-			// 				this.object.set_velocity(this.old_velocity)
-			// 			end
-			// 		end
-			// 		this.old_pos = pos
-			// 		this.old_velocity = velocity
-			// 		this.lag_check = core.get_us_time()/1000000
+			// local pos = this.object.get_pos()
+			// local velocity = this.object.get_velocity()
+			// if this.lag_check then
+			// 	local chugent = core.get_us_time()/1000000 - this.lag_check
+			// 	//print("lag = "..chugent.." ms")
+			// 	if chugent > 1 and  this.old_pos and this.old_velocity then
+			// 		this.object.move_to(this.old_pos)
+			// 		this.object.set_velocity(this.old_velocity)
+			// 	end
+			// end
+			// this.old_pos = pos
+			// this.old_velocity = velocity
+			// this.lag_check = core.get_us_time()/1000000
 		}
 
 		// 	flow = function(self)
