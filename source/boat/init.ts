@@ -13,7 +13,7 @@ namespace boat {
 		{ source: "crafter:water", flow: "crafter:waterflow" },
 		{ source: "crafter:lava", flow: "crafter:lavaflow" },
 	];
-	const flowFuncs: ((pos: Vec3) => Vec3 | null)[] = [
+	const __flowFuncs: ((pos: Vec3) => Vec3 | null)[] = [
 		flowLib.flow,
 		flowLib.lavaflow,
 	];
@@ -23,7 +23,7 @@ namespace boat {
 
 		const currentLiquidSource: string = liquids[i].source;
 		const currentLiquidFlow: string = liquids[i].flow;
-		const flowFunction: (pos: Vec3) => Vec3 | null = flowFuncs[i];
+		const flowFunction: (pos: Vec3) => Vec3 | null = __flowFuncs[i];
 
 		class BoatEntity extends types.Entity {
 			name: string = entityName;
@@ -241,7 +241,7 @@ namespace boat {
 			}
 
 			flow(): void {
-				let flow_dir: Vec3 | null = flowLib.flow(this.object.get_pos());
+				let flow_dir: Vec3 | null = flowFunction(this.object.get_pos());
 				if (flow_dir == null) {
 					return;
 				}
