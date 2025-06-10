@@ -156,6 +156,22 @@ namespace bow {
 	// ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝     ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝   ╚═╝      ╚═╝
 
 	class ArrowEntity extends types.Entity {
+
+		// arrow.initial_properties = {
+		// 	physical = true,
+		// 	collide_with_objects = false,
+		// 	collisionbox = {-0.05, -0.05, -0.05, 0.05, 0.05, 0.05},
+		// 	visual = "mesh",
+		// 	visual_size = {x = 1 , y = 1},
+		// 	mesh = "basic_bow_arrow.b3d",
+		// 	textures = {
+		// 		"basic_bow_arrow_uv.png"
+		// 	},
+		// 	pointable = false,
+		// 	//automatic_face_movement_dir = 0.0,
+		// 	//automatic_face_movement_max_rotation_per_sec = 600,
+		// }
+
 		name: string = "bow:arrow";
 		owner: string | null = null;
 		oldpos: Vec3 | null = null;
@@ -347,21 +363,9 @@ namespace bow {
 			}
 		}
 
-		// local arrow = {}
-		// arrow.initial_properties = {
-		// 	physical = true,
-		// 	collide_with_objects = false,
-		// 	collisionbox = {-0.05, -0.05, -0.05, 0.05, 0.05, 0.05},
-		// 	visual = "mesh",
-		// 	visual_size = {x = 1 , y = 1},
-		// 	mesh = "basic_bow_arrow.b3d",
-		// 	textures = {
-		// 		"basic_bow_arrow_uv.png"
-		// 	},
-		// 	pointable = false,
-		// 	//automatic_face_movement_dir = 0.0,
-		// 	//automatic_face_movement_max_rotation_per_sec = 600,
-		// }
+		
+		
+
 		// arrow.on_activate = function(self, staticdata, delta_s)
 		// 	//this.object.set_animation({x=0,y=180}, 15, 0, true)
 		// 	local vel = nil
