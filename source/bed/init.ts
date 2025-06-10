@@ -325,16 +325,17 @@ namespace bed {
 			],
 		},
 		drop: "",
-		// 	on_dig = function(pos, node, digger)
-		// 		local param2 = core.get_node(pos).param2
-		// 		local facedir = core.facedir_to_dir(param2)
-		// 		local obj = core.add_item(pos, "bed:bed")
-		// 		core.remove_node(pos)
-		// 		core.remove_node(vector.add(pos,facedir))
-		// 		//remove_spawnpoint(pos,digger)
-		// 		//remove_spawnpoint(vector.add(pos,facedir),digger)
-		// 		core.punch_node(vector.new(pos.x,pos.y+1,pos.z))
-		// 	end,
+		on_dig: (pos, node, digger) => {
+			const param2: number = core.get_node(pos).param2 || 0;
+			const facedir: Vec3 = core.facedir_to_dir(param2);
+			const obj = core.add_item(pos, "bed:bed");
+			core.remove_node(pos);
+			core.remove_node(vector.add(pos, facedir));
+			//remove_spawnpoint(pos,digger)
+			//remove_spawnpoint(vector.add(pos,facedir),digger)
+			core.punch_node(vector.create3d(pos.x, pos.y + 1, pos.z));
+		},
+
 		// 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		// 		if pos.y <= -10033 then
 		// 			tnt(pos,10)
