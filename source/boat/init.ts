@@ -244,13 +244,7 @@ namespace boat {
 			const pos: Vec3 = this.object.get_pos();
 			const velocity: Vec3 = this.object.get_velocity();
 
-			// fixme: something is smelly here.
-			const chugent: number =
-				core.get_us_time() / 1000000 - this.lag_check;
-			// print("lag = " + chugent + " ms");
-
-			if (dtime > 0.001 && this.old_pos && this.old_velocity) {
-				print("lagging", "chugent: " + chugent);
+			if (dtime > 0.06) {
 				this.object.move_to(this.old_pos);
 				this.object.set_velocity(this.old_velocity);
 			}
@@ -286,6 +280,8 @@ namespace boat {
 			this.lag_correction(dtime);
 		}
 	}
+
+	utility.registerTSEntity(BoatEntity);
 
 	core.register_craftitem("crafter_boat:boat", {
 		description: "Boat",
