@@ -155,10 +155,14 @@ namespace bed {
 		}
 		const real_dir: Vec3 = core.facedir_to_dir(dir);
 		player.add_velocity(vector.multiply(player.get_velocity(), -1));
-		// local new_pos = vector.subtract(pos,vector.divide(real_dir,2))
-		// player:move_to(new_pos)
-		// player:set_look_vertical(0)
-		// player:set_look_horizontal(yaw_translation[dir])
+		const new_pos: Vec3 = vector.subtract(pos, vector.divide(real_dir, 2));
+		player.move_to(new_pos);
+		player.set_look_vertical(0);
+		const newYaw: number | undefined = yaw_translation[dir];
+		if (newYaw == null) {
+			throw new Error("Failure.");
+		}
+		player.set_look_horizontal(newYaw);
 		// core.show_formspec(name, "bed", bed_gui)
 		// player_is_sleeping(player,true)
 		// set_player_animation(player,"lay",0,false)
