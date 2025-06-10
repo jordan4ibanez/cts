@@ -68,8 +68,6 @@ namespace serverUtilities {
 			const time: number = core.get_us_time() / 1000000;
 			const diff = timeout - math.ceil(time - data.setHome);
 
-			data.setHome = time;
-
 			if (diff <= 0) {
 				const pos: Vec3 = player.get_pos();
 				mod_storage.set_string(
@@ -86,7 +84,10 @@ namespace serverUtilities {
 						s +
 						" until you can run that command."
 				);
+				return;
 			}
+
+			data.setHome = time;
 		},
 	});
 
@@ -114,7 +115,6 @@ namespace serverUtilities {
 
 			const time: number = core.get_us_time() / 1000000;
 			const diff = timeout - math.ceil(time - data.home);
-			data.home = time;
 
 			if (diff <= 0) {
 				const serializedData: string = mod_storage.get_string(
@@ -152,7 +152,10 @@ namespace serverUtilities {
 						s +
 						" until you can run that command."
 				);
+				return;
 			}
+
+			data.home = time;
 		},
 	});
 
