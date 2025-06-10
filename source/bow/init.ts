@@ -58,9 +58,9 @@ namespace bow {
 
 		// If player changes selected item.
 		if (new_index != data.index) {
-			// 		inv:set_stack("main", temp_pool.index, ItemStack("bow:bow_empty"))
-			// 		pool[name] = nil
-			// 		return
+			inv.set_stack("main", data.index, ItemStack("bow:bow_empty"));
+			pool.delete(name);
+			return;
 		}
 		// 	// if player lets go of rightclick
 		// 	if temp_pool.step ~= 5 and not rightclick then
