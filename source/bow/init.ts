@@ -471,22 +471,22 @@ namespace bow {
 		inventory_image: "arrow_item.png",
 	});
 
-	// //[[
 	//  ██████╗██████╗  █████╗ ███████╗████████╗██╗███╗   ██╗ ██████╗
 	// ██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║████╗  ██║██╔════╝
 	// ██║     ██████╔╝███████║█████╗     ██║   ██║██╔██╗ ██║██║  ███╗
 	// ██║     ██╔══██╗██╔══██║██╔══╝     ██║   ██║██║╚██╗██║██║   ██║
 	// ╚██████╗██║  ██║██║  ██║██║        ██║   ██║██║ ╚████║╚██████╔╝
 	//  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝        ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝
-	// ]]//
-	// core.register_craft({
-	// 	output = "bow:bow_empty",
-	// 	recipe = {
-	// 		{""           , "main:stick", "mob:string"},
-	// 		{"main:stick" , ""          , "mob:string"},
-	// 		{""           , "main:stick", "mob:string"},
-	// 	},
-	// })
+
+	core.register_craft({
+		output: "bow:bow_empty",
+		recipe: [
+			["", "main:stick", "mob:string"],
+			["main:stick", "", "mob:string"],
+			["", "main:stick", "mob:string"],
+		],
+	});
+
 	// core.register_craft({
 	// 	output = "bow:arrow 16",
 	// 	recipe = {
