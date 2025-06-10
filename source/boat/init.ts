@@ -225,12 +225,13 @@ namespace boat {
 		// Slows the boat down.
 
 		slowdown(): void {
-					if not this.moving == true then
-			// 			local vel = this.object.get_velocity()
-			// 			local acceleration = vector.new(-vel.x,0,-vel.z)
-			// 			local deceleration = vector.multiply(acceleration, 0.01)
-			// 			this.object.add_velocity(deceleration)
-			// 		end
+			if (this.moving) {
+				return;
+			}
+			// local vel = this.object.get_velocity()
+			// local acceleration = vector.new(-vel.x,0,-vel.z)
+			// local deceleration = vector.multiply(acceleration, 0.01)
+			// this.object.add_velocity(deceleration)
 		}
 
 		// 	lag_correction = function(self,dtime)
