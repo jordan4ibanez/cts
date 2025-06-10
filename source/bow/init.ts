@@ -193,10 +193,10 @@ namespace bow {
 				for (const [_, object] of ipairs(
 					get_objects_inside_radius(pos, this.radius)
 				)) {
-					// this.object.set_acceleration(new_vec(0,0,0))
-					// //get the variables
-					// pos2 = owner:get_pos()
-					// player_velocity = owner:get_player_velocity()
+					this.object.set_acceleration(new_vec(0, 0, 0));
+					// Get the variables.
+					const pos2: Vec3 = owner.get_pos();
+					const player_velocity: Vec3 = owner.get_velocity();
 					// pos2.y = pos2.y + this.collection_height
 					// direction = normalize_vec(sub_vec(pos2,pos))
 					// distance = vec_distance(pos2,pos)
