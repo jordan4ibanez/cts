@@ -244,7 +244,8 @@ namespace bow {
 						this.object.remove();
 						return;
 					} else if (
-						this.timer > 3 &&
+						this.stuck &&
+						this.timer > 1.0 &&
 						object.is_player() &&
 						object.get_player_name() == this.owner
 					) {
