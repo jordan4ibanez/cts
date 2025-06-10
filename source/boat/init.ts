@@ -293,10 +293,10 @@ namespace boat {
 		wield_image: "boatitem.png",
 		liquids_pointable: true,
 		on_place: (itemstack, placer, pointed_thing) => {
-			// if not pointed_thing.type == "node" then
-			// 	return
-			// end
-			// local sneak = placer:get_player_control().sneak
+			if (pointed_thing.type != "node") {
+				return;
+			}
+			const sneak: boolean = placer.get_player_control().sneak;
 			// local noddef = core.registered_nodes[core.get_node(pointed_thing.under).name]
 			// if not sneak and noddef.on_rightclick then
 			// 	core.item_place(itemstack, placer, pointed_thing)
