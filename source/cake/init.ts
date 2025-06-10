@@ -1,17 +1,15 @@
 namespace cake {
-	// local
-	// minetest,math
-	// =
-	// minetest,math
-	// local play_sound = core.sound_play
-	// local set_node   = core.set_node
-	// local random     = math.random
-	// core.register_food("cake:cake_item_placeholder",{
-	// 	description = "",
-	// 	texture = "nothing.png",
-	// 	satiation=30,
-	// 	hunger=6,
-	// })
+	const play_sound = core.sound_play;
+	const set_node = core.set_node;
+	const random = math.random;
+
+	hunger.register_food("cake:cake_item_placeholder", {
+		description: "",
+		texture: "nothing.png",
+		satiation: 30,
+		hunger: 6,
+	});
+
 	// for i = 0,13 do
 	// 	local missing_slice
 	// 	if i == 0 then
