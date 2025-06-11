@@ -239,7 +239,7 @@ namespace hunger {
 			// Make regeneration happen every second.
 			if (
 				/*// todo: depends on fire mod: !is_player_on_fire(player) &&*/
-				!drowning &&
+				!isDrowning &&
 				data.hunger >= 20 &&
 				hp < 20
 			) {
