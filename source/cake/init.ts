@@ -117,15 +117,23 @@ namespace cake {
 				);
 				clicker.set_hp(clicker.get_hp() - 5);
 			},
-			on_timer: (pos, elapsed) => {
-				// 			if i == 13 then
-				// 		        play_sound("eat_finish",{pos=pos,gain=0.2,pitch=random(90,100)/100})
-				// 		        core.remove_node(pos)
-				// 		        return
-				// 	        else
-				// 		        play_sound("eat",{pos=pos,gain=0.2,pitch=random(90,100)/100})
-				// 		        set_node(pos, {name="cake:cursed_cake_"+i+1})
-				// 	        end
+			on_timer: (pos: Vec3, elapsed: number) => {
+				if (i == 13) {
+					play_sound("eat_finish", {
+						pos: pos,
+						gain: 0.2,
+						pitch: random(90, 100) / 100,
+					});
+					core.remove_node(pos);
+					return;
+				} else {
+					play_sound("eat", {
+						pos: pos,
+						gain: 0.2,
+						pitch: random(90, 100) / 100,
+					});
+					set_node(pos, { name: "cake:cursed_cake_" + i + 1 });
+				}
 			},
 		});
 	}
