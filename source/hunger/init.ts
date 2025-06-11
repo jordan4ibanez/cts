@@ -1,8 +1,8 @@
 namespace hunger {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
-	// fixme: this may require retuning.
-	const exhaustion_peak: number = 128;
+	//? This may require retuning.
+	const exhaustion_peak: number = 256;
 	const hunger_peak: number = 128;
 
 	class HungerData {
