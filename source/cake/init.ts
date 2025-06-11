@@ -100,10 +100,10 @@ namespace cake {
 			drop: "",
 			sounds: crafter.woolSound(),
 			groups: { wool: 1, cursed_cake: i, falling_node: 1 },
-			// 		on_construct = function(pos)
-			// 			local timer = core.get_node_timer(pos)
-			// 			timer:start(0.2)
-			// 		end,
+			on_construct: (pos: Vec3) => {
+				const timer = core.get_node_timer(pos);
+				timer.start(0.2);
+			},
 			// 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 			// 			player_eat_food(clicker,"cake:cake_item_placeholder")
 			// 			clicker:set_hp(clicker:get_hp()-5)
