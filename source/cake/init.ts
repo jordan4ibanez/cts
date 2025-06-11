@@ -72,7 +72,7 @@ namespace cake {
 						gain: 0.2,
 						pitch: random(90, 100) / 100,
 					});
-					set_node(pos, { name: "crafter_cake:cake_" + i + 1 });
+					set_node(pos, { name: "crafter_cake:cake_" + (i + 1) });
 				}
 			},
 		});
@@ -139,7 +139,7 @@ namespace cake {
 						pitch: random(90, 100) / 100,
 					});
 					set_node(pos, {
-						name: "crafter_cake:cursed_cake_" + i + 1,
+						name: "crafter_cake:cursed_cake_" + (i + 1),
 					});
 				}
 			},
