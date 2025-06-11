@@ -1,6 +1,10 @@
 namespace hunger {
 	const mod_storage: MetaRef = core.get_mod_storage();
 
+	// fixme: this may require retuning.
+	const exhaustion_peak: number = 128;
+	const hunger_peak: number = 128;
+
 	class HungerData {
 		hunger: number = 20;
 		satiation: number = 20;
@@ -168,9 +172,6 @@ namespace hunger {
 			data: data.hunger,
 		});
 	});
-
-	const exhaustion_peak: number = 256;
-	const hunger_peak: number = 128;
 
 	function hunger_update(): void {
 		for (const [_, player] of ipairs(core.get_connected_players())) {
