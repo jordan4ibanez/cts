@@ -31,11 +31,6 @@ No make automation scripts created for windows yet though. It's because I don't 
 
 ---
 
-### Sounds
 
-Sound credits are documented in the sounds mod folder.
-
----
-
-Join my discord to see me ramble like a maniac:
-https://discord.gg/7DhNQFP3fv
+If you want to join my discord:
+https://discord.gg/D95q7BHUE4
