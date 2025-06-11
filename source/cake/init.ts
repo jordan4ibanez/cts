@@ -3,7 +3,7 @@ namespace cake {
 	const set_node = core.set_node;
 	const random = math.random;
 
-	hunger.register_food("cake:cake_item_placeholder", {
+	hunger.register_food("crafter_cake:cake_item_placeholder", {
 		description: "",
 		texture: "nothing.png",
 		satiation: 30,
@@ -18,7 +18,7 @@ namespace cake {
 			missing_slice = "cake_inner.png";
 		}
 
-		core.register_node("cake:cake_" + i, {
+		core.register_node("crafter_cake:cake_" + i, {
 			description: "Cake",
 			tiles: [
 				"cake_top.png",
@@ -42,7 +42,7 @@ namespace cake {
 			on_construct: (pos: Vec3) => {
 				// 			//randomly cake eats itself
 				if (random() > 0.995) {
-					set_node(pos, { name: "cake:cursed_cake_0" });
+					set_node(pos, { name: "crafter_cake:cursed_cake_0" });
 				}
 			},
 
@@ -55,7 +55,7 @@ namespace cake {
 			) => {
 				hunger.player_eat_food(
 					clicker,
-					ItemStack("cake:cake_item_placeholder")
+					ItemStack("crafter_cake:cake_item_placeholder")
 				);
 				//clicker:set_hp(clicker:get_hp()+5)
 				if (i == 13) {
@@ -72,7 +72,7 @@ namespace cake {
 						gain: 0.2,
 						pitch: random(90, 100) / 100,
 					});
-					set_node(pos, { name: "cake:cake_" + i + 1 });
+					set_node(pos, { name: "crafter_cake:cake_" + i + 1 });
 				}
 			},
 		});
@@ -85,7 +85,7 @@ namespace cake {
 		} else {
 			missing_slice = "cake_inner.png^[colorize:red:140";
 		}
-		core.register_node("cake:cursed_cake_" + i, {
+		core.register_node("crafter_cake:cursed_cake_" + i, {
 			description: "CURSED CAKE",
 			tiles: [
 				"cake_top.png^[colorize:red:140",
@@ -119,7 +119,7 @@ namespace cake {
 			) => {
 				hunger.player_eat_food(
 					clicker,
-					ItemStack("cake:cake_item_placeholder")
+					ItemStack("crafter_cake:cake_item_placeholder")
 				);
 				clicker.set_hp(clicker.get_hp() - 5);
 			},
@@ -138,7 +138,7 @@ namespace cake {
 						gain: 0.2,
 						pitch: random(90, 100) / 100,
 					});
-					set_node(pos, { name: "cake:cursed_cake_" + i + 1 });
+					set_node(pos, { name: "crafter_cake:cursed_cake_" + i + 1 });
 				}
 			},
 		});
@@ -146,7 +146,7 @@ namespace cake {
 
 	// todo: why is this using a snowball?
 	core.register_craft({
-		output: "cake:cake_0",
+		output: "crafter_cake:cake_0",
 		recipe: [
 			[
 				"crafter_weather:snowball",
