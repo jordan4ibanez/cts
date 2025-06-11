@@ -148,7 +148,11 @@ namespace cake {
 	core.register_craft({
 		output: "cake:cake_0",
 		recipe: [
-			["weather:snowball", "weather:snowball", "weather:snowball"],
+			[
+				"crafter_weather:snowball",
+				"crafter_weather:snowball",
+				"crafter_weather:snowball",
+			],
 			["farming:wheat", "farming:wheat", "farming:wheat"],
 		],
 	});
