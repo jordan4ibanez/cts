@@ -46,18 +46,29 @@ namespace cake {
 				}
 			},
 
-			// 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			// 			player_eat_food(clicker,"cake:cake_item_placeholder")
-			// 			//clicker:set_hp(clicker:get_hp()+5)
-			// 			if i == 13 then
-			// 		        play_sound("eat_finish",{pos=pos,gain=0.2,pitch=random(90,100)/100})
-			// 		        core.remove_node(pos)
-			// 		        return
-			// 	        else
-			// 		        play_sound("eat",{pos=pos,gain=0.2,pitch=random(90,100)/100})
-			// 		        set_node(pos, {name="cake:cake_"+i+1})
-			// 	        end
-			// 		end,
+			on_rightclick: (pos, node, clicker, itemstack, pointed_thing) => {
+				hunger.player_eat_food(
+					clicker,
+					ItemStack("cake:cake_item_placeholder")
+				);
+				//clicker:set_hp(clicker:get_hp()+5)
+				if (i == 13) {
+					play_sound("eat_finish", {
+						pos: pos,
+						gain: 0.2,
+						pitch: random(90, 100) / 100,
+					});
+					core.remove_node(pos);
+					return;
+				} else {
+					play_sound("eat", {
+						pos: pos,
+						gain: 0.2,
+						pitch: random(90, 100) / 100,
+					});
+					set_node(pos, { name: "cake:cake_" + i + 1 });
+				}
+			},
 		});
 	}
 
