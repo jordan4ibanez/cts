@@ -41,7 +41,10 @@ namespace hunger {
 
 		mod_storage.set_int(name + ":crafter_hunger_hunger", data.hunger);
 		mod_storage.set_int(name + ":crafter_hunger_satiation", data.satiation);
-		mod_storage.set_int(name + "exhaustion", data.exhaustion);
+		mod_storage.set_int(
+			name + ":crafter_hunger_exhaustion",
+			data.exhaustion
+		);
 		mod_storage.set_int(
 			name + "crafter_hunger_regeneration_interval",
 			data.regeneration_interval
