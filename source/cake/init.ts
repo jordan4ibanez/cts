@@ -46,7 +46,13 @@ namespace cake {
 				}
 			},
 
-			on_rightclick: (pos, node, clicker, itemstack, pointed_thing) => {
+			on_rightclick: (
+				pos: Vec3,
+				node: NodeTable,
+				clicker: ObjectRef,
+				itemstack: ItemStackObject,
+				pointed_thing: PointedThing
+			) => {
 				hunger.player_eat_food(
 					clicker,
 					ItemStack("cake:cake_item_placeholder")
