@@ -262,7 +262,7 @@ namespace hunger {
 	}
 
 	let timeCalc: number = 0;
-	const intervalTimer: number = 1;
+	const intervalTimer: number = 0.5;
 	core.register_globalstep((delta: number) => {
 		timeCalc += delta;
 		if (timeCalc < intervalTimer) {
