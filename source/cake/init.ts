@@ -53,6 +53,9 @@ namespace cake {
 				itemstack: ItemStackObject,
 				pointed_thing: PointedThing
 			) => {
+				if (hunger.get_player_hunger(clicker) >= 20) {
+					return;
+				}
 				hunger.player_eat_food(
 					clicker,
 					ItemStack("crafter_cake:cake_item_placeholder")
