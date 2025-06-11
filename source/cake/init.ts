@@ -146,10 +146,10 @@ namespace cake {
 
 	// todo: why is this using a snowball?
 	core.register_craft({
-		output : "cake:cake_0",
-		recipe : {
-			{"weather:snowball","weather:snowball","weather:snowball"},
-			{"farming:wheat","farming:wheat","farming:wheat"},
-		}
-	})
+		output: "cake:cake_0",
+		recipe: [
+			["weather:snowball", "weather:snowball", "weather:snowball"],
+			["farming:wheat", "farming:wheat", "farming:wheat"],
+		],
+	});
 }
