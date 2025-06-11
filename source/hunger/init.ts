@@ -169,7 +169,7 @@ namespace hunger {
 		});
 	});
 
-	const exhaustion_peak: number = 512;
+	const exhaustion_peak: number = 256;
 	const hunger_peak: number = 128;
 
 	function hunger_update(): void {
