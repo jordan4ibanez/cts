@@ -312,8 +312,7 @@ namespace hunger {
 			data.hunger = 20;
 		}
 
-		// Unlimited satiation.
-		// This makes the game easier.
+		
 		data.satiation += satiation;
 		take_food(player);
 		hudManager.change_hud({
