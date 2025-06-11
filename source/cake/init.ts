@@ -39,12 +39,13 @@ namespace cake {
 			drop: "",
 			sounds: crafter.woolSound(),
 			groups: { wool: 1, cake: i, falling_node: 1 },
-			// 		on_construct = function(pos)
-			// 			//randomly cake eats itself
-			// 			if random() > 0.995 then
-			// 				set_node(pos, {name="cake:cursed_cake_0"})
-			// 			end
-			// 		end,
+			on_construct: (pos: Vec3) => {
+				// 			//randomly cake eats itself
+				if (random() > 0.995) {
+					set_node(pos, { name: "cake:cursed_cake_0" });
+				}
+			},
+
 			// 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 			// 			player_eat_food(clicker,"cake:cake_item_placeholder")
 			// 			//clicker:set_hp(clicker:get_hp()+5)
