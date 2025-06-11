@@ -313,8 +313,10 @@ namespace hunger {
 			data.hunger = 20;
 		}
 
-		
-		data.satiation += satiation;
+		if (satiation > data.satiation) {
+			data.satiation = satiation;
+		}
+
 		take_food(player);
 		hudManager.change_hud({
 			player: player,
