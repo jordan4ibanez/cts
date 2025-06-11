@@ -116,8 +116,9 @@ namespace hunger {
 	// Create new data for hunger per player.
 
 	core.register_on_joinplayer((player: ObjectRef) => {
-		const name = player.get_player_name();
 		load_data(player);
+
+		const name = player.get_player_name();
 
 		const data: HungerData | undefined = pool.get(name);
 		if (data == null) {
