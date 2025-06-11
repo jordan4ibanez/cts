@@ -153,7 +153,11 @@ namespace cake {
 				"crafter_weather:snowball",
 				"crafter_weather:snowball",
 			],
-			["farming:wheat", "farming:wheat", "farming:wheat"],
+			[
+				"crafter_farming:wheat",
+				"crafter_farming:wheat",
+				"crafter_farming:wheat",
+			],
 		],
 	});
 }
