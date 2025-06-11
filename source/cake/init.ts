@@ -36,9 +36,9 @@ namespace cake {
 					[-7 / 16, -8 / 16, -7 / 16, 7 / 16, -1 / 16, (7 - i) / 16],
 				],
 			},
-			// 		drop = "",
-			// 		sounds = main.woolSound(),
-			// 		groups = {wool=1,cake=i,falling_node=1},
+			drop: "",
+			sounds: crafter.woolSound(),
+			groups: { wool: 1, cake: i, falling_node: 1 },
 			// 		on_construct = function(pos)
 			// 			//randomly cake eats itself
 			// 			if random() > 0.995 then
