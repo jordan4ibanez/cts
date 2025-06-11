@@ -31,6 +31,18 @@ namespace hunger {
 
 	const pool = new Map<string, HungerData>();
 
+	core.register_on_player_hpchange((player: ObjectRef, hpChange: number) => {
+		const name: string = player.get_player_name();
+		const data: HungerData | undefined = pool.get(name);
+		if (data == null) {
+			throw new Error(`Player ${name} was never added to the pool.`);
+		}
+		// Wait an extra second before regenerating health when hurt.
+		if (hpChange < 0) {
+			data.regeneration_interval = -2;
+		}
+	}, false);
+
 	// Loads data from mod storage.
 	function load_data(player: ObjectRef): void {
 		pool.set(player.get_player_name(), new HungerData(player));
