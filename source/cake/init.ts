@@ -104,20 +104,29 @@ namespace cake {
 				const timer = core.get_node_timer(pos);
 				timer.start(0.2);
 			},
-			// 		on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-			// 			player_eat_food(clicker,"cake:cake_item_placeholder")
-			// 			clicker:set_hp(clicker:get_hp()-5)
-			// 		end,
-			// 		on_timer = function(pos, elapsed)
-			// 			if i == 13 then
-			// 		        play_sound("eat_finish",{pos=pos,gain=0.2,pitch=random(90,100)/100})
-			// 		        core.remove_node(pos)
-			// 		        return
-			// 	        else
-			// 		        play_sound("eat",{pos=pos,gain=0.2,pitch=random(90,100)/100})
-			// 		        set_node(pos, {name="cake:cursed_cake_"+i+1})
-			// 	        end
-			// 		end,
+			on_rightclick: (
+				pos: Vec3,
+				node: NodeTable,
+				clicker: ObjectRef,
+				itemstack: ItemStackObject,
+				pointed_thing: PointedThing
+			) => {
+				hunger.player_eat_food(
+					clicker,
+					ItemStack("cake:cake_item_placeholder")
+				);
+				clicker.set_hp(clicker.get_hp() - 5);
+			},
+			on_timer: (pos, elapsed) => {
+				// 			if i == 13 then
+				// 		        play_sound("eat_finish",{pos=pos,gain=0.2,pitch=random(90,100)/100})
+				// 		        core.remove_node(pos)
+				// 		        return
+				// 	        else
+				// 		        play_sound("eat",{pos=pos,gain=0.2,pitch=random(90,100)/100})
+				// 		        set_node(pos, {name="cake:cursed_cake_"+i+1})
+				// 	        end
+			},
 		});
 	}
 
