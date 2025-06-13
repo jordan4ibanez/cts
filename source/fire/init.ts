@@ -31,8 +31,8 @@ namespace fire {
 				// 	create_nether_portal(pos)
 				// //fire lasts forever on netherrack
 			} else if (under != "nether:netherrack") {
-				// 	local timer = core.get_node_timer(pos)
-				// 	timer:start(math.random(0,2)+math.random())
+				const timer: NodeTimerObject = core.get_node_timer(pos);
+				timer.start(math.random(0, 2) + math.random());
 			}
 		},
 
