@@ -82,7 +82,7 @@ namespace fire {
 			placer: ObjectRef,
 			pointed_thing: PointedThing
 		) => {
-			if (pointed_thing.type != "node") {
+			if (pointed_thing.type != PointedThingType.node) {
 				return;
 			}
 			// if core.get_node(pointed_thing.above).name ~= "air" then
