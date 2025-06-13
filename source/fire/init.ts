@@ -1,5 +1,5 @@
 namespace fire {
-	core.register_node("fire:fire", {
+	core.register_node("crafter_fire:fire", {
 	//     description = "Fire",
 	//     drawtype = "firelike",
 	// 	tiles = {
@@ -38,7 +38,7 @@ namespace fire {
 	// 	    //print(dump(find_flammable))
 	// 	    for _,p_pos in pairs(find_flammable) do
 	// 		    if math.random() > 0.9 then
-	// 				core.set_node(p_pos,{name="fire:fire"})
+	// 				core.set_node(p_pos,{name="crafter_fire:fire"})
 	// 				local timer = core.get_node_timer(p_pos)
 	// 				timer:start(math.random(0,2)+math.random())
 	// 			end
@@ -53,7 +53,7 @@ namespace fire {
 	})
 
 	// //flint and steel
-	// core.register_tool("fire:flint_and_steel", {
+	// core.register_tool("crafter_fire:flint_and_steel", {
 	// 	description = "Flint and Steel",
 	// 	inventory_image = "flint_and_steel.png",
 	// 	on_place = function(itemstack, placer, pointed_thing)
@@ -69,7 +69,7 @@ namespace fire {
 	// 			core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
 	// 			return
 	// 		end
-	// 		core.add_node(pointed_thing.above,{name="fire:fire"})
+	// 		core.add_node(pointed_thing.above,{name="crafter_fire:fire"})
 	// 		core.sound_play("flint_and_steel", {pos=pointed_thing.above})
 	// 		itemstack:add_wear(100)
 	// 		return(itemstack)
@@ -84,7 +84,7 @@ namespace fire {
 	// })
 	// core.register_craft({
 	// 	type = "shapeless",
-	// 	output = "fire:flint_and_steel",
+	// 	output = "crafter_fire:flint_and_steel",
 	// 	recipe = {"main:flint","main:iron"},
 	// })
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -167,7 +167,7 @@ namespace fire {
 	// 		self.frame_update(self)
 	// 	end
 	// end
-	// core.register_entity("fire:fire",fire)
+	// core.register_entity("crafter_fire:fire",fire)
 	// //fire handling
 	// local pool = {}
 	// local fire_channels = {}
@@ -189,7 +189,7 @@ namespace fire {
 	// 	if object:is_player() then
 	// 		name = object:get_player_name()
 	// 		if not pool[name] or pool[name] and not pool[name]:get_luaentity() then
-	// 			fire_obj = core.add_entity(object:get_pos(),"fire:fire")
+	// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
 	// 			fire_obj:get_luaentity().owner = object
 	// 			fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
 	// 			fire_obj:set_properties({visual_size=vector.new(1,2,1)})
@@ -202,7 +202,7 @@ namespace fire {
 	// 		if not object:get_luaentity().fire_entity or
 	// 	object:get_luaentity().fire_entity and not object:get_luaentity().fire_entity:get_luaentity() then
 	// 			object:get_luaentity().on_fire = true
-	// 			fire_obj = core.add_entity(object:get_pos(),"fire:fire")
+	// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
 	// 			fire_obj:get_luaentity().owner = object
 	// 			local entity_fire_def = object:get_luaentity().fire_table
 	// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
