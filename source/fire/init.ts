@@ -1,3 +1,4 @@
+namespace fire {
 // local minetest,math,vector = minetest,math,vector
 // minetest.register_node("fire:fire", {
 //     description = "Fire",
@@ -262,3 +263,4 @@
 // minetest.register_on_respawnplayer(function(player)
 // 	put_fire_out(player)
 // end)
+}
