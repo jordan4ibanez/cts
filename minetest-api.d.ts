@@ -923,10 +923,16 @@ declare global {
 	}
 
 	/** @noSelf **/ interface PointedThing {
-		type: string;
-		under: Vec3;
-		above: Vec3;
-		ref: ObjectRef;
+		type: PointedThingType;
+		under?: Vec3;
+		above?: Vec3;
+		ref?: ObjectRef;
+		// Currently only Raycast supports these fields.
+		intersection_point?: Vec3;
+		// The ID of the pointed selection box (counting starts from 1).
+		box_id?: number;
+		// Unit vector, points outwards of the selected selection box.
+		intersection_normal?: Vec3;
 	}
 
 	/** @noSelf **/ interface GroupCap {
