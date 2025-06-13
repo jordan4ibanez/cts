@@ -46,7 +46,7 @@ namespace fire {
 			);
 			// print(dump(find_flammable));
 
-			for (const [_, p_pos] of pairs(find_flammable)) {
+			for (const [_, p_pos] of ipairs(find_flammable)) {
 				if (math.random() > 0.9) {
 					// 		core.set_node(p_pos,{name="crafter_fire:fire"})
 					// 		local timer = core.get_node_timer(p_pos)
