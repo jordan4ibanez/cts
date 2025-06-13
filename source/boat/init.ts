@@ -275,9 +275,14 @@ namespace boat {
 			wield_image: wieldImages[i],
 			liquids_pointable: true,
 			on_place: (itemstack, placer, pointed_thing) => {
-				if (pointed_thing.type != "node") {
+				if (
+					pointed_thing.type == PointedThingType.object ||
+					pointed_thing.above == null ||
+					pointed_thing.under == null
+				) {
 					return;
 				}
+
 				const sneak: boolean = placer.get_player_control().sneak;
 				const noddef: NodeDefinition | undefined =
 					core.registered_nodes[
