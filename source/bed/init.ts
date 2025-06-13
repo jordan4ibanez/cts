@@ -208,7 +208,11 @@ namespace bed {
 		drawtype: Drawtype.nodebox,
 		node_placement_prediction: "",
 		on_place: (itemstack, placer, pointed_thing) => {
-			if (pointed_thing.type != "node") {
+			if (
+				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.above == null ||
+				pointed_thing.under == null
+			) {
 				return;
 			}
 
