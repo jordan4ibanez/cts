@@ -379,7 +379,7 @@ namespace crafter {
 			pointed_thing: PointedThing
 		): ItemStackObject | null => {
 			if (
-				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.above == null ||
 				pointed_thing.under == null
 			) {
@@ -710,7 +710,7 @@ namespace crafter {
 			pointed_thing: PointedThing
 		): ItemStackObject | null => {
 			if (
-				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.above == null ||
 				pointed_thing.under == null
 			) {
