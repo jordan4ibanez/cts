@@ -1,7 +1,7 @@
 namespace fire {
 	core.register_node("crafter_fire:fire", {
-	//     description = "Fire",
-	//     drawtype = "firelike",
+	    description : "Fire",
+	    drawtype : Drawtype.firelike,
 	// 	tiles = {
 	// 		{
 	// 			name = "fire.png",
