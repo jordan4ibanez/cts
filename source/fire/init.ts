@@ -53,12 +53,12 @@ namespace fire {
 					timer.start(math.random(0, 2) + math.random());
 				}
 			}
-			// if math.random() > 0.85 then
-			// 	core.remove_node(pos)
-			// else
-			// 	local timer = core.get_node_timer(pos)
-			// 	timer:start(math.random(0,2)+math.random())
-			// end
+			if (math.random() > 0.85) {
+				core.remove_node(pos);
+			} else {
+				const timer: NodeTimerObject = core.get_node_timer(pos);
+				timer.start(math.random(0, 2) + math.random());
+			}
 		},
 	});
 
