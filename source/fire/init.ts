@@ -82,13 +82,16 @@ namespace fire {
 			placer: ObjectRef,
 			pointed_thing: PointedThing
 		) => {
-			if (pointed_thing.type != PointedThingType.node) {
+			if (
+				pointed_thing.type != PointedThingType.node ||
+				pointed_thing.above == null
+			) {
 				return;
 			}
-			// if core.get_node(pointed_thing.above).name ~= "air" then
-			// 	core.sound_play("flint_failed", {pos=pointed_thing.above})
-			// 	return
-			// end
+			if (core.get_node(pointed_thing.above).name != "air") {
+				// 	core.sound_play("flint_failed", {pos=pointed_thing.above})
+				// 	return
+			}
 			// //can't make fire in the aether
 			// if pointed_thing.above.y >= 20000 then
 			// 	core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
