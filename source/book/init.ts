@@ -136,9 +136,13 @@ namespace book {
 		stack_max: 1,
 		inventory_image: "book_written.png",
 		on_place: (itemstack, user, pointed_thing) => {
-			if (pointed_thing.type != "node") {
+			if (
+				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.under == null
+			) {
 				return;
 			}
+
 			const sneak: boolean = user.get_player_control().sneak;
 			const noddef: NodeDefinition | undefined =
 				core.registered_nodes[core.get_node(pointed_thing.under).name];
