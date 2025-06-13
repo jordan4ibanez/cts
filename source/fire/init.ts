@@ -1,5 +1,5 @@
 namespace fire {
-	// minetest.register_node("fire:fire", {
+	// core.register_node("fire:fire", {
 	//     description = "Fire",
 	//     drawtype = "firelike",
 	// 	tiles = {
@@ -13,63 +13,63 @@ namespace fire {
 	// 			},
 	// 		},
 	// 	},
-	// 	--inventory_image = "fire.png",
+	// 	//inventory_image = "fire.png",
 	//     groups = {dig_immediate = 1,fire=1,hurt_inside=1},
 	//     sounds = main.stoneSound(),
 	//     floodable = true,
 	//     drop = "",
 	//     walkable = false,
 	//     is_ground_content = false,
-	//     light_source = 11, --debugging
+	//     light_source = 11, //debugging
 	//     on_construct = function(pos)
-	// 		local under = minetest.get_node(vector.new(pos.x,pos.y-1,pos.z)).name
-	// 		--makes nether portal
+	// 		local under = core.get_node(vector.new(pos.x,pos.y-1,pos.z)).name
+	// 		//makes nether portal
 	// 		if under == "nether:obsidian" then
-	// 			minetest.remove_node(pos)
+	// 			core.remove_node(pos)
 	// 			create_nether_portal(pos)
-	// 		--fire lasts forever on netherrack
+	// 		//fire lasts forever on netherrack
 	// 		elseif under ~= "nether:netherrack" then
-	// 			local timer = minetest.get_node_timer(pos)
+	// 			local timer = core.get_node_timer(pos)
 	// 			timer:start(math.random(0,2)+math.random())
 	// 		end
 	//     end,
 	//     on_timer = function(pos, elapsed)
-	// 	    local find_flammable = minetest.find_nodes_in_area(vector.subtract(pos,1), vector.add(pos,1), {"group:flammable"})
-	// 	    --print(dump(find_flammable))
+	// 	    local find_flammable = core.find_nodes_in_area(vector.subtract(pos,1), vector.add(pos,1), {"group:flammable"})
+	// 	    //print(dump(find_flammable))
 	// 	    for _,p_pos in pairs(find_flammable) do
 	// 		    if math.random() > 0.9 then
-	// 				minetest.set_node(p_pos,{name="fire:fire"})
-	// 				local timer = minetest.get_node_timer(p_pos)
+	// 				core.set_node(p_pos,{name="fire:fire"})
+	// 				local timer = core.get_node_timer(p_pos)
 	// 				timer:start(math.random(0,2)+math.random())
 	// 			end
 	// 	    end
 	// 	    if math.random() > 0.85 then
-	// 			minetest.remove_node(pos)
+	// 			core.remove_node(pos)
 	// 		else
-	// 			local timer = minetest.get_node_timer(pos)
+	// 			local timer = core.get_node_timer(pos)
 	// 			timer:start(math.random(0,2)+math.random())
 	// 		end
 	//     end,
 	// })
-	// --flint and steel
-	// minetest.register_tool("fire:flint_and_steel", {
+	// //flint and steel
+	// core.register_tool("fire:flint_and_steel", {
 	// 	description = "Flint and Steel",
 	// 	inventory_image = "flint_and_steel.png",
 	// 	on_place = function(itemstack, placer, pointed_thing)
 	// 		if pointed_thing.type ~= "node" then
 	// 			return
 	// 		end
-	// 		if minetest.get_node(pointed_thing.above).name ~= "air" then
-	// 			minetest.sound_play("flint_failed", {pos=pointed_thing.above})
+	// 		if core.get_node(pointed_thing.above).name ~= "air" then
+	// 			core.sound_play("flint_failed", {pos=pointed_thing.above})
 	// 			return
 	// 		end
-	// 		--can't make fire in the aether
+	// 		//can't make fire in the aether
 	// 		if pointed_thing.above.y >= 20000 then
-	// 			minetest.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
+	// 			core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
 	// 			return
 	// 		end
-	// 		minetest.add_node(pointed_thing.above,{name="fire:fire"})
-	// 		minetest.sound_play("flint_and_steel", {pos=pointed_thing.above})
+	// 		core.add_node(pointed_thing.above,{name="fire:fire"})
+	// 		core.sound_play("flint_and_steel", {pos=pointed_thing.above})
 	// 		itemstack:add_wear(100)
 	// 		return(itemstack)
 	// 	end,
@@ -81,13 +81,13 @@ namespace fire {
 	// 	groups = {flint=1},
 	// 	sound = {breaks = {name="tool_break",gain=0.4}},
 	// })
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	type = "shapeless",
 	// 	output = "fire:flint_and_steel",
 	// 	recipe = {"main:flint","main:iron"},
 	// })
-	// ----------------------------------------------------------------------------------------------------------------------------------------
-	// --fire object
+	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// //fire object
 	// local fire = {}
 	// fire.initial_properties = {
 	// 	hp_max = 1,
@@ -97,7 +97,7 @@ namespace fire {
 	// 	visual = "cube",
 	// 	textures = {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},
 	// 	visual_size = {x = 1, y = 1, z = 1},
-	// 	--textures = {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},--, animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=8.0}},
+	// 	//textures = {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},//, animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=8.0}},
 	// 	is_visible = true,
 	// 	pointable = false,
 	// }
@@ -112,7 +112,7 @@ namespace fire {
 	// 	}
 	// 	self.object:set_properties({textures=texture_list})
 	// end
-	// --animation stuff
+	// //animation stuff
 	// fire.frame = 0
 	// fire.frame_timer = 0
 	// fire.frame_update = function(self)
@@ -166,14 +166,14 @@ namespace fire {
 	// 		self.frame_update(self)
 	// 	end
 	// end
-	// minetest.register_entity("fire:fire",fire)
-	// --fire handling
+	// core.register_entity("fire:fire",fire)
+	// //fire handling
 	// local pool = {}
 	// local fire_channels = {}
 	// local name
-	// minetest.register_on_joinplayer(function(player)
+	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
-	// 	fire_channels[name] = minetest.mod_channel_join(name..":fire_state")
+	// 	fire_channels[name] = core.mod_channel_join(name..":fire_state")
 	// end)
 	// local name
 	// function is_player_on_fire(player)
@@ -188,7 +188,7 @@ namespace fire {
 	// 	if object:is_player() then
 	// 		name = object:get_player_name()
 	// 		if not pool[name] or pool[name] and not pool[name]:get_luaentity() then
-	// 			fire_obj = minetest.add_entity(object:get_pos(),"fire:fire")
+	// 			fire_obj = core.add_entity(object:get_pos(),"fire:fire")
 	// 			fire_obj:get_luaentity().owner = object
 	// 			fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
 	// 			fire_obj:set_properties({visual_size=vector.new(1,2,1)})
@@ -201,7 +201,7 @@ namespace fire {
 	// 		if not object:get_luaentity().fire_entity or
 	// 	object:get_luaentity().fire_entity and not object:get_luaentity().fire_entity:get_luaentity() then
 	// 			object:get_luaentity().on_fire = true
-	// 			fire_obj = minetest.add_entity(object:get_pos(),"fire:fire")
+	// 			fire_obj = core.add_entity(object:get_pos(),"fire:fire")
 	// 			fire_obj:get_luaentity().owner = object
 	// 			local entity_fire_def = object:get_luaentity().fire_table
 	// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
@@ -224,7 +224,7 @@ namespace fire {
 	// 			end
 	// 			pool[name] = nil
 	// 			fire_channels[name]:send_all("0")
-	// 			minetest.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
+	// 			core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
 	// 		end
 	// 	elseif object and object:get_luaentity() then
 	// 		if object:get_luaentity().fire_entity and object:get_luaentity().fire_entity:get_luaentity() then
@@ -232,10 +232,10 @@ namespace fire {
 	// 		end
 	// 		object:get_luaentity().on_fire = false
 	// 		object:get_luaentity().fire_entity = nil
-	// 		--minetest.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
+	// 		//core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
 	// 	end
 	// end
-	// minetest.register_on_respawnplayer(function(player)
+	// core.register_on_respawnplayer(function(player)
 	// 	put_fire_out(player)
 	// end)
 }
