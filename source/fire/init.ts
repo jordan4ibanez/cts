@@ -1,5 +1,4 @@
 namespace fire {
-	// local minetest,math,vector = minetest,math,vector
 	// minetest.register_node("fire:fire", {
 	//     description = "Fire",
 	//     drawtype = "firelike",
