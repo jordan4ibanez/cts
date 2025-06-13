@@ -7,6 +7,12 @@ let globalEnvironment = _G as unknown as {
 };
 
 //! Done.
+globalEnvironment.PointedThingType = {
+	node: "node",
+	object: "object",
+};
+
+//! Done.
 globalEnvironment.EntityVisual = {
 	cube: "cube",
 	sprite: "sprite",
