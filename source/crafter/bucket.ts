@@ -259,7 +259,12 @@ namespace crafter {
 		) => {
 			const pointedThing: PointedThing | null = bucket_raycast(user);
 
-			if (!pointedThing) {
+			if (
+				pointedThing == null ||
+				pointedThing.type == PointedThingType.object ||
+				pointedThing.above == null ||
+				pointedThing.under == null
+			) {
 				return;
 			}
 
