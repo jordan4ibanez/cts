@@ -465,9 +465,14 @@ namespace farming {
 						placer: ObjectRef,
 						pointed_thing: PointedThing
 					): ItemStackObject | void => {
-						if (pointed_thing.type != "node") {
+						if (
+							pointed_thing.type == PointedThingType.object ||
+							pointed_thing.above == null ||
+							pointed_thing.under == null
+						) {
 							return itemstack;
 						}
+
 						const pointed_thing_diff: number =
 							pointed_thing.above.y - pointed_thing.under.y;
 						if (pointed_thing_diff < 1) {
