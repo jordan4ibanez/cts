@@ -30,6 +30,7 @@ namespace fire {
 				core.remove_node(pos);
 				// Todo: depends on the nether mod.
 				// create_nether_portal(pos)
+
 				// Fire lasts forever on netherrack.
 			} else if (under != "nether:netherrack") {
 				const timer: NodeTimerObject = core.get_node_timer(pos);
