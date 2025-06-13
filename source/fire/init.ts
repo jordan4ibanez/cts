@@ -77,25 +77,24 @@ namespace fire {
 		},
 		groups: { flint: 1 },
 		sound: { breaks: { name: "tool_break", gain: 0.4 } },
-
-		// 	on_place = function(itemstack, placer, pointed_thing)
-		// 		if pointed_thing.type ~= "node" then
-		// 			return
-		// 		end
-		// 		if core.get_node(pointed_thing.above).name ~= "air" then
-		// 			core.sound_play("flint_failed", {pos=pointed_thing.above})
-		// 			return
-		// 		end
-		// 		//can't make fire in the aether
-		// 		if pointed_thing.above.y >= 20000 then
-		// 			core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
-		// 			return
-		// 		end
-		// 		core.add_node(pointed_thing.above,{name="crafter_fire:fire"})
-		// 		core.sound_play("flint_and_steel", {pos=pointed_thing.above})
-		// 		itemstack:add_wear(100)
-		// 		return(itemstack)
-		// 	end,
+		on_place: (itemstack, placer, pointed_thing) => {
+			// if pointed_thing.type ~= "node" then
+			// 	return
+			// end
+			// if core.get_node(pointed_thing.above).name ~= "air" then
+			// 	core.sound_play("flint_failed", {pos=pointed_thing.above})
+			// 	return
+			// end
+			// //can't make fire in the aether
+			// if pointed_thing.above.y >= 20000 then
+			// 	core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
+			// 	return
+			// end
+			// core.add_node(pointed_thing.above,{name="crafter_fire:fire"})
+			// core.sound_play("flint_and_steel", {pos=pointed_thing.above})
+			// itemstack:add_wear(100)
+			// return(itemstack)
+		},
 	});
 	// core.register_craft({
 	// 	type = "shapeless",
