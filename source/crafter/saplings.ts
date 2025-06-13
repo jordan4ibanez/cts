@@ -184,7 +184,10 @@ namespace crafter {
 				core.get_node(pointed_thing.above).name == "air"
 			) {
 				throw new Error("found it");
-				core.set_node(pointed_thing.above, { name: "crafter:sapling" });
+
+				core.set_node(pointed_thing.above!, {
+					name: "crafter:sapling",
+				});
 				core.sound_play("dirt", { pos: pointed_thing.above });
 				itemstack.take_item(1);
 				return itemstack;
