@@ -2,17 +2,17 @@ namespace fire {
 	core.register_node("crafter_fire:fire", {
 		description: "Fire",
 		drawtype: Drawtype.firelike,
-		// 	tiles = {
-		// 		{
-		// 			name = "fire.png",
-		// 			animation = {
-		// 				type = "vertical_frames",
-		// 				aspect_w = 16,
-		// 				aspect_h = 16,
-		// 				length = 0.3
-		// 			},
-		// 		},
-		// 	},
+		tiles: [
+			{
+				name: "fire.png",
+				animation: {
+					type: TileAnimationType.vertical_frames,
+					aspect_w: 16,
+					aspect_h: 16,
+					length: 0.3,
+				},
+			},
+		],
 		// 	//inventory_image = "fire.png",
 		//     groups = {dig_immediate = 1,fire=1,hurt_inside=1},
 		//     sounds = main.stoneSound(),
