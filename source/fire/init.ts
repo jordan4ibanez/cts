@@ -92,11 +92,14 @@ namespace fire {
 				core.sound_play("flint_failed", { pos: pointed_thing.above });
 				return;
 			}
-			// //can't make fire in the aether
-			// if pointed_thing.above.y >= 20000 then
-			// 	core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
-			// 	return
-			// end
+			// Can't make fire in the aether.
+			if (pointed_thing.above.y >= 20000) {
+				core.sound_play("flint_failed", {
+					pos: pointed_thing.above,
+					pitch: math.random(75, 95) / 100,
+				});
+				return;
+			}
 			// core.add_node(pointed_thing.above,{name="crafter_fire:fire"})
 			// core.sound_play("flint_and_steel", {pos=pointed_thing.above})
 			// itemstack:add_wear(100)
