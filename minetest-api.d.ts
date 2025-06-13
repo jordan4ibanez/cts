@@ -658,7 +658,10 @@ interface core {
 		wear: number
 	): HitParamsReturn;
 
-	get_translator(textDomain: string): Translator;
+	// Returns Singular and Plural translators.
+	get_translator(
+		textDomain: string
+	): LuaMultiReturn<[Translator, Translator]>;
 	translate(textDomain: string, ...string: string[]): string;
 
 	sound_play(
