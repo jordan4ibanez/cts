@@ -108,7 +108,7 @@ namespace crafter {
 				pointed_thing.above == null ||
 				pointed_thing.under == null
 			) {
-				return itemstack;
+				return;
 			}
 
 			const sneak: boolean = placer.get_player_control().sneak;
