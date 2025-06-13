@@ -39,7 +39,11 @@ namespace fire {
 		},
 
 		on_timer: (pos: Vec3, elapsed: Number) => {
-			// local find_flammable = core.find_nodes_in_area(vector.subtract(pos,1), vector.add(pos,1), {"group:flammable"})
+			const [find_flammable, _] = core.find_nodes_in_area(
+				vector.subtract(pos, 1),
+				vector.add(pos, 1),
+				["group:flammable"]
+			);
 			// //print(dump(find_flammable))
 			// for _,p_pos in pairs(find_flammable) do
 			//     if math.random() > 0.9 then
