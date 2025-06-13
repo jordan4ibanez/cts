@@ -1,5 +1,5 @@
 namespace fire {
-	// core.register_node("fire:fire", {
+	core.register_node("fire:fire", {
 	//     description = "Fire",
 	//     drawtype = "firelike",
 	// 	tiles = {
@@ -50,7 +50,8 @@ namespace fire {
 	// 			timer:start(math.random(0,2)+math.random())
 	// 		end
 	//     end,
-	// })
+	})
+
 	// //flint and steel
 	// core.register_tool("fire:flint_and_steel", {
 	// 	description = "Flint and Steel",
