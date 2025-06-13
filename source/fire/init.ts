@@ -91,12 +91,12 @@ namespace fire {
 		// 	},
 		// 	groups = {flint=1},
 		// 	sound = {breaks = {name="tool_break",gain=0.4}},
-		// })
-		// core.register_craft({
-		// 	type = "shapeless",
-		// 	output = "crafter_fire:flint_and_steel",
-		// 	recipe = {"main:flint","main:iron"},
 	});
+	// core.register_craft({
+	// 	type = "shapeless",
+	// 	output = "crafter_fire:flint_and_steel",
+	// 	recipe = {"main:flint","main:iron"},
+	// });
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// //fire object
