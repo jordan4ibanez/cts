@@ -107,7 +107,7 @@ namespace book {
 			pointed_thing: PointedThing
 		) => {
 			if (
-				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.under == null
 			) {
 				return;
@@ -141,7 +141,7 @@ namespace book {
 		inventory_image: "book_written.png",
 		on_place: (itemstack, user, pointed_thing) => {
 			if (
-				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.under == null
 			) {
 				return;
