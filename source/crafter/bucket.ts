@@ -205,7 +205,8 @@ namespace crafter {
 				return itemstack;
 			}
 
-			const bucketPointedThing: PointedThing | null = bucket_raycast(placer);
+			const bucketPointedThing: PointedThing | null =
+				bucket_raycast(placer);
 
 			if (!bucketPointedThing) {
 				return;
