@@ -106,11 +106,12 @@ namespace fire {
 			return itemstack;
 		},
 	});
-	// core.register_craft({
-	// 	type = "shapeless",
-	// 	output = "crafter_fire:flint_and_steel",
-	// 	recipe = {"main:flint","main:iron"},
-	// });
+
+	core.register_craft({
+		type: CraftRecipeType.shapeless,
+		output: "crafter_fire:flint_and_steel",
+		recipe: ["main:flint", "main:iron"],
+	});
 
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// //fire object
