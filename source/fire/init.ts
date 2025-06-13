@@ -38,23 +38,23 @@ namespace fire {
 			}
 		},
 
-		//     on_timer = function(pos, elapsed)
-		// 	    local find_flammable = core.find_nodes_in_area(vector.subtract(pos,1), vector.add(pos,1), {"group:flammable"})
-		// 	    //print(dump(find_flammable))
-		// 	    for _,p_pos in pairs(find_flammable) do
-		// 		    if math.random() > 0.9 then
-		// 				core.set_node(p_pos,{name="crafter_fire:fire"})
-		// 				local timer = core.get_node_timer(p_pos)
-		// 				timer:start(math.random(0,2)+math.random())
-		// 			end
-		// 	    end
-		// 	    if math.random() > 0.85 then
-		// 			core.remove_node(pos)
-		// 		else
-		// 			local timer = core.get_node_timer(pos)
-		// 			timer:start(math.random(0,2)+math.random())
-		// 		end
-		//     end,
+		on_timer: (pos: Vec3, elapsed: Number) => {
+			// 	    local find_flammable = core.find_nodes_in_area(vector.subtract(pos,1), vector.add(pos,1), {"group:flammable"})
+			// 	    //print(dump(find_flammable))
+			// 	    for _,p_pos in pairs(find_flammable) do
+			// 		    if math.random() > 0.9 then
+			// 				core.set_node(p_pos,{name="crafter_fire:fire"})
+			// 				local timer = core.get_node_timer(p_pos)
+			// 				timer:start(math.random(0,2)+math.random())
+			// 			end
+			// 	    end
+			// 	    if math.random() > 0.85 then
+			// 			core.remove_node(pos)
+			// 		else
+			// 			local timer = core.get_node_timer(pos)
+			// 			timer:start(math.random(0,2)+math.random())
+			// 		end
+		},
 	});
 
 	// //flint and steel
