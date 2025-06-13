@@ -41,13 +41,14 @@ namespace crafter {
 			placer: ObjectRef,
 			_: PointedThing
 		) => {
-			const pointedThing: PointedThing | null = bucket_raycast(placer);
+			const bucketPointedThing: PointedThing | null =
+				bucket_raycast(placer);
 
-			if (!pointedThing) {
+			if (!bucketPointedThing) {
 				return;
 			}
 
-			const posUnder: Vec3 = pointedThing.under;
+			const posUnder: Vec3 = bucketPointedThing.under;
 
 			const nodeName: string = core.get_node(posUnder).name;
 
