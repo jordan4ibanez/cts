@@ -297,8 +297,8 @@ interface core {
 	find_nodes_in_area(
 		pos1: Vec3,
 		pos2: Vec3,
-		nodeNames: string | string[],
-		grouped?: false
+		nodeNames: string | string[]
+		// grouped?: false //? This is ommited to simplify the api.
 	): LuaMultiReturn<[Vec3[], Dictionary<string, number>]>;
 	find_nodes_in_area_under_air(
 		pos1: Vec3,
