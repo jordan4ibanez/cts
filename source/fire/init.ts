@@ -89,8 +89,8 @@ namespace fire {
 				return;
 			}
 			if (core.get_node(pointed_thing.above).name != "air") {
-				// 	core.sound_play("flint_failed", {pos=pointed_thing.above})
-				// 	return
+				core.sound_play("flint_failed", { pos: pointed_thing.above });
+				return;
 			}
 			// //can't make fire in the aether
 			// if pointed_thing.above.y >= 20000 then
