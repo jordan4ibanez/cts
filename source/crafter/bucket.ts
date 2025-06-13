@@ -143,14 +143,14 @@ namespace crafter {
 			user: ObjectRef,
 			_: PointedThing
 		) => {
-			const pos: PointedThing | null = bucket_raycast(user);
+			const bucketPointedThing: PointedThing | null = bucket_raycast(user);
 
-			if (!pos) {
+			if (!bucketPointedThing) {
 				return;
 			}
 
-			const posUnder: Vec3 = pos.under;
-			const posAbove: Vec3 = pos.above;
+			const posUnder: Vec3 = bucketPointedThing.under;
+			const posAbove: Vec3 = bucketPointedThing.above;
 
 			const nodeUnder: string = core.get_node(posUnder).name;
 			const nodeAbove: string = core.get_node(posAbove).name;
