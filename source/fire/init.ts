@@ -100,10 +100,10 @@ namespace fire {
 				});
 				return;
 			}
-			// core.add_node(pointed_thing.above,{name="crafter_fire:fire"})
-			// core.sound_play("flint_and_steel", {pos=pointed_thing.above})
-			// itemstack:add_wear(100)
-			// return(itemstack)
+			core.add_node(pointed_thing.above, { name: "crafter_fire:fire" });
+			core.sound_play("flint_and_steel", { pos: pointed_thing.above });
+			itemstack.add_wear(100);
+			return itemstack;
 		},
 	});
 	// core.register_craft({
