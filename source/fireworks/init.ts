@@ -98,7 +98,10 @@ namespace fireworks {
 			placer: ObjectRef,
 			pointed_thing: PointedThing
 		) {
-			if (pointed_thing.type != "node") {
+			if (
+				pointed_thing.type != PointedThingType.node ||
+				pointed_thing.above == null
+			) {
 				return;
 			}
 			core.add_entity(pointed_thing.above, "crafter_fireworks:rocket");
