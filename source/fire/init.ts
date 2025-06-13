@@ -21,18 +21,19 @@ namespace fire {
 		walkable: false,
 		is_ground_content: false,
 		light_source: 11,
-		//     on_construct = function(pos)
-		// 		local under = core.get_node(vector.new(pos.x,pos.y-1,pos.z)).name
-		// 		//makes nether portal
-		// 		if under == "nether:obsidian" then
-		// 			core.remove_node(pos)
-		// 			create_nether_portal(pos)
-		// 		//fire lasts forever on netherrack
-		// 		elseif under ~= "nether:netherrack" then
-		// 			local timer = core.get_node_timer(pos)
-		// 			timer:start(math.random(0,2)+math.random())
-		// 		end
-		//     end,
+		on_construct: (pos: Vec3) => {
+			// 		local under = core.get_node(vector.new(pos.x,pos.y-1,pos.z)).name
+			// 		//makes nether portal
+			// 		if under == "nether:obsidian" then
+			// 			core.remove_node(pos)
+			// 			create_nether_portal(pos)
+			// 		//fire lasts forever on netherrack
+			// 		elseif under ~= "nether:netherrack" then
+			// 			local timer = core.get_node_timer(pos)
+			// 			timer:start(math.random(0,2)+math.random())
+			// 		end
+		},
+
 		//     on_timer = function(pos, elapsed)
 		// 	    local find_flammable = core.find_nodes_in_area(vector.subtract(pos,1), vector.add(pos,1), {"group:flammable"})
 		// 	    //print(dump(find_flammable))
