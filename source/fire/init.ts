@@ -75,8 +75,9 @@ namespace fire {
 				},
 			},
 		},
-		// 	groups = {flint=1},
-		// 	sound = {breaks = {name="tool_break",gain=0.4}},
+		groups: { flint: 1 },
+		sound: { breaks: { name: "tool_break", gain: 0.4 } },
+
 		// 	on_place = function(itemstack, placer, pointed_thing)
 		// 		if pointed_thing.type ~= "node" then
 		// 			return
