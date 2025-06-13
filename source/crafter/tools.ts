@@ -1441,7 +1441,7 @@ namespace crafter {
 					pointed_thing: PointedThing
 				) => {
 					if (
-						pointed_thing.type == PointedThingType.object ||
+						pointed_thing.type != PointedThingType.node ||
 						pointed_thing.above == null ||
 						pointed_thing.under == null
 					) {
