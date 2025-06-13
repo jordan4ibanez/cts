@@ -2504,6 +2504,11 @@ declare global {
 
 /** @noSelf **/
 declare global {
+	enum PointedThingType {
+		node,
+		object,
+	}
+
 	enum InputKeys {
 		up = "up",
 		down = "down",
