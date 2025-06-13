@@ -70,9 +70,15 @@ namespace crafter {
 			user: ObjectRef,
 			_: PointedThing
 		) => {
-			if (!bucketPointedThing) {
 			const bucketPointedThing: PointedThing | null =
 				bucket_raycast(user);
+
+			if (
+				bucketPointedThing == null ||
+				bucketPointedThing.type == PointedThingType.object ||
+				bucketPointedThing.above == null ||
+				bucketPointedThing.under == null
+			) {
 				return;
 			}
 			const posUnder: Vec3 = bucketPointedThing.under;
