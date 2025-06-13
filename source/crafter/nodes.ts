@@ -378,7 +378,11 @@ namespace crafter {
 			placer: ObjectRef,
 			pointed_thing: PointedThing
 		): ItemStackObject | null => {
-			if (pointed_thing.type != "node") {
+			if (
+				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.above == null ||
+				pointed_thing.under == null
+			) {
 				return null;
 			}
 
