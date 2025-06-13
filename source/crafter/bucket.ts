@@ -143,7 +143,8 @@ namespace crafter {
 			user: ObjectRef,
 			_: PointedThing
 		) => {
-			const bucketPointedThing: PointedThing | null = bucket_raycast(user);
+			const bucketPointedThing: PointedThing | null =
+				bucket_raycast(user);
 
 			if (!bucketPointedThing) {
 				return;
