@@ -1440,6 +1440,14 @@ namespace crafter {
 					placer: ObjectRef,
 					pointed_thing: PointedThing
 				) => {
+					if (
+						pointed_thing.type == PointedThingType.object ||
+						pointed_thing.above == null ||
+						pointed_thing.under == null
+					) {
+						return;
+					}
+
 					const inv: InvRef | null = placer.get_inventory();
 					if (inv == null) {
 						throw new Error("Not a player.");
