@@ -1434,7 +1434,7 @@ namespace crafter {
 					treecapitator: tool == "axe" ? 1 : 0,
 				},
 				mob_hit_wear: wear,
-				// torch rightclick - hacked in since api doesn't call on_place correctly // todo: is this true?!
+				// Torch rightclick - hacked in since api doesn't call on_place correctly. // todo: is this true?!
 				on_place: (
 					itemstack: ItemStackObject,
 					placer: ObjectRef,
