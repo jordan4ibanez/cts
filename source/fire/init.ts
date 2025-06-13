@@ -27,9 +27,10 @@ namespace fire {
 			).name;
 			// Makes nether portal.
 			if (under == "nether:obsidian") {
-				// 	core.remove_node(pos)
-				// 	create_nether_portal(pos)
-				// //fire lasts forever on netherrack
+				core.remove_node(pos);
+				// Todo: depends on the nether mod.
+				// create_nether_portal(pos)
+				// Fire lasts forever on netherrack.
 			} else if (under != "nether:netherrack") {
 				const timer: NodeTimerObject = core.get_node_timer(pos);
 				timer.start(math.random(0, 2) + math.random());
