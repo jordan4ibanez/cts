@@ -123,10 +123,10 @@ namespace fire {
 	// 	local texture_list = {
 	// 		"nothing.png",
 	// 		"nothing.png",
-	// 		"fire.png^[opacity:180^[verticalframe:8:"..self.frame,
-	// 		"fire.png^[opacity:180^[verticalframe:8:"..self.frame,
-	// 		"fire.png^[opacity:180^[verticalframe:8:"..self.frame,
-	// 		"fire.png^[opacity:180^[verticalframe:8:"..self.frame,
+	// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
+	// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
+	// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
+	// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
 	// 	}
 	// 	self.object:set_properties({textures=texture_list})
 	// end
@@ -173,7 +173,7 @@ namespace fire {
 	// local name
 	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
-	// 	fire_channels[name] = core.mod_channel_join(name..":fire_state")
+	// 	fire_channels[name] = core.mod_channel_join(name+":fire_state")
 	// end)
 	// local name
 	// function is_player_on_fire(player)
