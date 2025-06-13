@@ -213,6 +213,14 @@ namespace stairs {
 				placer: ObjectRef,
 				pointed_thing: PointedThing
 			) => {
+				if (
+					pointed_thing.type == PointedThingType.object ||
+					pointed_thing.above == null ||
+					pointed_thing.under == null
+				) {
+					return;
+				}
+
 				//get all the required variables
 				const sneak = placer.get_player_control().sneak;
 				const ydiff = pointed_thing.above.y - pointed_thing.under.y;
