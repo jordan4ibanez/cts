@@ -81,7 +81,6 @@ namespace crafter {
 			if (
 				bucketPointedThing == null ||
 				bucketPointedThing.type == PointedThingType.object ||
-				bucketPointedThing.above == null ||
 				bucketPointedThing.under == null
 			) {
 				return;
