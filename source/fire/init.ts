@@ -44,14 +44,15 @@ namespace fire {
 				vector.add(pos, 1),
 				["group:flammable"]
 			);
-			// //print(dump(find_flammable))
-			// for _,p_pos in pairs(find_flammable) do
-			//     if math.random() > 0.9 then
-			// 		core.set_node(p_pos,{name="crafter_fire:fire"})
-			// 		local timer = core.get_node_timer(p_pos)
-			// 		timer:start(math.random(0,2)+math.random())
-			// 	end
-			// end
+			// print(dump(find_flammable));
+
+			for (const [_, p_pos] of pairs(find_flammable)) {
+				//     if math.random() > 0.9 then
+				// 		core.set_node(p_pos,{name="crafter_fire:fire"})
+				// 		local timer = core.get_node_timer(p_pos)
+				// 		timer:start(math.random(0,2)+math.random())
+				// 	end
+			}
 			// if math.random() > 0.85 then
 			// 	core.remove_node(pos)
 			// else
