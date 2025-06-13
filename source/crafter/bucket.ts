@@ -44,7 +44,11 @@ namespace crafter {
 			const bucketPointedThing: PointedThing | null =
 				bucket_raycast(placer);
 
-			if (!bucketPointedThing) {
+			if (
+				bucketPointedThing == null ||
+				bucketPointedThing.type == PointedThingType.object ||
+				bucketPointedThing.under == null
+			) {
 				return;
 			}
 
