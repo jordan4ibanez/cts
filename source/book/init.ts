@@ -106,9 +106,13 @@ namespace book {
 			user: ObjectRef,
 			pointed_thing: PointedThing
 		) => {
-			if (pointed_thing.type != "node") {
+			if (
+				pointed_thing.type == PointedThingType.object ||
+				pointed_thing.under == null
+			) {
 				return;
 			}
+
 			const sneak: boolean = user.get_player_control().sneak;
 			const noddef: NodeDefinition | undefined =
 				core.registered_nodes[core.get_node(pointed_thing.under).name];
