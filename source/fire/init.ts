@@ -62,41 +62,42 @@ namespace fire {
 		},
 	});
 
-	// //flint and steel
-	// core.register_tool("crafter_fire:flint_and_steel", {
-	// 	description = "Flint and Steel",
-	// 	inventory_image = "flint_and_steel.png",
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		if pointed_thing.type ~= "node" then
-	// 			return
-	// 		end
-	// 		if core.get_node(pointed_thing.above).name ~= "air" then
-	// 			core.sound_play("flint_failed", {pos=pointed_thing.above})
-	// 			return
-	// 		end
-	// 		//can't make fire in the aether
-	// 		if pointed_thing.above.y >= 20000 then
-	// 			core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
-	// 			return
-	// 		end
-	// 		core.add_node(pointed_thing.above,{name="crafter_fire:fire"})
-	// 		core.sound_play("flint_and_steel", {pos=pointed_thing.above})
-	// 		itemstack:add_wear(100)
-	// 		return(itemstack)
-	// 	end,
-	// 	tool_capabilities = {
-	// 		groupcaps={
-	// 			_namespace_reserved = {times={[1]=5555}, uses=0, maxlevel=1},
-	// 		},
-	// 	},
-	// 	groups = {flint=1},
-	// 	sound = {breaks = {name="tool_break",gain=0.4}},
-	// })
-	// core.register_craft({
-	// 	type = "shapeless",
-	// 	output = "crafter_fire:flint_and_steel",
-	// 	recipe = {"main:flint","main:iron"},
-	// })
+	// Flint and steel.
+	core.register_tool("crafter_fire:flint_and_steel", {
+		// 	description = "Flint and Steel",
+		// 	inventory_image = "flint_and_steel.png",
+		// 	on_place = function(itemstack, placer, pointed_thing)
+		// 		if pointed_thing.type ~= "node" then
+		// 			return
+		// 		end
+		// 		if core.get_node(pointed_thing.above).name ~= "air" then
+		// 			core.sound_play("flint_failed", {pos=pointed_thing.above})
+		// 			return
+		// 		end
+		// 		//can't make fire in the aether
+		// 		if pointed_thing.above.y >= 20000 then
+		// 			core.sound_play("flint_failed", {pos=pointed_thing.above,pitch=math.random(75,95)/100})
+		// 			return
+		// 		end
+		// 		core.add_node(pointed_thing.above,{name="crafter_fire:fire"})
+		// 		core.sound_play("flint_and_steel", {pos=pointed_thing.above})
+		// 		itemstack:add_wear(100)
+		// 		return(itemstack)
+		// 	end,
+		// 	tool_capabilities = {
+		// 		groupcaps={
+		// 			_namespace_reserved = {times={[1]=5555}, uses=0, maxlevel=1},
+		// 		},
+		// 	},
+		// 	groups = {flint=1},
+		// 	sound = {breaks = {name="tool_break",gain=0.4}},
+		// })
+		// core.register_craft({
+		// 	type = "shapeless",
+		// 	output = "crafter_fire:flint_and_steel",
+		// 	recipe = {"main:flint","main:iron"},
+	});
+
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// //fire object
 	// local fire = {}
