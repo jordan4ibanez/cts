@@ -77,10 +77,14 @@ namespace fire {
 		},
 		groups: { flint: 1 },
 		sound: { breaks: { name: "tool_break", gain: 0.4 } },
-		on_place: (itemstack, placer, pointed_thing) => {
-			// if pointed_thing.type ~= "node" then
-			// 	return
-			// end
+		on_place: (
+			itemstack: ItemStackObject,
+			placer: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			if (pointed_thing.type != "node") {
+				return;
+			}
 			// if core.get_node(pointed_thing.above).name ~= "air" then
 			// 	core.sound_play("flint_failed", {pos=pointed_thing.above})
 			// 	return
