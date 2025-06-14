@@ -121,17 +121,24 @@ namespace fire {
 		name: string = "crafter_fire:fire";
 
 		initial_properties = {
-			hp_max : 1,
-			physical : false,
-			collide_with_objects : false,
-			collisionbox : [0, 0, 0, 0, 0, 0],
-			visual : EntityVisual.cube,
-			textures : {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},
-			visual_size : {x : 1, y : 1, z : 1},
+			hp_max: 1,
+			physical: false,
+			collide_with_objects: false,
+			collisionbox: [0, 0, 0, 0, 0, 0],
+			visual: EntityVisual.cube,
+			textures: [
+				"nothing.png",
+				"nothing.png",
+				"fire.png",
+				"fire.png",
+				"fire.png",
+				"fire.png",
+			],
+			visual_size: { x: 1, y: 1, z: 1 },
 			//textures : {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},//, animation:{type:"vertical_frames", aspect_w:16, aspect_h:16, length:8.0}},
-			is_visible : true,
-			pointable : false,
-		}
+			is_visible: true,
+			pointable: false,
+		};
 
 		// fire.glow = -1
 		// fire.timer = 0
@@ -151,7 +158,7 @@ namespace fire {
 		// 	this.object.set_properties({textures=texture_list})
 		// end
 		// //animation stuff
-		
+
 		// fire.frame_update = function(self)
 		// 	this.frame = this.frame + 1
 		// 	if this.frame > 7 then
@@ -167,7 +174,7 @@ namespace fire {
 		// 	}
 		// 	this.object.set_properties({textures=texture_list})
 		// end
-		
+
 		// fire.on_step = function(self,dtime)
 		// 	if this.owner and (this.owner.is_player() or this.owner.get_luaentity()) then
 		// 		if this.owner.is_player() and this.owner.get_hp() <= 0 then
