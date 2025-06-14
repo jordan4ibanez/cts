@@ -56,13 +56,13 @@ namespace crafter {
 
 			const nodeName: string = core.get_node(posUnder).name;
 
-			if (nodeName === "crafter:water") {
+			if (nodeName == "crafter:water") {
 				itemstack.replace(ItemStack("crafter:bucket_water"));
 				core.remove_node(posUnder);
 				return itemstack;
 			} else if (
-				nodeName === "crafter:lava" ||
-				nodeName === "nether:lava"
+				nodeName == "crafter:lava" ||
+				nodeName == "nether:lava"
 			) {
 				itemstack.replace(ItemStack("crafter:bucket_lava"));
 				core.remove_node(posUnder);
@@ -89,13 +89,13 @@ namespace crafter {
 
 			const nodeName: string = core.get_node(posUnder).name;
 
-			if (nodeName === "crafter:water") {
+			if (nodeName == "crafter:water") {
 				itemstack.replace(ItemStack("crafter:bucket_water"));
 				core.remove_node(posUnder);
 				return itemstack;
 			} else if (
-				nodeName === "crafter:lava" ||
-				nodeName === "nether:lava"
+				nodeName == "crafter:lava" ||
+				nodeName == "nether:lava"
 			) {
 				itemstack.replace(ItemStack("crafter:bucket_lava"));
 				core.remove_node(posUnder);
