@@ -142,47 +142,47 @@ namespace fire {
 		// 		"fire.png^[opacity:180^[verticalframe:8:0",
 		// 		"fire.png^[opacity:180^[verticalframe:8:0",
 		// 	}
-		// 	self.object:set_properties({textures=texture_list})
+		// 	this.object:set_properties({textures=texture_list})
 		// end
 		// //animation stuff
 		// fire.frame = 0
 		// fire.frame_timer = 0
 		// fire.frame_update = function(self)
-		// 	self.frame = self.frame + 1
-		// 	if self.frame > 7 then
-		// 		self.frame = 0
+		// 	this.frame = this.frame + 1
+		// 	if this.frame > 7 then
+		// 		this.frame = 0
 		// 	end
 		// 	local texture_list = {
 		// 		"nothing.png",
 		// 		"nothing.png",
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+self.frame,
+		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
+		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
+		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
+		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
 		// 	}
-		// 	self.object:set_properties({textures=texture_list})
+		// 	this.object:set_properties({textures=texture_list})
 		// end
 		// fire.glow = -1
 		// fire.timer = 0
 		// fire.life = 0
 		// fire.on_step = function(self,dtime)
-		// 	if self.owner and (self.owner:is_player() or self.owner:get_luaentity()) then
-		// 		if self.owner:is_player() and self.owner:get_hp() <= 0 then
-		// 			put_fire_out(self.owner)
+		// 	if this.owner and (this.owner:is_player() or this.owner:get_luaentity()) then
+		// 		if this.owner:is_player() and this.owner:get_hp() <= 0 then
+		// 			put_fire_out(this.owner)
 		// 		end
-		// 		self.timer = self.timer + dtime
-		// 		self.life = self.life + dtime
-		// 		if self.life >= 7 then
-		// 			put_fire_out(self.owner)
-		// 			self.object:remove()
+		// 		this.timer = this.timer + dtime
+		// 		this.life = this.life + dtime
+		// 		if this.life >= 7 then
+		// 			put_fire_out(this.owner)
+		// 			this.object:remove()
 		// 			return
 		// 		end
-		// 		if self.timer >= 1 then
-		// 			self.timer = 0
-		// 			if self.owner:is_player() then
-		// 				self.owner:set_hp(self.owner:get_hp()-1)
-		// 			elseif self.owner:get_luaentity() then
-		// 				self.owner:punch(self.object, 2,
+		// 		if this.timer >= 1 then
+		// 			this.timer = 0
+		// 			if this.owner:is_player() then
+		// 				this.owner:set_hp(this.owner:get_hp()-1)
+		// 			elseif this.owner:get_luaentity() then
+		// 				this.owner:punch(this.object, 2,
 		// 					{
 		// 					full_punch_interval=0,
 		// 					damage_groups = {damage=2},
@@ -190,12 +190,12 @@ namespace fire {
 		// 			end
 		// 		end
 		// 	else
-		// 		self.object:remove()
+		// 		this.object:remove()
 		// 	end
-		// 	self.frame_timer = self.frame_timer + dtime
-		// 	if self.frame_timer >= 0.015 then
-		// 		self.frame_timer = 0
-		// 		self.frame_update(self)
+		// 	this.frame_timer = this.frame_timer + dtime
+		// 	if this.frame_timer >= 0.015 then
+		// 		this.frame_timer = 0
+		// 		this.frame_update(self)
 		// 	end
 		// end
 	}
