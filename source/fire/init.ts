@@ -117,6 +117,10 @@ namespace fire {
 
 	// Fire object.
 
+	class FireEntity extends types.Entity {
+		name: string = "crafter_fire:fire";
+	}
+
 	// local fire = {}
 	// fire.initial_properties = {
 	// 	hp_max = 1,
@@ -196,6 +200,7 @@ namespace fire {
 	// 	end
 	// end
 	// core.register_entity("crafter_fire:fire",fire)
+
 	// //fire handling
 	// local pool = {}
 	// local fire_channels = {}
@@ -241,6 +246,7 @@ namespace fire {
 	// 		end
 	// 	end
 	// end
+
 	// local name
 	// local fire_obj
 	// function put_fire_out(object)
@@ -264,6 +270,7 @@ namespace fire {
 	// 		//core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
 	// 	end
 	// end
+
 	// core.register_on_respawnplayer(function(player)
 	// 	put_fire_out(player)
 	// end)
