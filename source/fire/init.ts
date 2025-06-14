@@ -147,14 +147,15 @@ namespace fire {
 		frame_timer: number = 0;
 
 		on_activate() {
-			// 	local texture_list = {
-			// 		"nothing.png",
-			// 		"nothing.png",
-			// 		"fire.png^[opacity:180^[verticalframe:8:0",
-			// 		"fire.png^[opacity:180^[verticalframe:8:0",
-			// 		"fire.png^[opacity:180^[verticalframe:8:0",
-			// 		"fire.png^[opacity:180^[verticalframe:8:0",
-			// 	}
+			const texture_list = [
+				"nothing.png",
+				"nothing.png",
+				"fire.png^[opacity:180^[verticalframe:8:0",
+				"fire.png^[opacity:180^[verticalframe:8:0",
+				"fire.png^[opacity:180^[verticalframe:8:0",
+				"fire.png^[opacity:180^[verticalframe:8:0",
+			];
+
 			// 	this.object.set_properties({textures=texture_list})
 		}
 
