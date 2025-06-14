@@ -161,19 +161,21 @@ namespace fire {
 
 		// Animation stuff.
 		frame_update() {
-			// 	this.frame = this.frame + 1
-			// 	if this.frame > 7 then
-			// 		this.frame = 0
-			// 	end
-			// 	local texture_list = {
-			// 		"nothing.png",
-			// 		"nothing.png",
-			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-			// 	}
-			// 	this.object.set_properties({textures=texture_list})
+			this.frame += 1;
+			if (this.frame > 7) {
+				this.frame = 0;
+			}
+
+			const texture_list = [
+				"nothing.png",
+				"nothing.png",
+				"fire.png^[opacity:180^[verticalframe:8:" + this.frame,
+				"fire.png^[opacity:180^[verticalframe:8:" + this.frame,
+				"fire.png^[opacity:180^[verticalframe:8:" + this.frame,
+				"fire.png^[opacity:180^[verticalframe:8:" + this.frame,
+			];
+
+			this.object.set_properties({ textures: texture_list });
 		}
 
 		// fire.on_step = function(self,dtime)
