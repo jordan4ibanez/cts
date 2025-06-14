@@ -166,8 +166,8 @@ namespace fire {
 		// fire.timer = 0
 		// fire.life = 0
 		// fire.on_step = function(self,dtime)
-		// 	if this.owner and (this.owner:is_player() or this.owner:get_luaentity()) then
-		// 		if this.owner:is_player() and this.owner:get_hp() <= 0 then
+		// 	if this.owner and (this.owner.is_player() or this.owner.get_luaentity()) then
+		// 		if this.owner.is_player() and this.owner.get_hp() <= 0 then
 		// 			put_fire_out(this.owner)
 		// 		end
 		// 		this.timer = this.timer + dtime
@@ -179,10 +179,10 @@ namespace fire {
 		// 		end
 		// 		if this.timer >= 1 then
 		// 			this.timer = 0
-		// 			if this.owner:is_player() then
-		// 				this.owner:set_hp(this.owner:get_hp()-1)
-		// 			elseif this.owner:get_luaentity() then
-		// 				this.owner:punch(this.object, 2,
+		// 			if this.owner.is_player() then
+		// 				this.owner.set_hp(this.owner.get_hp()-1)
+		// 			elseif this.owner.get_luaentity() then
+		// 				this.owner.punch(this.object, 2,
 		// 					{
 		// 					full_punch_interval=0,
 		// 					damage_groups = {damage=2},
