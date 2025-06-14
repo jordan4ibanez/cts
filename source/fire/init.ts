@@ -157,8 +157,8 @@ namespace fire {
 		// 	}
 		// 	this.object.set_properties({textures=texture_list})
 		// end
-		// //animation stuff
 
+		// Animation stuff.
 		// fire.frame_update = function(self)
 		// 	this.frame = this.frame + 1
 		// 	if this.frame > 7 then
