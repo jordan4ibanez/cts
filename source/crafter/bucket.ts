@@ -219,7 +219,7 @@ namespace crafter {
 
 			if (
 				pointed_thing.under &&
-				core.get_node(pointed_thing.under).name == "tnt:tnt"
+				core.get_node(pointed_thing.under).name == "crafter_tnt:tnt"
 			) {
 				core.remove_node(pointed_thing.under);
 				// fixme: this was calling the TNT mod.
