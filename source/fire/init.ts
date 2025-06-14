@@ -120,7 +120,7 @@ namespace fire {
 	class FireEntity extends types.Entity {
 		name: string = "crafter_fire:fire";
 
-		initial_properties = {
+		initial_properties: ObjectProperties = {
 			hp_max: 1,
 			physical: false,
 			collide_with_objects: false,
@@ -140,11 +140,11 @@ namespace fire {
 			pointable: false,
 		};
 
-		// fire.glow = -1
-		// fire.timer = 0
-		// fire.life = 0
-		// fire.frame = 0
-		// fire.frame_timer = 0
+		glow: number = -1;
+		timer: number = 0;
+		life: number = 0;
+		frame: number = 0;
+		frame_timer: number = 0;
 
 		// fire.on_activate = function(self)
 		// 	local texture_list = {
