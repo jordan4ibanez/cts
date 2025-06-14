@@ -199,7 +199,6 @@ namespace fire {
 	// 		self.frame_update(self)
 	// 	end
 	// end
-	// core.register_entity("crafter_fire:fire",fire)
 	}
 
 	// //fire handling
