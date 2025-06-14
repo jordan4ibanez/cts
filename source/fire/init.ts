@@ -120,18 +120,18 @@ namespace fire {
 	class FireEntity extends types.Entity {
 		name: string = "crafter_fire:fire";
 
-		// fire.initial_properties = {
-		// 	hp_max = 1,
-		// 	physical = false,
-		// 	collide_with_objects = false,
-		// 	collisionbox = {0, 0, 0, 0, 0, 0},
-		// 	visual = "cube",
-		// 	textures = {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},
-		// 	visual_size = {x = 1, y = 1, z = 1},
-		// 	//textures = {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},//, animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=8.0}},
-		// 	is_visible = true,
-		// 	pointable = false,
-		// }
+		initial_properties = {
+			hp_max = 1,
+			physical = false,
+			collide_with_objects = false,
+			collisionbox = {0, 0, 0, 0, 0, 0},
+			visual = "cube",
+			textures = {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},
+			visual_size = {x = 1, y = 1, z = 1},
+			//textures = {"nothing.png","nothing.png","fire.png","fire.png","fire.png","fire.png"},//, animation={type="vertical_frames", aspect_w=16, aspect_h=16, length=8.0}},
+			is_visible = true,
+			pointable = false,
+		}
 
 		// fire.glow = -1
 		// fire.timer = 0
