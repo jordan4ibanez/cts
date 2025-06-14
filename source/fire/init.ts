@@ -146,17 +146,17 @@ namespace fire {
 		frame: number = 0;
 		frame_timer: number = 0;
 
-		// fire.on_activate = function(self)
-		// 	local texture_list = {
-		// 		"nothing.png",
-		// 		"nothing.png",
-		// 		"fire.png^[opacity:180^[verticalframe:8:0",
-		// 		"fire.png^[opacity:180^[verticalframe:8:0",
-		// 		"fire.png^[opacity:180^[verticalframe:8:0",
-		// 		"fire.png^[opacity:180^[verticalframe:8:0",
-		// 	}
-		// 	this.object.set_properties({textures=texture_list})
-		// end
+		on_activate() {
+			// 	local texture_list = {
+			// 		"nothing.png",
+			// 		"nothing.png",
+			// 		"fire.png^[opacity:180^[verticalframe:8:0",
+			// 		"fire.png^[opacity:180^[verticalframe:8:0",
+			// 		"fire.png^[opacity:180^[verticalframe:8:0",
+			// 		"fire.png^[opacity:180^[verticalframe:8:0",
+			// 	}
+			// 	this.object.set_properties({textures=texture_list})
+		}
 
 		// Animation stuff.
 		// fire.frame_update = function(self)
