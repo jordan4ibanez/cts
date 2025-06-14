@@ -181,6 +181,14 @@ namespace fire {
 
 		on_step(dtime: number) {
 			if (
+				this.owner == null ||
+				!this.owner.is_player() ||
+				this.owner.get_luaentity() == null
+			) {
+				this.object.remove();
+			}
+
+			if (
 				this.owner != null &&
 				(this.owner.is_player() || this.owner.get_luaentity())
 			) {
@@ -207,8 +215,6 @@ namespace fire {
 				// 				})
 				// 			end
 				// 		end
-			} else {
-				// 		this.object.remove()
 			}
 			// 	this.frame_timer = this.frame_timer + dtime
 			// 	if this.frame_timer >= 0.015 then
