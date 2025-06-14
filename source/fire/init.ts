@@ -201,6 +201,7 @@ namespace fire {
 			this.life += dtime;
 
 			if (this.life >= 7) {
+				// todo: fix this.
 				// put_fire_out(this.owner);
 				this.object.remove();
 				return;
