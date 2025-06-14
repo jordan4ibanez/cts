@@ -188,14 +188,18 @@ namespace fire {
 				return;
 			}
 
+			const isPlayer: boolean = this.owner.is_player();
+
 			// todo: Check if this is an item or a mob.
 
-			if (this.owner.is_player() && this.owner.get_hp() <= 0) {
+			if (isPlayer && this.owner.get_hp() <= 0) {
 				// todo: fix this.
-				put_fire_out(this.owner);
+				// put_fire_out(this.owner);
 			}
-			// 		this.timer = this.timer + dtime
-			// 		this.life = this.life + dtime
+
+			this.timer += dtime;
+			this.life += dtime;
+
 			// 		if this.life >= 7 then
 			// 			put_fire_out(this.owner)
 			// 			this.object.remove()
