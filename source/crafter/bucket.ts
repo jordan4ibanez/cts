@@ -20,7 +20,7 @@ namespace crafter {
 		const ray: RaycastObject = core.raycast(pos, pos2, false, true);
 
 		for (const pointedThing of ray) {
-			if (pointedThing !== null) {
+			if (pointedThing != null) {
 				return pointedThing;
 			}
 		}
