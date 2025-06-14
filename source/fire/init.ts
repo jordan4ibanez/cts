@@ -119,7 +119,7 @@ namespace fire {
 
 	class FireEntity extends types.Entity {
 		name: string = "crafter_fire:fire";
-	}
+	
 
 	// local fire = {}
 	// fire.initial_properties = {
@@ -200,6 +200,7 @@ namespace fire {
 	// 	end
 	// end
 	// core.register_entity("crafter_fire:fire",fire)
+	}
 
 	// //fire handling
 	// local pool = {}
