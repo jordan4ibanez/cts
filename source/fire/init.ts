@@ -200,6 +200,8 @@ namespace fire {
 		// end
 	}
 
+	utility.registerTSEntity(FireEntity);
+
 	// //fire handling
 	// local pool = {}
 	// local fire_channels = {}
