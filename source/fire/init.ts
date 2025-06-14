@@ -142,7 +142,7 @@ namespace fire {
 		// 		"fire.png^[opacity:180^[verticalframe:8:0",
 		// 		"fire.png^[opacity:180^[verticalframe:8:0",
 		// 	}
-		// 	this.object:set_properties({textures=texture_list})
+		// 	this.object.set_properties({textures=texture_list})
 		// end
 		// //animation stuff
 		// fire.frame = 0
@@ -160,7 +160,7 @@ namespace fire {
 		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
 		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
 		// 	}
-		// 	this.object:set_properties({textures=texture_list})
+		// 	this.object.set_properties({textures=texture_list})
 		// end
 		// fire.glow = -1
 		// fire.timer = 0
@@ -174,7 +174,7 @@ namespace fire {
 		// 		this.life = this.life + dtime
 		// 		if this.life >= 7 then
 		// 			put_fire_out(this.owner)
-		// 			this.object:remove()
+		// 			this.object.remove()
 		// 			return
 		// 		end
 		// 		if this.timer >= 1 then
@@ -190,7 +190,7 @@ namespace fire {
 		// 			end
 		// 		end
 		// 	else
-		// 		this.object:remove()
+		// 		this.object.remove()
 		// 	end
 		// 	this.frame_timer = this.frame_timer + dtime
 		// 	if this.frame_timer >= 0.015 then
