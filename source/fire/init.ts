@@ -188,34 +188,30 @@ namespace fire {
 				this.object.remove();
 			}
 
-			if (
-				this.owner != null &&
-				(this.owner.is_player() || this.owner.get_luaentity())
-			) {
-				// todo: Check if this is an item or a mob.
-				// 		if this.owner.is_player() and this.owner.get_hp() <= 0 then
-				// 			put_fire_out(this.owner)
-				// 		end
-				// 		this.timer = this.timer + dtime
-				// 		this.life = this.life + dtime
-				// 		if this.life >= 7 then
-				// 			put_fire_out(this.owner)
-				// 			this.object.remove()
-				// 			return
-				// 		end
-				// 		if this.timer >= 1 then
-				// 			this.timer = 0
-				// 			if this.owner.is_player() then
-				// 				this.owner.set_hp(this.owner.get_hp()-1)
-				// 			elseif this.owner.get_luaentity() then
-				// 				this.owner.punch(this.object, 2,
-				// 					{
-				// 					full_punch_interval=0,
-				// 					damage_groups = {damage=2},
-				// 				})
-				// 			end
-				// 		end
-			}
+			// todo: Check if this is an item or a mob.
+			// 		if this.owner.is_player() and this.owner.get_hp() <= 0 then
+			// 			put_fire_out(this.owner)
+			// 		end
+			// 		this.timer = this.timer + dtime
+			// 		this.life = this.life + dtime
+			// 		if this.life >= 7 then
+			// 			put_fire_out(this.owner)
+			// 			this.object.remove()
+			// 			return
+			// 		end
+			// 		if this.timer >= 1 then
+			// 			this.timer = 0
+			// 			if this.owner.is_player() then
+			// 				this.owner.set_hp(this.owner.get_hp()-1)
+			// 			elseif this.owner.get_luaentity() then
+			// 				this.owner.punch(this.object, 2,
+			// 					{
+			// 					full_punch_interval=0,
+			// 					damage_groups = {damage=2},
+			// 				})
+			// 			end
+			// 		end
+
 			// 	this.frame_timer = this.frame_timer + dtime
 			// 	if this.frame_timer >= 0.015 then
 			// 		this.frame_timer = 0
