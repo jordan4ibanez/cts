@@ -145,6 +145,7 @@ namespace fire {
 		life: number = 0;
 		frame: number = 0;
 		frame_timer: number = 0;
+		owner: ObjectRef | null = null;
 
 		on_activate() {
 			// todo: why aren't these in the intiial properties?
@@ -180,9 +181,10 @@ namespace fire {
 
 		on_step(dtime: number) {
 			if (
-				this.owner &&
+				this.owner != null &&
 				(this.owner.is_player() || this.owner.get_luaentity())
 			) {
+				// todo: Check if this is an item or a mob.
 				// 		if this.owner.is_player() and this.owner.get_hp() <= 0 then
 				// 			put_fire_out(this.owner)
 				// 		end
