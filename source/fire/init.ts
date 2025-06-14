@@ -120,7 +120,6 @@ namespace fire {
 	class FireEntity extends types.Entity {
 		name: string = "crafter_fire:fire";
 
-		// local fire = {}
 		// fire.initial_properties = {
 		// 	hp_max = 1,
 		// 	physical = false,
