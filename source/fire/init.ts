@@ -207,18 +207,17 @@ namespace fire {
 				return;
 			}
 
-			// 		if this.timer >= 1 then
-			// 			this.timer = 0
-			// 			if this.owner.is_player() then
-			// 				this.owner.set_hp(this.owner.get_hp()-1)
-			// 			elseif this.owner.get_luaentity() then
-			// 				this.owner.punch(this.object, 2,
-			// 					{
-			// 					full_punch_interval=0,
-			// 					damage_groups = {damage=2},
-			// 				})
-			// 			end
-			// 		end
+			if (this.timer >= 1) {
+				this.timer = 0;
+				if (this.owner.is_player()) {
+					this.owner.set_hp(this.owner.get_hp() - 1);
+				} else if (this.owner.get_luaentity()) {
+					this.owner.punch(this.object, 2, {
+						full_punch_interval: 0,
+						damage_groups: { damage: 2 },
+					});
+				}
+			}
 
 			// 	this.frame_timer = this.frame_timer + dtime
 			// 	if this.frame_timer >= 0.015 then
