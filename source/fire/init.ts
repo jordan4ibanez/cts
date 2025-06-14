@@ -132,6 +132,11 @@ namespace fire {
 		// 	is_visible = true,
 		// 	pointable = false,
 		// }
+
+		// fire.glow = -1
+		// fire.timer = 0
+		// fire.life = 0
+
 		// fire.on_activate = function(self)
 		// 	local texture_list = {
 		// 		"nothing.png",
@@ -161,9 +166,7 @@ namespace fire {
 		// 	}
 		// 	this.object.set_properties({textures=texture_list})
 		// end
-		// fire.glow = -1
-		// fire.timer = 0
-		// fire.life = 0
+		
 		// fire.on_step = function(self,dtime)
 		// 	if this.owner and (this.owner.is_player() or this.owner.get_luaentity()) then
 		// 		if this.owner.is_player() and this.owner.get_hp() <= 0 then
