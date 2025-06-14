@@ -136,6 +136,8 @@ namespace fire {
 		// fire.glow = -1
 		// fire.timer = 0
 		// fire.life = 0
+		// fire.frame = 0
+		// fire.frame_timer = 0
 
 		// fire.on_activate = function(self)
 		// 	local texture_list = {
@@ -149,8 +151,7 @@ namespace fire {
 		// 	this.object.set_properties({textures=texture_list})
 		// end
 		// //animation stuff
-		// fire.frame = 0
-		// fire.frame_timer = 0
+		
 		// fire.frame_update = function(self)
 		// 	this.frame = this.frame + 1
 		// 	if this.frame > 7 then
