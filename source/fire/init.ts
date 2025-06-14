@@ -182,8 +182,7 @@ namespace fire {
 		on_step(dtime: number) {
 			if (
 				this.owner == null ||
-				!this.owner.is_player() ||
-				this.owner.get_luaentity() == null
+				(!this.owner.is_player() && this.owner.get_luaentity() == null)
 			) {
 				this.object.remove();
 			}
