@@ -200,11 +200,12 @@ namespace fire {
 			this.timer += dtime;
 			this.life += dtime;
 
-			// 		if this.life >= 7 then
-			// 			put_fire_out(this.owner)
-			// 			this.object.remove()
-			// 			return
-			// 		end
+			if (this.life >= 7) {
+				// put_fire_out(this.owner);
+				this.object.remove();
+				return;
+			}
+
 			// 		if this.timer >= 1 then
 			// 			this.timer = 0
 			// 			if this.owner.is_player() then
