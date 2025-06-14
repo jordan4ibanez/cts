@@ -110,7 +110,7 @@ namespace fire {
 	core.register_craft({
 		type: CraftRecipeType.shapeless,
 		output: "crafter_fire:flint_and_steel",
-		recipe: ["main:flint", "main:iron"],
+		recipe: ["crafter:flint", "crafter:iron"],
 	});
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
