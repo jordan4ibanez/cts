@@ -145,7 +145,7 @@ namespace crafter {
 			})();
 
 			// Set it to water.
-			if (buildableUnder === true) {
+			if (buildableUnder == true) {
 				core.set_node(posUnder, { name: "crafter:water" });
 				itemstack.replace(ItemStack("crafter:bucket"));
 				return itemstack;
@@ -191,7 +191,7 @@ namespace crafter {
 			})();
 
 			// Set it to water.
-			if (buildableUnder === true) {
+			if (buildableUnder == true) {
 				core.add_node(posUnder, { name: "crafter:water" });
 				itemstack.replace(ItemStack("crafter:bucket"));
 				return itemstack;
@@ -219,7 +219,7 @@ namespace crafter {
 
 			if (
 				pointed_thing.under &&
-				core.get_node(pointed_thing.under).name === "tnt:tnt"
+				core.get_node(pointed_thing.under).name == "tnt:tnt"
 			) {
 				core.remove_node(pointed_thing.under);
 				// fixme: this was calling the TNT mod.
@@ -259,7 +259,7 @@ namespace crafter {
 			})();
 
 			// Set it to lava.
-			if (buildableUnder === true) {
+			if (buildableUnder == true) {
 				if (posUnder.y < 20_000) {
 					if (posUnder.y > -10_033) {
 						core.add_node(posUnder, { name: "crafter:lava" });
@@ -316,7 +316,7 @@ namespace crafter {
 			})();
 
 			// Set it to lava.
-			if (buildableUnder === true) {
+			if (buildableUnder == true) {
 				if (posUnder.y < 20_000) {
 					if (posUnder.y > -10_033) {
 						core.add_node(posUnder, { name: "crafter:lava" });
