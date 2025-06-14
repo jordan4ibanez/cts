@@ -160,21 +160,21 @@ namespace fire {
 		}
 
 		// Animation stuff.
-		// fire.frame_update = function(self)
-		// 	this.frame = this.frame + 1
-		// 	if this.frame > 7 then
-		// 		this.frame = 0
-		// 	end
-		// 	local texture_list = {
-		// 		"nothing.png",
-		// 		"nothing.png",
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-		// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
-		// 	}
-		// 	this.object.set_properties({textures=texture_list})
-		// end
+		frame_update() {
+			// 	this.frame = this.frame + 1
+			// 	if this.frame > 7 then
+			// 		this.frame = 0
+			// 	end
+			// 	local texture_list = {
+			// 		"nothing.png",
+			// 		"nothing.png",
+			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
+			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
+			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
+			// 		"fire.png^[opacity:180^[verticalframe:8:"+this.frame,
+			// 	}
+			// 	this.object.set_properties({textures=texture_list})
+		}
 
 		// fire.on_step = function(self,dtime)
 		// 	if this.owner and (this.owner.is_player() or this.owner.get_luaentity()) then
