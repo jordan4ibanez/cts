@@ -220,10 +220,10 @@ namespace fire {
 			}
 
 			this.frame_timer += dtime;
-			// 	if this.frame_timer >= 0.015 then
-			// 		this.frame_timer = 0
-			// 		this.frame_update(self)
-			// 	end
+			if (this.frame_timer >= 0.015) {
+				this.frame_timer = 0;
+				this.frame_update();
+			}
 		}
 	}
 
