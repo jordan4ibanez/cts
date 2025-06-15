@@ -219,7 +219,7 @@ namespace fire {
 				}
 			}
 
-			// 	this.frame_timer = this.frame_timer + dtime
+			this.frame_timer += dtime;
 			// 	if this.frame_timer >= 0.015 then
 			// 		this.frame_timer = 0
 			// 		this.frame_update(self)
