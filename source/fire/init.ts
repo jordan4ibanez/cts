@@ -233,18 +233,20 @@ namespace fire {
 	const pool = new Map<string, number>();
 	const fire_channels = new Map<string, ModChannel>();
 
-	// local name
-	// core.register_on_joinplayer(function(player)
-	// 	name = player:get_player_name()
-	// 	fire_channels[name] = core.mod_channel_join(name+":fire_state")
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		const name: string = player.get_player_name();
+		fire_channels.set(name, core.mod_channel_join(name + ":fire_state"));
+	});
+
 	// local name
 	// function is_player_on_fire(player)
 	// 	return(pool[player:get_player_name()] ~= nil)
 	// end
+
 	// function is_entity_on_fire(object)
 	// 	return(pool[object] ~= nil)
 	// end
+
 	// local name
 	// local fire_obj
 	// function start_fire(object)
