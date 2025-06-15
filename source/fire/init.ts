@@ -242,7 +242,7 @@ namespace fire {
 		return pool.has(player.get_player_name());
 	}
 
-	function is_entity_on_fire(object: ObjectRef) {
+	export function is_entity_on_fire(object: ObjectRef) {
 		return pool.has(object);
 	}
 
