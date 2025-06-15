@@ -229,9 +229,10 @@ namespace fire {
 
 	utility.registerTSEntity(FireEntity);
 
-	// //fire handling
-	// local pool = {}
-	// local fire_channels = {}
+	// Fire handling.
+	const pool = new Map<string, number>();
+	const fire_channels = new Map<string, ModChannel>();
+
 	// local name
 	// core.register_on_joinplayer(function(player)
 	// 	name = player:get_player_name()
