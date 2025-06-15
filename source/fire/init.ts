@@ -230,7 +230,7 @@ namespace fire {
 	utility.registerTSEntity(FireEntity);
 
 	// Fire handling.
-	const pool = new Map<string, number>();
+	const pool = new Map<string | ObjectRef, number>();
 	const fire_channels = new Map<string, ModChannel>();
 
 	core.register_on_joinplayer((player: ObjectRef) => {
@@ -238,14 +238,13 @@ namespace fire {
 		fire_channels.set(name, core.mod_channel_join(name + ":fire_state"));
 	});
 
-	// local name
-	// function is_player_on_fire(player)
-	// 	return(pool[player:get_player_name()] ~= nil)
-	// end
+	export function is_player_on_fire(player: ObjectRef): boolean {
+		return pool.has(player.get_player_name());
+	}
 
-	// function is_entity_on_fire(object)
-	// 	return(pool[object] ~= nil)
-	// end
+	function is_entity_on_fire(object: ObjectRef) {
+		return pool.has(object);
+	}
 
 	// local name
 	// local fire_obj
