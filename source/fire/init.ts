@@ -247,10 +247,10 @@ namespace fire {
 	}
 
 	export function start_fire(object: ObjectRef) {
-		// 	if object:is_player() then
-		// 		name = object:get_player_name()
+			if object.is_player() then
+		// 		name = object.get_player_name()
 		// 		if not pool[name] or pool[name] and not pool[name]:get_luaentity() then
-		// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
+		// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
 		// 			fire_obj:get_luaentity().owner = object
 		// 			fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
 		// 			fire_obj:set_properties({visual_size=vector.new(1,2,1)})
@@ -259,18 +259,18 @@ namespace fire {
 		// 		elseif pool[name]:get_luaentity() then
 		// 			pool[name]:get_luaentity().life = 0
 		// 		end
-		// 	elseif object and object:get_luaentity() then
-		// 		if not object:get_luaentity().fire_entity or
-		// 	object:get_luaentity().fire_entity and not object:get_luaentity().fire_entity:get_luaentity() then
-		// 			object:get_luaentity().on_fire = true
-		// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
+		// 	elseif object and object.get_luaentity() then
+		// 		if not object.get_luaentity().fire_entity or
+		// 	object.get_luaentity().fire_entity and not object.get_luaentity().fire_entity:get_luaentity() then
+		// 			object.get_luaentity().on_fire = true
+		// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
 		// 			fire_obj:get_luaentity().owner = object
-		// 			local entity_fire_def = object:get_luaentity().fire_table
+		// 			local entity_fire_def = object.get_luaentity().fire_table
 		// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
 		// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
-		// 			object:get_luaentity().fire_entity = fire_obj
+		// 			object.get_luaentity().fire_entity = fire_obj
 		// 		else
-		// 			object:get_luaentity().fire_entity:get_luaentity().life = 0
+		// 			object.get_luaentity().fire_entity:get_luaentity().life = 0
 		// 		end
 		// 	end
 	}
@@ -278,8 +278,8 @@ namespace fire {
 	// local name
 	// local fire_obj
 	// function put_fire_out(object)
-	// 	if object:is_player() then
-	// 		name = object:get_player_name()
+	// 	if object.is_player() then
+	// 		name = object.get_player_name()
 	// 		if pool[name] then
 	// 			fire_obj = pool[name]
 	// 			if fire_obj:get_luaentity() then
@@ -289,12 +289,12 @@ namespace fire {
 	// 			fire_channels[name]:send_all("0")
 	// 			core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
 	// 		end
-	// 	elseif object and object:get_luaentity() then
-	// 		if object:get_luaentity().fire_entity and object:get_luaentity().fire_entity:get_luaentity() then
-	// 			object:get_luaentity().fire_entity:remove()
+	// 	elseif object and object.get_luaentity() then
+	// 		if object.get_luaentity().fire_entity and object.get_luaentity().fire_entity:get_luaentity() then
+	// 			object.get_luaentity().fire_entity:remove()
 	// 		end
-	// 		object:get_luaentity().on_fire = false
-	// 		object:get_luaentity().fire_entity = nil
+	// 		object.get_luaentity().on_fire = false
+	// 		object.get_luaentity().fire_entity = nil
 	// 		//core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
 	// 	end
 	// end
