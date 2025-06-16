@@ -246,36 +246,34 @@ namespace fire {
 		return pool.has(object);
 	}
 
-	// local name
-	// local fire_obj
-	// function start_fire(object)
-	// 	if object:is_player() then
-	// 		name = object:get_player_name()
-	// 		if not pool[name] or pool[name] and not pool[name]:get_luaentity() then
-	// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
-	// 			fire_obj:get_luaentity().owner = object
-	// 			fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
-	// 			fire_obj:set_properties({visual_size=vector.new(1,2,1)})
-	// 			pool[name] = fire_obj
-	// 			fire_channels[name]:send_all("1")
-	// 		elseif pool[name]:get_luaentity() then
-	// 			pool[name]:get_luaentity().life = 0
-	// 		end
-	// 	elseif object and object:get_luaentity() then
-	// 		if not object:get_luaentity().fire_entity or
-	// 	object:get_luaentity().fire_entity and not object:get_luaentity().fire_entity:get_luaentity() then
-	// 			object:get_luaentity().on_fire = true
-	// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
-	// 			fire_obj:get_luaentity().owner = object
-	// 			local entity_fire_def = object:get_luaentity().fire_table
-	// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
-	// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
-	// 			object:get_luaentity().fire_entity = fire_obj
-	// 		else
-	// 			object:get_luaentity().fire_entity:get_luaentity().life = 0
-	// 		end
-	// 	end
-	// end
+	export function start_fire(object: ObjectRef) {
+		// 	if object:is_player() then
+		// 		name = object:get_player_name()
+		// 		if not pool[name] or pool[name] and not pool[name]:get_luaentity() then
+		// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
+		// 			fire_obj:get_luaentity().owner = object
+		// 			fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
+		// 			fire_obj:set_properties({visual_size=vector.new(1,2,1)})
+		// 			pool[name] = fire_obj
+		// 			fire_channels[name]:send_all("1")
+		// 		elseif pool[name]:get_luaentity() then
+		// 			pool[name]:get_luaentity().life = 0
+		// 		end
+		// 	elseif object and object:get_luaentity() then
+		// 		if not object:get_luaentity().fire_entity or
+		// 	object:get_luaentity().fire_entity and not object:get_luaentity().fire_entity:get_luaentity() then
+		// 			object:get_luaentity().on_fire = true
+		// 			fire_obj = core.add_entity(object:get_pos(),"crafter_fire:fire")
+		// 			fire_obj:get_luaentity().owner = object
+		// 			local entity_fire_def = object:get_luaentity().fire_table
+		// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
+		// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
+		// 			object:get_luaentity().fire_entity = fire_obj
+		// 		else
+		// 			object:get_luaentity().fire_entity:get_luaentity().life = 0
+		// 		end
+		// 	end
+	}
 
 	// local name
 	// local fire_obj
