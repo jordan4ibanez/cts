@@ -253,7 +253,16 @@ namespace fire {
 			const data = pool.get(name);
 
 			if (data == null || data.get_luaentity() == null) {
-				// fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
+				const fire_obj: ObjectRef | null = core.add_entity(
+					object.get_pos(),
+					"crafter_fire:fire"
+				);
+				if (fire_obj == null) {
+					core.log(
+						LogLevel.warning,
+						`Failed to add fire to player [${name}]`
+					);
+				}
 				// fire_obj:get_luaentity().owner = object
 				// fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
 				// fire_obj:set_properties({visual_size=vector.new(1,2,1)})
