@@ -260,7 +260,7 @@ namespace fire {
 				// 			pool[name] = fire_obj
 				// 			fire_channels[name]:send_all("1")
 			} else if (data.get_luaentity() != null) {
-				// 			pool[name]:get_luaentity().life = 0
+				(data.get_luaentity() as FireEntity).life = 0;
 			}
 		} else if (object && object.get_luaentity()) {
 			// 		if not object.get_luaentity().fire_entity or
