@@ -253,12 +253,12 @@ namespace fire {
 			const data = pool.get(name);
 
 			if (data == null || data.get_luaentity() == null) {
-				// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
-				// 			fire_obj:get_luaentity().owner = object
-				// 			fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
-				// 			fire_obj:set_properties({visual_size=vector.new(1,2,1)})
-				// 			pool[name] = fire_obj
-				// 			fire_channels[name]:send_all("1")
+				// fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
+				// fire_obj:get_luaentity().owner = object
+				// fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
+				// fire_obj:set_properties({visual_size=vector.new(1,2,1)})
+				// pool[name] = fire_obj
+				// fire_channels[name]:send_all("1")
 			} else if (data.get_luaentity() != null) {
 				(data.get_luaentity() as FireEntity).life = 0;
 			}
