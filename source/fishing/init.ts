@@ -13,8 +13,7 @@ namespace fishing {
 			const pos: Vec3 = user.get_pos();
 
 			pos.y += 1.625;
-			const dir: Vec3 = user.get_look_dir();
-			const force: Vec3 = vector.multiply(dir, 20);
+
 			const lureObject: ObjectRef | null = core.add_entity(
 				pos,
 				"crafter_fishing:lure"
@@ -41,6 +40,9 @@ namespace fishing {
 			lureLuaEntity.player = name;
 
 			core.sound_play("woosh", { pos: pos });
+
+			const dir: Vec3 = user.get_look_dir();
+			const force: Vec3 = vector.multiply(dir, 20);
 			lureObject.set_velocity(force);
 
 			players_fishing.set(name, lureObject);
