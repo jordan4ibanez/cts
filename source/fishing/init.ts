@@ -1,7 +1,7 @@
 namespace fishing {
 	//  local players_fishing = {}
 
-	 core.register_craftitem("fishing:pole", {
+	 core.register_craftitem("crafter_fishing:pole", {
 	// 	description = "Fishing Pole",
 	// 	inventory_image = "fishing_rod.png",
 	// 	stack_max = 1,
@@ -19,7 +19,7 @@ namespace fishing {
 	// 			//core.sound_play("gun_shot",{object=user, pitch = math.random(80,100)/100})
 	// 			local dir = user:get_look_dir()
 	// 			local force = vector.multiply(dir,20)
-	// 			local obj = core.add_entity(pos,"fishing:lure")
+	// 			local obj = core.add_entity(pos,"crafter_fishing:lure")
 	// 			if obj then
 	// 				core.sound_play("woosh",{pos=pos})
 	// 				obj:get_luaentity().player=name
@@ -29,9 +29,9 @@ namespace fishing {
 	// 		end
 	// 	end,
 	})
-	
+
 	// core.register_craft({
-	// 	output = "fishing:pole",
+	// 	output = "crafter_fishing:pole",
 	// 	recipe = {
 	// 		{"",          "",           "crafter:stick"},
 	// 		{"",          "crafter:stick", "crafter_mobs:"string"},
@@ -91,7 +91,7 @@ namespace fishing {
 	// 				if self.catch_timer >= 0.5 then
 	// 					self.catch_timer = 0
 	// 					if math.random() > 0.94 then
-	// 						local obj = core.add_item(pos, "fishing:fish")
+	// 						local obj = core.add_item(pos, "crafter_fishing:fish")
 	// 						if obj then
 	// 							local distance = vector.distance(pos,pos2)
 	// 							local dir = vector.direction(pos,pos2)
@@ -121,19 +121,19 @@ namespace fishing {
 	// 		self.object:remove()
 	// 	end
 	// end
-	// core.register_entity("fishing:lure", lure)
+	// core.register_entity("crafter_fishing:lure", lure)
 	// core.register_craft({
 	// 	type = "cooking",
-	// 	output = "fishing:fish_cooked",
-	// 	recipe = "fishing:fish",
+	// 	output = "crafter_fishing:fish_cooked",
+	// 	recipe = "crafter_fishing:fish",
 	// })
-	// core.register_food("fishing:fish",{
+	// core.register_food("crafter_fishing:fish",{
 	// 	description = "Raw Fish",
 	// 	texture = "fish.png",
 	// 	satiation=6,
 	// 	hunger=3,
 	// })
-	// core.register_food("fishing:fish_cooked",{
+	// core.register_food("crafter_fishing:fish_cooked",{
 	// 	description = "Cooked Fish",
 	// 	texture = "fish_cooked.png",
 	// 	satiation=22,
