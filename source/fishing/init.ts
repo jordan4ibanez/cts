@@ -103,6 +103,12 @@ namespace fishing {
 				return;
 			}
 
+			const p: ObjectRef | null = core.get_player_by_name(this.player);
+			if (p == null) {
+				this.object.remove();
+				return;
+			}
+
 			if (node == "crafter:water") {
 				this.inWater = true;
 				const new_pos: Vec3 = vector.floor(pos);
@@ -129,15 +135,6 @@ namespace fishing {
 			}
 
 			if (this.inWater) {
-				const p: ObjectRef | null = core.get_player_by_name(
-					this.player
-				);
-
-				if (p == null) {
-					this.object.remove();
-					return;
-				}
-
 				const playerControls = p.get_player_control();
 
 				if (playerControls.RMB) {
