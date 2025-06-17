@@ -416,9 +416,19 @@ namespace fire {
 				pitch: math.random(80, 100) / 100,
 			});
 		} else if (object.get_luaentity()) {
-			// 		if object.get_luaentity().fire_entity and object.get_luaentity().fire_entity:get_luaentity() then
-			// 			object.get_luaentity().fire_entity:remove()
-			// 		end
+			const luaEntity: types.Entity | null =
+				object.get_luaentity() as types.Entity | null;
+
+			if (luaEntity == null) {
+				core.log(LogLevel.warning, "Entity's LuaTable became null.");
+				return;
+			}
+
+			const fireEntity: ObjectRef | null = luaEntity.fireEntity;
+
+			if (fireEntity?.get_luaentity() != null) {
+				fireEntity.remove();
+			}
 			// 		object.get_luaentity().on_fire = false
 			// 		object.get_luaentity().fire_entity = nil
 			// 		//core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
