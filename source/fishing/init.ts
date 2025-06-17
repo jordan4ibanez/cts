@@ -93,8 +93,9 @@ namespace fishing {
 		}
 
 		on_step(dtime: number): void {
-			// 	local pos = this.object.get_pos()
-			// 	local node = core.get_node(pos).name
+			const pos: Vec3 = this.object.get_pos();
+			const node: string = core.get_node(pos).name;
+
 			// 	if node == "crafter:water" then
 			// 		this.in_water = true
 			// 		local new_pos = vector.floor(pos)
