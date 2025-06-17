@@ -378,25 +378,25 @@ namespace fire {
 	}
 
 	export function put_fire_out(object: ObjectRef): void {
-		// 	if object.is_player() then
-		// 		name = object.get_player_name()
-		// 		if pool[name] then
-		// 			fire_obj = pool[name]
-		// 			if fire_obj:get_luaentity() then
-		// 				fire_obj:remove()
-		// 			end
-		// 			pool[name] = nil
-		// 			fire_channels[name]:send_all("0")
-		// 			core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
-		// 		end
-		// 	elseif object and object.get_luaentity() then
-		// 		if object.get_luaentity().fire_entity and object.get_luaentity().fire_entity:get_luaentity() then
-		// 			object.get_luaentity().fire_entity:remove()
-		// 		end
-		// 		object.get_luaentity().on_fire = false
-		// 		object.get_luaentity().fire_entity = nil
-		// 		//core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
-		// 	end
+		if (object.is_player()) {
+			const name: string = object.get_player_name();
+			// 		if pool[name] then
+			// 			fire_obj = pool[name]
+			// 			if fire_obj:get_luaentity() then
+			// 				fire_obj:remove()
+			// 			end
+			// 			pool[name] = nil
+			// 			fire_channels[name]:send_all("0")
+			// 			core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
+			// 		end
+		} else if (object.get_luaentity()) {
+			// 		if object.get_luaentity().fire_entity and object.get_luaentity().fire_entity:get_luaentity() then
+			// 			object.get_luaentity().fire_entity:remove()
+			// 		end
+			// 		object.get_luaentity().on_fire = false
+			// 		object.get_luaentity().fire_entity = nil
+			// 		//core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
+		}
 	}
 
 	// core.register_on_respawnplayer(function(player)
