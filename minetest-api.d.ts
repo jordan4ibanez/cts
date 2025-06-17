@@ -1024,7 +1024,7 @@ declare global {
 			pointedThing: PointedThing
 		): ItemStackObject | void;
 		on_drop?(
-			itemStack: ItemStackObject,
+			itemStack: ItemStackObject | null,
 			dropper: ObjectRef,
 			position: Vec3
 		): ItemStackObject | void;
@@ -1034,18 +1034,18 @@ declare global {
 			pointedThing: PointedThing,
 			timeFromLastPunch: number,
 			...any: any
-		): void;
+		): ItemStackObject | void;
 		on_use?(
 			itemStack: ItemStackObject,
 			user: ObjectRef,
 			pointedThing: PointedThing
-		): void;
+		): ItemStackObject | void;
 		after_use?(
 			itemStack: ItemStackObject,
 			user: ObjectRef,
 			nodeTable: NodeTable,
 			digParams: { string: any }
-		): void;
+		): ItemStackObject | void;
 	}
 
 	/** @noSelf **/ interface TileDefinition {
