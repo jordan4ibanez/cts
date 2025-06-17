@@ -1,3 +1,4 @@
+namespace fishing {
 //  local players_fishing = {}
  
 //  minetest.register_craftitem("fishing:pole", {
@@ -148,3 +149,4 @@
 // 	satiation=22,
 // 	hunger=5,
 // })
+}
