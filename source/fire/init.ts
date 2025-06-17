@@ -397,9 +397,10 @@ namespace fire {
 				return;
 			}
 
-			// if fire_obj:get_luaentity() then
-			// 	fire_obj:remove()
-			// end
+			if (fireObject.get_luaentity() != null) {
+				fireObject.remove();
+			}
+
 			// pool[name] = nil
 			// fire_channels[name]:send_all("0")
 			// core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
