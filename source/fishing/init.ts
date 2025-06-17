@@ -104,13 +104,13 @@ namespace fishing {
 				// 		this.object.set_acceleration(vector.new(0,0,0))
 				// 		this.object.set_velocity(vector.new(0,0,0))
 			} else {
-				//         local newp = table.copy(pos)
-				//         newp.y = newp.y - 0.1
-				//         local node = core.get_node(newp).name
+				const newp: Vec3 = vector.copy(pos);
+				newp.y -= 0.1;
+				const nodeUnder = core.get_node(newp).name;
 				if (
-					node != "air" &&
-					node != "crafter:water" &&
-					node != "crafter:waterflow"
+					nodeUnder != "air" &&
+					nodeUnder != "crafter:water" &&
+					nodeUnder != "crafter:waterflow"
 				) {
 					if (this.player != null) {
 						players_fishing.delete(this.player);
