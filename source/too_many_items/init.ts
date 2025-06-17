@@ -483,9 +483,10 @@ namespace tooManyItems {
 			}
 			const recipe: CraftRecipeObject = core.get_craft_recipe(name);
 			// Only put in craftable items.
-			if (recipe.width > 0 && recipe.items) {
-				all_items_table.push(name);
+			if (recipe.method == null) {
+				continue;
 			}
+			all_items_table.push(name);
 		}
 
 		all_items_table.sort();
