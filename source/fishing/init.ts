@@ -14,8 +14,11 @@ namespace fishing {
 			const anchor: Vec3 = vector.copy(pos);
 			pos.y += 1.625;
 			const dir: Vec3 = user.get_look_dir();
-			// local force = vector.multiply(dir,20)
-			// local obj = core.add_entity(pos,"crafter_fishing:lure")
+			const force: Vec3 = vector.multiply(dir, 20);
+			const obj: ObjectRef | null = core.add_entity(
+				pos,
+				"crafter_fishing:lure"
+			);
 			// 			if obj then
 			// 				core.sound_play("woosh",{pos=pos})
 			// 				obj:get_luaentity().player=name
