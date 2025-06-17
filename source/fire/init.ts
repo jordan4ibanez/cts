@@ -359,7 +359,7 @@ namespace fire {
 				fire_obj.set_properties({
 					visual_size: entityFireTable.visualSize,
 				});
-				// 			object.get_luaentity().fire_entity = fire_obj
+				luaEntity.fire_entity = fire_obj;
 			} else {
 				const fireLuaEntity: FireEntity | null =
 					luaEntity.fire_entity.get_luaentity() as FireEntity | null;
