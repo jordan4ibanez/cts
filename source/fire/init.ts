@@ -319,7 +319,7 @@ namespace fire {
 				const fireLuaEntity: FireEntity | null =
 					luaEntity.fire_entity.get_luaentity() as FireEntity | null;
 
-				if (luaEntity == null) {
+				if (fireLuaEntity == null) {
 					core.log(
 						LogLevel.warning,
 						"Entity's fire entity became instantly null."
@@ -327,7 +327,7 @@ namespace fire {
 					return;
 				}
 
-				// luaEntity.fire_entity.get_luaentity().life = 0;
+				fireLuaEntity.life = 0;
 			}
 		}
 	}
