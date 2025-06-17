@@ -15,11 +15,11 @@ namespace fishing {
 			pos.y += 1.625;
 			const dir: Vec3 = user.get_look_dir();
 			const force: Vec3 = vector.multiply(dir, 20);
-			const obj: ObjectRef | null = core.add_entity(
+			const lureObject: ObjectRef | null = core.add_entity(
 				pos,
 				"crafter_fishing:lure"
 			);
-			if (obj == null) {
+			if (lureObject == null) {
 				core.log(
 					LogLevel.warning,
 					`Failed to add fishing lure to player [${name}]. ObjectRef is null.`
@@ -27,10 +27,10 @@ namespace fishing {
 				return;
 			}
 
-			const luaEntity: FishingLure | null =
-				obj.get_luaentity() as FishingLure | null;
+			const lureLuaEntity: FishingLure | null =
+				lureObject.get_luaentity() as FishingLure | null;
 
-			if (luaEntity == null) {
+			if (lureLuaEntity == null) {
 				core.log(
 					LogLevel.warning,
 					`Failed to add fishing lure to player [${name}]. LuaEntity is null.`
@@ -38,11 +38,12 @@ namespace fishing {
 				return;
 			}
 
-			luaEntity.player = name;
+			lureLuaEntity.player = name;
 
 			core.sound_play("woosh", { pos: pos });
-			// obj:set_velocity(force)
-			// players_fishing[name] = obj
+			lureObject.set_velocity(force);
+
+			players_fishing.set(name, lureObject);
 		}
 	}
 
