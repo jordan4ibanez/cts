@@ -307,11 +307,7 @@ namespace fire {
 				return;
 			}
 
-			if (
-				luaEntity.fire_entity == null ||
-				(luaEntity.fire_entity != null &&
-					luaEntity.fire_entity.get_luaentity() == null)
-			) {
+			if (luaEntity.fire_entity?.get_luaentity() == null) {
 				// 			object.get_luaentity().on_fire = true
 				// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
 				// 			fire_obj:get_luaentity().owner = object
