@@ -26,8 +26,8 @@ namespace fishing {
 				return;
 			}
 
-			const lureLuaEntity: FishingLure | null =
-				lureObject.get_luaentity() as FishingLure | null;
+			const lureLuaEntity: FishingLureEntity | null =
+				lureObject.get_luaentity() as FishingLureEntity | null;
 
 			if (lureLuaEntity == null) {
 				core.log(
@@ -66,7 +66,7 @@ namespace fishing {
 		],
 	});
 
-	class FishingLure extends types.Entity {
+	class FishingLureEntity extends types.Entity {
 		name: string = "crafter_fishing:lure";
 		player: string | null = null;
 
@@ -103,7 +103,7 @@ namespace fishing {
 				// 		this.object.move_to(vector.new(pos.x,new_pos.y,pos.z))
 				// 		this.object.set_acceleration(vector.new(0,0,0))
 				// 		this.object.set_velocity(vector.new(0,0,0))
-				//     else
+			} else {
 				//         local newp = table.copy(pos)
 				//         newp.y = newp.y - 0.1
 				//         local node = core.get_node(newp).name
@@ -158,6 +158,8 @@ namespace fishing {
 			// 	end
 		}
 	}
+
+	utility.registerTSEntity(FishingLureEntity);
 
 	// core.register_craft({
 	// 	type = "cooking",
