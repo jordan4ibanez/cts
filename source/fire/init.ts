@@ -264,7 +264,7 @@ namespace fire {
 					);
 					return;
 				}
-				const entity: LuaEntity | null = fire_obj.get_luaentity();
+				let entity: LuaEntity | null = fire_obj.get_luaentity();
 
 				if (entity == null) {
 					core.log(
@@ -273,6 +273,8 @@ namespace fire {
 					);
 					return;
 				}
+
+				entity = entity as FireEntity;
 
 				// fire_obj:get_luaentity().owner = object
 				// fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
