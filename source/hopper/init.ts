@@ -1,7 +1,7 @@
 namespace hopper {
-	// -- define global
+	// // define global
 	// hopper = {}
-	// -- internationalization boilerplate
+	// // internationalization boilerplate
 	// local MP = core.get_modpath(core.get_current_modname())
 	// local S = core.get_translator("hopper")
 	// hopper.formspec_bg = "background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"
@@ -14,8 +14,8 @@ namespace hopper {
 	// dofile(MP.."/nodes/sorter.lua")
 	// dofile(MP.."/crafts.lua")
 	// dofile(MP.."/abms.lua")
-	// -------------------------------------------------------------------------------------------
-	// -- Formspec handling
+	// //////////////////////////////////////////////////////////////////////////////////////////-
+	// // Formspec handling
 	// core.register_on_player_receive_fields(function(player, formname, fields)
 	// 	if "hopper_formspec:" == string.sub(formname, 1, 16) then
 	// 		local pos = core.string_to_pos(string.sub(formname, 17, -1))
