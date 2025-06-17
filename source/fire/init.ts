@@ -276,8 +276,15 @@ namespace fire {
 				}
 
 				entity.owner = object;
-				// fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
-				// fire_obj:set_properties({visual_size=vector.new(1,2,1)})
+				fire_obj.set_attach(
+					object,
+					"",
+					vector.create3d(0, 11, 0),
+					vector.create3d(0, 0, 0)
+				);
+				fire_obj.set_properties({
+					visual_size: vector.create3d(1, 2, 1),
+				});
 				// pool[name] = fire_obj
 				// fire_channels[name]:send_all("1")
 			} else if (data.get_luaentity() != null) {
