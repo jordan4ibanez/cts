@@ -16,7 +16,8 @@ namespace hopper {
 			const meta: MetaRef = core.get_meta(pos);
 			// fixme: why isn't this using a boolean?
 			const eject_setting: boolean = meta.get_string("eject") == "true";
-			// 		local filter_all_setting = meta:get_string("filter_all") == "true"
+			const filter_all_setting: boolean =
+				meta.get_string("filter_all") == "true";
 			// 		if fields.eject then
 			// 			if eject_setting then
 			// 				meta:set_string("eject", nil)
