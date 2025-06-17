@@ -148,7 +148,7 @@ namespace fire {
 		owner: ObjectRef | null = null;
 
 		on_activate() {
-			// todo: why aren't these in the intiial properties?
+			// todo: why aren't these in the initial properties?
 			const texture_list = [
 				"nothing.png",
 				"nothing.png",
