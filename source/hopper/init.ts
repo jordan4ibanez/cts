@@ -6,7 +6,6 @@ namespace hopper {
 		"config",
 		"api",
 		"utility",
-		"doc",
 		"nodes/hoppers",
 		"nodes/chute",
 		"nodes/sorter",
