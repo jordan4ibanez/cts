@@ -127,7 +127,6 @@ namespace fishing {
 			}
 
 			if (this.in_water) {
-				// 		if this.player then
 				// 			local p = core.get_player_by_name(this.player)
 				// 			if p:get_player_control().RMB then
 				//                 local pos2 = p:get_pos()
@@ -161,7 +160,6 @@ namespace fishing {
 				//                     this.object.remove()
 				//                 end
 				//             end
-				// 		end
 			}
 		}
 	}
