@@ -139,10 +139,13 @@ namespace fishing {
 				const playerControls = p.get_player_control();
 
 				if (playerControls.RMB) {
-					//                 local pos2 = p:get_pos()
-					// 				local vel = vector.direction(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z))
-					// 				this.object.set_velocity(vector.multiply(vel,2))
-					// 				this.catch_timer = this.catch_timer + dtime
+					const pos2: Vec3 = p.get_pos();
+					const vel: Vec3 = vector.direction(
+						vector.create3d(pos.x, 0, pos.z),
+						vector.create3d(pos2.x, 0, pos2.z)
+					);
+					this.object.set_velocity(vector.multiply(vel, 2));
+					this.catch_timer += dtime;
 					// 				if this.catch_timer >= 0.5 then
 					// 					this.catch_timer = 0
 					// 					if math.random() > 0.94 then
