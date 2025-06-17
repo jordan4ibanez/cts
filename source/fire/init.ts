@@ -229,7 +229,8 @@ namespace fire {
 
 	utility.registerTSEntity(FireEntity);
 
-	// Fire handling.
+	//? Fire handling.
+
 	const pool = new Map<string, ObjectRef>();
 	const fire_channels = new Map<string, ModChannel>();
 
