@@ -389,6 +389,7 @@ namespace fire {
 			const fireObject: ObjectRef | undefined = pool.get(name);
 
 			if (fireObject == null) {
+				// This will help solve logic issues.
 				core.log(
 					LogLevel.warning,
 					`Tried to extinguish player [${name}] but they were not on fire.`
