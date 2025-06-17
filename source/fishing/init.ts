@@ -7,22 +7,23 @@ namespace fishing {
 		pointed_thing: PointedThing
 	): ItemStackObject | void {
 		const name = user.get_player_name();
+		const fishingLure: ObjectRef | undefined = players_fishing.get(name);
 
-		// 		if not players_fishing[name] or not players_fishing[name]:get_luaentity() then
-		// 			local pos = user:get_pos()
-		//             local anchor = table.copy(pos)
-		// 			pos.y = pos.y + 1.625
-		// 			//core.sound_play("gun_shot",{object=user, pitch = math.random(80,100)/100})
-		// 			local dir = user:get_look_dir()
-		// 			local force = vector.multiply(dir,20)
-		// 			local obj = core.add_entity(pos,"crafter_fishing:lure")
-		// 			if obj then
-		// 				core.sound_play("woosh",{pos=pos})
-		// 				obj:get_luaentity().player=name
-		// 				obj:set_velocity(force)
-		// 				players_fishing[name] = obj
-		// 			end
-		// 		end
+		if (fishingLure?.get_luaentity() == null) {
+			// 			local pos = user:get_pos()
+			//             local anchor = table.copy(pos)
+			// 			pos.y = pos.y + 1.625
+			// 			//core.sound_play("gun_shot",{object=user, pitch = math.random(80,100)/100})
+			// 			local dir = user:get_look_dir()
+			// 			local force = vector.multiply(dir,20)
+			// 			local obj = core.add_entity(pos,"crafter_fishing:lure")
+			// 			if obj then
+			// 				core.sound_play("woosh",{pos=pos})
+			// 				obj:get_luaentity().player=name
+			// 				obj:set_velocity(force)
+			// 				players_fishing[name] = obj
+			// 			end
+		}
 	}
 
 	core.register_craftitem("crafter_fishing:pole", {
