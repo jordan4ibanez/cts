@@ -78,6 +78,7 @@ namespace tooManyItems {
 		"listring[current_player;craft]";
 
 	// This is from Linuxdirk, thank you AspireMint for showing me this.
+	// todo: this does not work for shapeless.
 	function recipe_converter(
 		items: string[],
 		width: number
