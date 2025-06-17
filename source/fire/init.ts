@@ -299,8 +299,20 @@ namespace fire {
 				(data.get_luaentity() as FireEntity).life = 0;
 			}
 		} else if (object && object.get_luaentity()) {
-			// 		if not object.get_luaentity().fire_entity or
-			// 	object.get_luaentity().fire_entity and not object.get_luaentity().fire_entity:get_luaentity() then
+			const luaEntity: types.Entity | null =
+				object.get_luaentity() as types.Entity | null;
+
+			if (luaEntity == null) {
+				core.log(LogLevel.warning, "Entity became instantly null.");
+				return;
+			}
+
+			if (
+				luaEntity.fire_entity == null ||
+				(luaEntity.fire_entity != null &&
+					luaEntity.fire_entity.get_luaentity() != null)
+			) {
+			}
 			// 			object.get_luaentity().on_fire = true
 			// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
 			// 			fire_obj:get_luaentity().owner = object
