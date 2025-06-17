@@ -310,7 +310,7 @@ namespace fire {
 			if (
 				luaEntity.fire_entity == null ||
 				(luaEntity.fire_entity != null &&
-					luaEntity.fire_entity.get_luaentity() != null)
+					luaEntity.fire_entity.get_luaentity() == null)
 			) {
 			}
 			// 			object.get_luaentity().on_fire = true
