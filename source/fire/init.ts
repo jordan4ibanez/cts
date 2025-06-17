@@ -286,7 +286,15 @@ namespace fire {
 					visual_size: vector.create3d(1, 2, 1),
 				});
 				pool.set(name, fire_obj);
-				// fire_channels[name]:send_all("1")
+
+				const channel: ModChannel | undefined = fire_channels.get(name);
+				if (channel == null) {
+					throw new Error(
+						`Player [${name}] was never added to the mod channel list.`
+					);
+				}
+
+				channel.send_all("1");
 			} else if (data.get_luaentity() != null) {
 				(data.get_luaentity() as FireEntity).life = 0;
 			}
