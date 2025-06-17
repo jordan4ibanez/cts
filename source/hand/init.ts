@@ -100,7 +100,7 @@ namespace hand {
 		},
 		drop: "",
 		on_drop: () => {
-			return "";
+			return ItemStack("");
 		},
 		groups: { dig_immediate: 3, not_in_creative_inventory: 1 },
 		range: def && def.range,
@@ -192,7 +192,7 @@ namespace hand {
 		},
 		drop: "",
 		on_drop: () => {
-			return "";
+			return ItemStack("");
 		},
 		groups: { dig_immediate: 3, not_in_creative_inventory: 1 },
 		range: def && def.range,
