@@ -262,7 +262,14 @@ namespace fire {
 						LogLevel.warning,
 						`Failed to add fire to player [${name}]`
 					);
+					return;
 				}
+				const entity: LuaEntity | null = fire_obj.get_luaentity()
+
+				
+
+
+
 				// fire_obj:get_luaentity().owner = object
 				// fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
 				// fire_obj:set_properties({visual_size=vector.new(1,2,1)})
