@@ -230,7 +230,7 @@ namespace fire {
 	utility.registerTSEntity(FireEntity);
 
 	// Fire handling.
-	const pool = new Map<string | ObjectRef, ObjectRef>();
+	const pool = new Map<string, ObjectRef>();
 	const fire_channels = new Map<string, ModChannel>();
 
 	core.register_on_joinplayer((player: ObjectRef) => {
