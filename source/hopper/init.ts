@@ -20,11 +20,11 @@ namespace hopper {
 				meta.get_string("filter_all") == "true";
 
 			if (fields.eject != null) {
-				// 			if eject_setting then
-				// 				meta:set_string("eject", nil)
-				// 			else
-				// 				meta:set_string("eject", "true")
-				// 			end
+				if (eject_setting) {
+					meta.set_string("eject", "");
+				} else {
+					meta.set_string("eject", "true");
+				}
 			}
 
 			// 		if fields.filter_all then
