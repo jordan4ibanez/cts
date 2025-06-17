@@ -88,74 +88,73 @@ namespace fishing {
 		interplayer: string | null = null;
 		catch_timer: number = 0;
 
-		on_activate() {
+		on_activate(): void {
 			this.object.set_acceleration(vector.create3d(0, -10, 0));
 		}
 
-		// lure.on_step = function(self, dtime)
-		// 	local pos = this.object.get_pos()
-		// 	local node = core.get_node(pos).name
-		// 	if node == "crafter:water" then
-		// 		this.in_water = true
-		// 		local new_pos = vector.floor(pos)
-		// 		new_pos.y = new_pos.y + 0.5
-		// 		this.object.move_to(vector.new(pos.x,new_pos.y,pos.z))
-		// 		this.object.set_acceleration(vector.new(0,0,0))
-		// 		this.object.set_velocity(vector.new(0,0,0))
-		//     else
-		//         local newp = table.copy(pos)
-		//         newp.y = newp.y - 0.1
-		//         local node = core.get_node(newp).name
-		// 		if node ~= "air" and node ~= "crafter:water" and node ~= "crafter:waterflow" then
-		//             if this.player then
-		// 				players_fishing[this.player] = nil
-		// 			end
-		// 			core.sound_play("line_break",{pos=pos,gain=0.3})
-		//             this.object.remove()
-		//         end
-		// 	end
-
-		// 	if this.in_water == true then
-		// 		if this.player then
-		// 			local p = core.get_player_by_name(this.player)
-		// 			if p:get_player_control().RMB then
-		//                 local pos2 = p:get_pos()
-		// 				local vel = vector.direction(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z))
-		// 				this.object.set_velocity(vector.multiply(vel,2))
-		// 				this.catch_timer = this.catch_timer + dtime
-		// 				if this.catch_timer >= 0.5 then
-		// 					this.catch_timer = 0
-		// 					if math.random() > 0.94 then
-		// 						local obj = core.add_item(pos, "crafter_fishing:fish")
-		// 						if obj then
-		// 							local distance = vector.distance(pos,pos2)
-		// 							local dir = vector.direction(pos,pos2)
-		// 							local force = vector.multiply(dir,distance)
-		// 							force.y = 6
-		// 							obj:set_velocity(force)
-		// 							core.sound_play("splash",{pos=obj:get_pos(),gain=0.25})
-		// 						end
-		// 						players_fishing[this.player] = nil
-		// 						this.object.remove()
-		// 					end
-		//                 end
-		// 			else
-		// 				this.object.set_velocity(vector.new(0,0,0))
-		// 			end
-		//             if p then
-		//                 local pos2 = p:get_pos()
-		//                 if vector.distance(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z)) < 1 then
-		// 					players_fishing[this.player] = nil
-		// 					core.sound_play("line_break",{pos=pos,gain=0.3,pitch=0.5})
-		//                     this.object.remove()
-		//                 end
-		//             end
-		// 		end
-		// 	end
-		// 	if this.player == nil then
-		// 		this.object.remove()
-		// 	end
-		// end
+		on_step(dtime: number): void {
+			// 	local pos = this.object.get_pos()
+			// 	local node = core.get_node(pos).name
+			// 	if node == "crafter:water" then
+			// 		this.in_water = true
+			// 		local new_pos = vector.floor(pos)
+			// 		new_pos.y = new_pos.y + 0.5
+			// 		this.object.move_to(vector.new(pos.x,new_pos.y,pos.z))
+			// 		this.object.set_acceleration(vector.new(0,0,0))
+			// 		this.object.set_velocity(vector.new(0,0,0))
+			//     else
+			//         local newp = table.copy(pos)
+			//         newp.y = newp.y - 0.1
+			//         local node = core.get_node(newp).name
+			// 		if node ~= "air" and node ~= "crafter:water" and node ~= "crafter:waterflow" then
+			//             if this.player then
+			// 				players_fishing[this.player] = nil
+			// 			end
+			// 			core.sound_play("line_break",{pos=pos,gain=0.3})
+			//             this.object.remove()
+			//         end
+			// 	end
+			// 	if this.in_water == true then
+			// 		if this.player then
+			// 			local p = core.get_player_by_name(this.player)
+			// 			if p:get_player_control().RMB then
+			//                 local pos2 = p:get_pos()
+			// 				local vel = vector.direction(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z))
+			// 				this.object.set_velocity(vector.multiply(vel,2))
+			// 				this.catch_timer = this.catch_timer + dtime
+			// 				if this.catch_timer >= 0.5 then
+			// 					this.catch_timer = 0
+			// 					if math.random() > 0.94 then
+			// 						local obj = core.add_item(pos, "crafter_fishing:fish")
+			// 						if obj then
+			// 							local distance = vector.distance(pos,pos2)
+			// 							local dir = vector.direction(pos,pos2)
+			// 							local force = vector.multiply(dir,distance)
+			// 							force.y = 6
+			// 							obj:set_velocity(force)
+			// 							core.sound_play("splash",{pos=obj:get_pos(),gain=0.25})
+			// 						end
+			// 						players_fishing[this.player] = nil
+			// 						this.object.remove()
+			// 					end
+			//                 end
+			// 			else
+			// 				this.object.set_velocity(vector.new(0,0,0))
+			// 			end
+			//             if p then
+			//                 local pos2 = p:get_pos()
+			//                 if vector.distance(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z)) < 1 then
+			// 					players_fishing[this.player] = nil
+			// 					core.sound_play("line_break",{pos=pos,gain=0.3,pitch=0.5})
+			//                     this.object.remove()
+			//                 end
+			//             end
+			// 		end
+			// 	end
+			// 	if this.player == nil then
+			// 		this.object.remove()
+			// 	end
+		}
 	}
 
 	// core.register_craft({
