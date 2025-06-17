@@ -260,7 +260,7 @@ namespace fire {
 				if (fire_obj == null) {
 					core.log(
 						LogLevel.warning,
-						`Failed to add fire to player [${name}]`
+						`Failed to add fire entity to player [${name}]`
 					);
 					return;
 				}
