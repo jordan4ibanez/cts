@@ -308,12 +308,12 @@ namespace fire {
 			}
 
 			if (luaEntity.fire_entity?.get_luaentity() == null) {
-				const fire_obj: ObjectRef | null = core.add_entity(
+				const fireObject: ObjectRef | null = core.add_entity(
 					object.get_pos(),
 					"crafter_fire:fire"
 				);
 
-				if (fire_obj == null) {
+				if (fireObject == null) {
 					core.log(
 						LogLevel.warning,
 						`Failed to add fire to entity. ObjectRef was null.`
@@ -322,7 +322,7 @@ namespace fire {
 				}
 
 				const fireLuaEntity: FireEntity | null =
-					fire_obj.get_luaentity() as FireEntity | null;
+					fireObject.get_luaentity() as FireEntity | null;
 
 				if (fireLuaEntity == null) {
 					core.log(
@@ -350,16 +350,16 @@ namespace fire {
 
 				fireLuaEntity.owner = object;
 
-				fire_obj.set_attach(
+				fireObject.set_attach(
 					object,
 					"",
 					entityFireTable.position,
 					vector.create3d(0, 0, 0)
 				);
-				fire_obj.set_properties({
+				fireObject.set_properties({
 					visual_size: entityFireTable.visualSize,
 				});
-				luaEntity.fire_entity = fire_obj;
+				luaEntity.fire_entity = fireObject;
 			} else {
 				const fireLuaEntity: FireEntity | null =
 					luaEntity.fire_entity.get_luaentity() as FireEntity | null;
