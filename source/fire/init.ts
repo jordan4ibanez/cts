@@ -304,7 +304,7 @@ namespace fire {
 			} else if (data.get_luaentity() != null) {
 				(data.get_luaentity() as FireEntity).life = 0;
 			}
-		} else if (object && object.get_luaentity()) {
+		} else if (object.get_luaentity()) {
 			const luaEntity: types.Entity | null =
 				object.get_luaentity() as types.Entity | null;
 
