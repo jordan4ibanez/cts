@@ -26,10 +26,10 @@ namespace fishing {
 				);
 				return;
 			}
-			// 				core.sound_play("woosh",{pos=pos})
-			// 				obj:get_luaentity().player=name
-			// 				obj:set_velocity(force)
-			// 				players_fishing[name] = obj
+			// core.sound_play("woosh",{pos=pos})
+			// obj:get_luaentity().player=name
+			// obj:set_velocity(force)
+			// players_fishing[name] = obj
 		}
 	}
 
