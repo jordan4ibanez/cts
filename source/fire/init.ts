@@ -260,7 +260,7 @@ namespace fire {
 				if (fire_obj == null) {
 					core.log(
 						LogLevel.warning,
-						`Failed to add fire entity to player [${name}]`
+						`Failed to add fire entity to player [${name}]. ObjectRef was null.`
 					);
 					return;
 				}
@@ -270,7 +270,7 @@ namespace fire {
 				if (entity == null) {
 					core.log(
 						LogLevel.warning,
-						`Failed to add fire entity to player [${name}]`
+						`Failed to add fire entity to player [${name}]. LuaEntity was null.`
 					);
 					return;
 				}
