@@ -1,3 +1,4 @@
+namespace hopper {
 // -- define global
 // hopper = {}
 
@@ -43,3 +44,4 @@
 // 		end
 // 	end
 // end)
+}
