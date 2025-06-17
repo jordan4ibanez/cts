@@ -18,13 +18,15 @@ namespace hopper {
 			const eject_setting: boolean = meta.get_string("eject") == "true";
 			const filter_all_setting: boolean =
 				meta.get_string("filter_all") == "true";
-			// 		if fields.eject then
-			// 			if eject_setting then
-			// 				meta:set_string("eject", nil)
-			// 			else
-			// 				meta:set_string("eject", "true")
-			// 			end
-			// 		end
+
+			if (fields.eject != null) {
+				// 			if eject_setting then
+				// 				meta:set_string("eject", nil)
+				// 			else
+				// 				meta:set_string("eject", "true")
+				// 			end
+			}
+
 			// 		if fields.filter_all then
 			// 			if filter_all_setting then
 			// 				meta:set_string("filter_all", nil)
