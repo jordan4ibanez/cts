@@ -1,9 +1,4 @@
 namespace hopper {
-	// // define global
-	// hopper = {}
-	// // internationalization boilerplate
-	// local MP = core.get_modpath(core.get_current_modname())
-	// local S = core.get_translator("hopper")
 	// hopper.formspec_bg = "background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"
 	// dofile(MP.."/config.lua")
 	// dofile(MP.."/api.lua")
