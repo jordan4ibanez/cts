@@ -37,6 +37,7 @@ namespace fishing {
 				return;
 			}
 
+			lureLuaEntity.playerWieldSlot = user.get_wield_index();
 			lureLuaEntity.player = name;
 
 			core.sound_play("woosh", { pos: pos });
