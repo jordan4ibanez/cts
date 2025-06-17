@@ -202,7 +202,7 @@ namespace fishing {
 				) {
 					players_fishing.delete(this.player);
 					core.sound_play("line_break", {
-						pos: pos,
+						object: this.object,
 						gain: 0.3,
 						pitch: 0.5,
 					});
