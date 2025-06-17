@@ -403,7 +403,13 @@ namespace fire {
 			}
 
 			pool.delete(name);
-			// fire_channels[name]:send_all("0")
+			const channel: ModChannel | undefined = fire_channels.get(name);
+			if (channel == null) {
+				throw new Error(
+					`Player [${name}] was never added to fire channels.`
+				);
+			}
+			channel.send_all("0");
 			// core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
 		} else if (object.get_luaentity()) {
 			// 		if object.get_luaentity().fire_entity and object.get_luaentity().fire_entity:get_luaentity() then
