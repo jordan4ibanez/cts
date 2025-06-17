@@ -201,21 +201,23 @@ namespace fishing {
 
 	utility.registerTSEntity(FishingLureEntity);
 
-	// core.register_craft({
-	// 	type = "cooking",
-	// 	output = "crafter_fishing:fish_cooked",
-	// 	recipe = "crafter_fishing:fish",
-	// })
-	// core.register_food("crafter_fishing:fish",{
-	// 	description = "Raw Fish",
-	// 	texture = "fish.png",
-	// 	satiation=6,
-	// 	hunger=3,
-	// })
-	// core.register_food("crafter_fishing:fish_cooked",{
-	// 	description = "Cooked Fish",
-	// 	texture = "fish_cooked.png",
-	// 	satiation=22,
-	// 	hunger=5,
-	// })
+	core.register_craft({
+		type = "cooking",
+		output = "crafter_fishing:fish_cooked",
+		recipe = "crafter_fishing:fish",
+	})
+
+	core.register_food("crafter_fishing:fish",{
+		description = "Raw Fish",
+		texture = "fish.png",
+		satiation=6,
+		hunger=3,
+	})
+
+	core.register_food("crafter_fishing:fish_cooked",{
+		description = "Cooked Fish",
+		texture = "fish_cooked.png",
+		satiation=22,
+		hunger=5,
+	})
 }
