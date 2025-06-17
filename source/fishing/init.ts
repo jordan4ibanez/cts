@@ -6,8 +6,8 @@ namespace fishing {
 	// 	stack_max = 1,
 	// 	range = 0,
 	// 	on_use = function(itemstack, user, pointed_thing)
-	// 		--core.sound_play("reload_gun",{object=user, pitch = math.random(80,100)/100})
-	// 		--print("reload")
+	// 		//core.sound_play("reload_gun",{object=user, pitch = math.random(80,100)/100})
+	// 		//print("reload")
 	// 	end,
 	// 	on_secondary_use = function(itemstack, user, pointed_thing)
 	// 		local name = user:get_player_name()
@@ -15,7 +15,7 @@ namespace fishing {
 	// 			local pos = user:get_pos()
 	//             local anchor = table.copy(pos)
 	// 			pos.y = pos.y + 1.625
-	// 			--core.sound_play("gun_shot",{object=user, pitch = math.random(80,100)/100})
+	// 			//core.sound_play("gun_shot",{object=user, pitch = math.random(80,100)/100})
 	// 			local dir = user:get_look_dir()
 	// 			local force = vector.multiply(dir,20)
 	// 			local obj = core.add_entity(pos,"fishing:lure")
@@ -46,9 +46,9 @@ namespace fishing {
 	// 	textures = {"lure.png"},
 	// 	is_visible = true,
 	// 	pointable = false,
-	// 	--glow = -1,
-	// 	--automatic_face_movement_dir = 0.0,
-	// 	--automatic_face_movement_max_rotation_per_sec = 600,
+	// 	//glow = -1,
+	// 	//automatic_face_movement_dir = 0.0,
+	// 	//automatic_face_movement_max_rotation_per_sec = 600,
 	// }
 	// lure.on_activate = function(self)
 	// 	self.object:set_acceleration(vector.new(0,-10,0))
