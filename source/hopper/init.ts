@@ -11,25 +11,26 @@ namespace hopper {
 	// dofile(MP.."/abms.lua")
 	// Formspec handling.
 	core.register_on_player_receive_fields((player, formname, fields) => {
-		// 	if "hopper_formspec:" == string.sub(formname, 1, 16) then
-		// 		local pos = core.string_to_pos(string.sub(formname, 17, -1))
-		// 		local meta = core.get_meta(pos)
-		// 		local eject_setting = meta:get_string("eject") == "true"
-		// 		local filter_all_setting = meta:get_string("filter_all") == "true"
-		// 		if fields.eject then
-		// 			if eject_setting then
-		// 				meta:set_string("eject", nil)
-		// 			else
-		// 				meta:set_string("eject", "true")
-		// 			end
-		// 		end
-		// 		if fields.filter_all then
-		// 			if filter_all_setting then
-		// 				meta:set_string("filter_all", nil)
-		// 			else
-		// 				meta:set_string("filter_all", "true")
-		// 			end
-		// 		end
-		// 	end
+		if ("hopper_formspec:" == string.sub(formname, 1, 16)) {
+			const pos: Vec3 = core.string_to_pos(string.sub(formname, 17, -1));
+			const meta: MetaRef = core.get_meta(pos);
+			// fixme: why isn't this using a boolean?
+			const eject_setting: boolean = meta.get_string("eject") == "true";
+			// 		local filter_all_setting = meta:get_string("filter_all") == "true"
+			// 		if fields.eject then
+			// 			if eject_setting then
+			// 				meta:set_string("eject", nil)
+			// 			else
+			// 				meta:set_string("eject", "true")
+			// 			end
+			// 		end
+			// 		if fields.filter_all then
+			// 			if filter_all_setting then
+			// 				meta:set_string("filter_all", nil)
+			// 			else
+			// 				meta:set_string("filter_all", "true")
+			// 			end
+			// 		end
+		}
 	});
 }
