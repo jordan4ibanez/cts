@@ -350,7 +350,12 @@ namespace fire {
 
 				fireLuaEntity.owner = object;
 
-				// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
+				fire_obj.set_attach(
+					object,
+					"",
+					entityFireTable.position,
+					vector.create3d(0, 0, 0)
+				);
 				// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
 				// 			object.get_luaentity().fire_entity = fire_obj
 			} else {
