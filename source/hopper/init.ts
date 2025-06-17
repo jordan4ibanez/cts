@@ -2,6 +2,15 @@ namespace hopper {
 	export const formspec_bg: string =
 		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]";
 
+	// This is currently being used as a crutch to fix this mod.
+	export class config {
+		private constructor() {}
+
+		static readonly texture_resolution: string = "16";
+		static readonly single_craftable_item: boolean = true;
+		static readonly eject_button_enabled: boolean = true;
+	}
+
 	utility.loadFiles([
 		"config",
 		"api",
