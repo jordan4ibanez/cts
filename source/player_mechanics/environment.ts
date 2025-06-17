@@ -320,8 +320,7 @@ namespace playerMechanics {
 		}
 
 		if (real_nodes.length > 0) {
-			// fixme: call into the fire namespace. Also why is this even in here?
-			// start_fire(player);
+			fire.start_fire(player);
 		}
 	}
 
@@ -373,8 +372,7 @@ namespace playerMechanics {
 		}
 
 		if (real_nodes.length > 0) {
-			// fixme: call into the fire namespace. Also why is this even in here?
-			// put_fire_out(player)
+			fire.put_fire_out(player);
 		}
 	}
 
@@ -446,10 +444,9 @@ namespace playerMechanics {
 
 			start_fire(player);
 
-			// fixme: not sure what's going on here
-			// if is_player_on_fire(player) then
-			// 	extinguish(player)
-			// end
+			if (fire.is_player_on_fire(player)) {
+				extinguish(player);
+			}
 			handle_player_suffocation(player, dtime);
 		}
 	}
