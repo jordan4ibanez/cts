@@ -107,13 +107,18 @@ namespace fishing {
 				//         local newp = table.copy(pos)
 				//         newp.y = newp.y - 0.1
 				//         local node = core.get_node(newp).name
-				// 		if node ~= "air" and node ~= "crafter:water" and node ~= "crafter:waterflow" then
-				//             if this.player then
-				// 				players_fishing[this.player] = nil
-				// 			end
-				// 			core.sound_play("line_break",{pos=pos,gain=0.3})
-				//             this.object.remove()
-				//         end
+				if (
+					node != "air" &&
+					node != "crafter:water" &&
+					node != "crafter:waterflow"
+				) {
+					if (this.player != null) {
+						players_fishing.delete(this.player);
+					}
+					core.sound_play("line_break", { pos: pos, gain: 0.3 });
+					this.object.remove();
+					return;
+				}
 			}
 
 			// 	if this.in_water == true then
