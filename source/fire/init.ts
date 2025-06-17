@@ -264,11 +264,15 @@ namespace fire {
 					);
 					return;
 				}
-				const entity: LuaEntity | null = fire_obj.get_luaentity()
+				const entity: LuaEntity | null = fire_obj.get_luaentity();
 
-				
-
-
+				if (entity == null) {
+					core.log(
+						LogLevel.warning,
+						`Failed to add fire to player [${name}]`
+					);
+					return;
+				}
 
 				// fire_obj:get_luaentity().owner = object
 				// fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
