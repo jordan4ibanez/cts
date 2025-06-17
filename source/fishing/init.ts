@@ -149,15 +149,18 @@ namespace fishing {
 					if (this.catch_timer >= 0.5) {
 						this.catch_timer = 0;
 						if (math.random() > 0.94) {
-							// 						local obj = core.add_item(pos, "crafter_fishing:fish")
-							// 						if obj then
-							// 							local distance = vector.distance(pos,pos2)
-							// 							local dir = vector.direction(pos,pos2)
-							// 							local force = vector.multiply(dir,distance)
-							// 							force.y = 6
-							// 							obj:set_velocity(force)
-							// 							core.sound_play("splash",{pos=obj:get_pos(),gain=0.25})
-							// 						end
+							const obj: ObjectRef | null = core.add_item(
+								pos,
+								"crafter_fishing:fish"
+							);
+							if (obj) {
+								// 							local distance = vector.distance(pos,pos2)
+								// 							local dir = vector.direction(pos,pos2)
+								// 							local force = vector.multiply(dir,distance)
+								// 							force.y = 6
+								// 							obj:set_velocity(force)
+								// 							core.sound_play("splash",{pos=obj:get_pos(),gain=0.25})
+							}
 							// 						players_fishing[this.player] = nil
 							// 						this.object.remove()
 						}
