@@ -435,7 +435,7 @@ globalEnvironment.DamageGroup = {
 namespace types {
 	export interface EntityFireTable {
 		position: Vec3;
-		visualSize: number;
+		visualSize: Vec2;
 	}
 
 	/** Typescript Luaentity. :) */
