@@ -443,7 +443,7 @@ namespace types {
 		// Name is required.
 		abstract name: string;
 		object: ObjectRef = utility.fakeRef();
-		fire_entity: ObjectRef | null = null;
+		fireEntity: ObjectRef | null = null;
 		fireTable: EntityFireTable | null = null;
 
 		// Abstract members.
