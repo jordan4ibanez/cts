@@ -170,21 +170,26 @@ namespace fishing {
 									gain: 0.25,
 								});
 							}
-							// 						players_fishing[this.player] = nil
-							// 						this.object.remove()
+							players_fishing.delete(this.player);
+							this.object.remove();
+							return;
 						}
 					}
 				} else {
-					// 				this.object.set_velocity(vector.new(0,0,0))
+					this.object.set_velocity(vector.create3d(0, 0, 0));
 				}
-				//             if p then
-				//                 local pos2 = p:get_pos()
-				//                 if vector.distance(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z)) < 1 then
-				// 					players_fishing[this.player] = nil
-				// 					core.sound_play("line_break",{pos=pos,gain=0.3,pitch=0.5})
-				//                     this.object.remove()
-				//                 end
-				//             end
+
+				const pos2: Vec3 = p.get_pos();
+				if (
+					vector.distance(
+						vector.create3d(pos.x, 0, pos.z),
+						vector.create3d(pos2.x, 0, pos2.z)
+					) < 1
+				) {
+					// 					players_fishing[this.player] = nil
+					// 					core.sound_play("line_break",{pos=pos,gain=0.3,pitch=0.5})
+					//                     this.object.remove()
+				}
 			}
 		}
 	}
