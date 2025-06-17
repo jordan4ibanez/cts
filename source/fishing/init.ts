@@ -1,34 +1,40 @@
 namespace fishing {
 	//  local players_fishing = {}
 
+	function fishingPoleUsage(
+		itemstack: ItemStackObject,
+		user: ObjectRef,
+		pointed_thing: PointedThing
+	) {
+		const name = user.get_player_name();
+		print(name);
+		// 		if not players_fishing[name] or not players_fishing[name]:get_luaentity() then
+		// 			local pos = user:get_pos()
+		//             local anchor = table.copy(pos)
+		// 			pos.y = pos.y + 1.625
+		// 			//core.sound_play("gun_shot",{object=user, pitch = math.random(80,100)/100})
+		// 			local dir = user:get_look_dir()
+		// 			local force = vector.multiply(dir,20)
+		// 			local obj = core.add_entity(pos,"crafter_fishing:lure")
+		// 			if obj then
+		// 				core.sound_play("woosh",{pos=pos})
+		// 				obj:get_luaentity().player=name
+		// 				obj:set_velocity(force)
+		// 				players_fishing[name] = obj
+		// 			end
+		// 		end
+	}
+
 	core.register_craftitem("crafter_fishing:pole", {
 		description: "Fishing Pole",
 		inventory_image: "fishing_rod.png",
 		stack_max: 1,
-		range: 0,
 		// 	on_use = function(itemstack, user, pointed_thing)
 		// 		//core.sound_play("reload_gun",{object=user, pitch = math.random(80,100)/100})
 		// 		//print("reload")
 		// 	end,
 
-		on_secondary_use: (itemstack, user, pointed_thing) => {
-			// 		local name = user:get_player_name()
-			// 		if not players_fishing[name] or not players_fishing[name]:get_luaentity() then
-			// 			local pos = user:get_pos()
-			//             local anchor = table.copy(pos)
-			// 			pos.y = pos.y + 1.625
-			// 			//core.sound_play("gun_shot",{object=user, pitch = math.random(80,100)/100})
-			// 			local dir = user:get_look_dir()
-			// 			local force = vector.multiply(dir,20)
-			// 			local obj = core.add_entity(pos,"crafter_fishing:lure")
-			// 			if obj then
-			// 				core.sound_play("woosh",{pos=pos})
-			// 				obj:get_luaentity().player=name
-			// 				obj:set_velocity(force)
-			// 				players_fishing[name] = obj
-			// 			end
-			// 		end
-		},
+		on_secondary_use: fishingPoleUsage,
 	});
 
 	// core.register_craft({
