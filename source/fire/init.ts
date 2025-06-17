@@ -264,7 +264,8 @@ namespace fire {
 					);
 					return;
 				}
-				let entity: LuaEntity | null = fire_obj.get_luaentity();
+				const entity: FireEntity | null =
+					fire_obj.get_luaentity() as FireEntity | null;
 
 				if (entity == null) {
 					core.log(
@@ -274,9 +275,7 @@ namespace fire {
 					return;
 				}
 
-				entity = entity as FireEntity;
-
-				// fire_obj:get_luaentity().owner = object
+				entity.owner = object;
 				// fire_obj:set_attach(object, "", vector.new(0,11,0),vector.new(0,0,0))
 				// fire_obj:set_properties({visual_size=vector.new(1,2,1)})
 				// pool[name] = fire_obj
