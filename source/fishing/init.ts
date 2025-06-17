@@ -103,8 +103,20 @@ namespace fishing {
 				return;
 			}
 
-			const player: ObjectRef | null = core.get_player_by_name(this.player);
+			const player: ObjectRef | null = core.get_player_by_name(
+				this.player
+			);
 			if (player == null) {
+				this.object.remove();
+				return;
+			}
+
+			if (player.get_wield_index() != this.playerWieldSlot) {
+				players_fishing.delete(this.player);
+				core.sound_play("line_break", {
+					object: this.object,
+					gain: 0.3,
+				});
 				this.object.remove();
 				return;
 			}
@@ -128,7 +140,10 @@ namespace fishing {
 					if (this.player != null) {
 						players_fishing.delete(this.player);
 					}
-					core.sound_play("line_break", { pos: pos, gain: 0.3 });
+					core.sound_play("line_break", {
+						object: this.object,
+						gain: 0.3,
+					});
 					this.object.remove();
 					return;
 				}
@@ -165,7 +180,7 @@ namespace fishing {
 								force.y = 6;
 								obj.set_velocity(force);
 								core.sound_play("splash", {
-									pos: obj.get_pos(),
+									object: obj,
 									gain: 0.25,
 								});
 							}
