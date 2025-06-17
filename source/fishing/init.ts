@@ -57,14 +57,14 @@ namespace fishing {
 		on_secondary_use: fishingPoleUsage,
 	});
 
-	// core.register_craft({
-	// 	output = "crafter_fishing:pole",
-	// 	recipe = {
-	// 		{"",          "",           "crafter:stick"},
-	// 		{"",          "crafter:stick", "crafter_mobs:"string"},
-	// 		{"crafter:stick","",           "crafter_mobs:"string"},
-	// 	}
-	// })
+	core.register_craft({
+		output: "crafter_fishing:pole",
+		recipe: [
+			["", "", "crafter:stick"],
+			["", "crafter:stick", "crafter_mobs:string"],
+			["crafter:stick", "", "crafter_mobs:string"],
+		],
+	});
 
 	class FishingLure extends types.Entity {
 		name: string = "crafter_fishing:lure";
