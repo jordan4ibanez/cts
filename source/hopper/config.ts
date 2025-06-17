@@ -1,6 +1,4 @@
 namespace hopper {
-	// Settings.
-
 	// This is currently being used as a crutch to fix this mod.
 	export class config {
 		private constructor() {}
