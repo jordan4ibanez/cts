@@ -31,9 +31,9 @@ namespace fishing {
 	// core.register_craft({
 	// 	output = "fishing:pole",
 	// 	recipe = {
-	// 		{"",          "",           "main:stick"},
-	// 		{"",          "main:stick", "mob:string"},
-	// 		{"main:stick","",           "mob:string"},
+	// 		{"",          "",           "crafter:stick"},
+	// 		{"",          "crafter:stick", "mob:string"},
+	// 		{"crafter:stick","",           "mob:string"},
 	// 	}
 	// })
 	// local lure = {}
@@ -59,7 +59,7 @@ namespace fishing {
 	// lure.on_step = function(self, dtime)
 	// 	local pos = self.object:get_pos()
 	// 	local node = core.get_node(pos).name
-	// 	if node == "main:water" then
+	// 	if node == "crafter:water" then
 	// 		self.in_water = true
 	// 		local new_pos = vector.floor(pos)
 	// 		new_pos.y = new_pos.y + 0.5
@@ -70,7 +70,7 @@ namespace fishing {
 	//         local newp = table.copy(pos)
 	//         newp.y = newp.y - 0.1
 	//         local node = core.get_node(newp).name
-	// 		if node ~= "air" and node ~= "main:water" and node ~= "main:waterflow" then
+	// 		if node ~= "air" and node ~= "crafter:water" and node ~= "crafter:waterflow" then
 	//             if self.player then
 	// 				players_fishing[self.player] = nil
 	// 			end
