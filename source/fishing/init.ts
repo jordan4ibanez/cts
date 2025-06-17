@@ -71,18 +71,18 @@ namespace fishing {
 		player: string | null = null;
 
 		initial_properties = {
-			physical : false,
-			collide_with_objects : false,
-			collisionbox : {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
-			visual : "sprite",
-			visual_size : {x : 0.25, y : 0.25},
-			textures : {"lure.png"},
-			is_visible : true,
-			pointable : false,
-		// 	//glow : -1,
-		// 	//automatic_face_movement_dir : 0.0,
-		// 	//automatic_face_movement_max_rotation_per_sec : 600,
-		}
+			physical: false,
+			collide_with_objects: false,
+			collisionbox: [-0.1, -0.1, -0.1, 0.1, 0.1, 0.1],
+			visual: EntityVisual.sprite,
+			visual_size: { x: 0.25, y: 0.25 },
+			textures: ["lure.png"],
+			is_visible: true,
+			pointable: false,
+			// 	//glow : -1,
+			// 	//automatic_face_movement_dir : 0.0,
+			// 	//automatic_face_movement_max_rotation_per_sec : 600,
+		};
 
 		// lure.in_water = false
 		// lure.interplayer = nil
