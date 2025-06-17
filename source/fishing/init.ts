@@ -103,8 +103,8 @@ namespace fishing {
 				return;
 			}
 
-			const p: ObjectRef | null = core.get_player_by_name(this.player);
-			if (p == null) {
+			const player: ObjectRef | null = core.get_player_by_name(this.player);
+			if (player == null) {
 				this.object.remove();
 				return;
 			}
@@ -135,10 +135,10 @@ namespace fishing {
 			}
 
 			if (this.inWater) {
-				const playerControls = p.get_player_control();
+				const playerControls = player.get_player_control();
 
 				if (playerControls.RMB) {
-					const pos2: Vec3 = p.get_pos();
+					const pos2: Vec3 = player.get_pos();
 					const vel: Vec3 = vector.direction(
 						vector.create3d(pos.x, 0, pos.z),
 						vector.create3d(pos2.x, 0, pos2.z)
@@ -178,7 +178,7 @@ namespace fishing {
 					this.object.set_velocity(vector.create3d(0, 0, 0));
 				}
 
-				const pos2: Vec3 = p.get_pos();
+				const pos2: Vec3 = player.get_pos();
 				if (
 					vector.distance(
 						vector.create3d(pos.x, 0, pos.z),
