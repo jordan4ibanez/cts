@@ -1,3 +1,4 @@
+namespace hopper {
 // hopper.containers = {}
 // hopper.groups = {}
 // hopper.neighbors = {}
@@ -95,3 +96,4 @@
 // 	{"side", "utility:furnace_active", "fuel"},
 // })
 
+}
