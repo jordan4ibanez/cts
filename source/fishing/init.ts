@@ -186,9 +186,14 @@ namespace fishing {
 						vector.create3d(pos2.x, 0, pos2.z)
 					) < 1
 				) {
-					// 					players_fishing[this.player] = nil
-					// 					core.sound_play("line_break",{pos=pos,gain=0.3,pitch=0.5})
-					//                     this.object.remove()
+					players_fishing.delete(this.player);
+					core.sound_play("line_break", {
+						pos: pos,
+						gain: 0.3,
+						pitch: 0.5,
+					});
+					this.object.remove();
+					return;
 				}
 			}
 		}
