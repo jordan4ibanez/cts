@@ -3,14 +3,14 @@ namespace fishing {
 
 	function fishingPoleUsage(
 		itemstack: ItemStackObject,
-		user: ObjectRef,
+		player: ObjectRef,
 		pointed_thing: PointedThing
 	): ItemStackObject | void {
-		const name = user.get_player_name();
+		const name = player.get_player_name();
 		const fishingLure: ObjectRef | undefined = players_fishing.get(name);
 
 		if (fishingLure == null || fishingLure.get_luaentity() == null) {
-			const pos: Vec3 = user.get_pos();
+			const pos: Vec3 = player.get_pos();
 
 			pos.y += 1.625;
 
@@ -37,12 +37,12 @@ namespace fishing {
 				return;
 			}
 
-			lureLuaEntity.playerWieldSlot = user.get_wield_index();
+			lureLuaEntity.playerWieldSlot = player.get_wield_index();
 			lureLuaEntity.player = name;
 
 			core.sound_play("woosh", { pos: pos });
 
-			const dir: Vec3 = user.get_look_dir();
+			const dir: Vec3 = player.get_look_dir();
 			const force: Vec3 = vector.multiply(dir, 20);
 			lureObject.set_velocity(force);
 
