@@ -255,7 +255,7 @@ namespace hunger {
 			const isDrowning: boolean = drowning.is_player_drowning(player);
 			// Make regeneration happen every second.
 			if (
-				/*// todo: depends on fire mod: !is_player_on_fire(player) &&*/
+				!fire.is_player_on_fire(player) &&
 				!isDrowning &&
 				data.hunger >= 20 &&
 				hp < 20
