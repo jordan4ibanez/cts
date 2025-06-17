@@ -1022,12 +1022,12 @@ declare global {
 			itemStack: ItemStackObject,
 			user: ObjectRef,
 			pointedThing: PointedThing
-		): void;
+		): ItemStackObject | void;
 		on_drop?(
 			itemStack: ItemStackObject,
 			dropper: ObjectRef,
 			position: Vec3
-		): void;
+		): ItemStackObject | void;
 		on_pickup?(
 			itemStack: ItemStackObject,
 			picker: ObjectRef,
