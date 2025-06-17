@@ -121,6 +121,18 @@ namespace fishing {
 				return;
 			}
 
+			if (
+				player.get_wielded_item().get_name() != "crafter_fishing:pole"
+			) {
+				players_fishing.delete(this.player);
+				core.sound_play("line_break", {
+					object: this.object,
+					gain: 0.3,
+				});
+				this.object.remove();
+				return;
+			}
+
 			if (node == "crafter:water") {
 				this.inWater = true;
 				const new_pos: Vec3 = vector.floor(pos);
