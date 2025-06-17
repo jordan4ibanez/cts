@@ -12,7 +12,6 @@ namespace hopper {
 	}
 
 	utility.loadFiles([
-		"config",
 		"api",
 		"utility",
 		"nodes/hoppers",
