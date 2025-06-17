@@ -193,16 +193,14 @@ namespace fire {
 			// todo: Check if this is an item or a mob.
 
 			if (isPlayer && this.owner.get_hp() <= 0) {
-				// todo: fix this.
-				// put_fire_out(this.owner);
+				put_fire_out(this.owner);
 			}
 
 			this.timer += dtime;
 			this.life += dtime;
 
 			if (this.life >= 7) {
-				// todo: fix this.
-				// put_fire_out(this.owner);
+				put_fire_out(this.owner);
 				this.object.remove();
 				return;
 			}
