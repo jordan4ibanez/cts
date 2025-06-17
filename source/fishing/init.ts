@@ -1,13 +1,13 @@
 namespace fishing {
-	//  local players_fishing = {}
+	const players_fishing = new Map<string, ObjectRef>();
 
 	function fishingPoleUsage(
 		itemstack: ItemStackObject,
 		user: ObjectRef,
 		pointed_thing: PointedThing
-	) {
+	): ItemStackObject | void {
 		const name = user.get_player_name();
-		print(name);
+
 		// 		if not players_fishing[name] or not players_fishing[name]:get_luaentity() then
 		// 			local pos = user:get_pos()
 		//             local anchor = table.copy(pos)
@@ -29,7 +29,7 @@ namespace fishing {
 		description: "Fishing Pole",
 		inventory_image: "fishing_rod.png",
 		stack_max: 1,
-		on_use: fishingPoleUsage,
+		on_place: fishingPoleUsage,
 		on_secondary_use: fishingPoleUsage,
 	});
 
