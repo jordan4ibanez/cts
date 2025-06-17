@@ -70,7 +70,7 @@ namespace fishing {
 		name: string = "crafter_fishing:lure";
 		player: string | null = null;
 
-		// lure.initial_properties = {
+		initial_properties = {
 		// 	physical = false,
 		// 	collide_with_objects = false,
 		// 	collisionbox = {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
@@ -82,7 +82,7 @@ namespace fishing {
 		// 	//glow = -1,
 		// 	//automatic_face_movement_dir = 0.0,
 		// 	//automatic_face_movement_max_rotation_per_sec = 600,
-		// }
+		}
 
 		// lure.in_water = false
 		// lure.interplayer = nil
