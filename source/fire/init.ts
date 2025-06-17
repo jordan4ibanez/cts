@@ -344,7 +344,7 @@ namespace fire {
 					);
 					entityFireTable = {
 						position: vector.create3d(0, 0, 0),
-						visualSize: 1,
+						visualSize: vector.create2d(1, 1),
 					};
 				}
 
@@ -356,7 +356,9 @@ namespace fire {
 					entityFireTable.position,
 					vector.create3d(0, 0, 0)
 				);
-				// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
+				fire_obj.set_properties({
+					visual_size: entityFireTable.visualSize,
+				});
 				// 			object.get_luaentity().fire_entity = fire_obj
 			} else {
 				const fireLuaEntity: FireEntity | null =
