@@ -397,6 +397,7 @@ namespace fire {
 				return;
 			}
 
+			// If this entity still exists, remove it.
 			if (fireObject.get_luaentity() != null) {
 				fireObject.remove();
 			}
