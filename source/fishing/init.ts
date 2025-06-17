@@ -96,25 +96,26 @@ namespace fishing {
 			const pos: Vec3 = this.object.get_pos();
 			const node: string = core.get_node(pos).name;
 
-			// 	if node == "crafter:water" then
-			// 		this.in_water = true
-			// 		local new_pos = vector.floor(pos)
-			// 		new_pos.y = new_pos.y + 0.5
-			// 		this.object.move_to(vector.new(pos.x,new_pos.y,pos.z))
-			// 		this.object.set_acceleration(vector.new(0,0,0))
-			// 		this.object.set_velocity(vector.new(0,0,0))
-			//     else
-			//         local newp = table.copy(pos)
-			//         newp.y = newp.y - 0.1
-			//         local node = core.get_node(newp).name
-			// 		if node ~= "air" and node ~= "crafter:water" and node ~= "crafter:waterflow" then
-			//             if this.player then
-			// 				players_fishing[this.player] = nil
-			// 			end
-			// 			core.sound_play("line_break",{pos=pos,gain=0.3})
-			//             this.object.remove()
-			//         end
-			// 	end
+			if (node == "crafter:water") {
+				// 		this.in_water = true
+				// 		local new_pos = vector.floor(pos)
+				// 		new_pos.y = new_pos.y + 0.5
+				// 		this.object.move_to(vector.new(pos.x,new_pos.y,pos.z))
+				// 		this.object.set_acceleration(vector.new(0,0,0))
+				// 		this.object.set_velocity(vector.new(0,0,0))
+				//     else
+				//         local newp = table.copy(pos)
+				//         newp.y = newp.y - 0.1
+				//         local node = core.get_node(newp).name
+				// 		if node ~= "air" and node ~= "crafter:water" and node ~= "crafter:waterflow" then
+				//             if this.player then
+				// 				players_fishing[this.player] = nil
+				// 			end
+				// 			core.sound_play("line_break",{pos=pos,gain=0.3})
+				//             this.object.remove()
+				//         end
+			}
+
 			// 	if this.in_water == true then
 			// 		if this.player then
 			// 			local p = core.get_player_by_name(this.player)
