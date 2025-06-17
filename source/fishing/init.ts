@@ -32,8 +32,8 @@ namespace fishing {
 	// 	output = "fishing:pole",
 	// 	recipe = {
 	// 		{"",          "",           "crafter:stick"},
-	// 		{"",          "crafter:stick", "mob:string"},
-	// 		{"crafter:stick","",           "mob:string"},
+	// 		{"",          "crafter:stick", "crafter_mobs:"string"},
+	// 		{"crafter:stick","",           "crafter_mobs:"string"},
 	// 	}
 	// })
 	// local lure = {}
