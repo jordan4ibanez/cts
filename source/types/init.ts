@@ -433,12 +433,18 @@ globalEnvironment.DamageGroup = {
 };
 
 namespace types {
+	export interface EntityFireTable {
+		position: Vec3;
+		visualSize: number;
+	}
+
 	/** Typescript Luaentity. :) */
 	export abstract class Entity implements LuaEntity {
 		// Name is required.
 		abstract name: string;
 		object: ObjectRef = utility.fakeRef();
 		fire_entity: ObjectRef | null = null;
+		fireTable: EntityFireTable | null = null;
 
 		// Abstract members.
 		initial_properties?: ObjectProperties;
