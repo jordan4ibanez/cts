@@ -83,12 +83,15 @@ namespace fishing {
 		// 	//automatic_face_movement_dir = 0.0,
 		// 	//automatic_face_movement_max_rotation_per_sec = 600,
 		// }
-		// lure.on_activate = function(self)
-		// 	self.object:set_acceleration(vector.new(0,-10,0))
-		// end
+
 		// lure.in_water = false
 		// lure.interplayer = nil
 		// lure.catch_timer = 0
+
+		// lure.on_activate = function(self)
+		// 	self.object:set_acceleration(vector.new(0,-10,0))
+		// end
+
 		// lure.on_step = function(self, dtime)
 		// 	local pos = self.object:get_pos()
 		// 	local node = core.get_node(pos).name
@@ -111,6 +114,7 @@ namespace fishing {
 		//             self.object:remove()
 		//         end
 		// 	end
+
 		// 	if self.in_water == true then
 		// 		if self.player then
 		// 			local p = core.get_player_by_name(self.player)
