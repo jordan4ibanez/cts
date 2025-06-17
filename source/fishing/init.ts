@@ -87,8 +87,7 @@ namespace fishing {
 		inWater: boolean = false;
 		interplayer: string | null = null;
 		catchTimer: number = 0;
-		
-
+		playerWieldSlot: number = -1;
 
 		on_activate(): void {
 			this.object.set_acceleration(vector.create3d(0, -10, 0));
