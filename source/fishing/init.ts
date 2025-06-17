@@ -69,9 +69,9 @@ namespace fishing {
 	class FishingLure extends types.Entity {
 		name: string = "crafter_fishing:lure";
 		player: string | null = null;
-	}
+	
 
-	// local lure = {}
+	
 	// lure.initial_properties = {
 	// 	physical = false,
 	// 	collide_with_objects = false,
@@ -154,7 +154,8 @@ namespace fishing {
 	// 		self.object:remove()
 	// 	end
 	// end
-	// core.register_entity("crafter_fishing:lure", lure)
+	}
+
 	// core.register_craft({
 	// 	type = "cooking",
 	// 	output = "crafter_fishing:fish_cooked",
