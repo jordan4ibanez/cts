@@ -134,6 +134,10 @@ namespace fishing {
 			}
 
 			if (node == "crafter:water") {
+				core.sound_play("splash", {
+					object: this.object,
+					gain: 0.25,
+				});
 				this.inWater = true;
 				const new_pos: Vec3 = vector.floor(pos);
 				new_pos.y += 0.5;
