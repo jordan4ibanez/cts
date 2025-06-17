@@ -312,17 +312,27 @@ namespace fire {
 				(luaEntity.fire_entity != null &&
 					luaEntity.fire_entity.get_luaentity() == null)
 			) {
+				// 			object.get_luaentity().on_fire = true
+				// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
+				// 			fire_obj:get_luaentity().owner = object
+				// 			local entity_fire_def = object.get_luaentity().fire_table
+				// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
+				// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
+				// 			object.get_luaentity().fire_entity = fire_obj
+			} else {
+				const fireLuaEntity: FireEntity | null =
+					luaEntity.fire_entity.get_luaentity() as FireEntity | null;
+
+				if (luaEntity == null) {
+					core.log(
+						LogLevel.warning,
+						"Entity's fire entity became instantly null."
+					);
+					return;
+				}
+
+				// luaEntity.fire_entity.get_luaentity().life = 0;
 			}
-			// 			object.get_luaentity().on_fire = true
-			// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
-			// 			fire_obj:get_luaentity().owner = object
-			// 			local entity_fire_def = object.get_luaentity().fire_table
-			// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
-			// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
-			// 			object.get_luaentity().fire_entity = fire_obj
-			// 		else
-			// 			object.get_luaentity().fire_entity:get_luaentity().life = 0
-			// 		end
 		}
 	}
 
