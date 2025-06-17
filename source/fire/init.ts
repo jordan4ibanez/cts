@@ -429,9 +429,13 @@ namespace fire {
 			if (fireEntity?.get_luaentity() != null) {
 				fireEntity.remove();
 			}
-			// 		object.get_luaentity().on_fire = false
-			// 		object.get_luaentity().fire_entity = nil
-			// 		//core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
+
+			luaEntity.fireEntity = null;
+			core.sound_play("fire_extinguish", {
+				object: object,
+				gain: 0.3,
+				pitch: math.random(80, 100) / 100,
+			});
 		}
 	}
 
