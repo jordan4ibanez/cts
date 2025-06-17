@@ -226,6 +226,30 @@ namespace fishing {
 	}
 	utility.registerTSEntity(FishingLureEntity);
 
+	core.register_on_leaveplayer((player: ObjectRef) => {
+		const name = player.get_player_name();
+		if (players_fishing.has(name)) {
+			players_fishing.delete(name);
+			core.sound_play("line_break", {
+				object: player,
+				gain: 0.3,
+				pitch: 0.5,
+			});
+		}
+	});
+
+	core.register_on_dieplayer((player: ObjectRef) => {
+		const name = player.get_player_name();
+		if (players_fishing.has(name)) {
+			players_fishing.delete(name);
+			core.sound_play("line_break", {
+				object: player,
+				gain: 0.3,
+				pitch: 0.5,
+			});
+		}
+	});
+
 	core.register_craft({
 		type: CraftRecipeType.cooking,
 		output: "crafter_fishing:fish_cooked",
