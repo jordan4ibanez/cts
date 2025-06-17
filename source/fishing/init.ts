@@ -19,12 +19,17 @@ namespace fishing {
 				pos,
 				"crafter_fishing:lure"
 			);
-			// 			if obj then
+			if (obj == null) {
+				core.log(
+					LogLevel.warning,
+					`Failed to add fishing lure to player [${name}]`
+				);
+				return;
+			}
 			// 				core.sound_play("woosh",{pos=pos})
 			// 				obj:get_luaentity().player=name
 			// 				obj:set_velocity(force)
 			// 				players_fishing[name] = obj
-			// 			end
 		}
 	}
 
