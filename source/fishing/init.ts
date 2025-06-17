@@ -84,9 +84,10 @@ namespace fishing {
 			// 	//automatic_face_movement_max_rotation_per_sec : 600,
 		};
 
-		in_water: boolean = false;
+		inWater: boolean = false;
 		interplayer: string | null = null;
 		catch_timer: number = 0;
+
 
 		on_activate(): void {
 			this.object.set_acceleration(vector.create3d(0, -10, 0));
@@ -102,7 +103,7 @@ namespace fishing {
 			}
 
 			if (node == "crafter:water") {
-				this.in_water = true;
+				this.inWater = true;
 				const new_pos: Vec3 = vector.floor(pos);
 				new_pos.y += 0.5;
 				this.object.move_to(vector.create3d(pos.x, new_pos.y, pos.z));
@@ -126,7 +127,7 @@ namespace fishing {
 				}
 			}
 
-			if (this.in_water) {
+			if (this.inWater) {
 				const p: ObjectRef | null = core.get_player_by_name(
 					this.player
 				);
