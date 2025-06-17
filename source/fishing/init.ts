@@ -96,6 +96,11 @@ namespace fishing {
 			const pos: Vec3 = this.object.get_pos();
 			const node: string = core.get_node(pos).name;
 
+			if (this.player == null) {
+				this.object.remove();
+				return;
+			}
+
 			if (node == "crafter:water") {
 				this.in_water = true;
 				const new_pos: Vec3 = vector.floor(pos);
@@ -119,11 +124,6 @@ namespace fishing {
 					this.object.remove();
 					return;
 				}
-			}
-
-			if (this.player == null) {
-				this.object.remove();
-				return;
 			}
 
 			if (this.in_water) {
@@ -198,7 +198,6 @@ namespace fishing {
 			}
 		}
 	}
-
 	utility.registerTSEntity(FishingLureEntity);
 
 	core.register_craft({
