@@ -438,6 +438,7 @@ namespace types {
 		// Name is required.
 		abstract name: string;
 		object: ObjectRef = utility.fakeRef();
+		fire_entity: ObjectRef | null = null;
 
 		// Abstract members.
 		initial_properties?: ObjectProperties;
