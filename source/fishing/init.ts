@@ -11,7 +11,7 @@ namespace fishing {
 
 		if (fishingLure == null || fishingLure.get_luaentity() == null) {
 			const pos: Vec3 = user.get_pos();
-			const anchor: Vec3 = vector.copy(pos);
+
 			pos.y += 1.625;
 			const dir: Vec3 = user.get_look_dir();
 			const force: Vec3 = vector.multiply(dir, 20);
