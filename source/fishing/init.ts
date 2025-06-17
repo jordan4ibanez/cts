@@ -88,9 +88,9 @@ namespace fishing {
 		interplayer: string | null = null;
 		catch_timer: number = 0;
 
-		// lure.on_activate = function(self)
-		// 	self.object:set_acceleration(vector.new(0,-10,0))
-		// end
+		on_activate() {
+			// 	self.object:set_acceleration(vector.new(0,-10,0))
+		}
 
 		// lure.on_step = function(self, dtime)
 		// 	local pos = self.object:get_pos()
