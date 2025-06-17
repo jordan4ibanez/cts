@@ -439,7 +439,7 @@ namespace fire {
 		}
 	}
 
-	// core.register_on_respawnplayer(function(player)
-	// 	put_fire_out(player)
-	// end)
+	core.register_on_respawnplayer((player: ObjectRef) => {
+		put_fire_out(player);
+	});
 }
