@@ -389,10 +389,13 @@ namespace fire {
 			const fireObject: ObjectRef | undefined = pool.get(name);
 
 			if (fireObject == null) {
+				core.log(
+					LogLevel.warning,
+					`Tried to extinguish player [${name}] but they were not on fire.`
+				);
 				return;
 			}
 
-			// fire_obj = pool[name]
 			// if fire_obj:get_luaentity() then
 			// 	fire_obj:remove()
 			// end
