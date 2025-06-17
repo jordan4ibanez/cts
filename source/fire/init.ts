@@ -386,9 +386,9 @@ namespace fire {
 	export function put_fire_out(object: ObjectRef): void {
 		if (object.is_player()) {
 			const name: string = object.get_player_name();
-			const data: ObjectRef | undefined = pool.get(name);
+			const fireObject: ObjectRef | undefined = pool.get(name);
 
-			if (data == null) {
+			if (fireObject == null) {
 				return;
 			}
 
