@@ -1,6 +1,7 @@
 namespace fishing {
 	//  local players_fishing = {}
-	//  core.register_craftitem("fishing:pole", {
+
+	 core.register_craftitem("fishing:pole", {
 	// 	description = "Fishing Pole",
 	// 	inventory_image = "fishing_rod.png",
 	// 	stack_max = 1,
@@ -27,7 +28,8 @@ namespace fishing {
 	// 			end
 	// 		end
 	// 	end,
-	// })
+	})
+	
 	// core.register_craft({
 	// 	output = "fishing:pole",
 	// 	recipe = {
