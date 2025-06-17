@@ -507,9 +507,9 @@ namespace bow {
 	core.register_craft({
 		output: "crafter_bow:bow_empty",
 		recipe: [
-			["", "crafter:stick", "crafter_mob:string"],
-			["crafter:stick", "", "crafter_mob:string"],
-			["", "crafter:stick", "crafter_mob:string"],
+			["", "crafter:stick", "crafter_mobs:string"],
+			["crafter:stick", "", "crafter_mobs:string"],
+			["", "crafter:stick", "crafter_mobs:string"],
 		],
 	});
 
@@ -518,7 +518,7 @@ namespace bow {
 		recipe: [
 			["crafter:iron", "", ""],
 			["", "crafter:stick", ""],
-			["", "", "crafter_mob:feather"],
+			["", "", "crafter_mobs:feather"],
 		],
 	});
 }
