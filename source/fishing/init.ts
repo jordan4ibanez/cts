@@ -86,7 +86,8 @@ namespace fishing {
 
 		inWater: boolean = false;
 		interplayer: string | null = null;
-		catch_timer: number = 0;
+		catchTimer: number = 0;
+		
 
 
 		on_activate(): void {
@@ -146,9 +147,9 @@ namespace fishing {
 						vector.create3d(pos2.x, 0, pos2.z)
 					);
 					this.object.set_velocity(vector.multiply(vel, 2));
-					this.catch_timer += dtime;
-					if (this.catch_timer >= 0.5) {
-						this.catch_timer = 0;
+					this.catchTimer += dtime;
+					if (this.catchTimer >= 0.5) {
+						this.catchTimer = 0;
 						if (math.random() > 0.94) {
 							const obj: ObjectRef | null = core.add_item(
 								pos,
