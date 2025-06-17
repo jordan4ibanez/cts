@@ -314,7 +314,10 @@ namespace fire {
 				);
 
 				if (fire_obj == null) {
-					core.log(LogLevel.warning, `Failed to add fire to entity`);
+					core.log(
+						LogLevel.warning,
+						`Failed to add fire to entity. ObjectRef was null.`
+					);
 					return;
 				}
 
