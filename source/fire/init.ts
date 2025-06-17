@@ -264,10 +264,10 @@ namespace fire {
 					);
 					return;
 				}
-				const entity: FireEntity | null =
+				const fireEntity: FireEntity | null =
 					fire_obj.get_luaentity() as FireEntity | null;
 
-				if (entity == null) {
+				if (fireEntity == null) {
 					core.log(
 						LogLevel.warning,
 						`Failed to add fire entity to player [${name}]. LuaEntity was null.`
@@ -275,7 +275,7 @@ namespace fire {
 					return;
 				}
 
-				entity.owner = object;
+				fireEntity.owner = object;
 				fire_obj.set_attach(
 					object,
 					"",
