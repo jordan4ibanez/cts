@@ -29,11 +29,7 @@ namespace fishing {
 		description: "Fishing Pole",
 		inventory_image: "fishing_rod.png",
 		stack_max: 1,
-		// 	on_use = function(itemstack, user, pointed_thing)
-		// 		//core.sound_play("reload_gun",{object=user, pitch = math.random(80,100)/100})
-		// 		//print("reload")
-		// 	end,
-
+		on_use: fishingPoleUsage,
 		on_secondary_use: fishingPoleUsage,
 	});
 
