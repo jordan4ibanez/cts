@@ -22,12 +22,25 @@ namespace fishing {
 			if (obj == null) {
 				core.log(
 					LogLevel.warning,
-					`Failed to add fishing lure to player [${name}]`
+					`Failed to add fishing lure to player [${name}]. ObjectRef is null.`
 				);
 				return;
 			}
-			// core.sound_play("woosh",{pos=pos})
-			// obj:get_luaentity().player=name
+
+			const luaEntity: FishingLure | null =
+				obj.get_luaentity() as FishingLure | null;
+
+			if (luaEntity == null) {
+				core.log(
+					LogLevel.warning,
+					`Failed to add fishing lure to player [${name}]. LuaEntity is null.`
+				);
+				return;
+			}
+
+			luaEntity.player = name;
+
+			core.sound_play("woosh", { pos: pos });
 			// obj:set_velocity(force)
 			// players_fishing[name] = obj
 		}
@@ -49,6 +62,12 @@ namespace fishing {
 	// 		{"crafter:stick","",           "crafter_mobs:"string"},
 	// 	}
 	// })
+
+	class FishingLure extends types.Entity {
+		name: string = "crafter_fishing:lure";
+		player: string | null = null;
+	}
+
 	// local lure = {}
 	// lure.initial_properties = {
 	// 	physical = false,
