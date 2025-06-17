@@ -27,13 +27,13 @@ namespace hopper {
 				}
 			}
 
-			// 		if fields.filter_all then
-			// 			if filter_all_setting then
-			// 				meta:set_string("filter_all", nil)
-			// 			else
-			// 				meta:set_string("filter_all", "true")
-			// 			end
-			// 		end
+			if (fields.filter_all != null) {
+				if (filter_all_setting) {
+					meta.set_string("filter_all", "");
+				} else {
+					meta.set_string("filter_all", "true");
+				}
+			}
 		}
 	});
 }
