@@ -9,7 +9,7 @@ namespace fishing {
 		const name = user.get_player_name();
 		const fishingLure: ObjectRef | undefined = players_fishing.get(name);
 
-		if (fishingLure?.get_luaentity() == null) {
+		if (fishingLure == null || fishingLure.get_luaentity() == null) {
 			// 			local pos = user:get_pos()
 			//             local anchor = table.copy(pos)
 			// 			pos.y = pos.y + 1.625
