@@ -162,7 +162,7 @@ namespace fishing {
 					this.catchTimer += dtime;
 					if (this.catchTimer >= 0.5) {
 						this.catchTimer = 0;
-						if (math.random() > 0.94) {
+						if (math.random() > 0.96) {
 							const obj: ObjectRef | null = core.add_item(
 								pos,
 								"crafter_fishing:fish"
