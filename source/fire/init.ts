@@ -312,7 +312,10 @@ namespace fire {
 				return;
 			}
 
-			if (luaEntity.fireEntity?.get_luaentity() == null) {
+			if (
+				luaEntity.fireEntity == null ||
+				luaEntity.fireEntity.get_luaentity() == null
+			) {
 				const fireObject: ObjectRef | null = core.add_entity(
 					object.get_pos(),
 					"crafter_fire:fire"
@@ -425,7 +428,7 @@ namespace fire {
 
 			const fireEntity: ObjectRef | null = luaEntity.fireEntity;
 
-			if (fireEntity?.get_luaentity() != null) {
+			if (fireEntity != null && fireEntity.get_luaentity() != null) {
 				fireEntity.remove();
 			}
 
