@@ -285,7 +285,7 @@ namespace fire {
 				fire_obj.set_properties({
 					visual_size: vector.create3d(1, 2, 1),
 				});
-				// pool[name] = fire_obj
+				pool.set(name, fire_obj);
 				// fire_channels[name]:send_all("1")
 			} else if (data.get_luaentity() != null) {
 				(data.get_luaentity() as FireEntity).life = 0;
