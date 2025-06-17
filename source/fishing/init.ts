@@ -100,7 +100,7 @@ namespace fishing {
 				this.in_water = true;
 				const new_pos: Vec3 = vector.floor(pos);
 				new_pos.y += 0.5;
-				this.object.move_to(new_pos);
+				this.object.move_to(vector.create3d(pos.x, new_pos.y, pos.z));
 				this.object.set_acceleration(vector.create3d(0, 0, 0));
 				this.object.set_velocity(vector.create3d(0, 0, 0));
 			} else {
