@@ -307,7 +307,7 @@ namespace fire {
 				return;
 			}
 
-			if (luaEntity.fire_entity?.get_luaentity() == null) {
+			if (luaEntity.fireEntity?.get_luaentity() == null) {
 				const fireObject: ObjectRef | null = core.add_entity(
 					object.get_pos(),
 					"crafter_fire:fire"
@@ -359,10 +359,10 @@ namespace fire {
 				fireObject.set_properties({
 					visual_size: entityFireTable.visualSize,
 				});
-				luaEntity.fire_entity = fireObject;
+				luaEntity.fireEntity = fireObject;
 			} else {
 				const fireLuaEntity: FireEntity | null =
-					luaEntity.fire_entity.get_luaentity() as FireEntity | null;
+					luaEntity.fireEntity.get_luaentity() as FireEntity | null;
 
 				if (fireLuaEntity == null) {
 					core.log(
