@@ -318,6 +318,9 @@ namespace fire {
 					return;
 				}
 
+				const fireLuaEntity: FireEntity | null =
+					fire_obj.get_luaentity() as FireEntity | null;
+
 				// 			fire_obj:get_luaentity().owner = object
 				// 			local entity_fire_def = object.get_luaentity().fire_table
 				// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
