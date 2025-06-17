@@ -127,7 +127,15 @@ namespace fishing {
 			}
 
 			if (this.in_water) {
-				// 			local p = core.get_player_by_name(this.player)
+				const p: ObjectRef | null = core.get_player_by_name(
+					this.player
+				);
+
+				if (p == null) {
+					this.object.remove();
+					return;
+				}
+
 				// 			if p:get_player_control().RMB then
 				//                 local pos2 = p:get_pos()
 				// 				local vel = vector.direction(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z))
