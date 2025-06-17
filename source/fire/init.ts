@@ -386,7 +386,12 @@ namespace fire {
 	export function put_fire_out(object: ObjectRef): void {
 		if (object.is_player()) {
 			const name: string = object.get_player_name();
-			// 		if pool[name] then
+			const data: ObjectRef | undefined = pool.get(name);
+
+			if (data == null) {
+				return;
+			}
+
 			// 			fire_obj = pool[name]
 			// 			if fire_obj:get_luaentity() then
 			// 				fire_obj:remove()
@@ -394,7 +399,6 @@ namespace fire {
 			// 			pool[name] = nil
 			// 			fire_channels[name]:send_all("0")
 			// 			core.sound_play("fire_extinguish", {object=object,gain=0.3,pitch=math.random(80,100)/100})
-			// 		end
 		} else if (object.get_luaentity()) {
 			// 		if object.get_luaentity().fire_entity and object.get_luaentity().fire_entity:get_luaentity() then
 			// 			object.get_luaentity().fire_entity:remove()
