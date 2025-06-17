@@ -332,8 +332,24 @@ namespace fire {
 					return;
 				}
 
-				// 			fire_obj:get_luaentity().owner = object
-				// 			local entity_fire_def = object.get_luaentity().fire_table
+				let entityFireTable: types.EntityFireTable | null =
+					luaEntity.fireTable;
+
+				if (entityFireTable == null) {
+					// This will spam the terminal because nothing that can light on fire
+					// should be missing a fire table.
+					core.log(
+						LogLevel.warning,
+						`Entity: ${luaEntity.name} is missing a fire table!`
+					);
+					entityFireTable = {
+						position: vector.create3d(0, 0, 0),
+						visualSize: 1,
+					};
+				}
+
+				fireLuaEntity.owner = object;
+
 				// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
 				// 			fire_obj:set_properties({visual_size=entity_fire_def.visual_size})
 				// 			object.get_luaentity().fire_entity = fire_obj
