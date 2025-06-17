@@ -243,7 +243,13 @@ namespace fire {
 	}
 
 	export function is_entity_on_fire(object: ObjectRef): boolean {
-		return pool.has(object);
+		const luaEntity: types.Entity | null =
+			object.get_luaentity() as types.Entity | null;
+		if (luaEntity == null) {
+			core.log(LogLevel.warning, "Entity's LuaEntity is null.");
+			return false;
+		}
+		return luaEntity.fireEntity != null;
 	}
 
 	export function start_fire(object: ObjectRef): void {
