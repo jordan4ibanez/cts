@@ -1,4 +1,4 @@
-// local S = minetest.get_translator("hopper")
+// local S = core.get_translator("hopper")
 
 // -- formspec
 // local function get_hopper_formspec(pos)
@@ -26,24 +26,24 @@
 // 	-- because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
 // 	-- the default item_place_node orientation code will not orient them pointing toward the selected surface.
 // 	if x == -1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side") then
-// 		returned_stack, success = minetest.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 0)
+// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 0)
 // 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side") then
-// 		returned_stack, success = minetest.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 2)
+// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 2)
 // 	elseif z == -1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side")  then
-// 		returned_stack, success = minetest.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 3)
+// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 3)
 // 	elseif z == 1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side") then
-// 		returned_stack, success = minetest.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 1)
+// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 1)
 // 	else
 // 		if hopper.config.single_craftable_item then
 // 			node_name = "hopper:hopper" -- For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
 // 		end
-// 		returned_stack, success = minetest.item_place_node(ItemStack(node_name), placer, pointed_thing)
+// 		returned_stack, success = core.item_place_node(ItemStack(node_name), placer, pointed_thing)
 // 	end
-	
+
 // 	if success then
-// 		local meta = minetest.get_meta(pos2)
+// 		local meta = core.get_meta(pos2)
 // 		meta:set_string("placer", placer:get_player_name())
-// 		if not minetest.settings:get_bool("creative_mode") then
+// 		if not core.settings:get_bool("creative_mode") then
 // 			itemstack:take_item()
 // 		end
 // 	end
@@ -53,7 +53,7 @@
 // -------------------------------------------------------------------------------------------
 // -- Hoppers
 
-// minetest.register_node("hopper:hopper", {
+// core.register_node("hopper:hopper", {
 // 	drop = "hopper:hopper",
 // 	description = S("Hopper"),
 // 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
@@ -95,7 +95,7 @@
 // 	},
 
 // 	on_construct = function(pos)
-// 		local inv = minetest.get_meta(pos):get_inventory()
+// 		local inv = core.get_meta(pos):get_inventory()
 // 		inv:set_size("main", 4*4)
 // 	end,
 
@@ -104,16 +104,16 @@
 // 	end,
 
 // 	can_dig = function(pos, player)
-// 		local inv = minetest.get_meta(pos):get_inventory()
+// 		local inv = core.get_meta(pos):get_inventory()
 // 		return inv:is_empty("main")
 // 	end,
 
 // 	on_rightclick = function(pos, node, clicker, itemstack)
-// 		if minetest.is_protected(pos, clicker:get_player_name()) and not minetest.check_player_privs(clicker, "protection_bypass") then
+// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
 // 			return
 // 		end
-// 		minetest.show_formspec(clicker:get_player_name(),
-// 			"hopper_formspec:"..minetest.pos_to_string(pos), get_hopper_formspec(pos))
+// 		core.show_formspec(clicker:get_player_name(),
+// 			"hopper_formspec:"..core.pos_to_string(pos), get_hopper_formspec(pos))
 // 	end,
 // })
 
@@ -127,7 +127,7 @@
 // 	hopper_groups = {cracky=3}
 // end
 
-// minetest.register_node("hopper:hopper_side", {
+// core.register_node("hopper:hopper_side", {
 // 	description = S("Side Hopper"),
 // 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
 //     _doc_items_usagehelp = hopper.doc.hopper_usage,
@@ -170,26 +170,26 @@
 // 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
 // 		},
 // 	},
-	
+
 // 	on_construct = function(pos)
-// 		local inv = minetest.get_meta(pos):get_inventory()
+// 		local inv = core.get_meta(pos):get_inventory()
 // 		inv:set_size("main", 4*4)
 // 	end,
 
 // 	on_place = function(itemstack, placer, pointed_thing)
 // 		return hopper_on_place(itemstack, placer, pointed_thing, "hopper:hopper_side")
 // 	end,
-	
+
 // 	can_dig = function(pos,player)
-// 		local inv = minetest.get_meta(pos):get_inventory()
+// 		local inv = core.get_meta(pos):get_inventory()
 // 		return inv:is_empty("main")
 // 	end,
 
 // 	on_rightclick = function(pos, node, clicker, itemstack)
-// 		if minetest.is_protected(pos, clicker:get_player_name()) and not minetest.check_player_privs(clicker, "protection_bypass") then
+// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
 // 			return
 // 		end
-// 		minetest.show_formspec(clicker:get_player_name(),
-// 			"hopper_formspec:"..minetest.pos_to_string(pos), get_hopper_formspec(pos))
+// 		core.show_formspec(clicker:get_player_name(),
+// 			"hopper_formspec:"..core.pos_to_string(pos), get_hopper_formspec(pos))
 // 	end,
 // })

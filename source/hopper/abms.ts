@@ -1,6 +1,5 @@
-
 // -- suck in items on top of hopper
-// minetest.register_abm({
+// core.register_abm({
 // 	label = "Hopper suction",
 // 	nodenames = {"hopper:hopper", "hopper:hopper_side"},
 // 	interval = 0.1,
@@ -9,11 +8,11 @@
 // 		if active_object_count_wider == 0 then
 // 			return
 // 		end
-		
-// 		local inv = minetest.get_meta(pos):get_inventory()
+
+// 		local inv = core.get_meta(pos):get_inventory()
 // 		local posob
 
-// 		for _,object in pairs(minetest.get_objects_inside_radius(pos, 1)) do
+// 		for _,object in pairs(core.get_objects_inside_radius(pos, 1)) do
 // 			if not object:is_player()
 // 			and object:get_luaentity()
 // 			and object:get_luaentity().name == "__builtin:item"
@@ -77,7 +76,7 @@
 // end
 
 // -- hopper workings
-// minetest.register_abm({
+// core.register_abm({
 // 	label = "Hopper transfer",
 // 	nodenames = {"hopper:hopper", "hopper:hopper_side"},
 // 	neighbors = hopper.neighbors,
@@ -96,20 +95,20 @@
 // 			source_pos = vector.subtract(pos, destination_dir)
 // 			destination_pos = vector.add(pos, destination_dir)
 // 		end
-		
+
 // 		local output_direction
 // 		if destination_dir.y == 0 then
 // 			output_direction = "horizontal"
 // 		end
-		
-// 		local source_node = minetest.get_node(source_pos)
-// 		local destination_node = minetest.get_node(destination_pos)
+
+// 		local source_node = core.get_node(source_pos)
+// 		local destination_node = core.get_node(destination_pos)
 
 // 		local registered_source_inventories = hopper.get_registered_inventories_for(source_node.name)
 // 		if registered_source_inventories ~= nil then
 // 			hopper.take_item_from(pos, source_pos, source_node, registered_source_inventories["top"])
 // 		end
-		
+
 // 		local registered_destination_inventories = hopper.get_registered_inventories_for(destination_node.name)
 // 		if registered_destination_inventories ~= nil then
 // 			if output_direction == "horizontal" then
