@@ -308,8 +308,16 @@ namespace fire {
 			}
 
 			if (luaEntity.fire_entity?.get_luaentity() == null) {
-							luaEntity.on_fire = true
-				// 			fire_obj = core.add_entity(object.get_pos(),"crafter_fire:fire")
+				const fire_obj: ObjectRef | null = core.add_entity(
+					object.get_pos(),
+					"crafter_fire:fire"
+				);
+
+				if (fire_obj == null) {
+					core.log(LogLevel.warning, `Failed to add fire to entity`);
+					return;
+				}
+
 				// 			fire_obj:get_luaentity().owner = object
 				// 			local entity_fire_def = object.get_luaentity().fire_table
 				// 			fire_obj:set_attach(object, "", entity_fire_def.position,vector.new(0,0,0))
