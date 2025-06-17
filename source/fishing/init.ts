@@ -2,10 +2,10 @@ namespace fishing {
 	//  local players_fishing = {}
 
 	 core.register_craftitem("crafter_fishing:pole", {
-	// 	description = "Fishing Pole",
-	// 	inventory_image = "fishing_rod.png",
-	// 	stack_max = 1,
-	// 	range = 0,
+		description = "Fishing Pole",
+		inventory_image = "fishing_rod.png",
+		stack_max = 1,
+		range = 0,
 	// 	on_use = function(itemstack, user, pointed_thing)
 	// 		//core.sound_play("reload_gun",{object=user, pitch = math.random(80,100)/100})
 	// 		//print("reload")
