@@ -1,14 +1,18 @@
 namespace hopper {
-	// hopper.formspec_bg = "background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]"
-	// dofile(MP.."/config.lua")
-	// dofile(MP.."/api.lua")
-	// dofile(MP.."/utility.lua")
-	// dofile(MP.."/doc.lua")
-	// dofile(MP.."/nodes/hoppers.lua")
-	// dofile(MP.."/nodes/chute.lua")
-	// dofile(MP.."/nodes/sorter.lua")
-	// dofile(MP.."/crafts.lua")
-	// dofile(MP.."/abms.lua")
+	export const formspec_bg: string =
+		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]";
+
+	utility.loadFiles([
+		"config",
+		"api",
+		"utility",
+		"doc",
+		"nodes/hoppers",
+		"nodes/chute",
+		"nodes/sorter",
+		"crafts",
+		"abms",
+	]);
 	// Formspec handling.
 	core.register_on_player_receive_fields((player, formname, fields) => {
 		if ("hopper_formspec:" == string.sub(formname, 1, 16)) {
