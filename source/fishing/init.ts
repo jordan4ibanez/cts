@@ -89,19 +89,19 @@ namespace fishing {
 		catch_timer: number = 0;
 
 		on_activate() {
-			// 	self.object:set_acceleration(vector.new(0,-10,0))
+			this.object.set_acceleration(vector.create3d(0, -10, 0));
 		}
 
 		// lure.on_step = function(self, dtime)
-		// 	local pos = self.object:get_pos()
+		// 	local pos = this.object.get_pos()
 		// 	local node = core.get_node(pos).name
 		// 	if node == "crafter:water" then
 		// 		self.in_water = true
 		// 		local new_pos = vector.floor(pos)
 		// 		new_pos.y = new_pos.y + 0.5
-		// 		self.object:move_to(vector.new(pos.x,new_pos.y,pos.z))
-		// 		self.object:set_acceleration(vector.new(0,0,0))
-		// 		self.object:set_velocity(vector.new(0,0,0))
+		// 		this.object.move_to(vector.new(pos.x,new_pos.y,pos.z))
+		// 		this.object.set_acceleration(vector.new(0,0,0))
+		// 		this.object.set_velocity(vector.new(0,0,0))
 		//     else
 		//         local newp = table.copy(pos)
 		//         newp.y = newp.y - 0.1
@@ -111,7 +111,7 @@ namespace fishing {
 		// 				players_fishing[self.player] = nil
 		// 			end
 		// 			core.sound_play("line_break",{pos=pos,gain=0.3})
-		//             self.object:remove()
+		//             this.object.remove()
 		//         end
 		// 	end
 
@@ -121,7 +121,7 @@ namespace fishing {
 		// 			if p:get_player_control().RMB then
 		//                 local pos2 = p:get_pos()
 		// 				local vel = vector.direction(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z))
-		// 				self.object:set_velocity(vector.multiply(vel,2))
+		// 				this.object.set_velocity(vector.multiply(vel,2))
 		// 				self.catch_timer = self.catch_timer + dtime
 		// 				if self.catch_timer >= 0.5 then
 		// 					self.catch_timer = 0
@@ -136,24 +136,24 @@ namespace fishing {
 		// 							core.sound_play("splash",{pos=obj:get_pos(),gain=0.25})
 		// 						end
 		// 						players_fishing[self.player] = nil
-		// 						self.object:remove()
+		// 						this.object.remove()
 		// 					end
 		//                 end
 		// 			else
-		// 				self.object:set_velocity(vector.new(0,0,0))
+		// 				this.object.set_velocity(vector.new(0,0,0))
 		// 			end
 		//             if p then
 		//                 local pos2 = p:get_pos()
 		//                 if vector.distance(vector.new(pos.x,0,pos.z),vector.new(pos2.x,0,pos2.z)) < 1 then
 		// 					players_fishing[self.player] = nil
 		// 					core.sound_play("line_break",{pos=pos,gain=0.3,pitch=0.5})
-		//                     self.object:remove()
+		//                     this.object.remove()
 		//                 end
 		//             end
 		// 		end
 		// 	end
 		// 	if self.player == nil then
-		// 		self.object:remove()
+		// 		this.object.remove()
 		// 	end
 		// end
 	}
