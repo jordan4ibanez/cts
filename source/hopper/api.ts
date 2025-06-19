@@ -30,59 +30,58 @@ namespace hopper {
 			}
 
 			for (const component of componentArray) {
-				// print(key, def);
-				// const target_node = def.nodeOrGroup;
-				// 	let neighbor_node: string = "";
-				// 	if (string.sub(target_node, 1, 6) == "group:") {
-				// 		let group_identifier: string | null = null;
-				// 		let group_number: number | string | null = null;
-				// 		const [equals_index, _] = string.find(target_node, "=");
-				// 		if (equals_index != null) {
-				// 			group_identifier = string.sub(
-				// 				target_node,
-				// 				7,
-				// 				equals_index - 1
-				// 			);
-				// 			// It's possible that the string was of the form "group:blah = 1", in which case we want to trim spaces off the end of the group identifier.
-				// 			const [space_index] = string.find(group_identifier, " ");
-				// 			if (space_index != null) {
-				// 				group_identifier = string.sub(
-				// 					group_identifier,
-				// 					1,
-				// 					space_index - 1
-				// 				);
-				// 			}
-				// 			group_number =
-				// 				tonumber(
-				// 					string.sub(target_node, equals_index + 1, -1)
-				// 				) || 0;
-				// 		} else {
-				// 			group_identifier = string.sub(target_node, 7, -1);
-				// 			// special value to indicate no number was provided.
-				// 			group_number = "all";
-				// 		}
-				// 		let group_info: Dictionary<string, any> =
-				// 			hopper.groups[group_identifier];
-				// 		if (group_info == null) {
-				// 			group_info = {};
-				// 		}
-				// 		if (group_info[group_number] == null) {
-				// 			group_info[group_number] = {};
-				// 		}
-				// 		group_info[group_number][entry[0]] = entry[2];
-				// 		hopper.groups[group_identifier] = group_info;
-				// 		neighbor_node = "group:" + group_identifier;
-				// 		// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
-				// 	} else {
-				// 		let node_info = hopper.containers[target_node];
-				// 		if (node_info == null) {
-				// 			node_info = {};
-				// 		}
-				// 		node_info[entry[0]] = entry[2];
-				// 		hopper.containers[target_node] = node_info;
-				// 		neighbor_node = target_node;
-				// 		// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
-				// 	}
+				const target_node = component.nodeOrGroup;
+				let neighbor_node: string = "";
+				if (string.sub(target_node, 1, 6) == "group:") {
+					// 		let group_identifier: string | null = null;
+					// 		let group_number: number | string | null = null;
+					// 		const [equals_index, _] = string.find(target_node, "=");
+					// 		if (equals_index != null) {
+					// 			group_identifier = string.sub(
+					// 				target_node,
+					// 				7,
+					// 				equals_index - 1
+					// 			);
+					// 			// It's possible that the string was of the form "group:blah = 1", in which case we want to trim spaces off the end of the group identifier.
+					// 			const [space_index] = string.find(group_identifier, " ");
+					// 			if (space_index != null) {
+					// 				group_identifier = string.sub(
+					// 					group_identifier,
+					// 					1,
+					// 					space_index - 1
+					// 				);
+					// 			}
+					// 			group_number =
+					// 				tonumber(
+					// 					string.sub(target_node, equals_index + 1, -1)
+					// 				) || 0;
+					// 		} else {
+					// 			group_identifier = string.sub(target_node, 7, -1);
+					// 			// special value to indicate no number was provided.
+					// 			group_number = "all";
+					// 		}
+					// 		let group_info: Dictionary<string, any> =
+					// 			hopper.groups[group_identifier];
+					// 		if (group_info == null) {
+					// 			group_info = {};
+					// 		}
+					// 		if (group_info[group_number] == null) {
+					// 			group_info[group_number] = {};
+					// 		}
+					// 		group_info[group_number][entry[0]] = entry[2];
+					// 		hopper.groups[group_identifier] = group_info;
+					// 		neighbor_node = "group:" + group_identifier;
+					// 		// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
+				} else {
+					// 		let node_info = hopper.containers[target_node];
+					// 		if (node_info == null) {
+					// 			node_info = {};
+					// 		}
+					// 		node_info[entry[0]] = entry[2];
+					// 		hopper.containers[target_node] = node_info;
+					// 		neighbor_node = target_node;
+					// 		// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
+				}
 				// 	let already_in_neighbors: boolean = false;
 				// 	for (const [_, value] of pairs(neighbors)) {
 				// 		if (value == neighbor_node) {
