@@ -91,7 +91,9 @@ namespace hopper {
 					neighbor_node = target_node;
 					// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
 				}
-					let already_in_neighbors: boolean = false;
+
+				neighbors.add(neighbor_node);
+				let already_in_neighbors: boolean = false;
 				// 	for (const [_, value] of pairs(neighbors)) {
 				// 		if (value == neighbor_node) {
 				// 			already_in_neighbors = true;
