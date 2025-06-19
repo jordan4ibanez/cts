@@ -36,7 +36,7 @@ namespace hopper {
 
 			// This is a modular construction of neighbor component data.
 			for (const component of componentArray) {
-				// Create the object if it does not already exist.
+				// Create the ContainerData object if it does not already exist.
 				const newContainerData: ContainerData =
 					containers[component.neighborNode] || {};
 
