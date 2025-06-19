@@ -1,7 +1,9 @@
 namespace hopper {
-	// hopper.containers = {}
+	export const containers: Dictionary<string, any> = {};
+
 	export const groups: Dictionary<string, any> = {};
 	// hopper.neighbors = {}
+
 	// Global function to add new containers.
 
 	export function add_container(list: any[]) {
@@ -53,14 +55,14 @@ namespace hopper {
 				neighbor_node = "group:" + group_identifier;
 				// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
 			} else {
-				// 			local node_info = hopper.containers[target_node]
-				// 			if node_info == nil then
-				// 				node_info = {}
-				// 			end
-				// 			node_info[entry[1]] = entry[3]
-				// 			hopper.containers[target_node] = node_info
-				// 			neighbor_node = target_node
-				// 			// result is a table of the form containers[target_node_name][relative_position][inventory_name]
+				let node_info = hopper.containers[target_node];
+				if (node_info == null) {
+					node_info = {};
+				}
+				node_info[entry[0]] = entry[2];
+				hopper.containers[target_node] = node_info;
+				neighbor_node = target_node;
+				// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
 			}
 
 			// 		local already_in_neighbors = false
