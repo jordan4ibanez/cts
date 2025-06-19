@@ -1,3 +1,4 @@
+namespace hopper {
 // local S = core.get_translator("hopper")
 // -- Target inventory retrieval
 
@@ -160,3 +161,4 @@
 // 	end
 // 	return false
 // end
+}
