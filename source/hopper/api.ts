@@ -1,6 +1,6 @@
 namespace hopper {
 	// hopper.containers = {}
-	// hopper.groups = {}
+	export const groups: Dictionary<string, any> = {};
 	// hopper.neighbors = {}
 	// Global function to add new containers.
 
@@ -35,7 +35,7 @@ namespace hopper {
 					group_number = "all";
 				}
 
-				// 			local group_info = hopper.groups[group_identifier]
+				const group_info = hopper.groups[group_identifier];
 				// 			if group_info == nil then
 				// 				group_info = {}
 				// 			end
