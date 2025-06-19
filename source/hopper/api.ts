@@ -111,12 +111,10 @@ namespace hopper {
 	// 	{"bottom", "utility:chest_open", "main"},
 	// 	{"bottom", "utility:furnace", "src"},
 	// 	{"bottom", "utility:furnace_active", "src"},
+
 	// 	{"side", "utility:chest", "main"},
-
 	// 	{"side", "utility:chest_open", "main"},
-
 	// 	{"side", "utility:furnace", "fuel"},
-
 	// 	{"side", "utility:furnace_active", "fuel"},
 	// })
 }
