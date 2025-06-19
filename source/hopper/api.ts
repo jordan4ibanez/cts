@@ -59,7 +59,6 @@ namespace hopper {
 	// "top" indicates what inventory the hopper will take items from if this node is located at the hopper's wide end.
 	// "side" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and at the same height as the hopper.
 	// "bottom" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and either above or below the hopper.
-
 	hopper.add_container({
 		top: [{ neighborNode: "hopper:hopper", inv: "main" }],
 		bottom: [
