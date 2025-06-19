@@ -14,14 +14,6 @@ namespace hopper {
 		side?: HopperComponent[];
 	}
 
-	function instanceOfHopperComponent(input: any): input is HopperComponent {
-		print((input as HopperComponent).nodeOrGroup);
-		return (
-			(input as HopperComponent).nodeOrGroup != null &&
-			(input as HopperComponent).inv != null
-		);
-	}
-
 	const keySet: (keyof HopperRegistrationDefinition)[] = [
 		"top",
 		"bottom",
@@ -31,25 +23,7 @@ namespace hopper {
 	// Global function to add new containers.
 	export function add_container(list: HopperRegistrationDefinition) {
 		for (const [key, def] of Object.entries(list)) {
-			// Check if array.
-			if (
-				def == null ||
-				typeof def != "object" ||
-				(def as any[]).length == null
-			) {
-				continue;
-			}
-
-			for (let component of def) {
-				if (!instanceOfHopperComponent(def)) {
-					continue;
-				}
-
-				component = component as HopperComponent;
-			}
-
 			// print(key, def);
-
 			// const target_node = def.nodeOrGroup;
 			// 	let neighbor_node: string = "";
 			// 	if (string.sub(target_node, 1, 6) == "group:") {
