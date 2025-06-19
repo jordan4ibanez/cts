@@ -30,8 +30,9 @@ namespace hopper {
 						string.sub(target_node, equals_index + 1, -1)
 					);
 				} else {
-					// 				group_identifier = string.sub(target_node, 7, -1)
-					// 				group_number = "all" // special value to indicate no number was provided
+					group_identifier = string.sub(target_node, 7, -1);
+					// special value to indicate no number was provided.
+					group_number = "all";
 				}
 
 				// 			local group_info = hopper.groups[group_identifier]
