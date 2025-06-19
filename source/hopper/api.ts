@@ -1,6 +1,6 @@
 namespace hopper {
 	export const containers: Dictionary<string, any> = {};
-	export const groups: Dictionary<string, any> = {};
+
 	export const neighbors = new Set<string>();
 
 	export interface HopperComponent {
@@ -33,10 +33,15 @@ namespace hopper {
 				const neighbor_node = component.neighborNode;
 
 				let node_info = containers[neighbor_node];
+
 				if (node_info == null) {
 					node_info = {};
 				}
+
 				node_info[key] = component.inv;
+
+				print(dump(node_info));
+
 				containers[neighbor_node] = node_info;
 
 				// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
