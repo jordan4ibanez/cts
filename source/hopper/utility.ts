@@ -35,11 +35,11 @@ namespace hopper {
 // 		eject_button_text = S("Eject\nItems")
 // 		eject_button_tooltip = S("This hopper is currently set to hold on to item if there\nisn't a compatible block positioned to receive it.\nClick this button to have it eject items instead.")
 // 	end
-// 	return "button_exit["..loc_X..","..loc_Y..";1,1;eject;"..eject_button_text.."]tooltip[eject;"..eject_button_tooltip.."]"
+// 	return "button_exit["+loc_X+","+loc_Y+";1,1;eject;"+eject_button_text+"]tooltip[eject;"+eject_button_tooltip+"]"
 // end
 
 // hopper.get_string_pos = function(pos)
-// 	return pos.x .. "," .. pos.y .. "," ..pos.z
+// 	return pos.x + "," + pos.y + "," +pos.z
 // end
 
 // // Apparently node_sound_metal_defaults is a newer thing, I ran into games using an older version of the default mod without it.
