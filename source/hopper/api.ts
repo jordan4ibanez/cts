@@ -110,11 +110,11 @@ namespace hopper {
 		],
 
 		bottom: [
-		// 	{nodeOrGroup: "utility:chest", "main"},
-		// 	{nodeOrGroup: "utility:chest_open", "main"},
-		// 	{nodeOrGroup: "utility:furnace", "src"},
-		// 	{nodeOrGroup: "utility:furnace_active", "src"},
-		]
+			{ nodeOrGroup: "utility:chest", inv: "main" },
+			{ nodeOrGroup: "utility:chest_open", inv: "main" },
+			{ nodeOrGroup: "utility:furnace", inv: "src" },
+			{ nodeOrGroup: "utility:furnace_active", inv: "src" },
+		],
 
 		// 	{"side", "utility:chest", "main"},
 		// 	{"side", "utility:chest_open", "main"},
