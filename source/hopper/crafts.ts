@@ -1,10 +1,10 @@
 namespace hopper {
 core.register_craft({
 	output : "hopper:hopper",
-	recipe : {
-		{"main:iron","utility:chest","main:iron"},
-		{"","main:iron",""},
-	}
+	recipe : [
+		["main:iron","utility:chest","main:iron"],
+		["","main:iron",""],
+	]
 })
 
 core.register_craft({
