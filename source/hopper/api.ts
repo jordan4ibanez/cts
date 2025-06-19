@@ -4,7 +4,7 @@ namespace hopper {
 	export const neighbors = new Set<string>();
 
 	export interface HopperComponent {
-		nodeOrGroup: string;
+		neighborNode: string;
 		inv: string;
 	}
 
@@ -30,7 +30,7 @@ namespace hopper {
 			}
 
 			for (const component of componentArray) {
-				const neighbor_node = component.nodeOrGroup;
+				const neighbor_node = component.neighborNode;
 
 				let node_info = containers[neighbor_node];
 				if (node_info == null) {
@@ -51,38 +51,38 @@ namespace hopper {
 	// "bottom" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and either above or below the hopper.
 
 	hopper.add_container({
-		top: [{ nodeOrGroup: "hopper:hopper", inv: "main" }],
+		top: [{ neighborNode: "hopper:hopper", inv: "main" }],
 		bottom: [
-			{ nodeOrGroup: "hopper:hopper", inv: "main" },
-			{ nodeOrGroup: "hopper:chute", inv: "main" },
-			{ nodeOrGroup: "hopper:sorter", inv: "main" },
+			{ neighborNode: "hopper:hopper", inv: "main" },
+			{ neighborNode: "hopper:chute", inv: "main" },
+			{ neighborNode: "hopper:sorter", inv: "main" },
 		],
 		side: [
-			{ nodeOrGroup: "hopper:hopper", inv: "main" },
-			{ nodeOrGroup: "hopper:hopper_side", inv: "main" },
-			{ nodeOrGroup: "hopper:chute", inv: "main" },
-			{ nodeOrGroup: "hopper:sorter", inv: "main" },
+			{ neighborNode: "hopper:hopper", inv: "main" },
+			{ neighborNode: "hopper:hopper_side", inv: "main" },
+			{ neighborNode: "hopper:chute", inv: "main" },
+			{ neighborNode: "hopper:sorter", inv: "main" },
 		],
 	});
 
 	hopper.add_container({
 		top: [
-			{ nodeOrGroup: "utility:chest", inv: "main" },
-			{ nodeOrGroup: "utility:chest_open", inv: "main" },
-			{ nodeOrGroup: "utility:furnace", inv: "dst" },
-			{ nodeOrGroup: "utility:furnace_active", inv: "dst" },
+			{ neighborNode: "utility:chest", inv: "main" },
+			{ neighborNode: "utility:chest_open", inv: "main" },
+			{ neighborNode: "utility:furnace", inv: "dst" },
+			{ neighborNode: "utility:furnace_active", inv: "dst" },
 		],
 		bottom: [
-			{ nodeOrGroup: "utility:chest", inv: "main" },
-			{ nodeOrGroup: "utility:chest_open", inv: "main" },
-			{ nodeOrGroup: "utility:furnace", inv: "src" },
-			{ nodeOrGroup: "utility:furnace_active", inv: "src" },
+			{ neighborNode: "utility:chest", inv: "main" },
+			{ neighborNode: "utility:chest_open", inv: "main" },
+			{ neighborNode: "utility:furnace", inv: "src" },
+			{ neighborNode: "utility:furnace_active", inv: "src" },
 		],
 		side: [
-			{ nodeOrGroup: "utility:chest", inv: "main" },
-			{ nodeOrGroup: "utility:chest_open", inv: "main" },
-			{ nodeOrGroup: "utility:furnace", inv: "fuel" },
-			{ nodeOrGroup: "utility:furnace_active", inv: "fuel" },
+			{ neighborNode: "utility:chest", inv: "main" },
+			{ neighborNode: "utility:chest_open", inv: "main" },
+			{ neighborNode: "utility:furnace", inv: "fuel" },
+			{ neighborNode: "utility:furnace_active", inv: "fuel" },
 		],
 	});
 }
