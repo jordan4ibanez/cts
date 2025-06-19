@@ -103,20 +103,20 @@ namespace hopper {
 
 	hopper.add_container({
 		top: [
-	// 	{ "utility:chest", "main"},
-	// 	{ "utility:chest_open", "main"},
-	// 	{ "utility:furnace", "dst"},
-	// 	{ "utility:furnace_active", "dst"},
-		]
+			{ nodeOrGroup: "utility:chest", inv: "main" },
+			{ nodeOrGroup: "utility:chest_open", inv: "main" },
+			{ nodeOrGroup: "utility:furnace", inv: "dst" },
+			{ nodeOrGroup: "utility:furnace_active", inv: "dst" },
+		],
 
-	// 	{"bottom", "utility:chest", "main"},
-	// 	{"bottom", "utility:chest_open", "main"},
-	// 	{"bottom", "utility:furnace", "src"},
-	// 	{"bottom", "utility:furnace_active", "src"},
+		// 	{"bottom", "utility:chest", "main"},
+		// 	{"bottom", "utility:chest_open", "main"},
+		// 	{"bottom", "utility:furnace", "src"},
+		// 	{"bottom", "utility:furnace_active", "src"},
 
-	// 	{"side", "utility:chest", "main"},
-	// 	{"side", "utility:chest_open", "main"},
-	// 	{"side", "utility:furnace", "fuel"},
-	// 	{"side", "utility:furnace_active", "fuel"},
-	})
+		// 	{"side", "utility:chest", "main"},
+		// 	{"side", "utility:chest_open", "main"},
+		// 	{"side", "utility:furnace", "fuel"},
+		// 	{"side", "utility:furnace_active", "fuel"},
+	});
 }
