@@ -4,7 +4,7 @@ namespace hopper {
 	export const neighbors: Dictionary<string, any> = {};
 
 	export interface HopperComponent {
-		node: string;
+		nodeOrGroup: string;
 		inv: string;
 	}
 
@@ -87,7 +87,7 @@ namespace hopper {
 	// "bottom" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and either above or below the hopper.
 
 	hopper.add_container({
-		top: [{ node: "hopper:hopper", inv: "main" }],
+		top: [{ nodeOrGroup: "hopper:hopper", inv: "main" }],
 
 		// 	{"bottom", "hopper:hopper", "main"},
 		// 	{"bottom", "hopper:chute", "main"},
