@@ -31,7 +31,7 @@ namespace hopper {
 
 			for (const component of componentArray) {
 				const target_node = component.nodeOrGroup;
-				let neighbor_node: string = "";
+				let neighbor_node: string | null = null;
 				if (string.sub(target_node, 1, 6) == "group:") {
 					let group_identifier: string | null = null;
 
