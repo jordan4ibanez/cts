@@ -82,12 +82,12 @@ namespace hopper {
 					neighbor_node = "group:" + group_identifier;
 					// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
 				} else {
-					let node_info = hopper.containers[target_node];
+					let node_info = containers[target_node];
 					if (node_info == null) {
 						node_info = {};
 					}
 					node_info[key] = component.inv;
-					hopper.containers[target_node] = node_info;
+					containers[target_node] = node_info;
 					neighbor_node = target_node;
 					// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
 				}
