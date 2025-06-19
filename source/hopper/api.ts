@@ -1,7 +1,7 @@
 namespace hopper {
 	export const containers: Dictionary<string, any> = {};
 	export const groups: Dictionary<string, any> = {};
-	export const neighbors: Dictionary<string, any> = {};
+	export const neighbors = new Set<string>();
 
 	export interface HopperComponent {
 		nodeOrGroup: string;
