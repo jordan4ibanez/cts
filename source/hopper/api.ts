@@ -3,9 +3,16 @@ namespace hopper {
 	export const groups: Dictionary<string, any> = {};
 	export const neighbors: Dictionary<string, any> = {};
 
-	// Global function to add new containers.
+	export interface HopperComponent {}
 
-	export function add_container(list: any[]) {
+	export interface HopperRegistrationDefinition {
+		top?: HopperComponent[];
+		bottom?: HopperComponent[];
+		side?: HopperComponent[];
+	}
+
+	// Global function to add new containers.
+	export function add_container(list: HopperRegistrationDefinition) {
 		// for (const [_, entry] of pairs(list)) {
 		// 	const target_node = entry[1];
 		// 	let neighbor_node: string = "";
