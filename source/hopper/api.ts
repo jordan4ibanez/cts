@@ -9,8 +9,8 @@ namespace hopper {
 			const target_node = entry[1];
 			let neighbor_node: string = "";
 			if (string.sub(target_node, 1, 6) == "group:") {
-				let group_identifier;
-				let group_number: number = 0;
+				let group_identifier: string | null = null;
+				let group_number: number | string | null = null;
 
 				const [equals_index, _] = string.find(target_node, "=");
 				if (equals_index != null) {
@@ -40,6 +40,7 @@ namespace hopper {
 
 				let group_info: Dictionary<string, any> =
 					hopper.groups[group_identifier];
+
 				if (group_info == null) {
 					group_info = {};
 				}
