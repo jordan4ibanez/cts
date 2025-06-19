@@ -49,7 +49,7 @@ namespace hopper {
 				// Now update the data in the container dictionary.
 				containers[neighborNode] = newContainerData;
 
-				// Now push the neighbor data
+				// Now push the neighbor data into the set. It will be used for the ABM.
 				neighbors.add(neighborNode);
 			}
 		}
