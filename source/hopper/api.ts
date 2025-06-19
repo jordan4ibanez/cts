@@ -2,7 +2,7 @@ namespace hopper {
 	// hopper.containers = {}
 	// hopper.groups = {}
 	// hopper.neighbors = {}
-	// -- global function to add new containers
+	// Global function to add new containers.
 
 	export function add_container(list: any[]) {
 		for (const [_, entry] of pairs(list)) {
@@ -12,16 +12,20 @@ namespace hopper {
 				let group_identifier, group_number;
 				const [equals_index, _] = string.find(target_node, "=");
 				if (equals_index != null) {
-									group_identifier = string.sub(target_node, 7, equals_index-1)
-					// 				-- it's possible that the string was of the form "group:blah = 1", in which case we want to trim spaces off the end of the group identifier
-									const [space_index] = string.find(group_identifier, " ")
-									if (space_index != null) {
-					// 					group_identifier = string.sub(group_identifier, 1, space_index-1)
-									}
+					group_identifier = string.sub(
+						target_node,
+						7,
+						equals_index - 1
+					);
+					// 				// it's possible that the string was of the form "group:blah = 1", in which case we want to trim spaces off the end of the group identifier
+					const [space_index] = string.find(group_identifier, " ");
+					if (space_index != null) {
+						// 					group_identifier = string.sub(group_identifier, 1, space_index-1)
+					}
 					// 				group_number = tonumber(string.sub(target_node, equals_index+1, -1))
 				} else {
 					// 				group_identifier = string.sub(target_node, 7, -1)
-					// 				group_number = "all" -- special value to indicate no number was provided
+					// 				group_number = "all" // special value to indicate no number was provided
 				}
 
 				// 			local group_info = hopper.groups[group_identifier]
@@ -34,7 +38,7 @@ namespace hopper {
 				// 			group_info[group_number][entry[1]] = entry[3]
 				// 			hopper.groups[group_identifier] = group_info
 				// 			neighbor_node = "group:"..group_identifier
-				// 			-- result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name]
+				// 			// result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name]
 			} else {
 				// 			local node_info = hopper.containers[target_node]
 				// 			if node_info == nil then
@@ -43,7 +47,7 @@ namespace hopper {
 				// 			node_info[entry[1]] = entry[3]
 				// 			hopper.containers[target_node] = node_info
 				// 			neighbor_node = target_node
-				// 			-- result is a table of the form containers[target_node_name][relative_position][inventory_name]
+				// 			// result is a table of the form containers[target_node_name][relative_position][inventory_name]
 			}
 
 			// 		local already_in_neighbors = false
@@ -59,9 +63,9 @@ namespace hopper {
 		}
 	}
 
-	// -- "top" indicates what inventory the hopper will take items from if this node is located at the hopper's wide end
-	// -- "side" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and at the same height as the hopper
-	// -- "bottom" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and either above or below the hopper.
+	// // "top" indicates what inventory the hopper will take items from if this node is located at the hopper's wide end
+	// // "side" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and at the same height as the hopper
+	// // "bottom" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and either above or below the hopper.
 	// hopper:add_container({
 	// 	{"top", "hopper:hopper", "main"},
 	// 	{"bottom", "hopper:hopper", "main"},
