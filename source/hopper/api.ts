@@ -93,7 +93,6 @@ namespace hopper {
 			{ nodeOrGroup: "hopper:chute", inv: "main" },
 			{ nodeOrGroup: "hopper:sorter", inv: "main" },
 		],
-
 		side: [
 			{ nodeOrGroup: "hopper:hopper", inv: "main" },
 			{ nodeOrGroup: "hopper:hopper_side", inv: "main" },
@@ -106,12 +105,15 @@ namespace hopper {
 	// 	{"top", "utility:chest", "main"},
 	// 	{"bottom", "utility:chest", "main"},
 	// 	{"side", "utility:chest", "main"},
+
 	// 	{"top", "utility:chest_open", "main"},
 	// 	{"bottom", "utility:chest_open", "main"},
 	// 	{"side", "utility:chest_open", "main"},
+
 	// 	{"top", "utility:furnace", "dst"},
 	// 	{"bottom", "utility:furnace", "src"},
 	// 	{"side", "utility:furnace", "fuel"},
+	
 	// 	{"top", "utility:furnace_active", "dst"},
 	// 	{"bottom", "utility:furnace_active", "src"},
 	// 	{"side", "utility:furnace_active", "fuel"},
