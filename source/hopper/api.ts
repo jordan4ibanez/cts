@@ -103,18 +103,22 @@ namespace hopper {
 
 	// hopper:add_container({
 	// 	{"top", "utility:chest", "main"},
+	// 	{"top", "utility:chest_open", "main"},
+	// 	{"top", "utility:furnace", "dst"},
+	// 	{"top", "utility:furnace_active", "dst"},
+	
 	// 	{"bottom", "utility:chest", "main"},
 	// 	{"side", "utility:chest", "main"},
 
-	// 	{"top", "utility:chest_open", "main"},
+	
 	// 	{"bottom", "utility:chest_open", "main"},
 	// 	{"side", "utility:chest_open", "main"},
 
-	// 	{"top", "utility:furnace", "dst"},
+	
 	// 	{"bottom", "utility:furnace", "src"},
 	// 	{"side", "utility:furnace", "fuel"},
+
 	
-	// 	{"top", "utility:furnace_active", "dst"},
 	// 	{"bottom", "utility:furnace_active", "src"},
 	// 	{"side", "utility:furnace_active", "fuel"},
 	// })
