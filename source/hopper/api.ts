@@ -12,12 +12,12 @@ namespace hopper {
 				let group_identifier, group_number;
 				const [equals_index, _] = string.find(target_node, "=");
 				if (equals_index != null) {
-					// 				group_identifier = string.sub(target_node, 7, equals_index-1)
+									group_identifier = string.sub(target_node, 7, equals_index-1)
 					// 				-- it's possible that the string was of the form "group:blah = 1", in which case we want to trim spaces off the end of the group identifier
-					// 				local space_index = string.find(group_identifier, " ")
-					// 				if space_index ~= nil then
+									const [space_index] = string.find(group_identifier, " ")
+									if (space_index != null) {
 					// 					group_identifier = string.sub(group_identifier, 1, space_index-1)
-					// 				end
+									}
 					// 				group_number = tonumber(string.sub(target_node, equals_index+1, -1))
 				} else {
 					// 				group_identifier = string.sub(target_node, 7, -1)
