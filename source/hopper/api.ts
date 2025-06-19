@@ -66,19 +66,19 @@ namespace hopper {
 						group_number = "all";
 					}
 
-					let group_info: Dictionary<string, any> | null =
-						hopper.groups[group_identifier];
+					let groupInfo: Dictionary<string, any> | null =
+						groups[group_identifier];
 
-					if (group_info == null) {
-						group_info = {};
+					if (groupInfo == null) {
+						groupInfo = {};
 					}
 
-					if (group_info[group_number] == null) {
-						group_info[group_number] = {};
+					if (groupInfo[group_number] == null) {
+						groupInfo[group_number] = {};
 					}
 
-					group_info[group_number][key] = component.inv;
-					hopper.groups[group_identifier] = group_info;
+					groupInfo[group_number][key] = component.inv;
+					hopper.groups[group_identifier] = groupInfo;
 					neighbor_node = "group:" + group_identifier;
 					// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
 				} else {
