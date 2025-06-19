@@ -25,7 +25,14 @@ namespace hopper {
 	// Global function to add new containers.
 	export function add_container(list: HopperRegistrationDefinition) {
 		for (const [key, def] of Object.entries(list)) {
-			print(dump(def));
+			// Check if array.
+			if (
+				def == null ||
+				typeof def != "object" ||
+				(def as any[]).length == null
+			) {
+				continue;
+			}
 
 			if (!instanceOfHopperComponent(def)) {
 				continue;
