@@ -34,6 +34,7 @@ namespace hopper {
 				continue;
 			}
 
+			// This is a modular construction of neighbor component data.
 			for (const component of componentArray) {
 				const neighborNode: string = component.neighborNode;
 
@@ -41,7 +42,9 @@ namespace hopper {
 					containers[neighborNode] || {};
 
 				newNeighborData[key] = component.inv;
+
 				containers[neighborNode] = newNeighborData;
+
 				neighbors.add(neighborNode);
 			}
 		}
