@@ -9,18 +9,18 @@ core.register_craft({
 
 core.register_craft({
 	output : "hopper:chute",
-	recipe : {
-		{"main:iron","utility:chest","main:iron"},
-	}
+	recipe : [
+		["main:iron","utility:chest","main:iron"],
+	]
 })
 
 core.register_craft({
 	output : "hopper:sorter",
-	recipe : {
-		{"","main:gold",""},
-		{"main:iron","utility:chest","main:iron"},
-		{"","main:iron",""},
-	}
+	recipe : [
+		["","main:gold",""],
+		["main:iron","utility:chest","main:iron"],
+		["","main:iron",""],
+	]
 })
 
 if not hopper.config.single_craftable_item then
