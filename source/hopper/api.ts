@@ -36,21 +36,19 @@ namespace hopper {
 
 			// This is a modular construction of neighbor component data.
 			for (const component of componentArray) {
-				const neighborNode: string = component.neighborNode;
-
 				// Create the object if it does not already exist.
 				const newContainerData: ContainerData =
-					containers[neighborNode] || {};
+					containers[component.neighborNode] || {};
 
 				// keyof HopperComponent is equal to NeighborData so it can be safety synchronized and used as a key.
 				// Push the new data component into the object via the key.
 				newContainerData[key] = component.inv;
 
 				// Now update the data in the container dictionary.
-				containers[neighborNode] = newContainerData;
+				containers[component.neighborNode] = newContainerData;
 
 				// Now push the neighbor data into the set. It will be used for the ABM.
-				neighbors.add(neighborNode);
+				neighbors.add(component.neighborNode);
 			}
 		}
 	}
