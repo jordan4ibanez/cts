@@ -47,10 +47,11 @@ namespace hopper {
 				if (group_info[group_number] == null) {
 					group_info[group_number] = {};
 				}
-				// 			group_info[group_number][entry[1]] = entry[3]
-				// 			hopper.groups[group_identifier] = group_info
-				// 			neighbor_node = "group:"..group_identifier
-				// 			// result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name]
+
+				group_info[group_number][entry[0]] = entry[2];
+				hopper.groups[group_identifier] = group_info;
+				neighbor_node = "group:" + group_identifier;
+				// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
 			} else {
 				// 			local node_info = hopper.containers[target_node]
 				// 			if node_info == nil then
