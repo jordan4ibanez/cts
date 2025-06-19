@@ -16,7 +16,10 @@ namespace hopper {
 
 	// Global function to add new containers.
 	export function add_container(list: HopperRegistrationDefinition) {
-		// for (const [_, entry] of pairs(list)) {
+		for (const [key, def] of Object.entries(list)) {
+			print(key, def);
+		
+		
 		// 	const target_node = entry[1];
 		// 	let neighbor_node: string = "";
 		// 	if (string.sub(target_node, 1, 6) == "group:") {
@@ -79,7 +82,7 @@ namespace hopper {
 		// 	if (!already_in_neighbors) {
 		// 		table.insert(neighbors, neighbor_node);
 		// 	}
-		// }
+		}
 	}
 
 	// "top" indicates what inventory the hopper will take items from if this node is located at the hopper's wide end.
