@@ -39,16 +39,17 @@ namespace hopper {
 				const neighborNode: string = component.neighborNode;
 
 				// Create the object if it does not already exist.
-				const newNeighborData: ContainerData =
+				const newContainerData: ContainerData =
 					containers[neighborNode] || {};
 
 				// keyof HopperComponent is equal to NeighborData so it can be safety synchronized and used as a key.
 				// Push the new data component into the object via the key.
-				newNeighborData[key] = component.inv;
+				newContainerData[key] = component.inv;
 
 				// Now update the data in the container dictionary.
-				containers[neighborNode] = newNeighborData;
+				containers[neighborNode] = newContainerData;
 
+				// Now push the neighbor data
 				neighbors.add(neighborNode);
 			}
 		}
