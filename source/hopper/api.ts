@@ -35,9 +35,9 @@ namespace hopper {
 			}
 
 			for (const component of componentArray) {
-				const neighbor_node = component.neighborNode;
+				const neighborNode = component.neighborNode;
 
-				let node_info = containers[neighbor_node];
+				let node_info = containers[neighborNode];
 
 				if (node_info == null) {
 					node_info = {};
@@ -47,11 +47,11 @@ namespace hopper {
 
 				print(dump(node_info));
 
-				containers[neighbor_node] = node_info;
+				containers[neighborNode] = node_info;
 
 				// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
 
-				neighbors.add(neighbor_node);
+				neighbors.add(neighborNode);
 			}
 		}
 	}
