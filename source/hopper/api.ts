@@ -72,14 +72,14 @@ namespace hopper {
 				}
 			}
 			if (!already_in_neighbors) {
-				table.insert(hopper.neighbors, neighbor_node);
+				table.insert(neighbors, neighbor_node);
 			}
 		}
 	}
 
-	// // "top" indicates what inventory the hopper will take items from if this node is located at the hopper's wide end
-	// // "side" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and at the same height as the hopper
-	// // "bottom" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and either above or below the hopper.
+	// "top" indicates what inventory the hopper will take items from if this node is located at the hopper's wide end.
+	// "side" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and at the same height as the hopper.
+	// "bottom" indicates what inventory the hopper will put items into if this node is located at the hopper's narrow end and either above or below the hopper.
 	// hopper:add_container({
 	// 	{"top", "hopper:hopper", "main"},
 	// 	{"bottom", "hopper:hopper", "main"},
@@ -90,6 +90,7 @@ namespace hopper {
 	// 	{"bottom", "hopper:sorter", "main"},
 	// 	{"side", "hopper:sorter", "main"},
 	// })
+
 	// hopper:add_container({
 	// 	{"top", "utility:chest", "main"},
 	// 	{"bottom", "utility:chest", "main"},
