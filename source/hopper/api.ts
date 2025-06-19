@@ -89,7 +89,7 @@ namespace hopper {
 					node_info[key] = component.inv;
 					hopper.containers[target_node] = node_info;
 					neighbor_node = target_node;
-					// Result is a table of the form containers[target_node_name][relative_position][inventory_name].	
+					// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
 				}
 					let already_in_neighbors: boolean = false;
 				// 	for (const [_, value] of pairs(neighbors)) {
