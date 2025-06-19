@@ -6,8 +6,8 @@ namespace hopper {
 
 	export function add_container(list: any[]) {
 		for (const [_, entry] of pairs(list)) {
-			// 		local target_node = entry[2]
-			// 		local neighbor_node
+			const target_node = entry[1];
+			let neighbor_node: string = "";
 			// 		if string.sub(target_node, 1, 6) == "group:" then
 			// 			local group_identifier, group_number
 			// 			local equals_index = string.find(target_node, "=")
