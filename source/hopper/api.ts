@@ -1,8 +1,8 @@
 namespace hopper {
-	export const containers: Dictionary<string, NeighborData> = {};
+	export const containers: Dictionary<string, ContainerData> = {};
 	export const neighbors = new Set<string>();
 
-	export interface NeighborData {
+	export interface ContainerData {
 		top?: string;
 		bottom?: string;
 		side?: string;
@@ -38,11 +38,15 @@ namespace hopper {
 			for (const component of componentArray) {
 				const neighborNode: string = component.neighborNode;
 
-				const newNeighborData: NeighborData =
+				// Create the object if it does not already exist.
+				const newNeighborData: ContainerData =
 					containers[neighborNode] || {};
 
+				// keyof HopperComponent is equal to NeighborData so it can be safety synchronized and used as a key.
+				// Push the new data component into the object via the key.
 				newNeighborData[key] = component.inv;
 
+				// Now update the data in the container dictionary.
 				containers[neighborNode] = newNeighborData;
 
 				neighbors.add(neighborNode);
