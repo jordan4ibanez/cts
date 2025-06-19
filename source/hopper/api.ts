@@ -35,7 +35,7 @@ namespace hopper {
 			}
 
 			for (const component of componentArray) {
-				const neighborNode = component.neighborNode;
+				const neighborNode: string = component.neighborNode;
 
 				let newNeighborData: NeighborData | undefined =
 					containers[neighborNode];
