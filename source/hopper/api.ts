@@ -89,9 +89,12 @@ namespace hopper {
 	hopper.add_container({
 		top: [{ nodeOrGroup: "hopper:hopper", inv: "main" }],
 
-		// 	{"bottom", "hopper:hopper", "main"},
-		// 	{"bottom", "hopper:chute", "main"},
-		// 	{"bottom", "hopper:sorter", "main"},
+		bottom: [
+			{ nodeOrGroup: "hopper:hopper", inv: "main" },
+			{ nodeOrGroup: "hopper:chute", inv: "main" },
+			{ nodeOrGroup: "hopper:sorter", inv: "main" },
+		],
+
 		// 	{"side", "hopper:hopper", "main"},
 		// 	{"side", "hopper:hopper_side", "main"},
 		// 	{"side", "hopper:chute", "main"},
