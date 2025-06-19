@@ -15,18 +15,22 @@ namespace hopper {
 	}
 
 	function instanceOfHopperComponent(input: any): input is HopperComponent {
-		const check = input as HopperComponent;
-		return check.nodeOrGroup != undefined && check.inv != undefined;
+		print((input as HopperComponent).nodeOrGroup);
+		return (
+			(input as HopperComponent).nodeOrGroup != null &&
+			(input as HopperComponent).inv != null
+		);
 	}
 
 	// Global function to add new containers.
 	export function add_container(list: HopperRegistrationDefinition) {
 		for (const [key, def] of Object.entries(list)) {
+			print(dump(def));
+
 			if (!instanceOfHopperComponent(def)) {
 				continue;
 			}
 
-			// if (def is HopperComponent)
 			print(key, def);
 
 			const target_node = def.nodeOrGroup;
