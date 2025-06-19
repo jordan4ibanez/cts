@@ -22,6 +22,12 @@ namespace hopper {
 		);
 	}
 
+	const keySet: (keyof HopperRegistrationDefinition)[] = [
+		"top",
+		"bottom",
+		"side",
+	];
+
 	// Global function to add new containers.
 	export function add_container(list: HopperRegistrationDefinition) {
 		for (const [key, def] of Object.entries(list)) {
@@ -34,13 +40,17 @@ namespace hopper {
 				continue;
 			}
 
-			if (!instanceOfHopperComponent(def)) {
-				continue;
+			for (let component of def) {
+				if (!instanceOfHopperComponent(def)) {
+					continue;
+				}
+
+				component = component as HopperComponent;
 			}
 
-			print(key, def);
+			// print(key, def);
 
-			const target_node = def.nodeOrGroup;
+			// const target_node = def.nodeOrGroup;
 			// 	let neighbor_node: string = "";
 			// 	if (string.sub(target_node, 1, 6) == "group:") {
 			// 		let group_identifier: string | null = null;
