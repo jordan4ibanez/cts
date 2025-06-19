@@ -37,18 +37,16 @@ namespace hopper {
 			for (const component of componentArray) {
 				const neighborNode = component.neighborNode;
 
-				let node_info: NeighborData | undefined =
+				let newNeighborData: NeighborData | undefined =
 					containers[neighborNode];
 
-				if (node_info == null) {
-					node_info = {};
+				if (newNeighborData == null) {
+					newNeighborData = {};
 				}
 
-				node_info[key] = component.inv;
+				newNeighborData[key] = component.inv;
 
-				print(dump(node_info));
-
-				containers[neighborNode] = node_info;
+				containers[neighborNode] = newNeighborData;
 
 				// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
 
