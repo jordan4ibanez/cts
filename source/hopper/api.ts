@@ -106,20 +106,23 @@ namespace hopper {
 	// 	{"top", "utility:chest_open", "main"},
 	// 	{"top", "utility:furnace", "dst"},
 	// 	{"top", "utility:furnace_active", "dst"},
-	
+
 	// 	{"bottom", "utility:chest", "main"},
+	// 	{"bottom", "utility:chest_open", "main"},
+	// 	{"bottom", "utility:furnace", "src"},
+	// 	{"bottom", "utility:furnace_active", "src"},
 	// 	{"side", "utility:chest", "main"},
 
 	
-	// 	{"bottom", "utility:chest_open", "main"},
+	
 	// 	{"side", "utility:chest_open", "main"},
 
 	
-	// 	{"bottom", "utility:furnace", "src"},
+	
 	// 	{"side", "utility:furnace", "fuel"},
 
 	
-	// 	{"bottom", "utility:furnace_active", "src"},
+	
 	// 	{"side", "utility:furnace_active", "fuel"},
 	// })
 }
