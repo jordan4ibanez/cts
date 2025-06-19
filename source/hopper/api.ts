@@ -66,10 +66,10 @@ namespace hopper {
 
 			let already_in_neighbors: boolean = false;
 			for (const [_, value] of pairs(neighbors)) {
-				// 			if value == neighbor_node then
-				// 				already_in_neighbors = true
-				// 				break
-				// 			end
+				if (value == neighbor_node) {
+					already_in_neighbors = true;
+					break;
+				}
 			}
 			// 		if not already_in_neighbors then
 			// 			table.insert(hopper.neighbors, neighbor_node)
