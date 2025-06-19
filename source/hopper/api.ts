@@ -71,9 +71,9 @@ namespace hopper {
 					break;
 				}
 			}
-			// 		if not already_in_neighbors then
-			// 			table.insert(hopper.neighbors, neighbor_node)
-			// 		end
+			if (!already_in_neighbors) {
+				table.insert(hopper.neighbors, neighbor_node);
+			}
 		}
 	}
 
