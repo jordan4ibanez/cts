@@ -65,18 +65,22 @@ namespace hopper {
 						// special value to indicate no number was provided.
 						group_number = "all";
 					}
-					// let group_info: Dictionary<string, any> =
-					// 	hopper.groups[group_identifier];
-					// if (group_info == null) {
-					// 	group_info = {};
-					// }
-					// if (group_info[group_number] == null) {
-					// 	group_info[group_number] = {};
-					// }
-					// group_info[group_number][entry[0]] = entry[2];
-					// hopper.groups[group_identifier] = group_info;
-					// neighbor_node = "group:" + group_identifier;
-					// 		// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
+
+					let group_info: Dictionary<string, any> | null =
+						hopper.groups[group_identifier];
+
+					if (group_info == null) {
+						group_info = {};
+					}
+
+					if (group_info[group_number] == null) {
+						group_info[group_number] = {};
+					}
+
+					group_info[group_number][key] = component.inv;
+					hopper.groups[group_identifier] = group_info;
+					neighbor_node = "group:" + group_identifier;
+					// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
 				} else {
 					// 		let node_info = hopper.containers[target_node];
 					// 		if (node_info == null) {
