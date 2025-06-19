@@ -82,16 +82,16 @@ namespace hopper {
 					neighbor_node = "group:" + group_identifier;
 					// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
 				} else {
-					// 		let node_info = hopper.containers[target_node];
-					// 		if (node_info == null) {
-					// 			node_info = {};
-					// 		}
-					// 		node_info[entry[0]] = entry[2];
-					// 		hopper.containers[target_node] = node_info;
-					// 		neighbor_node = target_node;
-					// 		// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
+					let node_info = hopper.containers[target_node];
+					if (node_info == null) {
+						node_info = {};
+					}
+					node_info[key] = component.inv;
+					hopper.containers[target_node] = node_info;
+					neighbor_node = target_node;
+					// Result is a table of the form containers[target_node_name][relative_position][inventory_name].	
 				}
-				// 	let already_in_neighbors: boolean = false;
+					let already_in_neighbors: boolean = false;
 				// 	for (const [_, value] of pairs(neighbors)) {
 				// 		if (value == neighbor_node) {
 				// 			already_in_neighbors = true;
