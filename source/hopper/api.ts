@@ -93,16 +93,6 @@ namespace hopper {
 				}
 
 				neighbors.add(neighbor_node);
-				let already_in_neighbors: boolean = false;
-				// 	for (const [_, value] of pairs(neighbors)) {
-				// 		if (value == neighbor_node) {
-				// 			already_in_neighbors = true;
-				// 			break;
-				// 		}
-				// 	}
-				// 	if (!already_in_neighbors) {
-				// 		table.insert(neighbors, neighbor_node);
-				// 	}
 			}
 		}
 	}
