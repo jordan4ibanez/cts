@@ -34,32 +34,36 @@ namespace hopper {
 				let neighbor_node: string = "";
 				if (string.sub(target_node, 1, 6) == "group:") {
 					let group_identifier: string | null = null;
+
 					let group_number: number | string | null = null;
 
 					const [equals_index, _] = string.find(target_node, "=");
 					if (equals_index != null) {
-						// 	group_identifier = string.sub(
-						// 		target_node,
-						// 		7,
-						// 		equals_index - 1
-						// 	);
-						// 	// It's possible that the string was of the form "group:blah = 1", in which case we want to trim spaces off the end of the group identifier.
-						// 	const [space_index] = string.find(group_identifier, " ");
-						// 	if (space_index != null) {
-						// 		group_identifier = string.sub(
-						// 			group_identifier,
-						// 			1,
-						// 			space_index - 1
-						// 		);
-						// 	}
-						// 	group_number =
-						// 		tonumber(
-						// 			string.sub(target_node, equals_index + 1, -1)
-						// 		) || 0;
+						group_identifier = string.sub(
+							target_node,
+							7,
+							equals_index - 1
+						);
+						// It's possible that the string was of the form "group:blah = 1", in which case we want to trim spaces off the end of the group identifier.
+						const [space_index] = string.find(
+							group_identifier,
+							" "
+						);
+						if (space_index != null) {
+							group_identifier = string.sub(
+								group_identifier,
+								1,
+								space_index - 1
+							);
+						}
+						group_number =
+							tonumber(
+								string.sub(target_node, equals_index + 1, -1)
+							) || 0;
 					} else {
-						// 	group_identifier = string.sub(target_node, 7, -1);
-						// 	// special value to indicate no number was provided.
-						// 	group_number = "all";
+						group_identifier = string.sub(target_node, 7, -1);
+						// special value to indicate no number was provided.
+						group_number = "all";
 					}
 					// let group_info: Dictionary<string, any> =
 					// 	hopper.groups[group_identifier];
