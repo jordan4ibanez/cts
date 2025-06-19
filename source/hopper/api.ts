@@ -1,8 +1,7 @@
 namespace hopper {
 	export const containers: Dictionary<string, any> = {};
-
 	export const groups: Dictionary<string, any> = {};
-	// hopper.neighbors = {}
+	export const neighbors: Dictionary<string, any> = {};
 
 	// Global function to add new containers.
 
@@ -65,13 +64,13 @@ namespace hopper {
 				// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
 			}
 
-			// 		local already_in_neighbors = false
-			// 		for _, value in pairs(hopper.neighbors) do
-			// 			if value == neighbor_node then
-			// 				already_in_neighbors = true
-			// 				break
-			// 			end
-			// 		end
+			let already_in_neighbors: boolean = false;
+			for (const [_, value] of pairs(neighbors)) {
+				// 			if value == neighbor_node then
+				// 				already_in_neighbors = true
+				// 				break
+				// 			end
+			}
 			// 		if not already_in_neighbors then
 			// 			table.insert(hopper.neighbors, neighbor_node)
 			// 		end
