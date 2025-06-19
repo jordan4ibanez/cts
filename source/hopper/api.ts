@@ -9,7 +9,9 @@ namespace hopper {
 			const target_node = entry[1];
 			let neighbor_node: string = "";
 			if (string.sub(target_node, 1, 6) == "group:") {
-				let group_identifier, group_number;
+				let group_identifier;
+				let group_number: number = 0;
+
 				const [equals_index, _] = string.find(target_node, "=");
 				if (equals_index != null) {
 					group_identifier = string.sub(
@@ -26,22 +28,24 @@ namespace hopper {
 							space_index - 1
 						);
 					}
-					group_number = tonumber(
-						string.sub(target_node, equals_index + 1, -1)
-					);
+					group_number =
+						tonumber(
+							string.sub(target_node, equals_index + 1, -1)
+						) || 0;
 				} else {
 					group_identifier = string.sub(target_node, 7, -1);
 					// special value to indicate no number was provided.
 					group_number = "all";
 				}
 
-				const group_info = hopper.groups[group_identifier];
-				// 			if group_info == nil then
-				// 				group_info = {}
-				// 			end
-				// 			if group_info[group_number] == nil then
-				// 				group_info[group_number] = {}
-				// 			end
+				let group_info: Dictionary<string, any> =
+					hopper.groups[group_identifier];
+				if (group_info == null) {
+					group_info = {};
+				}
+				if (group_info[group_number] == null) {
+					group_info[group_number] = {};
+				}
 				// 			group_info[group_number][entry[1]] = entry[3]
 				// 			hopper.groups[group_identifier] = group_info
 				// 			neighbor_node = "group:"..group_identifier
