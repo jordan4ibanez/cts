@@ -37,19 +37,11 @@ namespace hopper {
 			for (const component of componentArray) {
 				const neighborNode: string = component.neighborNode;
 
-				let newNeighborData: NeighborData | undefined =
-					containers[neighborNode];
-
-				if (newNeighborData == null) {
-					newNeighborData = {};
-				}
+				const newNeighborData: NeighborData =
+					containers[neighborNode] || {};
 
 				newNeighborData[key] = component.inv;
-
 				containers[neighborNode] = newNeighborData;
-
-				// Result is a table of the form containers[target_node_name][relative_position][inventory_name].
-
 				neighbors.add(neighborNode);
 			}
 		}
