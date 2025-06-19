@@ -22,7 +22,9 @@ namespace hopper {
 
 	// Global function to add new containers.
 	export function add_container(list: HopperRegistrationDefinition) {
-		for (const [key, def] of Object.entries(list)) {
+		for (const key of keySet) {
+			const componentArray: HopperComponent[] | undefined = list[key];
+
 			// print(key, def);
 			// const target_node = def.nodeOrGroup;
 			// 	let neighbor_node: string = "";
