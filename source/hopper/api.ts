@@ -78,7 +78,7 @@ namespace hopper {
 					}
 
 					groupInfo[group_number][key] = component.inv;
-					hopper.groups[group_identifier] = groupInfo;
+					groups[group_identifier] = groupInfo;
 					neighbor_node = "group:" + group_identifier;
 					// Result is a table of the form groups[group_identifier][group_number][relative_position][inventory_name].
 				} else {
