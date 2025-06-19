@@ -101,11 +101,13 @@ namespace hopper {
 		],
 	});
 
-	// hopper:add_container({
-	// 	{"top", "utility:chest", "main"},
-	// 	{"top", "utility:chest_open", "main"},
-	// 	{"top", "utility:furnace", "dst"},
-	// 	{"top", "utility:furnace_active", "dst"},
+	hopper.add_container({
+		top: [
+	// 	{ "utility:chest", "main"},
+	// 	{ "utility:chest_open", "main"},
+	// 	{ "utility:furnace", "dst"},
+	// 	{ "utility:furnace_active", "dst"},
+		]
 
 	// 	{"bottom", "utility:chest", "main"},
 	// 	{"bottom", "utility:chest_open", "main"},
@@ -116,5 +118,5 @@ namespace hopper {
 	// 	{"side", "utility:chest_open", "main"},
 	// 	{"side", "utility:furnace", "fuel"},
 	// 	{"side", "utility:furnace_active", "fuel"},
-	// })
+	})
 }
