@@ -1,9 +1,9 @@
 namespace hopper {
 // local S = core.get_translator("hopper")
-// -- Target inventory retrieval
+// // Target inventory retrieval
 
-// -- looks first for a registration matching the specific node name, then for a registration
-// -- matching group and value, then for a registration matching a group and *any* value
+// // looks first for a registration matching the specific node name, then for a registration
+// // matching group and value, then for a registration matching a group and *any* value
 // hopper.get_registered_inventories_for = function(target_node_name)
 // 	local output = hopper.containers[target_node_name]
 // 	if output ~= nil then return output end
@@ -42,11 +42,11 @@ namespace hopper {
 // 	return pos.x .. "," .. pos.y .. "," ..pos.z
 // end
 
-// -- Apparently node_sound_metal_defaults is a newer thing, I ran into games using an older version of the default mod without it.
+// // Apparently node_sound_metal_defaults is a newer thing, I ran into games using an older version of the default mod without it.
 // hopper.metal_sounds = main.stoneSound()
 
-// -------------------------------------------------------------------------------------------
-// -- Inventory transfer functions
+// //////////////////////////////////////////////////////////////////////////////////////////
+// // Inventory transfer functions
 
 // local delay = function(x)
 // 	return (function() return x end)
@@ -64,7 +64,7 @@ namespace hopper {
 // 	return nil
 // end
 
-// -- Used to remove items from the target block and put it into the hopper's inventory
+// // Used to remove items from the target block and put it into the hopper's inventory
 // hopper.take_item_from = function(hopper_pos, target_pos, target_node, target_inventory_name)
 // 	if target_inventory_name == nil then
 // 		return
@@ -74,12 +74,12 @@ namespace hopper {
 // 		return
 // 	end
 
-// 	--hopper inventory
+// 	//hopper inventory
 // 	local hopper_meta = core.get_meta(hopper_pos);
 // 	local hopper_inv = hopper_meta:get_inventory()
 // 	local placer = get_placer(hopper_meta:get_string("placer"))
 
-// 	--source inventory
+// 	//source inventory
 // 	local target_inv = core.get_meta(target_pos):get_inventory()
 // 	local target_inv_size = target_inv:get_size(target_inventory_name)
 // 	if target_inv:is_empty(target_inventory_name) == false then
@@ -90,10 +90,10 @@ namespace hopper {
 // 				if hopper_inv:room_for_item("main", item) then
 // 					local stack_to_take = stack:take_item(1)
 // 					if target_def.allow_metadata_inventory_take == nil
-// 					  or placer == nil -- backwards compatibility, older versions of this mod didn't record who placed the hopper
+// 					  or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
 // 					  or target_def.allow_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer) > 0 then
 // 						target_inv:set_stack(target_inventory_name, i, stack)
-// 						--add to hopper
+// 						//add to hopper
 // 						hopper_inv:add_item("main", stack_to_take)
 // 						if target_def.on_metadata_inventory_take ~= nil and placer ~= nil then
 // 							target_def.on_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer)
@@ -106,7 +106,7 @@ namespace hopper {
 // 	end
 // end
 
-// -- Used to put items from the hopper inventory into the target block
+// // Used to put items from the hopper inventory into the target block
 // hopper.send_item_to = function(hopper_pos, target_pos, target_node, target_inventory_name, filtered_items)
 // 	local hopper_meta = core.get_meta(hopper_pos)
 // 	local target_def = core.registered_nodes[target_node.name]
@@ -120,7 +120,7 @@ namespace hopper {
 // 		return false
 // 	end
 
-// 	--hopper inventory
+// 	//hopper inventory
 // 	local hopper_meta = core.get_meta(hopper_pos);
 // 	local hopper_inv = hopper_meta:get_inventory()
 // 	if hopper_inv:is_empty("main") == true then
@@ -129,7 +129,7 @@ namespace hopper {
 // 	local hopper_inv_size = hopper_inv:get_size("main")
 // 	local placer = get_placer(hopper_meta:get_string("placer"))
 
-// 	--target inventory
+// 	//target inventory
 // 	local target_inv = core.get_meta(target_pos):get_inventory()
 
 // 	for i = 1,hopper_inv_size do
@@ -140,10 +140,10 @@ namespace hopper {
 // 				if target_inv:room_for_item(target_inventory_name, item) then
 // 					local stack_to_put = stack:take_item(1)
 // 					if target_def.allow_metadata_inventory_put == nil
-// 					or placer == nil -- backwards compatibility, older versions of this mod didn't record who placed the hopper
+// 					or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
 // 					or target_def.allow_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer) > 0 then
 // 						hopper_inv:set_stack("main", i, stack)
-// 						--add to target node
+// 						//add to target node
 // 						target_inv:add_item(target_inventory_name, stack_to_put)
 // 						if target_def.on_metadata_inventory_put ~= nil and placer ~= nil then
 // 							target_def.on_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer)
