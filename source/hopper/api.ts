@@ -1,5 +1,5 @@
 namespace hopper {
-	export const containers: Dictionary<string, any> = {};
+	export const containers: Dictionary<string, NeighborData> = {};
 	export const neighbors = new Set<string>();
 
 	export interface NeighborData {
