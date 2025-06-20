@@ -45,8 +45,8 @@ namespace hopper {
 		return tostring(pos.x) + "," + tostring(pos.y) + "," + tostring(pos.z);
 	}
 
-	// // Apparently node_sound_metal_defaults is a newer thing, I ran into games using an older version of the default mod without it.
-	// hopper.metal_sounds = main.stoneSound()
+	// Apparently node_sound_metal_defaults is a newer thing, I ran into games using an older version of the default mod without it.
+	export const metal_sounds = crafter.stoneSound();
 	// //////////////////////////////////////////////////////////////////////////////////////////
 	// // Inventory transfer functions
 	// local delay = function(x)
