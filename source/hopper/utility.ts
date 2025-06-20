@@ -55,16 +55,16 @@ namespace hopper {
 		};
 	}
 
-	function get_placer (player_name: string)  {
-	// 	if player_name ~= "" then
-	// 		return core.get_player_by_name(player_name) or {
-	// 			is_player = delay(true),
-	// 			get_player_name = delay(player_name),
-	// 			is_fake_player = ":hopper",
-	// 			get_wielded_item = delay(ItemStack(nil))
-	// 		}
-	// 	end
-	// 	return nil
+	function get_placer(player_name: string) {
+		if (player_name != "") {
+			// 		return core.get_player_by_name(player_name) or {
+			// 			is_player = delay(true),
+			// 			get_player_name = delay(player_name),
+			// 			is_fake_player = ":hopper",
+			// 			get_wielded_item = delay(ItemStack(nil))
+			// 		}
+		}
+			return null
 	}
 
 	// // Used to remove items from the target block and put it into the hopper's inventory
