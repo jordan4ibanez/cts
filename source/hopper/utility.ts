@@ -77,8 +77,8 @@ namespace hopper {
 		return null;
 	}
 
-	// // Used to remove items from the target block and put it into the hopper's inventory
-	// hopper.take_item_from = function(hopper_pos, target_pos, target_node, target_inventory_name)
+	// Used to remove items from the target block and put it into the hopper's inventory.
+	export function take_item_from (hopper_pos, target_pos, target_node, target_inventory_name) {
 	// 	if target_inventory_name == nil then
 	// 		return
 	// 	end
@@ -115,7 +115,8 @@ namespace hopper {
 	// 			end
 	// 		end
 	// 	end
-	// end
+	}
+
 	// // Used to put items from the hopper inventory into the target block
 	// hopper.send_item_to = function(hopper_pos, target_pos, target_node, target_inventory_name, filtered_items)
 	// 	local hopper_meta = core.get_meta(hopper_pos)
