@@ -54,12 +54,20 @@ namespace hopper {
 			return x;
 		};
 	}
+	interface DelayImplement {
+		isPlayer: (x: any) => () => any;
+		get_player_name: (x: any) => () => any;
+		is_fake_player: string;
+		get_wielded_item: (x: any) => () => any;
+	}
 
-	function get_placer(player_name: string) {
+	function get_placer(
+		player_name: string
+	): ObjectRef | DelayImplement | null {
 		if (player_name != "") {
 			return (
 				core.get_player_by_name(player_name) || {
-					is_player: delay(true),
+					isPlayer: delay(true),
 					get_player_name: delay(player_name),
 					is_fake_player: ":hopper",
 					get_wielded_item: delay(ItemStack("")),
