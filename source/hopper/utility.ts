@@ -92,11 +92,13 @@ namespace hopper {
 		if (target_def == null) {
 			return;
 		}
-		// 	//hopper inventory
-		// 	local hopper_meta = core.get_meta(hopper_pos);
-		// 	local hopper_inv = hopper_meta:get_inventory()
-		// 	local placer = get_placer(hopper_meta:get_string("placer"))
-		// 	//source inventory
+		// Hopper inventory.
+		const hopper_meta: MetaRef = core.get_meta(hopper_pos);
+		const hopper_inv: InvRef = hopper_meta.get_inventory();
+		const placer: ObjectRef | DelayImplement | null = get_placer(
+			hopper_meta.get_string("placer")
+		);
+		// Source inventory.
 		// 	local target_inv = core.get_meta(target_pos):get_inventory()
 		// 	local target_inv_size = target_inv:get_size(target_inventory_name)
 		// 	if target_inv:is_empty(target_inventory_name) == false then
