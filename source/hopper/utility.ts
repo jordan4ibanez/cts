@@ -13,7 +13,7 @@ namespace hopper {
 		pos: Vec3,
 		loc_X: number,
 		loc_Y: number
-	) {
+	): string {
 		let eject_button_text: string | null = null;
 		let eject_button_tooltip: string | null = null;
 		if (core.get_meta(pos).get_string("eject") == "true") {
