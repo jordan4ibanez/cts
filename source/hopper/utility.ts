@@ -49,10 +49,12 @@ namespace hopper {
 	export const metal_sounds = crafter.stoneSound();
 
 	// Inventory transfer functions
-	// local delay = function(x)
-	// 	return (function() return x end)
-	// end
-	
+	function delay(x: any): () => any {
+		return () => {
+			return x;
+		};
+	}
+
 	// local get_placer = function(player_name)
 	// 	if player_name ~= "" then
 	// 		return core.get_player_by_name(player_name) or {
