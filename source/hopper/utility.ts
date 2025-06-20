@@ -2,22 +2,24 @@ namespace hopper {
 	// Target inventory retrieval.
 	// Looks first for a registration matching the specific node name, then for a registration
 	// matching group and value, then for a registration matching a group and *any* value.
-	// hopper.get_registered_inventories_for = function(target_node_name)
-	// 	local output = hopper.containers[target_node_name]
-	// 	if output ~= nil then return output end
-	// 	local target_def = core.registered_nodes[target_node_name]
-	// 	if target_def == nil or target_def.groups == nil then return nil end
-	// 	for group, value in pairs(target_def.groups) do
-	// 		local registered_group = hopper.groups[group]
-	// 		if registered_group ~= nil then
-	// 			output = registered_group[value]
-	// 			if output ~= nil then return output end
-	// 			output = registered_group["all"]
-	// 			if output ~= nil then return output end
-	// 		end
-	// 	end
-	// 	return nil
-	// end
+
+	export function get_registered_inventories_for(target_node_name: string) {
+		// 	local output = hopper.containers[target_node_name]
+		// 	if output ~= nil then return output end
+		// 	local target_def = core.registered_nodes[target_node_name]
+		// 	if target_def == nil or target_def.groups == nil then return nil end
+		// 	for group, value in pairs(target_def.groups) do
+		// 		local registered_group = hopper.groups[group]
+		// 		if registered_group ~= nil then
+		// 			output = registered_group[value]
+		// 			if output ~= nil then return output end
+		// 			output = registered_group["all"]
+		// 			if output ~= nil then return output end
+		// 		end
+		// 	end
+		// 	return nil
+	}
+
 	// hopper.get_eject_button_texts = function(pos, loc_X, loc_Y)
 	// 	if not hopper.config.eject_button_enabled then return "" end
 	// 	local eject_button_text, eject_button_tooltip
