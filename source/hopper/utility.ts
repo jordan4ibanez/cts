@@ -55,7 +55,7 @@ namespace hopper {
 		};
 	}
 
-	// local get_placer = function(player_name)
+	function get_placer (player_name: string)  {
 	// 	if player_name ~= "" then
 	// 		return core.get_player_by_name(player_name) or {
 	// 			is_player = delay(true),
@@ -65,7 +65,8 @@ namespace hopper {
 	// 		}
 	// 	end
 	// 	return nil
-	// end
+	}
+
 	// // Used to remove items from the target block and put it into the hopper's inventory
 	// hopper.take_item_from = function(hopper_pos, target_pos, target_node, target_inventory_name)
 	// 	if target_inventory_name == nil then
