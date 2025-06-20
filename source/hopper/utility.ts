@@ -5,26 +5,8 @@ namespace hopper {
 
 	export function get_registered_inventories_for(
 		target_node_name: string
-	): ContainerData | null {
-		const output: ContainerData | undefined =
-			hopper.containers[target_node_name];
-
-		if (output != null) {
-			return output;
-		}
-
-		// 	local target_def = core.registered_nodes[target_node_name]
-		// 	if target_def == nil or target_def.groups == nil then return nil end
-		// 	for group, value in pairs(target_def.groups) do
-		// 		local registered_group = hopper.groups[group]
-		// 		if registered_group ~= nil then
-		// 			output = registered_group[value]
-		// 			if output ~= nil then return output end
-		// 			output = registered_group["all"]
-		// 			if output ~= nil then return output end
-		// 		end
-		// 	end
-		return null;
+	): ContainerData | undefined {
+		return hopper.containers[target_node_name];
 	}
 
 	// hopper.get_eject_button_texts = function(pos, loc_X, loc_Y)
