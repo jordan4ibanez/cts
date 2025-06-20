@@ -47,11 +47,12 @@ namespace hopper {
 
 	// Apparently node_sound_metal_defaults is a newer thing, I ran into games using an older version of the default mod without it.
 	export const metal_sounds = crafter.stoneSound();
-	// //////////////////////////////////////////////////////////////////////////////////////////
-	// // Inventory transfer functions
+
+	// Inventory transfer functions
 	// local delay = function(x)
 	// 	return (function() return x end)
 	// end
+	
 	// local get_placer = function(player_name)
 	// 	if player_name ~= "" then
 	// 		return core.get_player_by_name(player_name) or {
