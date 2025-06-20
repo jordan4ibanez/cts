@@ -14,7 +14,8 @@ namespace hopper {
 		loc_X: number,
 		loc_Y: number
 	) {
-		let eject_button_text, eject_button_tooltip;
+		let eject_button_text: string | null = null;
+		let eject_button_tooltip: string | null = null;
 		if (core.get_meta(pos).get_string("eject") == "true") {
 			eject_button_text = "Don't\nEject";
 			eject_button_tooltip =
@@ -24,7 +25,17 @@ namespace hopper {
 			eject_button_tooltip =
 				"This hopper is currently set to hold on to item if there\nisn't a compatible block positioned to receive it.\nClick this button to have it eject items instead.";
 		}
-		// 	return "button_exit["+loc_X+","+loc_Y+";1,1;eject;"+eject_button_text+"]tooltip[eject;"+eject_button_tooltip+"]"
+		return (
+			"button_exit[" +
+			tostring(loc_X) +
+			"," +
+			tostring(loc_Y) +
+			";1,1;eject;" +
+			eject_button_text +
+			"]tooltip[eject;" +
+			eject_button_tooltip +
+			"]"
+		);
 	}
 
 	// hopper.get_string_pos = function(pos)
