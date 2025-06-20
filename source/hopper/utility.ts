@@ -16,11 +16,13 @@ namespace hopper {
 	) {
 		let eject_button_text, eject_button_tooltip;
 		if (core.get_meta(pos).get_string("eject") == "true") {
-			// 		eject_button_text = S("Don't\nEject")
-			// 		eject_button_tooltip = S("This hopper is currently set to eject items from its output\neven if there isn't a compatible block positioned to receive it.\nClick this button to disable this feature.")
+			eject_button_text = "Don't\nEject";
+			eject_button_tooltip =
+				"This hopper is currently set to eject items from its output\neven if there isn't a compatible block positioned to receive it.\nClick this button to disable this feature.";
 		} else {
-			// 		eject_button_text = S("Eject\nItems")
-			// 		eject_button_tooltip = S("This hopper is currently set to hold on to item if there\nisn't a compatible block positioned to receive it.\nClick this button to have it eject items instead.")
+			eject_button_text = "Eject\nItems";
+			eject_button_tooltip =
+				"This hopper is currently set to hold on to item if there\nisn't a compatible block positioned to receive it.\nClick this button to have it eject items instead.";
 		}
 		// 	return "button_exit["+loc_X+","+loc_Y+";1,1;eject;"+eject_button_text+"]tooltip[eject;"+eject_button_tooltip+"]"
 	}
