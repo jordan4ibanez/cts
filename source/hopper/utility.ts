@@ -5,11 +5,13 @@ namespace hopper {
 
 	export function get_registered_inventories_for(
 		target_node_name: string
-	): string | null {
+	): ContainerData | null {
 		const output: ContainerData | undefined =
 			hopper.containers[target_node_name];
 
-		// 	if output ~= nil then return output end
+		if (output != null) {
+			return output;
+		}
 
 		// 	local target_def = core.registered_nodes[target_node_name]
 		// 	if target_def == nil or target_def.groups == nil then return nil end
