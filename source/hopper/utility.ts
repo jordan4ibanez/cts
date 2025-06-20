@@ -41,9 +41,10 @@ namespace hopper {
 		);
 	}
 
-	// hopper.get_string_pos = function(pos)
-	// 	return pos.x + "," + pos.y + "," +pos.z
-	// end
+	export function get_string_pos(pos: Vec3): string {
+		return tostring(pos.x) + "," + tostring(pos.y) + "," + tostring(pos.z);
+	}
+
 	// // Apparently node_sound_metal_defaults is a newer thing, I ran into games using an older version of the default mod without it.
 	// hopper.metal_sounds = main.stoneSound()
 	// //////////////////////////////////////////////////////////////////////////////////////////
