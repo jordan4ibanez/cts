@@ -9,18 +9,23 @@ namespace hopper {
 		return hopper.containers[target_node_name];
 	}
 
-	// hopper.get_eject_button_texts = function(pos, loc_X, loc_Y)
-	// 	if not hopper.config.eject_button_enabled then return "" end
-	// 	local eject_button_text, eject_button_tooltip
-	// 	if core.get_meta(pos):get_string("eject") == "true" then
-	// 		eject_button_text = S("Don't\nEject")
-	// 		eject_button_tooltip = S("This hopper is currently set to eject items from its output\neven if there isn't a compatible block positioned to receive it.\nClick this button to disable this feature.")
-	// 	else
-	// 		eject_button_text = S("Eject\nItems")
-	// 		eject_button_tooltip = S("This hopper is currently set to hold on to item if there\nisn't a compatible block positioned to receive it.\nClick this button to have it eject items instead.")
-	// 	end
-	// 	return "button_exit["+loc_X+","+loc_Y+";1,1;eject;"+eject_button_text+"]tooltip[eject;"+eject_button_tooltip+"]"
-	// end
+	export function get_eject_button_texts(
+		pos: Vec3,
+		loc_X: number,
+		loc_Y: number
+	) {
+		// 	if not hopper.config.eject_button_enabled then return "" end
+		// 	local eject_button_text, eject_button_tooltip
+		// 	if core.get_meta(pos):get_string("eject") == "true" then
+		// 		eject_button_text = S("Don't\nEject")
+		// 		eject_button_tooltip = S("This hopper is currently set to eject items from its output\neven if there isn't a compatible block positioned to receive it.\nClick this button to disable this feature.")
+		// 	else
+		// 		eject_button_text = S("Eject\nItems")
+		// 		eject_button_tooltip = S("This hopper is currently set to hold on to item if there\nisn't a compatible block positioned to receive it.\nClick this button to have it eject items instead.")
+		// 	end
+		// 	return "button_exit["+loc_X+","+loc_Y+";1,1;eject;"+eject_button_text+"]tooltip[eject;"+eject_button_tooltip+"]"
+	}
+
 	// hopper.get_string_pos = function(pos)
 	// 	return pos.x + "," + pos.y + "," +pos.z
 	// end
