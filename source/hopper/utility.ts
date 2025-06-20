@@ -3,11 +3,14 @@ namespace hopper {
 	// Looks first for a registration matching the specific node name, then for a registration
 	// matching group and value, then for a registration matching a group and *any* value.
 
-	export function get_registered_inventories_for(target_node_name: string) {
+	export function get_registered_inventories_for(
+		target_node_name: string
+	): string | null {
 		const output: ContainerData | undefined =
 			hopper.containers[target_node_name];
 
 		// 	if output ~= nil then return output end
+
 		// 	local target_def = core.registered_nodes[target_node_name]
 		// 	if target_def == nil or target_def.groups == nil then return nil end
 		// 	for group, value in pairs(target_def.groups) do
@@ -19,7 +22,7 @@ namespace hopper {
 		// 			if output ~= nil then return output end
 		// 		end
 		// 	end
-		// 	return nil
+		return null;
 	}
 
 	// hopper.get_eject_button_texts = function(pos, loc_X, loc_Y)
