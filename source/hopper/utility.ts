@@ -81,16 +81,17 @@ namespace hopper {
 	export function take_item_from(
 		hopper_pos: Vec3,
 		target_pos: Vec3,
-		target_node: string,
+		target_node: NodeTable,
 		target_inventory_name?: string
 	) {
 		if (target_inventory_name == null) {
 			return;
 		}
-		// 	local target_def = core.registered_nodes[target_node.name]
-		// 	if not target_def then
-		// 		return
-		// 	end
+		const target_def: NodeDefinition | undefined =
+			core.registered_nodes[target_node.name];
+		if (target_def == null) {
+			return;
+		}
 		// 	//hopper inventory
 		// 	local hopper_meta = core.get_meta(hopper_pos);
 		// 	local hopper_inv = hopper_meta:get_inventory()
