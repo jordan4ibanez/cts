@@ -25,6 +25,9 @@ namespace hopper {
 			eject_button_tooltip =
 				"This hopper is currently set to hold on to item if there\nisn't a compatible block positioned to receive it.\nClick this button to have it eject items instead.";
 		}
+		if (eject_button_text == null || eject_button_tooltip == null) {
+			throw new Error("Logic issue.");
+		}
 		return (
 			"button_exit[" +
 			tostring(loc_X) +
