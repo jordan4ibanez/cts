@@ -222,7 +222,7 @@ namespace hopper {
 									placer
 								);
 							}
-							// 						return true
+							return true;
 						}
 					}
 				} else if (eject_item) {
