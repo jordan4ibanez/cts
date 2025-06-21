@@ -1073,7 +1073,7 @@ declare global {
 			itemStack: ItemStackObject,
 			placer: ObjectRef,
 			pointedThing: PointedThing
-		): void;
+		): ItemStackObject | void;
 		overlay_tiles?: string[];
 		special_tiles?: string[] | TileDefinition[];
 		wield_scale?: Vec3;
