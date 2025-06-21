@@ -179,35 +179,35 @@ namespace hopper {
 		const placer: ObjectRef | null = get_placer(
 			hopper_meta.get_string("placer")
 		);
-		// 	//target inventory
-		// 	local target_inv = core.get_meta(target_pos):get_inventory()
-		// 	for i = 1,hopper_inv_size do
-		// 		local stack = hopper_inv:get_stack("main", i)
-		// 		local item = stack:get_name()
-		// 		if item ~= "" and (filtered_items == nil or filtered_items[item]) then
-		// 			if target_inventory_name then
-		// 				if target_inv:room_for_item(target_inventory_name, item) then
-		// 					local stack_to_put = stack:take_item(1)
-		// 					if target_def.allow_metadata_inventory_put == nil
-		// 					or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
-		// 					or target_def.allow_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer) > 0 then
-		// 						hopper_inv:set_stack("main", i, stack)
-		// 						//add to target node
-		// 						target_inv:add_item(target_inventory_name, stack_to_put)
-		// 						if target_def.on_metadata_inventory_put ~= nil and placer ~= nil then
-		// 							target_def.on_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer)
-		// 						end
-		// 						return true
-		// 					end
-		// 				end
-		// 			elseif eject_item then
-		// 				local stack_to_put = stack:take_item(1)
-		// 				core.add_item(target_pos, stack_to_put)
-		// 				hopper_inv:set_stack("main", i, stack)
-		// 				return true
-		// 			end
-		// 		end
-		// 	end
+		// Target inventory.
+		const target_inv: InvRef = core.get_meta(target_pos).get_inventory();
+		for (const i of $range(1, hopper_inv_size)) {
+			// 		local stack = hopper_inv:get_stack("main", i)
+			// 		local item = stack:get_name()
+			// 		if item ~= "" and (filtered_items == nil or filtered_items[item]) then
+			// 			if target_inventory_name then
+			// 				if target_inv:room_for_item(target_inventory_name, item) then
+			// 					local stack_to_put = stack:take_item(1)
+			// 					if target_def.allow_metadata_inventory_put == nil
+			// 					or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
+			// 					or target_def.allow_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer) > 0 then
+			// 						hopper_inv:set_stack("main", i, stack)
+			// 						//add to target node
+			// 						target_inv:add_item(target_inventory_name, stack_to_put)
+			// 						if target_def.on_metadata_inventory_put ~= nil and placer ~= nil then
+			// 							target_def.on_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer)
+			// 						end
+			// 						return true
+			// 					end
+			// 				end
+			// 			elseif eject_item then
+			// 				local stack_to_put = stack:take_item(1)
+			// 				core.add_item(target_pos, stack_to_put)
+			// 				hopper_inv:set_stack("main", i, stack)
+			// 				return true
+			// 			end
+			// 		end
+		}
 		return false;
 	}
 }
