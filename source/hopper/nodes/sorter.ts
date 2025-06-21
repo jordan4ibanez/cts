@@ -239,17 +239,16 @@ namespace hopper {
 			const meta: MetaRef = core.get_meta(pos);
 			const inv: InvRef = meta.get_inventory();
 			// Build a filter list.
-			let filter_items = null;
+			let filter_items: Dictionary<string, boolean> = {};
 			if (meta.get_string("filter_all") != "true") {
-				// 			filter_items = {}
-				// 			local filter_inv_size = inv:get_size("filter")
-				// 			for i = 1, filter_inv_size do
-				// 				local stack = inv:get_stack("filter", i)
-				// 				local item = stack:get_name()
-				// 				if item ~= "" then
-				// 					filter_items[item] = true
-				// 				end
-				// 			end
+				const filter_inv_size: number = inv.get_size("filter");
+				for (const i of $range(1, filter_inv_size)) {
+					const stack: ItemStackObject = inv.get_stack("filter", i);
+					const item: string = stack.get_name();
+					if (item != "") {
+						filter_items[item] = true;
+					}
+				}
 			}
 			// 		local node = core.get_node(pos)
 			// 		local dir = core.facedir_to_dir(node.param2)
