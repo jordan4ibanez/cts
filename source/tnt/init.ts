@@ -37,7 +37,12 @@ namespace tnt {
 						if (distance > range || distance < range - 1) {
 							continue;
 						}
-						// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
+						const ray: RaycastObject = core.raycast(
+							pos,
+							vector.create3d(pos.x + x, pos.y + y, pos.z + z),
+							false,
+							false
+						);
 						// 				explosion_force = range
 						// 				for pointed_thing in ray do
 						// 					explosion_force = explosion_force - math.random()
@@ -75,7 +80,6 @@ namespace tnt {
 						// 						break
 						// 					end
 						// 				end
-									
 					}
 				}
 			}
