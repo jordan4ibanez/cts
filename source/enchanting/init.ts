@@ -223,7 +223,7 @@ namespace enchanting {
 		output: "crafter_enchanting:table",
 		recipe: [
 			["nether:obsidian", "nether:obsidian", "nether:obsidian"],
-			["nether:obsidian", "main:diamond", "nether:obsidian"],
+			["nether:obsidian", "crafter:diamond", "nether:obsidian"],
 			["nether:obsidian", "nether:obsidian", "nether:obsidian"],
 		],
 	});
