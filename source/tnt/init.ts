@@ -9,7 +9,8 @@ namespace tnt {
 	// 	["utility:furnace_active"] = true,
 	// 	["utility:furnace"] = true,
 	// }
-	// function tnt(pos,range,explosion_type)
+
+	export function tnt(pos: Vec3,range: number,explosion_type: string) {
 	// 	in_node = core.get_node(pos).name
 	// 	in_water =  ( in_node == "crafter:water" or core.get_node(pos).name == "crafter:waterflow")
 	// 	min = vector.add(pos,range)
@@ -158,7 +159,8 @@ namespace tnt {
 	// 		vertical = false,
 	// 		texture = "smoke.png",
 	// 	})
-	// end
+	}
+
 	// local pos
 	// local vel
 	// local range
