@@ -19,8 +19,11 @@ namespace hopper {
 			for (const [_, object] of ipairs(
 				core.get_objects_inside_radius(pos, 1)
 			)) {
+				if (object.is_player()) {
+					continue;
+				}
+
 				if (
-					!object.is_player() &&
 					object.get_luaentity() != null &&
 					object.get_luaentity()!.name == "__builtin:item" &&
 					inv != null &&
