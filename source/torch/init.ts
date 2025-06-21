@@ -185,32 +185,32 @@ namespace torch {
 		sounds: crafter.woodSound(),
 	});
 
-	// core.register_node("crafter_torch:wall", {
-	// 	inventory_image = "torches_torch.png",
-	// 	wield_image = "torches_torch.png",
-	// 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
-	// 	drawtype = "mesh",
-	// 	mesh = "torch_wall.obj",
-	// 	tiles = {"torches_torch.png"},
-	// 	paramtype = "light",
-	// 	paramtype2 = "wallmounted",
-	// 	floodable = true,
-	// 	on_flood = function(pos, oldnode, newnode)
-	// 		core.throw_item(pos, "crafter_torch:torch")
-	// 	end,
-	// 	sunlight_propagates = true,
-	// 	walkable = false,
-	// 	light_source = 13,
-	// 	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1},
-	// 	drop = "crafter_torch:torch",
-	// 	selection_box = {
-	// 		type = "wallmounted",
-	// 		wall_top = {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
-	// 		wall_bottom = {-0.1, -0.5, -0.1, 0.1, 0.1, 0.1},
-	// 		wall_side = {-0.5, -0.3, -0.1, -0.2, 0.3, 0.1},
-	// 	},
-	// 	sounds = main.woodSound(),
-	// })
+	core.register_node("crafter_torch:wall", {
+		inventory_image = "torches_torch.png",
+		wield_image = "torches_torch.png",
+		wield_scale = {x = 1, y = 1, z = 1 + 1/16},
+		drawtype = "mesh",
+		mesh = "torch_wall.obj",
+		tiles = {"torches_torch.png"},
+		paramtype = "light",
+		paramtype2 = "wallmounted",
+		floodable = true,
+		on_flood = function(pos, oldnode, newnode)
+			core.throw_item(pos, "crafter_torch:torch")
+		end,
+		sunlight_propagates = true,
+		walkable = false,
+		light_source = 13,
+		groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1},
+		drop = "crafter_torch:torch",
+		selection_box = {
+			type = "wallmounted",
+			wall_top = {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
+			wall_bottom = {-0.1, -0.5, -0.1, 0.1, 0.1, 0.1},
+			wall_side = {-0.5, -0.3, -0.1, -0.2, 0.3, 0.1},
+		},
+		sounds = main.woodSound(),
+	})
 
 	// core.register_craft({
 	// 	output = "crafter_torch:torch 4",
