@@ -309,24 +309,24 @@ namespace tnt {
 		if (range > 15) {
 			range = 15;
 		}
-		// 	core.add_particlespawner({
-		// 		amount = range,
-		// 		time = 0.001,
-		// 		minpos = pos,
-		// 		maxpos = pos,
-		// 		minvel = vector.new(-range,-range,-range),
-		// 		maxvel = vector.new(range,range,range),
-		// 		minacc = {x=0, y=0, z=0},
-		// 		maxacc = {x=0, y=0, z=0},
-		// 		minexptime = 1.1,
-		// 		maxexptime = 1.5,
-		// 		minsize = 1,
-		// 		maxsize = 2,
-		// 		collisiondetection = true,
-		// 		collision_removal = true,
-		// 		vertical = false,
-		// 		texture = "smoke.png",
-		// 	})
+		core.add_particlespawner({
+			amount: range,
+			time: 0.001,
+			minpos: pos,
+			maxpos: pos,
+			minvel: vector.create3d(-range, -range, -range),
+			maxvel: vector.create3d(range, range, range),
+			minacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+			maxacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+			minexptime: 1.1,
+			maxexptime: 1.5,
+			minsize: 1,
+			maxsize: 2,
+			collisiondetection: true,
+			collision_removal: true,
+			vertical: false,
+			texture: "smoke.png",
+		});
 	}
 
 	class TntEntity extends types.Entity {
