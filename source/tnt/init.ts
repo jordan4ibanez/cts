@@ -1,8 +1,8 @@
 namespace tnt {
 	// Use raycasting to create actual explosion.
-	// local air = core.get_content_id("air")
-	// local content_id = core.get_name_from_content_id
-	// local boom_time = core.get_us_time()/1000000
+	const air: number = core.get_content_id("air");
+	const content_id: (name: number) => string = core.get_name_from_content_id;
+	const boom_time: number = core.get_us_time() / 1000000;
 	// local digging_nodes = {
 	// 	["utility:chest_open"] = true,
 	// 	["utility:chest"] = true,
