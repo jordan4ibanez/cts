@@ -227,10 +227,11 @@ namespace hopper {
 				[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
 			],
 		},
-		// 	on_construct = function(pos)
-		// 		local inv = core.get_meta(pos):get_inventory()
-		// 		inv:set_size("main", 4*4)
-		// 	end,
+		on_construct: (pos) => {
+			const inv: InvRef = core.get_meta(pos).get_inventory();
+			inv.set_size("main", 4 * 4);
+		},
+
 		// 	on_place = function(itemstack, placer, pointed_thing)
 		// 		return hopper_on_place(itemstack, placer, pointed_thing, "crafter_hopper:hopper_side")
 		// 	end,
