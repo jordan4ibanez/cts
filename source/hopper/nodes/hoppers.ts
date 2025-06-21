@@ -187,16 +187,16 @@ namespace hopper {
 	};
 
 	core.register_node("crafter_hopper:hopper_side", {
-		// 	description = S("Side Hopper"),
-		// 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
-		//     _doc_items_usagehelp = hopper.doc.hopper_usage,
-		// 	drop = hopper_side_drop,
-		// 	groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,pathable = 1},
-		// 	sounds = hopper.metal_sounds,
-		// 	drawtype = "nodebox",
-		// 	paramtype = "light",
-		// 	paramtype2 = "facedir",
-		// 	tiles = {
+		description : "Side Hopper",
+		// 	_doc_items_longdesc : hopper.doc.hopper_long_desc,
+		//     _doc_items_usagehelp : hopper.doc.hopper_usage,
+		// 	drop : hopper_side_drop,
+		// 	groups : {stone : 1, hard : 1, pickaxe : 1, hand : 4,pathable : 1},
+		// 	sounds : hopper.metal_sounds,
+		// 	drawtype : "nodebox",
+		// 	paramtype : "light",
+		// 	paramtype2 : "facedir",
+		// 	tiles : {
 		// 		"hopper_top_16.png",
 		// 		"hopper_bottom_16.png",
 		// 		"hopper_back_16.png",
@@ -204,9 +204,9 @@ namespace hopper {
 		// 		"hopper_back_16.png",
 		// 		"hopper_back_16.png"
 		// 	},
-		// 	node_box = {
-		// 		type = "fixed",
-		// 		fixed = {
+		// 	node_box : {
+		// 		type : "fixed",
+		// 		fixed : {
 		// 			//funnel walls
 		// 			{-0.5, 0.0, 0.4, 0.5, 0.5, 0.5},
 		// 			{0.4, 0.0, -0.5, 0.5, 0.5, 0.5},
@@ -219,9 +219,9 @@ namespace hopper {
 		// 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
 		// 		},
 		// 	},
-		// 	selection_box = {
-		// 		type = "fixed",
-		// 		fixed = {
+		// 	selection_box : {
+		// 		type : "fixed",
+		// 		fixed : {
 		// 			//funnel
 		// 			{-0.5, 0.0, -0.5, 0.5, 0.5, 0.5},
 		// 			//spout
