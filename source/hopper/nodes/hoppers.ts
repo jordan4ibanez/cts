@@ -18,7 +18,12 @@ namespace hopper {
 		);
 	}
 
-	function hopper_on_place(itemstack, placer, pointed_thing, node_name) {
+	function hopper_on_place(
+		itemstack: ItemStackObject,
+		placer: ObjectRef,
+		pointed_thing: PointedThing,
+		node_name: string
+	) {
 		// 	local pos  = pointed_thing.under
 		// 	local pos2 = pointed_thing.above
 		// 	local x = pos.x - pos2.x
