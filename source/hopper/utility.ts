@@ -127,13 +127,22 @@ namespace hopper {
 					placer
 				) > 0
 			) {
-				// 						target_inv:set_stack(target_inventory_name, i, stack)
-				// 						//add to hopper
-				// 						hopper_inv:add_item("main", stack_to_take)
-				// 						if target_def.on_metadata_inventory_take ~= nil and placer ~= nil then
-				// 							target_def.on_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer)
-				// 						end
-				// 						break
+				target_inv.set_stack(target_inventory_name, i, stack);
+				// Add to hopper.
+				hopper_inv.add_item("main", stack_to_take);
+				if (
+					target_def.on_metadata_inventory_take != null &&
+					placer != null
+				) {
+					target_def.on_metadata_inventory_take(
+						target_pos,
+						target_inventory_name,
+						i,
+						stack_to_take,
+						placer
+					);
+				}
+				break;
 			}
 		}
 	}
