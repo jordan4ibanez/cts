@@ -51,7 +51,21 @@ namespace tnt {
 							if (explosion_force < explosion_depletion) {
 								break;
 							}
-							// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
+
+							if (pointed_thing.under == null) {
+								core.log(
+									LogLevel.warning,
+									"Missing pointed thing under."
+								);
+								break;
+							}
+
+							const n_pos: number = area.index(
+								pointed_thing.under.x,
+								pointed_thing.under.y,
+								pointed_thing.under.z
+							);
+
 							// 						if n_pos and data[n_pos] then
 							// 							node2 = content_id(data[n_pos])
 							// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
