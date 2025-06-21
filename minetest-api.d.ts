@@ -2182,7 +2182,7 @@ declare global {
 		get_node_at(position: Vec3): MapNode;
 		set_node_at(position: Vec3, node: MapNode): void;
 		get_data(): number[];
-		set_data(buffer?: number[]): number[];
+		set_data(buffer: number[]): void;
 		set_lighting(light: number, p1: Vec3, p2: Vec3): void;
 		get_light_data(): number[];
 		set_light_data(lightData: number[]): void;
