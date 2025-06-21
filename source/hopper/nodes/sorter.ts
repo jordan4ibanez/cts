@@ -48,8 +48,7 @@ namespace hopper {
 
 		return (
 			"size[8," +
-			7 +
-			y_displace +
+			tostring(7 + y_displace) +
 			"]" +
 			hopper.formspec_bg +
 			filter_body +
