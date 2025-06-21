@@ -271,16 +271,15 @@ namespace tnt {
 					const force: Vec3 = vector.multiply(dir, power);
 
 					if (isPlayer) {
-						// 		//damage the player
-						// 		hp = object:get_hp()
-						// 		if hp > 0 then
-						// 			//object:set_hp(hp - math.floor(power*2))
-						// 			object:punch(object, 2,
-						// 				{
-						// 				full_punch_interval=1.5,
-						// 				damage_groups = {damage=math.floor(power)},
-						// 				})
-						// 		end
+						// Damage the player.
+						const hp: number = object.get_hp();
+						if (hp > 0) {
+							//object:set_hp(hp - math.floor(power*2))
+							object.punch(object, 2, {
+								full_punch_interval: 1.5,
+								damage_groups: { damage: math.floor(power) },
+							});
+						}
 						// 		object:add_player_velocity(force)
 					} else if (workableEntity) {
 						// 		if object:get_luaentity().name == "crafter_tnt:tnt" then
