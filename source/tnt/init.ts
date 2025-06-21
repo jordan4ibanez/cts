@@ -30,7 +30,8 @@ namespace tnt {
 		const [emin, emax] = vm.read_from_map(min, max);
 		const area: VoxelAreaObject = VoxelArea(emin, emax);
 
-		vm.get_light_data();
+		// vm.get_light_data();
+
 		const range_calc: number = range / 100;
 		const explosion_depletion: number = range / 2;
 
