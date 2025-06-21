@@ -8,9 +8,15 @@ namespace hopper {
 		5: vector.create3d({ x: 0, y: 1, z: 0 }),
 	};
 
-	// local bottomdir = function(facedir)
-	// 	return facedir_to_bottomdir[math.floor(facedir/4)]
-	// end
+	function bottomdir(facedir: number): Vec3 {
+		const data: Vec3 | undefined =
+			facedir_to_bottomdir[math.floor(facedir / 4)];
+		if (data == null) {
+			throw new Error("Logic error.");
+		}
+		return data;
+	}
+
 	// local function get_sorter_formspec(pos)
 	// 	local spos = hopper.get_string_pos(pos)
 	// 	local filter_all = core.get_meta(pos):get_string("filter_all") == "true"
