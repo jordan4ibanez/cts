@@ -108,7 +108,7 @@ namespace torch {
 				core.registered_nodes[core.get_node(pointed_thing.under).name]
 					?.buildable_to || false;
 
-			let wdir: number;
+			let wdir: number = 0;
 			if (buildable) {
 				wdir = core.dir_to_wallmounted(
 					vector.subtract(pointed_thing.under, pointed_thing.under)
@@ -118,17 +118,19 @@ namespace torch {
 					vector.subtract(pointed_thing.under, pointed_thing.above)
 				);
 			}
-			// 		local fakestack = itemstack
-			// 		local retval = false
-			// 		if buildable and wdir == 4 then
+
+			const fakestack: ItemStackObject = itemstack;
+
+			let retval: boolean = false;
+					if (buildable && wdir == 4) {
 			// 			retval = fakestack:set_name("crafter_torch:floor")
-			// 		elseif wdir < 1 then
+					} else if (wdir < 1) {
 			// 			return itemstack
-			// 		elseif wdir == 1 then
+					} else if (wdir == 1) {
 			// 			retval = fakestack:set_name("crafter_torch:floor")
-			// 		else
+					}else {
 			// 			retval = fakestack:set_name("crafter_torch:wall")
-			// 		end
+					}
 			// 		if not retval then
 			// 			return itemstack
 			// 		end
