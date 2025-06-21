@@ -35,10 +35,12 @@ namespace hopper {
 		}
 		const x: number = pos.x - pos2.x;
 		const z: number = pos.z - pos2.z;
-		// 	local returned_stack, success
-		// 	// unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
-		// 	// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
-		// 	// the default item_place_node orientation code will not orient them pointing toward the selected surface.
+		let returned_stack;
+		let success;
+		// Unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
+		// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
+		// the default item_place_node orientation code will not orient them pointing toward the selected surface.
+
 		// 	if x == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
 		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 0)
 		// 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
