@@ -264,37 +264,39 @@ namespace tnt {
 						clear = false;
 					}
 				}
-				// if clear == true then
-				// 	power = (range - vector.distance(pos,ppos))*10
-				// 	dir = vector.direction(pos,ppos)
-				// 	force = vector.multiply(dir,power)
-				// 	if object:is_player() then
-				// 		//damage the player
-				// 		hp = object:get_hp()
-				// 		if hp > 0 then
-				// 			//object:set_hp(hp - math.floor(power*2))
-				// 			object:punch(object, 2,
-				// 				{
-				// 				full_punch_interval=1.5,
-				// 				damage_groups = {damage=math.floor(power)},
-				// 				})
-				// 		end
-				// 		object:add_player_velocity(force)
-				// 	elseif object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)  then
-				// 		if object:get_luaentity().name == "crafter_tnt:tnt" then
-				// 			object:get_luaentity().shot = true
-				// 		elseif object:get_luaentity().is_mob == true then
-				// 			object:punch(object, 2,
-				// 				{
-				// 				full_punch_interval=1.5,
-				// 				damage_groups = {damage=math.floor(power)},
-				// 				})
-				// 		elseif object:get_luaentity().name == "__builtin:item" then
-				// 			object:get_luaentity().poll_timer = 0
-				// 		end
-				// 		object:set_velocity(force)
-				// 	end
-				// end
+				if (clear) {
+					const power: number =
+						(range - vector.distance(pos, ppos)) * 10;
+					const dir: Vec3 = vector.direction(pos, ppos);
+					const force: Vec3 = vector.multiply(dir, power);
+
+					if (isPlayer) {
+						// 		//damage the player
+						// 		hp = object:get_hp()
+						// 		if hp > 0 then
+						// 			//object:set_hp(hp - math.floor(power*2))
+						// 			object:punch(object, 2,
+						// 				{
+						// 				full_punch_interval=1.5,
+						// 				damage_groups = {damage=math.floor(power)},
+						// 				})
+						// 		end
+						// 		object:add_player_velocity(force)
+					} else if (workableEntity) {
+						// 		if object:get_luaentity().name == "crafter_tnt:tnt" then
+						// 			object:get_luaentity().shot = true
+						// 		elseif object:get_luaentity().is_mob == true then
+						// 			object:punch(object, 2,
+						// 				{
+						// 				full_punch_interval=1.5,
+						// 				damage_groups = {damage=math.floor(power)},
+						// 				})
+						// 		elseif object:get_luaentity().name == "__builtin:item" then
+						// 			object:get_luaentity().poll_timer = 0
+						// 		end
+						// 		object:set_velocity(force)
+					}
+				}
 			}
 		}
 
