@@ -21,6 +21,7 @@ namespace tnt {
 		diggingNodes.add(core.get_content_id(node));
 	}
 
+	// Raycast explosion.
 	function explosion(pos: Vec3, range: number): void {
 		const min: Vec3 = vector.add(pos, range);
 		const max: Vec3 = vector.subtract(pos, range);
@@ -32,7 +33,7 @@ namespace tnt {
 		vm.get_light_data();
 		const range_calc: number = range / 100;
 		const explosion_depletion: number = range / 2;
-		// Raycast explosion.
+
 		for (const x of $range(-range, range)) {
 			for (const y of $range(-range, range)) {
 				for (const z of $range(-range, range)) {
