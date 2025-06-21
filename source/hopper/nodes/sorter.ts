@@ -302,17 +302,22 @@ namespace hopper {
 
 			// Wasn't able to put something in the filter destination, for whatever reason. Now can start moving stuff forward to the default.
 			if (!success) {
-				// 			local default_destination_node = core.get_node(default_destination_pos)
-				// 			local registered_inventories = hopper.get_registered_inventories_for(default_destination_node.name)
-				// 			if registered_inventories ~= nil then
-				// 				if default_output_direction == "horizontal" then
-				// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["side"])
-				// 				else
-				// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["bottom"])
-				// 				end
-				// 			else
-				// 				hopper.send_item_to(pos, default_destination_pos, default_destination_node)
-				// 			end
+				const default_destination_node: NodeTable = core.get_node(
+					default_destination_pos
+				);
+				const registered_inventories: ContainerData | undefined =
+					hopper.get_registered_inventories_for(
+						default_destination_node.name
+					);
+				if (registered_inventories != null) {
+					// 				if default_output_direction == "horizontal" then
+					// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["side"])
+					// 				else
+					// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["bottom"])
+					// 				end
+				} else {
+					// 				hopper.send_item_to(pos, default_destination_pos, default_destination_node)
+				}
 			}
 			// 		if not inv:is_empty("main") then
 			// 			core.get_node_timer(pos):start(1)
