@@ -112,8 +112,10 @@ namespace hopper {
 				target_inventory_name,
 				i
 			);
-			// 			local item = stack:get_name()
-			// 			if item ~= "" then
+			const item: string = stack.get_name();
+			if (item == "") {
+				continue;
+			}
 			// 				if hopper_inv:room_for_item("main", item) then
 			// 					local stack_to_take = stack:take_item(1)
 			// 					if target_def.allow_metadata_inventory_take == nil
@@ -128,7 +130,6 @@ namespace hopper {
 			// 						break
 			// 					end
 			// 				end
-			// 			end
 		}
 	}
 
