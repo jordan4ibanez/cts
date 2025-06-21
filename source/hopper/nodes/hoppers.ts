@@ -107,7 +107,7 @@ namespace hopper {
 	}
 
 	// Hoppers
-	// core.register_node("crafter_hopper:hopper", {
+	core.register_node("crafter_hopper:hopper", {
 	// 	drop = "crafter_hopper:hopper",
 	// 	description = S("Hopper"),
 	// 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
@@ -236,5 +236,5 @@ namespace hopper {
 	// 		core.show_formspec(clicker:get_player_name(),
 	// 			"hopper_formspec:"+core.pos_to_string(pos), get_hopper_formspec(pos))
 	// 	end,
-	// })
+	})
 }
