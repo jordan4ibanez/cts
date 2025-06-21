@@ -10,155 +10,155 @@ namespace tnt {
 	// 	["utility:furnace"] = true,
 	// }
 
-	export function tnt(pos: Vec3,range: number,explosion_type: string) {
-	// 	in_node = core.get_node(pos).name
-	// 	in_water =  ( in_node == "crafter:water" or core.get_node(pos).name == "crafter:waterflow")
-	// 	min = vector.add(pos,range)
-	// 	max = vector.subtract(pos,range)
-	// 	vm = core.get_voxel_manip(min,max)
-	// 		emin, emax = vm:read_from_map(min,max)
-	// 		area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
-	// 		data = vm:get_data()
-	// 	if in_water == false then
-	// 		vm:get_light_data()
-	// 		range_calc = range/100
-	// 		explosion_depletion = range/2
-	// 		//raycast explosion
-	// 		for x=-range, range do
-	// 		for y=-range, range do
-	// 		for z=-range, range do
-	// 			distance = vector.distance(pos2, vector.new(x,y,z))
-	// 			if distance <= range and distance >= range-1 then
-	// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
-	// 				explosion_force = range
-	// 				for pointed_thing in ray do
-	// 					explosion_force = explosion_force - math.random()
-	// 					if pointed_thing and explosion_force >= explosion_depletion then
-	// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
-	// 						if n_pos and data[n_pos] then
-	// 							node2 = content_id(data[n_pos])
-	// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
-	// 								break
-	// 							elseif digging_nodes[node2] then
-	// 								core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
-	// 								data[n_pos] = air
-	// 							elseif node2 == "crafter_tnt:tnt" then
-	// 								data[n_pos] = air
-	// 								core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
-	// 							elseif not string.match(node2, "mob_spawners:") then
-	// 								data[n_pos] = air
-	// 								core.after(0, function(pointed_thing)
-	// 									core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
-	// 								end,pointed_thing)
-	// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
-	// 									item = core.get_node_drops(node2, "crafter:diamondpick")[1]
-	// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
-	// 									obj = core.add_item(ppos, item)
-	// 									if obj then
-	// 										power = (range - vector.distance(pos,ppos))*2
-	// 										dir = vector.subtract(ppos,pos)
-	// 										force = vector.multiply(dir,power)
-	// 										obj:set_velocity(force)
-	// 									end
-	// 								end
-	// 							end
-	// 						end
-	// 					else
-	// 						break
-	// 					end
-	// 				end
-	// 			end
-	// 		end
-	// 		end
-	// 		end
-	// 		vm:set_data(data)
-	// 		vm:update_liquids()
-	// 		vm:write_to_map()
-	// 	end
-	// 	if core.get_us_time()/1000000 - boom_time >= 0.1 then
-	// 		boom_time = core.get_us_time()/1000000
-	// 		core.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = 64}) //hear twice as far away
-	// 	end
-	// 	//throw players and items
-	// 	for _,object in ipairs(core.get_objects_inside_radius(pos, range)) do
-	// 		if object:is_player() or (object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)) then
-	// 			do_it = true
-	// 			if not object:is_player() and object:get_luaentity().name == "crafter_tnt:tnt" then
-	// 				in_node = core.get_node(object:get_pos()).name
-	// 				if ( in_node == "crafter:water" or in_node == "crafter:waterflow") then
-	// 					do_it = false
-	// 				end
-	// 			end
-	// 			if do_it == true then
-	// 				ppos = object:get_pos()
-	// 				if object:is_player() then
-	// 					ppos.y = ppos.y + 1
-	// 				end
-	// 				ray = core.raycast(pos, ppos, false, false)
-	// 				clear = true
-	// 				for pointed_thing in ray do
-	// 					n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
-	// 					node2 = content_id(data[n_pos])
-	// 					if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
-	// 						clear = false
-	// 					end
-	// 				end
-	// 				if clear == true then
-	// 					power = (range - vector.distance(pos,ppos))*10
-	// 					dir = vector.direction(pos,ppos)
-	// 					force = vector.multiply(dir,power)
-	// 					if object:is_player() then
-	// 						//damage the player
-	// 						hp = object:get_hp()
-	// 						if hp > 0 then
-	// 							//object:set_hp(hp - math.floor(power*2))
-	// 							object:punch(object, 2,
-	// 								{
-	// 								full_punch_interval=1.5,
-	// 								damage_groups = {damage=math.floor(power)},
-	// 								})
-	// 						end
-	// 						object:add_player_velocity(force)
-	// 					elseif object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)  then
-	// 						if object:get_luaentity().name == "crafter_tnt:tnt" then
-	// 							object:get_luaentity().shot = true
-	// 						elseif object:get_luaentity().is_mob == true then
-	// 							object:punch(object, 2,
-	// 								{
-	// 								full_punch_interval=1.5,
-	// 								damage_groups = {damage=math.floor(power)},
-	// 								})
-	// 						elseif object:get_luaentity().name == "__builtin:item" then
-	// 							object:get_luaentity().poll_timer = 0
-	// 						end
-	// 						object:set_velocity(force)
-	// 					end
-	// 				end
-	// 			end
-	// 		end
-	// 	end
-	// 	//stop client from lagging
-	// 	if range > 15 then
-	// 		range = 15
-	// 	end
-	// 	core.add_particlespawner({
-	// 		amount = range,
-	// 		time = 0.001,
-	// 		minpos = pos,
-	// 		maxpos = pos,
-	// 		minvel = vector.new(-range,-range,-range),
-	// 		maxvel = vector.new(range,range,range),
-	// 		minacc = {x=0, y=0, z=0},
-	// 		maxacc = {x=0, y=0, z=0},
-	// 		minexptime = 1.1,
-	// 		maxexptime = 1.5,
-	// 		minsize = 1,
-	// 		maxsize = 2,
-	// 		collisiondetection = true,
-	// 		collision_removal = true,
-	// 		vertical = false,
-	// 		texture = "smoke.png",
-	// 	})
+	export function tnt(pos: Vec3, range: number, explosion_type: string) {
+		// 	in_node = core.get_node(pos).name
+		// 	in_water =  ( in_node == "crafter:water" or core.get_node(pos).name == "crafter:waterflow")
+		// 	min = vector.add(pos,range)
+		// 	max = vector.subtract(pos,range)
+		// 	vm = core.get_voxel_manip(min,max)
+		// 		emin, emax = vm:read_from_map(min,max)
+		// 		area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
+		// 		data = vm:get_data()
+		// 	if in_water == false then
+		// 		vm:get_light_data()
+		// 		range_calc = range/100
+		// 		explosion_depletion = range/2
+		// 		//raycast explosion
+		// 		for x=-range, range do
+		// 		for y=-range, range do
+		// 		for z=-range, range do
+		// 			distance = vector.distance(pos2, vector.new(x,y,z))
+		// 			if distance <= range and distance >= range-1 then
+		// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
+		// 				explosion_force = range
+		// 				for pointed_thing in ray do
+		// 					explosion_force = explosion_force - math.random()
+		// 					if pointed_thing and explosion_force >= explosion_depletion then
+		// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
+		// 						if n_pos and data[n_pos] then
+		// 							node2 = content_id(data[n_pos])
+		// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
+		// 								break
+		// 							elseif digging_nodes[node2] then
+		// 								core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
+		// 								data[n_pos] = air
+		// 							elseif node2 == "crafter_tnt:tnt" then
+		// 								data[n_pos] = air
+		// 								core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
+		// 							elseif not string.match(node2, "mob_spawners:") then
+		// 								data[n_pos] = air
+		// 								core.after(0, function(pointed_thing)
+		// 									core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
+		// 								end,pointed_thing)
+		// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
+		// 									item = core.get_node_drops(node2, "crafter:diamondpick")[1]
+		// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
+		// 									obj = core.add_item(ppos, item)
+		// 									if obj then
+		// 										power = (range - vector.distance(pos,ppos))*2
+		// 										dir = vector.subtract(ppos,pos)
+		// 										force = vector.multiply(dir,power)
+		// 										obj:set_velocity(force)
+		// 									end
+		// 								end
+		// 							end
+		// 						end
+		// 					else
+		// 						break
+		// 					end
+		// 				end
+		// 			end
+		// 		end
+		// 		end
+		// 		end
+		// 		vm:set_data(data)
+		// 		vm:update_liquids()
+		// 		vm:write_to_map()
+		// 	end
+		// 	if core.get_us_time()/1000000 - boom_time >= 0.1 then
+		// 		boom_time = core.get_us_time()/1000000
+		// 		core.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = 64}) //hear twice as far away
+		// 	end
+		// 	//throw players and items
+		// 	for _,object in ipairs(core.get_objects_inside_radius(pos, range)) do
+		// 		if object:is_player() or (object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)) then
+		// 			do_it = true
+		// 			if not object:is_player() and object:get_luaentity().name == "crafter_tnt:tnt" then
+		// 				in_node = core.get_node(object:get_pos()).name
+		// 				if ( in_node == "crafter:water" or in_node == "crafter:waterflow") then
+		// 					do_it = false
+		// 				end
+		// 			end
+		// 			if do_it == true then
+		// 				ppos = object:get_pos()
+		// 				if object:is_player() then
+		// 					ppos.y = ppos.y + 1
+		// 				end
+		// 				ray = core.raycast(pos, ppos, false, false)
+		// 				clear = true
+		// 				for pointed_thing in ray do
+		// 					n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
+		// 					node2 = content_id(data[n_pos])
+		// 					if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
+		// 						clear = false
+		// 					end
+		// 				end
+		// 				if clear == true then
+		// 					power = (range - vector.distance(pos,ppos))*10
+		// 					dir = vector.direction(pos,ppos)
+		// 					force = vector.multiply(dir,power)
+		// 					if object:is_player() then
+		// 						//damage the player
+		// 						hp = object:get_hp()
+		// 						if hp > 0 then
+		// 							//object:set_hp(hp - math.floor(power*2))
+		// 							object:punch(object, 2,
+		// 								{
+		// 								full_punch_interval=1.5,
+		// 								damage_groups = {damage=math.floor(power)},
+		// 								})
+		// 						end
+		// 						object:add_player_velocity(force)
+		// 					elseif object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)  then
+		// 						if object:get_luaentity().name == "crafter_tnt:tnt" then
+		// 							object:get_luaentity().shot = true
+		// 						elseif object:get_luaentity().is_mob == true then
+		// 							object:punch(object, 2,
+		// 								{
+		// 								full_punch_interval=1.5,
+		// 								damage_groups = {damage=math.floor(power)},
+		// 								})
+		// 						elseif object:get_luaentity().name == "__builtin:item" then
+		// 							object:get_luaentity().poll_timer = 0
+		// 						end
+		// 						object:set_velocity(force)
+		// 					end
+		// 				end
+		// 			end
+		// 		end
+		// 	end
+		// 	//stop client from lagging
+		// 	if range > 15 then
+		// 		range = 15
+		// 	end
+		// 	core.add_particlespawner({
+		// 		amount = range,
+		// 		time = 0.001,
+		// 		minpos = pos,
+		// 		maxpos = pos,
+		// 		minvel = vector.new(-range,-range,-range),
+		// 		maxvel = vector.new(range,range,range),
+		// 		minacc = {x=0, y=0, z=0},
+		// 		maxacc = {x=0, y=0, z=0},
+		// 		minexptime = 1.1,
+		// 		maxexptime = 1.5,
+		// 		minsize = 1,
+		// 		maxsize = 2,
+		// 		collisiondetection = true,
+		// 		collision_removal = true,
+		// 		vertical = false,
+		// 		texture = "smoke.png",
+		// 	})
 	}
 
 	// local pos
