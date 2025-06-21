@@ -207,13 +207,14 @@ namespace tnt {
 				? null
 				: object.get_luaentity();
 
-			if (
-				isPlayer ||
-				(luaEntity != null &&
-					(luaEntity.name == "__builtin:item" ||
-						luaEntity.name == "crafter_tnt:tnt" ||
-						(luaEntity as any).is_mob == true)) // todo: cast this into a mob entity class.
-			) {
+			const workableEntity: boolean =
+				luaEntity == null
+					? false
+					: luaEntity.name == "__builtin:item" ||
+					  luaEntity.name == "crafter_tnt:tnt" || // todo: cast this into a mob entity class.
+					  (luaEntity as any).is_mob == true;
+
+			if (isPlayer || workableEntity) {
 				// 			do_it = true
 				// 			if not object:is_player() and object:get_luaentity().name == "crafter_tnt:tnt" then
 				// 				in_node = core.get_node(object:get_pos()).name
