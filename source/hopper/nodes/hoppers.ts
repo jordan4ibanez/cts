@@ -186,66 +186,66 @@ namespace hopper {
 		not_in_creative_inventory: 1,
 	};
 
-	// core.register_node("crafter_hopper:hopper_side", {
-	// 	description = S("Side Hopper"),
-	// 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
-	//     _doc_items_usagehelp = hopper.doc.hopper_usage,
-	// 	drop = hopper_side_drop,
-	// 	groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,pathable = 1},
-	// 	sounds = hopper.metal_sounds,
-	// 	drawtype = "nodebox",
-	// 	paramtype = "light",
-	// 	paramtype2 = "facedir",
-	// 	tiles = {
-	// 		"hopper_top_16.png",
-	// 		"hopper_bottom_16.png",
-	// 		"hopper_back_16.png",
-	// 		"hopper_side_16.png",
-	// 		"hopper_back_16.png",
-	// 		"hopper_back_16.png"
-	// 	},
-	// 	node_box = {
-	// 		type = "fixed",
-	// 		fixed = {
-	// 			//funnel walls
-	// 			{-0.5, 0.0, 0.4, 0.5, 0.5, 0.5},
-	// 			{0.4, 0.0, -0.5, 0.5, 0.5, 0.5},
-	// 			{-0.5, 0.0, -0.5, -0.4, 0.5, 0.5},
-	// 			{-0.5, 0.0, -0.5, 0.5, 0.5, -0.4},
-	// 			//funnel base
-	// 			{-0.5, 0.0, -0.5, 0.5, 0.1, 0.5},
-	// 			//spout
-	// 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
-	// 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
-	// 		},
-	// 	},
-	// 	selection_box = {
-	// 		type = "fixed",
-	// 		fixed = {
-	// 			//funnel
-	// 			{-0.5, 0.0, -0.5, 0.5, 0.5, 0.5},
-	// 			//spout
-	// 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
-	// 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
-	// 		},
-	// 	},
-	// 	on_construct = function(pos)
-	// 		local inv = core.get_meta(pos):get_inventory()
-	// 		inv:set_size("main", 4*4)
-	// 	end,
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		return hopper_on_place(itemstack, placer, pointed_thing, "crafter_hopper:hopper_side")
-	// 	end,
-	// 	can_dig = function(pos,player)
-	// 		local inv = core.get_meta(pos):get_inventory()
-	// 		return inv:is_empty("main")
-	// 	end,
-	// 	on_rightclick = function(pos, node, clicker, itemstack)
-	// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
-	// 			return
-	// 		end
-	// 		core.show_formspec(clicker:get_player_name(),
-	// 			"hopper_formspec:"+core.pos_to_string(pos), get_hopper_formspec(pos))
-	// 	end,
-	// });
+	core.register_node("crafter_hopper:hopper_side", {
+		// 	description = S("Side Hopper"),
+		// 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
+		//     _doc_items_usagehelp = hopper.doc.hopper_usage,
+		// 	drop = hopper_side_drop,
+		// 	groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,pathable = 1},
+		// 	sounds = hopper.metal_sounds,
+		// 	drawtype = "nodebox",
+		// 	paramtype = "light",
+		// 	paramtype2 = "facedir",
+		// 	tiles = {
+		// 		"hopper_top_16.png",
+		// 		"hopper_bottom_16.png",
+		// 		"hopper_back_16.png",
+		// 		"hopper_side_16.png",
+		// 		"hopper_back_16.png",
+		// 		"hopper_back_16.png"
+		// 	},
+		// 	node_box = {
+		// 		type = "fixed",
+		// 		fixed = {
+		// 			//funnel walls
+		// 			{-0.5, 0.0, 0.4, 0.5, 0.5, 0.5},
+		// 			{0.4, 0.0, -0.5, 0.5, 0.5, 0.5},
+		// 			{-0.5, 0.0, -0.5, -0.4, 0.5, 0.5},
+		// 			{-0.5, 0.0, -0.5, 0.5, 0.5, -0.4},
+		// 			//funnel base
+		// 			{-0.5, 0.0, -0.5, 0.5, 0.1, 0.5},
+		// 			//spout
+		// 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
+		// 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
+		// 		},
+		// 	},
+		// 	selection_box = {
+		// 		type = "fixed",
+		// 		fixed = {
+		// 			//funnel
+		// 			{-0.5, 0.0, -0.5, 0.5, 0.5, 0.5},
+		// 			//spout
+		// 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
+		// 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
+		// 		},
+		// 	},
+		// 	on_construct = function(pos)
+		// 		local inv = core.get_meta(pos):get_inventory()
+		// 		inv:set_size("main", 4*4)
+		// 	end,
+		// 	on_place = function(itemstack, placer, pointed_thing)
+		// 		return hopper_on_place(itemstack, placer, pointed_thing, "crafter_hopper:hopper_side")
+		// 	end,
+		// 	can_dig = function(pos,player)
+		// 		local inv = core.get_meta(pos):get_inventory()
+		// 		return inv:is_empty("main")
+		// 	end,
+		// 	on_rightclick = function(pos, node, clicker, itemstack)
+		// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
+		// 			return
+		// 		end
+		// 		core.show_formspec(clicker:get_player_name(),
+		// 			"hopper_formspec:"+core.pos_to_string(pos), get_hopper_formspec(pos))
+		// 	end,
+	});
 }
