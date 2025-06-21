@@ -93,10 +93,27 @@ namespace tnt {
 								// 	data[n_pos] = air
 								// 	core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
 							} /* fixme: elseif (! string.match(node2, "mob_spawners:")) then*/ else {
-								// 	data[n_pos] = air
-								// 	core.after(0, function(pointed_thing)
-								// 		core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
-								// 	end,pointed_thing)
+								data[n_pos - 1] = air;
+								core.after(
+									0,
+									(pointed_thing: PointedThing) => {
+										if (pointed_thing.under == null) {
+											core.log(
+												LogLevel.warning,
+												"Pointed thing became null?"
+											);
+											return;
+										}
+										core.check_for_falling(
+											vector.create3d({
+												x: pointed_thing.under.x,
+												y: pointed_thing.under.y + 1,
+												z: pointed_thing.under.z,
+											})
+										);
+									},
+									pointed_thing
+								);
 								// 	if range_calc < 1 and math.random() > 0.9 + range_calc then
 								// 		item = core.get_node_drops(node2, "crafter:diamondpick")[1]
 								// 		ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
