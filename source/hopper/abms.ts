@@ -15,25 +15,27 @@ namespace hopper {
 				return;
 			}
 			const inv: InvRef = core.get_meta(pos).get_inventory();
-			// 		local posob
-			// 		for _,object in pairs(core.get_objects_inside_radius(pos, 1)) do
-			// 			if not object:is_player()
-			// 			and object:get_luaentity()
-			// 			and object:get_luaentity().name == "__builtin:item"
-			// 			and inv
-			// 			and inv:room_for_item("main",
-			// 				ItemStack(object:get_luaentity().itemstring)) then
-			// 				posob = object:getpos()
-			// 				if math.abs(posob.x - pos.x) <= 0.5
-			// 				and posob.y - pos.y <= 0.85
-			// 				and posob.y - pos.y >= 0.3 then
-			// 					inv:add_item("main",
-			// 						ItemStack(object:get_luaentity().itemstring))
-			// 					object:get_luaentity().itemstring = ""
-			// 					object:remove()
-			// 				end
-			// 			end
-			// 		end
+			let posob;
+			for (const [_, object] of pairs(
+				core.get_objects_inside_radius(pos, 1)
+			)) {
+				// 			if not object:is_player()
+				// 			and object:get_luaentity()
+				// 			and object:get_luaentity().name == "__builtin:item"
+				// 			and inv
+				// 			and inv:room_for_item("main",
+				// 				ItemStack(object:get_luaentity().itemstring)) then
+				// 				posob = object:getpos()
+				// 				if math.abs(posob.x - pos.x) <= 0.5
+				// 				and posob.y - pos.y <= 0.85
+				// 				and posob.y - pos.y >= 0.3 then
+				// 					inv:add_item("main",
+				// 						ItemStack(object:get_luaentity().itemstring))
+				// 					object:get_luaentity().itemstring = ""
+				// 					object:remove()
+				// 				end
+				// 			end
+			}
 		},
 	});
 	// // Used to convert side hopper facing into source and destination relative coordinates
