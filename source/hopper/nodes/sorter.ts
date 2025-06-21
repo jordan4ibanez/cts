@@ -239,14 +239,15 @@ namespace hopper {
 			const meta: MetaRef = core.get_meta(pos);
 			const inv: InvRef = meta.get_inventory();
 			// Build a filter list.
-			let filter_items: Dictionary<string, boolean> = {};
+			const filter_items = new Set<string>();
+
 			if (meta.get_string("filter_all") != "true") {
 				const filter_inv_size: number = inv.get_size("filter");
 				for (const i of $range(1, filter_inv_size)) {
 					const stack: ItemStackObject = inv.get_stack("filter", i);
 					const item: string = stack.get_name();
 					if (item != "") {
-						filter_items[item] = true;
+						filter_items.add(item);
 					}
 				}
 			}
