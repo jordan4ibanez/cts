@@ -17,34 +17,35 @@ namespace hopper {
 		return data;
 	}
 
-	// local function get_sorter_formspec(pos)
-	// 	local spos = hopper.get_string_pos(pos)
-	// 	local filter_all = core.get_meta(pos):get_string("filter_all") == "true"
-	// 	local y_displace = 0
-	// 	local filter_button_text, filter_button_tooltip, filter_body
-	// 	if filter_all then
-	// 		filter_body = ""
-	// 		filter_button_text = S("Selective\nFilter")
-	// 		filter_button_tooltip = S("This sorter is currently set to try sending all items\nin the direction of the arrow. Click this button\nto enable an item-type-specific filter.")
-	// 	else
-	// 		filter_body = "label[3.7,0;"..S("Filter").."]list[nodemeta:" .. spos .. ";filter;0,0.5;8,1;]"
-	// 		filter_button_text = S("Filter\nAll")
-	// 		filter_button_tooltip = S("This sorter is currently set to only send items listed\nin the filter list in the direction of the arrow.\nClick this button to set it to try sending all\nitems that way first.")
-	// 		y_displace = 1.6
-	// 	end
-	// 	local formspec =
-	// 		"size[8," .. 7 + y_displace .. "]"
-	// 		.. hopper.formspec_bg
-	// 		.. filter_body
-	// 		.. "list[nodemeta:" .. spos .. ";main;3,".. tostring(0.3 + y_displace) .. ";2,2;]"
-	// 		.. "button_exit[7,".. tostring(0.8 + y_displace) .. ";1,1;filter_all;".. filter_button_text .. "]tooltip[filter_all;" .. filter_button_tooltip.. "]"
-	// 		.. hopper.get_eject_button_texts(pos, 6, 0.8 + y_displace)
-	// 		.. "list[current_player;main;0,".. tostring(2.85 + y_displace) .. ";8,1;]"
-	// 		.. "list[current_player;main;0,".. tostring(4.08 + y_displace) .. ";8,3;8]"
-	// 		.. "listring[nodemeta:" .. spos .. ";main]"
-	// 		.. "listring[current_player;main]"
-	// 	return formspec
-	// end
+	function get_sorter_formspec(pos: Vec3) {
+		// 	local spos = hopper.get_string_pos(pos)
+		// 	local filter_all = core.get_meta(pos):get_string("filter_all") == "true"
+		// 	local y_displace = 0
+		// 	local filter_button_text, filter_button_tooltip, filter_body
+		// 	if filter_all then
+		// 		filter_body = ""
+		// 		filter_button_text = S("Selective\nFilter")
+		// 		filter_button_tooltip = S("This sorter is currently set to try sending all items\nin the direction of the arrow. Click this button\nto enable an item-type-specific filter.")
+		// 	else
+		// 		filter_body = "label[3.7,0;"..S("Filter").."]list[nodemeta:" .. spos .. ";filter;0,0.5;8,1;]"
+		// 		filter_button_text = S("Filter\nAll")
+		// 		filter_button_tooltip = S("This sorter is currently set to only send items listed\nin the filter list in the direction of the arrow.\nClick this button to set it to try sending all\nitems that way first.")
+		// 		y_displace = 1.6
+		// 	end
+		// 	local formspec =
+		// 		"size[8," .. 7 + y_displace .. "]"
+		// 		.. hopper.formspec_bg
+		// 		.. filter_body
+		// 		.. "list[nodemeta:" .. spos .. ";main;3,".. tostring(0.3 + y_displace) .. ";2,2;]"
+		// 		.. "button_exit[7,".. tostring(0.8 + y_displace) .. ";1,1;filter_all;".. filter_button_text .. "]tooltip[filter_all;" .. filter_button_tooltip.. "]"
+		// 		.. hopper.get_eject_button_texts(pos, 6, 0.8 + y_displace)
+		// 		.. "list[current_player;main;0,".. tostring(2.85 + y_displace) .. ";8,1;]"
+		// 		.. "list[current_player;main;0,".. tostring(4.08 + y_displace) .. ";8,3;8]"
+		// 		.. "listring[nodemeta:" .. spos .. ";main]"
+		// 		.. "listring[current_player;main]"
+		// 	return formspec
+	}
+
 	// core.register_node("crafter_hopper:sorter", {
 	// 	description = S("Sorter"),
 	// 	_doc_items_longdesc = hopper.doc.sorter_long_desc,
