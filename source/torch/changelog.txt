@@ -33,11 +33,11 @@ Changelog:
 - using Minetest style allows ceiling torches via settings
 - Minetest style supports all texturepacks (as long torch shaped)
 
-3.0.1 (2015)
+3.0.1 (2015) : Last commit of original https://github.com/BlockMen/torches
 - Fix global variable that caused rarely placing issues (thanks to tchncs for pointing out)
 
-4.0 (2020)
+4.0 (2020) : Overhauled into Crafter https://github.com/oilboi/Crafter-Minetest/tree/master/mods/torch
 - brought mod back to life
 
-5.0 (2025)
+5.0 (2025) : Crafter revived.
 - Brought back to life, again. Translated to TypeScript.
