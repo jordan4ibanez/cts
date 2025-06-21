@@ -52,7 +52,7 @@ namespace hopper {
 	});
 	// Used to convert side hopper facing into source and destination relative coordinates.
 	// This was tedious to populate and test.
-	// local directions = {
+	const directions = {
 	// 	[0]={["src"]={x=0, y=1, z=0},["dst"]={x=-1, y=0, z=0}},
 	// 	[1]={["src"]={x=0, y=1, z=0},["dst"]={x=0, y=0, z=1}},
 	// 	[2]={["src"]={x=0, y=1, z=0},["dst"]={x=1, y=0, z=0}},
@@ -77,7 +77,7 @@ namespace hopper {
 	// 	[21]={["src"]={x=0, y=-1, z=0},["dst"]={x=0, y=0, z=1}},
 	// 	[22]={["src"]={x=0, y=-1, z=0},["dst"]={x=-1, y=0, z=0}},
 	// 	[23]={["src"]={x=0, y=-1, z=0},["dst"]={x=0, y=0, z=-1}},
-	// }
+	}
 	// local bottomdir = function(facedir)
 	// 	return ({[0]={x=0, y=-1, z=0},
 	// 		{x=0, y=0, z=-1},
