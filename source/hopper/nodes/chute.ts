@@ -1,3 +1,4 @@
+namespace hopper {
 // local S = core.get_translator("hopper")
 // local function get_chute_formspec(pos)
 // 	local spos = hopper.get_string_pos(pos)
@@ -107,3 +108,4 @@
 // 		end
 // 	end,
 // })
+}
