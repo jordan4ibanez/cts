@@ -180,11 +180,11 @@ namespace hopper {
 		},
 	});
 
-	let hopper_side_drop;
-	let hopper_groups;
-
-	hopper_side_drop = "crafter_hopper:hopper";
-	hopper_groups = { cracky: 3, not_in_creative_inventory: 1 };
+	const hopper_side_drop: string = "crafter_hopper:hopper";
+	const hopper_groups: Dictionary<string, number> = {
+		cracky: 3,
+		not_in_creative_inventory: 1,
+	};
 
 	// core.register_node("crafter_hopper:hopper_side", {
 	// 	description = S("Side Hopper"),
