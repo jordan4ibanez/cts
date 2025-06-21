@@ -155,11 +155,12 @@ namespace hopper {
 		target_inventory_name: string,
 		filtered_items: string[]
 	): boolean {
-		// 	local hopper_meta = core.get_meta(hopper_pos)
-		// 	local target_def = core.registered_nodes[target_node.name]
-		// 	if not target_def then
-		// 		return false
-		// 	end
+		const hopper_meta: MetaRef = core.get_meta(hopper_pos);
+		const target_def: NodeDefinition | undefined =
+			core.registered_nodes[target_node.name];
+		if (target_def == null) {
+			return false;
+		}
 		// 	local eject_item = hopper.config.eject_button_enabled and hopper_meta:get_string("eject") == "true" and target_def.buildable_to
 		// 	if not eject_item and not target_inventory_name then
 		// 		return false
