@@ -80,29 +80,45 @@ namespace hopper {
 	}
 
 	core.register_node("crafter_hopper:sorter", {
-			description : ("Sorter"),
-			
-			groups : {stone : 1, hard : 1, pickaxe : 1, hand : 4,pathable : 1},
-			sounds : hopper.metal_sounds,
-			drawtype : "nodebox",
-			paramtype : "light",
-			paramtype2 : "facedir",
-			tiles : [
-					"hopper_bottom_" + hopper.config.texture_resolution + ".png",
-					"hopper_top_" + hopper.config.texture_resolution + ".png",
-					"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png^[transformFX^hopper_sorter_sub_arrow_" + hopper.config.texture_resolution + ".png^[transformFX",
-					"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png^hopper_sorter_sub_arrow_" + hopper.config.texture_resolution + ".png",
-					"hopper_top_" + hopper.config.texture_resolution + ".png",
-					"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png",
+		description: "Sorter",
+
+		groups: { stone: 1, hard: 1, pickaxe: 1, hand: 4, pathable: 1 },
+		sounds: hopper.metal_sounds,
+		drawtype: Drawtype.nodebox,
+		paramtype: ParamType1.light,
+		paramtype2: ParamType2.facedir,
+		tiles: [
+			"hopper_bottom_" + hopper.config.texture_resolution + ".png",
+			"hopper_top_" + hopper.config.texture_resolution + ".png",
+			"hopper_bottom_" +
+				hopper.config.texture_resolution +
+				".png^hopper_sorter_arrow_" +
+				hopper.config.texture_resolution +
+				".png^[transformFX^hopper_sorter_sub_arrow_" +
+				hopper.config.texture_resolution +
+				".png^[transformFX",
+			"hopper_bottom_" +
+				hopper.config.texture_resolution +
+				".png^hopper_sorter_arrow_" +
+				hopper.config.texture_resolution +
+				".png^hopper_sorter_sub_arrow_" +
+				hopper.config.texture_resolution +
+				".png",
+			"hopper_top_" + hopper.config.texture_resolution + ".png",
+			"hopper_bottom_" +
+				hopper.config.texture_resolution +
+				".png^hopper_sorter_arrow_" +
+				hopper.config.texture_resolution +
+				".png",
+		],
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				[-0.3, -0.3, -0.4, 0.3, 0.4, 0.4],
+				[-0.2, -0.2, 0.4, 0.2, 0.2, 0.7],
+				[-0.2, -0.3, -0.2, 0.2, -0.7, 0.2],
 			],
-			node_box : {
-				type : "fixed",
-				fixed : [
-					[-0.3, -0.3, -0.4, 0.3, 0.4, 0.4],
-					[-0.2, -0.2, 0.4, 0.2, 0.2, 0.7],
-					[-0.2, -0.3, -0.2, 0.2, -0.7, 0.2],
-				],
-			},
+		},
 		// 	on_construct = function(pos)
 		// 		local meta = core.get_meta(pos)
 		// 		local inv = meta:get_inventory()
