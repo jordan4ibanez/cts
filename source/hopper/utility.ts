@@ -171,11 +171,10 @@ namespace hopper {
 			return false;
 		}
 		// Hopper inventory.
-
-		// 	local hopper_inv = hopper_meta:get_inventory()
-		// 	if hopper_inv:is_empty("main") == true then
-		// 		return false
-		// 	end
+		const hopper_inv = hopper_meta.get_inventory();
+		if (hopper_inv.is_empty("main")) {
+			return false;
+		}
 		// 	local hopper_inv_size = hopper_inv:get_size("main")
 		// 	local placer = get_placer(hopper_meta:get_string("placer"))
 		// 	//target inventory
