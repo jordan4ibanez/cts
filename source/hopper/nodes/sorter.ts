@@ -79,7 +79,7 @@ namespace hopper {
 		);
 	}
 
-	// core.register_node("crafter_hopper:sorter", {
+	core.register_node("crafter_hopper:sorter", {
 	// 	description = S("Sorter"),
 	// 	_doc_items_longdesc = hopper.doc.sorter_long_desc,
 	// 	_doc_items_usagehelp = hopper.doc.sorter_usage,
@@ -227,5 +227,5 @@ namespace hopper {
 	// 			core.get_node_timer(pos):start(1)
 	// 		end
 	// 	end,
-	// })
+	})
 }
