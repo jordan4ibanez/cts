@@ -240,17 +240,17 @@ namespace hopper {
 			const inv: InvRef = meta.get_inventory();
 			// Build a filter list.
 			let filter_items = null;
-			// 		if meta:get_string("filter_all") ~= "true" then
-			// 			filter_items = {}
-			// 			local filter_inv_size = inv:get_size("filter")
-			// 			for i = 1, filter_inv_size do
-			// 				local stack = inv:get_stack("filter", i)
-			// 				local item = stack:get_name()
-			// 				if item ~= "" then
-			// 					filter_items[item] = true
-			// 				end
-			// 			end
-			// 		end
+			if (meta.get_string("filter_all") != "true") {
+				// 			filter_items = {}
+				// 			local filter_inv_size = inv:get_size("filter")
+				// 			for i = 1, filter_inv_size do
+				// 				local stack = inv:get_stack("filter", i)
+				// 				local item = stack:get_name()
+				// 				if item ~= "" then
+				// 					filter_items[item] = true
+				// 				end
+				// 			end
+			}
 			// 		local node = core.get_node(pos)
 			// 		local dir = core.facedir_to_dir(node.param2)
 			// 		local default_destination_pos = vector.add(pos, dir)
