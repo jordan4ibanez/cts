@@ -1,7 +1,7 @@
-// local particle_time = 5 -- how many seconds torches will wait to check if player is near
+// local particle_time = 5 // how many seconds torches will wait to check if player is near
 // local check_radius = 10
 
-// --get point where particle spawner is added
+// //get point where particle spawner is added
 // local function get_offset(wdir)
 // 	local z = 0
 // 	local x = 0
@@ -16,11 +16,11 @@
 // 	end
 // 	return {x = x, y = 0.27, z = z}	
 // end
-// --add in smoke and fire
+// //add in smoke and fire
 // local function create_ps(pos)
-// 	local dir = get_offset(minetest.get_node(pos).param2)
+// 	local dir = get_offset(core.get_node(pos).param2)
 // 	local ppos = vector.add(dir,pos)
-// 	minetest.add_particle({
+// 	core.add_particle({
 // 		pos = ppos,
 // 		velocity = vector.new(0,0,0),
 // 		acceleration = vector.new(0,0,0),
@@ -32,17 +32,17 @@
 // 		animation = {type = "vertical_frames",
 
 // 			aspect_w = 16,
-// 			-- Width of a frame in pixels
+// 			// Width of a frame in pixels
 
 // 			aspect_h = 16,
-// 			-- Height of a frame in pixels
+// 			// Height of a frame in pixels
 
 // 			length =  0.2,
-// 			-- Full loop length
+// 			// Full loop length
 // 		},
 // 	})
-// 	--[[
-// 	minetest.add_particlespawner({
+// 	//[[
+// 	core.add_particlespawner({
 // 		amount = particle_time*6,
 // 		time = particle_time*2,
 // 		minpos = ppos,
@@ -59,14 +59,14 @@
 // 		vertical = false,
 // 		texture = "smoke.png",
 // 	})
-// 	]]--
+// 	]]//
 // end
 
 
-// --reload smoke and flame on load
+// //reload smoke and flame on load
 
 /*
-// minetest.register_abm({
+// core.register_abm({
 // 	label = "Torch Particle",
 // 	nodenames = {"group:torch"},
 // 	neighbors = {"air"},
@@ -74,7 +74,7 @@
 // 	chance = 1,
 // 	action = function(pos, node, active_object_count, active_object_count_wider)
 // 		local found_player = false
-// 		for _,object in ipairs(minetest.get_objects_inside_radius(pos, check_radius)) do
+// 		for _,object in ipairs(core.get_objects_inside_radius(pos, check_radius)) do
 // 			local pos2 = object:getpos()
 // 			if object:is_player() then
 // 				found_player = true
@@ -87,8 +87,8 @@
 // })
 */
 
-// -- Item definitions
-// minetest.register_craftitem("torch:torch", {
+// // Item definitions
+// core.register_craftitem("torch:torch", {
 // 	description = "Torch",
 // 	inventory_image = "torches_torch.png",
 // 	wield_image = "torches_torch.png",
@@ -99,14 +99,14 @@
 // 			return itemstack
 // 		end
 
-// 		local buildable = minetest.get_nodedef(minetest.get_node(pointed_thing.under).name, "buildable_to")
+// 		local buildable = core.get_nodedef(core.get_node(pointed_thing.under).name, "buildable_to")
 
 // 		local wdir
 
 // 		if buildable then
-// 			wdir = minetest.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.under))
+// 			wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.under))
 // 		else
-// 			wdir = minetest.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
+// 			wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
 // 		end
 
 // 		local fakestack = itemstack
@@ -125,18 +125,18 @@
 // 		if not retval then
 // 			return itemstack
 // 		end
-// 		itemstack, retval = minetest.item_place(fakestack, placer, pointed_thing, wdir)
+// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
 // 		itemstack:set_name("torch:torch")
 
 // 		if retval then
-// 			minetest.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
+// 			core.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
 // 		end
 
 // 		return itemstack
 // 	end
 // })
 
-// minetest.register_node("torch:floor", {
+// core.register_node("torch:floor", {
 // 	inventory_image = "torches_torch.png",
 // 	wield_image = "torches_torch.png",
 // 	wield_scale = {x = 1, y = 1, z = 1 + 2/16},
@@ -150,7 +150,7 @@
 // 	walkable = false,
 // 	floodable = true,
 // 	on_flood = function(pos, oldnode, newnode)
-// 		minetest.throw_item(pos, "torch:torch")
+// 		core.throw_item(pos, "torch:torch")
 // 	end,
 // 	light_source = 13,
 // 	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1},
@@ -162,7 +162,7 @@
 // 	sounds = main.woodSound(),
 // })
 
-// minetest.register_node("torch:wall", {
+// core.register_node("torch:wall", {
 // 	inventory_image = "torches_torch.png",
 // 	wield_image = "torches_torch.png",
 // 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
@@ -173,7 +173,7 @@
 // 	paramtype2 = "wallmounted",
 // 	floodable = true,
 // 	on_flood = function(pos, oldnode, newnode)
-// 		minetest.throw_item(pos, "torch:torch")
+// 		core.throw_item(pos, "torch:torch")
 // 	end,
 // 	sunlight_propagates = true,
 // 	walkable = false,
@@ -189,7 +189,7 @@
 // 	sounds = main.woodSound(),
 // })
 
-// minetest.register_craft({
+// core.register_craft({
 // 	output = "torch:torch 4",
 // 	recipe = {
 // 		{"group:coal"},
