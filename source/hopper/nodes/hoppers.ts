@@ -145,6 +145,7 @@ namespace hopper {
 				[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
 			],
 		},
+
 		on_construct: (pos) => {
 			const inv: InvRef = core.get_meta(pos).get_inventory();
 			inv.set_size("main", 4 * 4);
