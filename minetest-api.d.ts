@@ -1865,18 +1865,18 @@ declare global {
 		acceleration: Vec3;
 		expirationtime: number;
 		size: number;
-		collisiondetection: boolean;
-		collision_removal: boolean;
-		object_collision: boolean;
-		vertical: boolean;
+		collisiondetection?: boolean;
+		collision_removal?: boolean;
+		object_collision?: boolean;
+		vertical?: boolean;
 		texture: string;
-		playername: string;
-		animation: TileAnimationDefinition;
-		glow: number;
-		node: NodeTable;
-		node_tile: NodeSoundSpec;
-		drag: Vec3;
-		bounce: ParticleBounceDefinition;
+		playername?: string;
+		animation?: TileAnimationDefinition;
+		glow?: number;
+		node?: NodeTable;
+		node_tile?: NodeSoundSpec;
+		drag?: Vec3;
+		bounce?: ParticleBounceDefinition;
 	}
 
 	/** @noSelf **/ interface ParticleSpawnerTweenDefinition
