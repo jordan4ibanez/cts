@@ -1,6 +1,11 @@
 namespace tnt {
-	function extreme_tnt(pos: Vec3, range: number, explosion_type: string) {
-		// 	local pos = vector.floor(vector.add(pos,0.5))
+	function extreme_tnt(
+		inputPos: Vec3,
+		range: number,
+		explosion_type: string
+	) {
+		const pos: Vec3 = vector.floor(vector.add(inputPos, 0.5));
+
 		// 	local delay = 0
 		// 	for x=-1,0 do
 		// 	for y=-1,0 do
