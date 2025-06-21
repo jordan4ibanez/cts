@@ -131,17 +131,49 @@ namespace tnt {
 									},
 									pointed_thing
 								);
-								// 	if range_calc < 1 and math.random() > 0.9 + range_calc then
-								// 		item = core.get_node_drops(node2, "crafter:diamondpick")[1]
-								// 		ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
-								// 		obj = core.add_item(ppos, item)
-								// 		if obj then
-								// 			power = (range - vector.distance(pos,ppos))*2
-								// 			dir = vector.subtract(ppos,pos)
-								// 			force = vector.multiply(dir,power)
-								// 			obj:set_velocity(force)
-								// 		end
-								// 	end
+								if (
+									range_calc < 1 &&
+									math.random() > 0.9 + range_calc
+								) {
+									const nodeName: string =
+										core.get_name_from_content_id(
+											currentID
+										);
+
+									const item = core.get_node_drops(
+										nodeName,
+										"crafter:diamondpick"
+									);
+
+									if (item.length == 0) {
+										continue;
+									}
+
+									const ppos = vector.create3d({
+										x: pointed_thing.under.x,
+										y: pointed_thing.under.y,
+										z: pointed_thing.under.z,
+									});
+									const obj: ObjectRef | null = core.add_item(
+										ppos,
+										item[0]
+									);
+									if (obj != null) {
+										const power: number =
+											(range -
+												vector.distance(pos, ppos)) *
+											2;
+										const dir: Vec3 = vector.subtract(
+											ppos,
+											pos
+										);
+										const force: Vec3 = vector.multiply(
+											dir,
+											power
+										);
+										obj.set_velocity(force);
+									}
+								}
 							}
 						}
 					}
