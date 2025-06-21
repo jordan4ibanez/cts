@@ -2181,7 +2181,7 @@ declare global {
 		write_to_map(light: boolean): void;
 		get_node_at(position: Vec3): MapNode;
 		set_node_at(position: Vec3, node: MapNode): void;
-		get_data(buffer?: number[]): number[];
+		get_data(): number[];
 		set_data(buffer?: number[]): number[];
 		set_lighting(light: number, p1: Vec3, p2: Vec3): void;
 		get_light_data(buffer: number[]): number[];
