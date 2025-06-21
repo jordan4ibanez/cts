@@ -286,19 +286,20 @@ namespace tnt {
 							throw new Error("LuaEntity became null.");
 						}
 						if (luaEntity.name == "crafter_tnt:tnt") {
-							// 			object:get_luaentity().shot = true
+							(luaEntity as TntEntity).shot = true;
 						} /* todo: cast as a mob */ else if (
 							(luaEntity as any).is_mob
 						) {
-							// 			object:punch(object, 2,
-							// 				{
-							// 				full_punch_interval=1.5,
-							// 				damage_groups = {damage=math.floor(power)},
-							// 				})
+							object.punch(object, 2, {
+								full_punch_interval: 1.5,
+								damage_groups: { damage: math.floor(power) },
+							});
 						} else if (luaEntity.name == "__builtin:item") {
-							// 			object:get_luaentity().poll_timer = 0
+							(
+								luaEntity as itemHandling.CrafterItemEntity
+							).poll_timer = 0;
 						}
-						// 		object:set_velocity(force)
+						object.add_velocity(force);
 					}
 				}
 			}
@@ -326,6 +327,11 @@ namespace tnt {
 		// 		vertical = false,
 		// 		texture = "smoke.png",
 		// 	})
+	}
+
+	class TntEntity extends types.Entity {
+		name: string = "crafter_tnt:tnt";
+		shot: boolean = false;
 	}
 
 	// local pos
