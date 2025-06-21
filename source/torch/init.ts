@@ -122,15 +122,15 @@ namespace torch {
 			const fakestack: ItemStackObject = itemstack;
 
 			let retval: boolean = false;
-					if (buildable && wdir == 4) {
-			// 			retval = fakestack:set_name("crafter_torch:floor")
-					} else if (wdir < 1) {
-			// 			return itemstack
-					} else if (wdir == 1) {
-			// 			retval = fakestack:set_name("crafter_torch:floor")
-					}else {
-			// 			retval = fakestack:set_name("crafter_torch:wall")
-					}
+			if (buildable && wdir == 4) {
+				retval = fakestack.set_name("crafter_torch:floor");
+			} else if (wdir < 1) {
+				return itemstack;
+			} else if (wdir == 1) {
+				retval = fakestack.set_name("crafter_torch:floor");
+			} else {
+				retval = fakestack.set_name("crafter_torch:wall");
+			}
 			// 		if not retval then
 			// 			return itemstack
 			// 		end
