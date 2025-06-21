@@ -166,9 +166,13 @@ namespace hopper {
 		5: vector.create3d({ x: 0, y: 1, z: 0 }),
 	};
 
-	// local bottomdir = function(facedir)
-	// 	return ()[math.floor(facedir/4)]
-	// end
+	function bottomdir(facedir: number): Vec3 {
+		const data: Vec3 | undefined = dirs[math.floor(facedir / 4)];
+		if (data == null) {
+			throw new Error("Logic error.");
+		}
+		return data;
+	}
 	// // hopper workings
 	// core.register_abm({
 	// 	label = "Hopper transfer",
