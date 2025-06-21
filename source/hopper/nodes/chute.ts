@@ -1,7 +1,7 @@
 namespace hopper {
 	function get_chute_formspec(pos: Vec3): string {
 		const spos: string = hopper.get_string_pos(pos);
-		const formspec: string =
+		return (
 			"size[8,7]" +
 			hopper.formspec_bg +
 			"list[nodemeta:" +
@@ -13,7 +13,9 @@ namespace hopper {
 			"listring[nodemeta:" +
 			spos +
 			";main]" +
-			"listring[current_player;main]";
+			"listring[current_player;main]"
+
+		)
 		// 	return formspec
 	}
 
