@@ -173,7 +173,8 @@ namespace hopper {
 		}
 		return data;
 	}
-	// // hopper workings
+
+	// Hopper workings.
 	// core.register_abm({
 	// 	label = "Hopper transfer",
 	// 	nodenames = {"crafter_hopper:hopper", "crafter_hopper:hopper_side"},
