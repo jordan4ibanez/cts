@@ -41,20 +41,36 @@ namespace hopper {
 		// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
 		// the default item_place_node orientation code will not orient them pointing toward the selected surface.
 
-		// 	if x == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
-		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 0)
-		// 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
-		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 2)
-		// 	elseif z == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side")  then
-		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 3)
-		// 	elseif z == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
-		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 1)
-		// 	else
-		// 		if hopper.config.single_craftable_item then
-		// 			node_name = "crafter_hopper:hopper" // For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
-		// 		end
-		// 		returned_stack, success = core.item_place_node(ItemStack(node_name), placer, pointed_thing)
-		// 	end
+		if (
+			x == -1 &&
+			(hopper.config.single_craftable_item ||
+				node_name == "crafter_hopper:hopper_side")
+		) {
+			// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 0)
+		} else if (
+			x == 1 &&
+			(hopper.config.single_craftable_item ||
+				node_name == "crafter_hopper:hopper_side")
+		) {
+			// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 2)
+		} else if (
+			z == -1 &&
+			(hopper.config.single_craftable_item ||
+				node_name == "crafter_hopper:hopper_side")
+		) {
+			// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 3)
+		} else if (
+			z == 1 &&
+			(hopper.config.single_craftable_item ||
+				node_name == "crafter_hopper:hopper_side")
+		) {
+			// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 1)
+		} else {
+			// 		if hopper.config.single_craftable_item then
+			// 			node_name = "crafter_hopper:hopper" // For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
+			// 		end
+			// 		returned_stack, success = core.item_place_node(ItemStack(node_name), placer, pointed_thing)
+		}
 		// 	if success then
 		// 		local meta = core.get_meta(pos2)
 		// 		meta:set_string("placer", placer:get_player_name())
