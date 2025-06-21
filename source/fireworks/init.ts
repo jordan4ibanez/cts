@@ -113,6 +113,6 @@ namespace fireworks {
 	core.register_craft({
 		type: CraftRecipeType.shapeless,
 		output: "fireworks:rocket",
-		recipe: ["crafter:paper", "mob:gunpowder"],
+		recipe: ["crafter:paper", "crafter_mob:gunpowder"],
 	});
 }
