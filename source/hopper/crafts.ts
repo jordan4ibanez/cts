@@ -1,6 +1,6 @@
 namespace hopper {
 	core.register_craft({
-		output: "hopper:hopper",
+		output: "crafter_hopper:hopper",
 		recipe: [
 			["main:iron", "utility:chest", "main:iron"],
 			["", "main:iron", ""],
@@ -8,12 +8,12 @@ namespace hopper {
 	});
 
 	core.register_craft({
-		output: "hopper:chute",
+		output: "crafter_hopper:chute",
 		recipe: [["main:iron", "utility:chest", "main:iron"]],
 	});
 
 	core.register_craft({
-		output: "hopper:sorter",
+		output: "crafter_hopper:sorter",
 		recipe: [
 			["", "main:gold", ""],
 			["main:iron", "utility:chest", "main:iron"],
