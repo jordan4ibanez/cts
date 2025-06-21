@@ -108,43 +108,43 @@ namespace hopper {
 
 	// Hoppers
 	core.register_node("crafter_hopper:hopper", {
-			drop : "crafter_hopper:hopper",
-			description : "Hopper",
-			groups : {stone : 1, hard : 1, pickaxe : 1, hand : 4,pathable : 1},
-			sounds : hopper.metal_sounds,
-			drawtype : "nodebox",
-			paramtype : "light",
-			paramtype2 : "facedir",
-			tiles : [
-				"hopper_top_16.png",
-				"hopper_top_16.png",
-				"hopper_front_16.png"
+		drop: "crafter_hopper:hopper",
+		description: "Hopper",
+		groups: { stone: 1, hard: 1, pickaxe: 1, hand: 4, pathable: 1 },
+		sounds: hopper.metal_sounds,
+		drawtype: "nodebox",
+		paramtype: "light",
+		paramtype2: "facedir",
+		tiles: [
+			"hopper_top_16.png",
+			"hopper_top_16.png",
+			"hopper_front_16.png",
+		],
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				//funnel walls
+				[-0.5, 0.0, 0.4, 0.5, 0.5, 0.5],
+				[0.4, 0.0, -0.5, 0.5, 0.5, 0.5],
+				[-0.5, 0.0, -0.5, -0.4, 0.5, 0.5],
+				[-0.5, 0.0, -0.5, 0.5, 0.5, -0.4],
+				//funnel base
+				[-0.5, 0.0, -0.5, 0.5, 0.1, 0.5],
+				//spout
+				[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
+				[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
 			],
-			node_box : {
-				type : "fixed",
-				fixed : [
-					//funnel walls
-					[-0.5, 0.0, 0.4, 0.5, 0.5, 0.5],
-					[0.4, 0.0, -0.5, 0.5, 0.5, 0.5],
-					[-0.5, 0.0, -0.5, -0.4, 0.5, 0.5],
-					[-0.5, 0.0, -0.5, 0.5, 0.5, -0.4],
-					//funnel base
-					[-0.5, 0.0, -0.5, 0.5, 0.1, 0.5],
-					//spout
-					[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
-					[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
-				],
-			},
-			selection_box : {
-				type : "fixed",
-				fixed : [
-					//funnel
-					[-0.5, 0.0, -0.5, 0.5, 0.5, 0.5],
-					//spout
-					[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
-					[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
-				],
-			},
+		},
+		selection_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				//funnel
+				[-0.5, 0.0, -0.5, 0.5, 0.5, 0.5],
+				//spout
+				[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
+				[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
+			],
+		},
 		// 	on_construct = function(pos)
 		// 		local inv = core.get_meta(pos):get_inventory()
 		// 		inv:set_size("main", 4*4)
