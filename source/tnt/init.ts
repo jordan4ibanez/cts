@@ -25,14 +25,15 @@ namespace tnt {
 		const in_node: string = core.get_node(pos).name;
 		const in_water =
 			in_node == "crafter:water" || in_node == "crafter:waterflow";
-		const min: Vec3 = vector.add(pos, range);
-		const max: Vec3 = vector.subtract(pos, range);
-		const vm: VoxelManipObject = core.get_voxel_manip(min, max);
-		const [emin, emax] = vm.read_from_map(min, max);
-		const area: VoxelAreaObject = VoxelArea(emin, emax);
 
-		const data: number[] = vm.get_data();
 		if (!in_water) {
+			const min: Vec3 = vector.add(pos, range);
+			const max: Vec3 = vector.subtract(pos, range);
+			const vm: VoxelManipObject = core.get_voxel_manip(min, max);
+			const data: number[] = vm.get_data();
+			const [emin, emax] = vm.read_from_map(min, max);
+			const area: VoxelAreaObject = VoxelArea(emin, emax);
+
 			vm.get_light_data();
 			const range_calc: number = range / 100;
 			const explosion_depletion: number = range / 2;
