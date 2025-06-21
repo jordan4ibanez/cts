@@ -1,3 +1,4 @@
+namespace torch {
 // local particle_time = 5 // how many seconds torches will wait to check if player is near
 // local check_radius = 10
 
@@ -196,3 +197,4 @@
 // 		{"group:stick"}
 // 	}
 // })
+}
