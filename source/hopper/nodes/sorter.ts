@@ -300,7 +300,7 @@ namespace hopper {
 				);
 			}
 
-			// weren't able to put something in the filter destination, for whatever reason. Now we can start moving stuff forward to the default.
+			// Wasn't able to put something in the filter destination, for whatever reason. Now can start moving stuff forward to the default.
 			if (!success) {
 				// 			local default_destination_node = core.get_node(default_destination_pos)
 				// 			local registered_inventories = hopper.get_registered_inventories_for(default_destination_node.name)
