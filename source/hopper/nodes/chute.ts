@@ -93,12 +93,19 @@ namespace hopper {
 			);
 		},
 
-		// 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		// 		local timer = core.get_node_timer(pos)
-		// 		if not timer:is_started() then
-		// 			timer:start(1)
-		// 		end
-		// 	end,
+		on_metadata_inventory_put: (
+			pos: Vec3,
+			listname: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
+		) => {
+			const timer: NodeTimerObject = core.get_node_timer(pos);
+			if (!timer.is_started()) {
+				timer.start(1);
+			}
+		},
+
 		// 	on_timer = function(pos, elapsed)
 		// 		local meta = core.get_meta(pos);
 		// 		local inv = meta:get_inventory()
