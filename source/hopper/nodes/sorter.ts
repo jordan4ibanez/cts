@@ -272,15 +272,34 @@ namespace hopper {
 				hopper.get_registered_inventories_for(
 					filter_destination_node.name
 				);
-			// 		if registered_inventories ~= nil then
-			// 			if filter_output_direction == "horizontal" then
-			// 				success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, registered_inventories["side"], filter_items)
-			// 			else
-			// 				success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, registered_inventories["bottom"], filter_items)
-			// 			end
-			// 		else
-			// 			success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, nil, filter_items)
-			// 		end
+			if (registered_inventories != null) {
+				if (filter_output_direction == "horizontal") {
+					success = hopper.send_item_to(
+						pos,
+						filter_destination_pos,
+						filter_destination_node,
+						registered_inventories["side"],
+						filter_items
+					);
+				} else {
+					success = hopper.send_item_to(
+						pos,
+						filter_destination_pos,
+						filter_destination_node,
+						registered_inventories["bottom"],
+						filter_items
+					);
+				}
+			} else {
+				success = hopper.send_item_to(
+					pos,
+					filter_destination_pos,
+					filter_destination_node,
+					undefined,
+					filter_items
+				);
+			}
+
 			// 		if not success then // weren't able to put something in the filter destination, for whatever reason. Now we can start moving stuff forward to the default.
 			// 			local default_destination_node = core.get_node(default_destination_pos)
 			// 			local registered_inventories = hopper.get_registered_inventories_for(default_destination_node.name)
