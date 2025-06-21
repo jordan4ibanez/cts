@@ -19,29 +19,29 @@ namespace torch {
 		return vector.create3d({ x: x, y: 0.27, z: z });
 	}
 
-	// //add in smoke and fire
-	// local function create_ps(pos)
-	// 	local dir = get_offset(core.get_node(pos).param2)
-	// 	local ppos = vector.add(dir,pos)
-	// 	core.add_particle({
-	// 		pos = ppos,
-	// 		velocity = vector.new(0,0,0),
-	// 		acceleration = vector.new(0,0,0),
-	// 		expirationtime = particle_time*3,
-	// 		size = 3,
-	// 		collisiondetection = false,
-	// 		vertical = true,
-	// 		texture = "torch_animated.png",
-	// 		animation = {type = "vertical_frames",
-	// 			aspect_w = 16,
-	// 			// Width of a frame in pixels
-	// 			aspect_h = 16,
-	// 			// Height of a frame in pixels
-	// 			length =  0.2,
-	// 			// Full loop length
-	// 		},
-	// 	})
-	/*
+	// Add in smoke and fire.
+	function create_ps(pos: Vec3): void {
+		// 	local dir = get_offset(core.get_node(pos).param2)
+		// 	local ppos = vector.add(dir,pos)
+		// 	core.add_particle({
+		// 		pos = ppos,
+		// 		velocity = vector.new(0,0,0),
+		// 		acceleration = vector.new(0,0,0),
+		// 		expirationtime = particle_time*3,
+		// 		size = 3,
+		// 		collisiondetection = false,
+		// 		vertical = true,
+		// 		texture = "torch_animated.png",
+		// 		animation = {type = "vertical_frames",
+		// 			aspect_w = 16,
+		// 			// Width of a frame in pixels
+		// 			aspect_h = 16,
+		// 			// Height of a frame in pixels
+		// 			length =  0.2,
+		// 			// Full loop length
+		// 		},
+		// 	})
+		/*
 	// 	core.add_particlespawner({
 	// 		amount = particle_time*6,
 	// 		time = particle_time*2,
@@ -60,7 +60,7 @@ namespace torch {
 	// 		texture = "smoke.png",
 	// 	})
 	*/
-	// end
+	}
 	// //reload smoke and flame on load
 	/*
 // core.register_abm({
