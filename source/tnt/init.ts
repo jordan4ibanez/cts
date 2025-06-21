@@ -8,7 +8,7 @@ namespace tnt {
 		// Cast away using this idea in your mods.
 		(tntID as number) = core.get_content_id("crafter_tnt:tnt");
 	});
-	const boom_time: number = core.get_us_time() / 1000000;
+	let boom_time: number = core.get_us_time() / 1000000;
 
 	const diggingNodes = new Set<number>();
 
@@ -188,10 +188,15 @@ namespace tnt {
 			explosion(pos, range);
 		}
 
-		// 	if core.get_us_time()/1000000 - boom_time >= 0.1 then
-		// 		boom_time = core.get_us_time()/1000000
-		// 		core.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = 64}) //hear twice as far away
-		// 	end
+		if (core.get_us_time() / 1000000 - boom_time >= 0.1) {
+			boom_time = core.get_us_time() / 1000000;
+			core.sound_play("tnt_explode", {
+				pos: pos,
+				gain: 1.0,
+				max_hear_distance: 64,
+			}); //hear twice as far away
+		}
+
 		// 	//throw players and items
 		// 	for _,object in ipairs(core.get_objects_inside_radius(pos, range)) do
 		// 		if object:is_player() or (object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)) then
