@@ -195,9 +195,9 @@ namespace torch {
 		paramtype = "light",
 		paramtype2 = "wallmounted",
 		floodable = true,
-		on_flood = function(pos, oldnode, newnode)
-			core.throw_item(pos, "crafter_torch:torch")
-		end,
+		on_flood : (pos: Vec3, oldnode: NodeTable, newnode: NodeTable) => {
+			item_handling.throw_item(pos, "crafter_torch:torch")
+		},
 		sunlight_propagates = true,
 		walkable = false,
 		light_source = 13,
