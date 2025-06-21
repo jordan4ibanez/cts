@@ -22,14 +22,13 @@ namespace tnt {
 	}
 
 	// Raycast explosion.
-	function explosion(pos: Vec3, range: number): void {
-		const min: Vec3 = vector.add(pos, range);
-		const max: Vec3 = vector.subtract(pos, range);
-		const vm: VoxelManipObject = core.get_voxel_manip(min, max);
-		const data: number[] = vm.get_data();
-		const [emin, emax] = vm.read_from_map(min, max);
-		const area: VoxelAreaObject = VoxelArea(emin, emax);
-
+	function explosion(
+		pos: Vec3,
+		range: number,
+		vm: VoxelManipObject,
+		data: number[],
+		area: VoxelAreaObject
+	): void {
 		// vm.get_light_data();
 
 		const range_calc: number = range / 100;
@@ -184,8 +183,15 @@ namespace tnt {
 		const in_water =
 			in_node == "crafter:water" || in_node == "crafter:waterflow";
 
+		const min: Vec3 = vector.add(pos, range);
+		const max: Vec3 = vector.subtract(pos, range);
+		const vm: VoxelManipObject = core.get_voxel_manip(min, max);
+		const data: number[] = vm.get_data();
+		const [emin, emax] = vm.read_from_map(min, max);
+		const area: VoxelAreaObject = VoxelArea(emin, emax);
+
 		if (!in_water) {
-			explosion(pos, range);
+			explosion(pos, range, vm, data, area);
 		}
 
 		if (core.get_us_time() / 1000000 - boom_time >= 0.1) {
@@ -233,15 +239,31 @@ namespace tnt {
 				if (isPlayer) {
 					ppos.y = ppos.y + 1;
 				}
-				// ray = core.raycast(pos, ppos, false, false)
-				// clear = true
-				// for pointed_thing in ray do
-				// 	n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
-				// 	node2 = content_id(data[n_pos])
-				// 	if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
-				// 		clear = false
-				// 	end
-				// end
+				const ray: RaycastObject = core.raycast(
+					pos,
+					ppos,
+					false,
+					false
+				);
+				let clear: boolean = true;
+				for (const pointed_thing of ray) {
+					if (pointed_thing.under == null) {
+						core.log(
+							LogLevel.warning,
+							"Missing pointed thing under."
+						);
+						continue;
+					}
+					const n_pos: number = area.index(
+						pointed_thing.under.x,
+						pointed_thing.under.y,
+						pointed_thing.under.z
+					);
+					// 	node2 = content_id(data[n_pos])
+					// 	if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
+					// 		clear = false
+					// 	end
+				}
 				// if clear == true then
 				// 	power = (range - vector.distance(pos,ppos))*10
 				// 	dir = vector.direction(pos,ppos)
