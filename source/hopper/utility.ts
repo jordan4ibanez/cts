@@ -147,7 +147,7 @@ namespace hopper {
 		}
 	}
 
-	// // Used to put items from the hopper inventory into the target block
+	// Used to put items from the hopper inventory into the target block.
 	// hopper.send_item_to = function(hopper_pos, target_pos, target_node, target_inventory_name, filtered_items)
 	// 	local hopper_meta = core.get_meta(hopper_pos)
 	// 	local target_def = core.registered_nodes[target_node.name]
