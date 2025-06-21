@@ -24,8 +24,15 @@ namespace hopper {
 		pointed_thing: PointedThing,
 		node_name: string
 	) {
-		// 	local pos  = pointed_thing.under
-		// 	local pos2 = pointed_thing.above
+		if (pointed_thing.type == PointedThingType.object) {
+			return;
+		}
+		const pos: Vec3 | undefined = pointed_thing.under;
+		const pos2: Vec3 | undefined = pointed_thing.above;
+
+		if (pos == null || pos2 == null) {
+			throw new Error("engine issue?");
+		}
 		// 	local x = pos.x - pos2.x
 		// 	local z = pos.z - pos2.z
 		// 	local returned_stack, success
