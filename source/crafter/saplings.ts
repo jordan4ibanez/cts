@@ -102,7 +102,7 @@ namespace crafter {
 			itemstack: ItemStackObject,
 			placer: ObjectRef,
 			pointed_thing: PointedThing
-		) => {
+		): ItemStackObject | void => {
 			if (
 				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.above == null ||
@@ -146,7 +146,7 @@ namespace crafter {
 					"soil"
 				) > 0
 			) {
-				return core.item_place(itemstack, placer, pointed_thing);
+				return core.item_place(itemstack, placer, pointed_thing)[0];
 			}
 			{
 				const def: NodeDefinition | undefined =
