@@ -1,11 +1,11 @@
 namespace hopper {
-	// // suck in items on top of hopper
-	// core.register_abm({
-	// 	label = "Hopper suction",
-	// 	nodenames = {"hopper:hopper", "hopper:hopper_side"},
-	// 	interval = 0.1,
-	// 	chance = 1,
-	// 	action = function(pos, node, active_object_count, active_object_count_wider)
+	// Suck in items on top of hopper.
+	core.register_abm({
+		label : "Hopper suction",
+	// 	nodenames : {"hopper:hopper", "hopper:hopper_side"},
+	// 	interval : 0.1,
+	// 	chance : 1,
+	// 	action : function(pos, node, active_object_count, active_object_count_wider)
 	// 		if active_object_count_wider == 0 then
 	// 			return
 	// 		end
@@ -30,7 +30,7 @@ namespace hopper {
 	// 			end
 	// 		end
 	// 	end,
-	// })
+	})
 	// // Used to convert side hopper facing into source and destination relative coordinates
 	// // This was tedious to populate and test
 	// local directions = {
