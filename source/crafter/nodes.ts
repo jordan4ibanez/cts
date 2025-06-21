@@ -377,13 +377,13 @@ namespace crafter {
 			itemstack: ItemStackObject,
 			placer: ObjectRef,
 			pointed_thing: PointedThing
-		): ItemStackObject | null => {
+		): ItemStackObject | void => {
 			if (
 				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.above == null ||
 				pointed_thing.under == null
 			) {
-				return null;
+				return;
 			}
 
 			const sneak: boolean = placer.get_player_control().sneak;
@@ -392,7 +392,7 @@ namespace crafter {
 
 			if (!sneak && noddef && noddef.on_rightclick) {
 				core.item_place(itemstack, placer, pointed_thing);
-				return null;
+				return;
 			}
 
 			const pos: Vec3 = pointed_thing.above;
@@ -708,7 +708,7 @@ namespace crafter {
 			itemstack: ItemStackObject,
 			placer: ObjectRef,
 			pointed_thing: PointedThing
-		): ItemStackObject | null => {
+		): ItemStackObject | void => {
 			if (
 				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.above == null ||
