@@ -103,7 +103,7 @@ namespace item_handling {
 			(
 				pos: Vec3,
 				newnode: NodeTable,
-				placer: ObjectRef,
+				placer: ObjectRef | null,
 				oldnode: NodeTable,
 				itemstack: ItemStackObject,
 				pointed_thing: PointedThing
