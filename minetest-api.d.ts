@@ -411,7 +411,7 @@ interface core {
 	yaw_to_dir(yaw: number): Vec3;
 	is_colored_paramtype(pType: number): boolean;
 	strip_param2_color(param2: number, paramType2: ParamType2): number | null;
-	get_node_drops(node: string | NodeTable, toolName: string): string[] | null;
+	get_node_drops(node: string | NodeTable, toolName: string): string[];
 	get_craft_result(
 		input: CraftRecipeCheckDefinition
 	): LuaMultiReturn<[CraftResultObject, CraftRecipeCheckDefinition]>;
