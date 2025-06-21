@@ -180,9 +180,9 @@ namespace tnt {
 				}
 			}
 
-			// 		vm:set_data(data)
-			// 		vm:update_liquids()
-			// 		vm:write_to_map()
+			vm.set_data(data);
+			vm.update_liquids();
+			vm.write_to_map();
 		}
 
 		// 	if core.get_us_time()/1000000 - boom_time >= 0.1 then
