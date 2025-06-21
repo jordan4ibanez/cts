@@ -40,12 +40,12 @@ namespace hopper {
 				[-0.2, -0.2, 0.3, 0.2, 0.2, 0.7],
 			],
 		},
-		on_construct(pos: Vec3) {
+		on_construct: (pos: Vec3) => {
 			const inv: InvRef = core.get_meta(pos).get_inventory();
 			inv.set_size("main", 2 * 2);
 		},
 
-		on_place(itemstack: ItemStackObject, placer, pointed_thing) {
+		on_place: (itemstack: ItemStackObject, placer, pointed_thing) => {
 			if (pointed_thing.type == PointedThingType.object) {
 				return;
 			}
@@ -69,7 +69,7 @@ namespace hopper {
 			return returned_stack;
 		},
 
-		can_dig(pos: Vec3, player: ObjectRef): boolean {
+		can_dig: (pos: Vec3, player: ObjectRef): boolean => {
 			const inv: InvRef = core.get_meta(pos).get_inventory();
 			return inv.is_empty("main");
 		},
