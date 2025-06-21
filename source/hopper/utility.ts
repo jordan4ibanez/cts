@@ -161,7 +161,9 @@ namespace hopper {
 		if (target_def == null) {
 			return false;
 		}
-		// 	local eject_item = hopper.config.eject_button_enabled and hopper_meta:get_string("eject") == "true" and target_def.buildable_to
+		const eject_item =
+			hopper_meta.get_string("eject") == "true" &&
+			target_def.buildable_to;
 		// 	if not eject_item and not target_inventory_name then
 		// 		return false
 		// 	end
