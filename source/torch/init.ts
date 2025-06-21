@@ -159,6 +159,7 @@ namespace torch {
 		drop: "crafter_torch:torch",
 		walkable: false,
 		floodable: true,
+		use_texture_alpha: TextureAlpha.clip,
 		on_flood: (pos: Vec3, oldnode: NodeTable, newnode: NodeTable) => {
 			item_handling.throw_item(pos, "crafter_torch:torch");
 		},
@@ -189,6 +190,7 @@ namespace torch {
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2.wallmounted,
 		floodable: true,
+		use_texture_alpha: TextureAlpha.clip,
 		on_flood: (pos: Vec3, oldnode: NodeTable, newnode: NodeTable) => {
 			item_handling.throw_item(pos, "crafter_torch:torch");
 		},
