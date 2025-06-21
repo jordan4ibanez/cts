@@ -42,23 +42,23 @@ namespace torch {
 		// 		},
 		// 	})
 		/*
-	// 	core.add_particlespawner({
-	// 		amount = particle_time*6,
-	// 		time = particle_time*2,
-	// 		minpos = ppos,
-	// 		maxpos = ppos,
-	// 		minvel = vector.new(-0.1,0.1,-0.1),
-	// 		maxvel = vector.new(0.1,0.3,0.1),
-	// 		minacc = vector.new(0,0,0),
-	// 		maxacc = vector.new(0,0,0),
-	// 		minexptime = 1,
-	// 		maxexptime = 2,
-	// 		minsize = 1,
-	// 		maxsize = 2,
-	// 		collisiondetection = false,
-	// 		vertical = false,
-	// 		texture = "smoke.png",
-	// 	})
+		// core.add_particlespawner({
+		// 	amount = particle_time*6,
+		// 	time = particle_time*2,
+		// 	minpos = ppos,
+		// 	maxpos = ppos,
+		// 	minvel = vector.new(-0.1,0.1,-0.1),
+		// 	maxvel = vector.new(0.1,0.3,0.1),
+		// 	minacc = vector.new(0,0,0),
+		// 	maxacc = vector.new(0,0,0),
+		// 	minexptime = 1,
+		// 	maxexptime = 2,
+		// 	minsize = 1,
+		// 	maxsize = 2,
+		// 	collisiondetection = false,
+		// 	vertical = false,
+		// 	texture = "smoke.png",
+		// })
 	*/
 	}
 	// //reload smoke and flame on load
