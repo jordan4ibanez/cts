@@ -195,19 +195,32 @@ namespace hopper {
 			return stack.get_count();
 		},
 
-		// 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
-		// 		if to_list == "filter" then
-		// 			local inv = core.get_inventory({type="node", pos=pos})
-		// 			local stack_moved = inv:get_stack(from_list, from_index)
-		// 			inv:set_stack(to_list, to_index, stack_moved:take_item(1))
-		// 			return 0
-		// 		elseif from_list == "filter" then
-		// 			local inv = core.get_inventory({type="node", pos=pos})
-		// 			inv:set_stack(from_list, from_index, ItemStack(""))
-		// 			return 0
-		// 		end
-		// 		return count
-		// 	end,
+		allow_metadata_inventory_move: (
+			pos,
+			from_list,
+			from_index,
+			to_list,
+			to_index,
+			count,
+			player
+		) => {
+			if (to_list == "filter") {
+				const meta: MetaRef = core.get_meta(pos);
+				const inv: InvRef = meta.get_inventory();
+				const stack_moved: ItemStackObject = inv.get_stack(
+					from_list,
+					from_index
+				);
+				inv.set_stack(to_list, to_index, stack_moved.take_item(1));
+				return 0;
+			} else if (from_list == "filter") {
+				const meta: MetaRef = core.get_meta(pos);
+				const inv: InvRef = meta.get_inventory();
+				inv.set_stack(from_list, from_index, ItemStack(""));
+				return 0;
+			}
+			return count;
+		},
 
 		// 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		// 		local timer = core.get_node_timer(pos)
