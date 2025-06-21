@@ -66,7 +66,10 @@ namespace tnt {
 								pointed_thing.under.z
 							);
 
-							// 						if n_pos and data[n_pos] then
+							if (data[n_pos - 1] == null) {
+								continue;
+							}
+
 							// 							node2 = content_id(data[n_pos])
 							// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
 							// 								break
@@ -93,7 +96,6 @@ namespace tnt {
 							// 									end
 							// 								end
 							// 							end
-							// 						end
 						}
 					}
 				}
