@@ -167,8 +167,8 @@ namespace hopper {
 			hopper_meta.get_string("eject") == "true" &&
 			(target_def.buildable_to || false);
 
-		if (!eject_item && !target_inventory_name) {
-			// 		return false
+		if (!eject_item && target_inventory_name == null) {
+			return false;
 		}
 		// 	//hopper inventory
 		// 	local hopper_meta = core.get_meta(hopper_pos);
