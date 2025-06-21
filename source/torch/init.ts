@@ -219,11 +219,8 @@ namespace torch {
 		sounds: crafter.woodSound(),
 	});
 
-	// core.register_craft({
-	// 	output = "crafter_torch:torch 4",
-	// 	recipe = {
-	// 		{"group:coal"},
-	// 		{"group:stick"}
-	// 	}
-	// })
+	core.register_craft({
+		output: "crafter_torch:torch 4",
+		recipe: [["group:coal"], ["group:stick"]],
+	});
 }
