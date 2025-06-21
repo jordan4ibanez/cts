@@ -74,13 +74,24 @@ namespace hopper {
 			return inv.is_empty("main");
 		},
 
-		// 	on_rightclick = function(pos, node, clicker, itemstack)
-		// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
-		// 			return
-		// 		end
-		// 		core.show_formspec(clicker:get_player_name(),
-		// 			"hopper_formspec:"+core.pos_to_string(pos), get_chute_formspec(pos))
-		// 	end,
+		on_rightclick: (
+			pos: Vec3,
+			node: NodeTable,
+			clicker: ObjectRef,
+			itemstack: ItemStackObject
+		) => {
+			if (
+				core.is_protected(pos, clicker.get_player_name()) &&
+				!core.check_player_privs(clicker, "protection_bypass")
+			) {
+				return;
+			}
+			core.show_formspec(
+				clicker.get_player_name(),
+				"hopper_formspec:" + core.pos_to_string(pos),
+				get_chute_formspec(pos)
+			);
+		},
 
 		// 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		// 		local timer = core.get_node_timer(pos)
