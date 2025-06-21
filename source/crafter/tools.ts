@@ -1479,13 +1479,9 @@ namespace crafter {
 					}
 					if (diff == 0) {
 						const param2: number = core.dir_to_wallmounted(dir);
-						core.set_node(pointed_thing.above, {
+						core.place_node(pointed_thing.above, {
 							name: "crafter_torch:wall",
 							param2: param2,
-						});
-						core.sound_play("wood", {
-							pos: pointed_thing.above,
-							gain: 1.0,
 						});
 					} else if (diff == -1) {
 						core.place_node(pointed_thing.above, {
