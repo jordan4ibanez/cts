@@ -25,17 +25,17 @@
 // 	-- unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
 // 	-- because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
 // 	-- the default item_place_node orientation code will not orient them pointing toward the selected surface.
-// 	if x == -1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side") then
-// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 0)
-// 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side") then
-// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 2)
-// 	elseif z == -1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side")  then
-// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 3)
-// 	elseif z == 1 and (hopper.config.single_craftable_item or node_name == "hopper:hopper_side") then
-// 		returned_stack, success = core.item_place_node(ItemStack("hopper:hopper_side"), placer, pointed_thing, 1)
+// 	if x == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
+// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 0)
+// 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
+// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 2)
+// 	elseif z == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side")  then
+// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 3)
+// 	elseif z == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
+// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 1)
 // 	else
 // 		if hopper.config.single_craftable_item then
-// 			node_name = "hopper:hopper" -- For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
+// 			node_name = "crafter_hopper:hopper" -- For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
 // 		end
 // 		returned_stack, success = core.item_place_node(ItemStack(node_name), placer, pointed_thing)
 // 	end
@@ -53,8 +53,8 @@
 // -------------------------------------------------------------------------------------------
 // -- Hoppers
 
-// core.register_node("hopper:hopper", {
-// 	drop = "hopper:hopper",
+// core.register_node("crafter_hopper:hopper", {
+// 	drop = "crafter_hopper:hopper",
 // 	description = S("Hopper"),
 // 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
 //     _doc_items_usagehelp = hopper.doc.hopper_usage,
@@ -100,7 +100,7 @@
 // 	end,
 
 // 	on_place = function(itemstack, placer, pointed_thing)
-// 		return hopper_on_place(itemstack, placer, pointed_thing, "hopper:hopper")
+// 		return hopper_on_place(itemstack, placer, pointed_thing, "crafter_hopper:hopper")
 // 	end,
 
 // 	can_dig = function(pos, player)
@@ -120,14 +120,14 @@
 // local hopper_side_drop
 // local hopper_groups
 // if hopper.config.single_craftable_item then
-// 	hopper_side_drop = "hopper:hopper"
+// 	hopper_side_drop = "crafter_hopper:hopper"
 // 	hopper_groups = {cracky=3, not_in_creative_inventory = 1}
 // else
-// 	hopper_side_drop = "hopper:hopper_side"
+// 	hopper_side_drop = "crafter_hopper:hopper_side"
 // 	hopper_groups = {cracky=3}
 // end
 
-// core.register_node("hopper:hopper_side", {
+// core.register_node("crafter_hopper:hopper_side", {
 // 	description = S("Side Hopper"),
 // 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
 //     _doc_items_usagehelp = hopper.doc.hopper_usage,
@@ -177,7 +177,7 @@
 // 	end,
 
 // 	on_place = function(itemstack, placer, pointed_thing)
-// 		return hopper_on_place(itemstack, placer, pointed_thing, "hopper:hopper_side")
+// 		return hopper_on_place(itemstack, placer, pointed_thing, "crafter_hopper:hopper_side")
 // 	end,
 
 // 	can_dig = function(pos,player)
