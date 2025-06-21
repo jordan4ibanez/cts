@@ -5,7 +5,12 @@ namespace hopper {
 		nodenames: ["crafter_hopper:hopper", "crafter_hopper:hopper_side"],
 		interval: 0.1,
 		chance: 1,
-		action: (pos, node, active_object_count, active_object_count_wider) => {
+		action: (
+			pos: Vec3,
+			node: NodeTable,
+			active_object_count: number,
+			active_object_count_wider: number
+		) => {
 			// 		if active_object_count_wider == 0 then
 			// 			return
 			// 		end
