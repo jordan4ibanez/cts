@@ -11,10 +11,10 @@ namespace hopper {
 			active_object_count: number,
 			active_object_count_wider: number
 		) => {
-			// 		if active_object_count_wider == 0 then
-			// 			return
-			// 		end
-			// 		local inv = core.get_meta(pos):get_inventory()
+			if (active_object_count_wider == 0) {
+				return;
+			}
+			const inv: InvRef = core.get_meta(pos).get_inventory();
 			// 		local posob
 			// 		for _,object in pairs(core.get_objects_inside_radius(pos, 1)) do
 			// 			if not object:is_player()
