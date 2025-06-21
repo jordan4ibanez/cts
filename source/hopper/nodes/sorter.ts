@@ -80,15 +80,15 @@ namespace hopper {
 	}
 
 	core.register_node("crafter_hopper:sorter", {
-		// 	description = S("Sorter"),
-		// 	_doc_items_longdesc = hopper.doc.sorter_long_desc,
-		// 	_doc_items_usagehelp = hopper.doc.sorter_usage,
-		// 	groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,pathable = 1},
-		// 	sounds = hopper.metal_sounds,
-		// 	drawtype = "nodebox",
-		// 	paramtype = "light",
-		// 	paramtype2 = "facedir",
-		// 	tiles = {
+		// 	description : S("Sorter"),
+		// 	_doc_items_longdesc : hopper.doc.sorter_long_desc,
+		// 	_doc_items_usagehelp : hopper.doc.sorter_usage,
+		// 	groups : {stone : 1, hard : 1, pickaxe : 1, hand : 4,pathable : 1},
+		// 	sounds : hopper.metal_sounds,
+		// 	drawtype : "nodebox",
+		// 	paramtype : "light",
+		// 	paramtype2 : "facedir",
+		// 	tiles : {
 		// 			"hopper_bottom_" + hopper.config.texture_resolution + ".png",
 		// 			"hopper_top_" + hopper.config.texture_resolution + ".png",
 		// 			"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png^[transformFX^hopper_sorter_sub_arrow_" + hopper.config.texture_resolution + ".png^[transformFX",
@@ -96,9 +96,9 @@ namespace hopper {
 		// 			"hopper_top_" + hopper.config.texture_resolution + ".png",
 		// 			"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png",
 		// 		},
-		// 	node_box = {
-		// 		type = "fixed",
-		// 		fixed = {
+		// 	node_box : {
+		// 		type : "fixed",
+		// 		fixed : {
 		// 			{-0.3, -0.3, -0.4, 0.3, 0.4, 0.4},
 		// 			{-0.2, -0.2, 0.4, 0.2, 0.2, 0.7},
 		// 			{-0.2, -0.3, -0.2, 0.2, -0.7, 0.2},
