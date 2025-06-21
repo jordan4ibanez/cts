@@ -194,29 +194,29 @@ namespace hopper {
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2.facedir,
-		// 	tiles : {
-		// 		"hopper_top_16.png",
-		// 		"hopper_bottom_16.png",
-		// 		"hopper_back_16.png",
-		// 		"hopper_side_16.png",
-		// 		"hopper_back_16.png",
-		// 		"hopper_back_16.png"
-		// 	},
-		// 	node_box : {
-		// 		type : "fixed",
-		// 		fixed : {
-		// 			//funnel walls
-		// 			{-0.5, 0.0, 0.4, 0.5, 0.5, 0.5},
-		// 			{0.4, 0.0, -0.5, 0.5, 0.5, 0.5},
-		// 			{-0.5, 0.0, -0.5, -0.4, 0.5, 0.5},
-		// 			{-0.5, 0.0, -0.5, 0.5, 0.5, -0.4},
-		// 			//funnel base
-		// 			{-0.5, 0.0, -0.5, 0.5, 0.1, 0.5},
-		// 			//spout
-		// 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
-		// 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
-		// 		},
-		// 	},
+		tiles: [
+			"hopper_top_16.png",
+			"hopper_bottom_16.png",
+			"hopper_back_16.png",
+			"hopper_side_16.png",
+			"hopper_back_16.png",
+			"hopper_back_16.png",
+		],
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				//funnel walls
+				[-0.5, 0.0, 0.4, 0.5, 0.5, 0.5],
+				[0.4, 0.0, -0.5, 0.5, 0.5, 0.5],
+				[-0.5, 0.0, -0.5, -0.4, 0.5, 0.5],
+				[-0.5, 0.0, -0.5, 0.5, 0.5, -0.4],
+				//funnel base
+				[-0.5, 0.0, -0.5, 0.5, 0.1, 0.5],
+				//spout
+				[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
+				[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
+			],
+		},
 		// 	selection_box : {
 		// 		type : "fixed",
 		// 		fixed : {
