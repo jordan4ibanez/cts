@@ -333,9 +333,9 @@ namespace hopper {
 					);
 				}
 			}
-			// 		if not inv:is_empty("main") then
-			// 			core.get_node_timer(pos):start(1)
-			// 		end
+			if (!inv.is_empty("main")) {
+				core.get_node_timer(pos).start(1);
+			}
 		},
 	});
 }
