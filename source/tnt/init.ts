@@ -43,43 +43,45 @@ namespace tnt {
 							false,
 							false
 						);
-						// 				explosion_force = range
-						// 				for pointed_thing in ray do
-						// 					explosion_force = explosion_force - math.random()
-						// 					if pointed_thing and explosion_force >= explosion_depletion then
-						// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
-						// 						if n_pos and data[n_pos] then
-						// 							node2 = content_id(data[n_pos])
-						// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
-						// 								break
-						// 							elseif digging_nodes[node2] then
-						// 								core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
-						// 								data[n_pos] = air
-						// 							elseif node2 == "crafter_tnt:tnt" then
-						// 								data[n_pos] = air
-						// 								core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
-						// 							elseif not string.match(node2, "mob_spawners:") then
-						// 								data[n_pos] = air
-						// 								core.after(0, function(pointed_thing)
-						// 									core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
-						// 								end,pointed_thing)
-						// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
-						// 									item = core.get_node_drops(node2, "crafter:diamondpick")[1]
-						// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
-						// 									obj = core.add_item(ppos, item)
-						// 									if obj then
-						// 										power = (range - vector.distance(pos,ppos))*2
-						// 										dir = vector.subtract(ppos,pos)
-						// 										force = vector.multiply(dir,power)
-						// 										obj:set_velocity(force)
-						// 									end
-						// 								end
-						// 							end
-						// 						end
-						// 					else
-						// 						break
-						// 					end
-						// 				end
+
+						const explosion_force: number = range;
+
+						for (const pointed_thing of ray) {
+							// 					explosion_force = explosion_force - math.random()
+							// 					if pointed_thing and explosion_force >= explosion_depletion then
+							// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
+							// 						if n_pos and data[n_pos] then
+							// 							node2 = content_id(data[n_pos])
+							// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
+							// 								break
+							// 							elseif digging_nodes[node2] then
+							// 								core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
+							// 								data[n_pos] = air
+							// 							elseif node2 == "crafter_tnt:tnt" then
+							// 								data[n_pos] = air
+							// 								core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
+							// 							elseif not string.match(node2, "mob_spawners:") then
+							// 								data[n_pos] = air
+							// 								core.after(0, function(pointed_thing)
+							// 									core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
+							// 								end,pointed_thing)
+							// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
+							// 									item = core.get_node_drops(node2, "crafter:diamondpick")[1]
+							// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
+							// 									obj = core.add_item(ppos, item)
+							// 									if obj then
+							// 										power = (range - vector.distance(pos,ppos))*2
+							// 										dir = vector.subtract(ppos,pos)
+							// 										force = vector.multiply(dir,power)
+							// 										obj:set_velocity(force)
+							// 									end
+							// 								end
+							// 							end
+							// 						end
+							// 					else
+							// 						break
+							// 					end
+						}
 					}
 				}
 			}
