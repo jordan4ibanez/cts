@@ -61,18 +61,9 @@ namespace hopper {
 		get_wielded_item: (x: any) => () => any;
 	}
 
-	function get_placer(
-		player_name: string
-	): ObjectRef | DelayImplement | null {
+	function get_placer(player_name: string): ObjectRef | null {
 		if (player_name != "") {
-			return (
-				core.get_player_by_name(player_name) || {
-					isPlayer: delay(true),
-					get_player_name: delay(player_name),
-					is_fake_player: ":hopper",
-					get_wielded_item: delay(ItemStack("")),
-				}
-			);
+			return core.get_player_by_name(player_name);
 		}
 		return null;
 	}
