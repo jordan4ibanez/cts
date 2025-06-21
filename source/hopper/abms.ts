@@ -15,7 +15,7 @@ namespace hopper {
 				return;
 			}
 			const inv: InvRef = core.get_meta(pos).get_inventory();
-			let posob;
+
 			for (const [_, object] of ipairs(
 				core.get_objects_inside_radius(pos, 1)
 			)) {
@@ -40,7 +40,7 @@ namespace hopper {
 						)
 					)
 				) {
-					posob = object.get_pos();
+					const posob: Vec3 = object.get_pos();
 
 					if (
 						math.abs(posob.x - pos.x) <= 0.5 &&
