@@ -1,3 +1,4 @@
+namespace hopper {
 // -- suck in items on top of hopper
 // core.register_abm({
 // 	label = "Hopper suction",
@@ -121,3 +122,4 @@
 // 		end
 // 	end,
 // })
+}
