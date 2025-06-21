@@ -21,6 +21,8 @@ namespace tnt {
 		diggingNodes.add(core.get_content_id(node));
 	}
 
+	function explosion(pos: Vec3, range: number): void {}
+
 	export function tnt(pos: Vec3, range: number, explosion_type: string) {
 		const in_node: string = core.get_node(pos).name;
 		const in_water =
