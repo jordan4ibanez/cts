@@ -282,17 +282,22 @@ namespace tnt {
 						}
 						object.add_velocity(force);
 					} else if (workableEntity) {
-						// 		if object:get_luaentity().name == "crafter_tnt:tnt" then
-						// 			object:get_luaentity().shot = true
-						// 		elseif object:get_luaentity().is_mob == true then
-						// 			object:punch(object, 2,
-						// 				{
-						// 				full_punch_interval=1.5,
-						// 				damage_groups = {damage=math.floor(power)},
-						// 				})
-						// 		elseif object:get_luaentity().name == "__builtin:item" then
-						// 			object:get_luaentity().poll_timer = 0
-						// 		end
+						if (luaEntity == null) {
+							throw new Error("LuaEntity became null.");
+						}
+						if (luaEntity.name == "crafter_tnt:tnt") {
+							// 			object:get_luaentity().shot = true
+						} /* todo: cast as a mob */ else if (
+							(luaEntity as any).is_mob
+						) {
+							// 			object:punch(object, 2,
+							// 				{
+							// 				full_punch_interval=1.5,
+							// 				damage_groups = {damage=math.floor(power)},
+							// 				})
+						} else if (luaEntity.name == "__builtin:item") {
+							// 			object:get_luaentity().poll_timer = 0
+						}
 						// 		object:set_velocity(force)
 					}
 				}
