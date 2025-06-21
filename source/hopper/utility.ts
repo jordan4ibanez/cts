@@ -108,7 +108,10 @@ namespace hopper {
 		}
 
 		for (const i of $range(1, target_inv_size)) {
-			// 			local stack = target_inv:get_stack(target_inventory_name, i)
+			const stack: ItemStackObject = target_inv.get_stack(
+				target_inventory_name,
+				i
+			);
 			// 			local item = stack:get_name()
 			// 			if item ~= "" then
 			// 				if hopper_inv:room_for_item("main", item) then
