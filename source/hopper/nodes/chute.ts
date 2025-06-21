@@ -138,9 +138,9 @@ namespace hopper {
 			} else {
 				hopper.send_item_to(pos, destination_pos, destination_node);
 			}
-			// 		if not inv:is_empty("main") then
-			// 			core.get_node_timer(pos):start(1)
-			// 		end
+			if (!inv.is_empty("main")) {
+				core.get_node_timer(pos).start(1);
+			}
 		},
 	});
 }
