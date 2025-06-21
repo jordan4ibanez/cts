@@ -5,13 +5,13 @@ namespace hopper {
 // 	local spos = hopper.get_string_pos(pos)
 // 	local formspec =
 // 		"size[8,9]"
-// 		.. hopper.formspec_bg
-// 		.. "list[nodemeta:" .. spos .. ";main;2,0.3;4,4;]"
-// 		.. hopper.get_eject_button_texts(pos, 7, 2)
-// 		.. "list[current_player;main;0,4.85;8,1;]"
-// 		.. "list[current_player;main;0,6.08;8,3;8]"
-// 		.. "listring[nodemeta:" .. spos .. ";main]"
-// 		.. "listring[current_player;main]"
+// 		+ hopper.formspec_bg
+// 		+ "list[nodemeta:" + spos + ";main;2,0.3;4,4;]"
+// 		+ hopper.get_eject_button_texts(pos, 7, 2)
+// 		+ "list[current_player;main;0,4.85;8,1;]"
+// 		+ "list[current_player;main;0,6.08;8,3;8]"
+// 		+ "listring[nodemeta:" + spos + ";main]"
+// 		+ "listring[current_player;main]"
 // 	return formspec
 // end
 
@@ -64,9 +64,9 @@ namespace hopper {
 // 	paramtype = "light",
 // 	paramtype2 = "facedir",
 // 	tiles = {
-// 		"hopper_top_" .. hopper.config.texture_resolution .. ".png",
-// 		"hopper_top_" .. hopper.config.texture_resolution .. ".png",
-// 		"hopper_front_" .. hopper.config.texture_resolution .. ".png"
+// 		"hopper_top_" + hopper.config.texture_resolution + ".png",
+// 		"hopper_top_" + hopper.config.texture_resolution + ".png",
+// 		"hopper_front_" + hopper.config.texture_resolution + ".png"
 // 	},
 // 	node_box = {
 // 		type = "fixed",
@@ -113,7 +113,7 @@ namespace hopper {
 // 			return
 // 		end
 // 		core.show_formspec(clicker:get_player_name(),
-// 			"hopper_formspec:"..core.pos_to_string(pos), get_hopper_formspec(pos))
+// 			"hopper_formspec:"+core.pos_to_string(pos), get_hopper_formspec(pos))
 // 	end,
 // })
 
@@ -138,12 +138,12 @@ namespace hopper {
 // 	paramtype = "light",
 // 	paramtype2 = "facedir",
 // 	tiles = {
-// 		"hopper_top_" .. hopper.config.texture_resolution .. ".png",
-// 		"hopper_bottom_" .. hopper.config.texture_resolution .. ".png",
-// 		"hopper_back_" .. hopper.config.texture_resolution .. ".png",
-// 		"hopper_side_" .. hopper.config.texture_resolution .. ".png",
-// 		"hopper_back_" .. hopper.config.texture_resolution .. ".png",
-// 		"hopper_back_" .. hopper.config.texture_resolution .. ".png"
+// 		"hopper_top_" + hopper.config.texture_resolution + ".png",
+// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png",
+// 		"hopper_back_" + hopper.config.texture_resolution + ".png",
+// 		"hopper_side_" + hopper.config.texture_resolution + ".png",
+// 		"hopper_back_" + hopper.config.texture_resolution + ".png",
+// 		"hopper_back_" + hopper.config.texture_resolution + ".png"
 // 	},
 // 	node_box = {
 // 		type = "fixed",
@@ -190,7 +190,7 @@ namespace hopper {
 // 			return
 // 		end
 // 		core.show_formspec(clicker:get_player_name(),
-// 			"hopper_formspec:"..core.pos_to_string(pos), get_hopper_formspec(pos))
+// 			"hopper_formspec:"+core.pos_to_string(pos), get_hopper_formspec(pos))
 // 	end,
 // })
 }
