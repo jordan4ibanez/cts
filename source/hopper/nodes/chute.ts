@@ -1,18 +1,18 @@
 namespace hopper {
-	// local S = core.get_translator("hopper")
-	// local function get_chute_formspec(pos)
-	// 	local spos = hopper.get_string_pos(pos)
-	// 	local formspec =
-	// 		"size[8,7]"
-	// 		.. hopper.formspec_bg
-	// 		.. "list[nodemeta:" .. spos .. ";main;3,0.3;2,2;]"
-	// 		.. hopper.get_eject_button_texts(pos, 7, 0.8)
-	// 		.. "list[current_player;main;0,2.85;8,1;]"
-	// 		.. "list[current_player;main;0,4.08;8,3;8]"
-	// 		.. "listring[nodemeta:" .. spos .. ";main]"
-	// 		.. "listring[current_player;main]"
-	// 	return formspec
-	// end
+	function get_chute_formspec(pos: Vec3) {
+		// 	local spos = hopper.get_string_pos(pos)
+		// 	local formspec =
+		// 		"size[8,7]"
+		// 		.. hopper.formspec_bg
+		// 		.. "list[nodemeta:" .. spos .. ";main;3,0.3;2,2;]"
+		// 		.. hopper.get_eject_button_texts(pos, 7, 0.8)
+		// 		.. "list[current_player;main;0,2.85;8,1;]"
+		// 		.. "list[current_player;main;0,4.08;8,3;8]"
+		// 		.. "listring[nodemeta:" .. spos .. ";main]"
+		// 		.. "listring[current_player;main]"
+		// 	return formspec
+	}
+
 	// core.register_node("hopper:chute", {
 	// 	description = S("Hopper Chute"),
 	// 	_doc_items_longdesc = hopper.doc.chute_long_desc,
