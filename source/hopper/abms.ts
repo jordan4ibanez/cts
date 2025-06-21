@@ -31,14 +31,7 @@ namespace hopper {
 				}
 
 				if (
-					!inv.room_for_item(
-						"main",
-						ItemStack(
-							(
-								object.get_luaentity()! as item_handling.CrafterItemEntity
-							).itemstring
-						)
-					)
+					!inv.room_for_item("main", ItemStack(luaEntity.itemstring))
 				) {
 					continue;
 				}
