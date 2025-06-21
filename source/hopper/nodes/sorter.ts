@@ -103,12 +103,14 @@ namespace hopper {
 				[-0.2, -0.3, -0.2, 0.2, -0.7, 0.2],
 			],
 		},
+
 		// 	on_construct = function(pos)
 		// 		local meta = core.get_meta(pos)
 		// 		local inv = meta:get_inventory()
 		// 		inv:set_size("main", 2*2)
 		// 		inv:set_size("filter", 8)
 		// 	end,
+
 		// 	on_place = function(itemstack, placer, pointed_thing, node_name)
 		// 		local pos  = pointed_thing.under
 		// 		local pos2 = pointed_thing.above
@@ -121,11 +123,13 @@ namespace hopper {
 		// 		end
 		// 		return returned_stack
 		// 	end,
+
 		// 	can_dig = function(pos,player)
 		// 		local meta = core.get_meta(pos);
 		// 		local inv = meta:get_inventory()
 		// 		return inv:is_empty("main")
 		// 	end,
+
 		// 	on_rightclick = function(pos, node, clicker, itemstack)
 		// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
 		// 			return
@@ -133,6 +137,7 @@ namespace hopper {
 		// 		core.show_formspec(clicker:get_player_name(),
 		// 			"hopper_formspec:"+core.pos_to_string(pos), get_sorter_formspec(pos))
 		// 	end,
+
 		// 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
 		// 		if listname == "filter" then
 		// 			local inv = core.get_inventory({type="node", pos=pos})
@@ -141,6 +146,7 @@ namespace hopper {
 		// 		end
 		// 		return stack:get_count()
 		// 	end,
+
 		// 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
 		// 		if listname == "filter" then
 		// 			local inv = core.get_inventory({type="node", pos=pos})
@@ -149,6 +155,7 @@ namespace hopper {
 		// 		end
 		// 		return stack:get_count()
 		// 	end,
+
 		// 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		// 		if to_list == "filter" then
 		// 			local inv = core.get_inventory({type="node", pos=pos})
@@ -162,12 +169,14 @@ namespace hopper {
 		// 		end
 		// 		return count
 		// 	end,
+
 		// 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		// 		local timer = core.get_node_timer(pos)
 		// 		if not timer:is_started() then
 		// 			timer:start(1)
 		// 		end
 		// 	end,
+		
 		// 	on_timer = function(pos, elapsed)
 		// 		local meta = core.get_meta(pos);
 		// 		local inv = meta:get_inventory()
