@@ -40,10 +40,11 @@ namespace hopper {
 				[-0.2, -0.2, 0.3, 0.2, 0.2, 0.7],
 			],
 		},
-		// 	on_construct = function(pos)
-		// 		local inv = core.get_meta(pos):get_inventory()
-		// 		inv:set_size("main", 2*2)
-		// 	end,
+		on_construct(pos: Vec3) {
+			const inv: InvRef = core.get_meta(pos).get_inventory();
+			inv.set_size("main", 2 * 2);
+		},
+
 		// 	on_place = function(itemstack, placer, pointed_thing, node_name)
 		// 		local pos  = pointed_thing.under
 		// 		local pos2 = pointed_thing.above
