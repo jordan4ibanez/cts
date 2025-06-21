@@ -108,7 +108,6 @@ namespace hopper {
 
 			if (
 				target_def.allow_metadata_inventory_take == null ||
-				placer == null || // backwards compatibility, older versions of this mod didn't record who placed the hopper
 				target_def.allow_metadata_inventory_take(
 					target_pos,
 					target_inventory_name,
