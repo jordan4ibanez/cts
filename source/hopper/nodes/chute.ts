@@ -54,6 +54,16 @@ namespace hopper {
 			if (pos == null || pos2 == null) {
 				throw new Error("engine issue?");
 			}
+
+			const sneak: boolean = placer.get_player_control().sneak;
+			const noddef: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pos).name];
+
+			if (!sneak && noddef?.on_rightclick) {
+				core.item_place(itemstack, placer, pointed_thing);
+				return;
+			}
+
 			const x: number = pos.x - pos2.x;
 			const z: number = pos.z - pos2.z;
 			const [returned_stack, success] = core.item_place_node(
