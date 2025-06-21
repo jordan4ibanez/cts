@@ -124,6 +124,15 @@ namespace hopper {
 				throw new Error("engine issue?");
 			}
 
+			const sneak: boolean = placer.get_player_control().sneak;
+			const noddef: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pos).name];
+
+			if (!sneak && noddef?.on_rightclick) {
+				core.item_place(itemstack, placer, pointed_thing);
+				return;
+			}
+
 			const [returned_stack, success] = core.item_place_node(
 				itemstack,
 				placer,
