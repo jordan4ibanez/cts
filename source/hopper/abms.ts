@@ -29,6 +29,7 @@ namespace hopper {
 				// 				if math.abs(posob.x - pos.x) <= 0.5
 				// 				and posob.y - pos.y <= 0.85
 				// 				and posob.y - pos.y >= 0.3 then
+				
 				// 					inv:add_item("main",
 				// 						ItemStack(object:get_luaentity().itemstring))
 				// 					object:get_luaentity().itemstring = ""
