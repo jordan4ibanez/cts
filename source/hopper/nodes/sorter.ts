@@ -137,11 +137,11 @@ namespace hopper {
 			return returned_stack;
 		},
 
-		// 	can_dig = function(pos,player)
-		// 		local meta = core.get_meta(pos);
-		// 		local inv = meta:get_inventory()
-		// 		return inv:is_empty("main")
-		// 	end,
+		can_dig: (pos: Vec3, player: ObjectRef) => {
+			const meta: MetaRef = core.get_meta(pos);
+			const inv: InvRef = meta.get_inventory();
+			return inv.is_empty("main");
+		},
 
 		// 	on_rightclick = function(pos, node, clicker, itemstack)
 		// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
