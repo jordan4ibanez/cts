@@ -208,9 +208,11 @@ namespace hopper {
 				output_direction = "horizontal";
 			}
 
-			// 		local source_node = core.get_node(source_pos)
-			// 		local destination_node = core.get_node(destination_pos)
-			// 		local registered_source_inventories = hopper.get_registered_inventories_for(source_node.name)
+			const source_node: NodeTable = core.get_node(source_pos);
+			const destination_node: NodeTable = core.get_node(destination_pos);
+			const registered_source_inventories: ContainerData | undefined =
+				hopper.get_registered_inventories_for(source_node.name);
+
 			// 		if registered_source_inventories ~= nil then
 			// 			hopper.take_item_from(pos, source_pos, source_node, registered_source_inventories["top"])
 			// 		end
