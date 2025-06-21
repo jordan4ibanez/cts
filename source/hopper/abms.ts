@@ -53,99 +53,99 @@ namespace hopper {
 	// Used to convert side hopper facing into source and destination relative coordinates.
 	// This was tedious to populate and test.
 	const directions = [
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		 {
+		{
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
