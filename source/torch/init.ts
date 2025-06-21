@@ -142,12 +142,6 @@ namespace torch {
 				wdir
 			);
 			newItemStack.set_name("crafter_torch:torch");
-			if (newDir != null) {
-				core.sound_play("wood", {
-					pos: pointed_thing.above,
-					gain: 1.0,
-				});
-			}
 			return itemstack;
 		},
 	});
