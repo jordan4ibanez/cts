@@ -280,7 +280,7 @@ namespace tnt {
 								damage_groups: { damage: math.floor(power) },
 							});
 						}
-						// 		object:add_player_velocity(force)
+						object.add_velocity(force);
 					} else if (workableEntity) {
 						// 		if object:get_luaentity().name == "crafter_tnt:tnt" then
 						// 			object:get_luaentity().shot = true
