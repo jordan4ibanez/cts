@@ -23,9 +23,14 @@ namespace hopper {
 					continue;
 				}
 
+				const luaEntity: item_handling.CrafterItemEntity | null =
+					object.get_luaentity() as item_handling.CrafterItemEntity | null;
+
+				if (luaEntity == null || luaEntity.name != "__builtin:item") {
+					continue;
+				}
+
 				if (
-					object.get_luaentity() != null &&
-					object.get_luaentity()!.name == "__builtin:item" &&
 					inv != null &&
 					inv.room_for_item(
 						"main",
