@@ -2197,7 +2197,6 @@ declare global {
 	interface VoxelAreaObject {
 		ystride: number;
 		zstride: number;
-		new (init: VoxelAreaInitializer): VoxelAreaObject;
 		getExtent(): Vec3;
 		index(x: number, y: number, z: number): number;
 		indexp(p: Vec3): number;
