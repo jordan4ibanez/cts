@@ -183,13 +183,8 @@ namespace hopper {
 	let hopper_side_drop;
 	let hopper_groups;
 
-	if (hopper.config.single_craftable_item) {
-		// 	hopper_side_drop = "crafter_hopper:hopper"
-		// 	hopper_groups = {cracky=3, not_in_creative_inventory = 1}
-	} else {
-		// 	hopper_side_drop = "crafter_hopper:hopper_side"
-		// 	hopper_groups = {cracky=3}
-	}
+	// 	hopper_side_drop = "crafter_hopper:hopper"
+	// 	hopper_groups = {cracky=3, not_in_creative_inventory = 1}
 
 	// core.register_node("crafter_hopper:hopper_side", {
 	// 	description = S("Side Hopper"),
