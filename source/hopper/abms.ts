@@ -31,7 +31,6 @@ namespace hopper {
 				}
 
 				if (
-					inv != null &&
 					inv.room_for_item(
 						"main",
 						ItemStack(
