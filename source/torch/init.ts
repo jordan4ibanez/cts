@@ -21,26 +21,27 @@ namespace torch {
 
 	// Add in smoke and fire.
 	function create_ps(pos: Vec3): void {
-		// 	local dir = get_offset(core.get_node(pos).param2)
-		// 	local ppos = vector.add(dir,pos)
-		// 	core.add_particle({
-		// 		pos = ppos,
-		// 		velocity = vector.new(0,0,0),
-		// 		acceleration = vector.new(0,0,0),
-		// 		expirationtime = particle_time*3,
-		// 		size = 3,
-		// 		collisiondetection = false,
-		// 		vertical = true,
-		// 		texture = "torch_animated.png",
-		// 		animation = {type = "vertical_frames",
-		// 			aspect_w = 16,
-		// 			// Width of a frame in pixels
-		// 			aspect_h = 16,
-		// 			// Height of a frame in pixels
-		// 			length =  0.2,
-		// 			// Full loop length
-		// 		},
-		// 	})
+		const dir: Vec3 = get_offset(core.get_node(pos).param2 || 0);
+		const ppos: Vec3 = vector.add(dir, pos);
+		core.add_particle({
+			pos: ppos,
+			velocity: vector.create3d(0, 0, 0),
+			acceleration: vector.create3d(0, 0, 0),
+			expirationtime: particle_time * 3,
+			size: 3,
+			collisiondetection: false,
+			vertical: true,
+			texture: "torch_animated.png",
+			animation: {
+				type: TileAnimationType.vertical_frames,
+				aspect_w: 16,
+				// Width of a frame in pixels
+				aspect_h: 16,
+				// Height of a frame in pixels
+				length: 0.2,
+				// Full loop length
+			},
+		});
 		// todo: do this in csm?
 		/*
 		// core.add_particlespawner({
