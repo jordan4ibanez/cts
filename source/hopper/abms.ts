@@ -176,12 +176,12 @@ namespace hopper {
 
 	// Hopper workings.
 	core.register_abm({
-		// 	label : "Hopper transfer",
-		// 	nodenames : {"crafter_hopper:hopper", "crafter_hopper:hopper_side"},
-		// 	neighbors : hopper.neighbors,
-		// 	interval : 0.1,
-		// 	chance : 1,
-		// 	//catch_up : false,
+		label: "Hopper transfer",
+		nodenames: ["crafter_hopper:hopper", "crafter_hopper:hopper_side"],
+		neighbors: hopper.neighbors,
+		interval: 0.1,
+		chance: 1,
+		//catch_up : false,
 		// 	action = function(pos, node, active_object_count, active_object_count_wider)
 		// 		local source_pos, destination_pos, destination_dir
 		// 		if node.name == "crafter_hopper:hopper_side" then
