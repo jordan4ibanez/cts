@@ -28,9 +28,10 @@ namespace hopper {
 		let filter_button_tooltip;
 		let filter_body;
 		if (filter_all) {
-			// 		filter_body = ""
-			// 		filter_button_text = S("Selective\nFilter")
-			// 		filter_button_tooltip = S("This sorter is currently set to try sending all items\nin the direction of the arrow. Click this button\nto enable an item-type-specific filter.")
+			filter_body = "";
+			filter_button_text = "Selective\nFilter";
+			filter_button_tooltip =
+				"This sorter is currently set to try sending all items\nin the direction of the arrow. Click this button\nto enable an item-type-specific filter.";
 		} else {
 			// 		filter_body = "label[3.7,0;"+S("Filter")+"]list[nodemeta:" + spos + ";filter;0,0.5;8,1;]"
 			// 		filter_button_text = S("Filter\nAll")
