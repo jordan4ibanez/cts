@@ -376,7 +376,7 @@ interface core {
 	get_spawn_level(x: number, z: number): number | null;
 	mod_channel_join(channelName: string): ModChannel;
 	get_perlin_map(params: NoiseParams, size: Vec3): PerlinNoiseMapObject;
-	get_inventory(position: Vec3): InvRef;
+	get_inventory(position: InvRefLocation): InvRef;
 	create_detached_inventory(
 		name: string,
 		callbacks: DetachedInventoryCallbacks,
