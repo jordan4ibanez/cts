@@ -91,13 +91,13 @@ interface core {
 		) => void
 	): void;
 	register_on_dignode(
-		fun: (pos: Vec3, oldNode: NodeTable, digger: ObjectRef) => void
+		fun: (pos: Vec3, oldNode: NodeTable, digger: ObjectRef | null) => void
 	): void;
 	register_on_punchnode(
 		fun: (
 			pos: Vec3,
 			node: NodeTable,
-			puncher: ObjectRef,
+			puncher: ObjectRef | null,
 			pointedThing: PointedThing
 		) => void
 	): void;
@@ -108,7 +108,7 @@ interface core {
 	register_on_punchplayer(
 		fun: (
 			player: ObjectRef,
-			hitter: ObjectRef,
+			hitter: ObjectRef | null,
 			timeFromLastPunch: number,
 			toolCapabilities: ToolCapabilities,
 			dir: Vec3,
