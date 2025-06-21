@@ -11,12 +11,13 @@ namespace tnt {
 	// }
 
 	export function tnt(pos: Vec3, range: number, explosion_type: string) {
-		// 	in_node = core.get_node(pos).name
-		// 	in_water =  ( in_node == "crafter:water" or core.get_node(pos).name == "crafter:waterflow")
-		// 	min = vector.add(pos,range)
-		// 	max = vector.subtract(pos,range)
-		// 	vm = core.get_voxel_manip(min,max)
-		// 		emin, emax = vm:read_from_map(min,max)
+		const in_node: string = core.get_node(pos).name;
+		const in_water =
+			in_node == "crafter:water" || in_node == "crafter:waterflow";
+		const min: Vec3 = vector.add(pos, range);
+		const max: Vec3 = vector.subtract(pos, range);
+		const vm: VoxelManipObject = core.get_voxel_manip(min, max);
+		const [emin, emax] = vm.read_from_map(min, max);
 		// 		area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
 		// 		data = vm:get_data()
 		// 	if in_water == false then
