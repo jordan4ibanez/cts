@@ -5,6 +5,7 @@ namespace tnt {
 	const bedrock: number = core.get_content_id("nether:bedrock");
 	const tntID: number = 0;
 	core.register_on_mods_loaded(() => {
+		// Cast away using this idea in your mods.
 		(tntID as number) =core.get_content_id("crafter_tnt:tnt")
 	})
 	const boom_time: number = core.get_us_time() / 1000000;
