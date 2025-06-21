@@ -104,9 +104,9 @@ namespace tnt {
 	// 							elseif digging_nodes[node2] then
 	// 								minetest.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
 	// 								data[n_pos] = air
-	// 							elseif node2 == "tnt:tnt" then
+	// 							elseif node2 == "crafter_tnt:tnt" then
 	// 								data[n_pos] = air
-	// 								minetest.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "tnt:tnt",minetest.serialize({do_ignition_particles=true,timer = math.random()}))
+	// 								minetest.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",minetest.serialize({do_ignition_particles=true,timer = math.random()}))
 	// 							elseif not string.match(node2, "mob_spawners:") then
 	// 								data[n_pos] = air
 	// 								minetest.after(0, function(pointed_thing)
@@ -143,9 +143,9 @@ namespace tnt {
 	// 	end
 	// 	--throw players and items
 	// 	for _,object in ipairs(minetest.get_objects_inside_radius(pos, range)) do
-	// 		if object:is_player() or (object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "tnt:tnt" or object:get_luaentity().is_mob == true)) then
+	// 		if object:is_player() or (object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)) then
 	// 			do_it = true
-	// 			if not object:is_player() and object:get_luaentity().name == "tnt:tnt" then
+	// 			if not object:is_player() and object:get_luaentity().name == "crafter_tnt:tnt" then
 	// 				in_node = minetest.get_node(object:get_pos()).name
 	// 				if ( in_node == "crafter:water" or in_node == "crafter:waterflow") then
 	// 					do_it = false
@@ -181,8 +181,8 @@ namespace tnt {
 	// 								})
 	// 						end
 	// 						object:add_player_velocity(force)
-	// 					elseif object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "tnt:tnt" or object:get_luaentity().is_mob == true)  then
-	// 						if object:get_luaentity().name == "tnt:tnt" then
+	// 					elseif object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)  then
+	// 						if object:get_luaentity().name == "crafter_tnt:tnt" then
 	// 							object:get_luaentity().shot = true
 	// 						elseif object:get_luaentity().is_mob == true then
 	// 							object:punch(object, 2,
@@ -283,7 +283,7 @@ namespace tnt {
 	// 		exploded = self.exploded,
 	// 	})
 	// end
-	// minetest.register_entity("tnt:tnt", {
+	// minetest.register_entity("crafter_tnt:tnt", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -307,7 +307,7 @@ namespace tnt {
 	// 		activation(self, staticdata, dtime_s)
 	// 	end,
 	// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-	// 		minetest.throw_item(self.object:get_pos(), "tnt:tnt")
+	// 		minetest.throw_item(self.object:get_pos(), "crafter_tnt:tnt")
 	// 		self.object:remove()
 	// 	end,
 	// 	sound_played = false,
@@ -315,7 +315,7 @@ namespace tnt {
 	// 		tnt_boom(self,dtime)
 	// 	end,
 	// })
-	// minetest.register_node("tnt:tnt", {
+	// minetest.register_node("crafter_tnt:tnt", {
 	//     description = "TNT",
 	//     tiles = {"tnt_top.png", "tnt_bottom.png",
 	// 			"tnt_side.png", "tnt_side.png",
@@ -323,20 +323,20 @@ namespace tnt {
 	//     groups = {stone = 2, hard = 1, pickaxe = 2, hand = 4, redstone_activation = 1},
 	//     sounds = main.stoneSound(),
 	//     redstone_activation = function(pos)
-	// 		local obj = minetest.add_entity(pos,"tnt:tnt")
+	// 		local obj = minetest.add_entity(pos,"crafter_tnt:tnt")
 	// 		local range = 4
 	// 		obj:get_luaentity().range = range
 	// 		obj:get_luaentity().redstone_activated = true
 	// 		minetest.remove_node(pos)
 	//     end,
 	//     on_punch = function(pos, node, puncher, pointed_thing)
-	// 		local obj = minetest.add_entity(pos,"tnt:tnt")
+	// 		local obj = minetest.add_entity(pos,"crafter_tnt:tnt")
 	// 		local range = 4
 	// 		obj:get_luaentity().range = range
 	// 		minetest.remove_node(pos)
 	//     end,
 	// })
-	// minetest.register_node("tnt:uranium_tnt", {
+	// minetest.register_node("crafter_tnt:uranium_tnt", {
 	//     description = "Uranium TNT",
 	//     tiles = {"tnt_top.png^[colorize:green:100", "tnt_bottom.png^[colorize:green:100",
 	// 			"tnt_side.png^[colorize:green:100", "tnt_side.png^[colorize:green:100",
@@ -344,7 +344,7 @@ namespace tnt {
 	//     groups = {stone = 2, hard = 1, pickaxe = 2, hand = 4},
 	//     sounds = main.stoneSound(),
 	//     on_punch = function(pos, node, puncher, pointed_thing)
-	// 		local obj = minetest.add_entity(pos,"tnt:tnt")
+	// 		local obj = minetest.add_entity(pos,"crafter_tnt:tnt")
 	// 		local range = 50
 	// 		obj:get_luaentity().range = range
 	// 		obj:get_luaentity().timer = 7
@@ -352,7 +352,7 @@ namespace tnt {
 	// 		minetest.remove_node(pos)
 	//     end,
 	// })
-	// minetest.register_node("tnt:uh_oh", {
+	// minetest.register_node("crafter_tnt:uh_oh", {
 	//     description = "Uh Oh",
 	//     tiles = {"tnt_top.png", "tnt_bottom.png",
 	// 			"tnt_side.png", "tnt_side.png",
@@ -364,14 +364,14 @@ namespace tnt {
 	// 		for x=-range, range do
 	// 		for y=-range, range do
 	// 		for z=-range, range do
-	// 			minetest.add_node(vector.new(pos.x+x,pos.y+y,pos.z+z),{name="tnt:tnt"})
+	// 			minetest.add_node(vector.new(pos.x+x,pos.y+y,pos.z+z),{name="crafter_tnt:tnt"})
 	// 		end
 	// 		end
 	// 		end
 	//     end,
 	// })
 	// minetest.register_craft({
-	// 	output = "tnt:tnt",
+	// 	output = "crafter_tnt:tnt",
 	// 	recipe = {
 	// 		{"crafter_mob:gunpowder", "crafter:sand",     "crafter_mob:gunpowder"},
 	// 		{"crafter:sand",     "crafter_mob:gunpowder", "crafter:sand"},
