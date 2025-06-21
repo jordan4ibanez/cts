@@ -182,8 +182,8 @@ namespace hopper {
 		// Target inventory.
 		const target_inv: InvRef = core.get_meta(target_pos).get_inventory();
 		for (const i of $range(1, hopper_inv_size)) {
-			// 		local stack = hopper_inv:get_stack("main", i)
-			// 		local item = stack:get_name()
+			const stack: ItemStackObject = hopper_inv.get_stack("main", i);
+			const item: string = stack.get_name();
 			// 		if item ~= "" and (filtered_items == nil or filtered_items[item]) then
 			// 			if target_inventory_name then
 			// 				if target_inv:room_for_item(target_inventory_name, item) then
