@@ -58,111 +58,116 @@ namespace hopper {
 
 	// Used to convert side hopper facing into source and destination relative coordinates.
 	// This was tedious to populate and test.
-	const directions: DirComponent[] = [
-		{
+	const directions: Dictionary<number, DirComponent> = {
+		0: {
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		{
+		1: {
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		{
+		2: {
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		{
+		3: {
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
-		{
+		4: {
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		{
+		5: {
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		{
+		6: {
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		{
+		7: {
 			src: vector.create3d({ x: 0, y: 0, z: 1 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		{
+		8: {
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		{
+		9: {
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		{
+		10: {
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		{
+		11: {
 			src: vector.create3d({ x: 0, y: 0, z: -1 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		{
+		12: {
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		{
+		13: {
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		{
+		14: {
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		{
+		15: {
 			src: vector.create3d({ x: 1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
-		{
+		16: {
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: -1, z: 0 }),
 		},
-		{
+		17: {
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		{
+		18: {
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 1, z: 0 }),
 		},
-		{
+		19: {
 			src: vector.create3d({ x: -1, y: 0, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
-		{
+		20: {
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: 1, y: 0, z: 0 }),
 		},
-		{
+		21: {
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: 1 }),
 		},
-		{
+		22: {
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
 		},
-		{
+		23: {
 			src: vector.create3d({ x: 0, y: -1, z: 0 }),
 			dst: vector.create3d({ x: 0, y: 0, z: -1 }),
 		},
-	];
-	// local bottomdir = function(facedir)
-	// 	return ({[0]={x=0, y=-1, z=0},
+	};
+
+	// const dirs: Vec3[] = [
+	// {[0]={x=0, y=-1, z=0},
 	// 		{x=0, y=0, z=-1},
 	// 		{x=0, y=0, z=1},
 	// 		{x=-1, y=0, z=0},
 	// 		{x=1, y=0, z=0},
-	// 		{x=0, y=1, z=0}})[math.floor(facedir/4)]
+	// 		{x=0, y=1, z=0}}
+	// ]
+
+	// local bottomdir = function(facedir)
+	// 	return ()[math.floor(facedir/4)]
 	// end
 	// // hopper workings
 	// core.register_abm({
