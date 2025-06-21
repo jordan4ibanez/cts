@@ -1,37 +1,38 @@
 namespace tnt {
-	// local function extreme_tnt(pos,range,explosion_type)
-	// 	local pos = vector.floor(vector.add(pos,0.5))
-	// 	local delay = 0
-	// 	for x=-1,0 do
-	// 	for y=-1,0 do
-	// 	for z=-1,0 do
-	// 		minetest.after(delay, function(pos,range,x,y,z)
-	// 			local min = vector.add(pos,vector.multiply(vector.new(x,y,z),range))
-	// 			local max = vector.add(pos,vector.multiply(vector.new(x+1,y+1,z+1),range))
-	// 			local vm = minetest.get_voxel_manip()
-	// 			local emin, emax = vm:read_from_map(min,max)
-	// 			local area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
-	// 			local data = vm:get_data()
-	// 			local air = minetest.get_content_id("air")
-	// 			for x=min.x, max.x do
-	// 			for y=min.y, max.y do
-	// 			for z=min.z, max.z do
-	// 				--if vector.distance(pos, vector.new(x,y,z)) <= range then
-	// 				--minetest.remove_node(vector.new(x,y,z))
-	// 				data[area:index(x,y,z)] = air
-	// 				--end
-	// 			end
-	// 			end
-	// 			end
-	// 			vm:set_data(data)
-	// 			vm:write_to_map()
-	// 		end,pos,range,x,y,z)
-	// 		delay = delay + 1
-	// 	end
-	// 	end
-	// 	end
-	// 	minetest.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = range*range*range})
-	// end
+	function extreme_tnt(pos: Vec3, range: number, explosion_type: string) {
+		// 	local pos = vector.floor(vector.add(pos,0.5))
+		// 	local delay = 0
+		// 	for x=-1,0 do
+		// 	for y=-1,0 do
+		// 	for z=-1,0 do
+		// 		minetest.after(delay, function(pos,range,x,y,z)
+		// 			local min = vector.add(pos,vector.multiply(vector.new(x,y,z),range))
+		// 			local max = vector.add(pos,vector.multiply(vector.new(x+1,y+1,z+1),range))
+		// 			local vm = minetest.get_voxel_manip()
+		// 			local emin, emax = vm:read_from_map(min,max)
+		// 			local area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
+		// 			local data = vm:get_data()
+		// 			local air = minetest.get_content_id("air")
+		// 			for x=min.x, max.x do
+		// 			for y=min.y, max.y do
+		// 			for z=min.z, max.z do
+		// 				--if vector.distance(pos, vector.new(x,y,z)) <= range then
+		// 				--minetest.remove_node(vector.new(x,y,z))
+		// 				data[area:index(x,y,z)] = air
+		// 				--end
+		// 			end
+		// 			end
+		// 			end
+		// 			vm:set_data(data)
+		// 			vm:write_to_map()
+		// 		end,pos,range,x,y,z)
+		// 		delay = delay + 1
+		// 	end
+		// 	end
+		// 	end
+		// 	minetest.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = range*range*range})
+	}
+
 	// --use raycasting to create actual explosion
 	// local n_pos
 	// local node2
