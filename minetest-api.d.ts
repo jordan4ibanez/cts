@@ -84,7 +84,7 @@ interface core {
 		fun: (
 			pos: Vec3,
 			node: NodeTable,
-			placer: ObjectRef,
+			placer: ObjectRef | null,
 			oldNode: NodeTable,
 			itemStack: ItemStackObject,
 			pointedThing: PointedThing
