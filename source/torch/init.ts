@@ -64,7 +64,8 @@
 
 
 // --reload smoke and flame on load
-// --[[
+
+/*
 // minetest.register_abm({
 // 	label = "Torch Particle",
 // 	nodenames = {"group:torch"},
@@ -84,7 +85,7 @@
 // 		end
 // 	end,
 // })
-// ]]--
+*/
 
 // -- Item definitions
 // minetest.register_craftitem("torch:torch", {
