@@ -183,7 +183,8 @@ namespace hopper {
 		chance: 1,
 		//catch_up : false,
 		action: (pos, node, active_object_count, active_object_count_wider) => {
-			// 		local source_pos, destination_pos, destination_dir
+			let source_pos, destination_pos, destination_dir;
+
 			// 		if node.name == "crafter_hopper:hopper_side" then
 			// 			source_pos = vector.add(pos, directions[node.param2].src)
 			// 			destination_dir = directions[node.param2].dst
