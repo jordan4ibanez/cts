@@ -106,8 +106,7 @@ namespace hopper {
 		return itemstack;
 	}
 
-	// //////////////////////////////////////////////////////////////////////////////////////////-
-	// // Hoppers
+	// Hoppers
 	// core.register_node("crafter_hopper:hopper", {
 	// 	drop = "crafter_hopper:hopper",
 	// 	description = S("Hopper"),
