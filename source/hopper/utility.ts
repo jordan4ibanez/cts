@@ -170,8 +170,8 @@ namespace hopper {
 		if (!eject_item && target_inventory_name == null) {
 			return false;
 		}
-		// 	//hopper inventory
-		// 	local hopper_meta = core.get_meta(hopper_pos);
+		// Hopper inventory.
+		const hopper_meta: MetaRef = core.get_meta(hopper_pos);
 		// 	local hopper_inv = hopper_meta:get_inventory()
 		// 	if hopper_inv:is_empty("main") == true then
 		// 		return false
