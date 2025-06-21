@@ -56,12 +56,17 @@ namespace hopper {
 			}
 			const x: number = pos.x - pos2.x;
 			const z: number = pos.z - pos2.z;
-			// 		local returned_stack, success = core.item_place_node(itemstack, placer, pointed_thing)
-			// 		if success then
-			// 			local meta = core.get_meta(pos2)
-			// 			meta:set_string("placer", placer:get_player_name())
-			// 		end
-			// 		return returned_stack
+			const [returned_stack, success] = core.item_place_node(
+				itemstack,
+				placer,
+				pointed_thing
+			);
+
+			if (success) {
+				const meta: MetaRef = core.get_meta(pos2);
+				meta.set_string("placer", placer.get_player_name());
+			}
+			return returned_stack;
 		},
 
 		// 	can_dig = function(pos,player)
