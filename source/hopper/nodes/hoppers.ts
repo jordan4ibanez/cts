@@ -180,15 +180,9 @@ namespace hopper {
 		},
 	});
 
-	const hopper_side_drop: string = "crafter_hopper:hopper";
-	const hopper_groups: Dictionary<string, number> = {
-		cracky: 3,
-		not_in_creative_inventory: 1,
-	};
-
 	core.register_node("crafter_hopper:hopper_side", {
 		description: "Side Hopper",
-		drop: hopper_side_drop,
+		drop: "crafter_hopper:hopper",
 		groups: { stone: 1, hard: 1, pickaxe: 1, hand: 4, pathable: 1 },
 		sounds: hopper.metal_sounds,
 		drawtype: Drawtype.nodebox,
