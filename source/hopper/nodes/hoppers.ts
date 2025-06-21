@@ -1,4 +1,4 @@
-// local S = core.get_translator("hopper")
+namespace hopper {
 
 // -- formspec
 // local function get_hopper_formspec(pos)
@@ -193,3 +193,4 @@
 // 			"hopper_formspec:"..core.pos_to_string(pos), get_hopper_formspec(pos))
 // 	end,
 // })
+}
