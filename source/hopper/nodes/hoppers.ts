@@ -217,16 +217,16 @@ namespace hopper {
 				[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
 			],
 		},
-		// 	selection_box : {
-		// 		type : "fixed",
-		// 		fixed : {
-		// 			//funnel
-		// 			{-0.5, 0.0, -0.5, 0.5, 0.5, 0.5},
-		// 			//spout
-		// 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
-		// 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
-		// 		},
-		// 	},
+			selection_box : {
+				type : Nodeboxtype.fixed,
+				fixed : [
+					//funnel
+					[-0.5, 0.0, -0.5, 0.5, 0.5, 0.5],
+					//spout
+					[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
+					[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
+				],
+			},
 		// 	on_construct = function(pos)
 		// 		local inv = core.get_meta(pos):get_inventory()
 		// 		inv:set_size("main", 4*4)
