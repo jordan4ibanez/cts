@@ -26,12 +26,12 @@ namespace hopper {
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2.facedir,
 			tiles : [
-				"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_chute_arrow_" + hopper.config.texture_resolution + ".png",
-				"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR180)",
-				"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR270)",
-				"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR90)",
-				"hopper_top_" + hopper.config.texture_resolution + ".png",
-				"hopper_bottom_" + hopper.config.texture_resolution + ".png"
+				"hopper_bottom_" + "16" + ".png^hopper_chute_arrow_" + "16" + ".png",
+				"hopper_bottom_" + "16" + ".png^(hopper_chute_arrow_" + "16" + ".png^[transformR180)",
+				"hopper_bottom_" + "16" + ".png^(hopper_chute_arrow_" + "16" + ".png^[transformR270)",
+				"hopper_bottom_" + "16" + ".png^(hopper_chute_arrow_" + "16" + ".png^[transformR90)",
+				"hopper_top_" + "16" + ".png",
+				"hopper_bottom_" + "16" + ".png"
 			],
 		// 	node_box : {
 		// 		type : "fixed",
