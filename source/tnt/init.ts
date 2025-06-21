@@ -1,38 +1,7 @@
 namespace tnt {
-
-	// //use raycasting to create actual explosion
-	// local n_pos
-	// local node2
-	// local ray
-	// local stop
-	// local found
-	// local positional_data
-	// local pos2 = vector.new(0,0,0)
-	// local in_node
-	// local in_water
-	// local min
-	// local max
-	// local vm
-	// local emin
-	// local emax
-	// local area
-	// local data
+	// Use raycasting to create actual explosion.
 	// local air = core.get_content_id("air")
 	// local content_id = core.get_name_from_content_id
-	// local distance
-	// local item
-	// local ppos
-	// local obj
-	// local do_it
-	// local in_node
-	// local clear
-	// local power
-	// local dir
-	// local force
-	// local hp
-	// local explosion_force
-	// local explosion_depletion
-	// local range_calc
 	// local boom_time = core.get_us_time()/1000000
 	// local digging_nodes = {
 	// 	["utility:chest_open"] = true,
