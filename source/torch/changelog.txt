@@ -38,3 +38,6 @@ Changelog:
 
 4.0 (2020)
 - brought mod back to life
+
+5.0 (2025)
+- Brought back to life, again. Translated to TypeScript.
