@@ -1,18 +1,24 @@
 namespace hopper {
 	// Formspec.
-	// local function get_hopper_formspec(pos)
-	// 	local spos = hopper.get_string_pos(pos)
-	// 	local formspec =
-	// 		"size[8,9]"
-	// 		+ hopper.formspec_bg
-	// 		+ "list[nodemeta:" + spos + ";main;2,0.3;4,4;]"
-	// 		+ hopper.get_eject_button_texts(pos, 7, 2)
-	// 		+ "list[current_player;main;0,4.85;8,1;]"
-	// 		+ "list[current_player;main;0,6.08;8,3;8]"
-	// 		+ "listring[nodemeta:" + spos + ";main]"
-	// 		+ "listring[current_player;main]"
-	// 	return formspec
-	// end
+	function get_hopper_formspec(pos: Vec3): string {
+		const spos: string = hopper.get_string_pos(pos);
+		return (
+			"size[8,9]" +
+			hopper.formspec_bg +
+			"list[nodemeta:" +
+			spos +
+			";main;2,0.3;4,4;]" +
+			hopper.get_eject_button_texts(pos, 7, 2) +
+			"list[current_player;main;0,4.85;8,1;]" +
+			"list[current_player;main;0,6.08;8,3;8]" +
+			"listring[nodemeta:" +
+			spos +
+			";main]" +
+			"listring[current_player;main]"
+		);
+		// 	return formspec
+	}
+
 	// local hopper_on_place = function(itemstack, placer, pointed_thing, node_name)
 	// 	local pos  = pointed_thing.under
 	// 	local pos2 = pointed_thing.above
