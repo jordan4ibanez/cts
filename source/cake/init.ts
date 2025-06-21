@@ -58,7 +58,8 @@ namespace cake {
 				}
 				hunger.player_eat_food(
 					clicker,
-					ItemStack("crafter_cake:cake_item_placeholder")
+					ItemStack("crafter_cake:cake_item_placeholder"),
+					true
 				);
 				//clicker:set_hp(clicker:get_hp()+5)
 				if (i == 13) {

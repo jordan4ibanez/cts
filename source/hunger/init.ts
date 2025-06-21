@@ -308,7 +308,11 @@ namespace hunger {
 	}
 
 	// Players eat food.
-	export function player_eat_food(player: ObjectRef, item: ItemStackObject) {
+	export function player_eat_food(
+		player: ObjectRef,
+		item: ItemStackObject,
+		doNotUpdateWieldItem?: boolean
+	) {
 		const name: string = player.get_player_name();
 		const data: HungerData | undefined = pool.get(name);
 
@@ -329,7 +333,9 @@ namespace hunger {
 			data.satiation = satiation;
 		}
 
-		take_food(player);
+		if (doNotUpdateWieldItem) {
+			take_food(player);
+		}
 		hudManager.change_hud({
 			player: player,
 			hudName: "hunger",
