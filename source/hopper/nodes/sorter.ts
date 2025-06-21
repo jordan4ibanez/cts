@@ -27,22 +27,22 @@ namespace hopper {
 		// 		filter_button_text = S("Selective\nFilter")
 		// 		filter_button_tooltip = S("This sorter is currently set to try sending all items\nin the direction of the arrow. Click this button\nto enable an item-type-specific filter.")
 		// 	else
-		// 		filter_body = "label[3.7,0;"..S("Filter").."]list[nodemeta:" .. spos .. ";filter;0,0.5;8,1;]"
+		// 		filter_body = "label[3.7,0;"+S("Filter")+"]list[nodemeta:" + spos + ";filter;0,0.5;8,1;]"
 		// 		filter_button_text = S("Filter\nAll")
 		// 		filter_button_tooltip = S("This sorter is currently set to only send items listed\nin the filter list in the direction of the arrow.\nClick this button to set it to try sending all\nitems that way first.")
 		// 		y_displace = 1.6
 		// 	end
 		// 	local formspec =
-		// 		"size[8," .. 7 + y_displace .. "]"
-		// 		.. hopper.formspec_bg
-		// 		.. filter_body
-		// 		.. "list[nodemeta:" .. spos .. ";main;3,".. tostring(0.3 + y_displace) .. ";2,2;]"
-		// 		.. "button_exit[7,".. tostring(0.8 + y_displace) .. ";1,1;filter_all;".. filter_button_text .. "]tooltip[filter_all;" .. filter_button_tooltip.. "]"
-		// 		.. hopper.get_eject_button_texts(pos, 6, 0.8 + y_displace)
-		// 		.. "list[current_player;main;0,".. tostring(2.85 + y_displace) .. ";8,1;]"
-		// 		.. "list[current_player;main;0,".. tostring(4.08 + y_displace) .. ";8,3;8]"
-		// 		.. "listring[nodemeta:" .. spos .. ";main]"
-		// 		.. "listring[current_player;main]"
+		// 		"size[8," + 7 + y_displace + "]"
+		// 		+ hopper.formspec_bg
+		// 		+ filter_body
+		// 		+ "list[nodemeta:" + spos + ";main;3,"+ tostring(0.3 + y_displace) + ";2,2;]"
+		// 		+ "button_exit[7,"+ tostring(0.8 + y_displace) + ";1,1;filter_all;"+ filter_button_text + "]tooltip[filter_all;" + filter_button_tooltip+ "]"
+		// 		+ hopper.get_eject_button_texts(pos, 6, 0.8 + y_displace)
+		// 		+ "list[current_player;main;0,"+ tostring(2.85 + y_displace) + ";8,1;]"
+		// 		+ "list[current_player;main;0,"+ tostring(4.08 + y_displace) + ";8,3;8]"
+		// 		+ "listring[nodemeta:" + spos + ";main]"
+		// 		+ "listring[current_player;main]"
 		// 	return formspec
 	}
 
@@ -56,12 +56,12 @@ namespace hopper {
 	// 	paramtype = "light",
 	// 	paramtype2 = "facedir",
 	// 	tiles = {
-	// 			"hopper_bottom_" .. hopper.config.texture_resolution .. ".png",
-	// 			"hopper_top_" .. hopper.config.texture_resolution .. ".png",
-	// 			"hopper_bottom_" .. hopper.config.texture_resolution .. ".png^hopper_sorter_arrow_" .. hopper.config.texture_resolution .. ".png^[transformFX^hopper_sorter_sub_arrow_" .. hopper.config.texture_resolution .. ".png^[transformFX",
-	// 			"hopper_bottom_" .. hopper.config.texture_resolution .. ".png^hopper_sorter_arrow_" .. hopper.config.texture_resolution .. ".png^hopper_sorter_sub_arrow_" .. hopper.config.texture_resolution .. ".png",
-	// 			"hopper_top_" .. hopper.config.texture_resolution .. ".png",
-	// 			"hopper_bottom_" .. hopper.config.texture_resolution .. ".png^hopper_sorter_arrow_" .. hopper.config.texture_resolution .. ".png",
+	// 			"hopper_bottom_" + hopper.config.texture_resolution + ".png",
+	// 			"hopper_top_" + hopper.config.texture_resolution + ".png",
+	// 			"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png^[transformFX^hopper_sorter_sub_arrow_" + hopper.config.texture_resolution + ".png^[transformFX",
+	// 			"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png^hopper_sorter_sub_arrow_" + hopper.config.texture_resolution + ".png",
+	// 			"hopper_top_" + hopper.config.texture_resolution + ".png",
+	// 			"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_sorter_arrow_" + hopper.config.texture_resolution + ".png",
 	// 		},
 	// 	node_box = {
 	// 		type = "fixed",
@@ -99,7 +99,7 @@ namespace hopper {
 	// 			return
 	// 		end
 	// 		core.show_formspec(clicker:get_player_name(),
-	// 			"hopper_formspec:"..core.pos_to_string(pos), get_sorter_formspec(pos))
+	// 			"hopper_formspec:"+core.pos_to_string(pos), get_sorter_formspec(pos))
 	// 	end,
 	// 	allow_metadata_inventory_put = function(pos, listname, index, stack, player)
 	// 		if listname == "filter" then
@@ -139,7 +139,7 @@ namespace hopper {
 	// 	on_timer = function(pos, elapsed)
 	// 		local meta = core.get_meta(pos);
 	// 		local inv = meta:get_inventory()
-	// 		-- build a filter list
+	// 		// build a filter list
 	// 		local filter_items = nil
 	// 		if meta:get_string("filter_all") ~= "true" then
 	// 			filter_items = {}
@@ -177,7 +177,7 @@ namespace hopper {
 	// 		else
 	// 			success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, nil, filter_items)
 	// 		end
-	// 		if not success then -- weren't able to put something in the filter destination, for whatever reason. Now we can start moving stuff forward to the default.
+	// 		if not success then // weren't able to put something in the filter destination, for whatever reason. Now we can start moving stuff forward to the default.
 	// 			local default_destination_node = core.get_node(default_destination_pos)
 	// 			local registered_inventories = hopper.get_registered_inventories_for(default_destination_node.name)
 	// 			if registered_inventories ~= nil then
