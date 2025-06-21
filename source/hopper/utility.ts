@@ -3,6 +3,8 @@ namespace hopper {
 	// Looks first for a registration matching the specific node name, then for a registration
 	// matching group and value, then for a registration matching a group and *any* value.
 
+	// todo: https://github.com/OgelGames/fakelib
+
 	export function get_registered_inventories_for(
 		target_node_name: string
 	): ContainerData | undefined {
