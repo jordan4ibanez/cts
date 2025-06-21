@@ -135,12 +135,20 @@ namespace torch {
 				return itemstack;
 			}
 
-			// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
-			// 		itemstack:set_name("crafter_torch:torch")
-			// 		if retval then
-			// 			core.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
-			// 		end
-			// 		return itemstack
+			const [newItemStack, newDir] = core.item_place(
+				fakestack,
+				placer,
+				pointed_thing,
+				wdir
+			);
+			newItemStack.set_name("crafter_torch:torch");
+			if (newDir != null) {
+				core.sound_play("wood", {
+					pos: pointed_thing.above,
+					gain: 1.0,
+				});
+			}
+			return itemstack;
 		},
 	});
 
