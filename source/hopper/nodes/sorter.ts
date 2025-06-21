@@ -222,18 +222,24 @@ namespace hopper {
 			return count;
 		},
 
-		on_metadata_inventory_put: (pos, listname, index, stack, player) => {
+		on_metadata_inventory_put: (
+			pos: Vec3,
+			listname: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
+		) => {
 			const timer: NodeTimerObject = core.get_node_timer(pos);
 			if (!timer.is_started()) {
 				timer.start(1);
 			}
 		},
 
-		on_timer: (pos, elapsed) => {
-			// 		local meta = core.get_meta(pos);
-			// 		local inv = meta:get_inventory()
-			// 		// build a filter list
-			// 		local filter_items = nil
+		on_timer: (pos: Vec3, elapsed: number) => {
+			const meta: MetaRef = core.get_meta(pos);
+			const inv: InvRef = meta.get_inventory();
+			// Build a filter list.
+			let filter_items = null;
 			// 		if meta:get_string("filter_all") ~= "true" then
 			// 			filter_items = {}
 			// 			local filter_inv_size = inv:get_size("filter")
