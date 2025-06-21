@@ -33,8 +33,8 @@ namespace hopper {
 		if (pos == null || pos2 == null) {
 			throw new Error("engine issue?");
 		}
-		// 	local x = pos.x - pos2.x
-		// 	local z = pos.z - pos2.z
+		const x: number = pos.x - pos2.x;
+		const z: number = pos.z - pos2.z;
 		// 	local returned_stack, success
 		// 	// unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
 		// 	// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
