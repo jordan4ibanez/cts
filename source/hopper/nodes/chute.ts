@@ -14,8 +14,7 @@ namespace hopper {
 			spos +
 			";main]" +
 			"listring[current_player;main]"
-
-		)
+		);
 		// 	return formspec
 	}
 
