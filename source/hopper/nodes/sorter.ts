@@ -229,63 +229,63 @@ namespace hopper {
 			}
 		},
 
-		// 	on_timer = function(pos, elapsed)
-		// 		local meta = core.get_meta(pos);
-		// 		local inv = meta:get_inventory()
-		// 		// build a filter list
-		// 		local filter_items = nil
-		// 		if meta:get_string("filter_all") ~= "true" then
-		// 			filter_items = {}
-		// 			local filter_inv_size = inv:get_size("filter")
-		// 			for i = 1, filter_inv_size do
-		// 				local stack = inv:get_stack("filter", i)
-		// 				local item = stack:get_name()
-		// 				if item ~= "" then
-		// 					filter_items[item] = true
-		// 				end
-		// 			end
-		// 		end
-		// 		local node = core.get_node(pos)
-		// 		local dir = core.facedir_to_dir(node.param2)
-		// 		local default_destination_pos = vector.add(pos, dir)
-		// 		local default_output_direction
-		// 		if dir.y == 0 then
-		// 			default_output_direction = "horizontal"
-		// 		end
-		// 		dir = bottomdir(node.param2)
-		// 		local filter_destination_pos = vector.add(pos, dir)
-		// 		local filter_output_direction
-		// 		if dir.y == 0 then
-		// 			filter_output_direction = "horizontal"
-		// 		end
-		// 		local success = false
-		// 		local filter_destination_node = core.get_node(filter_destination_pos)
-		// 		local registered_inventories = hopper.get_registered_inventories_for(filter_destination_node.name)
-		// 		if registered_inventories ~= nil then
-		// 			if filter_output_direction == "horizontal" then
-		// 				success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, registered_inventories["side"], filter_items)
-		// 			else
-		// 				success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, registered_inventories["bottom"], filter_items)
-		// 			end
-		// 		else
-		// 			success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, nil, filter_items)
-		// 		end
-		// 		if not success then // weren't able to put something in the filter destination, for whatever reason. Now we can start moving stuff forward to the default.
-		// 			local default_destination_node = core.get_node(default_destination_pos)
-		// 			local registered_inventories = hopper.get_registered_inventories_for(default_destination_node.name)
-		// 			if registered_inventories ~= nil then
-		// 				if default_output_direction == "horizontal" then
-		// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["side"])
-		// 				else
-		// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["bottom"])
-		// 				end
-		// 			else
-		// 				hopper.send_item_to(pos, default_destination_pos, default_destination_node)
-		// 			end
-		// 		end
-		// 		if not inv:is_empty("main") then
-		// 			core.get_node_timer(pos):start(1)
-		// 		end
-		// 	end,
+		on_timer: (pos, elapsed) => {
+			// 		local meta = core.get_meta(pos);
+			// 		local inv = meta:get_inventory()
+			// 		// build a filter list
+			// 		local filter_items = nil
+			// 		if meta:get_string("filter_all") ~= "true" then
+			// 			filter_items = {}
+			// 			local filter_inv_size = inv:get_size("filter")
+			// 			for i = 1, filter_inv_size do
+			// 				local stack = inv:get_stack("filter", i)
+			// 				local item = stack:get_name()
+			// 				if item ~= "" then
+			// 					filter_items[item] = true
+			// 				end
+			// 			end
+			// 		end
+			// 		local node = core.get_node(pos)
+			// 		local dir = core.facedir_to_dir(node.param2)
+			// 		local default_destination_pos = vector.add(pos, dir)
+			// 		local default_output_direction
+			// 		if dir.y == 0 then
+			// 			default_output_direction = "horizontal"
+			// 		end
+			// 		dir = bottomdir(node.param2)
+			// 		local filter_destination_pos = vector.add(pos, dir)
+			// 		local filter_output_direction
+			// 		if dir.y == 0 then
+			// 			filter_output_direction = "horizontal"
+			// 		end
+			// 		local success = false
+			// 		local filter_destination_node = core.get_node(filter_destination_pos)
+			// 		local registered_inventories = hopper.get_registered_inventories_for(filter_destination_node.name)
+			// 		if registered_inventories ~= nil then
+			// 			if filter_output_direction == "horizontal" then
+			// 				success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, registered_inventories["side"], filter_items)
+			// 			else
+			// 				success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, registered_inventories["bottom"], filter_items)
+			// 			end
+			// 		else
+			// 			success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, nil, filter_items)
+			// 		end
+			// 		if not success then // weren't able to put something in the filter destination, for whatever reason. Now we can start moving stuff forward to the default.
+			// 			local default_destination_node = core.get_node(default_destination_pos)
+			// 			local registered_inventories = hopper.get_registered_inventories_for(default_destination_node.name)
+			// 			if registered_inventories ~= nil then
+			// 				if default_output_direction == "horizontal" then
+			// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["side"])
+			// 				else
+			// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["bottom"])
+			// 				end
+			// 			else
+			// 				hopper.send_item_to(pos, default_destination_pos, default_destination_node)
+			// 			end
+			// 		end
+			// 		if not inv:is_empty("main") then
+			// 			core.get_node_timer(pos):start(1)
+			// 		end
+		},
 	});
 }
