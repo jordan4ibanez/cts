@@ -371,11 +371,12 @@ namespace itemHandling {
 					}
 
 					if (
-						distance > 2 ||
+						distance > 2.5 ||
 						distance < 0.3 ||
 						this.magnet_timer > 0.2 ||
-						this.old_magnet_distance < distance
+						this.old_magnet_distance - distance > 0.5
 					) {
+						// print(this.old_magnet_distance - distance, distance);
 						this.object.remove();
 						return;
 					}
