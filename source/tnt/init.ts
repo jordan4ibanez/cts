@@ -34,7 +34,9 @@ namespace tnt {
 							vector.create3d(x, y, z)
 						);
 
-						// 			if distance <= range and distance >= range-1 then
+						if (distance > range || distance < range - 1) {
+							continue;
+						}
 						// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
 						// 				explosion_force = range
 						// 				for pointed_thing in ray do
@@ -73,7 +75,7 @@ namespace tnt {
 						// 						break
 						// 					end
 						// 				end
-						// 			end
+									
 					}
 				}
 			}
