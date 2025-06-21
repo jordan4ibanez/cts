@@ -75,8 +75,8 @@ namespace hopper {
 			"listring[nodemeta:" +
 			spos +
 			";main]" +
-			"listring[current_player;main]")
-		// 	return formspec
+			"listring[current_player;main]"
+		);
 	}
 
 	// core.register_node("crafter_hopper:sorter", {
