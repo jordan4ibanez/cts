@@ -104,12 +104,12 @@ namespace hopper {
 			],
 		},
 
-		// 	on_construct = function(pos)
-		// 		local meta = core.get_meta(pos)
-		// 		local inv = meta:get_inventory()
-		// 		inv:set_size("main", 2*2)
-		// 		inv:set_size("filter", 8)
-		// 	end,
+		on_construct: (pos: Vec3) => {
+			const meta: MetaRef = core.get_meta(pos);
+			const inv: InvRef = meta.get_inventory();
+			inv.set_size("main", 2 * 2);
+			inv.set_size("filter", 8);
+		},
 
 		// 	on_place = function(itemstack, placer, pointed_thing, node_name)
 		// 		local pos  = pointed_thing.under
@@ -176,7 +176,7 @@ namespace hopper {
 		// 			timer:start(1)
 		// 		end
 		// 	end,
-		
+
 		// 	on_timer = function(pos, elapsed)
 		// 		local meta = core.get_meta(pos);
 		// 		local inv = meta:get_inventory()
