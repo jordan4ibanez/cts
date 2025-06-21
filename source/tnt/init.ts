@@ -305,10 +305,10 @@ namespace tnt {
 			}
 		}
 
-		// 	//stop client from lagging
-		// 	if range > 15 then
-		// 		range = 15
-		// 	end
+		// Stop client from lagging.
+		if (range > 15) {
+			range = 15;
+		}
 		// 	core.add_particlespawner({
 		// 		amount = range,
 		// 		time = 0.001,
