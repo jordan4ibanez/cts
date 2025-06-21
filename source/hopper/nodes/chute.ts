@@ -17,7 +17,7 @@ namespace hopper {
 		);
 	}
 
-	// core.register_node("hopper:chute", {
+	core.register_node("hopper:chute", {
 	// 	description = S("Hopper Chute"),
 	// 	_doc_items_longdesc = hopper.doc.chute_long_desc,
 	//     _doc_items_usagehelp = hopper.doc.chute_usage,
@@ -100,5 +100,5 @@ namespace hopper {
 	// 			core.get_node_timer(pos):start(1)
 	// 		end
 	// 	end,
-	// })
+	})
 }
