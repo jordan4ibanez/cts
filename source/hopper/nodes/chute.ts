@@ -45,18 +45,25 @@ namespace hopper {
 			inv.set_size("main", 2 * 2);
 		},
 
-		// 	on_place = function(itemstack, placer, pointed_thing, node_name)
-		// 		local pos  = pointed_thing.under
-		// 		local pos2 = pointed_thing.above
-		// 		local x = pos.x - pos2.x
-		// 		local z = pos.z - pos2.z
-		// 		local returned_stack, success = core.item_place_node(itemstack, placer, pointed_thing)
-		// 		if success then
-		// 			local meta = core.get_meta(pos2)
-		// 			meta:set_string("placer", placer:get_player_name())
-		// 		end
-		// 		return returned_stack
-		// 	end,
+		on_place(itemstack: ItemStackObject, placer, pointed_thing) {
+			if (pointed_thing.type == PointedThingType.object) {
+				return;
+			}
+			const pos: Vec3 | undefined = pointed_thing.under;
+			const pos2: Vec3 | undefined = pointed_thing.above;
+			if (pos == null || pos2 == null) {
+				throw new Error("engine issue?");
+			}
+			const x: number = pos.x - pos2.x;
+			const z: number = pos.z - pos2.z;
+			// 		local returned_stack, success = core.item_place_node(itemstack, placer, pointed_thing)
+			// 		if success then
+			// 			local meta = core.get_meta(pos2)
+			// 			meta:set_string("placer", placer:get_player_name())
+			// 		end
+			// 		return returned_stack
+		},
+
 		// 	can_dig = function(pos,player)
 		// 		local inv = core.get_meta(pos):get_inventory()
 		// 		return inv:is_empty("main")
