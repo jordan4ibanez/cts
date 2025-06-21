@@ -106,7 +106,7 @@ namespace playerMechanics {
 		(
 			pos: Vec3,
 			newnode: NodeTable,
-			placer: ObjectRef,
+			placer: ObjectRef | null,
 			oldnode: NodeTable,
 			itemstack: ItemStackObject,
 			pointed_thing: PointedThing
@@ -115,9 +115,9 @@ namespace playerMechanics {
 				core.registered_nodes[newnode.name];
 			if (node == null) {
 				throw new Error(
-					`Player [${placer.get_player_name()}] placed a non-existent node [${
-						newnode.name
-					}]`
+					`Player [${
+						(placer && placer.get_player_name()) || "server"
+					}] placed a non-existent node [${newnode.name}]`
 				);
 			}
 
@@ -160,25 +160,26 @@ namespace playerMechanics {
 		(
 			pos: Vec3,
 			newnode: NodeTable,
-			placer: ObjectRef,
+			placer: ObjectRef | null,
 			oldnode: NodeTable,
 			itemstack: ItemStackObject,
 			pointed_thing: PointedThing
 		) => {
 			const old: string = itemstack.get_name();
+
 			// Pass through to check.
 			core.after(
 				0,
 				(
 					pos: Vec3,
 					newnode: NodeTable,
-					placer: ObjectRef,
+					placer: ObjectRef | null,
 					oldnode: NodeTable,
 					itemstack: ItemStackObject,
 					pointed_thing: PointedThing,
 					old: string
 				) => {
-					if (!placer.is_player()) {
+					if (placer == null || !placer.is_player()) {
 						return;
 					}
 					let newItem = placer.get_wielded_item().get_name();
