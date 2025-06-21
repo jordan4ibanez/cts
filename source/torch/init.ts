@@ -63,7 +63,8 @@ namespace torch {
 		// })
 	*/
 	}
-	// //reload smoke and flame on load
+	//? Note: this caused a LOT of server lag.
+	// Reload smoke and flame on load.
 	/*
 // core.register_abm({
 // 	label = "Torch Particle",
