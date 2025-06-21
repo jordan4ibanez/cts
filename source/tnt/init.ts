@@ -87,11 +87,28 @@ namespace tnt {
 							if (currentID == obsidian || currentID == bedrock) {
 								break;
 							} else if (diggingNodes.has(currentID)) {
-								// 	core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
-								// 	data[n_pos] = air
+								core.dig_node(
+									vector.create3d({
+										x: pointed_thing.under.x,
+										y: pointed_thing.under.y,
+										z: pointed_thing.under.z,
+									})
+								);
+								data[n_pos - 1] = air;
 							} else if (currentID == tntID) {
-								// 	data[n_pos] = air
-								// 	core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
+								data[n_pos - 1] = air;
+								core.add_entity(
+									vector.create3d({
+										x: pointed_thing.under.x,
+										y: pointed_thing.under.y,
+										z: pointed_thing.under.z,
+									}),
+									"crafter_tnt:tnt",
+									core.serialize({
+										do_ignition_particles: true,
+										timer: math.random(),
+									})
+								);
 							} /* fixme: elseif (! string.match(node2, "mob_spawners:")) then*/ else {
 								data[n_pos - 1] = air;
 								core.after(
