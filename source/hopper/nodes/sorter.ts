@@ -18,10 +18,15 @@ namespace hopper {
 	}
 
 	function get_sorter_formspec(pos: Vec3) {
-		// 	local spos = hopper.get_string_pos(pos)
-		// 	local filter_all = core.get_meta(pos):get_string("filter_all") == "true"
-		// 	local y_displace = 0
-		// 	local filter_button_text, filter_button_tooltip, filter_body
+		const spos: string = hopper.get_string_pos(pos);
+		const filter_all: boolean =
+			core.get_meta(pos).get_string("filter_all") == "true";
+
+		let y_displace: number = 0;
+
+		let filter_button_text;
+		let filter_button_tooltip;
+		let filter_body;
 		// 	if filter_all then
 		// 		filter_body = ""
 		// 		filter_button_text = S("Selective\nFilter")
@@ -32,6 +37,7 @@ namespace hopper {
 		// 		filter_button_tooltip = S("This sorter is currently set to only send items listed\nin the filter list in the direction of the arrow.\nClick this button to set it to try sending all\nitems that way first.")
 		// 		y_displace = 1.6
 		// 	end
+
 		// 	local formspec =
 		// 		"size[8," + 7 + y_displace + "]"
 		// 		+ hopper.formspec_bg
