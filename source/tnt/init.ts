@@ -1,6 +1,6 @@
 namespace tnt {
 
-	// --use raycasting to create actual explosion
+	// //use raycasting to create actual explosion
 	// local n_pos
 	// local node2
 	// local ray
@@ -17,8 +17,8 @@ namespace tnt {
 	// local emax
 	// local area
 	// local data
-	// local air = minetest.get_content_id("air")
-	// local content_id = minetest.get_name_from_content_id
+	// local air = core.get_content_id("air")
+	// local content_id = core.get_name_from_content_id
 	// local distance
 	// local item
 	// local ppos
@@ -33,7 +33,7 @@ namespace tnt {
 	// local explosion_force
 	// local explosion_depletion
 	// local range_calc
-	// local boom_time = minetest.get_us_time()/1000000
+	// local boom_time = core.get_us_time()/1000000
 	// local digging_nodes = {
 	// 	["utility:chest_open"] = true,
 	// 	["utility:chest"] = true,
@@ -41,11 +41,11 @@ namespace tnt {
 	// 	["utility:furnace"] = true,
 	// }
 	// function tnt(pos,range,explosion_type)
-	// 	in_node = minetest.get_node(pos).name
-	// 	in_water =  ( in_node == "crafter:water" or minetest.get_node(pos).name == "crafter:waterflow")
+	// 	in_node = core.get_node(pos).name
+	// 	in_water =  ( in_node == "crafter:water" or core.get_node(pos).name == "crafter:waterflow")
 	// 	min = vector.add(pos,range)
 	// 	max = vector.subtract(pos,range)
-	// 	vm = minetest.get_voxel_manip(min,max)
+	// 	vm = core.get_voxel_manip(min,max)
 	// 		emin, emax = vm:read_from_map(min,max)
 	// 		area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
 	// 		data = vm:get_data()
@@ -53,13 +53,13 @@ namespace tnt {
 	// 		vm:get_light_data()
 	// 		range_calc = range/100
 	// 		explosion_depletion = range/2
-	// 		--raycast explosion
+	// 		//raycast explosion
 	// 		for x=-range, range do
 	// 		for y=-range, range do
 	// 		for z=-range, range do
 	// 			distance = vector.distance(pos2, vector.new(x,y,z))
 	// 			if distance <= range and distance >= range-1 then
-	// 				ray = minetest.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
+	// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
 	// 				explosion_force = range
 	// 				for pointed_thing in ray do
 	// 					explosion_force = explosion_force - math.random()
@@ -70,20 +70,20 @@ namespace tnt {
 	// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
 	// 								break
 	// 							elseif digging_nodes[node2] then
-	// 								minetest.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
+	// 								core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
 	// 								data[n_pos] = air
 	// 							elseif node2 == "crafter_tnt:tnt" then
 	// 								data[n_pos] = air
-	// 								minetest.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",minetest.serialize({do_ignition_particles=true,timer = math.random()}))
+	// 								core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
 	// 							elseif not string.match(node2, "mob_spawners:") then
 	// 								data[n_pos] = air
-	// 								minetest.after(0, function(pointed_thing)
-	// 									minetest.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
+	// 								core.after(0, function(pointed_thing)
+	// 									core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
 	// 								end,pointed_thing)
 	// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
-	// 									item = minetest.get_node_drops(node2, "crafter:diamondpick")[1]
+	// 									item = core.get_node_drops(node2, "crafter:diamondpick")[1]
 	// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
-	// 									obj = minetest.add_item(ppos, item)
+	// 									obj = core.add_item(ppos, item)
 	// 									if obj then
 	// 										power = (range - vector.distance(pos,ppos))*2
 	// 										dir = vector.subtract(ppos,pos)
@@ -105,16 +105,16 @@ namespace tnt {
 	// 		vm:update_liquids()
 	// 		vm:write_to_map()
 	// 	end
-	// 	if minetest.get_us_time()/1000000 - boom_time >= 0.1 then
-	// 		boom_time = minetest.get_us_time()/1000000
-	// 		minetest.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = 64}) --hear twice as far away
+	// 	if core.get_us_time()/1000000 - boom_time >= 0.1 then
+	// 		boom_time = core.get_us_time()/1000000
+	// 		core.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = 64}) //hear twice as far away
 	// 	end
-	// 	--throw players and items
-	// 	for _,object in ipairs(minetest.get_objects_inside_radius(pos, range)) do
+	// 	//throw players and items
+	// 	for _,object in ipairs(core.get_objects_inside_radius(pos, range)) do
 	// 		if object:is_player() or (object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)) then
 	// 			do_it = true
 	// 			if not object:is_player() and object:get_luaentity().name == "crafter_tnt:tnt" then
-	// 				in_node = minetest.get_node(object:get_pos()).name
+	// 				in_node = core.get_node(object:get_pos()).name
 	// 				if ( in_node == "crafter:water" or in_node == "crafter:waterflow") then
 	// 					do_it = false
 	// 				end
@@ -124,7 +124,7 @@ namespace tnt {
 	// 				if object:is_player() then
 	// 					ppos.y = ppos.y + 1
 	// 				end
-	// 				ray = minetest.raycast(pos, ppos, false, false)
+	// 				ray = core.raycast(pos, ppos, false, false)
 	// 				clear = true
 	// 				for pointed_thing in ray do
 	// 					n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
@@ -138,10 +138,10 @@ namespace tnt {
 	// 					dir = vector.direction(pos,ppos)
 	// 					force = vector.multiply(dir,power)
 	// 					if object:is_player() then
-	// 						--damage the player
+	// 						//damage the player
 	// 						hp = object:get_hp()
 	// 						if hp > 0 then
-	// 							--object:set_hp(hp - math.floor(power*2))
+	// 							//object:set_hp(hp - math.floor(power*2))
 	// 							object:punch(object, 2,
 	// 								{
 	// 								full_punch_interval=1.5,
@@ -167,11 +167,11 @@ namespace tnt {
 	// 			end
 	// 		end
 	// 	end
-	// 	--stop client from lagging
+	// 	//stop client from lagging
 	// 	if range > 15 then
 	// 		range = 15
 	// 	end
-	// 	minetest.add_particlespawner({
+	// 	core.add_particlespawner({
 	// 		amount = range,
 	// 		time = 0.001,
 	// 		minpos = pos,
@@ -215,7 +215,7 @@ namespace tnt {
 	// 	self.object:set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
 	// 	self.object:set_acceleration({x = 0, y = -9.81, z = 0})
 	// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
-	// 		local data = minetest.deserialize(staticdata)
+	// 		local data = core.deserialize(staticdata)
 	// 		if data and type(data) == "table" then
 	// 			self.range = data.range
 	// 			self.timer = data.timer
@@ -223,7 +223,7 @@ namespace tnt {
 	// 		end
 	// 	end
 	// 	if self.timer == self.timer_max then
-	// 		minetest.add_particlespawner({
+	// 		core.add_particlespawner({
 	// 			amount = 10,
 	// 			time = 0,
 	// 			minpos = vector.new(0,0.5,0),
@@ -241,17 +241,17 @@ namespace tnt {
 	// 			texture = "smoke.png",
 	// 			attached = self.object,
 	// 		})
-	// 		minetest.sound_play("tnt_ignite", {object = self.object, gain = 1.0, max_hear_distance = 64})
+	// 		core.sound_play("tnt_ignite", {object = self.object, gain = 1.0, max_hear_distance = 64})
 	// 	end
 	// end
 	// local static = function(self)
-	// 	return minetest.serialize({
+	// 	return core.serialize({
 	// 		range = self.range,
 	// 		timer = self.timer,
 	// 		exploded = self.exploded,
 	// 	})
 	// end
-	// minetest.register_entity("crafter_tnt:tnt", {
+	// core.register_entity("crafter_tnt:tnt", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
 	// 		physical = true,
@@ -266,7 +266,7 @@ namespace tnt {
 	// 		pointable = true,
 	// 	},
 	// 	timer = 5,
-	// 	timer_max = 5, --this has to be equal to timer
+	// 	timer_max = 5, //this has to be equal to timer
 	// 	range = 7,
 	// 	get_staticdata = function(self)
 	// 		return(static(self))
@@ -275,7 +275,7 @@ namespace tnt {
 	// 		activation(self, staticdata, dtime_s)
 	// 	end,
 	// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-	// 		minetest.throw_item(self.object:get_pos(), "crafter_tnt:tnt")
+	// 		core.throw_item(self.object:get_pos(), "crafter_tnt:tnt")
 	// 		self.object:remove()
 	// 	end,
 	// 	sound_played = false,
@@ -283,7 +283,7 @@ namespace tnt {
 	// 		tnt_boom(self,dtime)
 	// 	end,
 	// })
-	// minetest.register_node("crafter_tnt:tnt", {
+	// core.register_node("crafter_tnt:tnt", {
 	//     description = "TNT",
 	//     tiles = {"tnt_top.png", "tnt_bottom.png",
 	// 			"tnt_side.png", "tnt_side.png",
@@ -291,20 +291,20 @@ namespace tnt {
 	//     groups = {stone = 2, hard = 1, pickaxe = 2, hand = 4, redstone_activation = 1},
 	//     sounds = main.stoneSound(),
 	//     redstone_activation = function(pos)
-	// 		local obj = minetest.add_entity(pos,"crafter_tnt:tnt")
+	// 		local obj = core.add_entity(pos,"crafter_tnt:tnt")
 	// 		local range = 4
 	// 		obj:get_luaentity().range = range
 	// 		obj:get_luaentity().redstone_activated = true
-	// 		minetest.remove_node(pos)
+	// 		core.remove_node(pos)
 	//     end,
 	//     on_punch = function(pos, node, puncher, pointed_thing)
-	// 		local obj = minetest.add_entity(pos,"crafter_tnt:tnt")
+	// 		local obj = core.add_entity(pos,"crafter_tnt:tnt")
 	// 		local range = 4
 	// 		obj:get_luaentity().range = range
-	// 		minetest.remove_node(pos)
+	// 		core.remove_node(pos)
 	//     end,
 	// })
-	// minetest.register_node("crafter_tnt:uranium_tnt", {
+	// core.register_node("crafter_tnt:uranium_tnt", {
 	//     description = "Uranium TNT",
 	//     tiles = {"tnt_top.png^[colorize:green:100", "tnt_bottom.png^[colorize:green:100",
 	// 			"tnt_side.png^[colorize:green:100", "tnt_side.png^[colorize:green:100",
@@ -312,15 +312,15 @@ namespace tnt {
 	//     groups = {stone = 2, hard = 1, pickaxe = 2, hand = 4},
 	//     sounds = main.stoneSound(),
 	//     on_punch = function(pos, node, puncher, pointed_thing)
-	// 		local obj = minetest.add_entity(pos,"crafter_tnt:tnt")
+	// 		local obj = core.add_entity(pos,"crafter_tnt:tnt")
 	// 		local range = 50
 	// 		obj:get_luaentity().range = range
 	// 		obj:get_luaentity().timer = 7
 	// 		obj:get_luaentity().extreme = true
-	// 		minetest.remove_node(pos)
+	// 		core.remove_node(pos)
 	//     end,
 	// })
-	// minetest.register_node("crafter_tnt:uh_oh", {
+	// core.register_node("crafter_tnt:uh_oh", {
 	//     description = "Uh Oh",
 	//     tiles = {"tnt_top.png", "tnt_bottom.png",
 	// 			"tnt_side.png", "tnt_side.png",
@@ -332,13 +332,13 @@ namespace tnt {
 	// 		for x=-range, range do
 	// 		for y=-range, range do
 	// 		for z=-range, range do
-	// 			minetest.add_node(vector.new(pos.x+x,pos.y+y,pos.z+z),{name="crafter_tnt:tnt"})
+	// 			core.add_node(vector.new(pos.x+x,pos.y+y,pos.z+z),{name="crafter_tnt:tnt"})
 	// 		end
 	// 		end
 	// 		end
 	//     end,
 	// })
-	// minetest.register_craft({
+	// core.register_craft({
 	// 	output = "crafter_tnt:tnt",
 	// 	recipe = {
 	// 		{"crafter_mob:gunpowder", "crafter:sand",     "crafter_mob:gunpowder"},
