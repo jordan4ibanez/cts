@@ -213,19 +213,30 @@ namespace hopper {
 			const registered_source_inventories: ContainerData | undefined =
 				hopper.get_registered_inventories_for(source_node.name);
 
-			// 		if registered_source_inventories ~= nil then
-			// 			hopper.take_item_from(pos, source_pos, source_node, registered_source_inventories["top"])
-			// 		end
-			// 		local registered_destination_inventories = hopper.get_registered_inventories_for(destination_node.name)
-			// 		if registered_destination_inventories ~= nil then
-			// 			if output_direction == "horizontal" then
-			// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["side"])
-			// 			else
-			// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["bottom"])
-			// 			end
-			// 		else
-			// 			hopper.send_item_to(pos, destination_pos, destination_node) // for handling ejection
-			// 		end
+			if (registered_source_inventories != null) {
+				hopper.take_item_from(
+					pos,
+					source_pos,
+					source_node,
+					registered_source_inventories["top"]
+				);
+			}
+
+			const registered_destination_inventories:
+				| ContainerData
+				| undefined = hopper.get_registered_inventories_for(
+				destination_node.name
+			);
+			if (registered_destination_inventories != null) {
+				// 			if output_direction == "horizontal" then
+				// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["side"])
+				// 			else
+				// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["bottom"])
+				// 			end
+			} else {
+				// For handling ejection.
+				hopper.send_item_to(pos, destination_pos, destination_node);
+			}
 		},
 	});
 }
