@@ -22,10 +22,10 @@ namespace tnt {
 
 		const data: number[] = vm.get_data();
 		if (!in_water) {
-			// 		vm:get_light_data()
-			// 		range_calc = range/100
-			// 		explosion_depletion = range/2
-			// 		//raycast explosion
+			vm.get_light_data();
+			const range_calc: number = range / 100;
+			const explosion_depletion: number = range / 2;
+			// Raycast explosion.
 			// 		for x=-range, range do
 			// 		for y=-range, range do
 			// 		for z=-range, range do
