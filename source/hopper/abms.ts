@@ -228,11 +228,21 @@ namespace hopper {
 				destination_node.name
 			);
 			if (registered_destination_inventories != null) {
-				// 			if output_direction == "horizontal" then
-				// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["side"])
-				// 			else
-				// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["bottom"])
-				// 			end
+				if (output_direction == "horizontal") {
+					hopper.send_item_to(
+						pos,
+						destination_pos,
+						destination_node,
+						registered_destination_inventories["side"]
+					);
+				} else {
+					hopper.send_item_to(
+						pos,
+						destination_pos,
+						destination_node,
+						registered_destination_inventories["bottom"]
+					);
+				}
 			} else {
 				// For handling ejection.
 				hopper.send_item_to(pos, destination_pos, destination_node);
