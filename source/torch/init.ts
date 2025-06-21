@@ -93,38 +93,38 @@ namespace torch {
 		wield_image: "torches_torch.png",
 		wield_scale: vector.create3d({ x: 1, y: 1, z: 1 + 1 / 16 }),
 		liquids_pointable: false,
-		// 	on_place = function(itemstack, placer, pointed_thing)
-		// 		if pointed_thing.type ~= "node" then
-		// 			return itemstack
-		// 		end
-		// 		local buildable = core.get_nodedef(core.get_node(pointed_thing.under).name, "buildable_to")
-		// 		local wdir
-		// 		if buildable then
-		// 			wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.under))
-		// 		else
-		// 			wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
-		// 		end
-		// 		local fakestack = itemstack
-		// 		local retval = false
-		// 		if buildable and wdir == 4 then
-		// 			retval = fakestack:set_name("crafter_torch:floor")
-		// 		elseif wdir < 1 then
-		// 			return itemstack
-		// 		elseif wdir == 1 then
-		// 			retval = fakestack:set_name("crafter_torch:floor")
-		// 		else
-		// 			retval = fakestack:set_name("crafter_torch:wall")
-		// 		end
-		// 		if not retval then
-		// 			return itemstack
-		// 		end
-		// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
-		// 		itemstack:set_name("crafter_torch:torch")
-		// 		if retval then
-		// 			core.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
-		// 		end
-		// 		return itemstack
-		// 	end
+		on_place: (itemstack, placer, pointed_thing) => {
+			// 		if pointed_thing.type ~= "node" then
+			// 			return itemstack
+			// 		end
+			// 		local buildable = core.get_nodedef(core.get_node(pointed_thing.under).name, "buildable_to")
+			// 		local wdir
+			// 		if buildable then
+			// 			wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.under))
+			// 		else
+			// 			wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
+			// 		end
+			// 		local fakestack = itemstack
+			// 		local retval = false
+			// 		if buildable and wdir == 4 then
+			// 			retval = fakestack:set_name("crafter_torch:floor")
+			// 		elseif wdir < 1 then
+			// 			return itemstack
+			// 		elseif wdir == 1 then
+			// 			retval = fakestack:set_name("crafter_torch:floor")
+			// 		else
+			// 			retval = fakestack:set_name("crafter_torch:wall")
+			// 		end
+			// 		if not retval then
+			// 			return itemstack
+			// 		end
+			// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
+			// 		itemstack:set_name("crafter_torch:torch")
+			// 		if retval then
+			// 			core.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
+			// 		end
+			// 		return itemstack
+		},
 	});
 
 	// core.register_node("crafter_torch:floor", {
