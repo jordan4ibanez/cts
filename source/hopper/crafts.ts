@@ -2,22 +2,22 @@ namespace hopper {
 	core.register_craft({
 		output: "crafter_hopper:hopper",
 		recipe: [
-			["main:iron", "utility:chest", "main:iron"],
-			["", "main:iron", ""],
+			["crafter:iron", "utility:chest", "crafter:iron"],
+			["", "crafter:iron", ""],
 		],
 	});
 
 	core.register_craft({
 		output: "crafter_hopper:chute",
-		recipe: [["main:iron", "utility:chest", "main:iron"]],
+		recipe: [["crafter:iron", "utility:chest", "crafter:iron"]],
 	});
 
 	core.register_craft({
 		output: "crafter_hopper:sorter",
 		recipe: [
-			["", "main:gold", ""],
-			["main:iron", "utility:chest", "main:iron"],
-			["", "main:iron", ""],
+			["", "crafter:gold", ""],
+			["crafter:iron", "utility:chest", "crafter:iron"],
+			["", "crafter:iron", ""],
 		],
 	});
 }
