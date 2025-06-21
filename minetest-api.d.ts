@@ -2178,7 +2178,7 @@ declare global {
 
 	interface VoxelManipObject {
 		read_from_map(pos1: Vec3, pos2: Vec3): LuaMultiReturn<[Vec3, Vec3]>;
-		write_to_map(light: boolean): void;
+		write_to_map(light?: boolean): void;
 		get_node_at(position: Vec3): MapNode;
 		set_node_at(position: Vec3, node: MapNode): void;
 		get_data(): number[];
