@@ -1,6 +1,8 @@
 namespace torch {
-	// local particle_time = 5 // how many seconds torches will wait to check if player is near
-	// local check_radius = 10
+	// How many seconds torches will wait to check if player is near.
+	const particle_time: number = 5;
+	const check_radius: number = 10;
+
 	// //get point where particle spawner is added
 	// local function get_offset(wdir)
 	// 	local z = 0
