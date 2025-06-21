@@ -18,38 +18,38 @@ namespace hopper {
 		);
 	}
 
-	 function hopper_on_place(itemstack, placer, pointed_thing, node_name) {
-	// 	local pos  = pointed_thing.under
-	// 	local pos2 = pointed_thing.above
-	// 	local x = pos.x - pos2.x
-	// 	local z = pos.z - pos2.z
-	// 	local returned_stack, success
-	// 	// unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
-	// 	// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
-	// 	// the default item_place_node orientation code will not orient them pointing toward the selected surface.
-	// 	if x == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
-	// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 0)
-	// 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
-	// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 2)
-	// 	elseif z == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side")  then
-	// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 3)
-	// 	elseif z == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
-	// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 1)
-	// 	else
-	// 		if hopper.config.single_craftable_item then
-	// 			node_name = "crafter_hopper:hopper" // For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
-	// 		end
-	// 		returned_stack, success = core.item_place_node(ItemStack(node_name), placer, pointed_thing)
-	// 	end
-	// 	if success then
-	// 		local meta = core.get_meta(pos2)
-	// 		meta:set_string("placer", placer:get_player_name())
-	// 		if not core.settings:get_bool("creative_mode") then
-	// 			itemstack:take_item()
-	// 		end
-	// 	end
-	// 	return itemstack
-	 }
+	function hopper_on_place(itemstack, placer, pointed_thing, node_name) {
+		// 	local pos  = pointed_thing.under
+		// 	local pos2 = pointed_thing.above
+		// 	local x = pos.x - pos2.x
+		// 	local z = pos.z - pos2.z
+		// 	local returned_stack, success
+		// 	// unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
+		// 	// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
+		// 	// the default item_place_node orientation code will not orient them pointing toward the selected surface.
+		// 	if x == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
+		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 0)
+		// 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
+		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 2)
+		// 	elseif z == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side")  then
+		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 3)
+		// 	elseif z == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
+		// 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 1)
+		// 	else
+		// 		if hopper.config.single_craftable_item then
+		// 			node_name = "crafter_hopper:hopper" // For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
+		// 		end
+		// 		returned_stack, success = core.item_place_node(ItemStack(node_name), placer, pointed_thing)
+		// 	end
+		// 	if success then
+		// 		local meta = core.get_meta(pos2)
+		// 		meta:set_string("placer", placer:get_player_name())
+		// 		if not core.settings:get_bool("creative_mode") then
+		// 			itemstack:take_item()
+		// 		end
+		// 	end
+		// 	return itemstack
+	}
 
 	// //////////////////////////////////////////////////////////////////////////////////////////-
 	// // Hoppers
