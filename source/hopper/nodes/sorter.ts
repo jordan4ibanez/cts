@@ -46,7 +46,7 @@ namespace hopper {
 			y_displace = 1.6;
 		}
 
-		const formspec =
+		return (
 			"size[8," +
 			7 +
 			y_displace +
@@ -75,7 +75,7 @@ namespace hopper {
 			"listring[nodemeta:" +
 			spos +
 			";main]" +
-			"listring[current_player;main]";
+			"listring[current_player;main]")
 		// 	return formspec
 	}
 
