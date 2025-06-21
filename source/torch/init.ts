@@ -131,9 +131,10 @@ namespace torch {
 			} else {
 				retval = fakestack.set_name("crafter_torch:wall");
 			}
-			// 		if not retval then
-			// 			return itemstack
-			// 		end
+			if (!retval) {
+				return itemstack;
+			}
+
 			// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
 			// 		itemstack:set_name("crafter_torch:torch")
 			// 		if retval then
