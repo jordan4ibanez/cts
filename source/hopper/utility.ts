@@ -192,17 +192,26 @@ namespace hopper {
 					if (target_inv.room_for_item(target_inventory_name, item)) {
 						const stack_to_put: ItemStackObject =
 							stack.take_item(1);
-						// 					if target_def.allow_metadata_inventory_put == nil
-						// 					or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
-						// 					or target_def.allow_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer) > 0 then
-						// 						hopper_inv:set_stack("main", i, stack)
-						// 						//add to target node
-						// 						target_inv:add_item(target_inventory_name, stack_to_put)
-						// 						if target_def.on_metadata_inventory_put ~= nil and placer ~= nil then
-						// 							target_def.on_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer)
-						// 						end
-						// 						return true
-						// 					end
+						if (
+							target_def.allow_metadata_inventory_put == null ||
+							// fixme: a player can bypass any protections by logging off????
+							placer == null ||
+							target_def.allow_metadata_inventory_put(
+								target_pos,
+								target_inventory_name,
+								i,
+								stack_to_put,
+								placer
+							) > 0
+						) {
+							// 						hopper_inv:set_stack("main", i, stack)
+							// 						//add to target node
+							// 						target_inv:add_item(target_inventory_name, stack_to_put)
+							// 						if target_def.on_metadata_inventory_put ~= nil and placer ~= nil then
+							// 							target_def.on_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer)
+							// 						end
+							// 						return true
+						}
 					}
 				} else if (eject_item) {
 					// 				local stack_to_put = stack:take_item(1)
