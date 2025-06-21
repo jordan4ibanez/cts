@@ -152,21 +152,24 @@ namespace hopper {
 		hopper_pos: Vec3,
 		target_pos: Vec3,
 		target_node: NodeTable,
-		target_inventory_name: string,
-		filtered_items: string[]
+		target_inventory_name?: string,
+		filtered_items?: string[]
 	): boolean {
 		const hopper_meta: MetaRef = core.get_meta(hopper_pos);
 		const target_def: NodeDefinition | undefined =
 			core.registered_nodes[target_node.name];
+
 		if (target_def == null) {
 			return false;
 		}
-		const eject_item =
+
+		const eject_item: boolean =
 			hopper_meta.get_string("eject") == "true" &&
-			target_def.buildable_to;
-		// 	if not eject_item and not target_inventory_name then
-		// 		return false
-		// 	end
+			(target_def.buildable_to || false);
+
+		if (!eject_item && !target_inventory_name) {
+			// 		return false
+		}
 		// 	//hopper inventory
 		// 	local hopper_meta = core.get_meta(hopper_pos);
 		// 	local hopper_inv = hopper_meta:get_inventory()
