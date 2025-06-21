@@ -69,10 +69,11 @@ namespace hopper {
 			return returned_stack;
 		},
 
-		// 	can_dig = function(pos,player)
-		// 		local inv = core.get_meta(pos):get_inventory()
-		// 		return inv:is_empty("main")
-		// 	end,
+		can_dig(pos: Vec3, player: ObjectRef): boolean {
+			const inv: InvRef = core.get_meta(pos).get_inventory();
+			return inv.is_empty("main");
+		},
+
 		// 	on_rightclick = function(pos, node, clicker, itemstack)
 		// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
 		// 			return
@@ -80,6 +81,7 @@ namespace hopper {
 		// 		core.show_formspec(clicker:get_player_name(),
 		// 			"hopper_formspec:"+core.pos_to_string(pos), get_chute_formspec(pos))
 		// 	end,
+
 		// 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
 		// 		local timer = core.get_node_timer(pos)
 		// 		if not timer:is_started() then
