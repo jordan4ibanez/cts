@@ -101,7 +101,13 @@ namespace torch {
 			if (pointed_thing.type == PointedThingType.object) {
 				return itemstack;
 			}
-			// 		local buildable = core.get_nodedef(core.get_node(pointed_thing.under).name, "buildable_to")
+			if (pointed_thing.under == null) {
+				throw new Error("Missing.");
+			}
+			const buildable: boolean =
+				core.registered_nodes[core.get_node(pointed_thing.under).name]
+					?.buildable_to || false;
+
 			// 		local wdir
 			// 		if buildable then
 			// 			wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.under))
