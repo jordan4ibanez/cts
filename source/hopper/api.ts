@@ -73,22 +73,22 @@ namespace hopper {
 
 	hopper.add_container({
 		top: [
-			{ neighborNode: "utility:chest", inv: "main" },
-			{ neighborNode: "utility:chest_open", inv: "main" },
-			{ neighborNode: "utility:furnace", inv: "dst" },
-			{ neighborNode: "utility:furnace_active", inv: "dst" },
+			{ neighborNode: "crafter_chest:chest", inv: "main" },
+			{ neighborNode: "crafter_chest:chest_open", inv: "main" },
+			{ neighborNode: "crafter_furnace:furnace", inv: "dst" },
+			{ neighborNode: "crafter_furnace:furnace_active", inv: "dst" },
 		],
 		bottom: [
-			{ neighborNode: "utility:chest", inv: "main" },
-			{ neighborNode: "utility:chest_open", inv: "main" },
-			{ neighborNode: "utility:furnace", inv: "src" },
-			{ neighborNode: "utility:furnace_active", inv: "src" },
+			{ neighborNode: "crafter_chest:chest", inv: "main" },
+			{ neighborNode: "crafter_chest:chest_open", inv: "main" },
+			{ neighborNode: "crafter_furnace:furnace", inv: "src" },
+			{ neighborNode: "crafter_furnace:furnace_active", inv: "src" },
 		],
 		side: [
-			{ neighborNode: "utility:chest", inv: "main" },
-			{ neighborNode: "utility:chest_open", inv: "main" },
-			{ neighborNode: "utility:furnace", inv: "fuel" },
-			{ neighborNode: "utility:furnace_active", inv: "fuel" },
+			{ neighborNode: "crafter_chest:chest", inv: "main" },
+			{ neighborNode: "crafter_chest:chest_open", inv: "main" },
+			{ neighborNode: "crafter_furnace:furnace", inv: "fuel" },
+			{ neighborNode: "crafter_furnace:furnace_active", inv: "fuel" },
 		],
 	});
 }
