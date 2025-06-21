@@ -38,7 +38,7 @@ namespace torch {
 	// 			// Full loop length
 	// 		},
 	// 	})
-	// 	//[[
+	/*
 	// 	core.add_particlespawner({
 	// 		amount = particle_time*6,
 	// 		time = particle_time*2,
@@ -56,7 +56,7 @@ namespace torch {
 	// 		vertical = false,
 	// 		texture = "smoke.png",
 	// 	})
-	// 	]]//
+	*/
 	// end
 	// //reload smoke and flame on load
 	/*
