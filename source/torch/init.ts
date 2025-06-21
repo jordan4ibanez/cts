@@ -86,8 +86,8 @@ namespace torch {
 // 	end,
 // })
 */
-	// // Item definitions
-	// core.register_craftitem("torch:torch", {
+	// Item definitions.
+	// core.register_craftitem("crafter_torch:torch", {
 	// 	description = "Torch",
 	// 	inventory_image = "torches_torch.png",
 	// 	wield_image = "torches_torch.png",
@@ -107,26 +107,26 @@ namespace torch {
 	// 		local fakestack = itemstack
 	// 		local retval = false
 	// 		if buildable and wdir == 4 then
-	// 			retval = fakestack:set_name("torch:floor")
+	// 			retval = fakestack:set_name("crafter_torch:floor")
 	// 		elseif wdir < 1 then
 	// 			return itemstack
 	// 		elseif wdir == 1 then
-	// 			retval = fakestack:set_name("torch:floor")
+	// 			retval = fakestack:set_name("crafter_torch:floor")
 	// 		else
-	// 			retval = fakestack:set_name("torch:wall")
+	// 			retval = fakestack:set_name("crafter_torch:wall")
 	// 		end
 	// 		if not retval then
 	// 			return itemstack
 	// 		end
 	// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
-	// 		itemstack:set_name("torch:torch")
+	// 		itemstack:set_name("crafter_torch:torch")
 	// 		if retval then
 	// 			core.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
 	// 		end
 	// 		return itemstack
 	// 	end
 	// })
-	// core.register_node("torch:floor", {
+	// core.register_node("crafter_torch:floor", {
 	// 	inventory_image = "torches_torch.png",
 	// 	wield_image = "torches_torch.png",
 	// 	wield_scale = {x = 1, y = 1, z = 1 + 2/16},
@@ -136,11 +136,11 @@ namespace torch {
 	// 	paramtype = "light",
 	// 	paramtype2 = "none",
 	// 	sunlight_propagates = true,
-	// 	drop = "torch:torch",
+	// 	drop = "crafter_torch:torch",
 	// 	walkable = false,
 	// 	floodable = true,
 	// 	on_flood = function(pos, oldnode, newnode)
-	// 		core.throw_item(pos, "torch:torch")
+	// 		core.throw_item(pos, "crafter_torch:torch")
 	// 	end,
 	// 	light_source = 13,
 	// 	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1},
@@ -151,7 +151,7 @@ namespace torch {
 	// 	},
 	// 	sounds = main.woodSound(),
 	// })
-	// core.register_node("torch:wall", {
+	// core.register_node("crafter_torch:wall", {
 	// 	inventory_image = "torches_torch.png",
 	// 	wield_image = "torches_torch.png",
 	// 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
@@ -162,13 +162,13 @@ namespace torch {
 	// 	paramtype2 = "wallmounted",
 	// 	floodable = true,
 	// 	on_flood = function(pos, oldnode, newnode)
-	// 		core.throw_item(pos, "torch:torch")
+	// 		core.throw_item(pos, "crafter_torch:torch")
 	// 	end,
 	// 	sunlight_propagates = true,
 	// 	walkable = false,
 	// 	light_source = 13,
 	// 	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1},
-	// 	drop = "torch:torch",
+	// 	drop = "crafter_torch:torch",
 	// 	selection_box = {
 	// 		type = "wallmounted",
 	// 		wall_top = {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
@@ -178,7 +178,7 @@ namespace torch {
 	// 	sounds = main.woodSound(),
 	// })
 	// core.register_craft({
-	// 	output = "torch:torch 4",
+	// 	output = "crafter_torch:torch 4",
 	// 	recipe = {
 	// 		{"group:coal"},
 	// 		{"group:stick"}
