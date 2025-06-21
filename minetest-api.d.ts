@@ -760,8 +760,8 @@ declare global {
 
 	/** @noSelf **/ interface InvRefLocation {
 		type: string;
-		name: string;
-		pos: Vec3;
+		name?: string;
+		pos?: Vec3;
 	}
 
 	/** @noSelf **/ interface TreeDefinition {
