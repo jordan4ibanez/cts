@@ -25,14 +25,14 @@ namespace hopper {
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2.facedir,
-			tiles : [
-				"hopper_bottom_16.png^hopper_chute_arrow_16.png",
-				"hopper_bottom_16.png^(hopper_chute_arrow_16.png^[transformR180)",
-				"hopper_bottom_16.png^(hopper_chute_arrow_16.png^[transformR270)",
-				"hopper_bottom_16.png^(hopper_chute_arrow_16.png^[transformR90)",
-				"hopper_top_16.png",
-				"hopper_bottom_16.png"
-			],
+		tiles: [
+			"hopper_bottom_16.png^hopper_chute_arrow_16.png",
+			"hopper_bottom_16.png^(hopper_chute_arrow_16.png^[transformR180)",
+			"hopper_bottom_16.png^(hopper_chute_arrow_16.png^[transformR270)",
+			"hopper_bottom_16.png^(hopper_chute_arrow_16.png^[transformR90)",
+			"hopper_top_16.png",
+			"hopper_bottom_16.png",
+		],
 		// 	node_box : {
 		// 		type : "fixed",
 		// 		fixed : {
