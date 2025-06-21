@@ -310,11 +310,11 @@ namespace crafter {
 					n2.name != "air" &&
 					(!nd || nd.liquidtype == LiquidType.none)
 				) {
-					const drops: string[] | null = core.get_node_drops(
+					const drops: string[] = core.get_node_drops(
 						this.node.name,
 						""
 					);
-					if (drops && drops.length > 0) {
+					if (drops.length > 0) {
 						for (const [_, droppy] of pairs(drops)) {
 							itemHandling.throw_item(np, droppy as string);
 						}
