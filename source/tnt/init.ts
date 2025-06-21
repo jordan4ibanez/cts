@@ -201,7 +201,7 @@ namespace tnt {
 		for (const [_, object] of ipairs(
 			core.get_objects_inside_radius(pos, range)
 		)) {
-			// 		if object:is_player() or (object:get_luaentity() and (object:get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true)) then
+					if (object.is_player() || (object.get_luaentity() != null && (object.get_luaentity().name == "__builtin:item" or object:get_luaentity().name == "crafter_tnt:tnt" or object:get_luaentity().is_mob == true))) then
 			// 			do_it = true
 			// 			if not object:is_player() and object:get_luaentity().name == "crafter_tnt:tnt" then
 			// 				in_node = core.get_node(object:get_pos()).name
