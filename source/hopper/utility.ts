@@ -226,10 +226,10 @@ namespace hopper {
 						}
 					}
 				} else if (eject_item) {
-					// 				local stack_to_put = stack:take_item(1)
-					// 				core.add_item(target_pos, stack_to_put)
-					// 				hopper_inv:set_stack("main", i, stack)
-					// 				return true
+					const stack_to_put: ItemStackObject = stack.take_item(1);
+					core.add_item(target_pos, stack_to_put);
+					hopper_inv.set_stack("main", i, stack);
+					return true;
 				}
 			}
 		}
