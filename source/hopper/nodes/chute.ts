@@ -1,15 +1,19 @@
 namespace hopper {
-	function get_chute_formspec(pos: Vec3) {
-		// 	local spos = hopper.get_string_pos(pos)
-		// 	local formspec =
-		// 		"size[8,7]"
-		// 		+ hopper.formspec_bg
-		// 		+ "list[nodemeta:" + spos + ";main;3,0.3;2,2;]"
-		// 		+ hopper.get_eject_button_texts(pos, 7, 0.8)
-		// 		+ "list[current_player;main;0,2.85;8,1;]"
-		// 		+ "list[current_player;main;0,4.08;8,3;8]"
-		// 		+ "listring[nodemeta:" + spos + ";main]"
-		// 		+ "listring[current_player;main]"
+	function get_chute_formspec(pos: Vec3): string {
+		const spos: string = hopper.get_string_pos(pos);
+		const formspec: string =
+			"size[8,7]" +
+			hopper.formspec_bg +
+			"list[nodemeta:" +
+			spos +
+			";main;3,0.3;2,2;]" +
+			hopper.get_eject_button_texts(pos, 7, 0.8) +
+			"list[current_player;main;0,2.85;8,1;]" +
+			"list[current_player;main;0,4.08;8,3;8]" +
+			"listring[nodemeta:" +
+			spos +
+			";main]" +
+			"listring[current_player;main]";
 		// 	return formspec
 	}
 
