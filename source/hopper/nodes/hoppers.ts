@@ -227,18 +227,30 @@ namespace hopper {
 				[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
 			],
 		},
-		on_construct: (pos) => {
+
+		on_construct: (pos: Vec3) => {
 			const inv: InvRef = core.get_meta(pos).get_inventory();
 			inv.set_size("main", 4 * 4);
 		},
 
-		// 	on_place = function(itemstack, placer, pointed_thing)
-		// 		return hopper_on_place(itemstack, placer, pointed_thing, "crafter_hopper:hopper_side")
-		// 	end,
+		on_place: (
+			itemstack: ItemStackObject,
+			placer: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			return hopper_on_place(
+				itemstack,
+				placer,
+				pointed_thing,
+				"crafter_hopper:hopper_side"
+			);
+		},
+
 		// 	can_dig = function(pos,player)
 		// 		local inv = core.get_meta(pos):get_inventory()
 		// 		return inv:is_empty("main")
 		// 	end,
+
 		// 	on_rightclick = function(pos, node, clicker, itemstack)
 		// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
 		// 			return
