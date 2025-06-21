@@ -2,12 +2,17 @@ namespace tnt {
 	// Use raycasting to create actual explosion.
 	const air: number = core.get_content_id("air");
 	const boom_time: number = core.get_us_time() / 1000000;
-	// local digging_nodes = {
-	// 	["utility:chest_open"] = true,
-	// 	["utility:chest"] = true,
-	// 	["utility:furnace_active"] = true,
-	// 	["utility:furnace"] = true,
-	// }
+
+	const diggingNodes = new Set<number>();
+
+	for (const node of [
+		"crafter_chest:chest_open",
+		"crafter_chest:chest",
+		"crafter_furnace:furnace_active",
+		"crafter_furnace:furnace",
+	]) {
+		diggingNodes.add(core.get_content_id(node));
+	}
 
 	export function tnt(pos: Vec3, range: number, explosion_type: string) {
 		const in_node: string = core.get_node(pos).name;
