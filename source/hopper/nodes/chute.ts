@@ -15,7 +15,6 @@ namespace hopper {
 			";main]" +
 			"listring[current_player;main]"
 		);
-		// 	return formspec
 	}
 
 	// core.register_node("hopper:chute", {
