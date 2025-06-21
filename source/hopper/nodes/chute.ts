@@ -33,13 +33,13 @@ namespace hopper {
 			"hopper_top_16.png",
 			"hopper_bottom_16.png",
 		],
-		// 	node_box : {
-		// 		type : "fixed",
-		// 		fixed : {
-		// 			{-0.3, -0.3, -0.3, 0.3, 0.3, 0.3},
-		// 			{-0.2, -0.2, 0.3, 0.2, 0.2, 0.7},
-		// 		},
-		// 	},
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				[-0.3, -0.3, -0.3, 0.3, 0.3, 0.3],
+				[-0.2, -0.2, 0.3, 0.2, 0.2, 0.7],
+			],
+		},
 		// 	on_construct = function(pos)
 		// 		local inv = core.get_meta(pos):get_inventory()
 		// 		inv:set_size("main", 2*2)
