@@ -178,41 +178,41 @@ namespace hopper {
 	core.register_abm({
 		label: "Hopper transfer",
 		nodenames: ["crafter_hopper:hopper", "crafter_hopper:hopper_side"],
-		neighbors: hopper.neighbors,
+		neighbors: Array.from(hopper.neighbors),
 		interval: 0.1,
 		chance: 1,
 		//catch_up : false,
-		// 	action = function(pos, node, active_object_count, active_object_count_wider)
-		// 		local source_pos, destination_pos, destination_dir
-		// 		if node.name == "crafter_hopper:hopper_side" then
-		// 			source_pos = vector.add(pos, directions[node.param2].src)
-		// 			destination_dir = directions[node.param2].dst
-		// 			destination_pos = vector.add(pos, destination_dir)
-		// 		else
-		// 			destination_dir = bottomdir(node.param2)
-		// 			source_pos = vector.subtract(pos, destination_dir)
-		// 			destination_pos = vector.add(pos, destination_dir)
-		// 		end
-		// 		local output_direction
-		// 		if destination_dir.y == 0 then
-		// 			output_direction = "horizontal"
-		// 		end
-		// 		local source_node = core.get_node(source_pos)
-		// 		local destination_node = core.get_node(destination_pos)
-		// 		local registered_source_inventories = hopper.get_registered_inventories_for(source_node.name)
-		// 		if registered_source_inventories ~= nil then
-		// 			hopper.take_item_from(pos, source_pos, source_node, registered_source_inventories["top"])
-		// 		end
-		// 		local registered_destination_inventories = hopper.get_registered_inventories_for(destination_node.name)
-		// 		if registered_destination_inventories ~= nil then
-		// 			if output_direction == "horizontal" then
-		// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["side"])
-		// 			else
-		// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["bottom"])
-		// 			end
-		// 		else
-		// 			hopper.send_item_to(pos, destination_pos, destination_node) // for handling ejection
-		// 		end
-		// 	end,
+		action: (pos, node, active_object_count, active_object_count_wider) => {
+			// 		local source_pos, destination_pos, destination_dir
+			// 		if node.name == "crafter_hopper:hopper_side" then
+			// 			source_pos = vector.add(pos, directions[node.param2].src)
+			// 			destination_dir = directions[node.param2].dst
+			// 			destination_pos = vector.add(pos, destination_dir)
+			// 		else
+			// 			destination_dir = bottomdir(node.param2)
+			// 			source_pos = vector.subtract(pos, destination_dir)
+			// 			destination_pos = vector.add(pos, destination_dir)
+			// 		end
+			// 		local output_direction
+			// 		if destination_dir.y == 0 then
+			// 			output_direction = "horizontal"
+			// 		end
+			// 		local source_node = core.get_node(source_pos)
+			// 		local destination_node = core.get_node(destination_pos)
+			// 		local registered_source_inventories = hopper.get_registered_inventories_for(source_node.name)
+			// 		if registered_source_inventories ~= nil then
+			// 			hopper.take_item_from(pos, source_pos, source_node, registered_source_inventories["top"])
+			// 		end
+			// 		local registered_destination_inventories = hopper.get_registered_inventories_for(destination_node.name)
+			// 		if registered_destination_inventories ~= nil then
+			// 			if output_direction == "horizontal" then
+			// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["side"])
+			// 			else
+			// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["bottom"])
+			// 			end
+			// 		else
+			// 			hopper.send_item_to(pos, destination_pos, destination_node) // for handling ejection
+			// 		end
+		},
 	});
 }
