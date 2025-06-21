@@ -103,6 +103,9 @@ namespace hopper {
 		const target_inv_size: number = target_inv.get_size(
 			target_inventory_name
 		);
+		if (target_inv.is_empty(target_inventory_name)) {
+			return;
+		}
 		if (!target_inv.is_empty(target_inventory_name)) {
 			for (const i of $range(1, target_inv_size)) {
 				// 			local stack = target_inv:get_stack(target_inventory_name, i)
