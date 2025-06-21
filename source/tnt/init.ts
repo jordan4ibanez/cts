@@ -20,63 +20,64 @@ namespace tnt {
 		const [emin, emax] = vm.read_from_map(min, max);
 		const area: VoxelAreaObject = VoxelArea(emin, emax);
 
-		const data = vm.get_data();
-		// 	if in_water == false then
-		// 		vm:get_light_data()
-		// 		range_calc = range/100
-		// 		explosion_depletion = range/2
-		// 		//raycast explosion
-		// 		for x=-range, range do
-		// 		for y=-range, range do
-		// 		for z=-range, range do
-		// 			distance = vector.distance(pos2, vector.new(x,y,z))
-		// 			if distance <= range and distance >= range-1 then
-		// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
-		// 				explosion_force = range
-		// 				for pointed_thing in ray do
-		// 					explosion_force = explosion_force - math.random()
-		// 					if pointed_thing and explosion_force >= explosion_depletion then
-		// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
-		// 						if n_pos and data[n_pos] then
-		// 							node2 = content_id(data[n_pos])
-		// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
-		// 								break
-		// 							elseif digging_nodes[node2] then
-		// 								core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
-		// 								data[n_pos] = air
-		// 							elseif node2 == "crafter_tnt:tnt" then
-		// 								data[n_pos] = air
-		// 								core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
-		// 							elseif not string.match(node2, "mob_spawners:") then
-		// 								data[n_pos] = air
-		// 								core.after(0, function(pointed_thing)
-		// 									core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
-		// 								end,pointed_thing)
-		// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
-		// 									item = core.get_node_drops(node2, "crafter:diamondpick")[1]
-		// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
-		// 									obj = core.add_item(ppos, item)
-		// 									if obj then
-		// 										power = (range - vector.distance(pos,ppos))*2
-		// 										dir = vector.subtract(ppos,pos)
-		// 										force = vector.multiply(dir,power)
-		// 										obj:set_velocity(force)
-		// 									end
-		// 								end
-		// 							end
-		// 						end
-		// 					else
-		// 						break
-		// 					end
-		// 				end
-		// 			end
-		// 		end
-		// 		end
-		// 		end
-		// 		vm:set_data(data)
-		// 		vm:update_liquids()
-		// 		vm:write_to_map()
-		// 	end
+		const data: number[] = vm.get_data();
+		if (!in_water) {
+			// 		vm:get_light_data()
+			// 		range_calc = range/100
+			// 		explosion_depletion = range/2
+			// 		//raycast explosion
+			// 		for x=-range, range do
+			// 		for y=-range, range do
+			// 		for z=-range, range do
+			// 			distance = vector.distance(pos2, vector.new(x,y,z))
+			// 			if distance <= range and distance >= range-1 then
+			// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
+			// 				explosion_force = range
+			// 				for pointed_thing in ray do
+			// 					explosion_force = explosion_force - math.random()
+			// 					if pointed_thing and explosion_force >= explosion_depletion then
+			// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
+			// 						if n_pos and data[n_pos] then
+			// 							node2 = content_id(data[n_pos])
+			// 							if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
+			// 								break
+			// 							elseif digging_nodes[node2] then
+			// 								core.dig_node({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z})
+			// 								data[n_pos] = air
+			// 							elseif node2 == "crafter_tnt:tnt" then
+			// 								data[n_pos] = air
+			// 								core.add_entity({x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}, "crafter_tnt:tnt",core.serialize({do_ignition_particles=true,timer = math.random()}))
+			// 							elseif not string.match(node2, "mob_spawners:") then
+			// 								data[n_pos] = air
+			// 								core.after(0, function(pointed_thing)
+			// 									core.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
+			// 								end,pointed_thing)
+			// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
+			// 									item = core.get_node_drops(node2, "crafter:diamondpick")[1]
+			// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
+			// 									obj = core.add_item(ppos, item)
+			// 									if obj then
+			// 										power = (range - vector.distance(pos,ppos))*2
+			// 										dir = vector.subtract(ppos,pos)
+			// 										force = vector.multiply(dir,power)
+			// 										obj:set_velocity(force)
+			// 									end
+			// 								end
+			// 							end
+			// 						end
+			// 					else
+			// 						break
+			// 					end
+			// 				end
+			// 			end
+			// 		end
+			// 		end
+			// 		end
+			// 		vm:set_data(data)
+			// 		vm:update_liquids()
+			// 		vm:write_to_map()
+		}
+
 		// 	if core.get_us_time()/1000000 - boom_time >= 0.1 then
 		// 		boom_time = core.get_us_time()/1000000
 		// 		core.sound_play("tnt_explode", {pos = pos, gain = 1.0, max_hear_distance = 64}) //hear twice as far away
