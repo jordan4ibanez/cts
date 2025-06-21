@@ -286,8 +286,8 @@ namespace hunger {
 
 	// Take away hunger and satiation randomly while mining.
 	core.register_on_dignode(
-		(pos: Vec3, oldnode: NodeTable, digger: ObjectRef) => {
-			if (digger.is_player()) {
+		(pos: Vec3, oldnode: NodeTable, digger: ObjectRef | null) => {
+			if (digger != null && digger.is_player()) {
 				const name = digger.get_player_name();
 				const data: HungerData | undefined = pool.get(name);
 				if (data == null) {
