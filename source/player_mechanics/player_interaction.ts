@@ -272,7 +272,7 @@ namespace playerMechanics {
 	core.register_on_punchplayer(
 		(
 			player: ObjectRef,
-			hitter: ObjectRef,
+			hitter: ObjectRef | null,
 			time_from_last_punch: number,
 			tool_capabilities: ToolCapabilities,
 			dir: Vec3,
@@ -302,7 +302,7 @@ namespace playerMechanics {
 
 			data = core.get_us_time() / 1000000;
 
-			if (hitter.is_player() && hitter != player) {
+			if (hitter != null && hitter.is_player() && hitter != player) {
 				const puncher_vel: number = hitter.get_velocity().y;
 				if (puncher_vel < 0) {
 					hurt *= 1.5;
