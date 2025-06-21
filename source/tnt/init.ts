@@ -259,10 +259,10 @@ namespace tnt {
 						pointed_thing.under.y,
 						pointed_thing.under.z
 					);
-					// 	node2 = content_id(data[n_pos])
-					// 	if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
-					// 		clear = false
-					// 	end
+					const node2: number = data[n_pos - 1];
+					if (node2 == obsidian || node2 == bedrock) {
+						clear = false;
+					}
 				}
 				// if clear == true then
 				// 	power = (range - vector.distance(pos,ppos))*10
