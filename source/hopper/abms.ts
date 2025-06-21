@@ -31,7 +31,7 @@ namespace hopper {
 				}
 
 				if (
-					inv.room_for_item(
+					!inv.room_for_item(
 						"main",
 						ItemStack(
 							(
@@ -40,18 +40,20 @@ namespace hopper {
 						)
 					)
 				) {
-					const posob: Vec3 = object.get_pos();
+					continue;
+				}
 
-					if (
-						math.abs(posob.x - pos.x) <= 0.5 &&
-						posob.y - pos.y <= 0.85 &&
-						posob.y - pos.y >= 0.3
-					) {
-						// 					inv:add_item("main",
-						// 						ItemStack(object:get_luaentity().itemstring))
-						// 					object:get_luaentity().itemstring = ""
-						// 					object:remove()
-					}
+				const posob: Vec3 = object.get_pos();
+
+				if (
+					math.abs(posob.x - pos.x) <= 0.5 &&
+					posob.y - pos.y <= 0.85 &&
+					posob.y - pos.y >= 0.3
+				) {
+					// 					inv:add_item("main",
+					// 						ItemStack(object:get_luaentity().itemstring))
+					// 					object:get_luaentity().itemstring = ""
+					// 					object:remove()
 				}
 			}
 		},
