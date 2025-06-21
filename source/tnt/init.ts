@@ -1,5 +1,4 @@
-// local minetest,type,vector,math,ipairs,os = 
-// minetest,type,vector,math,ipairs,os
+namespace tnt {
 
 
 // local function extreme_tnt(pos,range,explosion_type)
@@ -406,3 +405,4 @@
 // 		{"mob:gunpowder", "main:sand",     "mob:gunpowder"},
 // 	},
 // })
+}
