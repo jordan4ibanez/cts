@@ -175,8 +175,10 @@ namespace hopper {
 		if (hopper_inv.is_empty("main")) {
 			return false;
 		}
-		// 	local hopper_inv_size = hopper_inv:get_size("main")
-		// 	local placer = get_placer(hopper_meta:get_string("placer"))
+		const hopper_inv_size: number = hopper_inv.get_size("main");
+		const placer: ObjectRef | null = get_placer(
+			hopper_meta.get_string("placer")
+		);
 		// 	//target inventory
 		// 	local target_inv = core.get_meta(target_pos):get_inventory()
 		// 	for i = 1,hopper_inv_size do
