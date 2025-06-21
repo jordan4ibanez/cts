@@ -215,13 +215,23 @@ namespace tnt {
 					  (luaEntity as any).is_mob == true;
 
 			if (isPlayer || workableEntity) {
-				// 			do_it = true
-				// 			if not object:is_player() and object:get_luaentity().name == "crafter_tnt:tnt" then
-				// 				in_node = core.get_node(object:get_pos()).name
-				// 				if ( in_node == "crafter:water" or in_node == "crafter:waterflow") then
-				// 					do_it = false
-				// 				end
-				// 			end
+				let do_it: boolean = true;
+				if (
+					!isPlayer &&
+					luaEntity != null &&
+					luaEntity.name == "crafter_tnt:tnt"
+				) {
+					const in_node: string = core.get_node(
+						object.get_pos()
+					).name;
+					if (
+						in_node == "crafter:water" ||
+						in_node == "crafter:waterflow"
+					) {
+						do_it = false;
+					}
+				}
+
 				// 			if do_it == true then
 				// 				ppos = object:get_pos()
 				// 				if object:is_player() then
