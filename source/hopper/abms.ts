@@ -30,9 +30,9 @@ namespace hopper {
 					continue;
 				}
 
-				if (
-					!inv.room_for_item("main", ItemStack(luaEntity.itemstring))
-				) {
+				const item: ItemStackObject = ItemStack(luaEntity.itemstring);
+
+				if (!inv.room_for_item("main", item)) {
 					continue;
 				}
 
@@ -43,8 +43,7 @@ namespace hopper {
 					posob.y - pos.y <= 0.85 &&
 					posob.y - pos.y >= 0.3
 				) {
-					// 					inv:add_item("main",
-					// 						ItemStack(object:get_luaentity().itemstring))
+					inv.add_item("main", item);
 					// 					object:get_luaentity().itemstring = ""
 					// 					object:remove()
 				}
