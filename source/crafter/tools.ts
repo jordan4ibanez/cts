@@ -1452,7 +1452,10 @@ namespace crafter {
 					if (inv == null) {
 						throw new Error("Not a player.");
 					}
-					const torch = inv.contains_item("main", "torch:torch");
+					const torch = inv.contains_item(
+						"main",
+						"crafter_torch:torch"
+					);
 					const is_air: boolean =
 						core.get_node(pointed_thing.above).name == "air";
 					const dir: Vec3 = vector.subtract(
@@ -1477,7 +1480,7 @@ namespace crafter {
 					if (diff == 0) {
 						const param2: number = core.dir_to_wallmounted(dir);
 						core.set_node(pointed_thing.above, {
-							name: "torch:wall",
+							name: "crafter_torch:wall",
 							param2: param2,
 						});
 						core.sound_play("wood", {
@@ -1486,12 +1489,12 @@ namespace crafter {
 						});
 					} else if (diff == -1) {
 						core.place_node(pointed_thing.above, {
-							name: "torch:floor",
+							name: "crafter_torch:floor",
 						});
 					}
 					//take item
 					if (diff == 0 || diff == -1) {
-						inv.remove_item("main", "torch:torch");
+						inv.remove_item("main", "crafter_torch:torch");
 					}
 				},
 			});
