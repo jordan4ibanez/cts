@@ -18,8 +18,9 @@ namespace tnt {
 		const max: Vec3 = vector.subtract(pos, range);
 		const vm: VoxelManipObject = core.get_voxel_manip(min, max);
 		const [emin, emax] = vm.read_from_map(min, max);
-		// 		area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
-		// 		data = vm:get_data()
+		const area: VoxelAreaObject = VoxelArea(emin, emax);
+
+		const data = vm.get_data();
 		// 	if in_water == false then
 		// 		vm:get_light_data()
 		// 		range_calc = range/100
