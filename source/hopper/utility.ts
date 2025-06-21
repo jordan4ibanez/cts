@@ -188,7 +188,7 @@ namespace hopper {
 				continue;
 			}
 			if (filtered_items == null || filtered_items.has(item)) {
-				// 			if target_inventory_name then
+							if (target_inventory_name != null) {
 				// 				if target_inv:room_for_item(target_inventory_name, item) then
 				// 					local stack_to_put = stack:take_item(1)
 				// 					if target_def.allow_metadata_inventory_put == nil
@@ -203,12 +203,12 @@ namespace hopper {
 				// 						return true
 				// 					end
 				// 				end
-				// 			elseif eject_item then
+							} else if (eject_item) {
 				// 				local stack_to_put = stack:take_item(1)
 				// 				core.add_item(target_pos, stack_to_put)
 				// 				hopper_inv:set_stack("main", i, stack)
 				// 				return true
-				// 			end
+							}
 			}
 		}
 		return false;
