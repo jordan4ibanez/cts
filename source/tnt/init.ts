@@ -215,15 +215,13 @@ namespace tnt {
 					  (luaEntity as any).is_mob == true;
 
 			if (isPlayer || workableEntity) {
-				let do_it: boolean = true;
+				const ppos: Vec3 = object.get_pos();
 				if (
 					!isPlayer &&
 					luaEntity != null &&
 					luaEntity.name == "crafter_tnt:tnt"
 				) {
-					const in_node: string = core.get_node(
-						object.get_pos()
-					).name;
+					const in_node: string = core.get_node(ppos).name;
 					if (
 						in_node == "crafter:water" ||
 						in_node == "crafter:waterflow"
@@ -232,10 +230,9 @@ namespace tnt {
 					}
 				}
 
-				// ppos = object:get_pos()
-				// if object:is_player() then
-				// 	ppos.y = ppos.y + 1
-				// end
+				if (isPlayer) {
+					ppos.y = ppos.y + 1;
+				}
 				// ray = core.raycast(pos, ppos, false, false)
 				// clear = true
 				// for pointed_thing in ray do
