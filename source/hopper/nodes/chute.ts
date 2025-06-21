@@ -25,14 +25,14 @@ namespace hopper {
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2.facedir,
-		// 	tiles : {
-		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_chute_arrow_" + hopper.config.texture_resolution + ".png",
-		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR180)",
-		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR270)",
-		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR90)",
-		// 		"hopper_top_" + hopper.config.texture_resolution + ".png",
-		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png"
-		// 	},
+			tiles : [
+				"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_chute_arrow_" + hopper.config.texture_resolution + ".png",
+				"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR180)",
+				"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR270)",
+				"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR90)",
+				"hopper_top_" + hopper.config.texture_resolution + ".png",
+				"hopper_bottom_" + hopper.config.texture_resolution + ".png"
+			],
 		// 	node_box : {
 		// 		type : "fixed",
 		// 		fixed : {
