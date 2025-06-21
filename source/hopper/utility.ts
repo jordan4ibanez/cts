@@ -85,9 +85,8 @@ namespace hopper {
 		);
 
 		if (placer == null) {
-			throw new Error("WHY, is this using AN OBJECT REFERENCE?!")
+			throw new Error("WHY, is this using AN OBJECT REFERENCE?!");
 		}
-
 
 		// Source inventory.
 		const target_inv: InvRef = core.get_meta(target_pos).get_inventory();
