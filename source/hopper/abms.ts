@@ -50,9 +50,15 @@ namespace hopper {
 			}
 		},
 	});
+
+	interface DirComponent {
+		src: Vec3;
+		dst: Vec3;
+	}
+
 	// Used to convert side hopper facing into source and destination relative coordinates.
 	// This was tedious to populate and test.
-	const directions = [
+	const directions: DirComponent[] = [
 		{
 			src: vector.create3d({ x: 0, y: 1, z: 0 }),
 			dst: vector.create3d({ x: -1, y: 0, z: 0 }),
