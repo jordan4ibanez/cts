@@ -4,20 +4,20 @@ namespace torch {
 	const check_radius: number = 10;
 
 	// Get point where particle spawner is added.
-	 function get_offset(wdir: number): Vec3 {
-		let z: number = 0
-		let x: number = 0
-	// 	if wdir == 4 then
-	// 		z = 0.25
-	// 	elseif wdir == 2 then
-	// 		x = 0.25
-	// 	elseif wdir == 5 then
-	// 		z = -0.25
-	// 	elseif wdir == 3 then
-	// 		x = -0.25
-	// 	end
-		return vector.create3d({x : x, y : 0.27, z : z})
-	 }
+	function get_offset(wdir: number): Vec3 {
+		let z: number = 0;
+		let x: number = 0;
+		if (wdir == 4) {
+			z = 0.25;
+		} else if (wdir == 2) {
+			x = 0.25;
+		} else if (wdir == 5) {
+			z = -0.25;
+		} else if (wdir == 3) {
+			x = -0.25;
+		}
+		return vector.create3d({ x: x, y: 0.27, z: z });
+	}
 
 	// //add in smoke and fire
 	// local function create_ps(pos)
