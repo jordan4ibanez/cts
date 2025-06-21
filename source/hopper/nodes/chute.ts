@@ -18,16 +18,16 @@ namespace hopper {
 	}
 
 	core.register_node("crafter_hopper:chute", {
-		// 	description = S("Hopper Chute"),
-		// 	_doc_items_longdesc = hopper.doc.chute_long_desc,
-		//     _doc_items_usagehelp = hopper.doc.chute_usage,
-		// 	drop = "crafter_hopper:chute",
-		// 	groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,pathable = 1},
-		// 	sounds = hopper.metal_sounds,
-		// 	drawtype = "nodebox",
-		// 	paramtype = "light",
-		// 	paramtype2 = "facedir",
-		// 	tiles = {
+		// 	description : S("Hopper Chute"),
+		// 	_doc_items_longdesc : hopper.doc.chute_long_desc,
+		//     _doc_items_usagehelp : hopper.doc.chute_usage,
+		// 	drop : "crafter_hopper:chute",
+		// 	groups : {stone : 1, hard : 1, pickaxe : 1, hand : 4,pathable : 1},
+		// 	sounds : hopper.metal_sounds,
+		// 	drawtype : "nodebox",
+		// 	paramtype : "light",
+		// 	paramtype2 : "facedir",
+		// 	tiles : {
 		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png^hopper_chute_arrow_" + hopper.config.texture_resolution + ".png",
 		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR180)",
 		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png^(hopper_chute_arrow_" + hopper.config.texture_resolution + ".png^[transformR270)",
@@ -35,9 +35,9 @@ namespace hopper {
 		// 		"hopper_top_" + hopper.config.texture_resolution + ".png",
 		// 		"hopper_bottom_" + hopper.config.texture_resolution + ".png"
 		// 	},
-		// 	node_box = {
-		// 		type = "fixed",
-		// 		fixed = {
+		// 	node_box : {
+		// 		type : "fixed",
+		// 		fixed : {
 		// 			{-0.3, -0.3, -0.3, 0.3, 0.3, 0.3},
 		// 			{-0.2, -0.2, 0.3, 0.2, 0.2, 0.7},
 		// 		},
