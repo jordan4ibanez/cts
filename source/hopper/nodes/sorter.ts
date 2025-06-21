@@ -132,11 +132,11 @@ namespace hopper {
 				placer,
 				pointed_thing
 			);
-			// 		if success then
-			// 			local meta = core.get_meta(pos2)
-			// 			meta:set_string("placer", placer:get_player_name())
-			// 		end
-			// 		return returned_stack
+			if (success) {
+				const meta: MetaRef = core.get_meta(pos2);
+				meta.set_string("placer", placer.get_player_name());
+			}
+			return returned_stack;
 		},
 
 		// 	can_dig = function(pos,player)
