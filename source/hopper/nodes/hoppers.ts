@@ -191,9 +191,9 @@ namespace hopper {
 		drop: hopper_side_drop,
 		groups: { stone: 1, hard: 1, pickaxe: 1, hand: 4, pathable: 1 },
 		sounds: hopper.metal_sounds,
-		drawtype: "nodebox",
-		paramtype: "light",
-		paramtype2: "facedir",
+		drawtype: Drawtype.nodebox,
+		paramtype: ParamType1.light,
+		paramtype2: ParamType2.facedir,
 		// 	tiles : {
 		// 		"hopper_top_16.png",
 		// 		"hopper_bottom_16.png",
