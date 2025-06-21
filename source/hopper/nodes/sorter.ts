@@ -125,8 +125,6 @@ namespace hopper {
 				throw new Error("engine issue?");
 			}
 
-			const x: number = pos.x - pos2.x;
-			const z: number = pos.z - pos2.z;
 			const [returned_stack, success] = core.item_place_node(
 				itemstack,
 				placer,
