@@ -310,11 +310,21 @@ namespace hopper {
 						default_destination_node.name
 					);
 				if (registered_inventories != null) {
-					// 				if default_output_direction == "horizontal" then
-					// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["side"])
-					// 				else
-					// 					hopper.send_item_to(pos, default_destination_pos, default_destination_node, registered_inventories["bottom"])
-					// 				end
+					if (default_output_direction == "horizontal") {
+						hopper.send_item_to(
+							pos,
+							default_destination_pos,
+							default_destination_node,
+							registered_inventories["side"]
+						);
+					} else {
+						hopper.send_item_to(
+							pos,
+							default_destination_pos,
+							default_destination_node,
+							registered_inventories["bottom"]
+						);
+					}
 				} else {
 					// 				hopper.send_item_to(pos, default_destination_pos, default_destination_node)
 				}
