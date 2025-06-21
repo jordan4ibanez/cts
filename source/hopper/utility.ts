@@ -190,7 +190,8 @@ namespace hopper {
 			if (filtered_items == null || filtered_items.has(item)) {
 				if (target_inventory_name != null) {
 					if (target_inv.room_for_item(target_inventory_name, item)) {
-						// 					local stack_to_put = stack:take_item(1)
+						const stack_to_put: ItemStackObject =
+							stack.take_item(1);
 						// 					if target_def.allow_metadata_inventory_put == nil
 						// 					or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
 						// 					or target_def.allow_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer) > 0 then
