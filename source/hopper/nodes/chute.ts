@@ -106,30 +106,30 @@ namespace hopper {
 			}
 		},
 
-		// 	on_timer = function(pos, elapsed)
-		// 		local meta = core.get_meta(pos);
-		// 		local inv = meta:get_inventory()
-		// 		local node = core.get_node(pos)
-		// 		local dir = core.facedir_to_dir(node.param2)
-		// 		local destination_pos = vector.add(pos, dir)
-		// 		local output_direction
-		// 		if dir.y == 0 then
-		// 			output_direction = "horizontal"
-		// 		end
-		// 		local destination_node = core.get_node(destination_pos)
-		// 		local registered_inventories = hopper.get_registered_inventories_for(destination_node.name)
-		// 		if registered_inventories ~= nil then
-		// 			if output_direction == "horizontal" then
-		// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_inventories["side"])
-		// 			else
-		// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_inventories["bottom"])
-		// 			end
-		// 		else
-		// 			hopper.send_item_to(pos, destination_pos, destination_node)
-		// 		end
-		// 		if not inv:is_empty("main") then
-		// 			core.get_node_timer(pos):start(1)
-		// 		end
-		// 	end,
+		on_timer: (pos: Vec3, elapsed: number) => {
+			const meta: MetaRef = core.get_meta(pos);
+			const inv: InvRef = meta.get_inventory();
+			// 		local node = core.get_node(pos)
+			// 		local dir = core.facedir_to_dir(node.param2)
+			// 		local destination_pos = vector.add(pos, dir)
+			// 		local output_direction
+			// 		if dir.y == 0 then
+			// 			output_direction = "horizontal"
+			// 		end
+			// 		local destination_node = core.get_node(destination_pos)
+			// 		local registered_inventories = hopper.get_registered_inventories_for(destination_node.name)
+			// 		if registered_inventories ~= nil then
+			// 			if output_direction == "horizontal" then
+			// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_inventories["side"])
+			// 			else
+			// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_inventories["bottom"])
+			// 			end
+			// 		else
+			// 			hopper.send_item_to(pos, destination_pos, destination_node)
+			// 		end
+			// 		if not inv:is_empty("main") then
+			// 			core.get_node_timer(pos):start(1)
+			// 		end
+		},
 	});
 }
