@@ -93,10 +93,14 @@ namespace torch {
 		wield_image: "torches_torch.png",
 		wield_scale: vector.create3d({ x: 1, y: 1, z: 1 + 1 / 16 }),
 		liquids_pointable: false,
-		on_place: (itemstack, placer, pointed_thing) => {
-			// 		if pointed_thing.type ~= "node" then
-			// 			return itemstack
-			// 		end
+		on_place: (
+			itemstack: ItemStackObject,
+			placer: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			if (pointed_thing.type == PointedThingType.object) {
+				return itemstack;
+			}
 			// 		local buildable = core.get_nodedef(core.get_node(pointed_thing.under).name, "buildable_to")
 			// 		local wdir
 			// 		if buildable then
