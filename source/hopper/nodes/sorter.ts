@@ -1,13 +1,12 @@
 namespace hopper {
-
 	const facedir_to_bottomdir: Dictionary<number, Vec3> = {
-		0:vector.create3d({x:0, y:-1, z:0}),
-		0:vector.create3d({x:0, y:0, z:-1}),
-		0:vector.create3d({x:0, y:0, z:1}),
-		0:vector.create3d({x:-1, y:0, z:0}),
-		0:vector.create3d({x:1, y:0, z:0}),
-		0:vector.create3d({x:0, y:1, z:0}),
-	}
+		0: vector.create3d({ x: 0, y: -1, z: 0 }),
+		1: vector.create3d({ x: 0, y: 0, z: -1 }),
+		2: vector.create3d({ x: 0, y: 0, z: 1 }),
+		3: vector.create3d({ x: -1, y: 0, z: 0 }),
+		4: vector.create3d({ x: 1, y: 0, z: 0 }),
+		5: vector.create3d({ x: 0, y: 1, z: 0 }),
+	};
 
 	// local bottomdir = function(facedir)
 	// 	return facedir_to_bottomdir[math.floor(facedir/4)]
