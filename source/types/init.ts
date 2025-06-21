@@ -126,6 +126,7 @@ globalEnvironment.ParamType2 = {
 	colorwallmounted: "colorwallmounted",
 	glasslikeliquidlevel: "glasslikeliquidlevel",
 	colordegrotate: "colordegrotate",
+	none: "none",
 };
 
 //! Done.

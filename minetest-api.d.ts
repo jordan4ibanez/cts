@@ -2624,6 +2624,7 @@ declare global {
 		glasslikeliquidlevel,
 		colordegrotate,
 		"4dir",
+		none,
 	}
 
 	enum Drawtype {
