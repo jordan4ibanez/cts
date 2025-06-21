@@ -1,6 +1,8 @@
 namespace tnt {
 	// Use raycasting to create actual explosion.
 	const air: number = core.get_content_id("air");
+	const obsidian: number = core.get_content_id("nether:obsidian");
+	const bedrock: number = core.get_content_id("nether:bedrock");
 	const boom_time: number = core.get_us_time() / 1000000;
 
 	const diggingNodes = new Set<number>();
@@ -70,11 +72,13 @@ namespace tnt {
 								pointed_thing.under.z
 							);
 
-							if (data[n_pos - 1] == null) {
+							const currentID: number | undefined =
+								data[n_pos - 1];
+
+							if (currentID == null) {
 								continue;
 							}
 
-							// node2 = content_id(data[n_pos])
 							// if node2 == "nether:obsidian" or node2 == "nether:bedrock" then
 							// 	break
 							// elseif digging_nodes[node2] then
