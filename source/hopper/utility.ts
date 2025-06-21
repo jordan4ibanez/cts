@@ -171,7 +171,7 @@ namespace hopper {
 			return false;
 		}
 		// Hopper inventory.
-		const hopper_meta: MetaRef = core.get_meta(hopper_pos);
+
 		// 	local hopper_inv = hopper_meta:get_inventory()
 		// 	if hopper_inv:is_empty("main") == true then
 		// 		return false
