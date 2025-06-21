@@ -187,15 +187,13 @@ namespace hopper {
 	};
 
 	core.register_node("crafter_hopper:hopper_side", {
-		description : "Side Hopper",
-		// 	_doc_items_longdesc : hopper.doc.hopper_long_desc,
-		//     _doc_items_usagehelp : hopper.doc.hopper_usage,
-		// 	drop : hopper_side_drop,
-		// 	groups : {stone : 1, hard : 1, pickaxe : 1, hand : 4,pathable : 1},
-		// 	sounds : hopper.metal_sounds,
-		// 	drawtype : "nodebox",
-		// 	paramtype : "light",
-		// 	paramtype2 : "facedir",
+		description: "Side Hopper",
+		drop: hopper_side_drop,
+		groups: { stone: 1, hard: 1, pickaxe: 1, hand: 4, pathable: 1 },
+		sounds: hopper.metal_sounds,
+		drawtype: "nodebox",
+		paramtype: "light",
+		paramtype2: "facedir",
 		// 	tiles : {
 		// 		"hopper_top_16.png",
 		// 		"hopper_bottom_16.png",
