@@ -16,26 +16,36 @@ namespace hopper {
 			}
 			const inv: InvRef = core.get_meta(pos).get_inventory();
 			let posob;
-			for (const [_, object] of pairs(
+			for (const [_, object] of ipairs(
 				core.get_objects_inside_radius(pos, 1)
 			)) {
-				// 			if not object:is_player()
-				// 			and object:get_luaentity()
-				// 			and object:get_luaentity().name == "__builtin:item"
-				// 			and inv
-				// 			and inv:room_for_item("main",
-				// 				ItemStack(object:get_luaentity().itemstring)) then
-				// 				posob = object:getpos()
-				// 				if math.abs(posob.x - pos.x) <= 0.5
-				// 				and posob.y - pos.y <= 0.85
-				// 				and posob.y - pos.y >= 0.3 then
-				
-				// 					inv:add_item("main",
-				// 						ItemStack(object:get_luaentity().itemstring))
-				// 					object:get_luaentity().itemstring = ""
-				// 					object:remove()
-				// 				end
-				// 			end
+				if (
+					!object.is_player() &&
+					object.get_luaentity() != null &&
+					object.get_luaentity()!.name == "__builtin:item" &&
+					inv != null &&
+					inv.room_for_item(
+						"main",
+						ItemStack(
+							(
+								object.get_luaentity()! as item_handling.CrafterItemEntity
+							).itemstring
+						)
+					)
+				) {
+					posob = object.get_pos();
+
+					if (
+						math.abs(posob.x - pos.x) <= 0.5 &&
+						posob.y - pos.y <= 0.85 &&
+						posob.y - pos.y >= 0.3
+					) {
+						// 					inv:add_item("main",
+						// 						ItemStack(object:get_luaentity().itemstring))
+						// 					object:get_luaentity().itemstring = ""
+						// 					object:remove()
+					}
+				}
 			}
 		},
 	});
