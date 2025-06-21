@@ -29,7 +29,11 @@ namespace tnt {
 			for (const x of $range(-range, range)) {
 				for (const y of $range(-range, range)) {
 					for (const z of $range(-range, range)) {
-						// 			distance = vector.distance(pos2, vector.new(x,y,z))
+						const distance: number = vector.distance(
+							pos,
+							vector.create3d(x, y, z)
+						);
+
 						// 			if distance <= range and distance >= range-1 then
 						// 				ray = core.raycast(pos, vector.new(pos.x+x,pos.y+y,pos.z+z), false, false)
 						// 				explosion_force = range
