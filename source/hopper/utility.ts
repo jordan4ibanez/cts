@@ -54,12 +54,6 @@ namespace hopper {
 			return x;
 		};
 	}
-	interface DelayImplement {
-		isPlayer: (x: any) => () => any;
-		get_player_name: (x: any) => () => any;
-		is_fake_player: string;
-		get_wielded_item: (x: any) => () => any;
-	}
 
 	function get_placer(player_name: string): ObjectRef | null {
 		if (player_name != "") {
