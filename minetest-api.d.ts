@@ -2184,7 +2184,7 @@ declare global {
 		get_data(): number[];
 		set_data(buffer?: number[]): number[];
 		set_lighting(light: number, p1: Vec3, p2: Vec3): void;
-		get_light_data(buffer: number[]): number[];
+		get_light_data(): number[];
 		set_light_data(lightData: number[]): void;
 		get_param2_data(buffer: number[]): number[];
 		set_param2_data(param2Data: number[]): void;
