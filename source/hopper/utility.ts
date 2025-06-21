@@ -80,6 +80,8 @@ namespace hopper {
 		// Hopper inventory.
 		const hopper_meta: MetaRef = core.get_meta(hopper_pos);
 		const hopper_inv: InvRef = hopper_meta.get_inventory();
+
+		
 		const placer: ObjectRef | null = get_placer(
 			hopper_meta.get_string("placer")
 		);
