@@ -74,7 +74,7 @@ namespace tnt {
 	// }
 	// function tnt(pos,range,explosion_type)
 	// 	in_node = minetest.get_node(pos).name
-	// 	in_water =  ( in_node == "main:water" or minetest.get_node(pos).name == "main:waterflow")
+	// 	in_water =  ( in_node == "crafter:water" or minetest.get_node(pos).name == "crafter:waterflow")
 	// 	min = vector.add(pos,range)
 	// 	max = vector.subtract(pos,range)
 	// 	vm = minetest.get_voxel_manip(min,max)
@@ -113,7 +113,7 @@ namespace tnt {
 	// 									minetest.check_for_falling({x=pointed_thing.under.x,y=pointed_thing.under.y+1,z=pointed_thing.under.z})
 	// 								end,pointed_thing)
 	// 								if range_calc < 1 and math.random() > 0.9 + range_calc then
-	// 									item = minetest.get_node_drops(node2, "main:diamondpick")[1]
+	// 									item = minetest.get_node_drops(node2, "crafter:diamondpick")[1]
 	// 									ppos = {x=pointed_thing.under.x,y=pointed_thing.under.y,z=pointed_thing.under.z}
 	// 									obj = minetest.add_item(ppos, item)
 	// 									if obj then
@@ -147,7 +147,7 @@ namespace tnt {
 	// 			do_it = true
 	// 			if not object:is_player() and object:get_luaentity().name == "tnt:tnt" then
 	// 				in_node = minetest.get_node(object:get_pos()).name
-	// 				if ( in_node == "main:water" or in_node == "main:waterflow") then
+	// 				if ( in_node == "crafter:water" or in_node == "crafter:waterflow") then
 	// 					do_it = false
 	// 				end
 	// 			end
@@ -373,9 +373,9 @@ namespace tnt {
 	// minetest.register_craft({
 	// 	output = "tnt:tnt",
 	// 	recipe = {
-	// 		{"mob:gunpowder", "main:sand",     "mob:gunpowder"},
-	// 		{"main:sand",     "mob:gunpowder", "main:sand"},
-	// 		{"mob:gunpowder", "main:sand",     "mob:gunpowder"},
+	// 		{"crafter_mob:gunpowder", "crafter:sand",     "crafter_mob:gunpowder"},
+	// 		{"crafter:sand",     "crafter_mob:gunpowder", "crafter:sand"},
+	// 		{"crafter_mob:gunpowder", "crafter:sand",     "crafter_mob:gunpowder"},
 	// 	},
 	// })
 }
