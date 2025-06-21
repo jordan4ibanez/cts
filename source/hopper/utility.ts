@@ -188,27 +188,27 @@ namespace hopper {
 				continue;
 			}
 			if (filtered_items == null || filtered_items.has(item)) {
-							if (target_inventory_name != null) {
-				// 				if target_inv:room_for_item(target_inventory_name, item) then
-				// 					local stack_to_put = stack:take_item(1)
-				// 					if target_def.allow_metadata_inventory_put == nil
-				// 					or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
-				// 					or target_def.allow_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer) > 0 then
-				// 						hopper_inv:set_stack("main", i, stack)
-				// 						//add to target node
-				// 						target_inv:add_item(target_inventory_name, stack_to_put)
-				// 						if target_def.on_metadata_inventory_put ~= nil and placer ~= nil then
-				// 							target_def.on_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer)
-				// 						end
-				// 						return true
-				// 					end
-				// 				end
-							} else if (eject_item) {
-				// 				local stack_to_put = stack:take_item(1)
-				// 				core.add_item(target_pos, stack_to_put)
-				// 				hopper_inv:set_stack("main", i, stack)
-				// 				return true
-							}
+				if (target_inventory_name != null) {
+					// 				if target_inv:room_for_item(target_inventory_name, item) then
+					// 					local stack_to_put = stack:take_item(1)
+					// 					if target_def.allow_metadata_inventory_put == nil
+					// 					or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
+					// 					or target_def.allow_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer) > 0 then
+					// 						hopper_inv:set_stack("main", i, stack)
+					// 						//add to target node
+					// 						target_inv:add_item(target_inventory_name, stack_to_put)
+					// 						if target_def.on_metadata_inventory_put ~= nil and placer ~= nil then
+					// 							target_def.on_metadata_inventory_put(target_pos, target_inventory_name, i, stack_to_put, placer)
+					// 						end
+					// 						return true
+					// 					end
+					// 				end
+				} else if (eject_item) {
+					// 				local stack_to_put = stack:take_item(1)
+					// 				core.add_item(target_pos, stack_to_put)
+					// 				hopper_inv:set_stack("main", i, stack)
+					// 				return true
+				}
 			}
 		}
 		return false;
