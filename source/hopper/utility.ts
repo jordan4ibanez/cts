@@ -119,7 +119,7 @@ namespace hopper {
 			if (!hopper_inv.room_for_item("main", item)) {
 				continue;
 			}
-			// 					local stack_to_take = stack:take_item(1)
+			const stack_to_take: ItemStackObject = stack.take_item(1);
 			// 					if target_def.allow_metadata_inventory_take == nil
 			// 					  or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
 			// 					  or target_def.allow_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer) > 0 then
