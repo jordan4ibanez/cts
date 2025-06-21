@@ -44,11 +44,13 @@ namespace tnt {
 							false
 						);
 
-						const explosion_force: number = range;
+						let explosion_force: number = range;
 
 						for (const pointed_thing of ray) {
-							// 					explosion_force = explosion_force - math.random()
-							// 					if pointed_thing and explosion_force >= explosion_depletion then
+							explosion_force = explosion_force - math.random();
+							if (explosion_force < explosion_depletion) {
+								break;
+							}
 							// 						n_pos = area:index(pointed_thing.under.x,pointed_thing.under.y,pointed_thing.under.z)
 							// 						if n_pos and data[n_pos] then
 							// 							node2 = content_id(data[n_pos])
@@ -78,9 +80,6 @@ namespace tnt {
 							// 								end
 							// 							end
 							// 						end
-							// 					else
-							// 						break
-							// 					end
 						}
 					}
 				}
