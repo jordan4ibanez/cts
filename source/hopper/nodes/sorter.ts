@@ -168,14 +168,21 @@ namespace hopper {
 			return stack.get_count();
 		},
 
-		// 	allow_metadata_inventory_take = function(pos, listname, index, stack, player)
-		// 		if listname == "filter" then
-		// 			local inv = core.get_inventory({type="node", pos=pos})
-		// 			inv:set_stack(listname, index, ItemStack(""))
-		// 			return 0
-		// 		end
-		// 		return stack:get_count()
-		// 	end,
+		allow_metadata_inventory_take: (
+			pos,
+			listname,
+			index,
+			stack,
+			player
+		) => {
+			if (listname == "filter") {
+				const meta: MetaRef = core.get_meta(pos);
+				const inv: InvRef = meta.get_inventory();
+				inv.set_stack(listname, index, ItemStack(""));
+				return 0;
+			}
+			return stack.get_count();
+		},
 
 		// 	allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
 		// 		if to_list == "filter" then
