@@ -2,7 +2,7 @@ namespace hopper {
 	// Suck in items on top of hopper.
 	core.register_abm({
 		label: "Hopper suction",
-		// 	nodenames : {"hopper:hopper", "hopper:hopper_side"},
+		nodenames: ["crafter_hopper:hopper", "crafter_hopper:hopper_side"],
 		// 	interval : 0.1,
 		// 	chance : 1,
 		// 	action : function(pos, node, active_object_count, active_object_count_wider)
@@ -70,14 +70,14 @@ namespace hopper {
 	// // hopper workings
 	// core.register_abm({
 	// 	label = "Hopper transfer",
-	// 	nodenames = {"hopper:hopper", "hopper:hopper_side"},
+	// 	nodenames = {"crafter_hopper:hopper", "crafter_hopper:hopper_side"},
 	// 	neighbors = hopper.neighbors,
 	// 	interval = 0.1,
 	// 	chance = 1,
 	// 	//catch_up = false,
 	// 	action = function(pos, node, active_object_count, active_object_count_wider)
 	// 		local source_pos, destination_pos, destination_dir
-	// 		if node.name == "hopper:hopper_side" then
+	// 		if node.name == "crafter_hopper:hopper_side" then
 	// 			source_pos = vector.add(pos, directions[node.param2].src)
 	// 			destination_dir = directions[node.param2].dst
 	// 			destination_pos = vector.add(pos, destination_dir)
