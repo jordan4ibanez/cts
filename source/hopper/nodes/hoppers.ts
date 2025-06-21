@@ -150,9 +150,15 @@ namespace hopper {
 			inv.set_size("main", 4 * 4);
 		},
 
-		// 	on_place = function(itemstack, placer, pointed_thing)
-		// 		return hopper_on_place(itemstack, placer, pointed_thing, "crafter_hopper:hopper")
-		// 	end,
+		on_place: (itemstack, placer, pointed_thing) => {
+			return hopper_on_place(
+				itemstack,
+				placer,
+				pointed_thing,
+				"crafter_hopper:hopper"
+			);
+		},
+
 		// 	can_dig = function(pos, player)
 		// 		local inv = core.get_meta(pos):get_inventory()
 		// 		return inv:is_empty("main")
