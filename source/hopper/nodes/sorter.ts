@@ -222,12 +222,12 @@ namespace hopper {
 			return count;
 		},
 
-		// 	on_metadata_inventory_put = function(pos, listname, index, stack, player)
-		// 		local timer = core.get_node_timer(pos)
-		// 		if not timer:is_started() then
-		// 			timer:start(1)
-		// 		end
-		// 	end,
+		on_metadata_inventory_put: (pos, listname, index, stack, player) => {
+			const timer: NodeTimerObject = core.get_node_timer(pos);
+			if (!timer.is_started()) {
+				timer.start(1);
+			}
+		},
 
 		// 	on_timer = function(pos, elapsed)
 		// 		local meta = core.get_meta(pos);
