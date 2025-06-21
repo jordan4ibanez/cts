@@ -116,20 +116,21 @@ namespace hopper {
 			if (item == "") {
 				continue;
 			}
-			if (hopper_inv.room_for_item("main", item)) {
-				// 					local stack_to_take = stack:take_item(1)
-				// 					if target_def.allow_metadata_inventory_take == nil
-				// 					  or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
-				// 					  or target_def.allow_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer) > 0 then
-				// 						target_inv:set_stack(target_inventory_name, i, stack)
-				// 						//add to hopper
-				// 						hopper_inv:add_item("main", stack_to_take)
-				// 						if target_def.on_metadata_inventory_take ~= nil and placer ~= nil then
-				// 							target_def.on_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer)
-				// 						end
-				// 						break
-				// 					end
+			if (!hopper_inv.room_for_item("main", item)) {
+				continue;
 			}
+			// 					local stack_to_take = stack:take_item(1)
+			// 					if target_def.allow_metadata_inventory_take == nil
+			// 					  or placer == nil // backwards compatibility, older versions of this mod didn't record who placed the hopper
+			// 					  or target_def.allow_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer) > 0 then
+			// 						target_inv:set_stack(target_inventory_name, i, stack)
+			// 						//add to hopper
+			// 						hopper_inv:add_item("main", stack_to_take)
+			// 						if target_def.on_metadata_inventory_take ~= nil and placer ~= nil then
+			// 							target_def.on_metadata_inventory_take(target_pos, target_inventory_name, i, stack_to_take, placer)
+			// 						end
+			// 						break
+			// 					end
 		}
 	}
 
