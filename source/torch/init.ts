@@ -204,10 +204,10 @@ namespace torch {
 		groups : {choppy:2, dig_immediate:3, flammable:1, not_in_creative_inventory:1, attached_node:1, torch:1},
 		drop : "crafter_torch:torch",
 		selection_box : {
-			type : "wallmounted",
-			wall_top : {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
-			wall_bottom : {-0.1, -0.5, -0.1, 0.1, 0.1, 0.1},
-			wall_side : {-0.5, -0.3, -0.1, -0.2, 0.3, 0.1},
+			type : Nodeboxtype.wallmounted,
+			wall_top : [-0.1, -0.1, -0.1, 0.1, 0.5, 0.1],
+			wall_bottom : [-0.1, -0.5, -0.1, 0.1, 0.1, 0.1],
+			wall_side : [-0.5, -0.3, -0.1, -0.2, 0.3, 0.1],
 		},
 		sounds : main.woodSound(),
 	})
