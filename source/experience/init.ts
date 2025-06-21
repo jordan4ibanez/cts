@@ -286,7 +286,7 @@ namespace experience {
 			data: data.xp_bar,
 		});
 
-		item_handling.throw_experience(player.get_pos(), xp_amount);
+		itemHandling.throw_experience(player.get_pos(), xp_amount);
 	});
 
 	class ExperienceEntity extends types.Entity {
@@ -565,7 +565,7 @@ namespace experience {
 			}
 			const pos: Vec3 = player.get_pos();
 			pos.y = pos.y + 1.2;
-			item_handling.throw_experience(pos, 1000);
+			itemHandling.throw_experience(pos, 1000);
 		},
 	});
 }

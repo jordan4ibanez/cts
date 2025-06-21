@@ -1,6 +1,6 @@
 // local minetest,math,vector,ipairs = minetest,math,vector,ipairs
 
-namespace item_handling {
+namespace itemHandling {
 	const pool = new Map<string, number>();
 
 	core.register_on_joinplayer((player: ObjectRef) => {

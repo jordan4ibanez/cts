@@ -39,7 +39,7 @@ namespace playerMechanics {
 				const stack: ItemStackObject = inv.get_stack("main", i);
 				const name: string = stack.get_name();
 				if (name != "") {
-					item_handling.throw_item(pos, stack);
+					itemHandling.throw_item(pos, stack);
 					inv.set_stack("main", i, ItemStack(""));
 				}
 			}
@@ -48,7 +48,7 @@ namespace playerMechanics {
 				const stack: ItemStackObject = inv.get_stack("armor_head", 1);
 				const name: string = stack.get_name();
 				if (name != "") {
-					item_handling.throw_item(pos, stack);
+					itemHandling.throw_item(pos, stack);
 					inv.set_stack("armor_head", 1, ItemStack(""));
 				}
 			}
@@ -57,7 +57,7 @@ namespace playerMechanics {
 				const stack: ItemStackObject = inv.get_stack("armor_torso", 1);
 				const name: string = stack.get_name();
 				if (name != "") {
-					item_handling.throw_item(pos, stack);
+					itemHandling.throw_item(pos, stack);
 					inv.set_stack("armor_torso", 1, ItemStack(""));
 				}
 			}
@@ -65,7 +65,7 @@ namespace playerMechanics {
 				const stack: ItemStackObject = inv.get_stack("armor_legs", 1);
 				const name: string = stack.get_name();
 				if (name != "") {
-					item_handling.throw_item(pos, stack);
+					itemHandling.throw_item(pos, stack);
 					inv.set_stack("armor_legs", 1, ItemStack(""));
 				}
 			}
@@ -73,7 +73,7 @@ namespace playerMechanics {
 				const stack: ItemStackObject = inv.get_stack("armor_feet", 1);
 				const name: string = stack.get_name();
 				if (name != "") {
-					item_handling.throw_item(pos, stack);
+					itemHandling.throw_item(pos, stack);
 					inv.set_stack("armor_feet", 1, ItemStack(""));
 				}
 			}
@@ -95,7 +95,7 @@ namespace playerMechanics {
 			const stack: ItemStackObject = inv.get_stack("craft", i);
 			const name: string = stack.get_name();
 			if (name != "") {
-				item_handling.throw_item(pos, stack);
+				itemHandling.throw_item(pos, stack);
 				inv.set_stack("craft", i, ItemStack(""));
 			}
 		}

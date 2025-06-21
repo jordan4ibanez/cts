@@ -161,7 +161,7 @@ namespace torch {
 		floodable: true,
 		use_texture_alpha: TextureAlpha.clip,
 		on_flood: (pos: Vec3, oldnode: NodeTable, newnode: NodeTable) => {
-			item_handling.throw_item(pos, "crafter_torch:torch");
+			itemHandling.throw_item(pos, "crafter_torch:torch");
 		},
 		light_source: 13,
 		groups: {
@@ -192,7 +192,7 @@ namespace torch {
 		floodable: true,
 		use_texture_alpha: TextureAlpha.clip,
 		on_flood: (pos: Vec3, oldnode: NodeTable, newnode: NodeTable) => {
-			item_handling.throw_item(pos, "crafter_torch:torch");
+			itemHandling.throw_item(pos, "crafter_torch:torch");
 		},
 		sunlight_propagates: true,
 		walkable: false,

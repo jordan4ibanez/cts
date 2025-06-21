@@ -208,7 +208,7 @@ namespace furnace {
 								-1.95
 							);
 							const newpos: Vec3 = vector.add(pos, dir);
-							item_handling.throw_experience(newpos, 1);
+							itemHandling.throw_experience(newpos, 1);
 						} else {
 							dst_full = true;
 						}

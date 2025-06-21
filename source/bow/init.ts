@@ -288,7 +288,7 @@ namespace bow {
 							});
 						} else {
 							this.object.remove();
-							item_handling.throw_item(pos, "crafter_bow:arrow");
+							itemHandling.throw_item(pos, "crafter_bow:arrow");
 						}
 					}
 				}

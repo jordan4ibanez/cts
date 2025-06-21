@@ -1,4 +1,4 @@
-namespace item_handling {
+namespace itemHandling {
 	utility.loadFiles(["magnet"]);
 
 	const creative_mode: boolean =
@@ -648,7 +648,7 @@ namespace item_handling {
 			pos.y = pos.y + 5;
 			pos.x = pos.x + 8;
 			for (let i = 1; i <= 1000; i++) {
-				item_handling.throw_item(pos, "crafter:dirt");
+				itemHandling.throw_item(pos, "crafter:dirt");
 			}
 		},
 	});

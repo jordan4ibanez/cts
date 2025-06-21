@@ -316,10 +316,10 @@ namespace crafter {
 					);
 					if (drops && drops.length > 0) {
 						for (const [_, droppy] of pairs(drops)) {
-							item_handling.throw_item(np, droppy as string);
+							itemHandling.throw_item(np, droppy as string);
 						}
 					} else {
-						item_handling.throw_item(np, this.node.name);
+						itemHandling.throw_item(np, this.node.name);
 					}
 					this.object.remove();
 					return;

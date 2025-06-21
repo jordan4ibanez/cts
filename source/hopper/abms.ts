@@ -23,8 +23,8 @@ namespace hopper {
 					continue;
 				}
 
-				const luaEntity: item_handling.CrafterItemEntity | null =
-					object.get_luaentity() as item_handling.CrafterItemEntity | null;
+				const luaEntity: itemHandling.CrafterItemEntity | null =
+					object.get_luaentity() as itemHandling.CrafterItemEntity | null;
 
 				if (luaEntity == null || luaEntity.name != "__builtin:item") {
 					continue;
