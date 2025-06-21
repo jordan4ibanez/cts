@@ -3,10 +3,10 @@ namespace torch {
 	const particle_time: number = 5;
 	const check_radius: number = 10;
 
-	// //get point where particle spawner is added
-	// local function get_offset(wdir)
-	// 	local z = 0
-	// 	local x = 0
+	// Get point where particle spawner is added.
+	 function get_offset(wdir: number): Vec3 {
+		let z: number = 0
+		let x: number = 0
 	// 	if wdir == 4 then
 	// 		z = 0.25
 	// 	elseif wdir == 2 then
@@ -16,8 +16,9 @@ namespace torch {
 	// 	elseif wdir == 3 then
 	// 		x = -0.25
 	// 	end
-	// 	return {x = x, y = 0.27, z = z}
-	// end
+		return vector.create3d({x : x, y : 0.27, z : z})
+	 }
+
 	// //add in smoke and fire
 	// local function create_ps(pos)
 	// 	local dir = get_offset(core.get_node(pos).param2)
