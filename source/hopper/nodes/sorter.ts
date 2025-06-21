@@ -1,13 +1,14 @@
 namespace hopper {
-	// local S = core.get_translator("hopper")
-	// local facedir_to_bottomdir = {
-	// 	[0]={x=0, y=-1, z=0},
-	// 	{x=0, y=0, z=-1},
-	// 	{x=0, y=0, z=1},
-	// 	{x=-1, y=0, z=0},
-	// 	{x=1, y=0, z=0},
-	// 	{x=0, y=1, z=0},
-	// }
+
+	const facedir_to_bottomdir: Dictionary<number, Vec3> = {
+		0:vector.create3d({x:0, y:-1, z:0}),
+		0:vector.create3d({x:0, y:0, z:-1}),
+		0:vector.create3d({x:0, y:0, z:1}),
+		0:vector.create3d({x:-1, y:0, z:0}),
+		0:vector.create3d({x:1, y:0, z:0}),
+		0:vector.create3d({x:0, y:1, z:0}),
+	}
+
 	// local bottomdir = function(facedir)
 	// 	return facedir_to_bottomdir[math.floor(facedir/4)]
 	// end
