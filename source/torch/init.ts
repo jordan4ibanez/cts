@@ -152,31 +152,32 @@ namespace torch {
 		},
 	});
 
-	// core.register_node("crafter_torch:floor", {
-	// 	inventory_image = "torches_torch.png",
-	// 	wield_image = "torches_torch.png",
-	// 	wield_scale = {x = 1, y = 1, z = 1 + 2/16},
-	// 	drawtype = "mesh",
-	// 	mesh = "torch_floor.obj",
-	// 	tiles = {"torches_torch.png"},
-	// 	paramtype = "light",
-	// 	paramtype2 = "none",
-	// 	sunlight_propagates = true,
-	// 	drop = "crafter_torch:torch",
-	// 	walkable = false,
-	// 	floodable = true,
-	// 	on_flood = function(pos, oldnode, newnode)
-	// 		core.throw_item(pos, "crafter_torch:torch")
-	// 	end,
-	// 	light_source = 13,
-	// 	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1},
-	// 	legacy_wallmounted = true,
-	// 	selection_box = {
-	// 		type = "fixed",
-	// 		fixed = {-1/16, -0.5, -1/16, 1/16, 2/16, 1/16},
-	// 	},
-	// 	sounds = main.woodSound(),
-	// })
+	core.register_node("crafter_torch:floor", {
+		inventory_image : "torches_torch.png",
+		wield_image : "torches_torch.png",
+		wield_scale : {x : 1, y : 1, z : 1 + 2/16},
+		drawtype : "mesh",
+		mesh : "torch_floor.obj",
+		tiles : {"torches_torch.png"},
+		paramtype : "light",
+		paramtype2 : "none",
+		sunlight_propagates : true,
+		drop : "crafter_torch:torch",
+		walkable : false,
+		floodable : true,
+		on_flood : function(pos, oldnode, newnode)
+			core.throw_item(pos, "crafter_torch:torch")
+		end,
+		light_source : 13,
+		groups : {choppy:2, dig_immediate:3, flammable:1, not_in_creative_inventory:1, attached_node:1, torch:1},
+		legacy_wallmounted : true,
+		selection_box : {
+			type : "fixed",
+			fixed : {-1/16, -0.5, -1/16, 1/16, 2/16, 1/16},
+		},
+		sounds : crafter.woodSound(),
+	})
+
 	// core.register_node("crafter_torch:wall", {
 	// 	inventory_image = "torches_torch.png",
 	// 	wield_image = "torches_torch.png",
@@ -203,6 +204,7 @@ namespace torch {
 	// 	},
 	// 	sounds = main.woodSound(),
 	// })
+
 	// core.register_craft({
 	// 	output = "crafter_torch:torch 4",
 	// 	recipe = {
