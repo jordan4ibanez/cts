@@ -96,14 +96,14 @@ namespace hopper {
 				pointed_thing
 			);
 		}
-		// 	if success then
-		// 		local meta = core.get_meta(pos2)
-		// 		meta:set_string("placer", placer:get_player_name())
-		// 		if not core.settings:get_bool("creative_mode") then
-		// 			itemstack:take_item()
-		// 		end
-		// 	end
-		// 	return itemstack
+		if (success) {
+			const meta: MetaRef = core.get_meta(pos2);
+			meta.set_string("placer", placer.get_player_name());
+			if (!core.settings.get_bool("creative_mode")) {
+				itemstack.take_item();
+			}
+		}
+		return itemstack;
 	}
 
 	// //////////////////////////////////////////////////////////////////////////////////////////-
