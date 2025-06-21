@@ -180,8 +180,9 @@ namespace hopper {
 		},
 	});
 
-	// local hopper_side_drop
-	// local hopper_groups
+	let hopper_side_drop;
+	let hopper_groups;
+
 	// if hopper.config.single_craftable_item then
 	// 	hopper_side_drop = "crafter_hopper:hopper"
 	// 	hopper_groups = {cracky=3, not_in_creative_inventory = 1}
@@ -189,6 +190,7 @@ namespace hopper {
 	// 	hopper_side_drop = "crafter_hopper:hopper_side"
 	// 	hopper_groups = {cracky=3}
 	// end
+
 	// core.register_node("crafter_hopper:hopper_side", {
 	// 	description = S("Side Hopper"),
 	// 	_doc_items_longdesc = hopper.doc.hopper_long_desc,
