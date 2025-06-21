@@ -41,6 +41,7 @@ namespace torch {
 		// 			// Full loop length
 		// 		},
 		// 	})
+		// todo: do this in csm?
 		/*
 		// core.add_particlespawner({
 		// 	amount = particle_time*6,
