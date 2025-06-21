@@ -143,7 +143,12 @@ namespace hopper {
 			return inv.is_empty("main");
 		},
 
-		on_rightclick: (pos, node, clicker, itemstack) => {
+		on_rightclick: (
+			pos: Vec3,
+			node: NodeTable,
+			clicker: ObjectRef,
+			itemstack: ItemStackObject
+		) => {
 			if (
 				core.is_protected(pos, clicker.get_player_name()) &&
 				!core.check_player_privs(clicker, "protection_bypass")
@@ -157,7 +162,13 @@ namespace hopper {
 			);
 		},
 
-		allow_metadata_inventory_put: (pos, listname, index, stack, player) => {
+		allow_metadata_inventory_put: (
+			pos: Vec3,
+			listname: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
+		) => {
 			if (listname == "filter") {
 				const meta: MetaRef = core.get_meta(pos);
 				const inv: InvRef = meta.get_inventory();
@@ -169,11 +180,11 @@ namespace hopper {
 		},
 
 		allow_metadata_inventory_take: (
-			pos,
-			listname,
-			index,
-			stack,
-			player
+			pos: Vec3,
+			listname: string,
+			index: number,
+			stack: ItemStackObject,
+			player: ObjectRef
 		) => {
 			if (listname == "filter") {
 				const meta: MetaRef = core.get_meta(pos);
