@@ -1,3 +1,4 @@
+namespace hopper {
 // local S = core.get_translator("hopper")
 
 // local facedir_to_bottomdir = {
@@ -210,3 +211,4 @@
 // 		end
 // 	end,
 // })
+}
