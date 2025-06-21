@@ -83,6 +83,12 @@ namespace hopper {
 		const placer: ObjectRef | null = get_placer(
 			hopper_meta.get_string("placer")
 		);
+
+		if (placer == null) {
+			throw new Error("WHY, is this using AN OBJECT REFERENCE?!")
+		}
+
+
 		// Source inventory.
 		const target_inv: InvRef = core.get_meta(target_pos).get_inventory();
 		const target_inv_size: number = target_inv.get_size(
