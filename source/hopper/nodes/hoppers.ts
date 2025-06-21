@@ -16,10 +16,9 @@ namespace hopper {
 			";main]" +
 			"listring[current_player;main]"
 		);
-		// 	return formspec
 	}
 
-	// local hopper_on_place = function(itemstack, placer, pointed_thing, node_name)
+	 function hopper_on_place(itemstack, placer, pointed_thing, node_name) {
 	// 	local pos  = pointed_thing.under
 	// 	local pos2 = pointed_thing.above
 	// 	local x = pos.x - pos2.x
@@ -50,7 +49,8 @@ namespace hopper {
 	// 		end
 	// 	end
 	// 	return itemstack
-	// end
+	 }
+
 	// //////////////////////////////////////////////////////////////////////////////////////////-
 	// // Hoppers
 	// core.register_node("crafter_hopper:hopper", {
