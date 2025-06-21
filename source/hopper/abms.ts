@@ -44,8 +44,8 @@ namespace hopper {
 					posob.y - pos.y >= 0.3
 				) {
 					inv.add_item("main", item);
-					// 					object:get_luaentity().itemstring = ""
-					// 					object:remove()
+					luaEntity.itemstring = "";
+					object.remove();
 				}
 			}
 		},
