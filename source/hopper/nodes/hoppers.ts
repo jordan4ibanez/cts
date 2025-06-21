@@ -1,6 +1,6 @@
 namespace hopper {
 
-// -- formspec
+// // formspec
 // local function get_hopper_formspec(pos)
 // 	local spos = hopper.get_string_pos(pos)
 // 	local formspec =
@@ -22,9 +22,9 @@ namespace hopper {
 // 	local z = pos.z - pos2.z
 
 // 	local returned_stack, success
-// 	-- unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
-// 	-- because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
-// 	-- the default item_place_node orientation code will not orient them pointing toward the selected surface.
+// 	// unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
+// 	// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
+// 	// the default item_place_node orientation code will not orient them pointing toward the selected surface.
 // 	if x == -1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
 // 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 0)
 // 	elseif x == 1 and (hopper.config.single_craftable_item or node_name == "crafter_hopper:hopper_side") then
@@ -35,7 +35,7 @@ namespace hopper {
 // 		returned_stack, success = core.item_place_node(ItemStack("crafter_hopper:hopper_side"), placer, pointed_thing, 1)
 // 	else
 // 		if hopper.config.single_craftable_item then
-// 			node_name = "crafter_hopper:hopper" -- For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
+// 			node_name = "crafter_hopper:hopper" // For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories
 // 		end
 // 		returned_stack, success = core.item_place_node(ItemStack(node_name), placer, pointed_thing)
 // 	end
@@ -50,8 +50,8 @@ namespace hopper {
 // 	return itemstack
 // end
 
-// -------------------------------------------------------------------------------------------
-// -- Hoppers
+// //////////////////////////////////////////////////////////////////////////////////////////-
+// // Hoppers
 
 // core.register_node("crafter_hopper:hopper", {
 // 	drop = "crafter_hopper:hopper",
@@ -71,14 +71,14 @@ namespace hopper {
 // 	node_box = {
 // 		type = "fixed",
 // 		fixed = {
-// 			--funnel walls
+// 			//funnel walls
 // 			{-0.5, 0.0, 0.4, 0.5, 0.5, 0.5},
 // 			{0.4, 0.0, -0.5, 0.5, 0.5, 0.5},
 // 			{-0.5, 0.0, -0.5, -0.4, 0.5, 0.5},
 // 			{-0.5, 0.0, -0.5, 0.5, 0.5, -0.4},
-// 			--funnel base
+// 			//funnel base
 // 			{-0.5, 0.0, -0.5, 0.5, 0.1, 0.5},
-// 			--spout
+// 			//spout
 // 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
 // 			{-0.15, -0.3, -0.15, 0.15, -0.7, 0.15},
 // 		},
@@ -86,9 +86,9 @@ namespace hopper {
 // 	selection_box = {
 // 		type = "fixed",
 // 		fixed = {
-// 			--funnel
+// 			//funnel
 // 			{-0.5, 0.0, -0.5, 0.5, 0.5, 0.5},
-// 			--spout
+// 			//spout
 // 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
 // 			{-0.15, -0.3, -0.15, 0.15, -0.7, 0.15},
 // 		},
@@ -148,14 +148,14 @@ namespace hopper {
 // 	node_box = {
 // 		type = "fixed",
 // 		fixed = {
-// 			--funnel walls
+// 			//funnel walls
 // 			{-0.5, 0.0, 0.4, 0.5, 0.5, 0.5},
 // 			{0.4, 0.0, -0.5, 0.5, 0.5, 0.5},
 // 			{-0.5, 0.0, -0.5, -0.4, 0.5, 0.5},
 // 			{-0.5, 0.0, -0.5, 0.5, 0.5, -0.4},
-// 			--funnel base
+// 			//funnel base
 // 			{-0.5, 0.0, -0.5, 0.5, 0.1, 0.5},
-// 			--spout
+// 			//spout
 // 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
 // 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
 // 		},
@@ -163,9 +163,9 @@ namespace hopper {
 // 	selection_box = {
 // 		type = "fixed",
 // 		fixed = {
-// 			--funnel
+// 			//funnel
 // 			{-0.5, 0.0, -0.5, 0.5, 0.5, 0.5},
-// 			--spout
+// 			//spout
 // 			{-0.3, -0.3, -0.3, 0.3, 0.0, 0.3},
 // 			{-0.7, -0.3, -0.15, 0.15, 0.0, 0.15},
 // 		},
