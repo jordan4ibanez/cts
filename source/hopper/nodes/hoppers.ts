@@ -257,11 +257,18 @@ namespace hopper {
 			clicker: ObjectRef,
 			itemstack: ItemStackObject
 		) => {
-			// 		if core.is_protected(pos, clicker:get_player_name()) and not core.check_player_privs(clicker, "protection_bypass") then
-			// 			return
-			// 		end
-			// 		core.show_formspec(clicker:get_player_name(),
-			// 			"hopper_formspec:"+core.pos_to_string(pos), get_hopper_formspec(pos))
+			if (
+				core.is_protected(pos, clicker.get_player_name()) &&
+				!core.check_player_privs(clicker, "protection_bypass")
+			) {
+				return;
+			}
+
+			core.show_formspec(
+				clicker.get_player_name(),
+				"hopper_formspec:" + core.pos_to_string(pos),
+				get_hopper_formspec(pos)
+			);
 		},
 	});
 }
