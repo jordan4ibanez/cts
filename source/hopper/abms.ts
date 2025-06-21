@@ -1,5 +1,5 @@
 namespace hopper {
-	// -- suck in items on top of hopper
+	// // suck in items on top of hopper
 	// core.register_abm({
 	// 	label = "Hopper suction",
 	// 	nodenames = {"hopper:hopper", "hopper:hopper_side"},
@@ -31,8 +31,8 @@ namespace hopper {
 	// 		end
 	// 	end,
 	// })
-	// -- Used to convert side hopper facing into source and destination relative coordinates
-	// -- This was tedious to populate and test
+	// // Used to convert side hopper facing into source and destination relative coordinates
+	// // This was tedious to populate and test
 	// local directions = {
 	// 	[0]={["src"]={x=0, y=1, z=0},["dst"]={x=-1, y=0, z=0}},
 	// 	[1]={["src"]={x=0, y=1, z=0},["dst"]={x=0, y=0, z=1}},
@@ -67,14 +67,14 @@ namespace hopper {
 	// 		{x=1, y=0, z=0},
 	// 		{x=0, y=1, z=0}})[math.floor(facedir/4)]
 	// end
-	// -- hopper workings
+	// // hopper workings
 	// core.register_abm({
 	// 	label = "Hopper transfer",
 	// 	nodenames = {"hopper:hopper", "hopper:hopper_side"},
 	// 	neighbors = hopper.neighbors,
 	// 	interval = 0.1,
 	// 	chance = 1,
-	// 	--catch_up = false,
+	// 	//catch_up = false,
 	// 	action = function(pos, node, active_object_count, active_object_count_wider)
 	// 		local source_pos, destination_pos, destination_dir
 	// 		if node.name == "hopper:hopper_side" then
@@ -104,7 +104,7 @@ namespace hopper {
 	// 				hopper.send_item_to(pos, destination_pos, destination_node, registered_destination_inventories["bottom"])
 	// 			end
 	// 		else
-	// 			hopper.send_item_to(pos, destination_pos, destination_node) -- for handling ejection
+	// 			hopper.send_item_to(pos, destination_pos, destination_node) // for handling ejection
 	// 		end
 	// 	end,
 	// })
