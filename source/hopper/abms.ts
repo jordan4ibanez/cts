@@ -183,17 +183,26 @@ namespace hopper {
 		chance: 1,
 		//catch_up : false,
 		action: (pos, node, active_object_count, active_object_count_wider) => {
-			let source_pos, destination_pos, destination_dir;
+			let source_pos: Vec3;
+			let destination_pos: Vec3;
+			let destination_dir: Vec3;
 
-			// 		if node.name == "crafter_hopper:hopper_side" then
-			// 			source_pos = vector.add(pos, directions[node.param2].src)
-			// 			destination_dir = directions[node.param2].dst
-			// 			destination_pos = vector.add(pos, destination_dir)
-			// 		else
-			// 			destination_dir = bottomdir(node.param2)
-			// 			source_pos = vector.subtract(pos, destination_dir)
-			// 			destination_pos = vector.add(pos, destination_dir)
-			// 		end
+			if (node.name == "crafter_hopper:hopper_side") {
+				const dir: DirComponent | undefined =
+					directions[node.param2 || 0];
+				if (dir == null) {
+					throw new Error("Logic error.");
+				}
+
+				source_pos = vector.add(pos, dir.src);
+				destination_dir = dir.dst;
+				destination_pos = vector.add(pos, destination_dir);
+			} else {
+				destination_dir = bottomdir(node.param2 || 0);
+				source_pos = vector.subtract(pos, destination_dir);
+				destination_pos = vector.add(pos, destination_dir);
+			}
+
 			// 		local output_direction
 			// 		if destination_dir.y == 0 then
 			// 			output_direction = "horizontal"
