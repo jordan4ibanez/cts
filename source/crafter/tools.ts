@@ -1479,14 +1479,18 @@ namespace crafter {
 					}
 					if (diff == 0) {
 						const param2: number = core.dir_to_wallmounted(dir);
-						core.place_node(pointed_thing.above, {
-							name: "crafter_torch:wall",
-							param2: param2,
-						});
+						core.item_place(
+							ItemStack("crafter_torch:wall"),
+							placer,
+							pointed_thing,
+							param2
+						);
 					} else if (diff == -1) {
-						core.place_node(pointed_thing.above, {
-							name: "crafter_torch:floor",
-						});
+						core.item_place(
+							ItemStack("crafter_torch:floor"),
+							placer,
+							pointed_thing
+						);
 					}
 					//take item
 					if (diff == 0 || diff == -1) {
