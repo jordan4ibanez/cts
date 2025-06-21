@@ -251,22 +251,27 @@ namespace hopper {
 					}
 				}
 			}
-			// 		local node = core.get_node(pos)
-			// 		local dir = core.facedir_to_dir(node.param2)
-			// 		local default_destination_pos = vector.add(pos, dir)
-			// 		local default_output_direction
-			// 		if dir.y == 0 then
-			// 			default_output_direction = "horizontal"
-			// 		end
-			// 		dir = bottomdir(node.param2)
-			// 		local filter_destination_pos = vector.add(pos, dir)
-			// 		local filter_output_direction
-			// 		if dir.y == 0 then
-			// 			filter_output_direction = "horizontal"
-			// 		end
-			// 		local success = false
-			// 		local filter_destination_node = core.get_node(filter_destination_pos)
-			// 		local registered_inventories = hopper.get_registered_inventories_for(filter_destination_node.name)
+			const node: NodeTable = core.get_node(pos);
+			const firstDir: Vec3 = core.facedir_to_dir(node.param2 || 0);
+			const default_destination_pos: Vec3 = vector.add(pos, firstDir);
+			let default_output_direction: string | null = null;
+			if (firstDir.y == 0) {
+				default_output_direction = "horizontal";
+			}
+			const dir: Vec3 = bottomdir(node.param2 || 0);
+			const filter_destination_pos: Vec3 = vector.add(pos, dir);
+			let filter_output_direction: string | null = null;
+			if (dir.y == 0) {
+				filter_output_direction = "horizontal";
+			}
+			let success: boolean = false;
+			const filter_destination_node: NodeTable = core.get_node(
+				filter_destination_pos
+			);
+			const registered_inventories: ContainerData | undefined =
+				hopper.get_registered_inventories_for(
+					filter_destination_node.name
+				);
 			// 		if registered_inventories ~= nil then
 			// 			if filter_output_direction == "horizontal" then
 			// 				success = hopper.send_item_to(pos, filter_destination_pos, filter_destination_node, registered_inventories["side"], filter_items)
