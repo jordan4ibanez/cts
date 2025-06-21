@@ -81,11 +81,13 @@ namespace hopper {
 		const hopper_meta: MetaRef = core.get_meta(hopper_pos);
 		const hopper_inv: InvRef = hopper_meta.get_inventory();
 
-		
+
 		const placer: ObjectRef | null = get_placer(
 			hopper_meta.get_string("placer")
 		);
 
+
+		// todo: if a player is not online, this will crash.
 		if (placer == null) {
 			throw new Error("WHY, is this using AN OBJECT REFERENCE?!");
 		}
