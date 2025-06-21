@@ -21,7 +21,161 @@ namespace tnt {
 		diggingNodes.add(core.get_content_id(node));
 	}
 
-	function explosion(pos: Vec3, range: number): void {}
+	function explosion(pos: Vec3, range: number): void {
+		const min: Vec3 = vector.add(pos, range);
+		const max: Vec3 = vector.subtract(pos, range);
+		const vm: VoxelManipObject = core.get_voxel_manip(min, max);
+		const data: number[] = vm.get_data();
+		const [emin, emax] = vm.read_from_map(min, max);
+		const area: VoxelAreaObject = VoxelArea(emin, emax);
+
+		vm.get_light_data();
+		const range_calc: number = range / 100;
+		const explosion_depletion: number = range / 2;
+		// Raycast explosion.
+		for (const x of $range(-range, range)) {
+			for (const y of $range(-range, range)) {
+				for (const z of $range(-range, range)) {
+					const distance: number = vector.distance(
+						pos,
+						vector.create3d(x, y, z)
+					);
+
+					if (distance > range || distance < range - 1) {
+						continue;
+					}
+					const ray: RaycastObject = core.raycast(
+						pos,
+						vector.create3d(pos.x + x, pos.y + y, pos.z + z),
+						false,
+						false
+					);
+
+					let explosion_force: number = range;
+
+					for (const pointed_thing of ray) {
+						explosion_force = explosion_force - math.random();
+						if (explosion_force < explosion_depletion) {
+							break;
+						}
+
+						if (pointed_thing.under == null) {
+							core.log(
+								LogLevel.warning,
+								"Missing pointed thing under."
+							);
+							break;
+						}
+
+						const n_pos: number = area.index(
+							pointed_thing.under.x,
+							pointed_thing.under.y,
+							pointed_thing.under.z
+						);
+
+						const currentID: number | undefined = data[n_pos - 1];
+
+						if (currentID == null) {
+							continue;
+						}
+
+						if (currentID == obsidian || currentID == bedrock) {
+							break;
+						} else if (diggingNodes.has(currentID)) {
+							core.dig_node(
+								vector.create3d({
+									x: pointed_thing.under.x,
+									y: pointed_thing.under.y,
+									z: pointed_thing.under.z,
+								})
+							);
+							data[n_pos - 1] = air;
+						} else if (currentID == tntID) {
+							data[n_pos - 1] = air;
+							core.add_entity(
+								vector.create3d({
+									x: pointed_thing.under.x,
+									y: pointed_thing.under.y,
+									z: pointed_thing.under.z,
+								}),
+								"crafter_tnt:tnt",
+								core.serialize({
+									do_ignition_particles: true,
+									timer: math.random(),
+								})
+							);
+						} /* fixme: elseif (! string.match(node2, "mob_spawners:")) then*/ else {
+							data[n_pos - 1] = air;
+							core.after(
+								0,
+								(pointed_thing: PointedThing) => {
+									if (pointed_thing.under == null) {
+										core.log(
+											LogLevel.warning,
+											"Pointed thing became null?"
+										);
+										return;
+									}
+									core.check_for_falling(
+										vector.create3d({
+											x: pointed_thing.under.x,
+											y: pointed_thing.under.y + 1,
+											z: pointed_thing.under.z,
+										})
+									);
+								},
+								pointed_thing
+							);
+							if (
+								range_calc < 1 &&
+								math.random() > 0.9 + range_calc
+							) {
+								const nodeName: string =
+									core.get_name_from_content_id(currentID);
+
+								const item = core.get_node_drops(
+									nodeName,
+									"crafter:diamondpick"
+								);
+
+								if (item.length == 0) {
+									continue;
+								}
+
+								const ppos = vector.create3d({
+									x: pointed_thing.under.x,
+									y: pointed_thing.under.y,
+									z: pointed_thing.under.z,
+								});
+								const obj: ObjectRef | null = core.add_item(
+									ppos,
+									item[0]
+								);
+								if (obj != null) {
+									const power: number =
+										(range - vector.distance(pos, ppos)) *
+										2;
+									const dir: Vec3 = vector.subtract(
+										ppos,
+										pos
+									);
+									const force: Vec3 = vector.multiply(
+										dir,
+										power
+									);
+									obj.set_velocity(force);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		vm.set_data(data);
+		vm.update_liquids();
+		vm.write_to_map();
+	}
 
 	export function tnt(pos: Vec3, range: number, explosion_type: string) {
 		const in_node: string = core.get_node(pos).name;
@@ -29,163 +183,7 @@ namespace tnt {
 			in_node == "crafter:water" || in_node == "crafter:waterflow";
 
 		if (!in_water) {
-			const min: Vec3 = vector.add(pos, range);
-			const max: Vec3 = vector.subtract(pos, range);
-			const vm: VoxelManipObject = core.get_voxel_manip(min, max);
-			const data: number[] = vm.get_data();
-			const [emin, emax] = vm.read_from_map(min, max);
-			const area: VoxelAreaObject = VoxelArea(emin, emax);
-
-			vm.get_light_data();
-			const range_calc: number = range / 100;
-			const explosion_depletion: number = range / 2;
-			// Raycast explosion.
-			for (const x of $range(-range, range)) {
-				for (const y of $range(-range, range)) {
-					for (const z of $range(-range, range)) {
-						const distance: number = vector.distance(
-							pos,
-							vector.create3d(x, y, z)
-						);
-
-						if (distance > range || distance < range - 1) {
-							continue;
-						}
-						const ray: RaycastObject = core.raycast(
-							pos,
-							vector.create3d(pos.x + x, pos.y + y, pos.z + z),
-							false,
-							false
-						);
-
-						let explosion_force: number = range;
-
-						for (const pointed_thing of ray) {
-							explosion_force = explosion_force - math.random();
-							if (explosion_force < explosion_depletion) {
-								break;
-							}
-
-							if (pointed_thing.under == null) {
-								core.log(
-									LogLevel.warning,
-									"Missing pointed thing under."
-								);
-								break;
-							}
-
-							const n_pos: number = area.index(
-								pointed_thing.under.x,
-								pointed_thing.under.y,
-								pointed_thing.under.z
-							);
-
-							const currentID: number | undefined =
-								data[n_pos - 1];
-
-							if (currentID == null) {
-								continue;
-							}
-
-							if (currentID == obsidian || currentID == bedrock) {
-								break;
-							} else if (diggingNodes.has(currentID)) {
-								core.dig_node(
-									vector.create3d({
-										x: pointed_thing.under.x,
-										y: pointed_thing.under.y,
-										z: pointed_thing.under.z,
-									})
-								);
-								data[n_pos - 1] = air;
-							} else if (currentID == tntID) {
-								data[n_pos - 1] = air;
-								core.add_entity(
-									vector.create3d({
-										x: pointed_thing.under.x,
-										y: pointed_thing.under.y,
-										z: pointed_thing.under.z,
-									}),
-									"crafter_tnt:tnt",
-									core.serialize({
-										do_ignition_particles: true,
-										timer: math.random(),
-									})
-								);
-							} /* fixme: elseif (! string.match(node2, "mob_spawners:")) then*/ else {
-								data[n_pos - 1] = air;
-								core.after(
-									0,
-									(pointed_thing: PointedThing) => {
-										if (pointed_thing.under == null) {
-											core.log(
-												LogLevel.warning,
-												"Pointed thing became null?"
-											);
-											return;
-										}
-										core.check_for_falling(
-											vector.create3d({
-												x: pointed_thing.under.x,
-												y: pointed_thing.under.y + 1,
-												z: pointed_thing.under.z,
-											})
-										);
-									},
-									pointed_thing
-								);
-								if (
-									range_calc < 1 &&
-									math.random() > 0.9 + range_calc
-								) {
-									const nodeName: string =
-										core.get_name_from_content_id(
-											currentID
-										);
-
-									const item = core.get_node_drops(
-										nodeName,
-										"crafter:diamondpick"
-									);
-
-									if (item.length == 0) {
-										continue;
-									}
-
-									const ppos = vector.create3d({
-										x: pointed_thing.under.x,
-										y: pointed_thing.under.y,
-										z: pointed_thing.under.z,
-									});
-									const obj: ObjectRef | null = core.add_item(
-										ppos,
-										item[0]
-									);
-									if (obj != null) {
-										const power: number =
-											(range -
-												vector.distance(pos, ppos)) *
-											2;
-										const dir: Vec3 = vector.subtract(
-											ppos,
-											pos
-										);
-										const force: Vec3 = vector.multiply(
-											dir,
-											power
-										);
-										obj.set_velocity(force);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-
-			vm.set_data(data);
-			vm.update_liquids();
-			vm.write_to_map();
+			explosion(pos, range);
 		}
 
 		// 	if core.get_us_time()/1000000 - boom_time >= 0.1 then
