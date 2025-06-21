@@ -326,7 +326,11 @@ namespace hopper {
 						);
 					}
 				} else {
-					// 				hopper.send_item_to(pos, default_destination_pos, default_destination_node)
+					hopper.send_item_to(
+						pos,
+						default_destination_pos,
+						default_destination_node
+					);
 				}
 			}
 			// 		if not inv:is_empty("main") then
