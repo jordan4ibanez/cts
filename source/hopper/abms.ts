@@ -203,10 +203,11 @@ namespace hopper {
 				destination_pos = vector.add(pos, destination_dir);
 			}
 
-			// 		local output_direction
-			// 		if destination_dir.y == 0 then
-			// 			output_direction = "horizontal"
-			// 		end
+			let output_direction: string | null = null;
+			if (destination_dir.y == 0) {
+				output_direction = "horizontal";
+			}
+
 			// 		local source_node = core.get_node(source_pos)
 			// 		local destination_node = core.get_node(destination_pos)
 			// 		local registered_source_inventories = hopper.get_registered_inventories_for(source_node.name)
