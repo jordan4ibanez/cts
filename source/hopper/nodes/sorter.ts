@@ -44,7 +44,7 @@
 // 	return formspec
 // end
 
-// core.register_node("hopper:sorter", {
+// core.register_node("crafter_hopper:sorter", {
 // 	description = S("Sorter"),
 // 	_doc_items_longdesc = hopper.doc.sorter_long_desc,
 // 	_doc_items_usagehelp = hopper.doc.sorter_usage,
