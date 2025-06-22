@@ -19,9 +19,9 @@ namespace types {
 		// Note: moveResult: only available if physical=true
 		on_step?(delta: number, moveResult: MoveResult | null): void;
 		on_punch?(
-			puncher: ObjectRef,
-			timeFromLastPunch: number,
-			toolCapabilities: ToolCapabilities,
+			puncher: ObjectRef | null,
+			timeFromLastPunch: number | null,
+			toolCapabilities: ToolCapabilities | null,
 			dir: Vec3,
 			damage: number
 		): void;
