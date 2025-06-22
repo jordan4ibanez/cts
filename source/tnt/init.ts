@@ -389,13 +389,14 @@ namespace tnt {
 			this.object.set_acceleration(
 				vector.create3d({ x: 0, y: -9.81, z: 0 })
 			);
-			// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
-			// 		local data = core.deserialize(staticdata)
-			// 		if data and type(data) == "table" then
-			// 			this.range = data.range
-			// 			this.timer = data.timer
-			// 			this.exploded = data.exploded
-			// 		end
+
+			const data: any = core.deserialize(staticdata);
+			if (data != null && typeof data == "object") {
+				this.range = data.range || 7;
+				this.timer = data.timer || 5;
+				this.exploded = data.exploded || false;
+			}
+
 			// 	if this.timer == this.timer_max then
 			// 		core.add_particlespawner({
 			// 			amount = 10,
@@ -484,6 +485,7 @@ namespace tnt {
 			}
 		},
 	});
+	utility.registerTSEntity(TntEntity);
 
 	// core.register_node("crafter_tnt:uranium_tnt", {
 	//     description = "Uranium TNT",
