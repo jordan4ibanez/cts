@@ -216,29 +216,30 @@ namespace tnt {
 								pointed_thing.under
 							);
 						} /* fixme: elseif (! string.match(node2, "mob_spawners:")) then*/ else {
+							const currentID: number = data[n_pos - 1];
 							data[n_pos - 1] = air;
-
-							// todo: make this check for falling nodes.
-							// core.after(
-							// 	0,
-							// 	(pointed_thing: PointedThing) => {
-							// 		if (pointed_thing.under == null) {
-							// 			core.log(
-							// 				LogLevel.warning,
-							// 				"Pointed thing became null?"
-							// 			);
-							// 			return;
-							// 		}
-							// 		core.check_for_falling(
-							// 			vector.create3d({
-							// 				x: pointed_thing.under.x,
-							// 				y: pointed_thing.under.y + 1,
-							// 				z: pointed_thing.under.z,
-							// 			})
-							// 		);
-							// 	},
-							// 	pointed_thing
-							// );
+							if (fallingNodes.has(currentID)) {
+								core.after(
+									0,
+									(pointed_thing: PointedThing) => {
+										if (pointed_thing.under == null) {
+											core.log(
+												LogLevel.warning,
+												"Pointed thing became null?"
+											);
+											return;
+										}
+										core.check_for_falling(
+											vector.create3d({
+												x: pointed_thing.under.x,
+												y: pointed_thing.under.y + 1,
+												z: pointed_thing.under.z,
+											})
+										);
+									},
+									pointed_thing
+								);
+							}
 
 							if (
 								range_calc < 1 &&
