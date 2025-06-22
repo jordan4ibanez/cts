@@ -241,6 +241,7 @@ namespace sign {
 					pitch = rot90;
 					yaw = math.pi;
 				}
+				// On stick?
 			} else if (def.paramtype2 == ParamType2.facedir) {
 				if (node.param2 == 4) {
 					pitch = -rot90;
@@ -253,6 +254,7 @@ namespace sign {
 		}
 
 		obj.set_rotation(vector.create3d({ x: pitch, y: yaw, z: 0 }));
+
 		if (texture == null) {
 			obj.set_properties({
 				mesh: def.entity_info.mesh,
