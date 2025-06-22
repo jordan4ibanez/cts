@@ -434,27 +434,56 @@ namespace tnt {
 	}
 
 	core.register_node("crafter_tnt:tnt", {
-	    description : "TNT",
-	    tiles : ["tnt_top.png", "tnt_bottom.png",
-				"tnt_side.png", "tnt_side.png",
-				"tnt_side.png", "tnt_side.png"],
-	    groups : {stone : 2, hard : 1, pickaxe : 2, hand : 4, redstone_activation : 1},
-	    sounds : crafter.stoneSound(),
-	    redstone_activation = (pos: Vec3) => {
-			local obj = core.add_entity(pos,"crafter_tnt:tnt")
-			local range = 4
-			obj:get_luaentity().range = range
-			obj:get_luaentity().redstone_activated = true
-			core.remove_node(pos)
-		}
+		description: "TNT",
+		tiles: [
+			"tnt_top.png",
+			"tnt_bottom.png",
+			"tnt_side.png",
+			"tnt_side.png",
+			"tnt_side.png",
+			"tnt_side.png",
+		],
+		groups: {
+			stone: 2,
+			hard: 1,
+			pickaxe: 2,
+			hand: 4,
+			redstone_activation: 1,
+		},
+		sounds: crafter.stoneSound(),
+		redstone_activation: (pos: Vec3) => {
+			const obj: ObjectRef | null = core.add_entity(
+				pos,
+				"crafter_tnt:tnt"
+			);
+			const range: number = 4;
+			if (obj != null) {
+				const luaEntity: TntEntity | null =
+					obj.get_luaentity() as TntEntity | null;
+				if (luaEntity != null) {
+					luaEntity.range = range;
+					luaEntity.redstone_activated = true;
+					core.remove_node(pos);
+				}
+			}
+		},
 
-	    // on_punch = function(pos, node, puncher, pointed_thing)
-		// 	local obj = core.add_entity(pos,"crafter_tnt:tnt")
-		// 	local range = 4
-		// 	obj:get_luaentity().range = range
-		// 	core.remove_node(pos)
-	    // end,
-	})
+		on_punch: (pos: Vec3) => {
+			const obj: ObjectRef | null = core.add_entity(
+				pos,
+				"crafter_tnt:tnt"
+			);
+			const range: number = 4;
+			if (obj != null) {
+				const luaEntity: TntEntity | null =
+					obj.get_luaentity() as TntEntity | null;
+				if (luaEntity != null) {
+					luaEntity.range = range;
+					core.remove_node(pos);
+				}
+			}
+		},
+	});
 
 	// core.register_node("crafter_tnt:uranium_tnt", {
 	//     description = "Uranium TNT",
