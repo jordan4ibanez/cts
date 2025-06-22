@@ -822,9 +822,9 @@ namespace sign {
 		// 	end
 	}
 
-	// function signs_lib.destruct_sign(pos)
-	// 	signs_lib.delete_objects(pos)
-	// end
+	function destruct_sign(pos: Vec3) {
+		delete_objects(pos);
+	}
 
 	function update_sign(pos: Vec3, fields?: { text: string }): void {
 		const meta: MetaRef = core.get_meta(pos);
@@ -1128,6 +1128,7 @@ namespace sign {
 		};
 		def.node_placement_prediction = "";
 		def.after_place_node = after_place_node;
+		def.on_destruct = destruct_sign;
 		def.paramtype = ParamType1.light;
 		def.drawtype = Drawtype.mesh;
 		def.mesh = "signs_lib_standard_sign_wall.obj";
