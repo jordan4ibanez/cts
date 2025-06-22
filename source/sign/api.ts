@@ -896,27 +896,8 @@ namespace sign {
 
 		def.after_place_node = after_place_node;
 
-		// 	if raw_def.entity_info then
-		// 		def.on_rightclick	 = raw_def.on_rightclick	 or signs_lib.construct_sign
-		// 		def.on_construct	  = raw_def.on_construct	  or signs_lib.construct_sign
-		// 		def.on_destruct	   = raw_def.on_destruct	   or signs_lib.destruct_sign
-		// 		def.on_receive_fields   = raw_def.on_receive_fields   or signs_lib.receive_fields
-		// 		def.on_punch		= raw_def.on_punch		or signs_lib.update_sign
-		// 		def.number_of_lines     = raw_def.number_of_lines     or signs_lib.standard_lines
-		// 		def.horiz_scaling	 = raw_def.horiz_scaling	 or signs_lib.standard_hscale
-		// 		def.vert_scaling	  = raw_def.vert_scaling	  or signs_lib.standard_vscale
-		// 		def.line_spacing	  = raw_def.line_spacing	  or signs_lib.standard_lspace
-		// 		def.font_size	     = raw_def.font_size	     or signs_lib.standard_fsize
-		// 		def.x_offset		= raw_def.x_offset		or signs_lib.standard_xoffs
-		// 		def.y_offset		= raw_def.y_offset		or signs_lib.standard_yoffs
-		// 		def.chars_per_line	= raw_def.chars_per_line	or signs_lib.standard_cpl
-		// 		def.default_color	 = raw_def.default_color	 or "0"
-		// 		if raw_def.locked and not raw_def.after_place_node then
-		// 			def.after_place_node = function(pos, placer, itemstack, pointed_thing)
-		// 				signs_lib.after_place_node(pos, placer, itemstack, pointed_thing, true)
-		// 			end
-		// 		end
-		// 	end
+		
+
 		// 	def.paramtype	     = raw_def.paramtype	     or "light"
 		// 	def.drawtype		= raw_def.drawtype		or "mesh"
 		// 	def.mesh		    = raw_def.mesh		    or "signs_lib_standard_sign_wall.obj"
