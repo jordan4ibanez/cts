@@ -497,11 +497,9 @@ namespace sign {
 		return [cw, cbw, cbh, total_width / char_count];
 	}
 
-	// signs_lib.charwidth15,
-	// signs_lib.colorbgw15,
-	// signs_lib.lineheight15,
-	// signs_lib.avgwidth15 = build_char_db(15)
-	
+	const [charwidth15, colorbgw15, lineheight15, avgwidth15] =
+		build_char_db(15);
+
 	// signs_lib.charwidth31,
 	// signs_lib.colorbgw31,
 	// signs_lib.lineheight31,
