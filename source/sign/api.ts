@@ -754,7 +754,7 @@ namespace sign {
 	function make_selection_boxes(
 		sizex: number,
 		sizey: number,
-		foo?: number | null,
+		foo?: number | null | boolean,
 		xoffs?: number,
 		yoffs?: number,
 		zoffs?: number,
