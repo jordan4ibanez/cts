@@ -331,7 +331,24 @@ namespace tnt {
 
 	class TntEntity extends types.Entity {
 		name: string = "crafter_tnt:tnt";
+
+		// 	initial_properties = {
+		// 		hp_max = 1,
+		// 		physical = true,
+		// 		collide_with_objects = false,
+		// 		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		// 		visual = "cube",
+		// 		visual_size = {x = 1, y = 1},
+		// 		textures = {"tnt_top.png", "tnt_bottom.png",
+		// 			"tnt_side.png", "tnt_side.png",
+		// 			"tnt_side.png", "tnt_side.png"},
+		// 		is_visible = true,
+		// 		pointable = true,
+		// 	},
 		shot: boolean = false;
+		// 	timer = 5,
+		// 	timer_max = 5, //this has to be equal to timer
+		// 	range = 7,
 
 		// local tnt_boom = function(self,dtime)
 		// 	self.timer = self.timer - dtime
@@ -392,24 +409,6 @@ namespace tnt {
 		// 	})
 		// end
 
-		
-		// 	initial_properties = {
-		// 		hp_max = 1,
-		// 		physical = true,
-		// 		collide_with_objects = false,
-		// 		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		// 		visual = "cube",
-		// 		visual_size = {x = 1, y = 1},
-		// 		textures = {"tnt_top.png", "tnt_bottom.png",
-		// 			"tnt_side.png", "tnt_side.png",
-		// 			"tnt_side.png", "tnt_side.png"},
-		// 		is_visible = true,
-		// 		pointable = true,
-		// 	},
-		// 	timer = 5,
-		// 	timer_max = 5, //this has to be equal to timer
-		// 	range = 7,
-
 		// 	get_staticdata = function(self)
 		// 		return(static(self))
 		// 	end,
@@ -424,7 +423,6 @@ namespace tnt {
 		// 	on_step = function(self, dtime)
 		// 		tnt_boom(self,dtime)
 		// 	end,
-		
 	}
 
 	// core.register_node("crafter_tnt:tnt", {
