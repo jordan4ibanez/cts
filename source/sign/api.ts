@@ -35,7 +35,7 @@ namespace sign {
 	standard_wood_groups.attached_node = 0;
 
 	export const standard_wood_sign_sounds = (() => {
-		const data = core.registered_items["crafter:wood"]?.sound;
+		const data = core.registered_nodes["crafter:wood"]?.sounds;
 		if (data == null) {
 			throw new Error("Logic error.");
 		}
