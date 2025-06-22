@@ -222,7 +222,7 @@ namespace sign {
 			}
 		}
 
-		let yaw: number = def.entity_info.yaw[(node.param2 || 0) + 2] || 0;
+		let yaw: number = wallmounted_yaw[(node.param2 || 0) - 1] || 0;
 
 		let pitch: number = 0;
 
