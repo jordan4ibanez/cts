@@ -693,7 +693,7 @@ namespace sign {
 
 			texture.push(
 				string.format(":%d,%d=", xpos + word.w, ypos) +
-					char_tex(font_name, " ")
+					char_tex(font_name, " ")[0]
 			);
 			xpos = xpos + word.w + (cwidth_tab[" "] || 0);
 			if (xpos >= line_width + (cwidth_tab[" "] || 0)) {
