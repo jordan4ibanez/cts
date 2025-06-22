@@ -38,13 +38,17 @@ namespace tnt {
 		const range_calc: number = range / 100;
 		const explosion_depletion: number = range / 2;
 
+		// Java techniques in typescript compiling into lua. Amazing.
+		const workerVec: Vec3 = vector.create3d();
+
 		for (const x of $range(-range, range)) {
 			for (const y of $range(-range, range)) {
 				for (const z of $range(-range, range)) {
-					const distance: number = vector.distance(
-						pos,
-						vector.create3d(x, y, z)
-					);
+					workerVec.x = pos.x + x;
+					workerVec.y = pos.y + y;
+					workerVec.z = pos.z + z;
+
+					const distance: number = vector.distance(pos, workerVec);
 
 					if (distance > range || distance < range - 1) {
 						continue;
