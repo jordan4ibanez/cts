@@ -637,15 +637,18 @@ namespace sign {
 		cur_color = null;
 
 		for (const [word_i, word] of ipairs(words)) {
-			// 		local xoffs = (xpos - start_xpos)
-			// 		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
-			// 			table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
+			let xoffs: number = xpos - start_xpos;
+					if ((xoffs > 0) && ((xoffs + word.w) > maxw)) {
+						// todo: was here
+						texture.push(fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
+						
 			// 			xpos = start_xpos
 			// 			ypos = ypos + line_height + def.line_spacing
 			// 			lineno = lineno + 1
 			// 			if lineno >= def.number_of_lines then break end
 			// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
-			// 		end
+					}
+
 			// 		for ch_i, ch in ipairs(word.chars) do
 			// 			if ch.col ~= cur_color then
 			// 				cur_color = ch.col
