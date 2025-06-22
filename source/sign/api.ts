@@ -1070,25 +1070,38 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_hanging", hanging_def);
 		lbm_restore_nodes.add(no_wall_name + "_hanging");
 
-		// 	if raw_def.allow_yard then
-		// 		local ydef = table.copy(def)
-		// 		ydef.paramtype2 = "facedir"
-		// 		local ycbox = signs_lib.make_selection_boxes(35, 34.5, false, 0, -1.25, -19.69, true)
-		// 		ydef.selection_box = raw_def.yard_selection_box or ycbox
-		// 		ydef.tiles[3] = raw_def.tiles[5] or "wood.png"
-		// 		ydef.tiles[4] = "signs_lib_blank.png"
-		// 		ydef.tiles[5] = "signs_lib_blank.png"
-		// 		ydef.tiles[6] = "signs_lib_blank.png"
-		// 		ydef.node_box = raw_def.yard_node_box or raw_def.yard_selection_box or ycbox
-		// 		ydef.groups.not_in_creative_inventory = 1
-		// 		ydef.mesh = raw_def.yard_mesh or string.gsub(string.gsub(ydef.mesh, "wall.obj$", "yard.obj"), "_facedir", "")
-		// 		if ydef.entity_info then
-		// 			ydef.entity_info.mesh = string.gsub(string.gsub(ydef.entity_info.mesh, "entity_wall.obj$", "entity_yard.obj"), "_facedir", "")
-		// 			ydef.entity_info.yaw = signs_lib.standard_yaw
-		// 		end
-		// 		core.register_node(":"+no_wall_name+"_yard", ydef)
-		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_yard")
-		// 	end
+		const ydef: SignDefinitionComplete = table.copy(
+			def as any as LuaTable
+		) as any as SignDefinitionComplete;
+		ydef.paramtype2 = ParamType2.facedir;
+		const ycbox = make_selection_boxes(
+			35,
+			34.5,
+			false,
+			0,
+			-1.25,
+			-19.69,
+			true
+		);
+		ydef.selection_box = ycbox;
+		if (ydef.tiles == null) {
+			throw new Error("Logic error 6");
+		}
+		ydef.tiles[3] = "wood.png";
+		ydef.tiles[4] = "signs_lib_blank.png";
+		ydef.tiles[5] = "signs_lib_blank.png";
+		ydef.tiles[6] = "signs_lib_blank.png";
+		ydef.node_box = ycbox;
+
+		ydef.mesh = string.gsub(
+			string.gsub(ydef.mesh || "", "wall.obj$", "yard.obj")[0],
+			"_facedir",
+			""
+		)[0];
+
+		core.register_node(":" + no_wall_name + "_yard", ydef);
+		lbm_restore_nodes.add(no_wall_name + "_yard");
+
 		// 	if raw_def.allow_widefont then
 		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont")
 		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
