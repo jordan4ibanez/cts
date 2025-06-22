@@ -1129,8 +1129,11 @@ namespace sign {
 			yaw: wallmounted_yaw,
 		};
 		def.node_placement_prediction = "";
+		def.on_construct = construct_sign;
 		def.after_place_node = after_place_node;
+		def.on_rightclick = construct_sign;
 		def.on_destruct = destruct_sign;
+		def.on_receive_fields = receive_fields;
 		def.paramtype = ParamType1.light;
 		def.drawtype = Drawtype.mesh;
 		def.mesh = "signs_lib_standard_sign_wall.obj";
@@ -1144,7 +1147,6 @@ namespace sign {
 		def.selection_box = cbox;
 		def.node_box = cbox;
 		def.sunlight_propagates = true;
-		def.on_rightclick = construct_sign;
 
 		if (def.tiles == null) {
 			throw new Error("incorrect tiles.");
