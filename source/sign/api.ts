@@ -571,9 +571,14 @@ namespace sign {
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 		const default_color: number = 0;
+
 		let cur_color: string | number | null = 0;
+
 		// We check which chars are available here.
-		for (let [word_i, word] of ipairs(line)) {
+
+		print(dump(line.split("")));
+
+		for (let [word_i, word] of ipairs(line.split(""))) {
 			if (typeof word != "string") {
 				core.log(LogLevel.error, "Not a string.");
 				continue;
