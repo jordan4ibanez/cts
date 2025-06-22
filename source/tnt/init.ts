@@ -355,10 +355,10 @@ namespace tnt {
 			pointable: true,
 		};
 
+		static readonly timer_max: number = 5;
+
 		shot: boolean = false;
 		timer: number = 5;
-		// This has to be equal to timer.
-		timer_max: number = 5;
 		range: number = 7;
 		sound_played: boolean = false;
 		exploded: boolean = false;
