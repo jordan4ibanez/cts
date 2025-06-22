@@ -551,7 +551,7 @@ namespace sign {
 		cwidth_tab: Dictionary<string, number>,
 		font_size: number,
 		colorbgw: number
-	) {
+	): [string, number] {
 		let width: number = 0;
 		let maxw: number = 0;
 		let font_name: string = "signs_lib_font_" + font_size + "px";
@@ -696,9 +696,18 @@ namespace sign {
 				break;
 			}
 		}
-		// 	table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
-		// 	table.insert(texture, fill_line(start_xpos, ypos + line_height, maxw, "n", font_size, colorbgw))
-		// 	return table.concat(texture), lineno
+		texture.push(fill_line(xpos, ypos, maxw, "n", font_size, colorbgw));
+		texture.push(
+			fill_line(
+				start_xpos,
+				ypos + line_height,
+				maxw,
+				"n",
+				font_size,
+				colorbgw
+			)
+		);
+		return [table.concat(texture), lineno];
 	}
 
 	function make_sign_texture(lines: string[], pos: Vec3): string {
