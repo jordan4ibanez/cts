@@ -500,10 +500,9 @@ namespace sign {
 	const [charwidth15, colorbgw15, lineheight15, avgwidth15] =
 		build_char_db(15);
 
-	// signs_lib.charwidth31,
-	// signs_lib.colorbgw31,
-	// signs_lib.lineheight31,
-	// signs_lib.avgwidth31 = build_char_db(31)
+	const [charwidth31, colorbgw31, lineheight31, avgwidth31] =
+		build_char_db(31);
+
 	// local sign_groups = {choppy=2, dig_immediate=2}
 
 	// local fences_with_sign = { }
