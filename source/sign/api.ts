@@ -181,7 +181,6 @@ namespace sign {
 
 	interface SignNodeDefinition extends NodeDefinition {
 		entity_info?: {
-			yaw: number[];
 			mesh: string;
 		};
 	}
@@ -1093,7 +1092,6 @@ namespace sign {
 	/** @noSelf **/ interface SignNodeDefinition extends NodeDefinition {
 		entity_info?: {
 			mesh: string;
-			yaw: number[];
 		};
 		on_rotate?: (pos: Vec3, node: NodeTable, user: ObjectRef) => boolean;
 	}
@@ -1102,7 +1100,6 @@ namespace sign {
 	export function register_sign(name: string, def: SignNodeDefinition) {
 		def.entity_info = {
 			mesh: "signs_lib_standard_sign_entity_wall.obj",
-			yaw: wallmounted_yaw,
 		};
 		def.node_placement_prediction = "";
 		def.on_construct = construct_sign;
