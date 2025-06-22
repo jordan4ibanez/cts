@@ -46,9 +46,10 @@ namespace tnt {
 					workerVec.y = pos.y + y;
 					workerVec.z = pos.z + z;
 
-					const distance: number = vector.distance(pos, workerVec);
-
-					if (distance > range || distance < range - 1) {
+					const distance: number = math.round(
+						vector.distance(pos, workerVec)
+					);
+					if (distance > range || distance == range - 1) {
 						continue;
 					}
 					const ray: RaycastObject = core.raycast(
