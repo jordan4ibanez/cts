@@ -504,7 +504,7 @@ namespace sign {
 		x: number,
 		y: number,
 		w: number,
-		c: string,
+		c: string | null,
 		font_size: number,
 		colorbgw: number
 	): string {
@@ -653,16 +653,19 @@ namespace sign {
 		for (const [word_i, word] of ipairs(words)) {
 			let xoffs: number = xpos - start_xpos;
 			if (xoffs > 0 && xoffs + word.w > maxw) {
-				// todo: was here
 				texture.push(
 					fill_line(xpos, ypos, maxw, "n", font_size, colorbgw)
 				);
 
-				// 			xpos = start_xpos
-				// 			ypos = ypos + line_height + def.line_spacing
-				// 			lineno = lineno + 1
-				// 			if lineno >= def.number_of_lines then break end
-				// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
+				xpos = start_xpos;
+				ypos = ypos + line_height + standard_lspace;
+				lineno = lineno + 1;
+				if (lineno >= standard_lines) {
+					break;
+				}
+				texture.push(
+					fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw)
+				);
 			}
 
 			// 		for ch_i, ch in ipairs(word.chars) do
