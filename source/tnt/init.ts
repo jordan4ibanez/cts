@@ -81,8 +81,8 @@ namespace tnt {
 					workerVec.y = pos.y + y;
 					workerVec.z = pos.z + z;
 
-					const distance: number = math.round(
-						vector.distance(pos, workerVec)
+					const currentDistance: number = round(
+						distance(pos, workerVec)
 					);
 					if (distance > range || distance == range - 1) {
 						continue;
