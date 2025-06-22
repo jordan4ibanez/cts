@@ -294,13 +294,8 @@ namespace sign {
 	export function handle_rotation(
 		pos: Vec3,
 		node: NodeTable,
-		user: ObjectRef,
-		mode: string
+		user: ObjectRef
 	) {
-		// 	if not signs_lib.can_modify(pos, user)
-		// 	  or mode ~= screwdriver.ROTATE_FACE then
-		// 		return false
-		// 	end
 		// 	local newparam2
 		// 	local tpos = pos
 		// 	local def = core.registered_items[node.name]
