@@ -541,24 +541,32 @@ namespace tnt {
 		},
 	});
 
-	// core.register_node("crafter_tnt:uh_oh", {
-	//     description = "Uh Oh",
-	//     tiles = {"tnt_top.png", "tnt_bottom.png",
-	// 			"tnt_side.png", "tnt_side.png",
-	// 			"tnt_side.png", "tnt_side.png"},
-	//     groups = {stone = 2, hard = 1, pickaxe = 2, hand = 4},
-	//     sounds = main.stoneSound(),
-	//     on_construct = function(pos)
-	// 		local range = 5
-	// 		for x=-range, range do
-	// 		for y=-range, range do
-	// 		for z=-range, range do
-	// 			core.add_node(vector.new(pos.x+x,pos.y+y,pos.z+z),{name="crafter_tnt:tnt"})
-	// 		end
-	// 		end
-	// 		end
-	//     end,
-	// })
+	core.register_node("crafter_tnt:uh_oh", {
+		description: "Uh Oh",
+		tiles: [
+			"tnt_top.png",
+			"tnt_bottom.png",
+			"tnt_side.png",
+			"tnt_side.png",
+			"tnt_side.png",
+			"tnt_side.png",
+		],
+		groups: { stone: 2, hard: 1, pickaxe: 2, hand: 4 },
+		sounds: crafter.stoneSound(),
+		on_construct: (pos) => {
+			const range: number = 5;
+			for (const x of $range(-range, range)) {
+				for (const y of $range(-range, range)) {
+					for (const z of $range(-range, range)) {
+						core.add_node(
+							vector.create3d(pos.x + x, pos.y + y, pos.z + z),
+							{ name: "crafter_tnt:tnt" }
+						);
+					}
+				}
+			}
+		},
+	});
 
 	core.register_craft({
 		output: "crafter_tnt:tnt",
