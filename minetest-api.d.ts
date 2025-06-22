@@ -109,9 +109,9 @@ interface core {
 		fun: (
 			player: ObjectRef,
 			hitter: ObjectRef | null,
-			timeFromLastPunch: number,
-			toolCapabilities: ToolCapabilities,
-			dir: Vec3,
+			timeFromLastPunch: number | null,
+			toolCapabilities: ToolCapabilities | null,
+			dir: Vec3 | null,
 			damage: number
 		) => void
 	): void;
