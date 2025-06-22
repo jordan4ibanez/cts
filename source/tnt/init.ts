@@ -357,6 +357,7 @@ namespace tnt {
 		timer_max: number = 5;
 		range: number = 7;
 		sound_played: boolean = false;
+		exploded: boolean = false;
 
 		on_step(dtime: number): void {
 			// 	this.timer = this.timer - dtime
@@ -418,10 +419,15 @@ namespace tnt {
 			});
 		}
 
-		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-		// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
-		// 		this.object.remove()
-		// 	end,
+		on_punch(
+			puncher: ObjectRef,
+			time_from_last_punch: number,
+			tool_capabilities: ToolCapabilities,
+			dir: Vec3
+		) {
+			// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
+			// 		this.object.remove()
+		}
 	}
 
 	// core.register_node("crafter_tnt:tnt", {
