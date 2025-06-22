@@ -3,7 +3,7 @@ namespace sign {
 	export const old_fenceposts = {};
 	export const old_fenceposts_replacement_signs = {};
 	export const old_fenceposts_with_signs = {};
-	// // Settings used for a standard wood or steel wall sign
+	// Settings used for a standard wood or steel wall sign.
 	export const standard_lines = 6;
 	export const standard_hscale = 1;
 	export const standard_vscale = 1;
@@ -12,18 +12,35 @@ namespace sign {
 	export const standard_xoffs = 4;
 	export const standard_yoffs = 0;
 	export const standard_cpl = 35;
-	export const standard_wood_groups = () => {
+
+	export const standard_wood_groups: Dictionary<string, number> = (() => {
 		const data: Dictionary<string, number> | undefined =
 			core.registered_items["crafter:wood"]?.groups;
 		if (data == null) {
 			throw new Error("Logic error.");
 		}
-		table.copy(data as any as LuaTable);
-	};
-	// export const standard_wood_groups.sign = 1
-	// export const standard_wood_groups.attached_node = nil
-	// export const standard_wood_sign_sounds  = table.copy(core.registered_items["crafter:wood"].sounds)
-	// export const default_text_scale = {x=10, y=10}
+		return table.copy(data as any as LuaTable) as any as Dictionary<
+			string,
+			number
+		>;
+	})();
+
+	standard_wood_groups.sign = 1;
+	// todo: Why?
+	standard_wood_groups.attached_node = 0;
+
+	export const standard_wood_sign_sounds = (() => {
+		const data = core.registered_items["crafter:wood"]?.sound;
+		if (data == null) {
+			throw new Error("Logic error.");
+		}
+		return table.copy(data as any as LuaTable) as any as Dictionary<
+			string,
+			number
+		>;
+	})();
+
+	export const default_text_scale = { x: 10, y: 10 };
 	export const old_widefont_signs = {};
 	export const block_list = {};
 	export const totalblocks = 0;
