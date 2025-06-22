@@ -13,7 +13,7 @@ namespace sign {
 	export const standard_yoffs: number = 0;
 	export const standard_cpl: number = 35;
 
-	const path: string | null = core.get_modpath(core.get_current_modname());
+	const path: string | null = core.get_modpath("crafter_textures");
 	if (path == null) {
 		throw new Error("How did this happen?");
 	}
