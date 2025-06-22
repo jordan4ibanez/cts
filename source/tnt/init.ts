@@ -415,9 +415,9 @@ namespace tnt {
 			this.object.set_armor_groups({ immortal: 1 });
 			this.object.set_velocity(
 				vector.create3d({
-					x: math.random(-3, 3),
+					x: random(-3, 3),
 					y: 3,
-					z: math.random(-3, 3),
+					z: random(-3, 3),
 				})
 			);
 			this.object.set_acceleration(
