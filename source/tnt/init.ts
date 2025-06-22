@@ -375,7 +375,7 @@ namespace tnt {
 			// 	end
 		}
 
-		// local activation = function(self, staticdata, dtime_s)
+		// local on_activate = function(self, staticdata, dtime_s)
 		// 	this.object.set_armor_groups({immortal = 1})
 		// 	this.object.set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
 		// 	this.object.set_acceleration({x = 0, y = -9.81, z = 0})
@@ -387,6 +387,7 @@ namespace tnt {
 		// 			this.exploded = data.exploded
 		// 		end
 		// 	end
+
 		// 	if this.timer == this.timer_max then
 		// 		core.add_particlespawner({
 		// 			amount = 10,
@@ -420,9 +421,7 @@ namespace tnt {
 		// 	get_staticdata = function(self)
 		// 		return(static(self))
 		// 	end,
-		// 	on_activate = function(self, staticdata, dtime_s)
-		// 		activation(self, staticdata, dtime_s)
-		// 	end,
+		
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 		// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
 		// 		this.object.remove()
