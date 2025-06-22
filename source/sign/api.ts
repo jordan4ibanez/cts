@@ -44,26 +44,30 @@ namespace sign {
 	export const old_widefont_signs = {};
 	export const block_list = {};
 	export const totalblocks = 0;
-	// export const standard_yaw = {
-	// 	0,
-	// 	math.pi / -2,
-	// 	math.pi,
-	// 	math.pi / 2,
-	// }
-	// export const wallmounted_yaw = {
-	// 	nil,
-	// 	nil,
-	// 	math.pi / -2,
-	// 	math.pi / 2,
-	// 	0,
-	// 	math.pi,
-	// }
+	export const standard_yaw: number[] = [
+		0,
+		math.pi / -2,
+		math.pi,
+		math.pi / 2,
+	];
+
+	// fixme: the first two were nil instead of 0, this may cause problems.
+	export const wallmounted_yaw: number[] = [
+		0,
+		0,
+		math.pi / -2,
+		math.pi / 2,
+		0,
+		math.pi,
+	];
+
 	// export const fdir_to_back = {
 	// 	{  0, -1 },
 	// 	{ -1,  0 },
 	// 	{  0,  1 },
 	// 	{  1,  0 },
 	// }
+
 	// export const wall_fdir_to_back = {
 	// 	nil,
 	// 	nil,
