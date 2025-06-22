@@ -371,11 +371,16 @@ namespace tnt {
 	}
 
 	/**
-	 * 
+	 * Set off a TNT explosion at a position.
 	 * @param pos The position.
 	 * @param range The diameter of the explosion. // todo: rename this
 	 */
-	export function tnt(pos: Vec3, range: number) {}
+	export function tnt(pos: Vec3, range: number) {
+		queue.push({
+			pos: pos,
+			range: range,
+		});
+	}
 
 	// Serialization data for the tnt.
 	interface SerialTntData {
