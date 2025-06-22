@@ -2091,7 +2091,8 @@ declare global {
 		get_float(key: string): number;
 		get_keys(): string[];
 		to_table(): MetaData | null;
-		from_table(data: MetaData): boolean;
+		// Any non-table value for data will clear all metadata.
+		from_table(data: MetaData | null): boolean;
 		equals(other: MetaRef): boolean;
 		// fixme: USE INHERITANCE! <- inherit from what?
 		// node
