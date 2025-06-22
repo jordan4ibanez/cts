@@ -72,7 +72,7 @@ namespace tnt {
 		if (queue.length() == 0) {
 			return;
 		}
-		for (const _ of $range(1, 10)) {
+		for (const _ of $range(1, 20)) {
 			const thisComponent: ExplosionComponent | undefined = queue.pop();
 
 			if (thisComponent == null) {
