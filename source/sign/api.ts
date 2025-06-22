@@ -847,33 +847,35 @@ namespace sign {
 		}
 
 		if (fields.text != null && fields.ok != null) {
-			// 		core.log("action", S("@1 wrote \"@2\" to sign at @3",
-			// 			(sender:get_player_name() or ""),
-			// 			fields.text:gsub('\\', '\\\\'):gsub("\n", "\\n"),
-			// 			core.pos_to_string(pos)
-			// 		))
-			// 		signs_lib.update_sign(pos, fields)
-		} else if (fields.on || fields.off) {
-			// 		local node = core.get_node(pos)
-			// 		local meta = core.get_meta(pos)
-			// 		local change
-			// 		if fields.on and meta:get_int("widefont") == 1 then
-			// 			meta:set_int("widefont", 0)
-			// 			change = true
-			// 		elseif fields.off and meta:get_int("widefont") == 0 then
-			// 			meta:set_int("widefont", 1)
-			// 			change = true
-			// 		end
-			// 		if change then
-			// 			core.log("action", S("@1 flipped the wide-font switch to \"@2\" at @3",
-			// 				(sender:get_player_name() or ""),
-			// 				(fields.on and "off" or "on"),
-			// 				core.pos_to_string(pos)
-			// 			))
-			// 			signs_lib.construct_sign(pos)
-			// 			signs_lib.update_sign(pos, fields)
-			// 		end
+			core.log(
+				LogLevel.action,
+				`${sender.get_player_name()} wrote ${fields.text} to sign at ${
+					pos.x
+				} ${pos.y} ${pos.z}`
+			);
+			update_sign(pos, fields);
 		}
+		// else if (fields.on || fields.off) {
+		// 		local node = core.get_node(pos)
+		// 		local meta = core.get_meta(pos)
+		// 		local change
+		// 		if fields.on and meta:get_int("widefont") == 1 then
+		// 			meta:set_int("widefont", 0)
+		// 			change = true
+		// 		elseif fields.off and meta:get_int("widefont") == 0 then
+		// 			meta:set_int("widefont", 1)
+		// 			change = true
+		// 		end
+		// 		if change then
+		// 			core.log("action", S("@1 flipped the wide-font switch to \"@2\" at @3",
+		// 				(sender:get_player_name() or ""),
+		// 				(fields.on and "off" or "on"),
+		// 				core.pos_to_string(pos)
+		// 			))
+		// 			signs_lib.construct_sign(pos)
+		// 			signs_lib.update_sign(pos, fields)
+		// 		end
+		// }
 	}
 
 	// // make selection boxes
