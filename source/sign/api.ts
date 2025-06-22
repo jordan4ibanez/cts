@@ -794,10 +794,17 @@ namespace sign {
 				],
 			};
 		} else {
-			// 		return {
-			// 			type = "fixed",
-			// 			fixed = { -tx + xo, -ty + yo, 0.5 + zo, tx + xo, ty + yo, 0.4375 + zo}
-			// 		}
+			return {
+				type: Nodeboxtype.fixed,
+				fixed: [
+					-tx + xo,
+					-ty + yo,
+					0.5 + zo,
+					tx + xo,
+					ty + yo,
+					0.4375 + zo,
+				],
+			};
 		}
 	}
 	// function signs_lib.check_for_pole(pos, pointed_thing)
