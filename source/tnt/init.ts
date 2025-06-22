@@ -31,6 +31,21 @@ namespace tnt {
 		diggingNodes.add(core.get_content_id(node));
 	}
 
+	const fallingNodes = new Set<number>();
+	core.register_on_mods_loaded(() => {
+		for (const [name, def] of pairs(core.registered_nodes)) {
+			const groups: Dictionary<string, number> | undefined = def.groups;
+			if (groups == null) {
+				continue;
+			}
+			if (groups.falling_node || 0 > 0 || groups.attached_node || 0 > 0) {
+				const id = core.get_content_id(name);
+				// print("added: ", name, "as", id);
+				fallingNodes.add(id);
+			}
+		}
+	});
+
 	//! End localization and required constants.
 
 	interface ExplosionComponent {
