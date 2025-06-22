@@ -12,6 +12,7 @@ export {};
 /** @noSelf **/
 interface core {
 	PLAYER_MAX_HP_DEFAULT: number;
+	MAP_BLOCKSIZE: number;
 	get_current_modname(): string;
 	get_modpath(modName: string): string | null;
 	get_modnames(): string[];
