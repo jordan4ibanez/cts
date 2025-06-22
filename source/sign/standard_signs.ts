@@ -1,3 +1,4 @@
+namespace sign {
 // -- Definitions for standard minetest_game wooden and steel wall signs
 
 // signs_lib.register_sign("sign:sign", {
@@ -26,7 +27,7 @@
 // 	}
 // })
 
-// --[[
+/*
 // table.insert(signs_lib.lbm_restore_nodes, "signs:sign_hanging")
 // table.insert(signs_lib.lbm_restore_nodes, "basic_signs:hanging_sign")
 // table.insert(signs_lib.lbm_restore_nodes, "signs:sign_yard")
@@ -39,4 +40,5 @@
 // table.insert(signs_lib.old_fenceposts_with_signs, "signs:sign_post")
 // signs_lib.old_fenceposts["signs:sign_post"] = "default:fence_wood"
 // signs_lib.old_fenceposts_replacement_signs["signs:sign_post"] = "default:sign_wall_wood_onpole"
-// ]]--
+*/
+}
