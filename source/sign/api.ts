@@ -933,34 +933,46 @@ namespace sign {
 
 		const [no_wall_name] = string.gsub(name, "_wall", "");
 
-		const othermounts_def = table.copy(
+		const othermounts_def: NodeDefinition = table.copy(
 			def as any as LuaTable
 		) as any as NodeDefinition;
 
-			
-		// 		local offset = 0.3125
-		// 		if othermounts_def.uses_slim_pole_mount then
-		// 			offset = 0.35
-		// 		end
-		// 		othermounts_def.selection_box = raw_def.onpole_selection_box or othermounts_def.selection_box
-		// 		othermounts_def.node_box = raw_def.onpole_node_box or othermounts_def.selection_box
-		// 		if othermounts_def.paramtype2 == "wallmounted" then
-		// 			othermounts_def.node_box.wall_side[1] = def.node_box.wall_side[1] - offset
-		// 			othermounts_def.node_box.wall_side[4] = def.node_box.wall_side[4] - offset
-		// 			othermounts_def.selection_box.wall_side[1] = def.selection_box.wall_side[1] - offset
-		// 			othermounts_def.selection_box.wall_side[4] = def.selection_box.wall_side[4] - offset
-		// 		else
-		// 			othermounts_def.node_box.fixed[3] = def.node_box.fixed[3] + offset
-		// 			othermounts_def.node_box.fixed[6] = def.node_box.fixed[6] + offset
-		// 			othermounts_def.selection_box.fixed[3] = def.selection_box.fixed[3] + offset
-		// 			othermounts_def.selection_box.fixed[6] = def.selection_box.fixed[6] + offset
-		// 		end
+		const offset: number = 0.3125;
+
+		othermounts_def.selection_box = def.selection_box;
+		othermounts_def.node_box = def.selection_box;
+
+		if (othermounts_def.paramtype2 == ParamType2.wallmounted) {
+			if (
+				othermounts_def.node_box?.wall_side == null ||
+				def.node_box?.wall_side == null ||
+				othermounts_def.selection_box?.wall_side == null ||
+				def.node_box.wall_side == null ||
+				def.selection_box?.wall_side == null
+			) {
+				throw new Error("logic error.");
+			}
+
+			othermounts_def.node_box.wall_side[0] =
+				(def.node_box.wall_side as box)[0] - offset;
+			othermounts_def.node_box.wall_side[3] =
+				(def.node_box.wall_side as box)[3] - offset;
+			othermounts_def.selection_box.wall_side[0] =
+				(def.selection_box.wall_side as box)[0] - offset;
+			othermounts_def.selection_box.wall_side[3] =
+				(def.selection_box.wall_side as box)[3] - offset;
+		} else {
+			// 			othermounts_def.node_box.fixed[3] = def.node_box.fixed[3] + offset
+			// 			othermounts_def.node_box.fixed[6] = def.node_box.fixed[6] + offset
+			// 			othermounts_def.selection_box.fixed[3] = def.selection_box.fixed[3] + offset
+			// 			othermounts_def.selection_box.fixed[6] = def.selection_box.fixed[6] + offset
+		}
 		// 		othermounts_def.groups.not_in_creative_inventory = 1
 		// 		othermounts_def.mesh = raw_def.onpole_mesh or string.gsub(othermounts_def.mesh, "wall.obj$", "onpole.obj")
 		// 		if othermounts_def.entity_info then
 		// 			othermounts_def.entity_info.mesh = string.gsub(othermounts_def.entity_info.mesh, "entity_wall.obj$", "entity_onpole.obj")
 		// 		end
-			
+
 		// 	// setting one of item 3 or 4 to a texture and leaving the other "blank",
 		// 	// reveals either the vertical or horizontal pole mount part of the model
 		// 	if raw_def.allow_onpole then
