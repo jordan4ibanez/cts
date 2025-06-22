@@ -399,7 +399,7 @@ interface core {
 	inventorycube(img1: string, img2: string, img3: string): string;
 	get_pointed_thing_position(
 		pointedThing: PointedThing,
-		above: boolean
+		above?: boolean
 	): Vec3 | null;
 	dir_to_facedir(direction: Vec3, is6d?: boolean): number;
 	facedir_to_dir(faceDir: number): Vec3;
