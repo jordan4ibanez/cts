@@ -1,3 +1,3 @@
 namespace sign {
-	utility.loadFiles(["api", "encoding", "standard_signs"]);
+	utility.loadFiles(["encoding", "api", "standard_signs"]);
 }
