@@ -50,10 +50,7 @@ namespace sign {
 	export const block_list = new Set<number>();
 	let totalblocks: number = 0;
 
-	// fixme: the first two were nil instead of 0, this may cause problems.
 	export const wallmounted_yaw: number[] = [
-		0,
-		0,
 		math.pi / -2,
 		math.pi / 2,
 		0,
