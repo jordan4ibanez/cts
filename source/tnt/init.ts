@@ -33,8 +33,6 @@ namespace tnt {
 		data: number[],
 		area: VoxelAreaObject
 	): void {
-		// vm.get_light_data();
-
 		const range_calc: number = range / 100;
 		const explosion_depletion: number = range / 2;
 
