@@ -208,18 +208,22 @@ namespace sign {
 
 		const text_scale: Vec2 = default_text_scale;
 
-		// 	local objects = core.get_objects_inside_radius(pos, 0.5)
-		// 	local obj
-		// 	if #objects > 0 then
-		// 		for _, v in ipairs(objects) do
-		// 			if v then
-		// 				local e = v:get_luaentity()
-		// 				if e and e.name == "sign:text" then
-		// 					obj = v
-		// 				end
-		// 			end
-		// 		end
-		// 	end
+		const objects: ObjectRef[] = core.get_objects_inside_radius(pos, 0.5);
+
+		let obj: ObjectRef | null = null;
+
+		for (const [_, v] of ipairs(objects)) {
+			const e: LuaEntity | null = v.get_luaentity();
+
+			if (e == null) {
+				continue;
+			}
+			if (e.name == "sign:text") {
+				obj = v;
+				break;
+			}
+		}
+
 		// 	if not obj then
 		// 		obj = core.add_entity(pos, "sign:text")
 		// 	end
