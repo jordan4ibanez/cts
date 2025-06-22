@@ -287,9 +287,10 @@ namespace sign {
 	}
 
 	export function set_obj_text(pos: Vec3, text: string): void {
-		// todo: implement this.
-		// const split = sign.split_lines_and_words
-		// 	local text_ansi = Utf8ToAnsi(text)
+		const split = split_lines_and_words;
+
+		// todo: fix this
+		// local text_ansi = Utf8ToAnsi(text)
 		// 	local n = core.registered_nodes[core.get_node(pos).name]
 		// 	signs_lib.delete_objects(pos)
 		// 	signs_lib.spawn_entity(pos, signs_lib.make_sign_texture(split(text_ansi), pos) )
@@ -375,8 +376,8 @@ namespace sign {
 				param2: rotate_facedir[node.param2 || 0] || 0,
 			});
 		}
-		// todo: fix this.
-		// update_sign(tpos)
+
+		update_sign(tpos);
 		return true;
 	}
 
