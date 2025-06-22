@@ -428,28 +428,38 @@ namespace sign {
 			return false;
 		}
 	}
-	// // Read the image size from a PNG file.
-	// // Returns image_w, image_h.
-	// // Only the LSB is read from each field!
-	// function signs_lib.read_image_size(filename)
-	// 	local f = file_exists(filename, true, "rb")
-	// 	// file might not exist (don't crash the game)
-	// 	if (not f) then
-	// 		return 0, 0
-	// 	end
-	// 	f:seek("set", 0x0)
-	// 	local hdr = f:read(string.len(PNG_HDR))
-	// 	if hdr ~= PNG_HDR then
-	// 		f:close()
-	// 		return
-	// 	end
-	// 	f:seek("set", 0x13)
-	// 	local ws = f:read(1)
-	// 	f:seek("set", 0x17)
-	// 	local hs = f:read(1)
-	// 	f:close()
-	// 	return ws:byte(), hs:byte()
-	// end
+
+	// Read the image size from a PNG file.
+	// Returns image_w, image_h.
+	// Only the LSB is read from each field!
+	function read_image_size(filename: string): [number, number] {
+		const f: LuaFile | undefined = getFile(filename, "rb");
+		// File might not exist (don't crash the game).
+		if (f == null) {
+			core.log(LogLevel.error, `File ${filename} does not exist.`);
+			return [0, 0];
+		}
+		f.seek("set", 0x0);
+		const hdr = f.read(string.len(PNG_HDR));
+		if (hdr != PNG_HDR) {
+			f.close();
+			core.log(LogLevel.error, `File ${filename} wrong format.`);
+			return [0, 0];
+		}
+		f.seek("set", 0x13);
+		const ws: string | undefined = f.read(1);
+		f.seek("set", 0x17);
+		const hs: string | undefined = f.read(1);
+		f.close();
+
+		if (ws == null || hs == null) {
+			core.log(LogLevel.error, `File ${filename} corrupted file.`);
+			return [0, 0];
+		}
+
+		return [string.byte(ws), string.byte(hs)];
+	}
+
 	// 4 rows, max 80 chars per, plus a bit of fudge to
 	// avoid excess trimming (e.g. due to color codes).
 	const MAX_INPUT_CHARS: number = 400;
