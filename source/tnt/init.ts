@@ -137,7 +137,7 @@ namespace tnt {
 							);
 							if (
 								range_calc < 1 &&
-								math.random() > 0.9 + range_calc
+								math.random() > 0.98 + range_calc
 							) {
 								const nodeName: string =
 									core.get_name_from_content_id(currentID);
