@@ -886,6 +886,7 @@ namespace sign {
 			mesh: string;
 			yaw: number[];
 		};
+		on_rotate: (pos: Vec3, node: NodeTable, user: ObjectRef) => boolean;
 	}
 
 	export function register_sign(name: string, def: SignDefinitionComplete) {
@@ -893,19 +894,14 @@ namespace sign {
 			mesh: "signs_lib_standard_sign_entity_wall.obj",
 			yaw: wallmounted_yaw,
 		};
-
 		def.after_place_node = after_place_node;
-
-		
-
-		// 	def.paramtype	     = raw_def.paramtype	     or "light"
-		// 	def.drawtype		= raw_def.drawtype		or "mesh"
-		// 	def.mesh		    = raw_def.mesh		    or "signs_lib_standard_sign_wall.obj"
-		// 	def.wield_image	   = raw_def.wield_image	   or def.inventory_image
-		// 	def.drop		    = raw_def.drop		    or name
-		// 	def.sounds		  = raw_def.sounds		  or signs_lib.standard_wood_sign_sounds
-		// 	def.paramtype2	    = raw_def.paramtype2	    or "wallmounted"
-		// 	def.on_rotate	     = raw_def.on_rotate	     or signs_lib.handle_rotation
+		def.paramtype = ParamType1.light;
+		def.drawtype = Drawtype.mesh;
+		def.mesh = "signs_lib_standard_sign_wall.obj";
+		def.drop = name;
+		def.sounds = standard_wood_sign_sounds;
+		def.paramtype2 = ParamType2.wallmounted;
+		def.on_rotate = handle_rotation;
 		// 	def.walkable = false
 		// 	raw_def.walkable = false
 		// 	if raw_def.groups then
