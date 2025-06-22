@@ -1,9 +1,8 @@
 namespace sign {
 	// Encoding "borrowed" from signs_lib fork at: https://github.com/lord-server/lord
 
+	/** String Translate. */
 	const st = string.char;
-
-	st(208) + String.fromCharCode(130);
 
 	const ansi_decode: Dictionary<number, string> = {
 		[128]: st(208) + st(130),
