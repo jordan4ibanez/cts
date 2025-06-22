@@ -716,9 +716,9 @@ namespace sign {
 		let widemult: number = 1;
 
 		// todo: test this.
-		// 	if meta:get_int("widefont") == 1 then
-		// 		widemult = 0.5
-		// 	end
+		// if meta:get_int("widefont") == 1 then
+		widemult = 0.5;
+		// end
 
 		font_size = 15;
 		line_width =
