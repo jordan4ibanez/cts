@@ -52,7 +52,7 @@ namespace tnt {
 		});
 		const obj: ObjectRef | null = core.add_item(ppos, item[0]);
 		if (obj != null) {
-			const power: number = (range - vector.distance(pos, ppos)) * 2;
+			const power: number = (range - distance(pos, ppos)) * 2;
 			const dir: Vec3 = vector.subtract(ppos, pos);
 			const force: Vec3 = vector.multiply(dir, power);
 			obj.set_velocity(force);
