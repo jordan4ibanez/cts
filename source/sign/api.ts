@@ -861,13 +861,17 @@ namespace sign {
 		itemstack: ItemStackObject,
 		pointed_thing: PointedThing
 	) {
-		// 	local playername = placer:get_player_name()
-		// 	local controls = placer:get_player_control()
-		// 	local signname = itemstack:get_name()
-		// 	local no_wall_name = string.gsub(signname, "_wall", "")
-		// 	local def = core.registered_items[signname]
-		// 	local ppos = core.get_pointed_thing_position(pointed_thing)
-		// 	local pnode = core.get_node(ppos)
+		const playername: string = placer.get_player_name();
+		const controls: PlayerControlObject = placer.get_player_control();
+		const signname: string = itemstack.get_name();
+		const no_wall_name: string = string.gsub(signname, "_wall", "")[0];
+		const def: NodeDefinition | undefined = core.registered_items[signname];
+		const ppos = core.get_pointed_thing_position(pointed_thing);
+		if (ppos == null) {
+			core.log(LogLevel.error, "Failed to create sign components.");
+			return;
+		}
+		const pnode: NodeTable = core.get_node(ppos);
 		// 	local pdef = core.registered_items[pnode.name]
 		// 	if def.allow_onpole and signs_lib.check_for_pole(pos, pointed_thing) and not controls.sneak then
 		// 		local newparam2
@@ -1102,12 +1106,10 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_yard", ydef);
 		lbm_restore_nodes.add(no_wall_name + "_yard");
 
-		// 	if raw_def.allow_widefont then
-		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont")
-		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
-		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
-		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
-		// 	end
+		// table.insert(old_widefont_signs, name+"_widefont")
+		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
+		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
+		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
 	}
 
 	// // restore signs' text after /clearobjects and the like, the next time
