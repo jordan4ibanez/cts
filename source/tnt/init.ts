@@ -332,104 +332,102 @@ namespace tnt {
 	class TntEntity extends types.Entity {
 		name: string = "crafter_tnt:tnt";
 		shot: boolean = false;
-	
 
-	// local pos
-	// local vel
-	// local range
-	// local tnt_boom = function(self,dtime)
-	// 	self.timer = self.timer - dtime
-	// 	if not self.shot or not self.redstone_activated then
-	// 		vel = self.object:get_velocity()
-	// 		vel = vector.multiply(vel,-0.05)
-	// 		self.object:add_velocity(vector.new(vel.x,0,vel.z))
-	// 	end
-	// 	if self.timer <= 0 then
-	// 		if not self.range then
-	// 			self.range = 7
-	// 		end
-	// 		pos = self.object:get_pos()
-	// 		range = self.range
-	// 		self.object:remove()
-	// 		tnt(pos,range)
-	// 	end
-	// end
-	// local activation = function(self, staticdata, dtime_s)
-	// 	self.object:set_armor_groups({immortal = 1})
-	// 	self.object:set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
-	// 	self.object:set_acceleration({x = 0, y = -9.81, z = 0})
-	// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
-	// 		local data = core.deserialize(staticdata)
-	// 		if data and type(data) == "table" then
-	// 			self.range = data.range
-	// 			self.timer = data.timer
-	// 			self.exploded = data.exploded
-	// 		end
-	// 	end
-	// 	if self.timer == self.timer_max then
-	// 		core.add_particlespawner({
-	// 			amount = 10,
-	// 			time = 0,
-	// 			minpos = vector.new(0,0.5,0),
-	// 			minpos = vector.new(0,0.5,0),
-	// 			minvel = vector.new(-0.5,1,-0.5),
-	// 			maxvel = vector.new(0.5,5,0.5),
-	// 			minacc = {x=0, y=0, z=0},
-	// 			maxacc = {x=0, y=0, z=0},
-	// 			minexptime = 0.5,
-	// 			maxexptime = 1.0,
-	// 			minsize = 1,
-	// 			maxsize = 2,
-	// 			collisiondetection = false,
-	// 			vertical = false,
-	// 			texture = "smoke.png",
-	// 			attached = self.object,
-	// 		})
-	// 		core.sound_play("tnt_ignite", {object = self.object, gain = 1.0, max_hear_distance = 64})
-	// 	end
-	// end
-	// local static = function(self)
-	// 	return core.serialize({
-	// 		range = self.range,
-	// 		timer = self.timer,
-	// 		exploded = self.exploded,
-	// 	})
-	// end
+		// local pos
+		// local vel
+		// local range
+		// local tnt_boom = function(self,dtime)
+		// 	self.timer = self.timer - dtime
+		// 	if not self.shot or not self.redstone_activated then
+		// 		vel = self.object:get_velocity()
+		// 		vel = vector.multiply(vel,-0.05)
+		// 		self.object:add_velocity(vector.new(vel.x,0,vel.z))
+		// 	end
+		// 	if self.timer <= 0 then
+		// 		if not self.range then
+		// 			self.range = 7
+		// 		end
+		// 		pos = self.object:get_pos()
+		// 		range = self.range
+		// 		self.object:remove()
+		// 		tnt(pos,range)
+		// 	end
+		// end
+		// local activation = function(self, staticdata, dtime_s)
+		// 	self.object:set_armor_groups({immortal = 1})
+		// 	self.object:set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
+		// 	self.object:set_acceleration({x = 0, y = -9.81, z = 0})
+		// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
+		// 		local data = core.deserialize(staticdata)
+		// 		if data and type(data) == "table" then
+		// 			self.range = data.range
+		// 			self.timer = data.timer
+		// 			self.exploded = data.exploded
+		// 		end
+		// 	end
+		// 	if self.timer == self.timer_max then
+		// 		core.add_particlespawner({
+		// 			amount = 10,
+		// 			time = 0,
+		// 			minpos = vector.new(0,0.5,0),
+		// 			minpos = vector.new(0,0.5,0),
+		// 			minvel = vector.new(-0.5,1,-0.5),
+		// 			maxvel = vector.new(0.5,5,0.5),
+		// 			minacc = {x=0, y=0, z=0},
+		// 			maxacc = {x=0, y=0, z=0},
+		// 			minexptime = 0.5,
+		// 			maxexptime = 1.0,
+		// 			minsize = 1,
+		// 			maxsize = 2,
+		// 			collisiondetection = false,
+		// 			vertical = false,
+		// 			texture = "smoke.png",
+		// 			attached = self.object,
+		// 		})
+		// 		core.sound_play("tnt_ignite", {object = self.object, gain = 1.0, max_hear_distance = 64})
+		// 	end
+		// end
+		// local static = function(self)
+		// 	return core.serialize({
+		// 		range = self.range,
+		// 		timer = self.timer,
+		// 		exploded = self.exploded,
+		// 	})
+		// end
 
-	// core.register_entity("crafter_tnt:tnt", {
-	// 	initial_properties = {
-	// 		hp_max = 1,
-	// 		physical = true,
-	// 		collide_with_objects = false,
-	// 		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-	// 		visual = "cube",
-	// 		visual_size = {x = 1, y = 1},
-	// 		textures = {"tnt_top.png", "tnt_bottom.png",
-	// 			"tnt_side.png", "tnt_side.png",
-	// 			"tnt_side.png", "tnt_side.png"},
-	// 		is_visible = true,
-	// 		pointable = true,
-	// 	},
-	// 	timer = 5,
-	// 	timer_max = 5, //this has to be equal to timer
-	// 	range = 7,
-	// 	get_staticdata = function(self)
-	// 		return(static(self))
-	// 	end,
-	// 	on_activate = function(self, staticdata, dtime_s)
-	// 		activation(self, staticdata, dtime_s)
-	// 	end,
-	// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-	// 		core.throw_item(self.object:get_pos(), "crafter_tnt:tnt")
-	// 		self.object:remove()
-	// 	end,
-	// 	sound_played = false,
-	// 	on_step = function(self, dtime)
-	// 		tnt_boom(self,dtime)
-	// 	end,
-	// })
+		// core.register_entity("crafter_tnt:tnt", {
+		// 	initial_properties = {
+		// 		hp_max = 1,
+		// 		physical = true,
+		// 		collide_with_objects = false,
+		// 		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
+		// 		visual = "cube",
+		// 		visual_size = {x = 1, y = 1},
+		// 		textures = {"tnt_top.png", "tnt_bottom.png",
+		// 			"tnt_side.png", "tnt_side.png",
+		// 			"tnt_side.png", "tnt_side.png"},
+		// 		is_visible = true,
+		// 		pointable = true,
+		// 	},
+		// 	timer = 5,
+		// 	timer_max = 5, //this has to be equal to timer
+		// 	range = 7,
+		// 	get_staticdata = function(self)
+		// 		return(static(self))
+		// 	end,
+		// 	on_activate = function(self, staticdata, dtime_s)
+		// 		activation(self, staticdata, dtime_s)
+		// 	end,
+		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
+		// 		core.throw_item(self.object:get_pos(), "crafter_tnt:tnt")
+		// 		self.object:remove()
+		// 	end,
+		// 	sound_played = false,
+		// 	on_step = function(self, dtime)
+		// 		tnt_boom(self,dtime)
+		// 	end,
+		// })
 	}
-
 
 	// core.register_node("crafter_tnt:tnt", {
 	//     description = "TNT",
@@ -453,7 +451,6 @@ namespace tnt {
 	//     end,
 	// })
 
-
 	// core.register_node("crafter_tnt:uranium_tnt", {
 	//     description = "Uranium TNT",
 	//     tiles = {"tnt_top.png^[colorize:green:100", "tnt_bottom.png^[colorize:green:100",
@@ -470,7 +467,6 @@ namespace tnt {
 	// 		core.remove_node(pos)
 	//     end,
 	// })
-
 
 	// core.register_node("crafter_tnt:uh_oh", {
 	//     description = "Uh Oh",
@@ -490,7 +486,6 @@ namespace tnt {
 	// 		end
 	//     end,
 	// })
-
 
 	// core.register_craft({
 	// 	output = "crafter_tnt:tnt",
