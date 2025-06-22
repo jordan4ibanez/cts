@@ -50,7 +50,7 @@ namespace tnt {
 			pos: pos,
 			range: range,
 		});
-		print(queue.length());
+		// print(queue.length());
 	}
 
 	core.register_globalstep(() => {
