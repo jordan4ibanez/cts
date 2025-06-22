@@ -410,13 +410,13 @@ namespace tnt {
 			// 	end
 		}
 
-		// local get_staticdata = function(self)
-		// 	return core.serialize({
-		// 		range = this.range,
-		// 		timer = this.timer,
-		// 		exploded = this.exploded,
-		// 	})
-		// end
+		get_staticdata(): string {
+			return core.serialize({
+				range: this.range,
+				timer: this.timer,
+				exploded: this.exploded,
+			});
+		}
 
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 		// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
