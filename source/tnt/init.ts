@@ -332,7 +332,7 @@ namespace tnt {
 	class TntEntity extends types.Entity {
 		name: string = "crafter_tnt:tnt";
 		shot: boolean = false;
-	}
+	
 
 	// local pos
 	// local vel
@@ -395,7 +395,7 @@ namespace tnt {
 	// 		exploded = self.exploded,
 	// 	})
 	// end
-	
+
 	// core.register_entity("crafter_tnt:tnt", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
@@ -428,6 +428,7 @@ namespace tnt {
 	// 		tnt_boom(self,dtime)
 	// 	end,
 	// })
+	}
 
 
 	// core.register_node("crafter_tnt:tnt", {
