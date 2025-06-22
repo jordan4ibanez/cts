@@ -177,7 +177,7 @@ namespace tnt {
 
 							if (
 								range_calc < 1 &&
-								math.random() > 0.98 + range_calc
+								random() > 0.98 + range_calc
 							) {
 								dropItem(
 									pos,
