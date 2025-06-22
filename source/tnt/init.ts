@@ -357,23 +357,24 @@ namespace tnt {
 		timer_max: number = 5;
 		range: number = 7;
 
-		// local tnt_boom = function(self,dtime)
-		// 	this.timer = this.timer - dtime
-		// 	if not this.shot or not this.redstone_activated then
-		// 		vel = this.object.get_velocity()
-		// 		vel = vector.multiply(vel,-0.05)
-		// 		this.object.add_velocity(vector.new(vel.x,0,vel.z))
-		// 	end
-		// 	if this.timer <= 0 then
-		// 		if not this.range then
-		// 			this.range = 7
-		// 		end
-		// 		pos = this.object.get_pos()
-		// 		range = this.range
-		// 		this.object.remove()
-		// 		tnt(pos,range)
-		// 	end
-		// end
+		tnt_boom(dtime: number): void {
+			// 	this.timer = this.timer - dtime
+			// 	if not this.shot or not this.redstone_activated then
+			// 		vel = this.object.get_velocity()
+			// 		vel = vector.multiply(vel,-0.05)
+			// 		this.object.add_velocity(vector.new(vel.x,0,vel.z))
+			// 	end
+			// 	if this.timer <= 0 then
+			// 		if not this.range then
+			// 			this.range = 7
+			// 		end
+			// 		pos = this.object.get_pos()
+			// 		range = this.range
+			// 		this.object.remove()
+			// 		tnt(pos,range)
+			// 	end
+		}
+
 		// local activation = function(self, staticdata, dtime_s)
 		// 	this.object.set_armor_groups({immortal = 1})
 		// 	this.object.set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
