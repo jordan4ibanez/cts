@@ -691,8 +691,10 @@ namespace sign {
 				string.format(":%d,%d=", xpos + word.w, ypos) +
 					char_tex(font_name, " ")
 			);
-			// 		xpos = xpos + word.w + cwidth_tab[" "]
-			// 		if xpos >= (line_width + cwidth_tab[" "]) then break end
+			xpos = xpos + word.w + (cwidth_tab[" "] || 0);
+			if (xpos >= line_width + (cwidth_tab[" "] || 0)) {
+				break;
+			}
 		}
 		// 	table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
 		// 	table.insert(texture, fill_line(start_xpos, ypos + line_height, maxw, "n", font_size, colorbgw))
