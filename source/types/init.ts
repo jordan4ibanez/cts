@@ -1,3 +1,39 @@
+namespace types {
+	export interface EntityFireTable {
+		position: Vec3;
+		visualSize: Vec2;
+	}
+
+	/** Typescript Luaentity. :) */
+	export abstract class Entity implements LuaEntity {
+		// Name is required.
+		abstract name: string;
+		object: ObjectRef = utility.fakeRef();
+		fireEntity: ObjectRef | null = null;
+		fireTable: EntityFireTable | null = null;
+
+		// Abstract members.
+		initial_properties?: ObjectProperties;
+		on_activate?(staticData: string, delta: number): void;
+		on_deactivate?(removal: boolean): void;
+		// Note: moveResult: only available if physical=true
+		on_step?(delta: number, moveResult: MoveResult | null): void;
+		on_punch?(
+			puncher: ObjectRef,
+			timeFromLastPunch: number,
+			toolCapabilities: ToolCapabilities,
+			dir: Vec3,
+			damage: number
+		): void;
+		on_death?(killer: ObjectRef): void;
+		on_rightclick?(clicker: ObjectRef): void;
+		on_attach_child?(child: ObjectRef): void;
+		on_detach_child?(child: ObjectRef): void;
+		on_detach?(parent: ObjectRef): void;
+		get_staticdata?(): string;
+	}
+}
+
 //? Note: This is a special hack to globalize components without a namespace.
 
 //! Note: You must synchronize this with the luanti-api.d.ts file.
@@ -432,39 +468,3 @@ globalEnvironment.DamageGroup = {
 	metal: "metal",
 	bone: "bone",
 };
-
-namespace types {
-	export interface EntityFireTable {
-		position: Vec3;
-		visualSize: Vec2;
-	}
-
-	/** Typescript Luaentity. :) */
-	export abstract class Entity implements LuaEntity {
-		// Name is required.
-		abstract name: string;
-		object: ObjectRef = utility.fakeRef();
-		fireEntity: ObjectRef | null = null;
-		fireTable: EntityFireTable | null = null;
-
-		// Abstract members.
-		initial_properties?: ObjectProperties;
-		on_activate?(staticData: string, delta: number): void;
-		on_deactivate?(removal: boolean): void;
-		// Note: moveResult: only available if physical=true
-		on_step?(delta: number, moveResult: MoveResult | null): void;
-		on_punch?(
-			puncher: ObjectRef,
-			timeFromLastPunch: number,
-			toolCapabilities: ToolCapabilities,
-			dir: Vec3,
-			damage: number
-		): void;
-		on_death?(killer: ObjectRef): void;
-		on_rightclick?(clicker: ObjectRef): void;
-		on_attach_child?(child: ObjectRef): void;
-		on_detach_child?(child: ObjectRef): void;
-		on_detach?(parent: ObjectRef): void;
-		get_staticdata?(): string;
-	}
-}
