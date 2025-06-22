@@ -243,24 +243,24 @@ namespace sign {
 			string.find(node.name, "onpole") == null &&
 			string.find(node.name, "hanging") == null
 		) {
-			// 		local rot90 = math.pi/2
-			// 		if def.paramtype2 == "wallmounted" then
-			// 			if node.param2 == 1 then // on floor
-			// 				pitch = -rot90
-			// 				yaw = 0
-			// 			elseif node.param2 == 0 then // on ceiling
-			// 				pitch = rot90
-			// 				yaw = math.pi
-			// 			end
-			// 		elseif def.paramtype2 == "facedir" then
-			// 			if node.param2 == 4 then
-			// 				pitch = -rot90
-			// 				yaw = 0
-			// 			elseif node.param2 == 6 then
-			// 				pitch = rot90
-			// 				yaw = math.pi
-			// 			end
-			// 		end
+			const rot90: number = math.pi / 2;
+			if (def.paramtype2 == ParamType2.wallmounted) {
+				// 			if node.param2 == 1 then // on floor
+				// 				pitch = -rot90
+				// 				yaw = 0
+				// 			elseif node.param2 == 0 then // on ceiling
+				// 				pitch = rot90
+				// 				yaw = math.pi
+				// 			end
+			} else if (def.paramtype2 == ParamType2.facedir) {
+				// 			if node.param2 == 4 then
+				// 				pitch = -rot90
+				// 				yaw = 0
+				// 			elseif node.param2 == 6 then
+				// 				pitch = rot90
+				// 				yaw = math.pi
+				// 			end
+			}
 		}
 
 		// 	if yaw then
