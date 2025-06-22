@@ -15,7 +15,7 @@ namespace sign {
 
 	const path: string | null = core.get_modpath(core.get_current_modname());
 	if (path == null) {
-		throw new Error("How did this happen?")
+		throw new Error("How did this happen?");
 	}
 
 	export const standard_wood_groups: Dictionary<string, number> = (() => {
@@ -387,30 +387,39 @@ namespace sign {
 	}
 	// CONSTANTS
 	// Path to the textures.
-	const TP = path + "/textures"
+	const TP = path + "/textures";
 	// Font file formatter.
-	const CHAR_FILE: string = "%s_%02x.png"
+	const CHAR_FILE: string = "%s_%02x.png";
 	// Fonts path.
-	const CHAR_PATH: string = TP + "/" + CHAR_FILE
-	
-	const PNG_HDR: string = string.char(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
+	const CHAR_PATH: string = TP + "/" + CHAR_FILE;
+
+	const PNG_HDR: string = string.char(
+		0x89,
+		0x50,
+		0x4e,
+		0x47,
+		0x0d,
+		0x0a,
+		0x1a,
+		0x0a
+	);
 	// Check if a file does exist.
 	// To avoid reopening file after checking again
 	// pass TRUE as second argument.
 
-	 function file_exists(name: string, return_handle: boolean, mode?: string) {
-	// 	mode = mode or "r";
-	// 	local f = io.open(name, mode)
-	// 	if f ~= nil then
-	// 		if (return_handle) then
-	// 			return f
-	// 		end
-	// 		io.close(f)
-	// 		return true
-	// 	else
-	// 		return false
-	// 	end
-	 }
+	function file_exists(name: string, return_handle: boolean, mode?: string) {
+		// 	mode = mode or "r";
+		// 	local f = io.open(name, mode)
+		// 	if f ~= nil then
+		// 		if (return_handle) then
+		// 			return f
+		// 		end
+		// 		io.close(f)
+		// 		return true
+		// 	else
+		// 		return false
+		// 	end
+	}
 	// // Read the image size from a PNG file.
 	// // Returns image_w, image_h.
 	// // Only the LSB is read from each field!
