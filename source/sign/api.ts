@@ -1195,7 +1195,7 @@ namespace sign {
 		name: "crafter_sign:update_block_list",
 		label: "Update list of loaded blocks, log only those with signs",
 		run_at_every_load: true,
-		action: (pos: Vec3, node: NodeTable) => {
+		action: (pos: Vec3) => {
 			const hash = core.hash_node_position(
 				vector.floor(vector.divide(pos, core.MAP_BLOCKSIZE))
 			);
