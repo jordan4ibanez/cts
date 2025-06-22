@@ -13,6 +13,11 @@ namespace sign {
 	export const standard_yoffs: number = 0;
 	export const standard_cpl: number = 35;
 
+	const path: string | null = core.get_modpath(core.get_current_modname());
+	if (path == null) {
+		throw new Error("How did this happen?")
+	}
+
 	export const standard_wood_groups: Dictionary<string, number> = (() => {
 		const data: Dictionary<string, number> | undefined =
 			core.registered_items["crafter:wood"]?.groups;
@@ -375,24 +380,24 @@ namespace sign {
 		return true;
 	}
 
-	// // infinite stacks
-	// if not core.settings:get_bool("creative_mode") then
-	// 	signs_lib.expect_infinite_stacks = false
-	// else
-	// 	signs_lib.expect_infinite_stacks = true
-	// end
-	// // CONSTANTS
-	// // Path to the textures.
-	// local TP = signs_lib.path + "/textures"
-	// // Font file formatter
-	// local CHAR_FILE = "%s_%02x.png"
-	// // Fonts path
-	// local CHAR_PATH = TP + "/" + CHAR_FILE
-	// // Lots of overkill here. KISS advocates, go away, shoo! ;) // kaeza
-	// local PNG_HDR = string.char(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
-	// // check if a file does exist
-	// // to avoid reopening file after checking again
-	// // pass TRUE as second argument
+	let expect_infinite_stacks: boolean = false;
+	// Infinite stacks.
+	if (core.settings.get_bool("creative_mode")) {
+		expect_infinite_stacks = true;
+	}
+	// CONSTANTS
+	// Path to the textures.
+	const TP = path + "/textures"
+	// Font file formatter.
+	const CHAR_FILE: string = "%s_%02x.png"
+	// Fonts path.
+	const CHAR_PATH: string = TP + "/" + CHAR_FILE
+	
+	const PNG_HDR: string = string.char(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
+	// Check if a file does exist.
+	// To avoid reopening file after checking again
+	// pass TRUE as second argument.
+	
 	// local function file_exists(name, return_handle, mode)
 	// 	mode = mode or "r";
 	// 	local f = io.open(name, mode)
