@@ -425,8 +425,8 @@ namespace tnt {
 			tool_capabilities: ToolCapabilities | null,
 			dir: Vec3 | null
 		) {
-			// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
-			// 		this.object.remove()
+			itemHandling.throw_item(this.object.get_pos(), "crafter_tnt:tnt");
+			this.object.remove();
 		}
 	}
 
