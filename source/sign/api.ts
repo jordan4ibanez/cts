@@ -889,6 +889,7 @@ namespace sign {
 		on_rotate: (pos: Vec3, node: NodeTable, user: ObjectRef) => boolean;
 	}
 
+	// This seems to be using the decorator pattern.
 	export function register_sign(name: string, def: SignDefinitionComplete) {
 		def.entity_info = {
 			mesh: "signs_lib_standard_sign_entity_wall.obj",
@@ -902,13 +903,9 @@ namespace sign {
 		def.sounds = standard_wood_sign_sounds;
 		def.paramtype2 = ParamType2.wallmounted;
 		def.on_rotate = handle_rotation;
-		// 	def.walkable = false
-		// 	raw_def.walkable = false
-		// 	if raw_def.groups then
-		// 		def.groups = raw_def.groups
-		// 	else
-		// 		def.groups = signs_lib.standard_wood_groups
-		// 	end
+		def.walkable = false;
+		def.groups = standard_wood_groups;
+
 		// 	local cbox = signs_lib.make_selection_boxes(35, 25)
 		// 	def.selection_box = raw_def.selection_box or cbox
 		// 	def.node_box	= table.copy(raw_def.node_box or raw_def.selection_box or cbox)
