@@ -537,7 +537,6 @@ namespace tnt {
 
 				if (luaEntity != null) {
 					luaEntity.range = 50;
-					luaEntity.timer = 7;
 					core.remove_node(pos);
 				}
 			}
