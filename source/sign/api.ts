@@ -677,13 +677,13 @@ namespace sign {
 					standard_vscale
 			),
 		];
-		// 	local lineno = 0
-		// 	for i = 1, #lines do
-		// 		if lineno >= def.number_of_lines then break end
-		// 		local linetex, ln = make_line_texture(lines[i], lineno, pos, line_width, line_height, char_width, font_size, colorbgw)
-		// 		table.insert(texture, linetex)
-		// 		lineno = ln + 1
-		// 	end
+		let lineno: number = 0;
+		for (const i of $range(1, lines.length)) {
+			// 		if lineno >= def.number_of_lines then break end
+			// 		local linetex, ln = make_line_texture(lines[i], lineno, pos, line_width, line_height, char_width, font_size, colorbgw)
+			// 		table.insert(texture, linetex)
+			// 		lineno = ln + 1
+		}
 		// 	table.insert(texture, "^[makealpha:0,0,0")
 		// 	return table.concat(texture, "")
 	}
