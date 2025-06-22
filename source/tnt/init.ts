@@ -199,7 +199,7 @@ namespace tnt {
 								(thisRange: number, under: Vec3) => {
 									const serialData: SerialTntData = {
 										range: thisRange,
-										timer: random() + random(),
+										timer: random(),
 										exploded: false,
 									};
 									core.add_entity(
