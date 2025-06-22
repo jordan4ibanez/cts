@@ -1196,7 +1196,6 @@ namespace sign {
 		label: "Update list of loaded blocks, log only those with signs",
 		run_at_every_load: true,
 		action: (pos: Vec3, node: NodeTable) => {
-			// yeah, yeah+. I know I'm hashing a block pos, but it's still just a set of coords
 			const hash = core.hash_node_position(
 				vector.floor(vector.divide(pos, core.MAP_BLOCKSIZE))
 			);
