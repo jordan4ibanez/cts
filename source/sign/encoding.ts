@@ -244,11 +244,11 @@ namespace sign {
 		for (const i of $range(1, s.length || 0)) {
 			const b: number = string.byte(s, i);
 			if (b < 128) {
-				// 			if nmdc[b] then
-				// 				r = r + nmdc[b]
-				// 			else
-				// 				r = r + string.char(b)
-				// 			end
+				if (nmdc[b] != null) {
+					r = r + nmdc[b];
+				} else {
+					r = r + string.char(b);
+				}
 			} else if (a == 2) {
 				a = a - 1;
 				j = b;
