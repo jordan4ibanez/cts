@@ -386,7 +386,7 @@ namespace sign {
 	}
 	// CONSTANTS
 	// Path to the textures.
-	const TP = path + "/textures";
+	const TP = path + "/textures/sign";
 	// Font file formatter.
 	const CHAR_FILE: string = "%s_%02x.png";
 	// Fonts path.
