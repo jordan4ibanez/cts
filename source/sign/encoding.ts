@@ -214,16 +214,16 @@ namespace sign {
 // 	for i = 1, s and s:len() or 0 do
 // 		b = s:byte(i)
 // 		if b < 128 then
-// 			r = r .. string.char(b)
+// 			r = r + string.char(b)
 // 		else
 // 			if b > 239 then
-// 				r = r .. "\209" .. string.char(b - 112)
+// 				r = r + "\209" + string.char(b - 112)
 // 			elseif b > 191 then
-// 				r = r .. "\208" .. string.char(b - 48)
+// 				r = r + "\208" + string.char(b - 48)
 // 			elseif ansi_decode[b] then
-// 				r = r .. ansi_decode[b]
+// 				r = r + ansi_decode[b]
 // 			else
-// 				r = r .. "_"
+// 				r = r + "_"
 // 			end
 // 		end
 // 	end
@@ -236,9 +236,9 @@ namespace sign {
 // 		b = s:byte(i)
 // 		if b < 128 then
 // 			if nmdc[b] then
-// 				r = r .. nmdc[b]
+// 				r = r + nmdc[b]
 // 			else
-// 				r = r .. string.char(b)
+// 				r = r + string.char(b)
 // 			end
 // 		elseif a == 2 then
 // 			a, j = a - 1, b
@@ -251,7 +251,7 @@ namespace sign {
 // 			--if ansi[b] == nil then return r end
 // 			if utf8_decode[j] then
 // 				if utf8_decode[j][b] then
-// 					a, r = a - 1, r .. utf8_decode[j][b]
+// 					a, r = a - 1, r + utf8_decode[j][b]
 // 				end
 // 			end
 // 		elseif b == 226 then
@@ -259,7 +259,7 @@ namespace sign {
 // 		elseif b == 194 or b == 208 or b == 209 or b == 210 then
 // 			j, a = b, 1
 // 		else
-// 			r = r .. "_"
+// 			r = r + "_"
 // 		end
 // 	end
 // 	return r
