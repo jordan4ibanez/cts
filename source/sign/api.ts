@@ -339,9 +339,13 @@ namespace sign {
 				});
 			}
 
-			// 		local node2 = core.get_node(tpos)
-			// 		local def2 = core.registered_items[node2.name]
-			// 		if not def2 or not def2.buildable_to then return true end // undefined, or not buildable_to.
+			const node2: NodeTable = core.get_node(tpos);
+			const def2: NodeDefinition | undefined =
+				core.registered_items[node2.name];
+			// Undefined, or not buildable_to.
+			if (def2 == null || !def2.buildable_to) {
+				return true;
+			}
 			// 		core.set_node(tpos, {name = node.name, param2 = newparam2})
 			// 		core.get_meta(tpos):from_table(core.get_meta(pos):to_table())
 			// 		core.remove_node(pos)
