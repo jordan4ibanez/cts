@@ -1,6 +1,8 @@
 namespace sign {
 	// Encoding "borrowed" from signs_lib fork at: https://github.com/lord-server/lord
 
+	String.fromCharCode(208) + String.fromCharCode(130)
+	
 	const ansi_decode: Dictionary<number, string> = {
 		[128]: "\208\130",
 		[129]: "\208\131",
