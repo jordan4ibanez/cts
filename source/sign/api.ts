@@ -870,7 +870,14 @@ namespace sign {
 	// 	core.log("warning", "[signs_lib] "+"Attempt to call no longer used function signs_lib.register_fence_with_sign()")
 	// end
 
-	export function register_sign(name: string, def: any) {
+	interface SignDefinition {
+		entity_info: {
+			mesh: string;
+			yaw: number[];
+		};
+	}
+
+	export function register_sign(name: string, def: SignDefinition) {
 		def.entity_info = {
 			mesh: "signs_lib_standard_sign_entity_wall.obj",
 			yaw: wallmounted_yaw,
