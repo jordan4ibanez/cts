@@ -49,12 +49,6 @@ namespace sign {
 	export const old_widefont_signs = {};
 	export const block_list = new Set<number>();
 	let totalblocks: number = 0;
-	export const standard_yaw: number[] = [
-		0,
-		math.pi / -2,
-		math.pi,
-		math.pi / 2,
-	];
 
 	// fixme: the first two were nil instead of 0, this may cause problems.
 	export const wallmounted_yaw: number[] = [
