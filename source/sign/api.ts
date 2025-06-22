@@ -428,7 +428,7 @@ namespace sign {
 		const f: LuaFile | undefined = getFile(filename, "rb");
 		// File might not exist (don't crash the game).
 		if (f == null) {
-			// core.log(LogLevel.error, `File ${filename} does not exist.`);
+			core.log(LogLevel.error, `File ${filename} does not exist.`);
 			return [0, 0];
 		}
 		f.seek("set", 0x0);
