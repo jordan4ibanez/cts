@@ -247,21 +247,21 @@ namespace sign {
 			if (def.paramtype2 == ParamType2.wallmounted) {
 				// On floor.
 				if (node.param2 == 1) {
-									pitch = -rot90
-									yaw = 0
+					pitch = -rot90;
+					yaw = 0;
 					// On ceiling.
 				} else if (node.param2 == 0) {
-									pitch = rot90
-									yaw = math.pi
+					pitch = rot90;
+					yaw = math.pi;
 				}
 			} else if (def.paramtype2 == ParamType2.facedir) {
-				// 			if node.param2 == 4 then
-				// 				pitch = -rot90
-				// 				yaw = 0
-				// 			elseif node.param2 == 6 then
-				// 				pitch = rot90
-				// 				yaw = math.pi
-				// 			end
+				if (node.param2 == 4) {
+					pitch = -rot90;
+					yaw = 0;
+				} else if (node.param2 == 6) {
+					pitch = rot90;
+					yaw = math.pi;
+				}
 			}
 		}
 
