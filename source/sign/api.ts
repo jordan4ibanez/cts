@@ -1189,21 +1189,23 @@ namespace sign {
 	// 	end
 	// })
 
-	// // Maintain a list of currently-loaded blocks
-	// core.register_lbm({
-	// 	nodenames = {"group:sign"},
-	// 	name = "crafter_sign:update_block_list",
-	// 	label = "Update list of loaded blocks, log only those with signs",
-	// 	run_at_every_load = true,
-	// 	action = function(pos, node)
-	// 		// yeah, yeah+. I know I'm hashing a block pos, but it's still just a set of coords
-	// 		local hash = core.hash_node_position(vector.floor(vector.divide(pos, core.MAP_BLOCKSIZE)))
-	// 		if not signs_lib.block_list[hash] then
-	// 			signs_lib.block_list[hash] = true
-	// 			signs_lib.totalblocks = signs_lib.totalblocks + 1
-	// 		end
-	// 	end
-	// })
+	// Maintain a list of currently-loaded blocks.
+	core.register_lbm({
+		nodenames: ["group:sign"],
+		name: "crafter_sign:update_block_list",
+		label: "Update list of loaded blocks, log only those with signs",
+		run_at_every_load: true,
+		action: (pos: Vec3, node: NodeTable) => {
+			// yeah, yeah+. I know I'm hashing a block pos, but it's still just a set of coords
+			const hash = core.hash_node_position(
+				vector.floor(vector.divide(pos, core.MAP_BLOCKSIZE))
+			);
+			if (!block_list.has(hash)) {
+				block_list.add(hash);
+				totalblocks++;
+			}
+		},
+	});
 
 	// core.register_chatcommand("regen_signs", {
 	// 	params = "",
