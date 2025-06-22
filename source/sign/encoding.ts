@@ -237,7 +237,10 @@ namespace sign {
 	}
 
 	export function Utf8ToAnsi(s: string) {
-		// 	local a, j, r, b = 0, 0, ""
+		let a: number = 0;
+		let j: number = 0;
+		let r: string = "";
+
 		// 	for i = 1, s and s:len() or 0 do
 		// 		b = s:byte(i)
 		// 		if b < 128 then
