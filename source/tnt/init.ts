@@ -356,7 +356,6 @@ namespace tnt {
 		};
 
 		static readonly timer_max: number = 5;
-
 		shot: boolean = false;
 		timer: number = 5;
 		range: number = 7;
@@ -393,31 +392,31 @@ namespace tnt {
 			const data: any = core.deserialize(staticdata);
 			if (data != null && typeof data == "object") {
 				this.range = data.range || 7;
-				this.timer = data.timer || 5;
+				this.timer = data.timer || TntEntity.timer_max;
 				this.exploded = data.exploded || false;
 			}
 
-			// 	if this.timer == this.timer_max then
-			// 		core.add_particlespawner({
-			// 			amount = 10,
-			// 			time = 0,
-			// 			minpos = vector.new(0,0.5,0),
-			// 			minpos = vector.new(0,0.5,0),
-			// 			minvel = vector.new(-0.5,1,-0.5),
-			// 			maxvel = vector.new(0.5,5,0.5),
-			// 			minacc = {x=0, y=0, z=0},
-			// 			maxacc = {x=0, y=0, z=0},
-			// 			minexptime = 0.5,
-			// 			maxexptime = 1.0,
-			// 			minsize = 1,
-			// 			maxsize = 2,
-			// 			collisiondetection = false,
-			// 			vertical = false,
-			// 			texture = "smoke.png",
-			// 			attached = this.object,
-			// 		})
-			// 		core.sound_play("tnt_ignite", {object = this.object, gain = 1.0, max_hear_distance = 64})
-			// 	end
+			if (this.timer == TntEntity.timer_max) {
+				// 		core.add_particlespawner({
+				// 			amount = 10,
+				// 			time = 0,
+				// 			minpos = vector.new(0,0.5,0),
+				// 			minpos = vector.new(0,0.5,0),
+				// 			minvel = vector.new(-0.5,1,-0.5),
+				// 			maxvel = vector.new(0.5,5,0.5),
+				// 			minacc = {x=0, y=0, z=0},
+				// 			maxacc = {x=0, y=0, z=0},
+				// 			minexptime = 0.5,
+				// 			maxexptime = 1.0,
+				// 			minsize = 1,
+				// 			maxsize = 2,
+				// 			collisiondetection = false,
+				// 			vertical = false,
+				// 			texture = "smoke.png",
+				// 			attached = this.object,
+				// 		})
+				// 		core.sound_play("tnt_ignite", {object = this.object, gain = 1.0, max_hear_distance = 64})
+			}
 		}
 
 		get_staticdata(): string {
