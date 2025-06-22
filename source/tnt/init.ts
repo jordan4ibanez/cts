@@ -53,6 +53,21 @@ namespace tnt {
 		print(queue.length());
 	}
 
+	core.register_globalstep(() => {
+		if (queue.length() == 0) {
+			return;
+		}
+		for (const _ of $range(1, 10)) {
+			const thisComponent: ExplosionComponent | undefined = queue.pop();
+
+			if (thisComponent == null) {
+				break;
+			}
+
+			internalTNT(thisComponent.pos, thisComponent.range);
+		}
+	});
+
 	// Explosion item drops.
 	function dropItem(
 		pos: Vec3,
