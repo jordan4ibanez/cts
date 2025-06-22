@@ -869,155 +869,157 @@ namespace sign {
 	// function signs_lib.register_fence_with_sign()
 	// 	core.log("warning", "[signs_lib] "+"Attempt to call no longer used function signs_lib.register_fence_with_sign()")
 	// end
-	// function signs_lib.register_sign(name, raw_def)
-	// 	local def = table.copy(raw_def)
-	// 	if raw_def.entity_info == "standard" then
-	// 		def.entity_info = {
-	// 			mesh = "signs_lib_standard_sign_entity_wall.obj",
-	// 			yaw = signs_lib.wallmounted_yaw
-	// 		}
-	// 	elseif raw_def.entity_info then
-	// 		def.entity_info = raw_def.entity_info
-	// 	end
-	// 	def.after_place_node = raw_def.after_place_node or signs_lib.after_place_node
-	// 	if raw_def.entity_info then
-	// 		def.on_rightclick	 = raw_def.on_rightclick	 or signs_lib.construct_sign
-	// 		def.on_construct	  = raw_def.on_construct	  or signs_lib.construct_sign
-	// 		def.on_destruct	   = raw_def.on_destruct	   or signs_lib.destruct_sign
-	// 		def.on_receive_fields   = raw_def.on_receive_fields   or signs_lib.receive_fields
-	// 		def.on_punch		= raw_def.on_punch		or signs_lib.update_sign
-	// 		def.number_of_lines     = raw_def.number_of_lines     or signs_lib.standard_lines
-	// 		def.horiz_scaling	 = raw_def.horiz_scaling	 or signs_lib.standard_hscale
-	// 		def.vert_scaling	  = raw_def.vert_scaling	  or signs_lib.standard_vscale
-	// 		def.line_spacing	  = raw_def.line_spacing	  or signs_lib.standard_lspace
-	// 		def.font_size	     = raw_def.font_size	     or signs_lib.standard_fsize
-	// 		def.x_offset		= raw_def.x_offset		or signs_lib.standard_xoffs
-	// 		def.y_offset		= raw_def.y_offset		or signs_lib.standard_yoffs
-	// 		def.chars_per_line	= raw_def.chars_per_line	or signs_lib.standard_cpl
-	// 		def.default_color	 = raw_def.default_color	 or "0"
-	// 		if raw_def.locked and not raw_def.after_place_node then
-	// 			def.after_place_node = function(pos, placer, itemstack, pointed_thing)
-	// 				signs_lib.after_place_node(pos, placer, itemstack, pointed_thing, true)
-	// 			end
-	// 		end
-	// 	end
-	// 	def.paramtype	     = raw_def.paramtype	     or "light"
-	// 	def.drawtype		= raw_def.drawtype		or "mesh"
-	// 	def.mesh		    = raw_def.mesh		    or "signs_lib_standard_sign_wall.obj"
-	// 	def.wield_image	   = raw_def.wield_image	   or def.inventory_image
-	// 	def.drop		    = raw_def.drop		    or name
-	// 	def.sounds		  = raw_def.sounds		  or signs_lib.standard_wood_sign_sounds
-	// 	def.paramtype2	    = raw_def.paramtype2	    or "wallmounted"
-	// 	def.on_rotate	     = raw_def.on_rotate	     or signs_lib.handle_rotation
-	// 	def.walkable = false
-	// 	raw_def.walkable = false
-	// 	if raw_def.groups then
-	// 		def.groups = raw_def.groups
-	// 	else
-	// 		def.groups = signs_lib.standard_wood_groups
-	// 	end
-	// 	local cbox = signs_lib.make_selection_boxes(35, 25)
-	// 	def.selection_box = raw_def.selection_box or cbox
-	// 	def.node_box	= table.copy(raw_def.node_box or raw_def.selection_box or cbox)
-	// 	if def.sunlight_propagates ~= false then
-	// 		def.sunlight_propagates = true
-	// 	end
-	// 	def.tiles[3] = "signs_lib_blank.png"
-	// 	def.tiles[4] = "signs_lib_blank.png"
-	// 	def.tiles[5] = "signs_lib_blank.png"
-	// 	def.tiles[6] = "signs_lib_blank.png"
-	// 	core.register_node(":"+name, def)
-	// 	table.insert(signs_lib.lbm_restore_nodes, name)
-	// 	local no_wall_name = string.gsub(name, "_wall", "")
-	// 	local othermounts_def = table.copy(def)
-	// 	if raw_def.allow_onpole or raw_def.allow_onpole_horizontal then
-	// 		local offset = 0.3125
-	// 		if othermounts_def.uses_slim_pole_mount then
-	// 			offset = 0.35
-	// 		end
-	// 		othermounts_def.selection_box = raw_def.onpole_selection_box or othermounts_def.selection_box
-	// 		othermounts_def.node_box = raw_def.onpole_node_box or othermounts_def.selection_box
-	// 		if othermounts_def.paramtype2 == "wallmounted" then
-	// 			othermounts_def.node_box.wall_side[1] = def.node_box.wall_side[1] - offset
-	// 			othermounts_def.node_box.wall_side[4] = def.node_box.wall_side[4] - offset
-	// 			othermounts_def.selection_box.wall_side[1] = def.selection_box.wall_side[1] - offset
-	// 			othermounts_def.selection_box.wall_side[4] = def.selection_box.wall_side[4] - offset
-	// 		else
-	// 			othermounts_def.node_box.fixed[3] = def.node_box.fixed[3] + offset
-	// 			othermounts_def.node_box.fixed[6] = def.node_box.fixed[6] + offset
-	// 			othermounts_def.selection_box.fixed[3] = def.selection_box.fixed[3] + offset
-	// 			othermounts_def.selection_box.fixed[6] = def.selection_box.fixed[6] + offset
-	// 		end
-	// 		othermounts_def.groups.not_in_creative_inventory = 1
-	// 		othermounts_def.mesh = raw_def.onpole_mesh or string.gsub(othermounts_def.mesh, "wall.obj$", "onpole.obj")
-	// 		if othermounts_def.entity_info then
-	// 			othermounts_def.entity_info.mesh = string.gsub(othermounts_def.entity_info.mesh, "entity_wall.obj$", "entity_onpole.obj")
-	// 		end
-	// 	end
-	// 	// setting one of item 3 or 4 to a texture and leaving the other "blank",
-	// 	// reveals either the vertical or horizontal pole mount part of the model
-	// 	if raw_def.allow_onpole then
-	// 		othermounts_def.tiles[3] = raw_def.tiles[3] or "signs_lib_pole_mount.png"
-	// 		othermounts_def.tiles[4] = "signs_lib_blank.png"
-	// 		othermounts_def.tiles[5] = "signs_lib_blank.png"
-	// 		othermounts_def.tiles[6] = "signs_lib_blank.png"
-	// 		core.register_node(":"+no_wall_name+"_onpole", othermounts_def)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole")
-	// 	end
-	// 	if raw_def.allow_onpole_horizontal then
-	// 		local onpole_horiz_def = table.copy(othermounts_def)
-	// 		onpole_horiz_def.tiles[3] = "signs_lib_blank.png"
-	// 		onpole_horiz_def.tiles[4] = raw_def.tiles[3] or "signs_lib_pole_mount.png"
-	// 		onpole_horiz_def.tiles[5] = "signs_lib_blank.png"
-	// 		onpole_horiz_def.tiles[6] = "signs_lib_blank.png"
-	// 		core.register_node(":"+no_wall_name+"_onpole_horiz", onpole_horiz_def)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole_horiz")
-	// 	end
-	// 	if raw_def.allow_hanging then
-	// 		local hanging_def = table.copy(def)
-	// 		hanging_def.paramtype2 = "facedir"
-	// 		local hcbox = signs_lib.make_selection_boxes(35, 32, nil, 0, 3, -18.5, true)
-	// 		hanging_def.selection_box = raw_def.hanging_selection_box or hcbox
-	// 		hanging_def.node_box = raw_def.hanging_node_box or raw_def.hanging_selection_box or hcbox
-	// 		hanging_def.groups.not_in_creative_inventory = 1
-	// 		hanging_def.tiles[3] = raw_def.tiles[4] or "signs_lib_hangers.png"
-	// 		hanging_def.tiles[4] = "signs_lib_blank.png"
-	// 		hanging_def.tiles[5] = "signs_lib_blank.png"
-	// 		hanging_def.tiles[6] = "signs_lib_blank.png"
-	// 		hanging_def.mesh = raw_def.hanging_mesh or string.gsub(string.gsub(hanging_def.mesh, "wall.obj$", "hanging.obj"), "_facedir", "")
-	// 		if hanging_def.entity_info then
-	// 			hanging_def.entity_info.mesh = string.gsub(string.gsub(hanging_def.entity_info.mesh, "entity_wall.obj$", "entity_hanging.obj"), "_facedir", "")
-	// 			hanging_def.entity_info.yaw = signs_lib.standard_yaw
-	// 		end
-	// 		core.register_node(":"+no_wall_name+"_hanging", hanging_def)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_hanging")
-	// 	end
-	// 	if raw_def.allow_yard then
-	// 		local ydef = table.copy(def)
-	// 		ydef.paramtype2 = "facedir"
-	// 		local ycbox = signs_lib.make_selection_boxes(35, 34.5, false, 0, -1.25, -19.69, true)
-	// 		ydef.selection_box = raw_def.yard_selection_box or ycbox
-	// 		ydef.tiles[3] = raw_def.tiles[5] or "wood.png"
-	// 		ydef.tiles[4] = "signs_lib_blank.png"
-	// 		ydef.tiles[5] = "signs_lib_blank.png"
-	// 		ydef.tiles[6] = "signs_lib_blank.png"
-	// 		ydef.node_box = raw_def.yard_node_box or raw_def.yard_selection_box or ycbox
-	// 		ydef.groups.not_in_creative_inventory = 1
-	// 		ydef.mesh = raw_def.yard_mesh or string.gsub(string.gsub(ydef.mesh, "wall.obj$", "yard.obj"), "_facedir", "")
-	// 		if ydef.entity_info then
-	// 			ydef.entity_info.mesh = string.gsub(string.gsub(ydef.entity_info.mesh, "entity_wall.obj$", "entity_yard.obj"), "_facedir", "")
-	// 			ydef.entity_info.yaw = signs_lib.standard_yaw
-	// 		end
-	// 		core.register_node(":"+no_wall_name+"_yard", ydef)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_yard")
-	// 	end
-	// 	if raw_def.allow_widefont then
-	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont")
-	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
-	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
-	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
-	// 	end
-	// end
+
+	export function register_sign(name: string, raw_def: any) {
+		// 	local def = table.copy(raw_def)
+		// 	if raw_def.entity_info == "standard" then
+		// 		def.entity_info = {
+		// 			mesh = "signs_lib_standard_sign_entity_wall.obj",
+		// 			yaw = signs_lib.wallmounted_yaw
+		// 		}
+		// 	elseif raw_def.entity_info then
+		// 		def.entity_info = raw_def.entity_info
+		// 	end
+		// 	def.after_place_node = raw_def.after_place_node or signs_lib.after_place_node
+		// 	if raw_def.entity_info then
+		// 		def.on_rightclick	 = raw_def.on_rightclick	 or signs_lib.construct_sign
+		// 		def.on_construct	  = raw_def.on_construct	  or signs_lib.construct_sign
+		// 		def.on_destruct	   = raw_def.on_destruct	   or signs_lib.destruct_sign
+		// 		def.on_receive_fields   = raw_def.on_receive_fields   or signs_lib.receive_fields
+		// 		def.on_punch		= raw_def.on_punch		or signs_lib.update_sign
+		// 		def.number_of_lines     = raw_def.number_of_lines     or signs_lib.standard_lines
+		// 		def.horiz_scaling	 = raw_def.horiz_scaling	 or signs_lib.standard_hscale
+		// 		def.vert_scaling	  = raw_def.vert_scaling	  or signs_lib.standard_vscale
+		// 		def.line_spacing	  = raw_def.line_spacing	  or signs_lib.standard_lspace
+		// 		def.font_size	     = raw_def.font_size	     or signs_lib.standard_fsize
+		// 		def.x_offset		= raw_def.x_offset		or signs_lib.standard_xoffs
+		// 		def.y_offset		= raw_def.y_offset		or signs_lib.standard_yoffs
+		// 		def.chars_per_line	= raw_def.chars_per_line	or signs_lib.standard_cpl
+		// 		def.default_color	 = raw_def.default_color	 or "0"
+		// 		if raw_def.locked and not raw_def.after_place_node then
+		// 			def.after_place_node = function(pos, placer, itemstack, pointed_thing)
+		// 				signs_lib.after_place_node(pos, placer, itemstack, pointed_thing, true)
+		// 			end
+		// 		end
+		// 	end
+		// 	def.paramtype	     = raw_def.paramtype	     or "light"
+		// 	def.drawtype		= raw_def.drawtype		or "mesh"
+		// 	def.mesh		    = raw_def.mesh		    or "signs_lib_standard_sign_wall.obj"
+		// 	def.wield_image	   = raw_def.wield_image	   or def.inventory_image
+		// 	def.drop		    = raw_def.drop		    or name
+		// 	def.sounds		  = raw_def.sounds		  or signs_lib.standard_wood_sign_sounds
+		// 	def.paramtype2	    = raw_def.paramtype2	    or "wallmounted"
+		// 	def.on_rotate	     = raw_def.on_rotate	     or signs_lib.handle_rotation
+		// 	def.walkable = false
+		// 	raw_def.walkable = false
+		// 	if raw_def.groups then
+		// 		def.groups = raw_def.groups
+		// 	else
+		// 		def.groups = signs_lib.standard_wood_groups
+		// 	end
+		// 	local cbox = signs_lib.make_selection_boxes(35, 25)
+		// 	def.selection_box = raw_def.selection_box or cbox
+		// 	def.node_box	= table.copy(raw_def.node_box or raw_def.selection_box or cbox)
+		// 	if def.sunlight_propagates ~= false then
+		// 		def.sunlight_propagates = true
+		// 	end
+		// 	def.tiles[3] = "signs_lib_blank.png"
+		// 	def.tiles[4] = "signs_lib_blank.png"
+		// 	def.tiles[5] = "signs_lib_blank.png"
+		// 	def.tiles[6] = "signs_lib_blank.png"
+		// 	core.register_node(":"+name, def)
+		// 	table.insert(signs_lib.lbm_restore_nodes, name)
+		// 	local no_wall_name = string.gsub(name, "_wall", "")
+		// 	local othermounts_def = table.copy(def)
+		// 	if raw_def.allow_onpole or raw_def.allow_onpole_horizontal then
+		// 		local offset = 0.3125
+		// 		if othermounts_def.uses_slim_pole_mount then
+		// 			offset = 0.35
+		// 		end
+		// 		othermounts_def.selection_box = raw_def.onpole_selection_box or othermounts_def.selection_box
+		// 		othermounts_def.node_box = raw_def.onpole_node_box or othermounts_def.selection_box
+		// 		if othermounts_def.paramtype2 == "wallmounted" then
+		// 			othermounts_def.node_box.wall_side[1] = def.node_box.wall_side[1] - offset
+		// 			othermounts_def.node_box.wall_side[4] = def.node_box.wall_side[4] - offset
+		// 			othermounts_def.selection_box.wall_side[1] = def.selection_box.wall_side[1] - offset
+		// 			othermounts_def.selection_box.wall_side[4] = def.selection_box.wall_side[4] - offset
+		// 		else
+		// 			othermounts_def.node_box.fixed[3] = def.node_box.fixed[3] + offset
+		// 			othermounts_def.node_box.fixed[6] = def.node_box.fixed[6] + offset
+		// 			othermounts_def.selection_box.fixed[3] = def.selection_box.fixed[3] + offset
+		// 			othermounts_def.selection_box.fixed[6] = def.selection_box.fixed[6] + offset
+		// 		end
+		// 		othermounts_def.groups.not_in_creative_inventory = 1
+		// 		othermounts_def.mesh = raw_def.onpole_mesh or string.gsub(othermounts_def.mesh, "wall.obj$", "onpole.obj")
+		// 		if othermounts_def.entity_info then
+		// 			othermounts_def.entity_info.mesh = string.gsub(othermounts_def.entity_info.mesh, "entity_wall.obj$", "entity_onpole.obj")
+		// 		end
+		// 	end
+		// 	// setting one of item 3 or 4 to a texture and leaving the other "blank",
+		// 	// reveals either the vertical or horizontal pole mount part of the model
+		// 	if raw_def.allow_onpole then
+		// 		othermounts_def.tiles[3] = raw_def.tiles[3] or "signs_lib_pole_mount.png"
+		// 		othermounts_def.tiles[4] = "signs_lib_blank.png"
+		// 		othermounts_def.tiles[5] = "signs_lib_blank.png"
+		// 		othermounts_def.tiles[6] = "signs_lib_blank.png"
+		// 		core.register_node(":"+no_wall_name+"_onpole", othermounts_def)
+		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole")
+		// 	end
+		// 	if raw_def.allow_onpole_horizontal then
+		// 		local onpole_horiz_def = table.copy(othermounts_def)
+		// 		onpole_horiz_def.tiles[3] = "signs_lib_blank.png"
+		// 		onpole_horiz_def.tiles[4] = raw_def.tiles[3] or "signs_lib_pole_mount.png"
+		// 		onpole_horiz_def.tiles[5] = "signs_lib_blank.png"
+		// 		onpole_horiz_def.tiles[6] = "signs_lib_blank.png"
+		// 		core.register_node(":"+no_wall_name+"_onpole_horiz", onpole_horiz_def)
+		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole_horiz")
+		// 	end
+		// 	if raw_def.allow_hanging then
+		// 		local hanging_def = table.copy(def)
+		// 		hanging_def.paramtype2 = "facedir"
+		// 		local hcbox = signs_lib.make_selection_boxes(35, 32, nil, 0, 3, -18.5, true)
+		// 		hanging_def.selection_box = raw_def.hanging_selection_box or hcbox
+		// 		hanging_def.node_box = raw_def.hanging_node_box or raw_def.hanging_selection_box or hcbox
+		// 		hanging_def.groups.not_in_creative_inventory = 1
+		// 		hanging_def.tiles[3] = raw_def.tiles[4] or "signs_lib_hangers.png"
+		// 		hanging_def.tiles[4] = "signs_lib_blank.png"
+		// 		hanging_def.tiles[5] = "signs_lib_blank.png"
+		// 		hanging_def.tiles[6] = "signs_lib_blank.png"
+		// 		hanging_def.mesh = raw_def.hanging_mesh or string.gsub(string.gsub(hanging_def.mesh, "wall.obj$", "hanging.obj"), "_facedir", "")
+		// 		if hanging_def.entity_info then
+		// 			hanging_def.entity_info.mesh = string.gsub(string.gsub(hanging_def.entity_info.mesh, "entity_wall.obj$", "entity_hanging.obj"), "_facedir", "")
+		// 			hanging_def.entity_info.yaw = signs_lib.standard_yaw
+		// 		end
+		// 		core.register_node(":"+no_wall_name+"_hanging", hanging_def)
+		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_hanging")
+		// 	end
+		// 	if raw_def.allow_yard then
+		// 		local ydef = table.copy(def)
+		// 		ydef.paramtype2 = "facedir"
+		// 		local ycbox = signs_lib.make_selection_boxes(35, 34.5, false, 0, -1.25, -19.69, true)
+		// 		ydef.selection_box = raw_def.yard_selection_box or ycbox
+		// 		ydef.tiles[3] = raw_def.tiles[5] or "wood.png"
+		// 		ydef.tiles[4] = "signs_lib_blank.png"
+		// 		ydef.tiles[5] = "signs_lib_blank.png"
+		// 		ydef.tiles[6] = "signs_lib_blank.png"
+		// 		ydef.node_box = raw_def.yard_node_box or raw_def.yard_selection_box or ycbox
+		// 		ydef.groups.not_in_creative_inventory = 1
+		// 		ydef.mesh = raw_def.yard_mesh or string.gsub(string.gsub(ydef.mesh, "wall.obj$", "yard.obj"), "_facedir", "")
+		// 		if ydef.entity_info then
+		// 			ydef.entity_info.mesh = string.gsub(string.gsub(ydef.entity_info.mesh, "entity_wall.obj$", "entity_yard.obj"), "_facedir", "")
+		// 			ydef.entity_info.yaw = signs_lib.standard_yaw
+		// 		end
+		// 		core.register_node(":"+no_wall_name+"_yard", ydef)
+		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_yard")
+		// 	end
+		// 	if raw_def.allow_widefont then
+		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont")
+		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
+		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
+		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
+		// 	end
+	}
+	
 	// // restore signs' text after /clearobjects and the like, the next time
 	// // a block is reloaded by the server.
 	// core.register_lbm({
