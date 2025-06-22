@@ -431,11 +431,12 @@ namespace tnt {
 		}
 
 		get_staticdata(): string {
-			return core.serialize({
+			const data: TntData = {
 				range: this.range,
 				timer: this.timer,
 				exploded: this.exploded,
-			});
+			};
+			return core.serialize(data);
 		}
 
 		on_punch() {
