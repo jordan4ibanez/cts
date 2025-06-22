@@ -371,7 +371,7 @@ namespace tnt {
 
 		static readonly timer_max: number = 5;
 		shot: boolean = false;
-		timer: number = 5;
+		timer: number = TntEntity.timer_max;
 		range: number = 7;
 		sound_played: boolean = false;
 		exploded: boolean = false;
