@@ -1,5 +1,5 @@
 namespace sign {
-	export const lbm_restore_nodes = {};
+	export const lbm_restore_nodes = new Set<string>();
 	export const old_fenceposts = {};
 	export const old_fenceposts_replacement_signs = {};
 	export const old_fenceposts_with_signs = {};
@@ -929,8 +929,8 @@ namespace sign {
 		def.tiles[6] = "signs_lib_blank.png";
 
 		core.register_node(":" + name, def);
-		
-		// 	table.insert(signs_lib.lbm_restore_nodes, name)
+		lbm_restore_nodes.add(name);
+
 		// 	local no_wall_name = string.gsub(name, "_wall", "")
 		// 	local othermounts_def = table.copy(def)
 		// 	if raw_def.allow_onpole or raw_def.allow_onpole_horizontal then
