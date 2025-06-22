@@ -18,6 +18,7 @@ namespace utility {
 		"quaternion",
 		"vector",
 		"nodebox_helper",
+		"queue",
 	]);
 
 	export function concat(...input: string[]): string {
