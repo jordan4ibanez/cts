@@ -193,10 +193,18 @@ namespace sign {
 		}
 	}
 
+	interface SignNodeDefinition extends NodeDefinition {
+		entity_info?: string;
+	}
+
 	export function spawn_entity(pos: Vec3, texture: string) {
-		// 	local node = core.get_node(pos)
-		// 	local def = core.registered_items[node.name]
-		// 	if not def or not def.entity_info then return end
+		const node: NodeTable = core.get_node(pos);
+		const def: SignNodeDefinition | undefined = core.registered_items[node.name];
+
+		if (def == null || def.entity_info == null) {
+			return;
+		}
+
 		// 	local text_scale = (node and node.text_scale) or signs_lib.default_text_scale
 		// 	local objects = core.get_objects_inside_radius(pos, 0.5)
 		// 	local obj
