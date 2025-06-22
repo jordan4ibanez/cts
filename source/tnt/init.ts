@@ -346,9 +346,10 @@ namespace tnt {
 		// 		pointable = true,
 		// 	},
 		shot: boolean = false;
-		// 	timer = 5,
-		// 	timer_max = 5, //this has to be equal to timer
-		// 	range = 7,
+		timer: number = 5;
+		// This has to be equal to timer.
+		timer_max: number = 5;
+		range: number = 7;
 
 		// local tnt_boom = function(self,dtime)
 		// 	self.timer = self.timer - dtime
