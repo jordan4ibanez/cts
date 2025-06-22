@@ -446,13 +446,14 @@ namespace sign {
 	// 	f:close()
 	// 	return ws:byte(), hs:byte()
 	// end
-	// // 4 rows, max 80 chars per, plus a bit of fudge to
-	// // avoid excess trimming (e.g. due to color codes)
-	// local MAX_INPUT_CHARS = 400
-	// // helper functions to trim sign text input/output
-	// local function trim_input(text)
-	// 	return text:sub(1, math.min(MAX_INPUT_CHARS, text:len()))
-	// end
+	// 4 rows, max 80 chars per, plus a bit of fudge to
+	// avoid excess trimming (e.g. due to color codes).
+	const MAX_INPUT_CHARS: number = 400;
+	// Helper functions to trim sign text input/output.
+	function trim_input(text: string): string {
+		return string.sub(text, 1, math.min(MAX_INPUT_CHARS, text.length));
+	}
+
 	// local function build_char_db(font_size)
 	// 	local cw = {}
 	// 	// To calculate average char width.
