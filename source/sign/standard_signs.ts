@@ -16,7 +16,7 @@ namespace sign {
 	});
 
 	core.register_craft({
-		output: "sign:sign 3",
+		output: "crafter_sign:sign 3",
 		recipe: [
 			["crafter:wood", "crafter:wood", "crafter:wood"],
 			["crafter:wood", "crafter:wood", "crafter:wood"],
