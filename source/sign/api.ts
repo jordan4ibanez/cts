@@ -983,6 +983,7 @@ namespace sign {
 			mesh: "signs_lib_standard_sign_entity_wall.obj",
 			yaw: wallmounted_yaw,
 		};
+		def.node_placement_prediction = "";
 		def.after_place_node = after_place_node;
 		def.paramtype = ParamType1.light;
 		def.drawtype = Drawtype.mesh;
