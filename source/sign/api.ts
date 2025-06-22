@@ -931,9 +931,13 @@ namespace sign {
 		core.register_node(":" + name, def);
 		lbm_restore_nodes.add(name);
 
-		// 	local no_wall_name = string.gsub(name, "_wall", "")
-		// 	local othermounts_def = table.copy(def)
-		// 	if raw_def.allow_onpole or raw_def.allow_onpole_horizontal then
+		const [no_wall_name] = string.gsub(name, "_wall", "");
+
+		const othermounts_def = table.copy(
+			def as any as LuaTable
+		) as any as NodeDefinition;
+
+			
 		// 		local offset = 0.3125
 		// 		if othermounts_def.uses_slim_pole_mount then
 		// 			offset = 0.35
@@ -956,7 +960,7 @@ namespace sign {
 		// 		if othermounts_def.entity_info then
 		// 			othermounts_def.entity_info.mesh = string.gsub(othermounts_def.entity_info.mesh, "entity_wall.obj$", "entity_onpole.obj")
 		// 		end
-		// 	end
+			
 		// 	// setting one of item 3 or 4 to a texture and leaving the other "blank",
 		// 	// reveals either the vertical or horizontal pole mount part of the model
 		// 	if raw_def.allow_onpole then
