@@ -1,32 +1,32 @@
 namespace sign {
 	export const lbm_restore_nodes = {};
 	export const old_fenceposts = {};
-	// signs_lib.old_fenceposts_replacement_signs = {}
-	// signs_lib.old_fenceposts_with_signs = {}
+	export const old_fenceposts_replacement_signs = {}
+	export const old_fenceposts_with_signs = {}
 	// // Settings used for a standard wood or steel wall sign
-	// signs_lib.standard_lines = 6
-	// signs_lib.standard_hscale = 1
-	// signs_lib.standard_vscale = 1
-	// signs_lib.standard_lspace = 1
-	// signs_lib.standard_fsize = 15
-	// signs_lib.standard_xoffs = 4
-	// signs_lib.standard_yoffs = 0
-	// signs_lib.standard_cpl = 35
-	// signs_lib.standard_wood_groups = table.copy(core.registered_items["main:wood"].groups)
-	// signs_lib.standard_wood_groups.sign = 1
-	// signs_lib.standard_wood_groups.attached_node = nil
-	// signs_lib.standard_wood_sign_sounds  = table.copy(core.registered_items["main:wood"].sounds)
-	// signs_lib.default_text_scale = {x=10, y=10}
-	// signs_lib.old_widefont_signs = {}
-	// signs_lib.block_list = {}
-	// signs_lib.totalblocks = 0
-	// signs_lib.standard_yaw = {
+	// export const standard_lines = 6
+	// export const standard_hscale = 1
+	// export const standard_vscale = 1
+	// export const standard_lspace = 1
+	// export const standard_fsize = 15
+	// export const standard_xoffs = 4
+	// export const standard_yoffs = 0
+	// export const standard_cpl = 35
+	// export const standard_wood_groups = table.copy(core.registered_items["main:wood"].groups)
+	// export const standard_wood_groups.sign = 1
+	// export const standard_wood_groups.attached_node = nil
+	// export const standard_wood_sign_sounds  = table.copy(core.registered_items["main:wood"].sounds)
+	// export const default_text_scale = {x=10, y=10}
+	// export const old_widefont_signs = {}
+	// export const block_list = {}
+	// export const totalblocks = 0
+	// export const standard_yaw = {
 	// 	0,
 	// 	math.pi / -2,
 	// 	math.pi,
 	// 	math.pi / 2,
 	// }
-	// signs_lib.wallmounted_yaw = {
+	// export const wallmounted_yaw = {
 	// 	nil,
 	// 	nil,
 	// 	math.pi / -2,
@@ -34,13 +34,13 @@ namespace sign {
 	// 	0,
 	// 	math.pi,
 	// }
-	// signs_lib.fdir_to_back = {
+	// export const fdir_to_back = {
 	// 	{  0, -1 },
 	// 	{ -1,  0 },
 	// 	{  0,  1 },
 	// 	{  1,  0 },
 	// }
-	// signs_lib.wall_fdir_to_back = {
+	// export const wall_fdir_to_back = {
 	// 	nil,
 	// 	nil,
 	// 	{  0,  1 },
@@ -48,31 +48,31 @@ namespace sign {
 	// 	{ -1,  0 },
 	// 	{  1,  0 },
 	// }
-	// signs_lib.fdir_flip_to_back = {
+	// export const fdir_flip_to_back = {
 	// 	[0] = {  0,  2 },
 	// 	[1] = {  2,  0 },
 	// 	[2] = {  0, -2 },
 	// 	[3] = { -2,  0 }
 	// }
-	// signs_lib.wall_fdir_flip_to_back = {
+	// export const wall_fdir_flip_to_back = {
 	// 	[2] = {  2,  0 },
 	// 	[3] = { -2,  0 },
 	// 	[4] = {  0,  2 },
 	// 	[5] = {  0, -2 },
 	// }
-	// signs_lib.fdir_to_back_left = {
+	// export const fdir_to_back_left = {
 	// 	[0] = { -1,  1 },
 	// 	[1] = {  1,  1 },
 	// 	[2] = {  1, -1 },
 	// 	[3] = { -1, -1 }
 	// }
-	// signs_lib.wall_fdir_to_back_left = {
+	// export const wall_fdir_to_back_left = {
 	// 	[2] = {  1,  1 },
 	// 	[3] = { -1, -1 },
 	// 	[4] = { -1,  1 },
 	// 	[5] = {  1, -1 }
 	// }
-	// signs_lib.rotate_walldir = {
+	// export const rotate_walldir = {
 	// 	[0] = 4,
 	// 	[1] = 0,
 	// 	[2] = 5,
@@ -80,7 +80,7 @@ namespace sign {
 	// 	[4] = 2,
 	// 	[5] = 3
 	// }
-	// signs_lib.rotate_walldir_simple = {
+	// export const rotate_walldir_simple = {
 	// 	[0] = 4,
 	// 	[1] = 4,
 	// 	[2] = 5,
@@ -88,7 +88,7 @@ namespace sign {
 	// 	[4] = 2,
 	// 	[5] = 3
 	// }
-	// signs_lib.rotate_facedir = {
+	// export const rotate_facedir = {
 	// 	[0] = 1,
 	// 	[1] = 2,
 	// 	[2] = 3,
@@ -97,7 +97,7 @@ namespace sign {
 	// 	[5] = 6,
 	// 	[6] = 0
 	// }
-	// signs_lib.rotate_facedir_simple = {
+	// export const rotate_facedir_simple = {
 	// 	[0] = 1,
 	// 	[1] = 2,
 	// 	[2] = 3,
@@ -105,7 +105,7 @@ namespace sign {
 	// 	[4] = 0,
 	// 	[5] = 0
 	// }
-	// signs_lib.flip_facedir = {
+	// export const flip_facedir = {
 	// 	[0] = 2,
 	// 	[1] = 3,
 	// 	[2] = 0,
@@ -114,7 +114,7 @@ namespace sign {
 	// 	[5] = 4,
 	// 	[6] = 4
 	// }
-	// signs_lib.flip_walldir = {
+	// export const flip_walldir = {
 	// 	[0] = 1,
 	// 	[1] = 0,
 	// 	[2] = 3,
