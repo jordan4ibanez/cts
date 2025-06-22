@@ -1027,15 +1027,22 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_onpole", othermounts_def);
 		lbm_restore_nodes.add(no_wall_name + "_onpole");
 
-		// 	if raw_def.allow_onpole_horizontal then
-		// 		local onpole_horiz_def = table.copy(othermounts_def)
-		// 		onpole_horiz_def.tiles[3] = "signs_lib_blank.png"
-		// 		onpole_horiz_def.tiles[4] = raw_def.tiles[3] or "signs_lib_pole_mount.png"
-		// 		onpole_horiz_def.tiles[5] = "signs_lib_blank.png"
-		// 		onpole_horiz_def.tiles[6] = "signs_lib_blank.png"
-		// 		core.register_node(":"+no_wall_name+"_onpole_horiz", onpole_horiz_def)
-		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole_horiz")
-		// 	end
+		const onpole_horiz_def: SignDefinitionComplete = table.copy(
+			othermounts_def as any as LuaTable
+		) as any as SignDefinitionComplete;
+		if (onpole_horiz_def.tiles == null) {
+			throw new Error("Logic error 4");
+		}
+		onpole_horiz_def.tiles[3] = "signs_lib_blank.png";
+		onpole_horiz_def.tiles[4] = "signs_lib_pole_mount.png";
+		onpole_horiz_def.tiles[5] = "signs_lib_blank.png";
+		onpole_horiz_def.tiles[6] = "signs_lib_blank.png";
+		core.register_node(
+			":" + no_wall_name + "_onpole_horiz",
+			onpole_horiz_def
+		);
+		lbm_restore_nodes.add(no_wall_name + "_onpole_horiz");
+
 		// 	if raw_def.allow_hanging then
 		// 		local hanging_def = table.copy(def)
 		// 		hanging_def.paramtype2 = "facedir"
