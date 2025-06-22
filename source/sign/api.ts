@@ -407,18 +407,22 @@ namespace sign {
 	// To avoid reopening file after checking again
 	// pass TRUE as second argument.
 
-	function file_exists(name: string, return_handle: boolean, mode?: string) {
-		// 	mode = mode or "r";
-		// 	local f = io.open(name, mode)
-		// 	if f ~= nil then
-		// 		if (return_handle) then
-		// 			return f
-		// 		end
-		// 		io.close(f)
-		// 		return true
-		// 	else
-		// 		return false
-		// 	end
+	function file_exists(
+		name: string,
+		return_handle: boolean,
+		mode?: string
+	): boolean | LuaFile {
+		mode = mode || "r";
+		const [f] = io.open(name, mode);
+		if (f != null) {
+			if (return_handle) {
+				return f;
+			}
+			io.close(f);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	// // Read the image size from a PNG file.
 	// // Returns image_w, image_h.
