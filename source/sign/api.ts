@@ -636,30 +636,30 @@ namespace sign {
 
 		cur_color = null;
 
-		// 	for word_i, word in ipairs(words) do
-		// 		local xoffs = (xpos - start_xpos)
-		// 		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
-		// 			table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
-		// 			xpos = start_xpos
-		// 			ypos = ypos + line_height + def.line_spacing
-		// 			lineno = lineno + 1
-		// 			if lineno >= def.number_of_lines then break end
-		// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
-		// 		end
-		// 		for ch_i, ch in ipairs(word.chars) do
-		// 			if ch.col ~= cur_color then
-		// 				cur_color = ch.col
-		// 				table.insert(texture, fill_line(xpos + ch.off, ypos, maxw, cur_color, font_size, colorbgw))
-		// 			end
-		// 			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
-		// 		end
-		// 		table.insert(
-		// 			texture,
-		// 			(":%d,%d="):format(xpos + word.w, ypos) + char_tex(font_name, " ")
-		// 		)
-		// 		xpos = xpos + word.w + cwidth_tab[" "]
-		// 		if xpos >= (line_width + cwidth_tab[" "]) then break end
-		// 	end
+		for (const [word_i, word] of ipairs(words)) {
+			// 		local xoffs = (xpos - start_xpos)
+			// 		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
+			// 			table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
+			// 			xpos = start_xpos
+			// 			ypos = ypos + line_height + def.line_spacing
+			// 			lineno = lineno + 1
+			// 			if lineno >= def.number_of_lines then break end
+			// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
+			// 		end
+			// 		for ch_i, ch in ipairs(word.chars) do
+			// 			if ch.col ~= cur_color then
+			// 				cur_color = ch.col
+			// 				table.insert(texture, fill_line(xpos + ch.off, ypos, maxw, cur_color, font_size, colorbgw))
+			// 			end
+			// 			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
+			// 		end
+			// 		table.insert(
+			// 			texture,
+			// 			(":%d,%d="):format(xpos + word.w, ypos) + char_tex(font_name, " ")
+			// 		)
+			// 		xpos = xpos + word.w + cwidth_tab[" "]
+			// 		if xpos >= (line_width + cwidth_tab[" "]) then break end
+		}
 		// 	table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
 		// 	table.insert(texture, fill_line(start_xpos, ypos + line_height, maxw, "n", font_size, colorbgw))
 		// 	return table.concat(texture), lineno
