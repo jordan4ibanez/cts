@@ -1174,7 +1174,7 @@ namespace sign {
 		});
 	});
 
-	// // Convert widefont sign nodes to use one base node with meta flag to select wide mode
+	// Convert widefont sign nodes to use one base node with meta flag to select wide mode.
 	// core.register_lbm({
 	// 	nodenames = signs_lib.old_widefont_signs,
 	// 	name = "crafter_sign:convert_widefont_signs",
