@@ -166,7 +166,7 @@ namespace sign {
 	};
 
 	// Initialize character texture cache.
-	const ctexcache = {};
+	const ctexcache: Dictionary<string, string> = {};
 
 	// Entity handling.
 	class SignTextEntity extends types.Entity {
@@ -411,17 +411,9 @@ namespace sign {
 		return f;
 	}
 
-	function file_exists(
-		name: string,
-		return_handle: boolean,
-		mode?: string
-	): boolean | LuaFile {
-		mode = mode || "r";
-		const [f] = io.open(name, mode);
+	function file_exists(name: string): boolean {
+		const [f] = io.open(name, "r");
 		if (f != null) {
-			if (return_handle) {
-				return f;
-			}
 			io.close(f);
 			return true;
 		} else {
@@ -516,23 +508,25 @@ namespace sign {
 	// 	end
 	// 	return table.concat(tex)
 	// end
-	// // make char texture file name
-	// // if texture file does not exist use fallback texture instead
-	// local function char_tex(font_name, ch)
-	// 	if ctexcache[font_name+ch] then
-	// 		return ctexcache[font_name+ch], true
-	// 	else
-	// 		local c = ch:byte()
-	// 		local exists, tex = file_exists(CHAR_PATH:format(font_name, c))
-	// 		if exists and c ~= 14 then
-	// 			tex = CHAR_FILE:format(font_name, c)
-	// 		else
-	// 			tex = CHAR_FILE:format(font_name, 0x0)
-	// 		end
-	// 		ctexcache[font_name+ch] = tex
-	// 		return tex, exists
-	// 	end
-	// end
+
+	// Make char texture file name.
+	// If texture file does not exist use fallback texture instead.
+	function char_tex(font_name: string, ch: string): [string, boolean] {
+		if (ctexcache[font_name + ch] != null) {
+			return [ctexcache[font_name + ch]!, true];
+		} else {
+			const c: number = string.byte(ch);
+			const exists = file_exists(string.format(CHAR_PATH, font_name, c));
+			let tex: string = "";
+			if (exists && c != 14) {
+				tex = string.format(CHAR_FILE, font_name, c);
+			} else {
+				tex = string.format(CHAR_FILE, font_name, 0x0);
+			}
+			ctexcache[font_name + ch] = tex;
+			return [tex, exists];
+		}
+	}
 
 	function make_line_texture(
 		line: string,
@@ -540,7 +534,7 @@ namespace sign {
 		pos: Vec3,
 		line_width: number,
 		line_height: number,
-		cwidth_tab: number,
+		cwidth_tab: Dictionary<string, number>,
 		font_size: number,
 		colorbgw: number
 	) {
@@ -552,14 +546,19 @@ namespace sign {
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 		const default_color: number = 0;
-		const cur_color: number = 0;
+		let cur_color: number = 0;
 		// We check which chars are available here.
 		for (let [word_i, word] of ipairs(line)) {
 			if (typeof word != "string") {
 				core.log(LogLevel.error, "Not a string.");
 				continue;
 			}
-			let chars = {};
+			interface TempData {
+				off: number;
+				tex: string;
+				col: string;
+			}
+			let chars: TempData[] = [];
 			let ch_offs: number = 0;
 			[word] = string.gsub(word, "%^[12345678abcdefgh]", {
 				["^1"]: string.char(0x81),
@@ -583,31 +582,35 @@ namespace sign {
 			let i = 1;
 			while (i <= word_l) {
 				const c: string = string.sub(word, i, i);
-				// 			if c == "#" then
-				// 				local cc = tonumber(word:sub(i+1, i+1), 16)
-				// 				if cc then
-				// 					i = i + 1
-				// 					cur_color = cc
-				// 				end
-				// 			else
-				// 				local w = cwidth_tab[c]
-				// 				if w then
-				// 					width = width + w + 1
-				// 					if width >= (line_width - cwidth_tab[" "]) then
-				// 						width = 0
-				// 					else
-				// 						maxw = math_max(width, maxw)
-				// 					end
-				// 					if #chars < MAX_INPUT_CHARS then
-				// 						table.insert(chars, {
-				// 							off = ch_offs,
-				// 							tex = char_tex(font_name, c),
-				// 							col = ("%X"):format(cur_color),
-				// 						})
-				// 					end
-				// 					ch_offs = ch_offs + w
-				// 				end
-				// 			end
+				if (c == "#") {
+					const cc: number | undefined = tonumber(
+						string.sub(word, i + 1, i + 1),
+						16
+					);
+					if (cc != null) {
+						i = i + 1;
+						cur_color = cc;
+					}
+				} else {
+					let w: number | undefined = cwidth_tab[c];
+					if (w != null) {
+						width = width + w + 1;
+						if (width >= line_width - (cwidth_tab[" "] || 0)) {
+							width = 0;
+						} else {
+							maxw = math.max(width, maxw);
+						}
+						if (chars.length < MAX_INPUT_CHARS) {
+							chars.push({
+								off: ch_offs,
+								tex: char_tex(font_name, c),
+								col: string.format("%X", cur_color),
+							});
+						}
+
+						// 					ch_offs = ch_offs + w
+					}
+				}
 				i = i + 1;
 			}
 			// 		width = width + cwidth_tab[" "] + 1
