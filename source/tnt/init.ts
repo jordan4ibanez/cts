@@ -120,7 +120,7 @@ namespace tnt {
 		data: number[],
 		area: VoxelAreaObject
 	): void {
-		const start: number = core.get_us_time();
+		// const start: number = core.get_us_time();
 		const range_calc: number = range / 100;
 		const explosion_depletion: number = range / 2;
 
@@ -261,9 +261,9 @@ namespace tnt {
 		vm.set_data(data);
 		vm.update_liquids();
 		vm.write_to_map();
-		const end: number = core.get_us_time();
+		// const end: number = core.get_us_time();
 
-		print("took: ", (end - start) / 1000000, "sec");
+		// print("took: ", (end - start) / 1000000, "sec");
 	}
 
 	export function internalTNT(pos: Vec3, range: number) {
