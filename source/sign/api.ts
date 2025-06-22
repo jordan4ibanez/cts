@@ -397,8 +397,8 @@ namespace sign {
 	// Check if a file does exist.
 	// To avoid reopening file after checking again
 	// pass TRUE as second argument.
-	
-	// local function file_exists(name, return_handle, mode)
+
+	 function file_exists(name: string, return_handle: boolean, mode?: string) {
 	// 	mode = mode or "r";
 	// 	local f = io.open(name, mode)
 	// 	if f ~= nil then
@@ -410,7 +410,7 @@ namespace sign {
 	// 	else
 	// 		return false
 	// 	end
-	// end
+	 }
 	// // Read the image size from a PNG file.
 	// // Returns image_w, image_h.
 	// // Only the LSB is read from each field!
