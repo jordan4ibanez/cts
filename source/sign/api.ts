@@ -196,10 +196,11 @@ namespace sign {
 	interface SignNodeDefinition extends NodeDefinition {
 		entity_info?: {
 			yaw: number[];
+			mesh: string;
 		};
 	}
 
-	export function spawn_entity(pos: Vec3, texture: string) {
+	export function spawn_entity(pos: Vec3, texture?: string) {
 		const node: NodeTable = core.get_node(pos);
 		const def: SignNodeDefinition | undefined =
 			core.registered_items[node.name];
@@ -235,7 +236,7 @@ namespace sign {
 			}
 		}
 
-		let yaw: number = def.entity_info.yaw[(node.param2 || 0) + 2];
+		let yaw: number = def.entity_info.yaw[(node.param2 || 0) + 2] || 0;
 
 		let pitch: number = 0;
 
@@ -265,21 +266,19 @@ namespace sign {
 			}
 		}
 
-		// 	if yaw then
-		// 		obj:set_rotation({x = pitch, y = yaw, z=0})
-		// 		if not texture then
-		// 			obj:set_properties({
-		// 				mesh = def.entity_info.mesh,
-		// 				visual_size = text_scale,
-		// 			})
-		// 		else
-		// 			obj:set_properties({
-		// 				mesh = def.entity_info.mesh,
-		// 				visual_size = text_scale,
-		// 				textures={texture},
-		// 			})
-		// 		end
-		// 	end
+		obj.set_rotation(vector.create3d({ x: pitch, y: yaw, z: 0 }));
+		if (texture == null) {
+			obj.set_properties({
+				mesh: def.entity_info.mesh,
+				visual_size: text_scale,
+			});
+		} else {
+			obj.set_properties({
+				mesh: def.entity_info.mesh,
+				visual_size: text_scale,
+				textures: [texture],
+			});
+		}
 	}
 
 	// function signs_lib.set_obj_text(pos, text)
