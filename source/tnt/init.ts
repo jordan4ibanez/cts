@@ -219,7 +219,7 @@ namespace tnt {
 		print("took: ", (end - start) / 1000000, "sec");
 	}
 
-	export function tnt(pos: Vec3, range: number) {
+	export function internalTNT(pos: Vec3, range: number) {
 		const in_node: string = core.get_node(pos).name;
 		const in_water =
 			in_node == "crafter:water" || in_node == "crafter:waterflow";
@@ -369,6 +369,13 @@ namespace tnt {
 			texture: "smoke.png",
 		});
 	}
+
+	/**
+	 * 
+	 * @param pos The position.
+	 * @param range The diameter of the explosion. // todo: rename this
+	 */
+	export function tnt(pos: Vec3, range: number) {}
 
 	// Serialization data for the tnt.
 	interface SerialTntData {
