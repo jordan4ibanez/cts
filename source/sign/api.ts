@@ -947,7 +947,6 @@ namespace sign {
 				othermounts_def.node_box?.wall_side == null ||
 				def.node_box?.wall_side == null ||
 				othermounts_def.selection_box?.wall_side == null ||
-				def.node_box.wall_side == null ||
 				def.selection_box?.wall_side == null
 			) {
 				throw new Error("logic error.");
@@ -962,10 +961,23 @@ namespace sign {
 			othermounts_def.selection_box.wall_side[3] =
 				(def.selection_box.wall_side as box)[3] - offset;
 		} else {
-			// 			othermounts_def.node_box.fixed[3] = def.node_box.fixed[3] + offset
-			// 			othermounts_def.node_box.fixed[6] = def.node_box.fixed[6] + offset
-			// 			othermounts_def.selection_box.fixed[3] = def.selection_box.fixed[3] + offset
-			// 			othermounts_def.selection_box.fixed[6] = def.selection_box.fixed[6] + offset
+			if (
+				othermounts_def.node_box?.fixed == null ||
+				def.node_box?.fixed == null ||
+				othermounts_def.selection_box?.fixed == null ||
+				def.selection_box?.fixed == null
+			) {
+				throw new Error("logic error.");
+			}
+
+			othermounts_def.node_box.fixed[2] =
+				(def.node_box.fixed as box)[2] + offset;
+			othermounts_def.node_box.fixed[5] =
+				(def.node_box.fixed as box)[5] + offset;
+			othermounts_def.selection_box.fixed[2] =
+				(def.selection_box.fixed as box)[2] + offset;
+			othermounts_def.selection_box.fixed[5] =
+				(def.selection_box.fixed as box)[5] + offset;
 		}
 		// 		othermounts_def.groups.not_in_creative_inventory = 1
 		// 		othermounts_def.mesh = raw_def.onpole_mesh or string.gsub(othermounts_def.mesh, "wall.obj$", "onpole.obj")
