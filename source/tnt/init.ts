@@ -423,7 +423,7 @@ namespace tnt {
 			puncher: ObjectRef | null,
 			time_from_last_punch: number | null,
 			tool_capabilities: ToolCapabilities | null,
-			dir: Vec3
+			dir: Vec3 | null
 		) {
 			// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
 			// 		this.object.remove()
