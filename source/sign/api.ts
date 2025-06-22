@@ -160,17 +160,23 @@ namespace sign {
 		[5]: 4,
 	};
 
-	// // Initialize character texture cache
-	// local ctexcache = {}
-	// // entity handling
-	// core.register_entity("sign:text", {
-	// 	collisionbox = { 0, 0, 0, 0, 0, 0 },
-	// 	visual = "mesh",
-	// 	mesh = "signs_lib_standard_wall_sign_entity.obj",
-	// 	textures = {},
-	// 	static_save = false,
-	// 	backface_culling = false
-	// })
+	// Initialize character texture cache.
+	const ctexcache = {};
+
+	// Entity handling.
+	class SignTextEntity extends types.Entity {
+		name: string = "sign:text";
+		initial_properties = {
+			collisionbox: [0, 0, 0, 0, 0, 0],
+			visual: EntityVisual.mesh,
+			mesh: "signs_lib_standard_wall_sign_entity.obj",
+			textures: [],
+			static_save: false,
+			backface_culling: false,
+		};
+	}
+	utility.registerTSEntity(SignTextEntity)
+
 	// function signs_lib.delete_objects(pos)
 	// 	local objects = core.get_objects_inside_radius(pos, 0.5)
 	// 	for _, v in ipairs(objects) do
