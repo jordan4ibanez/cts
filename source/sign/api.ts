@@ -475,7 +475,13 @@ namespace sign {
 		let char_count = 0;
 		for (const c of $range(32, 255)) {
 			// Todo: finish this.
-					// local w, h = read_image_size(CHAR_PATH:format("signs_lib_font_"+font_size+"px", c))
+			const [w, h] = read_image_size(
+				string.format(
+					CHAR_PATH,
+					"signs_lib_font_" + font_size + "px",
+					c
+				)
+			);
 			// 		if w and h then
 			// 			local ch = string.char(c)
 			// 			cw[ch] = w
