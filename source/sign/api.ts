@@ -1100,6 +1100,7 @@ namespace sign {
 			def as any as LuaTable
 		) as any as SignDefinitionComplete;
 
+		hanging_def.use_texture_alpha = TextureAlpha.clip;
 		hanging_def.paramtype2 = ParamType2.facedir;
 		const hcbox = make_selection_boxes(35, 32, null, 0, 3, -18.5, true);
 		hanging_def.selection_box = hcbox;
