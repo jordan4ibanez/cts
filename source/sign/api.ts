@@ -1134,6 +1134,7 @@ namespace sign {
 		def.selection_box = cbox;
 		def.node_box = cbox;
 		def.sunlight_propagates = true;
+		def.on_rightclick = construct_sign;
 
 		if (def.tiles == null) {
 			throw new Error("incorrect tiles.");
