@@ -209,10 +209,10 @@ namespace sign {
 		[210]: { [144]: st(165), [145]: st(180) },
 	};
 
-	// local nmdc : {
-	// 	[36] = "$",
-	// 	[124] = "|"
-	// }
+	const nmdc: Dictionary<number, string> = {
+		[36]: "$",
+		[124]: "|",
+	};
 
 	// function AnsiToUtf8(s)
 	// 	local r, b = ""
