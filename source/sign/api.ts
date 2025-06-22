@@ -194,7 +194,9 @@ namespace sign {
 	}
 
 	interface SignNodeDefinition extends NodeDefinition {
-		entity_info?: string;
+		entity_info?: {
+			yaw: number[];
+		};
 	}
 
 	export function spawn_entity(pos: Vec3, texture: string) {
@@ -224,31 +226,43 @@ namespace sign {
 			}
 		}
 
-		// 	if not obj then
-		// 		obj = core.add_entity(pos, "sign:text")
-		// 	end
-		// 	local yaw = def.entity_info.yaw[node.param2 + 1]
-		// 	local pitch = 0
-		// 	if not string.find(node.name, "onpole") and not string.find(node.name, "hanging") then
-		// 		local rot90 = math.pi/2
-		// 		if def.paramtype2 == "wallmounted" then
-		// 			if node.param2 == 1 then // on floor
-		// 				pitch = -rot90
-		// 				yaw = 0
-		// 			elseif node.param2 == 0 then // on ceiling
-		// 				pitch = rot90
-		// 				yaw = math.pi
-		// 			end
-		// 		elseif def.paramtype2 == "facedir" then
-		// 			if node.param2 == 4 then
-		// 				pitch = -rot90
-		// 				yaw = 0
-		// 			elseif node.param2 == 6 then
-		// 				pitch = rot90
-		// 				yaw = math.pi
-		// 			end
-		// 		end
-		// 	end
+		if (obj == null) {
+			obj = core.add_entity(pos, "sign:text");
+			if (obj == null) {
+				// This means something went very wrong and it gives up.
+				core.log(LogLevel.error, `Failed to add sign at: ${dump(pos)}`);
+				return;
+			}
+		}
+
+		const yaw: number = def.entity_info.yaw[(node.param2 || 0) + 2];
+
+		let pitch: number = 0;
+
+		if (
+			string.find(node.name, "onpole") == null &&
+			string.find(node.name, "hanging") == null
+		) {
+			// 		local rot90 = math.pi/2
+			// 		if def.paramtype2 == "wallmounted" then
+			// 			if node.param2 == 1 then // on floor
+			// 				pitch = -rot90
+			// 				yaw = 0
+			// 			elseif node.param2 == 0 then // on ceiling
+			// 				pitch = rot90
+			// 				yaw = math.pi
+			// 			end
+			// 		elseif def.paramtype2 == "facedir" then
+			// 			if node.param2 == 4 then
+			// 				pitch = -rot90
+			// 				yaw = 0
+			// 			elseif node.param2 == 6 then
+			// 				pitch = rot90
+			// 				yaw = math.pi
+			// 			end
+			// 		end
+		}
+
 		// 	if yaw then
 		// 		obj:set_rotation({x = pitch, y = yaw, z=0})
 		// 		if not texture then
