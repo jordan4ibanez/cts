@@ -275,11 +275,11 @@ namespace sign {
 	// end
 	// // CONSTANTS
 	// // Path to the textures.
-	// local TP = signs_lib.path .. "/textures"
+	// local TP = signs_lib.path + "/textures"
 	// // Font file formatter
 	// local CHAR_FILE = "%s_%02x.png"
 	// // Fonts path
-	// local CHAR_PATH = TP .. "/" .. CHAR_FILE
+	// local CHAR_PATH = TP + "/" + CHAR_FILE
 	// // Lots of overkill here. KISS advocates, go away, shoo! ;) // kaeza
 	// local PNG_HDR = string.char(0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A)
 	// // check if a file does exist
@@ -333,7 +333,7 @@ namespace sign {
 	// 	local total_width = 0
 	// 	local char_count = 0
 	// 	for c = 32, 255 do
-	// 		local w, h = signs_lib.read_image_size(CHAR_PATH:format("signs_lib_font_"..font_size.."px", c))
+	// 		local w, h = signs_lib.read_image_size(CHAR_PATH:format("signs_lib_font_"+font_size+"px", c))
 	// 		if w and h then
 	// 			local ch = string.char(c)
 	// 			cw[ch] = w
@@ -341,7 +341,7 @@ namespace sign {
 	// 			char_count = char_count + 1
 	// 		end
 	// 	end
-	// 	local cbw, cbh = signs_lib.read_image_size(TP.."/signs_lib_color_"..font_size.."px_n.png")
+	// 	local cbw, cbh = signs_lib.read_image_size(TP+"/signs_lib_color_"+font_size+"px_n.png")
 	// 	assert(cbw and cbh, "error reading bg dimensions")
 	// 	return cw, cbw, cbh, (total_width / char_count)
 	// end
@@ -361,15 +361,15 @@ namespace sign {
 	// 	c = c or "0"
 	// 	local tex = { }
 	// 	for xx = 0, math.max(0, w), colorbgw do
-	// 		table.insert(tex, (":%d,%d=signs_lib_color_"..font_size.."px_%s.png"):format(x + xx, y, c))
+	// 		table.insert(tex, (":%d,%d=signs_lib_color_"+font_size+"px_%s.png"):format(x + xx, y, c))
 	// 	end
 	// 	return table.concat(tex)
 	// end
 	// // make char texture file name
 	// // if texture file does not exist use fallback texture instead
 	// local function char_tex(font_name, ch)
-	// 	if ctexcache[font_name..ch] then
-	// 		return ctexcache[font_name..ch], true
+	// 	if ctexcache[font_name+ch] then
+	// 		return ctexcache[font_name+ch], true
 	// 	else
 	// 		local c = ch:byte()
 	// 		local exists, tex = file_exists(CHAR_PATH:format(font_name, c))
@@ -378,14 +378,14 @@ namespace sign {
 	// 		else
 	// 			tex = CHAR_FILE:format(font_name, 0x0)
 	// 		end
-	// 		ctexcache[font_name..ch] = tex
+	// 		ctexcache[font_name+ch] = tex
 	// 		return tex, exists
 	// 	end
 	// end
 	// local function make_line_texture(line, lineno, pos, line_width, line_height, cwidth_tab, font_size, colorbgw)
 	// 	local width = 0
 	// 	local maxw = 0
-	// 	local font_name = "signs_lib_font_"..font_size.."px"
+	// 	local font_name = "signs_lib_font_"+font_size+"px"
 	// 	local words = { }
 	// 	local node = core.get_node(pos)
 	// 	local def = core.registered_items[node.name]
@@ -473,7 +473,7 @@ namespace sign {
 	// 		end
 	// 		table.insert(
 	// 			texture,
-	// 			(":%d,%d="):format(xpos + word.w, ypos) .. char_tex(font_name, " ")
+	// 			(":%d,%d="):format(xpos + word.w, ypos) + char_tex(font_name, " ")
 	// 		)
 	// 		xpos = xpos + word.w + cwidth_tab[" "]
 	// 		if xpos >= (line_width + cwidth_tab[" "]) then break end
@@ -529,8 +529,8 @@ namespace sign {
 	// 	return lines
 	// end
 	// function signs_lib.construct_sign(pos)
-	// 	local form = "size[6,4]"..
-	// 		"textarea[0,-0.3;6.5,3;text;;${text}]"..
+	// 	local form = "size[6,4]"+
+	// 		"textarea[0,-0.3;6.5,3;text;;${text}]"+
 	// 		"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]"
 	// 	local node = core.get_node(pos)
 	// 	local def = core.registered_items[node.name]
@@ -538,13 +538,13 @@ namespace sign {
 	// 	if def.allow_widefont then
 	// 		local state = "off"
 	// 		if meta:get_int("widefont") == 1 then state = "on" end
-	// 		form = form.."label[1,3.4;Use wide font]"..
-	// 			"image_button[1.1,3.7;1,0.6;signs_lib_switch_"..
-	// 			state..".png;"..
-	// 			state..";;;false;signs_lib_switch_interm.png]"..
-	// 			"button_exit[3,3.4;2,1;ok;"..S("Write").."]"
+	// 		form = form+"label[1,3.4;Use wide font]"+
+	// 			"image_button[1.1,3.7;1,0.6;signs_lib_switch_"+
+	// 			state+".png;"+
+	// 			state+";;;false;signs_lib_switch_interm.png]"+
+	// 			"button_exit[3,3.4;2,1;ok;"+S("Write")+"]"
 	// 	else
-	// 		form = form.."button_exit[2,3.4;2,1;ok;"..S("Write").."]"
+	// 		form = form+"button_exit[2,3.4;2,1;ok;"+S("Write")+"]"
 	// 	end
 	// 	meta:set_string("formspec", form)
 	// 	local i = meta:get_string("infotext")
@@ -572,7 +572,7 @@ namespace sign {
 	// 	local ownstr = ""
 	// 	if owner ~= "" then ownstr = S("Locked sign, owned by @1\n", owner) end
 	// 	meta:set_string("text", text)
-	// 	meta:set_string("infotext", ownstr..make_infotext(text).." ")
+	// 	meta:set_string("infotext", ownstr+make_infotext(text)+" ")
 	// 	signs_lib.set_obj_text(pos, text)
 	// end
 	// function signs_lib.receive_fields(pos, formname, fields, sender)
@@ -710,7 +710,7 @@ namespace sign {
 	// 			newparam2 = core.dir_to_facedir(lookdir)
 	// 		end
 	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name.."_onpole", param2 = newparam2})
+	// 		core.swap_node(pos, {name = no_wall_name+"_onpole", param2 = newparam2})
 	// 	elseif def.allow_onpole_horizontal and signs_lib.check_for_horizontal_pole(pos, pointed_thing) and not controls.sneak then
 	// 		local newparam2
 	// 		local lookdir = core.yaw_to_dir(placer:get_look_horizontal())
@@ -720,15 +720,15 @@ namespace sign {
 	// 			newparam2 = core.dir_to_facedir(lookdir)
 	// 		end
 	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name.."_onpole_horiz", param2 = newparam2})
+	// 		core.swap_node(pos, {name = no_wall_name+"_onpole_horiz", param2 = newparam2})
 	// 	elseif def.allow_hanging and signs_lib.check_for_ceiling(pointed_thing) and not controls.sneak then
 	// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
 	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name.."_hanging", param2 = newparam2})
+	// 		core.swap_node(pos, {name = no_wall_name+"_hanging", param2 = newparam2})
 	// 	elseif def.allow_yard and signs_lib.check_for_floor(pointed_thing) and not controls.sneak then
 	// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
 	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name.."_yard", param2 = newparam2})
+	// 		core.swap_node(pos, {name = no_wall_name+"_yard", param2 = newparam2})
 	// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_ceiling(pointed_thing) then
 	// 		core.swap_node(pos, {name = signname, param2 = 6})
 	// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_floor(pointed_thing) then
@@ -741,7 +741,7 @@ namespace sign {
 	// 	end
 	// end
 	// function signs_lib.register_fence_with_sign()
-	// 	core.log("warning", "[signs_lib] ".."Attempt to call no longer used function signs_lib.register_fence_with_sign()")
+	// 	core.log("warning", "[signs_lib] "+"Attempt to call no longer used function signs_lib.register_fence_with_sign()")
 	// end
 	// function signs_lib.register_sign(name, raw_def)
 	// 	local def = table.copy(raw_def)
@@ -800,7 +800,7 @@ namespace sign {
 	// 	def.tiles[4] = "signs_lib_blank.png"
 	// 	def.tiles[5] = "signs_lib_blank.png"
 	// 	def.tiles[6] = "signs_lib_blank.png"
-	// 	core.register_node(":"..name, def)
+	// 	core.register_node(":"+name, def)
 	// 	table.insert(signs_lib.lbm_restore_nodes, name)
 	// 	local no_wall_name = string.gsub(name, "_wall", "")
 	// 	local othermounts_def = table.copy(def)
@@ -835,8 +835,8 @@ namespace sign {
 	// 		othermounts_def.tiles[4] = "signs_lib_blank.png"
 	// 		othermounts_def.tiles[5] = "signs_lib_blank.png"
 	// 		othermounts_def.tiles[6] = "signs_lib_blank.png"
-	// 		core.register_node(":"..no_wall_name.."_onpole", othermounts_def)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name.."_onpole")
+	// 		core.register_node(":"+no_wall_name+"_onpole", othermounts_def)
+	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole")
 	// 	end
 	// 	if raw_def.allow_onpole_horizontal then
 	// 		local onpole_horiz_def = table.copy(othermounts_def)
@@ -844,8 +844,8 @@ namespace sign {
 	// 		onpole_horiz_def.tiles[4] = raw_def.tiles[3] or "signs_lib_pole_mount.png"
 	// 		onpole_horiz_def.tiles[5] = "signs_lib_blank.png"
 	// 		onpole_horiz_def.tiles[6] = "signs_lib_blank.png"
-	// 		core.register_node(":"..no_wall_name.."_onpole_horiz", onpole_horiz_def)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name.."_onpole_horiz")
+	// 		core.register_node(":"+no_wall_name+"_onpole_horiz", onpole_horiz_def)
+	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole_horiz")
 	// 	end
 	// 	if raw_def.allow_hanging then
 	// 		local hanging_def = table.copy(def)
@@ -863,8 +863,8 @@ namespace sign {
 	// 			hanging_def.entity_info.mesh = string.gsub(string.gsub(hanging_def.entity_info.mesh, "entity_wall.obj$", "entity_hanging.obj"), "_facedir", "")
 	// 			hanging_def.entity_info.yaw = signs_lib.standard_yaw
 	// 		end
-	// 		core.register_node(":"..no_wall_name.."_hanging", hanging_def)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name.."_hanging")
+	// 		core.register_node(":"+no_wall_name+"_hanging", hanging_def)
+	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_hanging")
 	// 	end
 	// 	if raw_def.allow_yard then
 	// 		local ydef = table.copy(def)
@@ -882,14 +882,14 @@ namespace sign {
 	// 			ydef.entity_info.mesh = string.gsub(string.gsub(ydef.entity_info.mesh, "entity_wall.obj$", "entity_yard.obj"), "_facedir", "")
 	// 			ydef.entity_info.yaw = signs_lib.standard_yaw
 	// 		end
-	// 		core.register_node(":"..no_wall_name.."_yard", ydef)
-	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name.."_yard")
+	// 		core.register_node(":"+no_wall_name+"_yard", ydef)
+	// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_yard")
 	// 	end
 	// 	if raw_def.allow_widefont then
-	// 		table.insert(signs_lib.old_widefont_signs, name.."_widefont")
-	// 		table.insert(signs_lib.old_widefont_signs, name.."_widefont_onpole")
-	// 		table.insert(signs_lib.old_widefont_signs, name.."_widefont_hanging")
-	// 		table.insert(signs_lib.old_widefont_signs, name.."_widefont_yard")
+	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont")
+	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
+	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
+	// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
 	// 	end
 	// end
 	// // restore signs' text after /clearobjects and the like, the next time
@@ -903,7 +903,7 @@ namespace sign {
 	// 		signs_lib.update_sign(pos,nil,nil,node)
 	// 	end
 	// })
-	// // Convert old signs on fenceposts into signs on.. um.. fence posts :P
+	// // Convert old signs on fenceposts into signs on+ um+ fence posts :P
 	// core.register_lbm({
 	// 	nodenames = signs_lib.old_fenceposts_with_signs,
 	// 	name = "sign:fix_fencepost_signs",
@@ -951,7 +951,7 @@ namespace sign {
 	// 	label = "Update list of loaded blocks, log only those with signs",
 	// 	run_at_every_load = true,
 	// 	action = function(pos, node)
-	// 		// yeah, yeah... I know I'm hashing a block pos, but it's still just a set of coords
+	// 		// yeah, yeah+. I know I'm hashing a block pos, but it's still just a set of coords
 	// 		local hash = core.hash_node_position(vector.floor(vector.divide(pos, core.MAP_BLOCKSIZE)))
 	// 		if not signs_lib.block_list[hash] then
 	// 			signs_lib.block_list[hash] = true
@@ -985,8 +985,8 @@ namespace sign {
 	// 			signs_lib.block_list = {}
 	// 			return
 	// 		end
-	// 		core.chat_send_player(player_name, "Found a total of "..totalsigns.." sign nodes across "..signs_lib.totalblocks.." blocks.")
-	// 		core.chat_send_player(player_name, "Regenerating sign entities...")
+	// 		core.chat_send_player(player_name, "Found a total of "+totalsigns+" sign nodes across "+signs_lib.totalblocks+" blocks.")
+	// 		core.chat_send_player(player_name, "Regenerating sign entities+.")
 	// 		for _, b in pairs(allsigns) do
 	// 			for _, pos in ipairs(b) do
 	// 				signs_lib.delete_objects(pos)
