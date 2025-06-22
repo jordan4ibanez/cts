@@ -214,26 +214,27 @@ namespace sign {
 		[124]: "|",
 	};
 
-	// function AnsiToUtf8(s)
-	// 	local r, b = ""
-	// 	for i = 1, s and s:len() or 0 do
-	// 		b = s:byte(i)
-	// 		if b < 128 then
-	// 			r = r + string.char(b)
-	// 		else
-	// 			if b > 239 then
-	// 				r = r + "\209" + string.char(b - 112)
-	// 			elseif b > 191 then
-	// 				r = r + "\208" + string.char(b - 48)
-	// 			elseif ansi_decode[b] then
-	// 				r = r + ansi_decode[b]
-	// 			else
-	// 				r = r + "_"
-	// 			end
-	// 		end
-	// 	end
-	// 	return r
-	// end
+	export function AnsiToUtf8(s: string): string {
+		let r: string = "";
+		let b: string = "";
+		// 	for i = 1, s and s:len() or 0 do
+		// 		b = s:byte(i)
+		// 		if b < 128 then
+		// 			r = r + string.char(b)
+		// 		else
+		// 			if b > 239 then
+		// 				r = r + "\209" + string.char(b - 112)
+		// 			elseif b > 191 then
+		// 				r = r + "\208" + string.char(b - 48)
+		// 			elseif ansi_decode[b] then
+		// 				r = r + ansi_decode[b]
+		// 			else
+		// 				r = r + "_"
+		// 			end
+		// 		end
+		// 	end
+		return r;
+	}
 
 	// function Utf8ToAnsi(s)
 	// 	local a, j, r, b = 0, 0, ""
