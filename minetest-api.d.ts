@@ -2040,7 +2040,7 @@ declare global {
 		function split(
 			str: string,
 			separator: string,
-			includeEmpty: box,
+			includeEmpty: boolean,
 			maxSplits: number,
 			sepIsPattern: boolean
 		): string;
