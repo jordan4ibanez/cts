@@ -1165,7 +1165,7 @@ namespace sign {
 	core.register_on_mods_loaded(() => {
 		core.register_lbm({
 			nodenames: Array.from(lbm_restore_nodes),
-			name: "crafter_sign:restore_sign_text",
+			name: ":crafter_sign:restore_sign_text",
 			label: "Restore sign text",
 			run_at_every_load: true,
 			action: (pos: Vec3, node: NodeTable) => {
