@@ -287,13 +287,11 @@ namespace sign {
 	}
 
 	export function set_obj_text(pos: Vec3, text: string): void {
-		const split = split_lines_and_words;
-
-		// todo: fix this
-		// local text_ansi = Utf8ToAnsi(text)
-		// 	local n = core.registered_nodes[core.get_node(pos).name]
-		// 	signs_lib.delete_objects(pos)
-		// 	signs_lib.spawn_entity(pos, signs_lib.make_sign_texture(split(text_ansi), pos) )
+		delete_objects(pos);
+		spawn_entity(
+			pos,
+			make_sign_texture(split_lines_and_words(Utf8ToAnsi(text)), pos)
+		);
 	}
 
 	// Rotation.
