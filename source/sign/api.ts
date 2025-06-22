@@ -353,7 +353,10 @@ namespace sign {
 				param2: rotate_walldir[node.param2 || 0] || 0,
 			});
 		} else {
-			// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir[node.param2] or 0 })
+			core.swap_node(tpos, {
+				name: node.name,
+				param2: rotate_facedir[node.param2 || 0] || 0,
+			});
 		}
 		// 	signs_lib.update_sign(tpos)
 		// 	return true
