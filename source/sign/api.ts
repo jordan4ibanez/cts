@@ -281,66 +281,74 @@ namespace sign {
 		}
 	}
 
-	// function signs_lib.set_obj_text(pos, text)
-	// 	local split = signs_lib.split_lines_and_words
-	// 	local text_ansi = Utf8ToAnsi(text)
-	// 	local n = core.registered_nodes[core.get_node(pos).name]
-	// 	signs_lib.delete_objects(pos)
-	// 	signs_lib.spawn_entity(pos, signs_lib.make_sign_texture(split(text_ansi), pos) )
-	// end
-	// // rotation
-	// function signs_lib.handle_rotation(pos, node, user, mode)
-	// 	if not signs_lib.can_modify(pos, user)
-	// 	  or mode ~= screwdriver.ROTATE_FACE then
-	// 		return false
-	// 	end
-	// 	local newparam2
-	// 	local tpos = pos
-	// 	local def = core.registered_items[node.name]
-	// 	if string.match(node.name, "_onpole") then
-	// 		if not string.match(node.name, "_horiz") then
-	// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
-	// 			local t = signs_lib.wall_fdir_to_back_left
-	// 			if def.paramtype2 ~= "wallmounted" then
-	// 				newparam2 = signs_lib.rotate_facedir_simple[node.param2] or 0
-	// 				t  = signs_lib.fdir_to_back_left
-	// 			end
-	// 			tpos = {
-	// 				x = pos.x + t[node.param2][1],
-	// 				y = pos.y,
-	// 				z = pos.z + t[node.param2][2]
-	// 			}
-	// 		else
-	// 			// flip the sign to the other side of the horizontal pole
-	// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
-	// 			local t = signs_lib.wall_fdir_flip_to_back
-	// 			if def.paramtype2 ~= "wallmounted" then
-	// 				newparam2 = signs_lib.flip_facedir[node.param2] or 0
-	// 				t  = signs_lib.fdir_flip_to_back
-	// 			end
-	// 			tpos = {
-	// 				x = pos.x + t[node.param2][1],
-	// 				y = pos.y,
-	// 				z = pos.z + t[node.param2][2]
-	// 			}
-	// 		end
-	// 		local node2 = core.get_node(tpos)
-	// 		local def2 = core.registered_items[node2.name]
-	// 		if not def2 or not def2.buildable_to then return true end // undefined, or not buildable_to.
-	// 		core.set_node(tpos, {name = node.name, param2 = newparam2})
-	// 		core.get_meta(tpos):from_table(core.get_meta(pos):to_table())
-	// 		core.remove_node(pos)
-	// 		signs_lib.delete_objects(pos)
-	// 	elseif string.match(node.name, "_hanging") or string.match(node.name, "yard") then
-	// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir_simple[node.param2] or 0 })
-	// 	elseif core.registered_items[node.name].paramtype2 == "wallmounted" then
-	// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_walldir[node.param2] or 0 })
-	// 	else
-	// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir[node.param2] or 0 })
-	// 	end
-	// 	signs_lib.update_sign(tpos)
-	// 	return true
-	// end
+	export function set_obj_text(pos: Vec3, text: string): void {
+		// todo: implement this.
+		// const split = sign.split_lines_and_words
+		// 	local text_ansi = Utf8ToAnsi(text)
+		// 	local n = core.registered_nodes[core.get_node(pos).name]
+		// 	signs_lib.delete_objects(pos)
+		// 	signs_lib.spawn_entity(pos, signs_lib.make_sign_texture(split(text_ansi), pos) )
+	}
+
+	// Rotation.
+	export function handle_rotation(
+		pos: Vec3,
+		node: NodeTable,
+		user: ObjectRef,
+		mode: string
+	) {
+		// 	if not signs_lib.can_modify(pos, user)
+		// 	  or mode ~= screwdriver.ROTATE_FACE then
+		// 		return false
+		// 	end
+		// 	local newparam2
+		// 	local tpos = pos
+		// 	local def = core.registered_items[node.name]
+		// 	if string.match(node.name, "_onpole") then
+		// 		if not string.match(node.name, "_horiz") then
+		// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
+		// 			local t = signs_lib.wall_fdir_to_back_left
+		// 			if def.paramtype2 ~= "wallmounted" then
+		// 				newparam2 = signs_lib.rotate_facedir_simple[node.param2] or 0
+		// 				t  = signs_lib.fdir_to_back_left
+		// 			end
+		// 			tpos = {
+		// 				x = pos.x + t[node.param2][1],
+		// 				y = pos.y,
+		// 				z = pos.z + t[node.param2][2]
+		// 			}
+		// 		else
+		// 			// flip the sign to the other side of the horizontal pole
+		// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
+		// 			local t = signs_lib.wall_fdir_flip_to_back
+		// 			if def.paramtype2 ~= "wallmounted" then
+		// 				newparam2 = signs_lib.flip_facedir[node.param2] or 0
+		// 				t  = signs_lib.fdir_flip_to_back
+		// 			end
+		// 			tpos = {
+		// 				x = pos.x + t[node.param2][1],
+		// 				y = pos.y,
+		// 				z = pos.z + t[node.param2][2]
+		// 			}
+		// 		end
+		// 		local node2 = core.get_node(tpos)
+		// 		local def2 = core.registered_items[node2.name]
+		// 		if not def2 or not def2.buildable_to then return true end // undefined, or not buildable_to.
+		// 		core.set_node(tpos, {name = node.name, param2 = newparam2})
+		// 		core.get_meta(tpos):from_table(core.get_meta(pos):to_table())
+		// 		core.remove_node(pos)
+		// 		signs_lib.delete_objects(pos)
+		// 	elseif string.match(node.name, "_hanging") or string.match(node.name, "yard") then
+		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir_simple[node.param2] or 0 })
+		// 	elseif core.registered_items[node.name].paramtype2 == "wallmounted" then
+		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_walldir[node.param2] or 0 })
+		// 	else
+		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir[node.param2] or 0 })
+		// 	end
+		// 	signs_lib.update_sign(tpos)
+		// 	return true
+	}
+
 	// // infinite stacks
 	// if not core.settings:get_bool("creative_mode") then
 	// 	signs_lib.expect_infinite_stacks = false
