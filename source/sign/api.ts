@@ -175,9 +175,9 @@ namespace sign {
 			backface_culling: false,
 		};
 	}
-	utility.registerTSEntity(SignTextEntity)
+	utility.registerTSEntity(SignTextEntity);
 
-	// function signs_lib.delete_objects(pos)
+	export function delete_objects(pos: Vec3) {
 	// 	local objects = core.get_objects_inside_radius(pos, 0.5)
 	// 	for _, v in ipairs(objects) do
 	// 		if v then
@@ -187,7 +187,8 @@ namespace sign {
 	// 			end
 	// 		end
 	// 	end
-	// end
+	}
+
 	// function signs_lib.spawn_entity(pos, texture)
 	// 	local node = core.get_node(pos)
 	// 	local def = core.registered_items[node.name]
