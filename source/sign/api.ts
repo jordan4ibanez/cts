@@ -668,7 +668,15 @@ namespace sign {
 		char_width = charwidth15;
 		colorbgw = colorbgw15;
 
-		// 	local texture = { ("[combine:%dx%d"):format(line_width, (line_height + def.line_spacing) * def.number_of_lines * def.vert_scaling) }
+		const texture: string[] = [
+			string.format(
+				"[combine:%dx%d",
+				line_width,
+				(line_height + standard_lspace) *
+					standard_lines *
+					standard_vscale
+			),
+		];
 		// 	local lineno = 0
 		// 	for i = 1, #lines do
 		// 		if lineno >= def.number_of_lines then break end
