@@ -1013,16 +1013,20 @@ namespace sign {
 			"onpole.obj"
 		);
 
-		// 	// setting one of item 3 or 4 to a texture and leaving the other "blank",
-		// 	// reveals either the vertical or horizontal pole mount part of the model
-		// 	if raw_def.allow_onpole then
-		// 		othermounts_def.tiles[3] = raw_def.tiles[3] or "signs_lib_pole_mount.png"
-		// 		othermounts_def.tiles[4] = "signs_lib_blank.png"
-		// 		othermounts_def.tiles[5] = "signs_lib_blank.png"
-		// 		othermounts_def.tiles[6] = "signs_lib_blank.png"
-		// 		core.register_node(":"+no_wall_name+"_onpole", othermounts_def)
-		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_onpole")
-		// 	end
+		// Setting one of item 3 or 4 to a texture and leaving the other "blank",
+		// reveals either the vertical or horizontal pole mount part of the model.
+
+		if (othermounts_def.tiles == null) {
+			throw new Error("Logic error 3");
+		}
+
+		othermounts_def.tiles[3] = "signs_lib_pole_mount.png";
+		othermounts_def.tiles[4] = "signs_lib_blank.png";
+		othermounts_def.tiles[5] = "signs_lib_blank.png";
+		othermounts_def.tiles[6] = "signs_lib_blank.png";
+		core.register_node(":" + no_wall_name + "_onpole", othermounts_def);
+		lbm_restore_nodes.add(no_wall_name + "_onpole");
+
 		// 	if raw_def.allow_onpole_horizontal then
 		// 		local onpole_horiz_def = table.copy(othermounts_def)
 		// 		onpole_horiz_def.tiles[3] = "signs_lib_blank.png"
