@@ -979,8 +979,12 @@ namespace sign {
 			othermounts_def.selection_box.fixed[5] =
 				(def.selection_box.fixed as box)[5] + offset;
 		}
-		// 		othermounts_def.groups.not_in_creative_inventory = 1
-		// 		othermounts_def.mesh = raw_def.onpole_mesh or string.gsub(othermounts_def.mesh, "wall.obj$", "onpole.obj")
+
+		[othermounts_def.mesh] = string.gsub(
+			othermounts_def.mesh || "",
+			"wall.obj$",
+			"onpole.obj"
+		);
 		// 		if othermounts_def.entity_info then
 		// 			othermounts_def.entity_info.mesh = string.gsub(othermounts_def.entity_info.mesh, "entity_wall.obj$", "entity_onpole.obj")
 		// 		end
