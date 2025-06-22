@@ -647,14 +647,19 @@ namespace sign {
 	// 	table.insert(texture, "^[makealpha:0,0,0")
 	// 	return table.concat(texture, "")
 	// end
-	// function signs_lib.split_lines_and_words(text)
-	// 	if not text then return end
-	// 	local lines = { }
-	// 	for _, line in ipairs(text:split("\n", true)) do
-	// 		table.insert(lines, line:split(" "))
-	// 	end
-	// 	return lines
-	// end
+
+	function split_lines_and_words(text: string): string[] {
+		const lines: string[] = [];
+		for (const [_, line] of ipairs(
+			string.split(text, "\n", true, -1, false)
+		)) {
+			line.split(" ").forEach((v: string) => {
+				lines.push(v);
+			});
+		}
+		return lines;
+	}
+
 	// function signs_lib.construct_sign(pos)
 	// 	local form = "size[6,4]"+
 	// 		"textarea[0,-0.3;6.5,3;text;;${text}]"+
