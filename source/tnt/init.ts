@@ -4,8 +4,8 @@ namespace tnt {
 	// todo: fix this when the nether mod is in.
 	// const obsidian: number = core.get_content_id("nether:obsidian");
 	// const bedrock: number = core.get_content_id("nether:bedrock");
-	const obsidian: number = core.get_content_id("air");
-	const bedrock: number = core.get_content_id("air");
+	const obsidian: number = core.get_content_id("crafter:tree");
+	const bedrock: number = core.get_content_id("crafter:tree");
 
 	const tntID: number = 0;
 	core.register_on_mods_loaded(() => {
