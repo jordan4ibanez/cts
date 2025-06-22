@@ -791,30 +791,37 @@ namespace sign {
 		return lines;
 	}
 
-	// function signs_lib.construct_sign(pos)
-	// 	local form = "size[6,4]"+
-	// 		"textarea[0,-0.3;6.5,3;text;;${text}]"+
-	// 		"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]"
-	// 	local node = core.get_node(pos)
-	// 	local def = core.registered_items[node.name]
-	// 	local meta = core.get_meta(pos)
-	// 	if def.allow_widefont then
-	// 		local state = "off"
-	// 		if meta:get_int("widefont") == 1 then state = "on" end
-	// 		form = form+"label[1,3.4;Use wide font]"+
-	// 			"image_button[1.1,3.7;1,0.6;signs_lib_switch_"+
-	// 			state+".png;"+
-	// 			state+";;;false;signs_lib_switch_interm.png]"+
-	// 			"button_exit[3,3.4;2,1;ok;"+S("Write")+"]"
-	// 	else
-	// 		form = form+"button_exit[2,3.4;2,1;ok;"+S("Write")+"]"
-	// 	end
-	// 	meta:set_string("formspec", form)
-	// 	local i = meta:get_string("infotext")
-	// 	if i == "" then // it wasn't even set, so set it.
-	// 		meta:set_string("infotext", "")
-	// 	end
-	// end
+	function construct_sign(pos: Vec3) {
+		let form =
+			"size[6,4]" +
+			"textarea[0,-0.3;6.5,3;text;;${text}]" +
+			"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]";
+		const node: NodeTable = core.get_node(pos);
+		const def: NodeDefinition | undefined =
+			core.registered_items[node.name];
+		const meta: MetaRef = core.get_meta(pos);
+
+		// 	if def.allow_widefont then
+		// let state: string = "off";
+		// if (meta.get_int("widefont") == 1) {
+		// 	state = "on";
+		// }
+		// form =
+		// 	form +
+		// 	"label[1,3.4;Use wide font]" +
+		// 	"image_button[1.1,3.7;1,0.6;signs_lib_switch_" +
+		// 	state +
+		// 	".png;" +
+		// 	state +
+		// 	";;;false;signs_lib_switch_interm.png]" +
+		// 	"button_exit[3,3.4;2,1;ok;" +
+		// 	"Write" +
+		// 	"]";
+		// 	else
+		form = form + "button_exit[2,3.4;2,1;ok;" + "Write" + "]";
+		// 	end
+	}
+
 	// function signs_lib.destruct_sign(pos)
 	// 	signs_lib.delete_objects(pos)
 	// end
