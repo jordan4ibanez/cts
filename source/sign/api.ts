@@ -453,24 +453,26 @@ namespace sign {
 		return string.sub(text, 1, math.min(MAX_INPUT_CHARS, text.length));
 	}
 
-	// local function build_char_db(font_size)
-	// 	local cw = {}
-	// 	// To calculate average char width.
-	// 	local total_width = 0
-	// 	local char_count = 0
-	// 	for c = 32, 255 do
-	// 		local w, h = signs_lib.read_image_size(CHAR_PATH:format("signs_lib_font_"+font_size+"px", c))
-	// 		if w and h then
-	// 			local ch = string.char(c)
-	// 			cw[ch] = w
-	// 			total_width = total_width + w
-	// 			char_count = char_count + 1
-	// 		end
-	// 	end
-	// 	local cbw, cbh = signs_lib.read_image_size(TP+"/signs_lib_color_"+font_size+"px_n.png")
-	// 	assert(cbw and cbh, "error reading bg dimensions")
-	// 	return cw, cbw, cbh, (total_width / char_count)
-	// end
+	function build_char_db(font_size: number) {
+		const cw = {};
+		// To calculate average char width.
+		let total_width = 0;
+		let char_count = 0;
+		for (const c of $range(32, 255)) {
+			// Todo: finish this.
+					// local w, h = read_image_size(CHAR_PATH:format("signs_lib_font_"+font_size+"px", c))
+			// 		if w and h then
+			// 			local ch = string.char(c)
+			// 			cw[ch] = w
+			// 			total_width = total_width + w
+			// 			char_count = char_count + 1
+			// 		end
+		}
+		// 	local cbw, cbh = signs_lib.read_image_size(TP+"/signs_lib_color_"+font_size+"px_n.png")
+		// 	assert(cbw and cbh, "error reading bg dimensions")
+		// 	return cw, cbw, cbh, (total_width / char_count)
+	}
+
 	// signs_lib.charwidth15,
 	// signs_lib.colorbgw15,
 	// signs_lib.lineheight15,
