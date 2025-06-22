@@ -333,6 +333,12 @@ namespace tnt {
 		});
 	}
 
+	interface TntData {
+		range: number;
+		timer: number;
+		exploded: boolean;
+	}
+
 	class TntEntity extends types.Entity {
 		name: string = "crafter_tnt:tnt";
 
@@ -389,11 +395,13 @@ namespace tnt {
 				vector.create3d({ x: 0, y: -9.81, z: 0 })
 			);
 
-			const data: any = core.deserialize(staticdata);
+			const data: TntData | null = core.deserialize(
+				staticdata
+			) as TntData | null;
 			if (data != null && typeof data == "object") {
-				this.range = data.range || 7;
-				this.timer = data.timer || TntEntity.timer_max;
-				this.exploded = data.exploded || false;
+				this.range = data.range;
+				this.timer = data.timer;
+				this.exploded = data.exploded;
 			}
 
 			if (this.timer == TntEntity.timer_max) {
