@@ -345,7 +345,7 @@ namespace sign {
 		) {
 			core.swap_node(tpos, {
 				name: node.name,
-				param2: rotate_facedir_simple[(node.param2 || 0) + 1] || 0,
+				param2: rotate_facedir_simple[node.param2 || 0] || 0,
 			});
 		} else if (def.paramtype2 == ParamType2.wallmounted) {
 			// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_walldir[node.param2] or 0 })
