@@ -367,15 +367,10 @@ namespace tnt {
 				vel = vector.multiply(vel, -0.05);
 				this.object.add_velocity(vector.create3d(vel.x, 0, vel.z));
 			}
-			// 	if this.timer <= 0 then
-			// 		if not this.range then
-			// 			this.range = 7
-			// 		end
-			// 		pos = this.object.get_pos()
-			// 		range = this.range
-			// 		this.object.remove()
-			// 		tnt(pos,range)
-			// 	end
+			if (this.timer <= 0) {
+				this.object.remove();
+				tnt(this.object.get_pos(), this.range);
+			}
 		}
 
 		on_activate(staticdata: string, dtime_s: number): void {
