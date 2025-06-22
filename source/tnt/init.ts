@@ -333,9 +333,6 @@ namespace tnt {
 		name: string = "crafter_tnt:tnt";
 		shot: boolean = false;
 
-		// local pos
-		// local vel
-		// local range
 		// local tnt_boom = function(self,dtime)
 		// 	self.timer = self.timer - dtime
 		// 	if not self.shot or not self.redstone_activated then
@@ -395,7 +392,7 @@ namespace tnt {
 		// 	})
 		// end
 
-		// core.register_entity("crafter_tnt:tnt", {
+		
 		// 	initial_properties = {
 		// 		hp_max = 1,
 		// 		physical = true,
@@ -412,6 +409,7 @@ namespace tnt {
 		// 	timer = 5,
 		// 	timer_max = 5, //this has to be equal to timer
 		// 	range = 7,
+
 		// 	get_staticdata = function(self)
 		// 		return(static(self))
 		// 	end,
@@ -426,7 +424,7 @@ namespace tnt {
 		// 	on_step = function(self, dtime)
 		// 		tnt_boom(self,dtime)
 		// 	end,
-		// })
+		
 	}
 
 	// core.register_node("crafter_tnt:tnt", {
