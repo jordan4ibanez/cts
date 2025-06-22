@@ -346,10 +346,11 @@ namespace sign {
 			if (def2 == null || !def2.buildable_to) {
 				return true;
 			}
-			// 		core.set_node(tpos, {name = node.name, param2 = newparam2})
-			// 		core.get_meta(tpos):from_table(core.get_meta(pos):to_table())
-			// 		core.remove_node(pos)
-			// 		signs_lib.delete_objects(pos)
+			core.set_node(tpos, { name: node.name, param2: newparam2 });
+			core.get_meta(tpos).from_table(core.get_meta(pos).to_table());
+
+			core.remove_node(pos);
+			delete_objects(pos);
 		} else if (
 			string.match(node.name, "_hanging") != null ||
 			string.match(node.name, "yard") != null
