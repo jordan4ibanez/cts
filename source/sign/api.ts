@@ -694,14 +694,10 @@ namespace sign {
 
 	function update_sign(pos: Vec3, fields?: { text: string }): void {
 		const meta: MetaRef = core.get_meta(pos);
-		const text: string = fields?.text || meta.get_string("text");
-		// 	text = trim_input(text)
-		// 	local owner = meta:get_string("owner")
-		// 	local ownstr = ""
-		// 	if owner ~= "" then ownstr = S("Locked sign, owned by @1\n", owner) end
-		// 	meta:set_string("text", text)
-		// 	meta:set_string("infotext", ownstr+make_infotext(text)+" ")
-		// 	signs_lib.set_obj_text(pos, text)
+		let text: string = fields?.text || meta.get_string("text");
+		text = trim_input(text);
+		meta.set_string("text", text);
+		set_obj_text(pos, text);
 	}
 
 	// function signs_lib.receive_fields(pos, formname, fields, sender)
