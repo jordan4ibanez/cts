@@ -614,7 +614,14 @@ namespace sign {
 		const meta: MetaRef = core.get_meta(pos);
 		const def: SignNodeDefinition | undefined =
 			core.registered_items[node.name];
-			if ( def == null ||  def.entity_info == null) then return end
+		if (def == null || def.entity_info == null) {
+			core.log(
+				LogLevel.error,
+				"SEVERE ERROR: Undefined node while making sign texture. This sign will be glitched."
+			);
+
+			return "";
+		}
 		// 	local font_size
 		// 	local line_width
 		// 	local line_height
