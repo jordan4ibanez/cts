@@ -1182,7 +1182,7 @@ namespace sign {
 			label: "Restore sign text",
 			run_at_every_load: true,
 			action: (pos: Vec3, node: NodeTable) => {
-				update_sign(pos, null, null, node);
+				update_sign(pos);
 			},
 		});
 	});
