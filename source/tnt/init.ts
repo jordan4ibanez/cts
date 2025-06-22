@@ -5,6 +5,7 @@ namespace tnt {
 	const distance = vector.distance;
 
 	const queue = new utility.QueueFIFO<number>();
+
 	for (const i of $range(0, 10)) {
 		queue.push(i);
 	}
@@ -152,7 +153,7 @@ namespace tnt {
 							core.after(
 								0,
 								(thisRange: number, under: Vec3) => {
-									const serialData: TntData = {
+									const serialData: SerialTntData = {
 										range: thisRange,
 										timer: random() + random(),
 										exploded: false,
@@ -372,7 +373,7 @@ namespace tnt {
 	}
 
 	// Serialization data for the tnt.
-	interface TntData {
+	interface SerialTntData {
 		range: number;
 		timer: number;
 		exploded: boolean;
@@ -441,9 +442,9 @@ namespace tnt {
 				vector.create3d({ x: 0, y: -9.81, z: 0 })
 			);
 
-			const data: TntData | null = core.deserialize(
+			const data: SerialTntData | null = core.deserialize(
 				staticdata
-			) as TntData | null;
+			) as SerialTntData | null;
 			if (data != null && typeof data == "object") {
 				this.range = data.range;
 				this.timer = data.timer;
@@ -477,7 +478,7 @@ namespace tnt {
 		}
 
 		get_staticdata(): string {
-			const data: TntData = {
+			const data: SerialTntData = {
 				range: this.range,
 				timer: this.timer,
 				exploded: this.exploded,
