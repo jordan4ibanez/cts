@@ -1,4 +1,6 @@
 namespace tnt {
+	//? Begin localization and required constants.
+
 	const round = math.round;
 	const raycast = core.raycast;
 	const random = math.random;
@@ -28,6 +30,8 @@ namespace tnt {
 	]) {
 		diggingNodes.add(core.get_content_id(node));
 	}
+
+	//? End localization and required constants.
 
 	interface ExplosionComponent {
 		pos: Vec3;
