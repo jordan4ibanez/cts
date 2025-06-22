@@ -468,7 +468,9 @@ namespace sign {
 		return string.sub(text, 1, math.min(MAX_INPUT_CHARS, text.length));
 	}
 
-	function build_char_db(font_size: number) {
+	function build_char_db(
+		font_size: number
+	): [Dictionary<string, number>, number, number, number] {
 		const cw: Dictionary<string, number> = {};
 		// To calculate average char width.
 		let total_width = 0;
@@ -492,7 +494,7 @@ namespace sign {
 			TP + "/signs_lib_color_" + font_size + "px_n.png"
 		);
 		assert(cbw > 0 && cbh > 0, "error reading bg dimensions");
-			return cw, cbw, cbh, (total_width / char_count)
+		return [cw, cbw, cbh, total_width / char_count];
 	}
 
 	// signs_lib.charwidth15,
