@@ -273,9 +273,9 @@ namespace playerMechanics {
 		(
 			player: ObjectRef,
 			hitter: ObjectRef | null,
-			time_from_last_punch: number,
-			tool_capabilities: ToolCapabilities,
-			dir: Vec3,
+			time_from_last_punch: number | null,
+			tool_capabilities: ToolCapabilities | null,
+			dir: Vec3 | null,
 			damage: number
 		) => {
 			const name: string = player.get_player_name();
@@ -290,7 +290,7 @@ namespace playerMechanics {
 			const punch_diff: number = core.get_us_time() / 1000000 - data;
 
 			let hurt: number | undefined =
-				tool_capabilities.damage_groups?.damage;
+				tool_capabilities?.damage_groups?.damage;
 
 			if (hurt == null) {
 				hurt = 0;
@@ -316,7 +316,7 @@ namespace playerMechanics {
 				}
 			}
 
-			dir = multiply_vec(dir, 10);
+			dir = multiply_vec(dir || vector.create3d(), 10);
 			const vel: Vec3 = player.get_velocity();
 			dir.y = 0;
 			if (vel.y <= 0) {
