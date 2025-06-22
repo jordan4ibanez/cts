@@ -891,11 +891,11 @@ namespace sign {
 	// }
 
 	/** @noSelf **/ interface SignDefinitionComplete extends NodeDefinition {
-		entity_info: {
+		entity_info?: {
 			mesh: string;
 			yaw: number[];
 		};
-		on_rotate: (pos: Vec3, node: NodeTable, user: ObjectRef) => boolean;
+		on_rotate?: (pos: Vec3, node: NodeTable, user: ObjectRef) => boolean;
 	}
 
 	// This seems to be using the decorator pattern.
