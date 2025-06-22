@@ -469,7 +469,7 @@ namespace sign {
 	}
 
 	function build_char_db(font_size: number) {
-		const cw = {};
+		const cw: Dictionary<string, number> = {};
 		// To calculate average char width.
 		let total_width = 0;
 		let char_count = 0;
@@ -482,16 +482,17 @@ namespace sign {
 					c
 				)
 			);
-			// 		if w and h then
-			// 			local ch = string.char(c)
-			// 			cw[ch] = w
-			// 			total_width = total_width + w
-			// 			char_count = char_count + 1
-			// 		end
+
+			const ch: string = string.char(c);
+			cw[ch] = w;
+			total_width = total_width + w;
+			char_count = char_count + 1;
 		}
-		// 	local cbw, cbh = signs_lib.read_image_size(TP+"/signs_lib_color_"+font_size+"px_n.png")
-		// 	assert(cbw and cbh, "error reading bg dimensions")
-		// 	return cw, cbw, cbh, (total_width / char_count)
+		const [cbw, cbh] = read_image_size(
+			TP + "/signs_lib_color_" + font_size + "px_n.png"
+		);
+		assert(cbw > 0 && cbh > 0, "error reading bg dimensions");
+			return cw, cbw, cbh, (total_width / char_count)
 	}
 
 	// signs_lib.charwidth15,
