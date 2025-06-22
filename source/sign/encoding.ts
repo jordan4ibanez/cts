@@ -219,20 +219,20 @@ namespace sign {
 		let b: number = 0;
 		for (const i of $range(1, s.length || 0)) {
 			b = string.byte(s, i);
-			// 		b = s:byte(i)
-			// 		if b < 128 then
-			// 			r = r + string.char(b)
-			// 		else
-			// 			if b > 239 then
-			// 				r = r + "\209" + string.char(b - 112)
-			// 			elseif b > 191 then
-			// 				r = r + "\208" + string.char(b - 48)
-			// 			elseif ansi_decode[b] then
-			// 				r = r + ansi_decode[b]
-			// 			else
-			// 				r = r + "_"
-			// 			end
-			// 		end
+
+			if (b < 128) {
+				r += string.char(b);
+			} else {
+				if (b > 239) {
+					r = r + "\209" + string.char(b - 112);
+				} else if (b > 191) {
+					r = r + "\208" + string.char(b - 48);
+				} else if (ansi_decode[b] != null) {
+					r = r + ansi_decode[b];
+				} else {
+					r = r + "_";
+				}
+			}
 		}
 		return r;
 	}
