@@ -890,7 +890,7 @@ namespace sign {
 
 	// }
 
-	interface SignDefinitionComplete extends NodeDefinition {
+	/** @noSelf **/ interface SignDefinitionComplete extends NodeDefinition {
 		entity_info: {
 			mesh: string;
 			yaw: number[];
