@@ -1,5 +1,5 @@
 namespace sign {
-// -- encoding borrowed from signs_lib fork at https://github.com/lord-server/lord
+// // encoding borrowed from signs_lib fork at https://github.com/lord-server/lord
 
 // local ansi_decode = {
 // 	[128] = "\208\130",
@@ -243,12 +243,12 @@ namespace sign {
 // 		elseif a == 2 then
 // 			a, j = a - 1, b
 // 		elseif a == 1 then
-// 			--if j == nil or b == nil then return r end
-// 			--print(j)
-// 			--print(b)
-// 			--local ansi = utf8_decode[j]
-// 			--if ansi == nil then return r end
-// 			--if ansi[b] == nil then return r end
+// 			//if j == nil or b == nil then return r end
+// 			//print(j)
+// 			//print(b)
+// 			//local ansi = utf8_decode[j]
+// 			//if ansi == nil then return r end
+// 			//if ansi[b] == nil then return r end
 // 			if utf8_decode[j] then
 // 				if utf8_decode[j][b] then
 // 					a, r = a - 1, r + utf8_decode[j][b]
