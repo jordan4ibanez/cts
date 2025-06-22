@@ -759,7 +759,8 @@ namespace sign {
 		yoffs?: number,
 		zoffs?: number,
 		is_facedir?: boolean
-	) {
+	): NodeBox | undefined {
+		return undefined;
 		// 	local tx = (sizex * 0.0254 ) / 2
 		// 	local ty = (sizey * 0.0254 ) / 2
 		// 	local xo = xoffs and xoffs * 0.0254 or 0
@@ -914,8 +915,8 @@ namespace sign {
 		def.walkable = false;
 		def.groups = standard_wood_groups;
 		const cbox = make_selection_boxes(35, 25);
+		def.selection_box = cbox;
 
-		// 	def.selection_box = raw_def.selection_box or cbox
 		// 	def.node_box	= table.copy(raw_def.node_box or raw_def.selection_box or cbox)
 		// 	if def.sunlight_propagates ~= false then
 		// 		def.sunlight_propagates = true
