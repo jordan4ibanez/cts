@@ -252,12 +252,7 @@ namespace sign {
 			} else if (a == 2) {
 				// 			a, j = a - 1, b
 			} else if (a == 1) {
-				// 			//if j == nil or b == nil then return r end
-				// 			//print(j)
-				// 			//print(b)
-				// 			//local ansi = utf8_decode[j]
-				// 			//if ansi == nil then return r end
-				// 			//if ansi[b] == nil then return r end
+				
 				if (utf8_decode[j] != null) {
 					if (utf8_decode[j]![b] != null) {
 						// 					a, r = a - 1, r + utf8_decode[j][b]
