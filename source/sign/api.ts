@@ -193,64 +193,65 @@ namespace sign {
 		}
 	}
 
-	// function signs_lib.spawn_entity(pos, texture)
-	// 	local node = core.get_node(pos)
-	// 	local def = core.registered_items[node.name]
-	// 	if not def or not def.entity_info then return end
-	// 	local text_scale = (node and node.text_scale) or signs_lib.default_text_scale
-	// 	local objects = core.get_objects_inside_radius(pos, 0.5)
-	// 	local obj
-	// 	if #objects > 0 then
-	// 		for _, v in ipairs(objects) do
-	// 			if v then
-	// 				local e = v:get_luaentity()
-	// 				if e and e.name == "sign:text" then
-	// 					obj = v
-	// 				end
-	// 			end
-	// 		end
-	// 	end
-	// 	if not obj then
-	// 		obj = core.add_entity(pos, "sign:text")
-	// 	end
-	// 	local yaw = def.entity_info.yaw[node.param2 + 1]
-	// 	local pitch = 0
-	// 	if not string.find(node.name, "onpole") and not string.find(node.name, "hanging") then
-	// 		local rot90 = math.pi/2
-	// 		if def.paramtype2 == "wallmounted" then
-	// 			if node.param2 == 1 then // on floor
-	// 				pitch = -rot90
-	// 				yaw = 0
-	// 			elseif node.param2 == 0 then // on ceiling
-	// 				pitch = rot90
-	// 				yaw = math.pi
-	// 			end
-	// 		elseif def.paramtype2 == "facedir" then
-	// 			if node.param2 == 4 then
-	// 				pitch = -rot90
-	// 				yaw = 0
-	// 			elseif node.param2 == 6 then
-	// 				pitch = rot90
-	// 				yaw = math.pi
-	// 			end
-	// 		end
-	// 	end
-	// 	if yaw then
-	// 		obj:set_rotation({x = pitch, y = yaw, z=0})
-	// 		if not texture then
-	// 			obj:set_properties({
-	// 				mesh = def.entity_info.mesh,
-	// 				visual_size = text_scale,
-	// 			})
-	// 		else
-	// 			obj:set_properties({
-	// 				mesh = def.entity_info.mesh,
-	// 				visual_size = text_scale,
-	// 				textures={texture},
-	// 			})
-	// 		end
-	// 	end
-	// end
+	export function spawn_entity(pos: Vec3, texture: string) {
+		// 	local node = core.get_node(pos)
+		// 	local def = core.registered_items[node.name]
+		// 	if not def or not def.entity_info then return end
+		// 	local text_scale = (node and node.text_scale) or signs_lib.default_text_scale
+		// 	local objects = core.get_objects_inside_radius(pos, 0.5)
+		// 	local obj
+		// 	if #objects > 0 then
+		// 		for _, v in ipairs(objects) do
+		// 			if v then
+		// 				local e = v:get_luaentity()
+		// 				if e and e.name == "sign:text" then
+		// 					obj = v
+		// 				end
+		// 			end
+		// 		end
+		// 	end
+		// 	if not obj then
+		// 		obj = core.add_entity(pos, "sign:text")
+		// 	end
+		// 	local yaw = def.entity_info.yaw[node.param2 + 1]
+		// 	local pitch = 0
+		// 	if not string.find(node.name, "onpole") and not string.find(node.name, "hanging") then
+		// 		local rot90 = math.pi/2
+		// 		if def.paramtype2 == "wallmounted" then
+		// 			if node.param2 == 1 then // on floor
+		// 				pitch = -rot90
+		// 				yaw = 0
+		// 			elseif node.param2 == 0 then // on ceiling
+		// 				pitch = rot90
+		// 				yaw = math.pi
+		// 			end
+		// 		elseif def.paramtype2 == "facedir" then
+		// 			if node.param2 == 4 then
+		// 				pitch = -rot90
+		// 				yaw = 0
+		// 			elseif node.param2 == 6 then
+		// 				pitch = rot90
+		// 				yaw = math.pi
+		// 			end
+		// 		end
+		// 	end
+		// 	if yaw then
+		// 		obj:set_rotation({x = pitch, y = yaw, z=0})
+		// 		if not texture then
+		// 			obj:set_properties({
+		// 				mesh = def.entity_info.mesh,
+		// 				visual_size = text_scale,
+		// 			})
+		// 		else
+		// 			obj:set_properties({
+		// 				mesh = def.entity_info.mesh,
+		// 				visual_size = text_scale,
+		// 				textures={texture},
+		// 			})
+		// 		end
+		// 	end
+	}
+
 	// function signs_lib.set_obj_text(pos, text)
 	// 	local split = signs_lib.split_lines_and_words
 	// 	local text_ansi = Utf8ToAnsi(text)
