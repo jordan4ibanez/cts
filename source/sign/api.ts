@@ -916,15 +916,18 @@ namespace sign {
 		def.groups = standard_wood_groups;
 		const cbox = make_selection_boxes(35, 25);
 		def.selection_box = cbox;
+		def.node_box = cbox;
+		def.sunlight_propagates = true;
 
-		// 	def.node_box	= table.copy(raw_def.node_box or raw_def.selection_box or cbox)
-		// 	if def.sunlight_propagates ~= false then
-		// 		def.sunlight_propagates = true
-		// 	end
-		// 	def.tiles[3] = "signs_lib_blank.png"
-		// 	def.tiles[4] = "signs_lib_blank.png"
-		// 	def.tiles[5] = "signs_lib_blank.png"
-		// 	def.tiles[6] = "signs_lib_blank.png"
+		if (def.tiles == null) {
+			throw new Error("incorrect tiles.");
+		}
+
+		def.tiles[3] = "signs_lib_blank.png";
+		def.tiles[4] = "signs_lib_blank.png";
+		def.tiles[5] = "signs_lib_blank.png";
+		def.tiles[6] = "signs_lib_blank.png";
+
 		// 	core.register_node(":"+name, def)
 		// 	table.insert(signs_lib.lbm_restore_nodes, name)
 		// 	local no_wall_name = string.gsub(name, "_wall", "")
