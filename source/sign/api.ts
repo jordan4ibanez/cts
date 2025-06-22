@@ -658,8 +658,10 @@ namespace sign {
 		// 	end
 
 		// todo: finish this
-		// font_size = 15
-		// line_width = math.floor(signs_lib.avgwidth15 * def.chars_per_line) * (def.horiz_scaling * widemult)
+		font_size = 15;
+		line_width =
+			math.floor(signs_lib.avgwidth15 * def.chars_per_line) *
+			(def.horiz_scaling * widemult);
 		// line_height = signs_lib.lineheight15
 		// char_width = signs_lib.charwidth15
 		// colorbgw = signs_lib.colorbgw15
