@@ -818,76 +818,83 @@ namespace sign {
 	// 		return true
 	// 	end
 	// end
-	// function signs_lib.after_place_node(pos, placer, itemstack, pointed_thing, locked)
-	// 	local playername = placer:get_player_name()
-	// 	local controls = placer:get_player_control()
-	// 	local signname = itemstack:get_name()
-	// 	local no_wall_name = string.gsub(signname, "_wall", "")
-	// 	local def = core.registered_items[signname]
-	// 	local ppos = core.get_pointed_thing_position(pointed_thing)
-	// 	local pnode = core.get_node(ppos)
-	// 	local pdef = core.registered_items[pnode.name]
-	// 	if def.allow_onpole and signs_lib.check_for_pole(pos, pointed_thing) and not controls.sneak then
-	// 		local newparam2
-	// 		local lookdir = core.yaw_to_dir(placer:get_look_horizontal())
-	// 		if def.paramtype2 == "wallmounted" then
-	// 			newparam2 = core.dir_to_wallmounted(lookdir)
-	// 		else
-	// 			newparam2 = core.dir_to_facedir(lookdir)
-	// 		end
-	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name+"_onpole", param2 = newparam2})
-	// 	elseif def.allow_onpole_horizontal and signs_lib.check_for_horizontal_pole(pos, pointed_thing) and not controls.sneak then
-	// 		local newparam2
-	// 		local lookdir = core.yaw_to_dir(placer:get_look_horizontal())
-	// 		if def.paramtype2 == "wallmounted" then
-	// 			newparam2 = core.dir_to_wallmounted(lookdir)
-	// 		else
-	// 			newparam2 = core.dir_to_facedir(lookdir)
-	// 		end
-	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name+"_onpole_horiz", param2 = newparam2})
-	// 	elseif def.allow_hanging and signs_lib.check_for_ceiling(pointed_thing) and not controls.sneak then
-	// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
-	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name+"_hanging", param2 = newparam2})
-	// 	elseif def.allow_yard and signs_lib.check_for_floor(pointed_thing) and not controls.sneak then
-	// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
-	// 		local node = core.get_node(pos)
-	// 		core.swap_node(pos, {name = no_wall_name+"_yard", param2 = newparam2})
-	// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_ceiling(pointed_thing) then
-	// 		core.swap_node(pos, {name = signname, param2 = 6})
-	// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_floor(pointed_thing) then
-	// 		core.swap_node(pos, {name = signname, param2 = 4})
-	// 	end
-	// 	if locked then
-	// 		local meta = core.get_meta(pos)
-	// 		meta:set_string("owner", playername)
-	// 		meta:set_string("infotext", S("Locked sign, owned by @1\n", playername))
-	// 	end
-	// end
+
+	function after_place_node(
+		pos: Vec3,
+		placer: ObjectRef,
+		itemstack: ItemStackObject,
+		pointed_thing: PointedThing
+	) {
+		// 	local playername = placer:get_player_name()
+		// 	local controls = placer:get_player_control()
+		// 	local signname = itemstack:get_name()
+		// 	local no_wall_name = string.gsub(signname, "_wall", "")
+		// 	local def = core.registered_items[signname]
+		// 	local ppos = core.get_pointed_thing_position(pointed_thing)
+		// 	local pnode = core.get_node(ppos)
+		// 	local pdef = core.registered_items[pnode.name]
+		// 	if def.allow_onpole and signs_lib.check_for_pole(pos, pointed_thing) and not controls.sneak then
+		// 		local newparam2
+		// 		local lookdir = core.yaw_to_dir(placer:get_look_horizontal())
+		// 		if def.paramtype2 == "wallmounted" then
+		// 			newparam2 = core.dir_to_wallmounted(lookdir)
+		// 		else
+		// 			newparam2 = core.dir_to_facedir(lookdir)
+		// 		end
+		// 		local node = core.get_node(pos)
+		// 		core.swap_node(pos, {name = no_wall_name+"_onpole", param2 = newparam2})
+		// 	elseif def.allow_onpole_horizontal and signs_lib.check_for_horizontal_pole(pos, pointed_thing) and not controls.sneak then
+		// 		local newparam2
+		// 		local lookdir = core.yaw_to_dir(placer:get_look_horizontal())
+		// 		if def.paramtype2 == "wallmounted" then
+		// 			newparam2 = core.dir_to_wallmounted(lookdir)
+		// 		else
+		// 			newparam2 = core.dir_to_facedir(lookdir)
+		// 		end
+		// 		local node = core.get_node(pos)
+		// 		core.swap_node(pos, {name = no_wall_name+"_onpole_horiz", param2 = newparam2})
+		// 	elseif def.allow_hanging and signs_lib.check_for_ceiling(pointed_thing) and not controls.sneak then
+		// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
+		// 		local node = core.get_node(pos)
+		// 		core.swap_node(pos, {name = no_wall_name+"_hanging", param2 = newparam2})
+		// 	elseif def.allow_yard and signs_lib.check_for_floor(pointed_thing) and not controls.sneak then
+		// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
+		// 		local node = core.get_node(pos)
+		// 		core.swap_node(pos, {name = no_wall_name+"_yard", param2 = newparam2})
+		// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_ceiling(pointed_thing) then
+		// 		core.swap_node(pos, {name = signname, param2 = 6})
+		// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_floor(pointed_thing) then
+		// 		core.swap_node(pos, {name = signname, param2 = 4})
+		// 	end
+		// 	if locked then
+		// 		local meta = core.get_meta(pos)
+		// 		meta:set_string("owner", playername)
+		// 		meta:set_string("infotext", S("Locked sign, owned by @1\n", playername))
+		// 	end
+	}
+
 	// function signs_lib.register_fence_with_sign()
 	// 	core.log("warning", "[signs_lib] "+"Attempt to call no longer used function signs_lib.register_fence_with_sign()")
 	// end
 
-	interface SignInput {
-		
-	}
+	// interface InputSignDefinition {
 
-	interface SignDefinition {
+	// }
+
+	interface SignDefinitionComplete extends NodeDefinition {
 		entity_info: {
 			mesh: string;
 			yaw: number[];
 		};
 	}
 
-	export function register_sign(name: string, def: SignDefinition) {
+	export function register_sign(name: string, def: SignDefinitionComplete) {
 		def.entity_info = {
 			mesh: "signs_lib_standard_sign_entity_wall.obj",
 			yaw: wallmounted_yaw,
 		};
 
-			def.after_place_node =  signs_lib.after_place_node
+		def.after_place_node = after_place_node;
 
 		// 	if raw_def.entity_info then
 		// 		def.on_rightclick	 = raw_def.on_rightclick	 or signs_lib.construct_sign
