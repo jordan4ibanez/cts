@@ -760,11 +760,11 @@ namespace sign {
 		zoffs?: number,
 		is_facedir?: boolean
 	): NodeBox {
-		// 	local tx = (sizex * 0.0254 ) / 2
-		// 	local ty = (sizey * 0.0254 ) / 2
-		// 	local xo = xoffs and xoffs * 0.0254 or 0
-		// 	local yo = yoffs and yoffs * 0.0254 or 0
-		// 	local zo = zoffs and zoffs * 0.0254 or 0
+		const tx: number = (sizex * 0.0254) / 2;
+		const ty: number = (sizey * 0.0254) / 2;
+		const xo: number = (xoffs && xoffs * 0.0254) || 0;
+		const yo: number = (yoffs && yoffs * 0.0254) || 0;
+		const zo: number = (zoffs && zoffs * 0.0254) || 0;
 		// 	if not is_facedir then
 		// 		return {
 		// 			type = "wallmounted",
