@@ -4,14 +4,12 @@ namespace tnt {
 	const random = math.random;
 	const distance = vector.distance;
 
-	const queue = new utility.QueueFIFO<number>();
+	interface ExplosionComponent {
+		pos: Vec3;
+		range: number;
+	}
 
-	for (const i of $range(0, 10)) {
-		queue.push(i);
-	}
-	while (queue.length() > 0) {
-		print(queue.pop());
-	}
+	const queue = new utility.QueueFIFO<ExplosionComponent>();
 
 	// Use raycasting to create actual explosion.
 	const air: number = core.get_content_id("air");
