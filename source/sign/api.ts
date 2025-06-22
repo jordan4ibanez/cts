@@ -178,15 +178,19 @@ namespace sign {
 	utility.registerTSEntity(SignTextEntity);
 
 	export function delete_objects(pos: Vec3) {
-	// 	local objects = core.get_objects_inside_radius(pos, 0.5)
-	// 	for _, v in ipairs(objects) do
-	// 		if v then
-	// 			local e = v:get_luaentity()
-	// 			if e and string.match(e.name, "sign.*text") then
-	// 				v:remove()
-	// 			end
-	// 		end
-	// 	end
+		const objects: ObjectRef[] = core.get_objects_inside_radius(pos, 0.5);
+
+		for (const [_, v] of ipairs(objects)) {
+			const e = v.get_luaentity();
+
+			if (e == null) {
+				continue;
+			}
+
+			if (string.match(e.name, "sign.*text") != null) {
+				v.remove();
+			}
+		}
 	}
 
 	// function signs_lib.spawn_entity(pos, texture)
