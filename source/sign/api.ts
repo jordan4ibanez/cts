@@ -682,15 +682,6 @@ namespace sign {
 	// function signs_lib.destruct_sign(pos)
 	// 	signs_lib.delete_objects(pos)
 	// end
-	// local function make_infotext(text)
-	// 	text = trim_input(text)
-	// 	local lines = signs_lib.split_lines_and_words(text) or {}
-	// 	local lines2 = { }
-	// 	for _, line in ipairs(lines) do
-	// 		table.insert(lines2, (table.concat(line, " "):gsub("#[0-9a-fA-F]", ""):gsub("##", "#")))
-	// 	end
-	// 	return table.concat(lines2, "\n")
-	// end
 
 	function update_sign(pos: Vec3, fields?: { text: string }): void {
 		const meta: MetaRef = core.get_meta(pos);
