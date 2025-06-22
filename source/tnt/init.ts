@@ -357,7 +357,7 @@ namespace tnt {
 		timer_max: number = 5;
 		range: number = 7;
 
-		tnt_boom(dtime: number): void {
+		on_step(dtime: number): void {
 			// 	this.timer = this.timer - dtime
 			// 	if not this.shot or not this.redstone_activated then
 			// 		vel = this.object.get_velocity()
@@ -418,16 +418,12 @@ namespace tnt {
 		// 	})
 		// end
 
-		
-		
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 		// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
 		// 		this.object.remove()
 		// 	end,
 		// 	sound_played = false,
-		// 	on_step = function(self, dtime)
-		// 		tnt_boom(self,dtime)
-		// 	end,
+		
 	}
 
 	// core.register_node("crafter_tnt:tnt", {
