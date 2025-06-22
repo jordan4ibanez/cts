@@ -397,25 +397,28 @@ namespace tnt {
 			}
 
 			if (this.timer == TntEntity.timer_max) {
-				// 		core.add_particlespawner({
-				// 			amount = 10,
-				// 			time = 0,
-				// 			minpos = vector.new(0,0.5,0),
-				// 			minpos = vector.new(0,0.5,0),
-				// 			minvel = vector.new(-0.5,1,-0.5),
-				// 			maxvel = vector.new(0.5,5,0.5),
-				// 			minacc = {x=0, y=0, z=0},
-				// 			maxacc = {x=0, y=0, z=0},
-				// 			minexptime = 0.5,
-				// 			maxexptime = 1.0,
-				// 			minsize = 1,
-				// 			maxsize = 2,
-				// 			collisiondetection = false,
-				// 			vertical = false,
-				// 			texture = "smoke.png",
-				// 			attached = this.object,
-				// 		})
-				// 		core.sound_play("tnt_ignite", {object = this.object, gain = 1.0, max_hear_distance = 64})
+				core.add_particlespawner({
+					amount: 10,
+					time: 0,
+					minpos: vector.create3d(0, 0.5, 0),
+					minvel: vector.create3d(-0.5, 1, -0.5),
+					maxvel: vector.create3d(0.5, 5, 0.5),
+					minacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+					maxacc: vector.create3d({ x: 0, y: 0, z: 0 }),
+					minexptime: 0.5,
+					maxexptime: 1.0,
+					minsize: 1,
+					maxsize: 2,
+					collisiondetection: false,
+					vertical: false,
+					texture: "smoke.png",
+					attached: this.object,
+				});
+				core.sound_play("tnt_ignite", {
+					object: this.object,
+					gain: 1.0,
+					max_hear_distance: 64,
+				});
 			}
 		}
 
