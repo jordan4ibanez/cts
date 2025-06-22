@@ -928,7 +928,8 @@ namespace sign {
 		def.tiles[5] = "signs_lib_blank.png";
 		def.tiles[6] = "signs_lib_blank.png";
 
-		// 	core.register_node(":"+name, def)
+		core.register_node(":" + name, def);
+		
 		// 	table.insert(signs_lib.lbm_restore_nodes, name)
 		// 	local no_wall_name = string.gsub(name, "_wall", "")
 		// 	local othermounts_def = table.copy(def)
