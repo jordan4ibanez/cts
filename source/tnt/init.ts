@@ -25,6 +25,36 @@ namespace tnt {
 		diggingNodes.add(core.get_content_id(node));
 	}
 
+	// Explosion item drops.
+	function dropItem(
+		pos: Vec3,
+		range: number,
+		currentID: number,
+		under: Vec3
+	) {
+		print("running");
+		const nodeName: string = core.get_name_from_content_id(currentID);
+
+		const item = core.get_node_drops(nodeName, "crafter:diamondpick");
+
+		if (item.length == 0) {
+			return;
+		}
+
+		const ppos = vector.create3d({
+			x: under.x,
+			y: under.y,
+			z: under.z,
+		});
+		const obj: ObjectRef | null = core.add_item(ppos, item[0]);
+		if (obj != null) {
+			const power: number = (range - vector.distance(pos, ppos)) * 2;
+			const dir: Vec3 = vector.subtract(ppos, pos);
+			const force: Vec3 = vector.multiply(dir, power);
+			obj.set_velocity(force);
+		}
+	}
+
 	// Raycast explosion.
 	function explosion(
 		pos: Vec3,
@@ -141,41 +171,12 @@ namespace tnt {
 								range_calc < 1 &&
 								math.random() > 0.98 + range_calc
 							) {
-								const nodeName: string =
-									core.get_name_from_content_id(currentID);
-
-								const item = core.get_node_drops(
-									nodeName,
-									"crafter:diamondpick"
+								dropItem(
+									pos,
+									range,
+									currentID,
+									pointed_thing.under
 								);
-
-								if (item.length == 0) {
-									continue;
-								}
-
-								const ppos = vector.create3d({
-									x: pointed_thing.under.x,
-									y: pointed_thing.under.y,
-									z: pointed_thing.under.z,
-								});
-								const obj: ObjectRef | null = core.add_item(
-									ppos,
-									item[0]
-								);
-								if (obj != null) {
-									const power: number =
-										(range - vector.distance(pos, ppos)) *
-										2;
-									const dir: Vec3 = vector.subtract(
-										ppos,
-										pos
-									);
-									const force: Vec3 = vector.multiply(
-										dir,
-										power
-									);
-									obj.set_velocity(force);
-								}
 							}
 						}
 					}
