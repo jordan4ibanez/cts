@@ -1,8 +1,6 @@
 namespace sign {
-	// // signs_lib api, backported from street_signs
-	
-	// signs_lib.lbm_restore_nodes = {}
-	// signs_lib.old_fenceposts = {}
+	export const lbm_restore_nodes = {};
+	export const old_fenceposts = {};
 	// signs_lib.old_fenceposts_replacement_signs = {}
 	// signs_lib.old_fenceposts_with_signs = {}
 	// // Settings used for a standard wood or steel wall sign
@@ -28,7 +26,6 @@ namespace sign {
 	// 	math.pi,
 	// 	math.pi / 2,
 	// }
-
 	// signs_lib.wallmounted_yaw = {
 	// 	nil,
 	// 	nil,
@@ -37,14 +34,12 @@ namespace sign {
 	// 	0,
 	// 	math.pi,
 	// }
-
 	// signs_lib.fdir_to_back = {
 	// 	{  0, -1 },
 	// 	{ -1,  0 },
 	// 	{  0,  1 },
 	// 	{  1,  0 },
 	// }
-
 	// signs_lib.wall_fdir_to_back = {
 	// 	nil,
 	// 	nil,
