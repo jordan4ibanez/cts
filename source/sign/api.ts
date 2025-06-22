@@ -610,11 +610,11 @@ namespace sign {
 	// end
 
 	function make_sign_texture(lines: string[], pos: Vec3): string {
-		
-		// 	local node = core.get_node(pos)
-		// 	local meta = core.get_meta(pos)
-		// 	local def = core.registered_items[node.name]
-		// 	if not def or not def.entity_info then return end
+		const node: NodeTable = core.get_node(pos);
+		const meta: MetaRef = core.get_meta(pos);
+		const def: SignNodeDefinition | undefined =
+			core.registered_items[node.name];
+			if ( def == null ||  def.entity_info == null) then return end
 		// 	local font_size
 		// 	local line_width
 		// 	local line_height
@@ -810,7 +810,7 @@ namespace sign {
 			return false;
 		}
 		const pnode: NodeTable = core.get_node(ppos);
-		const pdef: SignDefinitionComplete | undefined =
+		const pdef: SignNodeDefinition | undefined =
 			core.registered_items[pnode.name];
 		if (pdef == null) {
 			return false;
@@ -891,7 +891,7 @@ namespace sign {
 		const controls: PlayerControlObject = placer.get_player_control();
 		const signname: string = itemstack.get_name();
 		const no_wall_name: string = string.gsub(signname, "_wall", "")[0];
-		const def: SignDefinitionComplete | undefined =
+		const def: SignNodeDefinition | undefined =
 			core.registered_items[signname];
 		if (def == null) {
 			core.log(
@@ -975,7 +975,7 @@ namespace sign {
 		// }
 	}
 
-	/** @noSelf **/ interface SignDefinitionComplete extends NodeDefinition {
+	/** @noSelf **/ interface SignNodeDefinition extends NodeDefinition {
 		entity_info?: {
 			mesh: string;
 			yaw: number[];
@@ -984,7 +984,7 @@ namespace sign {
 	}
 
 	// This seems to be using the decorator pattern.
-	export function register_sign(name: string, def: SignDefinitionComplete) {
+	export function register_sign(name: string, def: SignNodeDefinition) {
 		def.entity_info = {
 			mesh: "signs_lib_standard_sign_entity_wall.obj",
 			yaw: wallmounted_yaw,
@@ -1086,9 +1086,9 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_onpole", othermounts_def);
 		lbm_restore_nodes.add(no_wall_name + "_onpole");
 
-		const onpole_horiz_def: SignDefinitionComplete = table.copy(
+		const onpole_horiz_def: SignNodeDefinition = table.copy(
 			othermounts_def as any as LuaTable
-		) as any as SignDefinitionComplete;
+		) as any as SignNodeDefinition;
 		if (onpole_horiz_def.tiles == null) {
 			throw new Error("Logic error 4");
 		}
@@ -1102,9 +1102,9 @@ namespace sign {
 		);
 		lbm_restore_nodes.add(no_wall_name + "_onpole_horiz");
 
-		const hanging_def: SignDefinitionComplete = table.copy(
+		const hanging_def: SignNodeDefinition = table.copy(
 			def as any as LuaTable
-		) as any as SignDefinitionComplete;
+		) as any as SignNodeDefinition;
 
 		hanging_def.use_texture_alpha = TextureAlpha.clip;
 		hanging_def.paramtype2 = ParamType2.facedir;
@@ -1130,9 +1130,9 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_hanging", hanging_def);
 		lbm_restore_nodes.add(no_wall_name + "_hanging");
 
-		const ydef: SignDefinitionComplete = table.copy(
+		const ydef: SignNodeDefinition = table.copy(
 			def as any as LuaTable
-		) as any as SignDefinitionComplete;
+		) as any as SignNodeDefinition;
 		ydef.paramtype2 = ParamType2.facedir;
 		const ycbox = make_selection_boxes(
 			35,
