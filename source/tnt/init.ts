@@ -590,36 +590,6 @@ namespace tnt {
 	});
 	utility.registerTSEntity(TntEntity);
 
-	core.register_node("crafter_tnt:uranium_tnt", {
-		description: "Uranium TNT",
-		tiles: [
-			"tnt_top.png^[colorize:green:100",
-			"tnt_bottom.png^[colorize:green:100",
-			"tnt_side.png^[colorize:green:100",
-			"tnt_side.png^[colorize:green:100",
-			"tnt_side.png^[colorize:green:100",
-			"tnt_side.png^[colorize:green:100",
-		],
-		groups: { stone: 2, hard: 1, pickaxe: 2, hand: 4 },
-		sounds: crafter.stoneSound(),
-		on_punch: (pos: Vec3) => {
-			const obj: ObjectRef | null = core.add_entity(
-				pos,
-				"crafter_tnt:tnt"
-			);
-
-			if (obj != null) {
-				const luaEntity: TntEntity | null =
-					obj.get_luaentity() as TntEntity | null;
-
-				if (luaEntity != null) {
-					luaEntity.range = 50;
-					core.remove_node(pos);
-				}
-			}
-		},
-	});
-
 	core.register_node("crafter_tnt:uh_oh", {
 		description: "Uh Oh",
 		tiles: [
