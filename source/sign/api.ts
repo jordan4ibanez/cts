@@ -558,7 +558,7 @@ namespace sign {
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 		const default_color: number = 0;
-		let cur_color: number = 0;
+		let cur_color: number | null = 0;
 		// We check which chars are available here.
 		for (let [word_i, word] of ipairs(line)) {
 			if (typeof word != "string") {
@@ -626,12 +626,16 @@ namespace sign {
 			words.push({ chars: chars, w: ch_offs });
 		}
 
-		// 	// Okay, we actually build the "line texture" here.
-		// 	local texture = { }
-		// 	local start_xpos = math.floor((line_width - maxw) / 2) + def.x_offset
-		// 	local xpos = start_xpos
-		// 	local ypos = (line_height + def.line_spacing)* lineno + def.y_offset
-		// 	cur_color = nil
+		// Okay, we actually build the "line texture" here.
+		const texture: string[] = [];
+		const start_xpos: number =
+			math.floor((line_width - maxw) / 2) + standard_xoffs;
+		let xpos: number = start_xpos;
+		let ypos: number =
+			(line_height + standard_lspace) * lineno + standard_yoffs;
+
+		cur_color = null;
+
 		// 	for word_i, word in ipairs(words) do
 		// 		local xoffs = (xpos - start_xpos)
 		// 		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
