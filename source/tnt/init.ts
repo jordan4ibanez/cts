@@ -521,12 +521,12 @@ namespace tnt {
 	//     end,
 	// })
 
-	// core.register_craft({
-	// 	output = "crafter_tnt:tnt",
-	// 	recipe = {
-	// 		{"crafter_mob:gunpowder", "crafter:sand",     "crafter_mob:gunpowder"},
-	// 		{"crafter:sand",     "crafter_mob:gunpowder", "crafter:sand"},
-	// 		{"crafter_mob:gunpowder", "crafter:sand",     "crafter_mob:gunpowder"},
-	// 	},
-	// })
+	core.register_craft({
+		output: "crafter_tnt:tnt",
+		recipe: [
+			["crafter_mob:gunpowder", "crafter:sand", "crafter_mob:gunpowder"],
+			["crafter:sand", "crafter_mob:gunpowder", "crafter:sand"],
+			["crafter_mob:gunpowder", "crafter:sand", "crafter_mob:gunpowder"],
+		],
+	});
 }
