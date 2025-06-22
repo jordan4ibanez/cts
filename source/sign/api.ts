@@ -295,7 +295,7 @@ namespace sign {
 		pos: Vec3,
 		node: NodeTable,
 		user: ObjectRef
-	) {
+	): boolean {
 		let newparam2: number = 0;
 		let tpos: Vec3 = vector.copy(pos);
 		const def: NodeDefinition | undefined =
@@ -303,7 +303,7 @@ namespace sign {
 
 		if (def == null) {
 			core.log(LogLevel.error, `Undefined node. Bailing.`);
-			return;
+			return false;
 		}
 		if (string.match(node.name, "_onpole") != null) {
 			if (string.match(node.name, "_horiz") == null) {
@@ -370,8 +370,9 @@ namespace sign {
 				param2: rotate_facedir[node.param2 || 0] || 0,
 			});
 		}
-		// 	signs_lib.update_sign(tpos)
-		// 	return true
+		// todo: fix this.
+		// update_sign(tpos)
+		return true;
 	}
 
 	// // infinite stacks
