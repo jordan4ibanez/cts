@@ -333,6 +333,7 @@ namespace tnt {
 		});
 	}
 
+	// Serialization data for the tnt.
 	interface TntData {
 		range: number;
 		timer: number;
