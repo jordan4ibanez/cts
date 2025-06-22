@@ -378,7 +378,6 @@ namespace tnt {
 				this.object.add_velocity(vector.create3d(vel.x, 0, vel.z));
 			}
 			if (this.timer <= 0) {
-				this.object.remove();
 				core.after(
 					0,
 					(pos: Vec3, range: number) => {
@@ -387,6 +386,7 @@ namespace tnt {
 					this.object.get_pos(),
 					this.range
 				);
+				this.object.remove();
 			}
 		}
 
