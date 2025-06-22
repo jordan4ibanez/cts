@@ -576,8 +576,6 @@ namespace sign {
 
 		// We check which chars are available here.
 
-		print(dump(line.split("")));
-
 		for (let [word_i, word] of ipairs(line.split(""))) {
 			if (typeof word != "string") {
 				core.log(LogLevel.error, "Not a string.");
@@ -772,6 +770,7 @@ namespace sign {
 				font_size,
 				colorbgw
 			);
+
 			texture.push(linetex);
 			lineno = ln + 1;
 		}
