@@ -358,14 +358,15 @@ namespace tnt {
 		range: number = 7;
 		sound_played: boolean = false;
 		exploded: boolean = false;
+		redstone_activated: boolean = false;
 
 		on_step(dtime: number): void {
-			// 	this.timer = this.timer - dtime
-			// 	if not this.shot or not this.redstone_activated then
-			// 		vel = this.object.get_velocity()
-			// 		vel = vector.multiply(vel,-0.05)
-			// 		this.object.add_velocity(vector.new(vel.x,0,vel.z))
-			// 	end
+			this.timer -= dtime;
+			if (!this.shot || !this.redstone_activated) {
+				let vel = this.object.get_velocity();
+				vel = vector.multiply(vel, -0.05);
+				this.object.add_velocity(vector.create3d(vel.x, 0, vel.z));
+			}
 			// 	if this.timer <= 0 then
 			// 		if not this.range then
 			// 			this.range = 7
