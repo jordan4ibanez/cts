@@ -1,3 +1,4 @@
+namespace sign {
 // -- encoding borrowed from signs_lib fork at https://github.com/lord-server/lord
 
 // local ansi_decode = {
@@ -263,3 +264,4 @@
 // 	end
 // 	return r
 // end
+}
