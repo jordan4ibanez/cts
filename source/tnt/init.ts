@@ -410,7 +410,7 @@ namespace tnt {
 		// 		core.sound_play("tnt_ignite", {object = this.object, gain = 1.0, max_hear_distance = 64})
 		// 	end
 		// end
-		// local static = function(self)
+		// local get_staticdata = function(self)
 		// 	return core.serialize({
 		// 		range = this.range,
 		// 		timer = this.timer,
@@ -418,9 +418,7 @@ namespace tnt {
 		// 	})
 		// end
 
-		// 	get_staticdata = function(self)
-		// 		return(static(self))
-		// 	end,
+		
 		
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
 		// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
