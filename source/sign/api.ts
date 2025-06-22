@@ -820,6 +820,8 @@ namespace sign {
 		// 	else
 		form = form + "button_exit[2,3.4;2,1;ok;" + "Write" + "]";
 		// 	end
+
+		meta.set_string("formspec", form);
 	}
 
 	function destruct_sign(pos: Vec3) {
