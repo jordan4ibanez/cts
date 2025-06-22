@@ -4,13 +4,6 @@ namespace tnt {
 	const random = math.random;
 	const distance = vector.distance;
 
-	interface ExplosionComponent {
-		pos: Vec3;
-		range: number;
-	}
-
-	const queue = new utility.QueueFIFO<ExplosionComponent>();
-
 	// Use raycasting to create actual explosion.
 	const air: number = core.get_content_id("air");
 	// todo: fix this when the nether mod is in.
@@ -27,7 +20,6 @@ namespace tnt {
 	let boom_time: number = core.get_us_time() / 1000000;
 
 	const diggingNodes = new Set<number>();
-
 	for (const node of [
 		"crafter_chest:chest_open",
 		"crafter_chest:chest",
@@ -35,6 +27,26 @@ namespace tnt {
 		"crafter_furnace:furnace",
 	]) {
 		diggingNodes.add(core.get_content_id(node));
+	}
+
+	interface ExplosionComponent {
+		pos: Vec3;
+		range: number;
+	}
+
+	const queue = new utility.QueueFIFO<ExplosionComponent>();
+
+	/**
+	 * Set off a TNT explosion at a position.
+	 * @param pos The position.
+	 * @param range The diameter of the explosion. // todo: rename this
+	 */
+	export function tnt(pos: Vec3, range: number) {
+		queue.push({
+			pos: pos,
+			range: range,
+		});
+		print(queue.length());
 	}
 
 	// Explosion item drops.
@@ -367,18 +379,6 @@ namespace tnt {
 			collision_removal: true,
 			vertical: false,
 			texture: "smoke.png",
-		});
-	}
-
-	/**
-	 * Set off a TNT explosion at a position.
-	 * @param pos The position.
-	 * @param range The diameter of the explosion. // todo: rename this
-	 */
-	export function tnt(pos: Vec3, range: number) {
-		queue.push({
-			pos: pos,
-			range: range,
 		});
 	}
 
