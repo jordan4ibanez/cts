@@ -501,11 +501,13 @@ namespace sign {
 	// signs_lib.colorbgw15,
 	// signs_lib.lineheight15,
 	// signs_lib.avgwidth15 = build_char_db(15)
+	
 	// signs_lib.charwidth31,
 	// signs_lib.colorbgw31,
 	// signs_lib.lineheight31,
 	// signs_lib.avgwidth31 = build_char_db(31)
 	// local sign_groups = {choppy=2, dig_immediate=2}
+
 	// local fences_with_sign = { }
 	// // some local helper functions
 	// local math_max = math.max
