@@ -178,7 +178,7 @@ namespace tnt {
 		vm.write_to_map();
 	}
 
-	export function tnt(pos: Vec3, range: number, explosion_type: string) {
+	export function tnt(pos: Vec3, range: number) {
 		const in_node: string = core.get_node(pos).name;
 		const in_water =
 			in_node == "crafter:water" || in_node == "crafter:waterflow";
