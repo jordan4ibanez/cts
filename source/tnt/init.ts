@@ -32,7 +32,6 @@ namespace tnt {
 		currentID: number,
 		under: Vec3
 	) {
-		print("running");
 		const nodeName: string = core.get_name_from_content_id(currentID);
 
 		const item = core.get_node_drops(nodeName, "crafter:diamondpick");
