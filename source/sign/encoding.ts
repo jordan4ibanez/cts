@@ -258,13 +258,13 @@ namespace sign {
 				// 			//local ansi = utf8_decode[j]
 				// 			//if ansi == nil then return r end
 				// 			//if ansi[b] == nil then return r end
-				// 			if utf8_decode[j] then
-				// 				if utf8_decode[j][b] then
-				// 					a, r = a - 1, r + utf8_decode[j][b]
-				// 				end
-				// 			end
+				if (utf8_decode[j] != null) {
+					if (utf8_decode[j]![b] != null) {
+						// 					a, r = a - 1, r + utf8_decode[j][b]
+					}
+				}
 			} else if (b == 226) {
-				// 			a = 2
+				a = 2;
 			} else if (b == 194 || b == 208 || b == 209 || b == 210) {
 				j = b;
 				a = 1;
