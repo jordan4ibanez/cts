@@ -985,9 +985,6 @@ namespace sign {
 			"wall.obj$",
 			"onpole.obj"
 		);
-		// 		if othermounts_def.entity_info then
-		// 			othermounts_def.entity_info.mesh = string.gsub(othermounts_def.entity_info.mesh, "entity_wall.obj$", "entity_onpole.obj")
-		// 		end
 
 		// 	// setting one of item 3 or 4 to a texture and leaving the other "blank",
 		// 	// reveals either the vertical or horizontal pole mount part of the model
