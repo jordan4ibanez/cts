@@ -297,7 +297,7 @@ namespace sign {
 		user: ObjectRef
 	) {
 		let newparam2: number = 0;
-		const tpos: Vec3 = vector.copy(pos);
+		let tpos: Vec3 = vector.copy(pos);
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 
@@ -307,17 +307,20 @@ namespace sign {
 		}
 		if (string.match(node.name, "_onpole") != null) {
 			if (string.match(node.name, "_horiz") == null) {
-				// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
-				// 			local t = signs_lib.wall_fdir_to_back_left
-				// 			if def.paramtype2 ~= "wallmounted" then
-				// 				newparam2 = signs_lib.rotate_facedir_simple[node.param2] or 0
-				// 				t  = signs_lib.fdir_to_back_left
-				// 			end
-				// 			tpos = {
-				// 				x = pos.x + t[node.param2][1],
-				// 				y = pos.y,
-				// 				z = pos.z + t[node.param2][2]
-				// 			}
+				newparam2 = rotate_walldir_simple[node.param2 || 0] || 4;
+				let t: Dictionary<number, number[]> = wall_fdir_to_back_left;
+
+				if (def.paramtype2 != ParamType2.wallmounted) {
+					newparam2 = rotate_facedir_simple[node.param2 || 0] || 0;
+					t = fdir_to_back_left;
+				}
+
+				const newData: number[] = t[node.param2 || 0] || [0, 0];
+				tpos = vector.create3d({
+					x: pos.x + (newData[0] || 0),
+					y: pos.y,
+					z: pos.z + newData[1],
+				});
 			} else {
 				// 			// flip the sign to the other side of the horizontal pole
 				// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
