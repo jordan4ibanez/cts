@@ -296,10 +296,16 @@ namespace sign {
 		node: NodeTable,
 		user: ObjectRef
 	) {
-		// 	local newparam2
-		// 	local tpos = pos
-		// 	local def = core.registered_items[node.name]
-		// 	if string.match(node.name, "_onpole") then
+		let newparam2: number = 0;
+		const tpos: Vec3 = vector.copy(pos);
+		const def: NodeDefinition | undefined =
+			core.registered_items[node.name];
+
+		if (def == null) {
+			core.log(LogLevel.error, `Undefined node. Bailing.`)
+			return;
+		}
+			if (string.match(node.name, "_onpole") != null) {
 		// 		if not string.match(node.name, "_horiz") then
 		// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
 		// 			local t = signs_lib.wall_fdir_to_back_left
@@ -333,13 +339,13 @@ namespace sign {
 		// 		core.get_meta(tpos):from_table(core.get_meta(pos):to_table())
 		// 		core.remove_node(pos)
 		// 		signs_lib.delete_objects(pos)
-		// 	elseif string.match(node.name, "_hanging") or string.match(node.name, "yard") then
+			} else if (string.match(node.name, "_hanging") != null || string.match(node.name, "yard") != null) {
 		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir_simple[node.param2] or 0 })
-		// 	elseif core.registered_items[node.name].paramtype2 == "wallmounted" then
+			} else if (def.paramtype2 == ParamType2.wallmounted) {
 		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_walldir[node.param2] or 0 })
-		// 	else
+			}else{
 		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir[node.param2] or 0 })
-		// 	end
+			}
 		// 	signs_lib.update_sign(tpos)
 		// 	return true
 	}
