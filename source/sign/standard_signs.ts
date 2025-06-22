@@ -15,12 +15,12 @@ namespace sign {
 		// allow_yard = true
 	});
 
-	// core.register_craft({
-	// 	output = "sign:sign 3",
-	// 	recipe = {
-	// 		{"crafter:wood","crafter:wood","crafter:wood"},
-	// 		{"crafter:wood","crafter:wood","crafter:wood"},
-	// 		{"","crafter:stick",""}
-	// 	}
-	// })
+	core.register_craft({
+		output: "sign:sign 3",
+		recipe: [
+			["crafter:wood", "crafter:wood", "crafter:wood"],
+			["crafter:wood", "crafter:wood", "crafter:wood"],
+			["", "crafter:stick", ""],
+		],
+	});
 }
