@@ -333,7 +333,7 @@ namespace hunger {
 			data.satiation = satiation;
 		}
 
-		if (doNotUpdateWieldItem) {
+		if (doNotUpdateWieldItem == null || doNotUpdateWieldItem == false) {
 			take_food(player);
 		}
 		hudManager.change_hud({
