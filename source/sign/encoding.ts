@@ -216,8 +216,9 @@ namespace sign {
 
 	export function AnsiToUtf8(s: string): string {
 		let r: string = "";
-		let b: string = "";
+		let b: number = 0;
 		for (const i of $range(1, s.length || 0)) {
+			b = string.byte(s, i);
 			// 		b = s:byte(i)
 			// 		if b < 128 then
 			// 			r = r + string.char(b)
