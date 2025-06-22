@@ -619,31 +619,28 @@ namespace sign {
 				LogLevel.error,
 				"SEVERE ERROR: Undefined node while making sign texture. This sign will be glitched."
 			);
-
 			return "";
 		}
-		// 	local font_size
-		// 	local line_width
-		// 	local line_height
-		// 	local char_width
-		// 	local colorbgw
-		// 	local widemult = 1
+
+		let font_size: number = 0;
+		let line_width: number = 0;
+		let line_height: number = 0;
+		let char_width: number = 0;
+		let colorbgw: string = "";
+		let widemult: number = 1;
+
+		// todo: test this.
 		// 	if meta:get_int("widefont") == 1 then
 		// 		widemult = 0.5
 		// 	end
-		// 	if def.font_size and def.font_size == 31 then
-		// 		font_size = 31
-		// 		line_width = math.floor(signs_lib.avgwidth31 * def.chars_per_line) * (def.horiz_scaling * widemult)
-		// 		line_height = signs_lib.lineheight31
-		// 		char_width = signs_lib.charwidth31
-		// 		colorbgw = signs_lib.colorbgw31
-		// 	else
-		// 		font_size = 15
-		// 		line_width = math.floor(signs_lib.avgwidth15 * def.chars_per_line) * (def.horiz_scaling * widemult)
-		// 		line_height = signs_lib.lineheight15
-		// 		char_width = signs_lib.charwidth15
-		// 		colorbgw = signs_lib.colorbgw15
-		// 	end
+
+		// todo: finish this
+		// font_size = 15
+		// line_width = math.floor(signs_lib.avgwidth15 * def.chars_per_line) * (def.horiz_scaling * widemult)
+		// line_height = signs_lib.lineheight15
+		// char_width = signs_lib.charwidth15
+		// colorbgw = signs_lib.colorbgw15
+
 		// 	local texture = { ("[combine:%dx%d"):format(line_width, (line_height + def.line_spacing) * def.number_of_lines * def.vert_scaling) }
 		// 	local lineno = 0
 		// 	for i = 1, #lines do
