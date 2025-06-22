@@ -356,6 +356,7 @@ namespace tnt {
 		// This has to be equal to timer.
 		timer_max: number = 5;
 		range: number = 7;
+		sound_played: boolean = false;
 
 		on_step(dtime: number): void {
 			// 	this.timer = this.timer - dtime
@@ -422,8 +423,6 @@ namespace tnt {
 		// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
 		// 		this.object.remove()
 		// 	end,
-		// 	sound_played = false,
-		
 	}
 
 	// core.register_node("crafter_tnt:tnt", {
