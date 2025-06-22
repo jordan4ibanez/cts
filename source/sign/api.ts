@@ -768,11 +768,11 @@ namespace sign {
 				font_size,
 				colorbgw
 			);
-			// 		table.insert(texture, linetex)
-			// 		lineno = ln + 1
+			texture.push(linetex);
+			lineno = ln + 1;
 		}
-		// 	table.insert(texture, "^[makealpha:0,0,0")
-		// 	return table.concat(texture, "")
+		texture.push("^[makealpha:0,0,0");
+		return table.concat(texture, "");
 	}
 
 	function split_lines_and_words(text: string): string[] {
