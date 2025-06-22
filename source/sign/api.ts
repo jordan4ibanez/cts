@@ -1,3 +1,4 @@
+namespace sign {
 // -- signs_lib api, backported from street_signs
 
 // local S = signs_lib.gettext
@@ -1184,3 +1185,4 @@
 // 		minetest.chat_send_player(player_name, "Finished.")
 // 	end
 // })
+}
