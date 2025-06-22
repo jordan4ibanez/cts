@@ -250,7 +250,8 @@ namespace sign {
 				// 				r = r + string.char(b)
 				// 			end
 			} else if (a == 2) {
-				// 			a, j = a - 1, b
+				a = a - 1;
+				j = b;
 			} else if (a == 1) {
 				if (utf8_decode[j] != null) {
 					if (utf8_decode[j]![b] != null) {
