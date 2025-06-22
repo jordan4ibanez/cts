@@ -61,45 +61,51 @@ namespace sign {
 		math.pi,
 	];
 
-	// export const fdir_to_back = {
-	// 	{  0, -1 },
-	// 	{ -1,  0 },
-	// 	{  0,  1 },
-	// 	{  1,  0 },
-	// }
+	export const fdir_to_back: number[][] = [
+		[0, -1],
+		[-1, 0],
+		[0, 1],
+		[1, 0],
+	];
 
-	// export const wall_fdir_to_back = {
-	// 	nil,
-	// 	nil,
-	// 	{  0,  1 },
-	// 	{  0, -1 },
-	// 	{ -1,  0 },
-	// 	{  1,  0 },
-	// }
-	// export const fdir_flip_to_back = {
-	// 	[0] = {  0,  2 },
-	// 	[1] = {  2,  0 },
-	// 	[2] = {  0, -2 },
-	// 	[3] = { -2,  0 }
-	// }
-	// export const wall_fdir_flip_to_back = {
-	// 	[2] = {  2,  0 },
-	// 	[3] = { -2,  0 },
-	// 	[4] = {  0,  2 },
-	// 	[5] = {  0, -2 },
-	// }
-	// export const fdir_to_back_left = {
-	// 	[0] = { -1,  1 },
-	// 	[1] = {  1,  1 },
-	// 	[2] = {  1, -1 },
-	// 	[3] = { -1, -1 }
-	// }
-	// export const wall_fdir_to_back_left = {
-	// 	[2] = {  1,  1 },
-	// 	[3] = { -1, -1 },
-	// 	[4] = { -1,  1 },
-	// 	[5] = {  1, -1 }
-	// }
+	// fixme: the first two were nil instead of [0,0], this may cause problems.
+	export const wall_fdir_to_back: number[][] = [
+		[0, 0],
+		[0, 0],
+		[0, 1],
+		[0, -1],
+		[-1, 0],
+		[1, 0],
+	];
+
+	export const fdir_flip_to_back: Dictionary<number, number[]> = {
+		[0]: [0, 2],
+		[1]: [2, 0],
+		[2]: [0, -2],
+		[3]: [-2, 0],
+	};
+
+	export const wall_fdir_flip_to_back: Dictionary<number, number[]> = {
+		[2]: [2, 0],
+		[3]: [-2, 0],
+		[4]: [0, 2],
+		[5]: [0, -2],
+	};
+
+	export const fdir_to_back_left: Dictionary<number, number[]> = {
+		[0]: [-1, 1],
+		[1]: [1, 1],
+		[2]: [1, -1],
+		[3]: [-1, -1],
+	};
+
+	export const wall_fdir_to_back_left: Dictionary<number, number[]> = {
+		[2] : [  1,  1 ],
+		[3] : [ -1, -1 ],
+		[4] : [ -1,  1 ],
+		[5] : [  1, -1 ]
+	}
+
 	// export const rotate_walldir = {
 	// 	[0] = 4,
 	// 	[1] = 0,
