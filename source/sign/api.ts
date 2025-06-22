@@ -870,16 +870,12 @@ namespace sign {
 	// 	core.log("warning", "[signs_lib] "+"Attempt to call no longer used function signs_lib.register_fence_with_sign()")
 	// end
 
-	export function register_sign(name: string, raw_def: any) {
-		// 	local def = table.copy(raw_def)
-		// 	if raw_def.entity_info == "standard" then
-		// 		def.entity_info = {
-		// 			mesh = "signs_lib_standard_sign_entity_wall.obj",
-		// 			yaw = signs_lib.wallmounted_yaw
-		// 		}
-		// 	elseif raw_def.entity_info then
-		// 		def.entity_info = raw_def.entity_info
-		// 	end
+	export function register_sign(name: string, def: any) {
+		def.entity_info = {
+			mesh: "signs_lib_standard_sign_entity_wall.obj",
+			yaw: wallmounted_yaw,
+		};
+
 		// 	def.after_place_node = raw_def.after_place_node or signs_lib.after_place_node
 		// 	if raw_def.entity_info then
 		// 		def.on_rightclick	 = raw_def.on_rightclick	 or signs_lib.construct_sign
@@ -1019,7 +1015,7 @@ namespace sign {
 		// 		table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
 		// 	end
 	}
-	
+
 	// // restore signs' text after /clearobjects and the like, the next time
 	// // a block is reloaded by the server.
 	// core.register_lbm({
