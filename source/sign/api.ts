@@ -322,18 +322,21 @@ namespace sign {
 					z: pos.z + newData[1],
 				});
 			} else {
-				// 			// flip the sign to the other side of the horizontal pole
-				// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
-				// 			local t = signs_lib.wall_fdir_flip_to_back
-				// 			if def.paramtype2 ~= "wallmounted" then
-				// 				newparam2 = signs_lib.flip_facedir[node.param2] or 0
-				// 				t  = signs_lib.fdir_flip_to_back
-				// 			end
-				// 			tpos = {
-				// 				x = pos.x + t[node.param2][1],
-				// 				y = pos.y,
-				// 				z = pos.z + t[node.param2][2]
-				// 			}
+				// Flip the sign to the other side of the horizontal pole.
+				newparam2 = flip_walldir[node.param2 || 0] || 4;
+				let t: Dictionary<number, number[]> = wall_fdir_flip_to_back;
+				if (def.paramtype2 != ParamType2.wallmounted) {
+					newparam2 = flip_facedir[node.param2 || 0] || 0;
+					t = fdir_flip_to_back;
+				}
+
+				const newData: number[] = t[node.param2 || 0] || [0, 0];
+
+				tpos = vector.create3d({
+					x: pos.x + newData[0],
+					y: pos.y,
+					z: pos.z + newData[1],
+				});
 			}
 
 			// 		local node2 = core.get_node(tpos)
