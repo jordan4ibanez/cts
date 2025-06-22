@@ -129,6 +129,12 @@ namespace tnt {
 							data[n_pos - 1] = air;
 						} else if (currentID == tntID) {
 							data[n_pos - 1] = air;
+
+							const serialData: TntData = {
+								range: range,
+								timer: random() + random(),
+								exploded: false,
+							};
 							core.add_entity(
 								vector.create3d({
 									x: pointed_thing.under.x,
@@ -136,10 +142,7 @@ namespace tnt {
 									z: pointed_thing.under.z,
 								}),
 								"crafter_tnt:tnt",
-								core.serialize({
-									do_ignition_particles: true,
-									timer: math.random(),
-								})
+								core.serialize(serialData)
 							);
 						} /* fixme: elseif (! string.match(node2, "mob_spawners:")) then*/ else {
 							data[n_pos - 1] = air;
