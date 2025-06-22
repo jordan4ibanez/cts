@@ -360,24 +360,24 @@ namespace tnt {
 		// local tnt_boom = function(self,dtime)
 		// 	this.timer = this.timer - dtime
 		// 	if not this.shot or not this.redstone_activated then
-		// 		vel = this.object:get_velocity()
+		// 		vel = this.object.get_velocity()
 		// 		vel = vector.multiply(vel,-0.05)
-		// 		this.object:add_velocity(vector.new(vel.x,0,vel.z))
+		// 		this.object.add_velocity(vector.new(vel.x,0,vel.z))
 		// 	end
 		// 	if this.timer <= 0 then
 		// 		if not this.range then
 		// 			this.range = 7
 		// 		end
-		// 		pos = this.object:get_pos()
+		// 		pos = this.object.get_pos()
 		// 		range = this.range
-		// 		this.object:remove()
+		// 		this.object.remove()
 		// 		tnt(pos,range)
 		// 	end
 		// end
 		// local activation = function(self, staticdata, dtime_s)
-		// 	this.object:set_armor_groups({immortal = 1})
-		// 	this.object:set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
-		// 	this.object:set_acceleration({x = 0, y = -9.81, z = 0})
+		// 	this.object.set_armor_groups({immortal = 1})
+		// 	this.object.set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
+		// 	this.object.set_acceleration({x = 0, y = -9.81, z = 0})
 		// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
 		// 		local data = core.deserialize(staticdata)
 		// 		if data and type(data) == "table" then
@@ -423,8 +423,8 @@ namespace tnt {
 		// 		activation(self, staticdata, dtime_s)
 		// 	end,
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-		// 		core.throw_item(this.object:get_pos(), "crafter_tnt:tnt")
-		// 		this.object:remove()
+		// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
+		// 		this.object.remove()
 		// 	end,
 		// 	sound_played = false,
 		// 	on_step = function(self, dtime)
