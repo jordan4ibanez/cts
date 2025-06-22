@@ -500,14 +500,28 @@ namespace sign {
 	// local fences_with_sign = { }
 	// // some local helper functions
 	// local math_max = math.max
-	// local function fill_line(x, y, w, c, font_size, colorbgw)
-	// 	c = c or "0"
-	// 	local tex = { }
-	// 	for xx = 0, math.max(0, w), colorbgw do
-	// 		table.insert(tex, (":%d,%d=signs_lib_color_"+font_size+"px_%s.png"):format(x + xx, y, c))
-	// 	end
-	// 	return table.concat(tex)
-	// end
+	function fill_line(
+		x: number,
+		y: number,
+		w: number,
+		c: string,
+		font_size: number,
+		colorbgw: number
+	): string {
+		c = c || "0";
+		let tex: string[] = [];
+		for (const xx of $range(0, math.max(0, w), colorbgw)) {
+			tex.push(
+				string.format(
+					":%d,%d=signs_lib_color_" + font_size + "px_%s.png",
+					x + xx,
+					y,
+					c
+				)
+			);
+		}
+		return table.concat(tex);
+	}
 
 	// Make char texture file name.
 	// If texture file does not exist use fallback texture instead.
@@ -638,16 +652,18 @@ namespace sign {
 
 		for (const [word_i, word] of ipairs(words)) {
 			let xoffs: number = xpos - start_xpos;
-					if ((xoffs > 0) && ((xoffs + word.w) > maxw)) {
-						// todo: was here
-						texture.push(fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
-						
-			// 			xpos = start_xpos
-			// 			ypos = ypos + line_height + def.line_spacing
-			// 			lineno = lineno + 1
-			// 			if lineno >= def.number_of_lines then break end
-			// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
-					}
+			if (xoffs > 0 && xoffs + word.w > maxw) {
+				// todo: was here
+				texture.push(
+					fill_line(xpos, ypos, maxw, "n", font_size, colorbgw)
+				);
+
+				// 			xpos = start_xpos
+				// 			ypos = ypos + line_height + def.line_spacing
+				// 			lineno = lineno + 1
+				// 			if lineno >= def.number_of_lines then break end
+				// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
+			}
 
 			// 		for ch_i, ch in ipairs(word.chars) do
 			// 			if ch.col ~= cur_color then
