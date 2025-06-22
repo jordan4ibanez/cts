@@ -534,106 +534,115 @@ namespace sign {
 	// 	end
 	// end
 
-	 function make_line_texture(line, lineno, pos, line_width, line_height, cwidth_tab, font_size, colorbgw)
-	// 	local width = 0
-	// 	local maxw = 0
-	// 	local font_name = "signs_lib_font_"+font_size+"px"
-	// 	local words = { }
-	// 	local node = core.get_node(pos)
-	// 	local def = core.registered_items[node.name]
-	// 	local default_color = def.default_color or 0
-	// 	local cur_color = tonumber(default_color, 16)
-	// 	// We check which chars are available here.
-	// 	for word_i, word in ipairs(line) do
-	// 		local chars = { }
-	// 		local ch_offs = 0
-	// 		word = string.gsub(word, "%^[12345678abcdefgh]", {
-	// 			["^1"] = string.char(0x81),
-	// 			["^2"] = string.char(0x82),
-	// 			["^3"] = string.char(0x83),
-	// 			["^4"] = string.char(0x84),
-	// 			["^5"] = string.char(0x85),
-	// 			["^6"] = string.char(0x86),
-	// 			["^7"] = string.char(0x87),
-	// 			["^8"] = string.char(0x88),
-	// 			["^a"] = string.char(0x8a),
-	// 			["^b"] = string.char(0x8b),
-	// 			["^c"] = string.char(0x8c),
-	// 			["^d"] = string.char(0x8d),
-	// 			["^e"] = string.char(0x8e),
-	// 			["^f"] = string.char(0x8f),
-	// 			["^g"] = string.char(0x90),
-	// 			["^h"] = string.char(0x91)
-	// 		})
-	// 		local word_l = #word
-	// 		local i = 1
-	// 		while i <= word_l  do
-	// 			local c = word:sub(i, i)
-	// 			if c == "#" then
-	// 				local cc = tonumber(word:sub(i+1, i+1), 16)
-	// 				if cc then
-	// 					i = i + 1
-	// 					cur_color = cc
-	// 				end
-	// 			else
-	// 				local w = cwidth_tab[c]
-	// 				if w then
-	// 					width = width + w + 1
-	// 					if width >= (line_width - cwidth_tab[" "]) then
-	// 						width = 0
-	// 					else
-	// 						maxw = math_max(width, maxw)
-	// 					end
-	// 					if #chars < MAX_INPUT_CHARS then
-	// 						table.insert(chars, {
-	// 							off = ch_offs,
-	// 							tex = char_tex(font_name, c),
-	// 							col = ("%X"):format(cur_color),
-	// 						})
-	// 					end
-	// 					ch_offs = ch_offs + w
-	// 				end
-	// 			end
-	// 			i = i + 1
-	// 		end
-	// 		width = width + cwidth_tab[" "] + 1
-	// 		maxw = math_max(width, maxw)
-	// 		table.insert(words, { chars=chars, w=ch_offs })
-	// 	end
-	// 	// Okay, we actually build the "line texture" here.
-	// 	local texture = { }
-	// 	local start_xpos = math.floor((line_width - maxw) / 2) + def.x_offset
-	// 	local xpos = start_xpos
-	// 	local ypos = (line_height + def.line_spacing)* lineno + def.y_offset
-	// 	cur_color = nil
-	// 	for word_i, word in ipairs(words) do
-	// 		local xoffs = (xpos - start_xpos)
-	// 		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
-	// 			table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
-	// 			xpos = start_xpos
-	// 			ypos = ypos + line_height + def.line_spacing
-	// 			lineno = lineno + 1
-	// 			if lineno >= def.number_of_lines then break end
-	// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
-	// 		end
-	// 		for ch_i, ch in ipairs(word.chars) do
-	// 			if ch.col ~= cur_color then
-	// 				cur_color = ch.col
-	// 				table.insert(texture, fill_line(xpos + ch.off, ypos, maxw, cur_color, font_size, colorbgw))
-	// 			end
-	// 			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
-	// 		end
-	// 		table.insert(
-	// 			texture,
-	// 			(":%d,%d="):format(xpos + word.w, ypos) + char_tex(font_name, " ")
-	// 		)
-	// 		xpos = xpos + word.w + cwidth_tab[" "]
-	// 		if xpos >= (line_width + cwidth_tab[" "]) then break end
-	// 	end
-	// 	table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
-	// 	table.insert(texture, fill_line(start_xpos, ypos + line_height, maxw, "n", font_size, colorbgw))
-	// 	return table.concat(texture), lineno
-}
+	function make_line_texture(
+		line: string,
+		lineno: number,
+		pos: Vec3,
+		line_width: number,
+		line_height: number,
+		cwidth_tab: number,
+		font_size: number,
+		colorbgw: number
+	) {
+		// 	local width = 0
+		// 	local maxw = 0
+		// 	local font_name = "signs_lib_font_"+font_size+"px"
+		// 	local words = { }
+		// 	local node = core.get_node(pos)
+		// 	local def = core.registered_items[node.name]
+		// 	local default_color = def.default_color or 0
+		// 	local cur_color = tonumber(default_color, 16)
+		// 	// We check which chars are available here.
+		// 	for word_i, word in ipairs(line) do
+		// 		local chars = { }
+		// 		local ch_offs = 0
+		// 		word = string.gsub(word, "%^[12345678abcdefgh]", {
+		// 			["^1"] = string.char(0x81),
+		// 			["^2"] = string.char(0x82),
+		// 			["^3"] = string.char(0x83),
+		// 			["^4"] = string.char(0x84),
+		// 			["^5"] = string.char(0x85),
+		// 			["^6"] = string.char(0x86),
+		// 			["^7"] = string.char(0x87),
+		// 			["^8"] = string.char(0x88),
+		// 			["^a"] = string.char(0x8a),
+		// 			["^b"] = string.char(0x8b),
+		// 			["^c"] = string.char(0x8c),
+		// 			["^d"] = string.char(0x8d),
+		// 			["^e"] = string.char(0x8e),
+		// 			["^f"] = string.char(0x8f),
+		// 			["^g"] = string.char(0x90),
+		// 			["^h"] = string.char(0x91)
+		// 		})
+		// 		local word_l = #word
+		// 		local i = 1
+		// 		while i <= word_l  do
+		// 			local c = word:sub(i, i)
+		// 			if c == "#" then
+		// 				local cc = tonumber(word:sub(i+1, i+1), 16)
+		// 				if cc then
+		// 					i = i + 1
+		// 					cur_color = cc
+		// 				end
+		// 			else
+		// 				local w = cwidth_tab[c]
+		// 				if w then
+		// 					width = width + w + 1
+		// 					if width >= (line_width - cwidth_tab[" "]) then
+		// 						width = 0
+		// 					else
+		// 						maxw = math_max(width, maxw)
+		// 					end
+		// 					if #chars < MAX_INPUT_CHARS then
+		// 						table.insert(chars, {
+		// 							off = ch_offs,
+		// 							tex = char_tex(font_name, c),
+		// 							col = ("%X"):format(cur_color),
+		// 						})
+		// 					end
+		// 					ch_offs = ch_offs + w
+		// 				end
+		// 			end
+		// 			i = i + 1
+		// 		end
+		// 		width = width + cwidth_tab[" "] + 1
+		// 		maxw = math_max(width, maxw)
+		// 		table.insert(words, { chars=chars, w=ch_offs })
+		// 	end
+		// 	// Okay, we actually build the "line texture" here.
+		// 	local texture = { }
+		// 	local start_xpos = math.floor((line_width - maxw) / 2) + def.x_offset
+		// 	local xpos = start_xpos
+		// 	local ypos = (line_height + def.line_spacing)* lineno + def.y_offset
+		// 	cur_color = nil
+		// 	for word_i, word in ipairs(words) do
+		// 		local xoffs = (xpos - start_xpos)
+		// 		if (xoffs > 0) and ((xoffs + word.w) > maxw) then
+		// 			table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
+		// 			xpos = start_xpos
+		// 			ypos = ypos + line_height + def.line_spacing
+		// 			lineno = lineno + 1
+		// 			if lineno >= def.number_of_lines then break end
+		// 			table.insert(texture, fill_line(xpos, ypos, maxw, cur_color, font_size, colorbgw))
+		// 		end
+		// 		for ch_i, ch in ipairs(word.chars) do
+		// 			if ch.col ~= cur_color then
+		// 				cur_color = ch.col
+		// 				table.insert(texture, fill_line(xpos + ch.off, ypos, maxw, cur_color, font_size, colorbgw))
+		// 			end
+		// 			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
+		// 		end
+		// 		table.insert(
+		// 			texture,
+		// 			(":%d,%d="):format(xpos + word.w, ypos) + char_tex(font_name, " ")
+		// 		)
+		// 		xpos = xpos + word.w + cwidth_tab[" "]
+		// 		if xpos >= (line_width + cwidth_tab[" "]) then break end
+		// 	end
+		// 	table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
+		// 	table.insert(texture, fill_line(start_xpos, ypos + line_height, maxw, "n", font_size, colorbgw))
+		// 	return table.concat(texture), lineno
+	}
 
 	function make_sign_texture(lines: string[], pos: Vec3): string {
 		const node: NodeTable = core.get_node(pos);
