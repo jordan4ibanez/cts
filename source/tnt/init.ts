@@ -332,19 +332,25 @@ namespace tnt {
 	class TntEntity extends types.Entity {
 		name: string = "crafter_tnt:tnt";
 
-		// 	initial_properties = {
-		// 		hp_max = 1,
-		// 		physical = true,
-		// 		collide_with_objects = false,
-		// 		collisionbox = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
-		// 		visual = "cube",
-		// 		visual_size = {x = 1, y = 1},
-		// 		textures = {"tnt_top.png", "tnt_bottom.png",
-		// 			"tnt_side.png", "tnt_side.png",
-		// 			"tnt_side.png", "tnt_side.png"},
-		// 		is_visible = true,
-		// 		pointable = true,
-		// 	},
+		initial_properties: ObjectProperties = {
+			hp_max: 1,
+			physical: true,
+			collide_with_objects: false,
+			collisionbox: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
+			visual: EntityVisual.cube,
+			visual_size: { x: 1, y: 1 },
+			textures: [
+				"tnt_top.png",
+				"tnt_bottom.png",
+				"tnt_side.png",
+				"tnt_side.png",
+				"tnt_side.png",
+				"tnt_side.png",
+			],
+			is_visible: true,
+			pointable: true,
+		};
+
 		shot: boolean = false;
 		timer: number = 5;
 		// This has to be equal to timer.
