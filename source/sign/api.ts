@@ -235,7 +235,7 @@ namespace sign {
 			}
 		}
 
-		const yaw: number = def.entity_info.yaw[(node.param2 || 0) + 2];
+		let yaw: number = def.entity_info.yaw[(node.param2 || 0) + 2];
 
 		let pitch: number = 0;
 
@@ -245,13 +245,15 @@ namespace sign {
 		) {
 			const rot90: number = math.pi / 2;
 			if (def.paramtype2 == ParamType2.wallmounted) {
-				// 			if node.param2 == 1 then // on floor
-				// 				pitch = -rot90
-				// 				yaw = 0
-				// 			elseif node.param2 == 0 then // on ceiling
-				// 				pitch = rot90
-				// 				yaw = math.pi
-				// 			end
+				// On floor.
+				if (node.param2 == 1) {
+									pitch = -rot90
+									yaw = 0
+					// On ceiling.
+				} else if (node.param2 == 0) {
+									pitch = rot90
+									yaw = math.pi
+				}
 			} else if (def.paramtype2 == ParamType2.facedir) {
 				// 			if node.param2 == 4 then
 				// 				pitch = -rot90
