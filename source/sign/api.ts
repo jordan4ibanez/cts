@@ -406,6 +406,11 @@ namespace sign {
 	// To avoid reopening file after checking again
 	// pass TRUE as second argument.
 
+	function getFile(name: string, mode: string): LuaFile | undefined {
+		const [f] = io.open(name, mode);
+		return f;
+	}
+
 	function file_exists(
 		name: string,
 		return_handle: boolean,
