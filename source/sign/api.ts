@@ -302,50 +302,53 @@ namespace sign {
 			core.registered_items[node.name];
 
 		if (def == null) {
-			core.log(LogLevel.error, `Undefined node. Bailing.`)
+			core.log(LogLevel.error, `Undefined node. Bailing.`);
 			return;
 		}
-			if (string.match(node.name, "_onpole") != null) {
-		// 		if not string.match(node.name, "_horiz") then
-		// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
-		// 			local t = signs_lib.wall_fdir_to_back_left
-		// 			if def.paramtype2 ~= "wallmounted" then
-		// 				newparam2 = signs_lib.rotate_facedir_simple[node.param2] or 0
-		// 				t  = signs_lib.fdir_to_back_left
-		// 			end
-		// 			tpos = {
-		// 				x = pos.x + t[node.param2][1],
-		// 				y = pos.y,
-		// 				z = pos.z + t[node.param2][2]
-		// 			}
-		// 		else
-		// 			// flip the sign to the other side of the horizontal pole
-		// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
-		// 			local t = signs_lib.wall_fdir_flip_to_back
-		// 			if def.paramtype2 ~= "wallmounted" then
-		// 				newparam2 = signs_lib.flip_facedir[node.param2] or 0
-		// 				t  = signs_lib.fdir_flip_to_back
-		// 			end
-		// 			tpos = {
-		// 				x = pos.x + t[node.param2][1],
-		// 				y = pos.y,
-		// 				z = pos.z + t[node.param2][2]
-		// 			}
-		// 		end
-		// 		local node2 = core.get_node(tpos)
-		// 		local def2 = core.registered_items[node2.name]
-		// 		if not def2 or not def2.buildable_to then return true end // undefined, or not buildable_to.
-		// 		core.set_node(tpos, {name = node.name, param2 = newparam2})
-		// 		core.get_meta(tpos):from_table(core.get_meta(pos):to_table())
-		// 		core.remove_node(pos)
-		// 		signs_lib.delete_objects(pos)
-			} else if (string.match(node.name, "_hanging") != null || string.match(node.name, "yard") != null) {
-		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir_simple[node.param2] or 0 })
-			} else if (def.paramtype2 == ParamType2.wallmounted) {
-		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_walldir[node.param2] or 0 })
-			}else{
-		// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir[node.param2] or 0 })
-			}
+		if (string.match(node.name, "_onpole") != null) {
+			// 		if not string.match(node.name, "_horiz") then
+			// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
+			// 			local t = signs_lib.wall_fdir_to_back_left
+			// 			if def.paramtype2 ~= "wallmounted" then
+			// 				newparam2 = signs_lib.rotate_facedir_simple[node.param2] or 0
+			// 				t  = signs_lib.fdir_to_back_left
+			// 			end
+			// 			tpos = {
+			// 				x = pos.x + t[node.param2][1],
+			// 				y = pos.y,
+			// 				z = pos.z + t[node.param2][2]
+			// 			}
+			// 		else
+			// 			// flip the sign to the other side of the horizontal pole
+			// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
+			// 			local t = signs_lib.wall_fdir_flip_to_back
+			// 			if def.paramtype2 ~= "wallmounted" then
+			// 				newparam2 = signs_lib.flip_facedir[node.param2] or 0
+			// 				t  = signs_lib.fdir_flip_to_back
+			// 			end
+			// 			tpos = {
+			// 				x = pos.x + t[node.param2][1],
+			// 				y = pos.y,
+			// 				z = pos.z + t[node.param2][2]
+			// 			}
+			// 		end
+			// 		local node2 = core.get_node(tpos)
+			// 		local def2 = core.registered_items[node2.name]
+			// 		if not def2 or not def2.buildable_to then return true end // undefined, or not buildable_to.
+			// 		core.set_node(tpos, {name = node.name, param2 = newparam2})
+			// 		core.get_meta(tpos):from_table(core.get_meta(pos):to_table())
+			// 		core.remove_node(pos)
+			// 		signs_lib.delete_objects(pos)
+		} else if (
+			string.match(node.name, "_hanging") != null ||
+			string.match(node.name, "yard") != null
+		) {
+			// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir_simple[node.param2] or 0 })
+		} else if (def.paramtype2 == ParamType2.wallmounted) {
+			// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_walldir[node.param2] or 0 })
+		} else {
+			// 		core.swap_node(tpos, { name = node.name, param2 = signs_lib.rotate_facedir[node.param2] or 0 })
+		}
 		// 	signs_lib.update_sign(tpos)
 		// 	return true
 	}
