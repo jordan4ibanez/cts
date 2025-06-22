@@ -4,6 +4,14 @@ namespace tnt {
 	const random = math.random;
 	const distance = vector.distance;
 
+	const queue = new utility.QueueFIFO<number>();
+	for (const i of $range(0, 10)) {
+		queue.push(i);
+	}
+	while (queue.length() > 0) {
+		print(queue.pop());
+	}
+
 	// Use raycasting to create actual explosion.
 	const air: number = core.get_content_id("air");
 	// todo: fix this when the nether mod is in.
