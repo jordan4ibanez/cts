@@ -19,7 +19,7 @@ namespace tnt {
 		// Cast away using this idea in your mods.
 		(tntID as number) = core.get_content_id("crafter_tnt:tnt");
 	});
-	let boom_time: number = core.get_us_time() / 1000000;
+	let boomTime: number = core.get_us_time() / 1000000;
 
 	const diggingNodes = new Set<number>();
 	for (const node of [
@@ -266,8 +266,8 @@ namespace tnt {
 			explosion(pos, range, vm, data, area);
 		}
 
-		if (core.get_us_time() / 1000000 - boom_time >= 0.1) {
-			boom_time = core.get_us_time() / 1000000;
+		if (core.get_us_time() / 1000000 - boomTime >= 0.1) {
+			boomTime = core.get_us_time() / 1000000;
 			core.sound_play("tnt_explode", {
 				pos: pos,
 				gain: 1.0,
