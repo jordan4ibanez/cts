@@ -686,10 +686,11 @@ namespace sign {
 					string.format(":%d,%d=%s", xpos + ch.off, ypos, ch.tex)
 				);
 			}
-			// 		table.insert(
-			// 			texture,
-			// 			(":%d,%d="):format(xpos + word.w, ypos) + char_tex(font_name, " ")
-			// 		)
+
+			texture.push(
+				string.format(":%d,%d=", xpos + word.w, ypos) +
+					char_tex(font_name, " ")
+			);
 			// 		xpos = xpos + word.w + cwidth_tab[" "]
 			// 		if xpos >= (line_width + cwidth_tab[" "]) then break end
 		}
