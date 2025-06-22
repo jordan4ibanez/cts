@@ -170,7 +170,7 @@ namespace sign {
 
 	// Entity handling.
 	class SignTextEntity extends types.Entity {
-		name: string = "sign:text";
+		name: string = "crafter_sign:text";
 		initial_properties = {
 			collisionbox: [0, 0, 0, 0, 0, 0],
 			visual: EntityVisual.mesh,
@@ -226,14 +226,14 @@ namespace sign {
 			if (e == null) {
 				continue;
 			}
-			if (e.name == "sign:text") {
+			if (e.name == "crafter_sign:text") {
 				obj = v;
 				break;
 			}
 		}
 
 		if (obj == null) {
-			obj = core.add_entity(pos, "sign:text");
+			obj = core.add_entity(pos, "crafter_sign:text");
 			if (obj == null) {
 				// This means something went very wrong and it gives up.
 				core.log(LogLevel.error, `Failed to add sign at: ${dump(pos)}`);
@@ -1055,7 +1055,7 @@ namespace sign {
 	// // a block is reloaded by the server.
 	// core.register_lbm({
 	// 	nodenames = signs_lib.lbm_restore_nodes,
-	// 	name = "sign:restore_sign_text",
+	// 	name = "crafter_sign:restore_sign_text",
 	// 	label = "Restore sign text",
 	// 	run_at_every_load = true,
 	// 	action = function(pos, node)
@@ -1065,7 +1065,7 @@ namespace sign {
 	// // Convert old signs on fenceposts into signs on+ um+ fence posts :P
 	// core.register_lbm({
 	// 	nodenames = signs_lib.old_fenceposts_with_signs,
-	// 	name = "sign:fix_fencepost_signs",
+	// 	name = "crafter_sign:fix_fencepost_signs",
 	// 	label = "Change single-node signs on fences into normal",
 	// 	run_at_every_load = true,
 	// 	action = function(pos, node)
@@ -1092,7 +1092,7 @@ namespace sign {
 	// // Convert widefont sign nodes to use one base node with meta flag to select wide mode
 	// core.register_lbm({
 	// 	nodenames = signs_lib.old_widefont_signs,
-	// 	name = "sign:convert_widefont_signs",
+	// 	name = "crafter_sign:convert_widefont_signs",
 	// 	label = "Convert widefont sign nodes",
 	// 	run_at_every_load = false,
 	// 	action = function(pos, node)
@@ -1106,7 +1106,7 @@ namespace sign {
 	// // Maintain a list of currently-loaded blocks
 	// core.register_lbm({
 	// 	nodenames = {"group:sign"},
-	// 	name = "sign:update_block_list",
+	// 	name = "crafter_sign:update_block_list",
 	// 	label = "Update list of loaded blocks, log only those with signs",
 	// 	run_at_every_load = true,
 	// 	action = function(pos, node)
