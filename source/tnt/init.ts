@@ -374,9 +374,17 @@ namespace tnt {
 		}
 
 		on_activate(staticdata: string, dtime_s: number): void {
-			// 	this.object.set_armor_groups({immortal = 1})
-			// 	this.object.set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
-			// 	this.object.set_acceleration({x = 0, y = -9.81, z = 0})
+			this.object.set_armor_groups({ immortal: 1 });
+			this.object.set_velocity(
+				vector.create3d({
+					x: math.random(-3, 3),
+					y: 3,
+					z: math.random(-3, 3),
+				})
+			);
+			this.object.set_acceleration(
+				vector.create3d({ x: 0, y: -9.81, z: 0 })
+			);
 			// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
 			// 		local data = core.deserialize(staticdata)
 			// 		if data and type(data) == "table" then
