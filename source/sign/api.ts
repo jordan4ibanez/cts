@@ -668,13 +668,24 @@ namespace sign {
 				);
 			}
 
-			// 		for ch_i, ch in ipairs(word.chars) do
-			// 			if ch.col ~= cur_color then
-			// 				cur_color = ch.col
-			// 				table.insert(texture, fill_line(xpos + ch.off, ypos, maxw, cur_color, font_size, colorbgw))
-			// 			end
-			// 			table.insert(texture, (":%d,%d=%s"):format(xpos + ch.off, ypos, ch.tex))
-			// 		end
+			for (const [ch_i, ch] of ipairs(word.chars)) {
+				if (ch.col != cur_color) {
+					cur_color = ch.col;
+					texture.push(
+						fill_line(
+							xpos + ch.off,
+							ypos,
+							maxw,
+							cur_color,
+							font_size,
+							colorbgw
+						)
+					);
+				}
+				texture.push(
+					string.format(":%d,%d=%s", xpos + ch.off, ypos, ch.tex)
+				);
+			}
 			// 		table.insert(
 			// 			texture,
 			// 			(":%d,%d="):format(xpos + word.w, ypos) + char_tex(font_name, " ")
