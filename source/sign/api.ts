@@ -690,17 +690,19 @@ namespace sign {
 	// 	end
 	// 	return table.concat(lines2, "\n")
 	// end
-	// function signs_lib.update_sign(pos, fields)
-	// 	local meta = core.get_meta(pos)
-	// 	local text = fields and fields.text or meta:get_string("text")
-	// 	text = trim_input(text)
-	// 	local owner = meta:get_string("owner")
-	// 	local ownstr = ""
-	// 	if owner ~= "" then ownstr = S("Locked sign, owned by @1\n", owner) end
-	// 	meta:set_string("text", text)
-	// 	meta:set_string("infotext", ownstr+make_infotext(text)+" ")
-	// 	signs_lib.set_obj_text(pos, text)
-	// end
+
+	function update_sign(pos: Vec3, fields?: { text: string }): void {
+		const meta: MetaRef = core.get_meta(pos);
+		const text: string = fields?.text || meta.get_string("text");
+		// 	text = trim_input(text)
+		// 	local owner = meta:get_string("owner")
+		// 	local ownstr = ""
+		// 	if owner ~= "" then ownstr = S("Locked sign, owned by @1\n", owner) end
+		// 	meta:set_string("text", text)
+		// 	meta:set_string("infotext", ownstr+make_infotext(text)+" ")
+		// 	signs_lib.set_obj_text(pos, text)
+	}
+
 	// function signs_lib.receive_fields(pos, formname, fields, sender)
 	// 	if not fields or not signs_lib.can_modify(pos, sender) then return end
 	// 	if fields.text and fields.ok then
@@ -979,14 +981,6 @@ namespace sign {
 		// }
 	}
 
-	// function signs_lib.register_fence_with_sign()
-	// 	core.log("warning", "[signs_lib] "+"Attempt to call no longer used function signs_lib.register_fence_with_sign()")
-	// end
-
-	// interface InputSignDefinition {
-
-	// }
-
 	/** @noSelf **/ interface SignDefinitionComplete extends NodeDefinition {
 		entity_info?: {
 			mesh: string;
@@ -1178,17 +1172,19 @@ namespace sign {
 		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
 	}
 
-	// // restore signs' text after /clearobjects and the like, the next time
-	// // a block is reloaded by the server.
-	// core.register_lbm({
-	// 	nodenames = signs_lib.lbm_restore_nodes,
-	// 	name = "crafter_sign:restore_sign_text",
-	// 	label = "Restore sign text",
-	// 	run_at_every_load = true,
-	// 	action = function(pos, node)
-	// 		signs_lib.update_sign(pos,nil,nil,node)
-	// 	end
-	// })
+	// Restore signs' text after /clearobjects and the like, the next time
+	// a block is reloaded by the server.
+	core.register_on_mods_loaded(() => {
+		core.register_lbm({
+			nodenames: Array.from(lbm_restore_nodes),
+			name: "crafter_sign:restore_sign_text",
+			label: "Restore sign text",
+			run_at_every_load: true,
+			action: (pos: Vec3, node: NodeTable) => {
+				update_sign(pos, null, null, node);
+			},
+		});
+	});
 
 	// // Convert widefont sign nodes to use one base node with meta flag to select wide mode
 	// core.register_lbm({
