@@ -100,62 +100,66 @@ namespace sign {
 	};
 
 	export const wall_fdir_to_back_left: Dictionary<number, number[]> = {
-		[2] : [  1,  1 ],
-		[3] : [ -1, -1 ],
-		[4] : [ -1,  1 ],
-		[5] : [  1, -1 ]
-	}
+		[2]: [1, 1],
+		[3]: [-1, -1],
+		[4]: [-1, 1],
+		[5]: [1, -1],
+	};
 
-	// export const rotate_walldir = {
-	// 	[0] = 4,
-	// 	[1] = 0,
-	// 	[2] = 5,
-	// 	[3] = 1,
-	// 	[4] = 2,
-	// 	[5] = 3
-	// }
-	// export const rotate_walldir_simple = {
-	// 	[0] = 4,
-	// 	[1] = 4,
-	// 	[2] = 5,
-	// 	[3] = 4,
-	// 	[4] = 2,
-	// 	[5] = 3
-	// }
-	// export const rotate_facedir = {
-	// 	[0] = 1,
-	// 	[1] = 2,
-	// 	[2] = 3,
-	// 	[3] = 4,
-	// 	[4] = 6,
-	// 	[5] = 6,
-	// 	[6] = 0
-	// }
-	// export const rotate_facedir_simple = {
-	// 	[0] = 1,
-	// 	[1] = 2,
-	// 	[2] = 3,
-	// 	[3] = 0,
-	// 	[4] = 0,
-	// 	[5] = 0
-	// }
-	// export const flip_facedir = {
-	// 	[0] = 2,
-	// 	[1] = 3,
-	// 	[2] = 0,
-	// 	[3] = 1,
-	// 	[4] = 6,
-	// 	[5] = 4,
-	// 	[6] = 4
-	// }
-	// export const flip_walldir = {
-	// 	[0] = 1,
-	// 	[1] = 0,
-	// 	[2] = 3,
-	// 	[3] = 2,
-	// 	[4] = 5,
-	// 	[5] = 4
-	// }
+	export const rotate_walldir: Dictionary<number, number> = {
+		[0]: 4,
+		[1]: 0,
+		[2]: 5,
+		[3]: 1,
+		[4]: 2,
+		[5]: 3,
+	};
+
+	export const rotate_walldir_simple: Dictionary<number, number> = {
+		[0]: 4,
+		[1]: 4,
+		[2]: 5,
+		[3]: 4,
+		[4]: 2,
+		[5]: 3,
+	};
+	export const rotate_facedir: Dictionary<number, number> = {
+		[0]: 1,
+		[1]: 2,
+		[2]: 3,
+		[3]: 4,
+		[4]: 6,
+		[5]: 6,
+		[6]: 0,
+	};
+	export const rotate_facedir_simple: Dictionary<number, number> = {
+		[0]: 1,
+		[1]: 2,
+		[2]: 3,
+		[3]: 0,
+		[4]: 0,
+		[5]: 0,
+	};
+
+	export const flip_facedir: Dictionary<number, number> = {
+		[0]: 2,
+		[1]: 3,
+		[2]: 0,
+		[3]: 1,
+		[4]: 6,
+		[5]: 4,
+		[6]: 4,
+	};
+
+	export const flip_walldir: Dictionary<number, number> = {
+		[0]: 1,
+		[1]: 0,
+		[2]: 3,
+		[3]: 2,
+		[4]: 5,
+		[5]: 4,
+	};
+
 	// // Initialize character texture cache
 	// local ctexcache = {}
 	// // entity handling
