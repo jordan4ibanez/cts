@@ -765,67 +765,67 @@ namespace sign {
 		const xo: number = (xoffs && xoffs * 0.0254) || 0;
 		const yo: number = (yoffs && yoffs * 0.0254) || 0;
 		const zo: number = (zoffs && zoffs * 0.0254) || 0;
-		// 	if not is_facedir then
-		// 		return {
-		// 			type = "wallmounted",
-		// 			wall_side =   { -0.5 + zo, -ty + yo, -tx + xo, -0.4375 + zo, ty + yo, tx + xo },
-		// 			wall_top =    { -tx - xo, 0.5 + zo, -ty + yo, tx - xo, 0.4375 + zo, ty + yo},
-		// 			wall_bottom = { -tx - xo, -0.5 + zo, -ty + yo, tx - xo, -0.4375 + zo, ty + yo }
-		// 		}
-		// 	else
-		// 		return {
-		// 			type = "fixed",
-		// 			fixed = { -tx + xo, -ty + yo, 0.5 + zo, tx + xo, ty + yo, 0.4375 + zo}
-		// 		}
-		// 	end
-		// end
-		// function signs_lib.check_for_pole(pos, pointed_thing)
-		// 	local ppos = core.get_pointed_thing_position(pointed_thing)
-		// 	local pnode = core.get_node(ppos)
-		// 	local pdef = core.registered_items[pnode.name]
-		// 	if not pdef then return end
-		// 	if signs_lib.check_for_ceiling(pointed_thing) or signs_lib.check_for_floor(pointed_thing) then
-		// 		return false
-		// 	end
-		// 	if type(pdef.check_for_pole) == "function" then
-		// 		local node = core.get_node(pos)
-		// 		local def = core.registered_items[node.name]
-		// 		return pdef.check_for_pole(pos, node, def, ppos, pnode, pdef)
-		// 	elseif pdef.check_for_pole
-		// 	  or pdef.drawtype == "fencelike"
-		// 	  or string.find(pnode.name, "_post")
-		// 	  or string.find(pnode.name, "fencepost") then
-		// 		return true
-		// 	end
-		// end
-		// function signs_lib.check_for_horizontal_pole(pos, pointed_thing)
-		// 	local ppos = core.get_pointed_thing_position(pointed_thing)
-		// 	local pnode = core.get_node(ppos)
-		// 	local pdef = core.registered_items[pnode.name]
-		// 	if not pdef then return end
-		// 	if signs_lib.check_for_ceiling(pointed_thing) or signs_lib.check_for_floor(pointed_thing) then
-		// 		return false
-		// 	end
-		// 	if type(pdef.check_for_horiz_pole) == "function" then
-		// 		local node = core.get_node(pos)
-		// 		local def = core.registered_items[node.name]
-		// 		return pdef.check_for_horiz_pole(pos, node, def, ppos, pnode, pdef)
-		// 	end
-		// end
-		// function signs_lib.check_for_ceiling(pointed_thing)
-		// 	if pointed_thing.above.x == pointed_thing.under.x
-		// 	  and pointed_thing.above.z == pointed_thing.under.z
-		// 	  and pointed_thing.above.y < pointed_thing.under.y then
-		// 		return true
-		// 	end
-		// end
-		// function signs_lib.check_for_floor(pointed_thing)
-		// 	if pointed_thing.above.x == pointed_thing.under.x
-		// 	  and pointed_thing.above.z == pointed_thing.under.z
-		// 	  and pointed_thing.above.y > pointed_thing.under.y then
-		// 		return true
-		// 	end
+		if (is_facedir == null || !is_facedir) {
+			// 		return {
+			// 			type = "wallmounted",
+			// 			wall_side =   { -0.5 + zo, -ty + yo, -tx + xo, -0.4375 + zo, ty + yo, tx + xo },
+			// 			wall_top =    { -tx - xo, 0.5 + zo, -ty + yo, tx - xo, 0.4375 + zo, ty + yo},
+			// 			wall_bottom = { -tx - xo, -0.5 + zo, -ty + yo, tx - xo, -0.4375 + zo, ty + yo }
+			// 		}
+		} else {
+			// 		return {
+			// 			type = "fixed",
+			// 			fixed = { -tx + xo, -ty + yo, 0.5 + zo, tx + xo, ty + yo, 0.4375 + zo}
+			// 		}
+		}
 	}
+	// function signs_lib.check_for_pole(pos, pointed_thing)
+	// 	local ppos = core.get_pointed_thing_position(pointed_thing)
+	// 	local pnode = core.get_node(ppos)
+	// 	local pdef = core.registered_items[pnode.name]
+	// 	if not pdef then return end
+	// 	if signs_lib.check_for_ceiling(pointed_thing) or signs_lib.check_for_floor(pointed_thing) then
+	// 		return false
+	// 	end
+	// 	if type(pdef.check_for_pole) == "function" then
+	// 		local node = core.get_node(pos)
+	// 		local def = core.registered_items[node.name]
+	// 		return pdef.check_for_pole(pos, node, def, ppos, pnode, pdef)
+	// 	elseif pdef.check_for_pole
+	// 	  or pdef.drawtype == "fencelike"
+	// 	  or string.find(pnode.name, "_post")
+	// 	  or string.find(pnode.name, "fencepost") then
+	// 		return true
+	// 	end
+	// end
+	// function signs_lib.check_for_horizontal_pole(pos, pointed_thing)
+	// 	local ppos = core.get_pointed_thing_position(pointed_thing)
+	// 	local pnode = core.get_node(ppos)
+	// 	local pdef = core.registered_items[pnode.name]
+	// 	if not pdef then return end
+	// 	if signs_lib.check_for_ceiling(pointed_thing) or signs_lib.check_for_floor(pointed_thing) then
+	// 		return false
+	// 	end
+	// 	if type(pdef.check_for_horiz_pole) == "function" then
+	// 		local node = core.get_node(pos)
+	// 		local def = core.registered_items[node.name]
+	// 		return pdef.check_for_horiz_pole(pos, node, def, ppos, pnode, pdef)
+	// 	end
+	// end
+	// function signs_lib.check_for_ceiling(pointed_thing)
+	// 	if pointed_thing.above.x == pointed_thing.under.x
+	// 	  and pointed_thing.above.z == pointed_thing.under.z
+	// 	  and pointed_thing.above.y < pointed_thing.under.y then
+	// 		return true
+	// 	end
+	// end
+	// function signs_lib.check_for_floor(pointed_thing)
+	// 	if pointed_thing.above.x == pointed_thing.under.x
+	// 	  and pointed_thing.above.z == pointed_thing.under.z
+	// 	  and pointed_thing.above.y > pointed_thing.under.y then
+	// 		return true
+	// 	end
+	//end
 
 	function after_place_node(
 		pos: Vec3,
