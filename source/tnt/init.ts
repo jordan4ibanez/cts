@@ -420,9 +420,9 @@ namespace tnt {
 		}
 
 		on_punch(
-			puncher: ObjectRef,
-			time_from_last_punch: number,
-			tool_capabilities: ToolCapabilities,
+			puncher: ObjectRef | null,
+			time_from_last_punch: number | null,
+			tool_capabilities: ToolCapabilities | null,
 			dir: Vec3
 		) {
 			// 		core.throw_item(this.object.get_pos(), "crafter_tnt:tnt")
