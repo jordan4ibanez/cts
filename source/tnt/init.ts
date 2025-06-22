@@ -395,6 +395,7 @@ namespace tnt {
 	// 		exploded = self.exploded,
 	// 	})
 	// end
+	
 	// core.register_entity("crafter_tnt:tnt", {
 	// 	initial_properties = {
 	// 		hp_max = 1,
@@ -427,6 +428,8 @@ namespace tnt {
 	// 		tnt_boom(self,dtime)
 	// 	end,
 	// })
+
+
 	// core.register_node("crafter_tnt:tnt", {
 	//     description = "TNT",
 	//     tiles = {"tnt_top.png", "tnt_bottom.png",
@@ -448,6 +451,8 @@ namespace tnt {
 	// 		core.remove_node(pos)
 	//     end,
 	// })
+
+
 	// core.register_node("crafter_tnt:uranium_tnt", {
 	//     description = "Uranium TNT",
 	//     tiles = {"tnt_top.png^[colorize:green:100", "tnt_bottom.png^[colorize:green:100",
@@ -464,6 +469,8 @@ namespace tnt {
 	// 		core.remove_node(pos)
 	//     end,
 	// })
+
+
 	// core.register_node("crafter_tnt:uh_oh", {
 	//     description = "Uh Oh",
 	//     tiles = {"tnt_top.png", "tnt_bottom.png",
@@ -482,6 +489,8 @@ namespace tnt {
 	// 		end
 	//     end,
 	// })
+
+
 	// core.register_craft({
 	// 	output = "crafter_tnt:tnt",
 	// 	recipe = {
