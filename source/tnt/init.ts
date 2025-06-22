@@ -376,18 +376,18 @@ namespace tnt {
 			// 	end
 		}
 
-		// local on_activate = function(self, staticdata, dtime_s)
-		// 	this.object.set_armor_groups({immortal = 1})
-		// 	this.object.set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
-		// 	this.object.set_acceleration({x = 0, y = -9.81, z = 0})
-		// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
-		// 		local data = core.deserialize(staticdata)
-		// 		if data and type(data) == "table" then
-		// 			this.range = data.range
-		// 			this.timer = data.timer
-		// 			this.exploded = data.exploded
-		// 		end
-		// 	end
+		on_activate(staticdata: string, dtime_s: number): void {
+			// 	this.object.set_armor_groups({immortal = 1})
+			// 	this.object.set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
+			// 	this.object.set_acceleration({x = 0, y = -9.81, z = 0})
+			// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
+			// 		local data = core.deserialize(staticdata)
+			// 		if data and type(data) == "table" then
+			// 			this.range = data.range
+			// 			this.timer = data.timer
+			// 			this.exploded = data.exploded
+			// 		end
+		}
 
 		// 	if this.timer == this.timer_max then
 		// 		core.add_particlespawner({
