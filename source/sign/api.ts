@@ -533,7 +533,8 @@ namespace sign {
 	// 		return tex, exists
 	// 	end
 	// end
-	// local function make_line_texture(line, lineno, pos, line_width, line_height, cwidth_tab, font_size, colorbgw)
+
+	 function make_line_texture(line, lineno, pos, line_width, line_height, cwidth_tab, font_size, colorbgw)
 	// 	local width = 0
 	// 	local maxw = 0
 	// 	local font_name = "signs_lib_font_"+font_size+"px"
@@ -632,7 +633,7 @@ namespace sign {
 	// 	table.insert(texture, fill_line(xpos, ypos, maxw, "n", font_size, colorbgw))
 	// 	table.insert(texture, fill_line(start_xpos, ypos + line_height, maxw, "n", font_size, colorbgw))
 	// 	return table.concat(texture), lineno
-	// end
+}
 
 	function make_sign_texture(lines: string[], pos: Vec3): string {
 		const node: NodeTable = core.get_node(pos);
