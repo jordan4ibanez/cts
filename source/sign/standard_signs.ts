@@ -9,7 +9,7 @@
 // 		-- items 3 - 5 are not set, so signs_lib will use its standard pole
 // 		-- mount, hanging, and yard sign stick textures.
 // 	},
-// 	entity_info = "standard",
+
 // 	allow_hanging = true,
 // 	allow_widefont = true,
 // 	allow_onpole = true,

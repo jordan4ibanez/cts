@@ -870,6 +870,10 @@ namespace sign {
 	// 	core.log("warning", "[signs_lib] "+"Attempt to call no longer used function signs_lib.register_fence_with_sign()")
 	// end
 
+	interface SignInput {
+		
+	}
+
 	interface SignDefinition {
 		entity_info: {
 			mesh: string;
@@ -883,7 +887,8 @@ namespace sign {
 			yaw: wallmounted_yaw,
 		};
 
-		// 	def.after_place_node = raw_def.after_place_node or signs_lib.after_place_node
+			def.after_place_node =  signs_lib.after_place_node
+
 		// 	if raw_def.entity_info then
 		// 		def.on_rightclick	 = raw_def.on_rightclick	 or signs_lib.construct_sign
 		// 		def.on_construct	  = raw_def.on_construct	  or signs_lib.construct_sign
