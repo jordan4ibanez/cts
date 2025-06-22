@@ -679,8 +679,19 @@ namespace sign {
 		];
 		let lineno: number = 0;
 		for (const i of $range(1, lines.length)) {
-			// 		if lineno >= def.number_of_lines then break end
-			// 		local linetex, ln = make_line_texture(lines[i], lineno, pos, line_width, line_height, char_width, font_size, colorbgw)
+			if (lineno >= standard_lines) {
+				break;
+			}
+			const [linetex, ln] = make_line_texture(
+				lines[i - 1],
+				lineno,
+				pos,
+				line_width,
+				line_height,
+				char_width,
+				font_size,
+				colorbgw
+			);
 			// 		table.insert(texture, linetex)
 			// 		lineno = ln + 1
 		}
