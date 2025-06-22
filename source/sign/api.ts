@@ -306,32 +306,33 @@ namespace sign {
 			return;
 		}
 		if (string.match(node.name, "_onpole") != null) {
-			// 		if not string.match(node.name, "_horiz") then
-			// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
-			// 			local t = signs_lib.wall_fdir_to_back_left
-			// 			if def.paramtype2 ~= "wallmounted" then
-			// 				newparam2 = signs_lib.rotate_facedir_simple[node.param2] or 0
-			// 				t  = signs_lib.fdir_to_back_left
-			// 			end
-			// 			tpos = {
-			// 				x = pos.x + t[node.param2][1],
-			// 				y = pos.y,
-			// 				z = pos.z + t[node.param2][2]
-			// 			}
-			// 		else
-			// 			// flip the sign to the other side of the horizontal pole
-			// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
-			// 			local t = signs_lib.wall_fdir_flip_to_back
-			// 			if def.paramtype2 ~= "wallmounted" then
-			// 				newparam2 = signs_lib.flip_facedir[node.param2] or 0
-			// 				t  = signs_lib.fdir_flip_to_back
-			// 			end
-			// 			tpos = {
-			// 				x = pos.x + t[node.param2][1],
-			// 				y = pos.y,
-			// 				z = pos.z + t[node.param2][2]
-			// 			}
-			// 		end
+			if (string.match(node.name, "_horiz") == null) {
+				// 			newparam2 = signs_lib.rotate_walldir_simple[node.param2] or 4
+				// 			local t = signs_lib.wall_fdir_to_back_left
+				// 			if def.paramtype2 ~= "wallmounted" then
+				// 				newparam2 = signs_lib.rotate_facedir_simple[node.param2] or 0
+				// 				t  = signs_lib.fdir_to_back_left
+				// 			end
+				// 			tpos = {
+				// 				x = pos.x + t[node.param2][1],
+				// 				y = pos.y,
+				// 				z = pos.z + t[node.param2][2]
+				// 			}
+			} else {
+				// 			// flip the sign to the other side of the horizontal pole
+				// 			newparam2 = signs_lib.flip_walldir[node.param2] or 4
+				// 			local t = signs_lib.wall_fdir_flip_to_back
+				// 			if def.paramtype2 ~= "wallmounted" then
+				// 				newparam2 = signs_lib.flip_facedir[node.param2] or 0
+				// 				t  = signs_lib.fdir_flip_to_back
+				// 			end
+				// 			tpos = {
+				// 				x = pos.x + t[node.param2][1],
+				// 				y = pos.y,
+				// 				z = pos.z + t[node.param2][2]
+				// 			}
+			}
+
 			// 		local node2 = core.get_node(tpos)
 			// 		local def2 = core.registered_items[node2.name]
 			// 		if not def2 or not def2.buildable_to then return true end // undefined, or not buildable_to.
