@@ -754,7 +754,7 @@ namespace sign {
 	function make_selection_boxes(
 		sizex: number,
 		sizey: number,
-		foo?: number,
+		foo?: number | null,
 		xoffs?: number,
 		yoffs?: number,
 		zoffs?: number,
@@ -1043,25 +1043,26 @@ namespace sign {
 		);
 		lbm_restore_nodes.add(no_wall_name + "_onpole_horiz");
 
-		// 	if raw_def.allow_hanging then
-		// 		local hanging_def = table.copy(def)
-		// 		hanging_def.paramtype2 = "facedir"
-		// 		local hcbox = signs_lib.make_selection_boxes(35, 32, nil, 0, 3, -18.5, true)
-		// 		hanging_def.selection_box = raw_def.hanging_selection_box or hcbox
-		// 		hanging_def.node_box = raw_def.hanging_node_box or raw_def.hanging_selection_box or hcbox
-		// 		hanging_def.groups.not_in_creative_inventory = 1
-		// 		hanging_def.tiles[3] = raw_def.tiles[4] or "signs_lib_hangers.png"
-		// 		hanging_def.tiles[4] = "signs_lib_blank.png"
-		// 		hanging_def.tiles[5] = "signs_lib_blank.png"
-		// 		hanging_def.tiles[6] = "signs_lib_blank.png"
-		// 		hanging_def.mesh = raw_def.hanging_mesh or string.gsub(string.gsub(hanging_def.mesh, "wall.obj$", "hanging.obj"), "_facedir", "")
-		// 		if hanging_def.entity_info then
-		// 			hanging_def.entity_info.mesh = string.gsub(string.gsub(hanging_def.entity_info.mesh, "entity_wall.obj$", "entity_hanging.obj"), "_facedir", "")
-		// 			hanging_def.entity_info.yaw = signs_lib.standard_yaw
-		// 		end
-		// 		core.register_node(":"+no_wall_name+"_hanging", hanging_def)
-		// 		table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_hanging")
-		// 	end
+		
+				const hanging_def: SignDefinitionComplete = table.copy(def as any as LuaTable) as any as SignDefinitionComplete
+
+				hanging_def.paramtype2 = ParamType2.facedir
+				const hcbox = make_selection_boxes(35, 32, null, 0, 3, -18.5, true)
+				hanging_def.selection_box = raw_def.hanging_selection_box or hcbox
+				hanging_def.node_box = raw_def.hanging_node_box or raw_def.hanging_selection_box or hcbox
+				hanging_def.groups.not_in_creative_inventory = 1
+				hanging_def.tiles[3] = raw_def.tiles[4] or "signs_lib_hangers.png"
+				hanging_def.tiles[4] = "signs_lib_blank.png"
+				hanging_def.tiles[5] = "signs_lib_blank.png"
+				hanging_def.tiles[6] = "signs_lib_blank.png"
+				hanging_def.mesh = raw_def.hanging_mesh or string.gsub(string.gsub(hanging_def.mesh, "wall.obj$", "hanging.obj"), "_facedir", "")
+				if hanging_def.entity_info then
+					hanging_def.entity_info.mesh = string.gsub(string.gsub(hanging_def.entity_info.mesh, "entity_wall.obj$", "entity_hanging.obj"), "_facedir", "")
+					hanging_def.entity_info.yaw = signs_lib.standard_yaw
+				end
+				core.register_node(":"+no_wall_name+"_hanging", hanging_def)
+				table.insert(signs_lib.lbm_restore_nodes, no_wall_name+"_hanging")
+		
 		// 	if raw_def.allow_yard then
 		// 		local ydef = table.copy(def)
 		// 		ydef.paramtype2 = "facedir"
