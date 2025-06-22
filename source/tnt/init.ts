@@ -358,35 +358,35 @@ namespace tnt {
 		range: number = 7;
 
 		// local tnt_boom = function(self,dtime)
-		// 	self.timer = self.timer - dtime
-		// 	if not self.shot or not self.redstone_activated then
-		// 		vel = self.object:get_velocity()
+		// 	this.timer = this.timer - dtime
+		// 	if not this.shot or not this.redstone_activated then
+		// 		vel = this.object:get_velocity()
 		// 		vel = vector.multiply(vel,-0.05)
-		// 		self.object:add_velocity(vector.new(vel.x,0,vel.z))
+		// 		this.object:add_velocity(vector.new(vel.x,0,vel.z))
 		// 	end
-		// 	if self.timer <= 0 then
-		// 		if not self.range then
-		// 			self.range = 7
+		// 	if this.timer <= 0 then
+		// 		if not this.range then
+		// 			this.range = 7
 		// 		end
-		// 		pos = self.object:get_pos()
-		// 		range = self.range
-		// 		self.object:remove()
+		// 		pos = this.object:get_pos()
+		// 		range = this.range
+		// 		this.object:remove()
 		// 		tnt(pos,range)
 		// 	end
 		// end
 		// local activation = function(self, staticdata, dtime_s)
-		// 	self.object:set_armor_groups({immortal = 1})
-		// 	self.object:set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
-		// 	self.object:set_acceleration({x = 0, y = -9.81, z = 0})
+		// 	this.object:set_armor_groups({immortal = 1})
+		// 	this.object:set_velocity({x = math.random(-3,3), y = 3, z = math.random(-3,3)})
+		// 	this.object:set_acceleration({x = 0, y = -9.81, z = 0})
 		// 	if string.sub(staticdata, 1, string.len("return")) == "return" then
 		// 		local data = core.deserialize(staticdata)
 		// 		if data and type(data) == "table" then
-		// 			self.range = data.range
-		// 			self.timer = data.timer
-		// 			self.exploded = data.exploded
+		// 			this.range = data.range
+		// 			this.timer = data.timer
+		// 			this.exploded = data.exploded
 		// 		end
 		// 	end
-		// 	if self.timer == self.timer_max then
+		// 	if this.timer == this.timer_max then
 		// 		core.add_particlespawner({
 		// 			amount = 10,
 		// 			time = 0,
@@ -403,16 +403,16 @@ namespace tnt {
 		// 			collisiondetection = false,
 		// 			vertical = false,
 		// 			texture = "smoke.png",
-		// 			attached = self.object,
+		// 			attached = this.object,
 		// 		})
-		// 		core.sound_play("tnt_ignite", {object = self.object, gain = 1.0, max_hear_distance = 64})
+		// 		core.sound_play("tnt_ignite", {object = this.object, gain = 1.0, max_hear_distance = 64})
 		// 	end
 		// end
 		// local static = function(self)
 		// 	return core.serialize({
-		// 		range = self.range,
-		// 		timer = self.timer,
-		// 		exploded = self.exploded,
+		// 		range = this.range,
+		// 		timer = this.timer,
+		// 		exploded = this.exploded,
 		// 	})
 		// end
 
@@ -423,8 +423,8 @@ namespace tnt {
 		// 		activation(self, staticdata, dtime_s)
 		// 	end,
 		// 	on_punch = function(self, puncher, time_from_last_punch, tool_capabilities, dir)
-		// 		core.throw_item(self.object:get_pos(), "crafter_tnt:tnt")
-		// 		self.object:remove()
+		// 		core.throw_item(this.object:get_pos(), "crafter_tnt:tnt")
+		// 		this.object:remove()
 		// 	end,
 		// 	sound_played = false,
 		// 	on_step = function(self, dtime)
