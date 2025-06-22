@@ -379,7 +379,14 @@ namespace tnt {
 			}
 			if (this.timer <= 0) {
 				this.object.remove();
-				tnt(this.object.get_pos(), this.range);
+				core.after(
+					0,
+					(pos: Vec3, range: number) => {
+						tnt(pos, range);
+					},
+					this.object.get_pos(),
+					this.range
+				);
 			}
 		}
 
