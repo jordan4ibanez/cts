@@ -4,14 +4,14 @@ namespace sign {
 	export const old_fenceposts_replacement_signs = {};
 	export const old_fenceposts_with_signs = {};
 	// Settings used for a standard wood or steel wall sign.
-	export const standard_lines = 6;
-	export const standard_hscale = 1;
-	export const standard_vscale = 1;
-	export const standard_lspace = 1;
-	export const standard_fsize = 15;
-	export const standard_xoffs = 4;
-	export const standard_yoffs = 0;
-	export const standard_cpl = 35;
+	export const standard_lines: number = 6;
+	export const standard_hscale: number = 1;
+	export const standard_vscale: number = 1;
+	export const standard_lspace: number = 1;
+	export const standard_fsize: number = 15;
+	export const standard_xoffs: number = 4;
+	export const standard_yoffs: number = 0;
+	export const standard_cpl: number = 35;
 
 	export const standard_wood_groups: Dictionary<string, number> = (() => {
 		const data: Dictionary<string, number> | undefined =
@@ -40,10 +40,10 @@ namespace sign {
 		>;
 	})();
 
-	export const default_text_scale = { x: 10, y: 10 };
+	export const default_text_scale: Vec2 = { x: 10, y: 10 };
 	export const old_widefont_signs = {};
 	export const block_list = {};
-	export const totalblocks = 0;
+	export const totalblocks: number = 0;
 	export const standard_yaw: number[] = [
 		0,
 		math.pi / -2,
@@ -199,13 +199,15 @@ namespace sign {
 
 	export function spawn_entity(pos: Vec3, texture: string) {
 		const node: NodeTable = core.get_node(pos);
-		const def: SignNodeDefinition | undefined = core.registered_items[node.name];
+		const def: SignNodeDefinition | undefined =
+			core.registered_items[node.name];
 
 		if (def == null || def.entity_info == null) {
 			return;
 		}
 
-		// 	local text_scale = (node and node.text_scale) or signs_lib.default_text_scale
+		const text_scale: Vec2 = default_text_scale;
+
 		// 	local objects = core.get_objects_inside_radius(pos, 0.5)
 		// 	local obj
 		// 	if #objects > 0 then
