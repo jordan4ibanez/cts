@@ -572,7 +572,7 @@ namespace sign {
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 		const default_color: number = 0;
-		let cur_color: number | null = 0;
+		let cur_color: string | number | null = 0;
 		// We check which chars are available here.
 		for (let [word_i, word] of ipairs(line)) {
 			if (typeof word != "string") {
