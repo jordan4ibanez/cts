@@ -608,44 +608,46 @@ namespace sign {
 	// 	table.insert(texture, fill_line(start_xpos, ypos + line_height, maxw, "n", font_size, colorbgw))
 	// 	return table.concat(texture), lineno
 	// end
-	// function signs_lib.make_sign_texture(lines, pos)
-	// 	local node = core.get_node(pos)
-	// 	local meta = core.get_meta(pos)
-	// 	local def = core.registered_items[node.name]
-	// 	if not def or not def.entity_info then return end
-	// 	local font_size
-	// 	local line_width
-	// 	local line_height
-	// 	local char_width
-	// 	local colorbgw
-	// 	local widemult = 1
-	// 	if meta:get_int("widefont") == 1 then
-	// 		widemult = 0.5
-	// 	end
-	// 	if def.font_size and def.font_size == 31 then
-	// 		font_size = 31
-	// 		line_width = math.floor(signs_lib.avgwidth31 * def.chars_per_line) * (def.horiz_scaling * widemult)
-	// 		line_height = signs_lib.lineheight31
-	// 		char_width = signs_lib.charwidth31
-	// 		colorbgw = signs_lib.colorbgw31
-	// 	else
-	// 		font_size = 15
-	// 		line_width = math.floor(signs_lib.avgwidth15 * def.chars_per_line) * (def.horiz_scaling * widemult)
-	// 		line_height = signs_lib.lineheight15
-	// 		char_width = signs_lib.charwidth15
-	// 		colorbgw = signs_lib.colorbgw15
-	// 	end
-	// 	local texture = { ("[combine:%dx%d"):format(line_width, (line_height + def.line_spacing) * def.number_of_lines * def.vert_scaling) }
-	// 	local lineno = 0
-	// 	for i = 1, #lines do
-	// 		if lineno >= def.number_of_lines then break end
-	// 		local linetex, ln = make_line_texture(lines[i], lineno, pos, line_width, line_height, char_width, font_size, colorbgw)
-	// 		table.insert(texture, linetex)
-	// 		lineno = ln + 1
-	// 	end
-	// 	table.insert(texture, "^[makealpha:0,0,0")
-	// 	return table.concat(texture, "")
-	// end
+
+	function make_sign_texture(lines: string[], pos: Vec3): string {
+		
+		// 	local node = core.get_node(pos)
+		// 	local meta = core.get_meta(pos)
+		// 	local def = core.registered_items[node.name]
+		// 	if not def or not def.entity_info then return end
+		// 	local font_size
+		// 	local line_width
+		// 	local line_height
+		// 	local char_width
+		// 	local colorbgw
+		// 	local widemult = 1
+		// 	if meta:get_int("widefont") == 1 then
+		// 		widemult = 0.5
+		// 	end
+		// 	if def.font_size and def.font_size == 31 then
+		// 		font_size = 31
+		// 		line_width = math.floor(signs_lib.avgwidth31 * def.chars_per_line) * (def.horiz_scaling * widemult)
+		// 		line_height = signs_lib.lineheight31
+		// 		char_width = signs_lib.charwidth31
+		// 		colorbgw = signs_lib.colorbgw31
+		// 	else
+		// 		font_size = 15
+		// 		line_width = math.floor(signs_lib.avgwidth15 * def.chars_per_line) * (def.horiz_scaling * widemult)
+		// 		line_height = signs_lib.lineheight15
+		// 		char_width = signs_lib.charwidth15
+		// 		colorbgw = signs_lib.colorbgw15
+		// 	end
+		// 	local texture = { ("[combine:%dx%d"):format(line_width, (line_height + def.line_spacing) * def.number_of_lines * def.vert_scaling) }
+		// 	local lineno = 0
+		// 	for i = 1, #lines do
+		// 		if lineno >= def.number_of_lines then break end
+		// 		local linetex, ln = make_line_texture(lines[i], lineno, pos, line_width, line_height, char_width, font_size, colorbgw)
+		// 		table.insert(texture, linetex)
+		// 		lineno = ln + 1
+		// 	end
+		// 	table.insert(texture, "^[makealpha:0,0,0")
+		// 	return table.concat(texture, "")
+	}
 
 	function split_lines_and_words(text: string): string[] {
 		const lines: string[] = [];
