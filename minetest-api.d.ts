@@ -2283,7 +2283,7 @@ declare global {
 			puncher: ObjectRef | null,
 			timeFromLastPunch: number | null,
 			toolCapabilities: ToolCapabilities | null,
-			dir: Vec3,
+			dir: Vec3 | null,
 			damage: number
 		): void;
 		on_death?(killer: ObjectRef): void;
