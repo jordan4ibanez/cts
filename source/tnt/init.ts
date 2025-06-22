@@ -74,6 +74,8 @@ namespace tnt {
 		// Java techniques in typescript compiling into lua. Amazing.
 		const workerVec: Vec3 = vector.create3d();
 
+		let ray: RaycastObject;
+
 		for (const x of $range(-range, range)) {
 			for (const y of $range(-range, range)) {
 				for (const z of $range(-range, range)) {
@@ -90,7 +92,7 @@ namespace tnt {
 					) {
 						continue;
 					}
-					const ray: RaycastObject = core.raycast(
+					ray = raycast(
 						pos,
 						vector.create3d(pos.x + x, pos.y + y, pos.z + z),
 						false,
@@ -139,19 +141,26 @@ namespace tnt {
 						} else if (currentID == tntID) {
 							data[n_pos - 1] = air;
 
-							const serialData: TntData = {
-								range: range,
-								timer: random() + random(),
-								exploded: false,
-							};
-							core.add_entity(
-								vector.create3d({
-									x: pointed_thing.under.x,
-									y: pointed_thing.under.y,
-									z: pointed_thing.under.z,
-								}),
-								"crafter_tnt:tnt",
-								core.serialize(serialData)
+							core.after(
+								0,
+								(thisRange: number, under: Vec3) => {
+									const serialData: TntData = {
+										range: thisRange,
+										timer: random() + random(),
+										exploded: false,
+									};
+									core.add_entity(
+										vector.create3d({
+											x: under.x,
+											y: under.y,
+											z: under.z,
+										}),
+										"crafter_tnt:tnt",
+										core.serialize(serialData)
+									);
+								},
+								range,
+								pointed_thing.under
 							);
 						} /* fixme: elseif (! string.match(node2, "mob_spawners:")) then*/ else {
 							data[n_pos - 1] = air;
