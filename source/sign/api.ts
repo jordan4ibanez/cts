@@ -67,16 +67,6 @@ namespace sign {
 		[1, 0],
 	];
 
-	// fixme: the first two were nil instead of [0,0], this may cause problems.
-	export const wall_fdir_to_back: number[][] = [
-		[0, 0],
-		[0, 0],
-		[0, 1],
-		[0, -1],
-		[-1, 0],
-		[1, 0],
-	];
-
 	export const fdir_flip_to_back: Dictionary<number, number[]> = {
 		[0]: [0, 2],
 		[1]: [2, 0],
