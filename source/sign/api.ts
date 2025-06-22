@@ -468,7 +468,6 @@ namespace sign {
 		let total_width = 0;
 		let char_count = 0;
 		for (const c of $range(32, 255)) {
-			// Todo: finish this.
 			const [w, h] = read_image_size(
 				string.format(
 					CHAR_PATH,
