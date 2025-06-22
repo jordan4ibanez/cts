@@ -759,8 +759,7 @@ namespace sign {
 		yoffs?: number,
 		zoffs?: number,
 		is_facedir?: boolean
-	): NodeBox | undefined {
-		return undefined;
+	): NodeBox {
 		// 	local tx = (sizex * 0.0254 ) / 2
 		// 	local ty = (sizey * 0.0254 ) / 2
 		// 	local xo = xoffs and xoffs * 0.0254 or 0
@@ -1062,33 +1061,7 @@ namespace sign {
 	// 		signs_lib.update_sign(pos,nil,nil,node)
 	// 	end
 	// })
-	// // Convert old signs on fenceposts into signs on+ um+ fence posts :P
-	// core.register_lbm({
-	// 	nodenames = signs_lib.old_fenceposts_with_signs,
-	// 	name = "crafter_sign:fix_fencepost_signs",
-	// 	label = "Change single-node signs on fences into normal",
-	// 	run_at_every_load = true,
-	// 	action = function(pos, node)
-	// 		local fdir = node.param2 % 8
-	// 		local signpos = {
-	// 			x = pos.x + signs_lib.fdir_to_back[fdir+1][1],
-	// 			y = pos.y,
-	// 			z = pos.z + signs_lib.fdir_to_back[fdir+1][2]
-	// 		}
-	// 		if core.get_node(signpos).name == "air" then
-	// 			local new_wmdir = core.dir_to_wallmounted(core.facedir_to_dir(fdir))
-	// 			local oldfence =  signs_lib.old_fenceposts[node.name]
-	// 			local newsign =   signs_lib.old_fenceposts_replacement_signs[node.name]
-	// 			signs_lib.delete_objects(pos)
-	// 			local oldmeta = core.get_meta(pos):to_table()
-	// 			core.set_node(pos, {name = oldfence})
-	// 			core.set_node(signpos, { name = newsign, param2 = new_wmdir })
-	// 			local newmeta = core.get_meta(signpos)
-	// 			newmeta:from_table(oldmeta)
-	// 			signs_lib.update_sign(signpos)
-	// 		end
-	// 	end
-	// })
+
 	// // Convert widefont sign nodes to use one base node with meta flag to select wide mode
 	// core.register_lbm({
 	// 	nodenames = signs_lib.old_widefont_signs,
@@ -1103,6 +1076,7 @@ namespace sign {
 	// 		signs_lib.update_sign(pos)
 	// 	end
 	// })
+
 	// // Maintain a list of currently-loaded blocks
 	// core.register_lbm({
 	// 	nodenames = {"group:sign"},
@@ -1118,6 +1092,7 @@ namespace sign {
 	// 		end
 	// 	end
 	// })
+
 	// core.register_chatcommand("regen_signs", {
 	// 	params = "",
 	// 	privs = {server = true},
