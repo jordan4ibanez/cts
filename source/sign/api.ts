@@ -541,7 +541,19 @@ namespace sign {
 		let width: number = 0;
 		let maxw: number = 0;
 		let font_name: string = "signs_lib_font_" + font_size + "px";
-		const words = {};
+
+		interface TempData {
+			off: number;
+			tex: string;
+			col: string;
+		}
+
+		interface WordData {
+			chars: TempData[];
+			w: number;
+		}
+
+		const words: WordData[] = [];
 		const node: NodeTable = core.get_node(pos);
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
@@ -553,11 +565,7 @@ namespace sign {
 				core.log(LogLevel.error, "Not a string.");
 				continue;
 			}
-			interface TempData {
-				off: number;
-				tex: string;
-				col: string;
-			}
+
 			let chars: TempData[] = [];
 			let ch_offs: number = 0;
 			[word] = string.gsub(word, "%^[12345678abcdefgh]", {
@@ -603,19 +611,19 @@ namespace sign {
 						if (chars.length < MAX_INPUT_CHARS) {
 							chars.push({
 								off: ch_offs,
-								tex: char_tex(font_name, c),
+								tex: char_tex(font_name, c)[0],
 								col: string.format("%X", cur_color),
 							});
 						}
 
-						// 					ch_offs = ch_offs + w
+						ch_offs = ch_offs + w;
 					}
 				}
 				i = i + 1;
 			}
-			// 		width = width + cwidth_tab[" "] + 1
-			// 		maxw = math_max(width, maxw)
-			// 		table.insert(words, { chars=chars, w=ch_offs })
+			width = width + (cwidth_tab[" "] || 0) + 1;
+			maxw = math.max(width, maxw);
+			words.push({ chars: chars, w: ch_offs });
 		}
 
 		// 	// Okay, we actually build the "line texture" here.
