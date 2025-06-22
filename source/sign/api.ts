@@ -503,7 +503,7 @@ namespace sign {
 	const [charwidth31, colorbgw31, lineheight31, avgwidth31] =
 		build_char_db(31);
 
-	// local sign_groups = {choppy=2, dig_immediate=2}
+	// const sign_groups = { choppy: 2, dig_immediate: 2 };
 
 	// local fences_with_sign = { }
 	// // some local helper functions
@@ -650,8 +650,8 @@ namespace sign {
 		let font_size: number = 0;
 		let line_width: number = 0;
 		let line_height: number = 0;
-		let char_width: number = 0;
-		let colorbgw: string = "";
+		let char_width: Dictionary<string, number> = {};
+		let colorbgw: number = 0;
 		let widemult: number = 1;
 
 		// todo: test this.
@@ -659,14 +659,14 @@ namespace sign {
 		// 		widemult = 0.5
 		// 	end
 
-		// todo: finish this
 		font_size = 15;
 		line_width =
-			math.floor(signs_lib.avgwidth15 * def.chars_per_line) *
-			(def.horiz_scaling * widemult);
-		// line_height = signs_lib.lineheight15
-		// char_width = signs_lib.charwidth15
-		// colorbgw = signs_lib.colorbgw15
+			math.floor(avgwidth15 * standard_cpl) *
+			(standard_hscale * widemult);
+
+		line_height = lineheight15;
+		char_width = charwidth15;
+		colorbgw = colorbgw15;
 
 		// 	local texture = { ("[combine:%dx%d"):format(line_width, (line_height + def.line_spacing) * def.number_of_lines * def.vert_scaling) }
 		// 	local lineno = 0
