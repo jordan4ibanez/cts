@@ -84,7 +84,10 @@ namespace tnt {
 					const currentDistance: number = round(
 						distance(pos, workerVec)
 					);
-					if (distance > range || distance == range - 1) {
+					if (
+						currentDistance > range ||
+						currentDistance == range - 1
+					) {
 						continue;
 					}
 					const ray: RaycastObject = core.raycast(
