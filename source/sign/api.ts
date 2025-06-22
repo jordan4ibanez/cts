@@ -807,53 +807,83 @@ namespace sign {
 			};
 		}
 	}
-	// function signs_lib.check_for_pole(pos, pointed_thing)
-	// 	local ppos = core.get_pointed_thing_position(pointed_thing)
-	// 	local pnode = core.get_node(ppos)
-	// 	local pdef = core.registered_items[pnode.name]
-	// 	if not pdef then return end
-	// 	if signs_lib.check_for_ceiling(pointed_thing) or signs_lib.check_for_floor(pointed_thing) then
-	// 		return false
-	// 	end
-	// 	if type(pdef.check_for_pole) == "function" then
-	// 		local node = core.get_node(pos)
-	// 		local def = core.registered_items[node.name]
-	// 		return pdef.check_for_pole(pos, node, def, ppos, pnode, pdef)
-	// 	elseif pdef.check_for_pole
-	// 	  or pdef.drawtype == "fencelike"
-	// 	  or string.find(pnode.name, "_post")
-	// 	  or string.find(pnode.name, "fencepost") then
-	// 		return true
-	// 	end
-	// end
-	// function signs_lib.check_for_horizontal_pole(pos, pointed_thing)
-	// 	local ppos = core.get_pointed_thing_position(pointed_thing)
-	// 	local pnode = core.get_node(ppos)
-	// 	local pdef = core.registered_items[pnode.name]
-	// 	if not pdef then return end
-	// 	if signs_lib.check_for_ceiling(pointed_thing) or signs_lib.check_for_floor(pointed_thing) then
-	// 		return false
-	// 	end
-	// 	if type(pdef.check_for_horiz_pole) == "function" then
-	// 		local node = core.get_node(pos)
-	// 		local def = core.registered_items[node.name]
-	// 		return pdef.check_for_horiz_pole(pos, node, def, ppos, pnode, pdef)
-	// 	end
-	// end
-	// function signs_lib.check_for_ceiling(pointed_thing)
-	// 	if pointed_thing.above.x == pointed_thing.under.x
-	// 	  and pointed_thing.above.z == pointed_thing.under.z
-	// 	  and pointed_thing.above.y < pointed_thing.under.y then
-	// 		return true
-	// 	end
-	// end
-	// function signs_lib.check_for_floor(pointed_thing)
-	// 	if pointed_thing.above.x == pointed_thing.under.x
-	// 	  and pointed_thing.above.z == pointed_thing.under.z
-	// 	  and pointed_thing.above.y > pointed_thing.under.y then
-	// 		return true
-	// 	end
-	//end
+	function check_for_pole(pos: Vec3, pointed_thing: PointedThing): boolean {
+		const ppos: Vec3 | null =
+			core.get_pointed_thing_position(pointed_thing);
+		if (ppos == null) {
+			return false;
+		}
+		const pnode: NodeTable = core.get_node(ppos);
+		const pdef: SignDefinitionComplete | undefined =
+			core.registered_items[pnode.name];
+		if (pdef == null) {
+			return false;
+		}
+		if (
+			check_for_ceiling(pointed_thing) ||
+			check_for_floor(pointed_thing)
+		) {
+			return false;
+		}
+		if (pdef.drawtype == Drawtype.fencelike) {
+			return true;
+		}
+		return false;
+	}
+
+	function check_for_horizontal_pole(
+		pos: Vec3,
+		pointed_thing: PointedThing
+	): boolean {
+		const ppos: Vec3 | null =
+			core.get_pointed_thing_position(pointed_thing);
+		if (ppos == null) {
+			return false;
+		}
+		const pnode: NodeTable = core.get_node(ppos);
+		const pdef: NodeDefinition | undefined =
+			core.registered_items[pnode.name];
+
+		if (pdef == null) {
+			return false;
+		}
+		if (
+			check_for_ceiling(pointed_thing) ||
+			check_for_floor(pointed_thing)
+		) {
+			return false;
+		}
+
+		return false;
+	}
+
+	function check_for_ceiling(pointed_thing: PointedThing): boolean {
+		if (pointed_thing.above == null || pointed_thing.under == null) {
+			return false;
+		}
+		if (
+			pointed_thing.above.x == pointed_thing.under.x &&
+			pointed_thing.above.z == pointed_thing.under.z &&
+			pointed_thing.above.y < pointed_thing.under.y
+		) {
+			return true;
+		}
+		return false;
+	}
+
+	function check_for_floor(pointed_thing: PointedThing): boolean {
+		if (pointed_thing.above == null || pointed_thing.under == null) {
+			return false;
+		}
+		if (
+			pointed_thing.above.x == pointed_thing.under.x &&
+			pointed_thing.above.z == pointed_thing.under.z &&
+			pointed_thing.above.y > pointed_thing.under.y
+		) {
+			return true;
+		}
+		return false;
+	}
 
 	function after_place_node(
 		pos: Vec3,
@@ -865,52 +895,88 @@ namespace sign {
 		const controls: PlayerControlObject = placer.get_player_control();
 		const signname: string = itemstack.get_name();
 		const no_wall_name: string = string.gsub(signname, "_wall", "")[0];
-		const def: NodeDefinition | undefined = core.registered_items[signname];
+		const def: SignDefinitionComplete | undefined =
+			core.registered_items[signname];
+		if (def == null) {
+			core.log(
+				LogLevel.error,
+				"Undefined node. Failed to create sign components."
+			);
+			return;
+		}
 		const ppos = core.get_pointed_thing_position(pointed_thing);
 		if (ppos == null) {
 			core.log(LogLevel.error, "Failed to create sign components.");
 			return;
 		}
 		const pnode: NodeTable = core.get_node(ppos);
-		// 	local pdef = core.registered_items[pnode.name]
-		// 	if def.allow_onpole and signs_lib.check_for_pole(pos, pointed_thing) and not controls.sneak then
-		// 		local newparam2
-		// 		local lookdir = core.yaw_to_dir(placer:get_look_horizontal())
-		// 		if def.paramtype2 == "wallmounted" then
-		// 			newparam2 = core.dir_to_wallmounted(lookdir)
-		// 		else
-		// 			newparam2 = core.dir_to_facedir(lookdir)
-		// 		end
-		// 		local node = core.get_node(pos)
-		// 		core.swap_node(pos, {name = no_wall_name+"_onpole", param2 = newparam2})
-		// 	elseif def.allow_onpole_horizontal and signs_lib.check_for_horizontal_pole(pos, pointed_thing) and not controls.sneak then
-		// 		local newparam2
-		// 		local lookdir = core.yaw_to_dir(placer:get_look_horizontal())
-		// 		if def.paramtype2 == "wallmounted" then
-		// 			newparam2 = core.dir_to_wallmounted(lookdir)
-		// 		else
-		// 			newparam2 = core.dir_to_facedir(lookdir)
-		// 		end
-		// 		local node = core.get_node(pos)
-		// 		core.swap_node(pos, {name = no_wall_name+"_onpole_horiz", param2 = newparam2})
-		// 	elseif def.allow_hanging and signs_lib.check_for_ceiling(pointed_thing) and not controls.sneak then
-		// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
-		// 		local node = core.get_node(pos)
-		// 		core.swap_node(pos, {name = no_wall_name+"_hanging", param2 = newparam2})
-		// 	elseif def.allow_yard and signs_lib.check_for_floor(pointed_thing) and not controls.sneak then
-		// 		local newparam2 = core.dir_to_facedir(placer:get_look_dir())
-		// 		local node = core.get_node(pos)
-		// 		core.swap_node(pos, {name = no_wall_name+"_yard", param2 = newparam2})
-		// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_ceiling(pointed_thing) then
-		// 		core.swap_node(pos, {name = signname, param2 = 6})
-		// 	elseif def.paramtype2 == "facedir" and signs_lib.check_for_floor(pointed_thing) then
-		// 		core.swap_node(pos, {name = signname, param2 = 4})
-		// 	end
-		// 	if locked then
-		// 		local meta = core.get_meta(pos)
-		// 		meta:set_string("owner", playername)
-		// 		meta:set_string("infotext", S("Locked sign, owned by @1\n", playername))
-		// 	end
+		const pdef: NodeDefinition | undefined =
+			core.registered_items[pnode.name];
+
+		if (!controls.sneak && check_for_pole(pos, pointed_thing)) {
+			let newparam2: number;
+			const lookdir: Vec3 = core.yaw_to_dir(placer.get_look_horizontal());
+			if (def.paramtype2 == ParamType2.wallmounted) {
+				newparam2 = core.dir_to_wallmounted(lookdir);
+			} else {
+				newparam2 = core.dir_to_facedir(lookdir);
+			}
+			const node: NodeTable = core.get_node(pos);
+			core.swap_node(pos, {
+				name: no_wall_name + "_onpole",
+				param2: newparam2,
+			});
+		} else if (
+			!controls.sneak &&
+			check_for_horizontal_pole(pos, pointed_thing)
+		) {
+			let newparam2: number;
+			const lookdir: Vec3 = core.yaw_to_dir(placer.get_look_horizontal());
+			if (def.paramtype2 == ParamType2.wallmounted) {
+				newparam2 = core.dir_to_wallmounted(lookdir);
+			} else {
+				newparam2 = core.dir_to_facedir(lookdir);
+			}
+			const node: NodeTable = core.get_node(pos);
+			core.swap_node(pos, {
+				name: no_wall_name + "_onpole_horiz",
+				param2: newparam2,
+			});
+		} else if (!controls.sneak && check_for_ceiling(pointed_thing)) {
+			const newparam2: number = core.dir_to_facedir(
+				placer.get_look_dir()
+			);
+			const node: NodeTable = core.get_node(pos);
+			core.swap_node(pos, {
+				name: no_wall_name + "_hanging",
+				param2: newparam2,
+			});
+		} else if (!controls.sneak && check_for_floor(pointed_thing)) {
+			const newparam2: number = core.dir_to_facedir(
+				placer.get_look_dir()
+			);
+			const node: NodeTable = core.get_node(pos);
+			core.swap_node(pos, {
+				name: no_wall_name + "_yard",
+				param2: newparam2,
+			});
+		} else if (
+			def.paramtype2 == ParamType2.facedir &&
+			check_for_ceiling(pointed_thing)
+		) {
+			core.swap_node(pos, { name: signname, param2: 6 });
+		} else if (
+			def.paramtype2 == ParamType2.facedir &&
+			check_for_floor(pointed_thing)
+		) {
+			core.swap_node(pos, { name: signname, param2: 4 });
+		}
+
+		// if (locked) {
+		// 	local meta = core.get_meta(pos)
+		// 	meta:set_string("owner", playername)
+		// 	meta:set_string("infotext", S("Locked sign, owned by @1\n", playername))
+		// }
 	}
 
 	// function signs_lib.register_fence_with_sign()
