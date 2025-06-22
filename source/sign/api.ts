@@ -766,12 +766,33 @@ namespace sign {
 		const yo: number = (yoffs && yoffs * 0.0254) || 0;
 		const zo: number = (zoffs && zoffs * 0.0254) || 0;
 		if (is_facedir == null || !is_facedir) {
-			// 		return {
-			// 			type = "wallmounted",
-			// 			wall_side =   { -0.5 + zo, -ty + yo, -tx + xo, -0.4375 + zo, ty + yo, tx + xo },
-			// 			wall_top =    { -tx - xo, 0.5 + zo, -ty + yo, tx - xo, 0.4375 + zo, ty + yo},
-			// 			wall_bottom = { -tx - xo, -0.5 + zo, -ty + yo, tx - xo, -0.4375 + zo, ty + yo }
-			// 		}
+			return {
+				type: Nodeboxtype.wallmounted,
+				wall_side: [
+					-0.5 + zo,
+					-ty + yo,
+					-tx + xo,
+					-0.4375 + zo,
+					ty + yo,
+					tx + xo,
+				],
+				wall_top: [
+					-tx - xo,
+					0.5 + zo,
+					-ty + yo,
+					tx - xo,
+					0.4375 + zo,
+					ty + yo,
+				],
+				wall_bottom: [
+					-tx - xo,
+					-0.5 + zo,
+					-ty + yo,
+					tx - xo,
+					-0.4375 + zo,
+					ty + yo,
+				],
+			};
 		} else {
 			// 		return {
 			// 			type = "fixed",
