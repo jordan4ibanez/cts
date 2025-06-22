@@ -18,9 +18,9 @@ namespace sign {
 	// core.register_craft({
 	// 	output = "sign:sign 3",
 	// 	recipe = {
-	// 		{"main:wood","main:wood","main:wood"},
-	// 		{"main:wood","main:wood","main:wood"},
-	// 		{"","main:stick",""}
+	// 		{"crafter:wood","crafter:wood","crafter:wood"},
+	// 		{"crafter:wood","crafter:wood","crafter:wood"},
+	// 		{"","crafter:stick",""}
 	// 	}
 	// })
 }
