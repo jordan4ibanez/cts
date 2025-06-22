@@ -1,4 +1,9 @@
 namespace tnt {
+	const round = math.round;
+	const raycast = core.raycast;
+	const random = math.random;
+	const distance = vector.distance;
+
 	// Use raycasting to create actual explosion.
 	const air: number = core.get_content_id("air");
 	// todo: fix this when the nether mod is in.
