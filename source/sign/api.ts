@@ -50,12 +50,12 @@ namespace sign {
 	export const block_list = new Set<number>();
 	let totalblocks: number = 0;
 
-	export const wallmounted_yaw: number[] = [
-		math.pi / -2,
-		math.pi / 2,
-		0,
-		math.pi,
-	];
+	export const wallmounted_yaw: Dictionary<number, number> = {
+		0: math.pi,
+		1: math.pi / 2,
+		2: 0,
+		3: math.pi / -2,
+	};
 
 	export const fdir_to_back: number[][] = [
 		[0, -1],
@@ -244,7 +244,7 @@ namespace sign {
 			}
 		}
 
-		let yaw: number = wallmounted_yaw[(node.param2 || 0) - 1] || 0;
+		let yaw: number = wallmounted_yaw[node.param2 || 0] || 0;
 
 		let pitch: number = 0;
 
