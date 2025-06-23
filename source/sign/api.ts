@@ -196,8 +196,9 @@ namespace sign {
 				continue;
 			}
 
-			if (string.match(e.name, "sign.*text") != null) {
+			if (string.match(e.name, "sign.*text")[0] != null) {
 				v.remove();
+				break;
 			}
 		}
 	}
