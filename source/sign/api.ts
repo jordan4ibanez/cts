@@ -223,7 +223,7 @@ namespace sign {
 		const def: SignNodeDefinition | undefined =
 			core.registered_items[node.name];
 
-		if (def == null ) {
+		if (def == null) {
 			return;
 		}
 
@@ -288,12 +288,10 @@ namespace sign {
 
 		if (texture == null) {
 			obj.set_properties({
-				mesh: def.entity_info.mesh,
 				visual_size: text_scale,
 			});
 		} else {
 			obj.set_properties({
-				mesh: def.entity_info.mesh,
 				visual_size: text_scale,
 				textures: [texture],
 			});
@@ -732,7 +730,7 @@ namespace sign {
 		const meta: MetaRef = core.get_meta(pos);
 		const def: SignNodeDefinition | undefined =
 			core.registered_items[node.name];
-		if (def == null || def.entity_info == null) {
+		if (def == null) {
 			core.log(
 				LogLevel.error,
 				"SEVERE ERROR: Undefined node while making sign texture. This sign will be glitched."
@@ -1123,18 +1121,8 @@ namespace sign {
 		// }
 	}
 
-	/** @noSelf **/ interface SignNodeDefinition extends NodeDefinition {
-		// entity_info?: {
-		// 	mesh: string;
-		// };
-		on_rotate?: (pos: Vec3, node: NodeTable, user: ObjectRef) => boolean;
-	}
-
 	// This seems to be using the decorator pattern.
 	export function register_sign(name: string, def: SignNodeDefinition) {
-		def.entity_info = {
-			mesh: "signs_lib_standard_sign_entity_onpole.obj",
-		};
 		def.node_placement_prediction = "";
 		def.on_construct = construct_sign;
 		def.after_place_node = after_place_node;
@@ -1143,11 +1131,10 @@ namespace sign {
 		def.on_receive_fields = receive_fields;
 		def.paramtype = ParamType1.light;
 		def.drawtype = Drawtype.mesh;
-		def.mesh = "signs_lib_standard_sign_wall.obj";
+		def.mesh = "signs_lib_standard_sign_entity_onpole.obj";
 		def.drop = name;
 		def.sounds = standard_wood_sign_sounds;
 		def.paramtype2 = ParamType2.wallmounted;
-		def.on_rotate = handle_rotation;
 		def.walkable = false;
 		def.groups = standard_wood_groups;
 		const cbox = make_selection_boxes(35, 25);
