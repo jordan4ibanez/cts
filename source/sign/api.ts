@@ -910,6 +910,7 @@ namespace sign {
 					ty + yo,
 					tx + xo,
 				],
+				//? These two are unused.
 				wall_top: [
 					-tx - xo,
 					0.5 + zo,
