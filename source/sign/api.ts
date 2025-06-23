@@ -213,9 +213,9 @@ namespace sign {
 	}
 
 	interface SignNodeDefinition extends NodeDefinition {
-		entity_info?: {
-			mesh: string;
-		};
+		// entity_info?: {
+		// 	mesh: string;
+		// };
 	}
 
 	export function spawn_entity(pos: Vec3, texture?: string) {
@@ -223,7 +223,7 @@ namespace sign {
 		const def: SignNodeDefinition | undefined =
 			core.registered_items[node.name];
 
-		if (def == null || def.entity_info == null) {
+		if (def == null ) {
 			return;
 		}
 
@@ -1124,9 +1124,9 @@ namespace sign {
 	}
 
 	/** @noSelf **/ interface SignNodeDefinition extends NodeDefinition {
-		entity_info?: {
-			mesh: string;
-		};
+		// entity_info?: {
+		// 	mesh: string;
+		// };
 		on_rotate?: (pos: Vec3, node: NodeTable, user: ObjectRef) => boolean;
 	}
 
