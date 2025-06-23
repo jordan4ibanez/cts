@@ -1124,7 +1124,7 @@ namespace sign {
 	// This seems to be using the decorator pattern.
 	export function register_sign(name: string, def: SignNodeDefinition) {
 		def.entity_info = {
-			mesh: "signs_lib_standard_sign_entity_wall.obj",
+			mesh: "signs_lib_standard_sign_entity_onpole.obj",
 		};
 		def.node_placement_prediction = "";
 		def.on_construct = construct_sign;
