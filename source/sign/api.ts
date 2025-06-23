@@ -314,6 +314,7 @@ namespace sign {
 			core.log(LogLevel.error, `Undefined node. Bailing.`);
 			return false;
 		}
+
 		if (string.match(node.name, "_onpole") != null) {
 			if (string.match(node.name, "_horiz") == null) {
 				newparam2 = rotate_walldir_simple[node.param2 || 0] || 4;
@@ -902,10 +903,10 @@ namespace sign {
 			return {
 				type: Nodeboxtype.wallmounted,
 				wall_side: [
-					-0.5 + zo,
+					0.125 + zo,
 					-ty + yo,
 					-tx + xo,
-					-0.4375 + zo,
+					0.1875 + zo,
 					ty + yo,
 					tx + xo,
 				],
