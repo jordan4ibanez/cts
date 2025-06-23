@@ -9,11 +9,11 @@ todo: redo vec2 and vec3 as a TS class instead of the current mess.
 ---
 
 
-### How to use TypeScript with the Crafter declaration file for your own mods:
+### How to compile Crafter:
 
-If you want to mess with this or maybe you would want to use TS for your minetest things.
+If you want to mess with this or maybe you would want to use TS for your luanti things.
  
-First you need node, if you're on ubuntu it's super outdated so go to the nodejs website and install it.
+First you need node/nodejs/npm, if you're on ubuntu it's super outdated so go to the nodejs website and install it.
 
 **This is developed with the latest version of nodejs/npm**
 
@@ -24,9 +24,13 @@ Also also, jszip is for creating a release zip.
 npm install -D typescript-to-lua typescript @types/node lua-types jszip
 ```
 
-I HIGHLY recommend you use ``make``. It automates a BUNCH of things. There's even ``make clean`` to see if everything is working.
+Now start up minetest, and select Crafter, then make a world named ``debugging``. The game will probably immediately crash.
 
-No make automation scripts created for windows yet though. It's because I don't run windows.
+Next you run ``make``.
+
+I HIGHLY recommend you use ``make``. It automates a BUNCH of things. ``make clean`` is for a complete rebuild along with installing new media (images, music, models, etdc).
+
+No make automation scripts created for windows yet though. It's because I don't run windows. If this works in windows, hooray!
 
 
 ---
