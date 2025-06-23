@@ -275,7 +275,7 @@ namespace sign {
 			}
 		}
 
-		obj.set_rotation(vector.create3d({ x: pitch, y: yaw, z: 0 }));
+		obj.set_yaw(yaw);
 
 		if (texture == null) {
 			obj.set_properties({
