@@ -333,7 +333,7 @@ namespace sign {
 			"field[1.875,3.075;3.75,0.5;line1;;${line1}]" +
 			"field[1.875,3.6;3.75,0.5;line2;;${line2}]" +
 			"field[1.875,4.125;3.75,0.5;line3;;${line3}]" +
-			"bgcolor[;both;]" +
+			"bgcolor[;true;]" +
 			"button_exit[1.87,6.5;3.76,0.5;ok;Done]";
 		core.get_meta(pos).set_string("formspec", form);
 	}
