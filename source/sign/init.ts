@@ -604,6 +604,10 @@ namespace sign {
 		return lines;
 	}
 
+	function destruct_sign(pos: Vec3) {
+		delete_objects(pos);
+	}
+
 	function construct_sign(pos: Vec3) {
 		let form =
 			"size[6,4]" +
@@ -613,10 +617,6 @@ namespace sign {
 			"Write" +
 			"]";
 		core.get_meta(pos).set_string("formspec", form);
-	}
-
-	function destruct_sign(pos: Vec3) {
-		delete_objects(pos);
 	}
 
 	function update_sign(pos: Vec3, fields?: { text: string }): void {
