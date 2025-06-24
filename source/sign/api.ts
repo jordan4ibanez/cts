@@ -798,15 +798,14 @@ namespace sign {
 	}
 
 	function construct_sign(pos: Vec3) {
-		core.get_meta(pos).set_string(
-			"formspec",
+		let form =
 			"size[6,4]" +
-				"textarea[0,-0.3;6.5,3;text;;${text}]" +
-				"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]" +
-				"button_exit[2,3.4;2,1;ok;" +
-				"Write" +
-				"]"
-		);
+			"textarea[0,-0.3;6.5,3;text;;${text}]" +
+			"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]" +
+			"button_exit[2,3.4;2,1;ok;" +
+			"Write" +
+			"]";
+		core.get_meta(pos).set_string("formspec", form);
 	}
 
 	function destruct_sign(pos: Vec3) {
