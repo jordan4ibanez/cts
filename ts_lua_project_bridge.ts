@@ -92,7 +92,8 @@ if (CREATE_RELEASE) {
 		return gottenInfoData;
 	})();
 
-	const releaseFolder: string = "crafter/";
+	const buildFolder: string = "crafter_build/";
+
 	// Set up the release build folder.
 	console.log(`Creating [${versionInfo}] release.`);
 
@@ -100,36 +101,38 @@ if (CREATE_RELEASE) {
 	// 	console.log("Deleting old zip.");
 	// 	FS.rmSync(zipFileName);
 	// }
+
+	if (FS.existsSync(buildFolder)) {
 		console.log("Removing old release folder.");
-		FS.rmSync(releaseFolder, { recursive: true, force: true });
+		FS.rmSync(buildFolder, { recursive: true, force: true });
 	}
 
-	FS.mkdirSync(releaseFolder);
+	FS.mkdirSync(buildFolder);
 
 	// Now copy...
 
 	// mods/ folder.
-	FS.cpSync(`mods/`, `${releaseFolder}mods/`, { recursive: true });
+	FS.cpSync(`mods/`, `${buildFolder}mods/`, { recursive: true });
 	// menu/ folder.
-	FS.cpSync(`menu/`, `${releaseFolder}menu/`, { recursive: true });
+	FS.cpSync(`menu/`, `${buildFolder}menu/`, { recursive: true });
 	// readme.MD
-	FS.cpSync(`readme.MD`, `${releaseFolder}readme.MD`);
+	FS.cpSync(`readme.MD`, `${buildFolder}readme.MD`);
 	// LICENSE
-	FS.cpSync(`LICENSE`, `${releaseFolder}LICENSE`);
+	FS.cpSync(`LICENSE`, `${buildFolder}LICENSE`);
 	// game.conf
-	FS.cpSync(`game.conf`, `${releaseFolder}game.conf`);
+	FS.cpSync(`game.conf`, `${buildFolder}game.conf`);
 
 	// Then make a zip.
 	const zip: Zip = new Zip();
 
-	FS.readdirSync(releaseFolder, { recursive: true }).forEach(
+	FS.readdirSync(buildFolder, { recursive: true }).forEach(
 		(item: string | Buffer) => {
 			// Basic checks to make sure nothing explodes.
 			if (!item) return;
 			if (item instanceof Buffer) return;
 			if (typeof item === "object") return;
 			// And raw copying.
-			const current: string = `${releaseFolder}${item}`;
+			const current: string = `${buildFolder}${item}`;
 			if (!FS.statSync(current).isDirectory()) {
 				zip.file(current, FS.readFileSync(current));
 			}
@@ -148,8 +151,8 @@ if (CREATE_RELEASE) {
 	// todo: create a tar.gz creator, or not. tar czf crafter_release.tar.gz crafter_release/
 
 	// And finally, remove the build folder.
-	if (FS.existsSync(releaseFolder)) {
-		FS.rmSync(releaseFolder, { recursive: true, force: true });
+	if (FS.existsSync(buildFolder)) {
+		FS.rmSync(buildFolder, { recursive: true, force: true });
 		console.log("Completed.");
 	}
 }
