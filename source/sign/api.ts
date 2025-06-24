@@ -62,6 +62,13 @@ namespace sign {
 		5: math.pi,
 	};
 
+	const hangingYaw: Dictionary<number, number> = {
+		0: 0,
+		1: math.pi / -2,
+		2: math.pi,
+		3: math.pi / 2,
+	};
+
 	// Initialize character texture cache.
 	const ctexcache: Dictionary<string, string> = {};
 
@@ -199,6 +206,15 @@ namespace sign {
 			yaw = newYaw;
 			obj.set_properties({
 				mesh: "crafter_sign_text_entity_onstick.obj",
+			});
+		} else if (node.name.endsWith("_hanging")) {
+			const newYaw: number | undefined = hangingYaw[node.param2];
+			if (newYaw == null) {
+				throw new Error("hanging yaw error.");
+			}
+			yaw = newYaw;
+			obj.set_properties({
+				mesh: "crafter_sign_text_entity_hanging.obj",
 			});
 		} else {
 			throw new Error(`Undefined sign: ${node.name}`);
