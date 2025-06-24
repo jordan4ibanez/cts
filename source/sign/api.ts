@@ -48,7 +48,7 @@ namespace sign {
 	const block_list = new Set<number>();
 	let totalblocks: number = 0;
 
-	const wallmounted_yaw: Dictionary<number, number> = {
+	const onStickYaw: Dictionary<number, number> = {
 		0: math.pi,
 		1: math.pi / 2,
 		2: 0,
@@ -195,13 +195,20 @@ namespace sign {
 			}
 		}
 
-		let yaw: number = wallmounted_yaw[node.param2 || 0] || 0;
+		let yaw: number = onStickYaw[node.param2 || 0] || 0;
 
-		if (node.name.endsWith("_onstick")) {
+		if (node.name.endsWith("sign")) {
+			// 2 4 5 3
+			print(node.param2);
+			obj.set_properties({
+				mesh: "crafter_sign_text_entity_onstick.obj",
+			});
+		} else if (node.name.endsWith("_onstick")) {
 			obj.set_properties({
 				mesh: "crafter_sign_text_entity_onstick.obj",
 			});
 		}
+		print(node.name);
 
 		if (node.name.endsWith("hanging")) {
 			const rot90: number = math.pi / 2;
