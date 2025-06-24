@@ -46,7 +46,7 @@ namespace sign {
 	})();
 
 	export const default_text_scale: Vec2 = { x: 10, y: 10 };
-	export const old_widefont_signs = {};
+
 	export const block_list = new Set<number>();
 	let totalblocks: number = 0;
 
