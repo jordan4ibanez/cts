@@ -2,6 +2,7 @@ namespace sign {
 	sign.register_sign("crafter_sign:sign", {
 		description: "Sign",
 		inventory_image: "signs_lib_sign_wall_wooden_inv.png",
+		wield_image: "signs_lib_sign_wall_wooden_inv.png",
 		tiles: [
 			"signs_lib_sign_wall_wooden.png",
 			"signs_lib_sign_wall_wooden_edges.png",
