@@ -70,8 +70,8 @@ FS.readdirSync("source/", { recursive: false }).forEach(
 //? Create a release zip file for this to be deployed on github.
 //~ This is the most time consuming option.
 if (CREATE_RELEASE) {
-	function getVersionInfo(): string {
-		let versionInfo: string | null = null;
+	const versionInfo: string = (() => {
+		let gottenInfoData: string | null = null;
 
 		for (const line of FS.readFileSync(
 			"./source/crafter/init.ts",
@@ -81,15 +81,15 @@ if (CREATE_RELEASE) {
 				console.log("HIT");
 				const foundData: string[] = line.split(" ");
 
-				versionInfo = foundData[foundData.length - 1].slice(0, -1);
+				gottenInfoData = foundData[foundData.length - 1].slice(0, -1);
 				break;
 			}
 		}
-		if (versionInfo === null) {
+		if (gottenInfoData === null) {
 			throw new Error("Could not find version info!");
 		}
-		return versionInfo;
-	}
+		return gottenInfoData;
+	})();
 
 	const releaseFolder: string = "crafter/";
 	// Set up the release build folder.
