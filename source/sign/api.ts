@@ -810,7 +810,6 @@ namespace sign {
 	// This seems to be using the decorator pattern.
 	(() => {
 		const name: string = "crafter_sign:sign_wall";
-
 		const def: NodeDefinition = {};
 
 		def.description = "Sign";
@@ -945,6 +944,15 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_onstick", ydef);
 		lbm_restore_nodes.add(no_wall_name + "_onstick");
 	})();
+
+	core.register_craft({
+		output: "crafter_sign:sign_wall 3",
+		recipe: [
+			["crafter:wood", "crafter:wood", "crafter:wood"],
+			["crafter:wood", "crafter:wood", "crafter:wood"],
+			["", "crafter:stick", ""],
+		],
+	});
 
 	// Restore signs' text after /clearobjects and the like, the next time
 	// a block is reloaded by the server.
