@@ -43,8 +43,34 @@ namespace sign {
 		3: math.pi / 2,
 	};
 
-	// Initialize character texture cache.
-	const ctexcache: Dictionary<string, string> = {};
+	const charDictionary: Dictionary<string, Vec2> = {
+		A: vector.create2d(0, 0),
+		B: vector.create2d(0, 1),
+		C: vector.create2d(0, 2),
+		D: vector.create2d(0, 3),
+		E: vector.create2d(0, 4),
+		F: vector.create2d(0, 5),
+		G: vector.create2d(0, 6),
+		H: vector.create2d(0, 7),
+		I: vector.create2d(0, 8),
+		J: vector.create2d(1, 0),
+		K: vector.create2d(1, 1),
+		L: vector.create2d(1, 2),
+		M: vector.create2d(1, 3),
+		N: vector.create2d(1, 4),
+		O: vector.create2d(1, 5),
+		P: vector.create2d(1, 6),
+		Q: vector.create2d(1, 7),
+		R: vector.create2d(1, 8),
+		S: vector.create2d(2, 0),
+		T: vector.create2d(2, 1),
+		U: vector.create2d(2, 2),
+		V: vector.create2d(2, 3),
+		W: vector.create2d(2, 4),
+		X: vector.create2d(2, 5),
+		Y: vector.create2d(2, 6),
+		Z: vector.create2d(2, 7),
+	};
 
 	// Entity handling.
 	class SignTextEntity extends types.Entity {
