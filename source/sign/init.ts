@@ -11,7 +11,6 @@ namespace sign {
 	const standard_hscale: number = 1;
 	const standard_vscale: number = 1;
 	const standard_lspace: number = 1;
-
 	const standard_xoffs: number = 4;
 	const standard_yoffs: number = 0;
 	const standard_cpl: number = 35;
@@ -20,17 +19,6 @@ namespace sign {
 	if (path == null) {
 		throw new Error("How did this happen?");
 	}
-
-	const standard_wood_sign_sounds = (() => {
-		const data = core.registered_nodes["crafter:wood"]?.sounds;
-		if (data == null) {
-			throw new Error("Logic error.");
-		}
-		return table.copy(data as any as LuaTable) as any as Dictionary<
-			string,
-			number
-		>;
-	})();
 
 	const default_text_scale: Vec2 = { x: 10, y: 10 };
 
@@ -827,7 +815,7 @@ namespace sign {
 			drawtype: Drawtype.mesh,
 			mesh: "crafter_sign_wall.obj",
 			drop: name,
-			sounds: standard_wood_sign_sounds,
+			sounds: crafter.woodSound(),
 			paramtype2: ParamType2.wallmounted,
 			walkable: false,
 			groups: standard_wood_groups,
