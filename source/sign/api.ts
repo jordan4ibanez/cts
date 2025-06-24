@@ -906,9 +906,6 @@ namespace sign {
 		}
 
 		hanging_def.tiles[3] = "signs_lib_hangers.png";
-		hanging_def.tiles[4] = "signs_lib_blank.png";
-		hanging_def.tiles[5] = "signs_lib_blank.png";
-		hanging_def.tiles[6] = "signs_lib_blank.png";
 
 		hanging_def.mesh = "crafter_sign_hanging.obj";
 
@@ -933,9 +930,7 @@ namespace sign {
 			throw new Error("Logic error 6");
 		}
 		ydef.tiles[3] = "wood.png";
-		ydef.tiles[4] = "signs_lib_blank.png";
-		ydef.tiles[5] = "signs_lib_blank.png";
-		ydef.tiles[6] = "signs_lib_blank.png";
+
 		ydef.node_box = ycbox;
 
 		ydef.mesh = string.gsub(
