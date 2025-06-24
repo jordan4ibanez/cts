@@ -984,7 +984,6 @@ namespace sign {
 		itemstack: ItemStackObject,
 		pointed_thing: PointedThing
 	) {
-		const playername: string = placer.get_player_name();
 		const controls: PlayerControlObject = placer.get_player_control();
 		const signname: string = itemstack.get_name();
 		const no_wall_name: string = string.gsub(signname, "_wall", "")[0];
@@ -1001,9 +1000,6 @@ namespace sign {
 			core.log(LogLevel.error, "Failed to create sign components.");
 			return;
 		}
-		const pnode: NodeTable = core.get_node(ppos);
-		const pdef: NodeDefinition | undefined =
-			core.registered_items[pnode.name];
 
 		if (!controls.sneak && check_for_pole(pos, pointed_thing)) {
 			let newparam2: number;
@@ -1013,7 +1009,6 @@ namespace sign {
 			} else {
 				newparam2 = core.dir_to_facedir(lookdir);
 			}
-			const node: NodeTable = core.get_node(pos);
 			core.swap_node(pos, {
 				name: no_wall_name + "_onpole",
 				param2: newparam2,
@@ -1029,7 +1024,6 @@ namespace sign {
 			} else {
 				newparam2 = core.dir_to_facedir(lookdir);
 			}
-			const node: NodeTable = core.get_node(pos);
 			core.swap_node(pos, {
 				name: no_wall_name + "_onpole_horiz",
 				param2: newparam2,
@@ -1038,7 +1032,6 @@ namespace sign {
 			const newparam2: number = core.dir_to_facedir(
 				placer.get_look_dir()
 			);
-			const node: NodeTable = core.get_node(pos);
 			core.swap_node(pos, {
 				name: no_wall_name + "_hanging",
 				param2: newparam2,
@@ -1047,7 +1040,6 @@ namespace sign {
 			const newparam2: number = core.dir_to_facedir(
 				placer.get_look_dir()
 			);
-			const node: NodeTable = core.get_node(pos);
 			core.swap_node(pos, {
 				name: no_wall_name + "_yard",
 				param2: newparam2,
