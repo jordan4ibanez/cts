@@ -265,13 +265,6 @@ namespace sign {
 				} else if (node.param2 == 0) {
 					yaw = math.pi;
 				}
-				// On stick?
-			} else if (def.paramtype2 == ParamType2.facedir) {
-				if (node.param2 == 4) {
-					yaw = 0;
-				} else if (node.param2 == 6) {
-					yaw = math.pi;
-				}
 			}
 		}
 
