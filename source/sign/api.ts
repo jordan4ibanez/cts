@@ -1142,42 +1142,6 @@ namespace sign {
 				(def.selection_box.fixed as box)[5] + offset;
 		}
 
-		[othermounts_def.mesh] = string.gsub(
-			othermounts_def.mesh || "",
-			"wall.obj$",
-			"onpole.obj"
-		);
-
-		// Setting one of item 3 or 4 to a texture and leaving the other "blank",
-		// reveals either the vertical or horizontal pole mount part of the model.
-
-		if (othermounts_def.tiles == null) {
-			throw new Error("Logic error 3");
-		}
-
-		othermounts_def.tiles[3] = "signs_lib_pole_mount.png";
-		othermounts_def.tiles[4] = "signs_lib_blank.png";
-		othermounts_def.tiles[5] = "signs_lib_blank.png";
-		othermounts_def.tiles[6] = "signs_lib_blank.png";
-		core.register_node(":" + no_wall_name + "_onpole", othermounts_def);
-		lbm_restore_nodes.add(no_wall_name + "_onpole");
-
-		const onpole_horiz_def: NodeDefinition = table.copy(
-			othermounts_def as any as LuaTable
-		) as any as NodeDefinition;
-		if (onpole_horiz_def.tiles == null) {
-			throw new Error("Logic error 4");
-		}
-		onpole_horiz_def.tiles[3] = "signs_lib_blank.png";
-		onpole_horiz_def.tiles[4] = "signs_lib_pole_mount.png";
-		onpole_horiz_def.tiles[5] = "signs_lib_blank.png";
-		onpole_horiz_def.tiles[6] = "signs_lib_blank.png";
-		core.register_node(
-			":" + no_wall_name + "_onpole_horiz",
-			onpole_horiz_def
-		);
-		lbm_restore_nodes.add(no_wall_name + "_onpole_horiz");
-
 		const hanging_def: NodeDefinition = table.copy(
 			def as any as LuaTable
 		) as any as NodeDefinition;
