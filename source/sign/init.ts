@@ -321,19 +321,19 @@ namespace sign {
 		deleteObjects(pos);
 	}
 
-	function construct_sign(pos: Vec3) {
+	function constructSign(pos: Vec3) {
 		let form =
 			"formspec_version[9]" +
 			"size[8,8]" +
 			"style_type[field;noclip=false;font_size=32]" +
-			"image[1.5,1.5;5,5;signs_lib_sign_wall_wooden_inv.png;]" +
-			"field[1.875,3;4.25,0.5;text;;${text}]" +
+			"image[1.595,2;4.3125,4.25;signs_lib_sign_wall_wooden_inv.png;]" +
+			"field[1.875,2.55;3.75,0.5;text;;${text}]" +
 			"bgcolor[;both;]" +
 			"button_exit[2,3.4;3,0.5;ok;Done]";
 		core.get_meta(pos).set_string("formspec", form);
 	}
 
-	function update_sign(
+	function updateSign(
 		pos: Vec3,
 		fields?: { line0: string; line1: string; line2: string; line3: string }
 	): void {
@@ -371,7 +371,7 @@ namespace sign {
 					pos.x
 				}, ${pos.y}, ${pos.z})`
 			);
-			update_sign(pos, fields);
+			updateSign(pos, fields);
 		}
 	}
 
@@ -521,9 +521,9 @@ namespace sign {
 		const def: NodeDefinition = {
 			description: "Sign",
 			node_placement_prediction: "",
-			on_construct: construct_sign,
+			on_construct: constructSign,
 			after_place_node: after_place_node,
-			on_rightclick: construct_sign,
+			on_rightclick: constructSign,
 			on_destruct: destroySign,
 			on_receive_fields: receive_fields,
 			paramtype: ParamType1.light,
@@ -671,7 +671,7 @@ namespace sign {
 			label: "Restore sign text",
 			run_at_every_load: true,
 			action: (pos: Vec3, node: NodeTable) => {
-				update_sign(pos);
+				updateSign(pos);
 			},
 		});
 	});
