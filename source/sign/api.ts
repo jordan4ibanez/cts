@@ -57,41 +57,6 @@ namespace sign {
 		3: math.pi / -2,
 	};
 
-	const fdir_to_back: number[][] = [
-		[0, -1],
-		[-1, 0],
-		[0, 1],
-		[1, 0],
-	];
-
-	const fdir_flip_to_back: Dictionary<number, number[]> = {
-		[0]: [0, 2],
-		[1]: [2, 0],
-		[2]: [0, -2],
-		[3]: [-2, 0],
-	};
-
-	const wall_fdir_flip_to_back: Dictionary<number, number[]> = {
-		[2]: [2, 0],
-		[3]: [-2, 0],
-		[4]: [0, 2],
-		[5]: [0, -2],
-	};
-
-	const fdir_to_back_left: Dictionary<number, number[]> = {
-		[0]: [-1, 1],
-		[1]: [1, 1],
-		[2]: [1, -1],
-		[3]: [-1, -1],
-	};
-
-	const wall_fdir_to_back_left: Dictionary<number, number[]> = {
-		[2]: [1, 1],
-		[3]: [-1, -1],
-		[4]: [-1, 1],
-		[5]: [1, -1],
-	};
-
 	const rotate_walldir: Dictionary<number, number> = {
 		[0]: 4,
 		[1]: 0,
@@ -101,14 +66,6 @@ namespace sign {
 		[5]: 3,
 	};
 
-	const rotate_walldir_simple: Dictionary<number, number> = {
-		[0]: 4,
-		[1]: 4,
-		[2]: 5,
-		[3]: 4,
-		[4]: 2,
-		[5]: 3,
-	};
 	const rotate_facedir: Dictionary<number, number> = {
 		[0]: 1,
 		[1]: 2,
@@ -125,25 +82,6 @@ namespace sign {
 		[3]: 0,
 		[4]: 0,
 		[5]: 0,
-	};
-
-	const flip_facedir: Dictionary<number, number> = {
-		[0]: 2,
-		[1]: 3,
-		[2]: 0,
-		[3]: 1,
-		[4]: 6,
-		[5]: 4,
-		[6]: 4,
-	};
-
-	const flip_walldir: Dictionary<number, number> = {
-		[0]: 1,
-		[1]: 0,
-		[2]: 3,
-		[3]: 2,
-		[4]: 5,
-		[5]: 4,
 	};
 
 	// Initialize character texture cache.
