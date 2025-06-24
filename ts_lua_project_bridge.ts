@@ -78,10 +78,11 @@ if (CREATE_RELEASE) {
 			"utf-8"
 		).split("\n")) {
 			if (line.trim().startsWith("export const version: string = ")) {
-				console.log("HIT");
 				const foundData: string[] = line.split(" ");
 
-				gottenInfoData = foundData[foundData.length - 1].slice(0, -1);
+				gottenInfoData = foundData[foundData.length - 1]
+					.slice(0, -1)
+					.replaceAll('"', "");
 				break;
 			}
 		}
@@ -137,7 +138,10 @@ if (CREATE_RELEASE) {
 
 	zip.generateAsync({ type: "blob" }).then((content: Blob) => {
 		content.arrayBuffer().then((data: ArrayBuffer) => {
-			FS.writeFileSync("crafter_release.zip", new DataView(data));
+			FS.writeFileSync(
+				`crafter_release_${versionInfo}.zip`,
+				new DataView(data)
+			);
 		});
 	});
 
