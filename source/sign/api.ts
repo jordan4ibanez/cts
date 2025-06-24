@@ -173,7 +173,7 @@ namespace sign {
 			}
 		}
 
-		let yaw: number = onStickYaw[node.param2 || 0] || 0;
+		let yaw: number = 0;
 
 		if (node.name.endsWith("sign")) {
 			// 2 4 5 3
@@ -182,6 +182,11 @@ namespace sign {
 				mesh: "crafter_sign_text_entity_onstick.obj",
 			});
 		} else if (node.name.endsWith("_onstick")) {
+			const newYaw: number | undefined = onStickYaw[node.param2];
+			if (newYaw == null) {
+				throw new Error("onstick yaw error.");
+			}
+			yaw = newYaw;
 			obj.set_properties({
 				mesh: "crafter_sign_text_entity_onstick.obj",
 			});
