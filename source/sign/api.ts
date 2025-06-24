@@ -1,6 +1,9 @@
 namespace sign {
 	const lbm_restore_nodes = new Set<string>();
 
+	// todo: Sign on stick will be an invisible node with an entity.
+	// todo: The entity will rotate in 16 different positions.
+
 	// Settings used for a standard wood or steel wall sign.
 	const standard_lines: number = 6;
 	const standard_hscale: number = 1;
