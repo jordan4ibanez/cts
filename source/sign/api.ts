@@ -162,7 +162,7 @@ namespace sign {
 		};
 		internalTimer = 0;
 		on_step(delta: number, moveResult: MoveResult | null): void {
-			print(this.object.get_properties().mesh);
+			// print(this.object.get_properties().mesh);
 			// print("hi");
 			// this.object.set_yaw(0);
 			// print(this.object.get_properties().mesh);
