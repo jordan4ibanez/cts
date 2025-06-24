@@ -2,11 +2,14 @@ namespace playerMechanics {
 	// todo: make this it's own mod, this is not a mechanic?
 
 	core.register_on_joinplayer((player: ObjectRef) => {
+
 		const offset: Vec2 = {
-			x: -146,
+			x: -156,
 			y: 20,
 		};
-		const version: string = "Crafter Alpha v0.0.8";
+
+		const version: string = `Crafter Alpha v${crafter.version}`;
+
 		// Add in version info.
 		player.hud_add({
 			type: HudElementType.text,
