@@ -813,36 +813,37 @@ namespace sign {
 	// This seems to be using the decorator pattern.
 	(() => {
 		const name: string = "crafter_sign:sign_wall";
-		const def: NodeDefinition = {};
-
-		def.description = "Sign";
-		def.node_placement_prediction = "";
-		def.on_construct = construct_sign;
-		def.after_place_node = after_place_node;
-		def.on_rightclick = construct_sign;
-		def.on_destruct = destruct_sign;
-		def.on_receive_fields = receive_fields;
-		def.paramtype = ParamType1.light;
-		def.drawtype = Drawtype.mesh;
-		def.mesh = "crafter_sign_wall.obj";
-		def.drop = name;
-		def.sounds = standard_wood_sign_sounds;
-		def.paramtype2 = ParamType2.wallmounted;
-		def.walkable = false;
-		def.groups = standard_wood_groups;
 		const cbox = make_selection_boxes(35, 25);
-		def.selection_box = cbox;
-		def.node_box = cbox;
-		def.sunlight_propagates = true;
-		def.inventory_image = "signs_lib_sign_wall_wooden_inv.png";
-		def.wield_image = "signs_lib_sign_wall_wooden_inv.png";
-		def.tiles = [
-			"signs_lib_sign_wall_wooden.png",
-			"signs_lib_sign_wall_wooden_edges.png",
-			"signs_lib_blank.png",
-			"signs_lib_blank.png",
-			"signs_lib_blank.png",
-		];
+		const def: NodeDefinition = {
+			description: "Sign",
+			node_placement_prediction: "",
+			on_construct: construct_sign,
+			after_place_node: after_place_node,
+			on_rightclick: construct_sign,
+			on_destruct: destruct_sign,
+			on_receive_fields: receive_fields,
+			paramtype: ParamType1.light,
+			drawtype: Drawtype.mesh,
+			mesh: "crafter_sign_wall.obj",
+			drop: name,
+			sounds: standard_wood_sign_sounds,
+			paramtype2: ParamType2.wallmounted,
+			walkable: false,
+			groups: standard_wood_groups,
+
+			selection_box: cbox,
+			node_box: cbox,
+			sunlight_propagates: true,
+			inventory_image: "signs_lib_sign_wall_wooden_inv.png",
+			wield_image: "signs_lib_sign_wall_wooden_inv.png",
+			tiles: [
+				"signs_lib_sign_wall_wooden.png",
+				"signs_lib_sign_wall_wooden_edges.png",
+				"signs_lib_blank.png",
+				"signs_lib_blank.png",
+				"signs_lib_blank.png",
+			],
+		};
 
 		core.register_node(":" + name, def);
 		lbm_restore_nodes.add(name);
