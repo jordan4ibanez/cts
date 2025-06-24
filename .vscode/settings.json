@@ -13,7 +13,7 @@
         ".gitignore": true,
         ".gitattributes": true,
         "game.conf": true,
-        "tsconfig.json": true,
+        // "tsconfig.json": true,
         "old_code/": true,
     },
     "[typescript]": {
