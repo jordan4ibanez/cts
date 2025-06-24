@@ -1,4 +1,5 @@
 {
+  //! If you edit this file while in watch mode: Prepare to clean up.
   "$schema": "https://raw.githubusercontent.com/TypeScriptToLua/TypeScriptToLua/master/tsconfig-schema.json",
   "compilerOptions": {
     "target": "ESNext",
