@@ -5,7 +5,7 @@ namespace sign {
 	// todo: The entity will rotate in 16 different positions.
 	// todo: add other characters, like <> and whatnot.
 	// fixme: the game filters out \, so that needs to be fixed.
-	// fixme: hanging signs instantly fall off.
+	// fixme: hanging signs are not attached, so they can float.
 	// fixme: The text does not scale with the window and I don't think I can fix that. :(
 
 	const default_text_scale: Vec2 = { x: 10, y: 10 };
@@ -644,6 +644,8 @@ namespace sign {
 		hanging_def.tiles[2] = "crafter_sign_hangers.png";
 
 		hanging_def.mesh = "crafter_sign_hanging.obj";
+
+		hanging_def.groups!.attached_node = 0;
 
 		core.register_node(no_wall_name + "_hanging", hanging_def);
 		lbm_restore_nodes.add(no_wall_name + "_hanging");
