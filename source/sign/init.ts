@@ -226,20 +226,14 @@ namespace sign {
 			if (!this.set) {
 				this.set = true;
 
-				// createLine("hello there", 0);
-				// createLine("hello there", 1);
-				// createLine("hello there", 2);
-				// createLine("hello there", 3);
+				const signTextureData = createSignEntityTexture([
+					"test 123",
+					"hello",
+					"hi",
+					":)",
+				]);
 				this.object.set_properties({
-					textures: [
-						`([combine:${size}^[fill:${size}:0,0:red)` +
-							createLine("hello, world!", 0) +
-							createLine(":D", 1) +
-							createLine("I am a sign.", 2) +
-							createLine("there is some te", 3),
-
-						// createCharComponent(0, 5, "h") +
-					],
+					textures: [signTextureData],
 				});
 			}
 			// print(this.object.get_properties().mesh);
