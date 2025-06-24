@@ -55,33 +55,6 @@ namespace sign {
 		3: math.pi / -2,
 	};
 
-	const rotate_walldir: Dictionary<number, number> = {
-		[0]: 4,
-		[1]: 0,
-		[2]: 5,
-		[3]: 1,
-		[4]: 2,
-		[5]: 3,
-	};
-
-	const rotate_facedir: Dictionary<number, number> = {
-		[0]: 1,
-		[1]: 2,
-		[2]: 3,
-		[3]: 4,
-		[4]: 6,
-		[5]: 6,
-		[6]: 0,
-	};
-	const rotate_facedir_simple: Dictionary<number, number> = {
-		[0]: 1,
-		[1]: 2,
-		[2]: 3,
-		[3]: 0,
-		[4]: 0,
-		[5]: 0,
-	};
-
 	// Initialize character texture cache.
 	const ctexcache: Dictionary<string, string> = {};
 
@@ -211,7 +184,6 @@ namespace sign {
 		print(node.name);
 
 		if (node.name.endsWith("hanging")) {
-			const rot90: number = math.pi / 2;
 			if (def.paramtype2 == ParamType2.wallmounted) {
 				// On floor.
 				if (node.param2 == 1) {
@@ -245,51 +217,6 @@ namespace sign {
 		);
 	}
 
-	// Rotation.
-	function handle_rotation(
-		pos: Vec3,
-		node: NodeTable,
-		user: ObjectRef
-	): boolean {
-		let newparam2: number = 0;
-		let tpos: Vec3 = vector.copy(pos);
-		const def: NodeDefinition | undefined =
-			core.registered_items[node.name];
-
-		if (def == null) {
-			core.log(LogLevel.error, `Undefined node. Bailing.`);
-			return false;
-		}
-
-		if (
-			string.match(node.name, "_hanging") != null ||
-			string.match(node.name, "yard") != null
-		) {
-			core.swap_node(tpos, {
-				name: node.name,
-				param2: rotate_facedir_simple[node.param2 || 0] || 0,
-			});
-		} else if (def.paramtype2 == ParamType2.wallmounted) {
-			core.swap_node(tpos, {
-				name: node.name,
-				param2: rotate_walldir[node.param2 || 0] || 0,
-			});
-		} else {
-			core.swap_node(tpos, {
-				name: node.name,
-				param2: rotate_facedir[node.param2 || 0] || 0,
-			});
-		}
-
-		update_sign(tpos);
-		return true;
-	}
-
-	let expect_infinite_stacks: boolean = false;
-	// Infinite stacks.
-	if (core.settings.get_bool("creative_mode")) {
-		expect_infinite_stacks = true;
-	}
 	// CONSTANTS
 	// Path to the textures.
 	const TP = path + "/textures/sign";
@@ -374,7 +301,7 @@ namespace sign {
 		let total_width = 0;
 		let char_count = 0;
 		for (const c of $range(32, 255)) {
-			const [w, h] = read_image_size(
+			const [w, _] = read_image_size(
 				string.format(
 					CHAR_PATH,
 					"signs_lib_font_" + font_size + "px",
@@ -396,9 +323,6 @@ namespace sign {
 
 	const [charwidth15, colorbgw15, lineheight15, avgwidth15] =
 		build_char_db(15);
-
-	const [charwidth31, colorbgw31, lineheight31, avgwidth31] =
-		build_char_db(31);
 
 	// const sign_groups = { choppy: 2, dig_immediate: 2 };
 
@@ -473,16 +397,11 @@ namespace sign {
 		}
 
 		const words: WordData[] = [];
-		const node: NodeTable = core.get_node(pos);
-		const def: NodeDefinition | undefined =
-			core.registered_items[node.name];
-		const default_color: number = 0;
-
 		let cur_color: string | number | null = 0;
 
 		// We check which chars are available here.
 
-		for (let [word_i, word] of ipairs(line.split(""))) {
+		for (let [_, word] of ipairs(line.split(""))) {
 			if (typeof word != "string") {
 				core.log(LogLevel.error, "Not a string.");
 				continue;
@@ -558,7 +477,7 @@ namespace sign {
 
 		cur_color = null;
 
-		for (const [word_i, word] of ipairs(words)) {
+		for (const [_, word] of ipairs(words)) {
 			let xoffs: number = xpos - start_xpos;
 			if (xoffs > 0 && xoffs + word.w > maxw) {
 				texture.push(
@@ -576,7 +495,7 @@ namespace sign {
 				);
 			}
 
-			for (const [ch_i, ch] of ipairs(word.chars)) {
+			for (const [_, ch] of ipairs(word.chars)) {
 				if (ch.col != cur_color) {
 					cur_color = ch.col;
 					texture.push(
@@ -620,7 +539,6 @@ namespace sign {
 
 	function make_sign_texture(lines: string[], pos: Vec3): string {
 		const node: NodeTable = core.get_node(pos);
-		const meta: MetaRef = core.get_meta(pos);
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 		if (def == null) {
