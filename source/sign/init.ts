@@ -206,6 +206,23 @@ namespace sign {
 				return outputString;
 			}
 
+			function createSignEntityTexture(data: string[]): string {
+				if (data.length != 4) {
+					core.log(
+						LogLevel.error,
+						`Sign api error: data array at length [${data.length}]. Bailing.`
+					);
+				}
+
+				let signTextureData: string = `([combine:${size}^[fill:${size}:0,0:red)`;
+
+				for (const i of $range(0, 3)) {
+					signTextureData += createLine(data[i], i);
+				}
+
+				return signTextureData;
+			}
+
 			if (!this.set) {
 				this.set = true;
 
