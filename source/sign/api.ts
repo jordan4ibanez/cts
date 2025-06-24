@@ -251,7 +251,6 @@ namespace sign {
 		}
 
 		let yaw: number = wallmounted_yaw[node.param2 || 0] || 0;
-		let pitch: number = 0;
 
 		if (
 			string.find(node.name, "onpole")[0] == null &&
@@ -261,20 +260,16 @@ namespace sign {
 			if (def.paramtype2 == ParamType2.wallmounted) {
 				// On floor.
 				if (node.param2 == 1) {
-					pitch = -rot90;
 					yaw = 0;
 					// On ceiling.
 				} else if (node.param2 == 0) {
-					pitch = rot90;
 					yaw = math.pi;
 				}
 				// On stick?
 			} else if (def.paramtype2 == ParamType2.facedir) {
 				if (node.param2 == 4) {
-					pitch = -rot90;
 					yaw = 0;
 				} else if (node.param2 == 6) {
-					pitch = rot90;
 					yaw = math.pi;
 				}
 			}
