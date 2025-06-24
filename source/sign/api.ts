@@ -798,17 +798,15 @@ namespace sign {
 	}
 
 	function construct_sign(pos: Vec3) {
-		let form =
+		core.get_meta(pos).set_string(
+			"formspec",
 			"size[6,4]" +
-			"textarea[0,-0.3;6.5,3;text;;${text}]" +
-			"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]";
-
-		const node: NodeTable = core.get_node(pos);
-
-		form = form + "button_exit[2,3.4;2,1;ok;" + "Write" + "]";
-
-		const meta: MetaRef = core.get_meta(pos);
-		meta.set_string("formspec", form);
+				"textarea[0,-0.3;6.5,3;text;;${text}]" +
+				"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]" +
+				"button_exit[2,3.4;2,1;ok;" +
+				"Write" +
+				"]"
+		);
 	}
 
 	function destruct_sign(pos: Vec3) {
