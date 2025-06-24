@@ -932,6 +932,8 @@ namespace sign {
 
 	// This seems to be using the decorator pattern.
 	export function register_sign(name: string, def: NodeDefinition) {
+		name += "_wall";
+
 		def.node_placement_prediction = "";
 		def.on_construct = construct_sign;
 		def.after_place_node = after_place_node;
@@ -963,7 +965,7 @@ namespace sign {
 		core.register_node(":" + name, def);
 		lbm_restore_nodes.add(name);
 
-		const [no_wall_name] = string.gsub(name, "_wall", "");
+		const no_wall_name = name.replaceAll("_wall", "");
 
 		const othermounts_def: NodeDefinition = table.copy(
 			def as any as LuaTable
