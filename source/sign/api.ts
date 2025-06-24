@@ -155,7 +155,7 @@ namespace sign {
 		initial_properties = {
 			collisionbox: [0, 0, 0, 0, 0, 0],
 			visual: EntityVisual.mesh,
-			mesh: "signs_lib_standard_wall_sign_entity.obj",
+			mesh: "signs_lib_standard_sign_entity_wall.obj",
 			textures: [],
 			static_save: false,
 			backface_culling: false,
@@ -1131,7 +1131,7 @@ namespace sign {
 		def.on_receive_fields = receive_fields;
 		def.paramtype = ParamType1.light;
 		def.drawtype = Drawtype.mesh;
-		def.mesh = "signs_lib_standard_sign_entity_onpole.obj";
+		def.mesh = "signs_lib_standard_sign_wall.obj";
 		def.drop = name;
 		def.sounds = standard_wood_sign_sounds;
 		def.paramtype2 = ParamType2.wallmounted;
