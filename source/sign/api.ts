@@ -214,7 +214,7 @@ namespace sign {
 
 	export function spawn_entity(pos: Vec3, texture?: string) {
 		const node: NodeTable = core.get_node(pos);
-		const def: SignNodeDefinition | undefined =
+		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 
 		if (def == null) {
@@ -722,7 +722,7 @@ namespace sign {
 	function make_sign_texture(lines: string[], pos: Vec3): string {
 		const node: NodeTable = core.get_node(pos);
 		const meta: MetaRef = core.get_meta(pos);
-		const def: SignNodeDefinition | undefined =
+		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 		if (def == null) {
 			core.log(
@@ -950,7 +950,7 @@ namespace sign {
 			return false;
 		}
 		const pnode: NodeTable = core.get_node(ppos);
-		const pdef: SignNodeDefinition | undefined =
+		const pdef: NodeDefinition | undefined =
 			core.registered_items[pnode.name];
 		if (pdef == null) {
 			return false;
@@ -1031,7 +1031,7 @@ namespace sign {
 		const controls: PlayerControlObject = placer.get_player_control();
 		const signname: string = itemstack.get_name();
 		const no_wall_name: string = string.gsub(signname, "_wall", "")[0];
-		const def: SignNodeDefinition | undefined =
+		const def: NodeDefinition | undefined =
 			core.registered_items[signname];
 		if (def == null) {
 			core.log(
@@ -1116,7 +1116,7 @@ namespace sign {
 	}
 
 	// This seems to be using the decorator pattern.
-	export function register_sign(name: string, def: SignNodeDefinition) {
+	export function register_sign(name: string, def: NodeDefinition) {
 		def.node_placement_prediction = "";
 		def.on_construct = construct_sign;
 		def.after_place_node = after_place_node;
@@ -1217,9 +1217,9 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_onpole", othermounts_def);
 		lbm_restore_nodes.add(no_wall_name + "_onpole");
 
-		const onpole_horiz_def: SignNodeDefinition = table.copy(
+		const onpole_horiz_def: NodeDefinition = table.copy(
 			othermounts_def as any as LuaTable
-		) as any as SignNodeDefinition;
+		) as any as NodeDefinition;
 		if (onpole_horiz_def.tiles == null) {
 			throw new Error("Logic error 4");
 		}
@@ -1233,9 +1233,9 @@ namespace sign {
 		);
 		lbm_restore_nodes.add(no_wall_name + "_onpole_horiz");
 
-		const hanging_def: SignNodeDefinition = table.copy(
+		const hanging_def: NodeDefinition = table.copy(
 			def as any as LuaTable
-		) as any as SignNodeDefinition;
+		) as any as NodeDefinition;
 
 		hanging_def.use_texture_alpha = TextureAlpha.clip;
 		hanging_def.paramtype2 = ParamType2.facedir;
@@ -1261,9 +1261,9 @@ namespace sign {
 		core.register_node(":" + no_wall_name + "_hanging", hanging_def);
 		lbm_restore_nodes.add(no_wall_name + "_hanging");
 
-		const ydef: SignNodeDefinition = table.copy(
+		const ydef: NodeDefinition = table.copy(
 			def as any as LuaTable
-		) as any as SignNodeDefinition;
+		) as any as NodeDefinition;
 		ydef.paramtype2 = ParamType2.facedir;
 		const ycbox = make_selection_boxes(
 			35,
