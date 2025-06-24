@@ -913,7 +913,7 @@ namespace sign {
 			throw new Error("Logic error 5");
 		}
 
-		hanging_def.tiles[3] = "signs_lib_hangers.png";
+		hanging_def.tiles[2] = "signs_lib_hangers.png";
 
 		hanging_def.mesh = "crafter_sign_hanging.obj";
 
@@ -937,7 +937,7 @@ namespace sign {
 		if (ydef.tiles == null) {
 			throw new Error("Logic error 6");
 		}
-		ydef.tiles[3] = "wood.png";
+		ydef.tiles[2] = "wood.png";
 
 		ydef.node_box = ycbox;
 
