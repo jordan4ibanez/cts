@@ -324,11 +324,7 @@ namespace sign {
 	const [charwidth15, colorbgw15, lineheight15, avgwidth15] =
 		build_char_db(15);
 
-	// const sign_groups = { choppy: 2, dig_immediate: 2 };
-
-	// local fences_with_sign = { }
-	// // some local helper functions
-	// local math_max = math.max
+	// some local helper functions
 	function fill_line(
 		x: number,
 		y: number,
@@ -376,6 +372,7 @@ namespace sign {
 	): [string, number] {
 		let width: number = 0;
 		let maxw: number = 0;
+		print(font_size);
 		let font_name: string = "signs_lib_font_" + font_size + "px";
 
 		interface TempData {
