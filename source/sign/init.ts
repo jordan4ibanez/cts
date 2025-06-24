@@ -5,6 +5,7 @@ namespace sign {
 	// todo: The entity will rotate in 16 different positions.
 	// todo: add other characters, like <> and whatnot.
 	// fixme: the game filters out \, so that needs to be fixed.
+	// fixme: hanging signs instantly fall off.
 
 	const default_text_scale: Vec2 = { x: 10, y: 10 };
 
