@@ -103,7 +103,7 @@ if (CREATE_RELEASE) {
 	// }
 
 	if (FS.existsSync(buildFolder)) {
-		console.log("Removing old release folder.");
+		console.log("Removing old build folder.");
 		FS.rmSync(buildFolder, { recursive: true, force: true });
 	}
 
