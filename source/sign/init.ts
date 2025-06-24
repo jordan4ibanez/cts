@@ -327,9 +327,9 @@ namespace sign {
 			"size[8,8]" +
 			"style_type[field;noclip=false;font_size=32]" +
 			"image[1.595,2;4.3125,4.25;signs_lib_sign_wall_wooden_inv.png;]" +
-			"field[1.875,2.55;3.75,0.5;text;;${text}]" +
+			"field[1.875,2.545;3.75,0.5;text;;${text}]" +
 			"bgcolor[;both;]" +
-			"button_exit[2,3.4;3,0.5;ok;Done]";
+			"button_exit[1.87,6.5;3.76,0.5;ok;Done]";
 		core.get_meta(pos).set_string("formspec", form);
 	}
 
