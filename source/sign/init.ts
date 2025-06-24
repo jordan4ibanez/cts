@@ -385,7 +385,8 @@ namespace sign {
 			fields.line0 != null &&
 			fields.line1 != null &&
 			fields.line2 != null &&
-			fields.line3 != null
+			fields.line3 != null &&
+			fields.quit != null
 		) {
 			core.log(
 				LogLevel.action,
