@@ -312,13 +312,9 @@ namespace sign {
 		}
 	}
 
-	function set_obj_text(pos: Vec3, text: string): void {
+	function set_obj_text(pos: Vec3, data: string[]): void {
 		delete_objects(pos);
-		print("hi");
-		spawn_entity(
-			pos
-			// make_sign_texture(split_lines_and_words(Utf8ToAnsi(text)), pos)
-		);
+		spawn_entity(pos, createSignEntityTexture(data));
 	}
 
 	function destruct_sign(pos: Vec3) {
@@ -337,13 +333,25 @@ namespace sign {
 		core.get_meta(pos).set_string("formspec", form);
 	}
 
-	function update_sign(pos: Vec3, fields?: { text: string }): void {
+	function update_sign(
+		pos: Vec3,
+		fields?: { line0: string; line1: string; line2: string; line3: string }
+	): void {
 		const meta: MetaRef = core.get_meta(pos);
-		let text: string = fields?.text || meta.get_string("text");
-		// text = trim_input(text);
 
-		meta.set_string("text", text);
-		set_obj_text(pos, text);
+		let data: string[] = [
+			fields?.line0 || meta.get_string("line0"),
+			fields?.line1 || meta.get_string("line1"),
+			fields?.line2 || meta.get_string("line2"),
+			fields?.line3 || meta.get_string("line3"),
+		];
+
+		meta.set_string("line0", data[0]);
+		meta.set_string("line1", data[1]);
+		meta.set_string("line2", data[2]);
+		meta.set_string("line3", data[3]);
+
+		set_obj_text(pos, data);
 	}
 
 	function receive_fields(
