@@ -812,6 +812,7 @@ namespace sign {
 		const name: string = "crafter_sign:sign_wall";
 
 		const def: NodeDefinition = {}
+		const def: NodeDefinition = {};
 
 		def.description = "Sign";
 		def.node_placement_prediction = "";
@@ -948,7 +949,7 @@ namespace sign {
 
 		core.register_node(":" + no_wall_name + "_onstick", ydef);
 		lbm_restore_nodes.add(no_wall_name + "_onstick");
-	}
+	};
 
 	// Restore signs' text after /clearobjects and the like, the next time
 	// a block is reloaded by the server.
