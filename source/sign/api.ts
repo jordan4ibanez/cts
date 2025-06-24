@@ -1128,10 +1128,6 @@ namespace sign {
 
 		core.register_node(":" + no_wall_name + "_onstick", ydef);
 		lbm_restore_nodes.add(no_wall_name + "_onstick");
-
-		// table.insert(old_widefont_signs, name+"_widefont")
-		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
-		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_onstick")
 	}
 
 	// Restore signs' text after /clearobjects and the like, the next time
