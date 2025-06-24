@@ -837,14 +837,10 @@ namespace sign {
 		def.tiles = [
 			"signs_lib_sign_wall_wooden.png",
 			"signs_lib_sign_wall_wooden_edges.png",
-			// items 3 - 5 are not set, so signs_lib will use its standard pole
-			// mount, hanging, and yard sign stick textures.
+			"signs_lib_blank.png",
+			"signs_lib_blank.png",
+			"signs_lib_blank.png",
 		];
-
-		def.tiles[3] = "signs_lib_blank.png";
-		def.tiles[4] = "signs_lib_blank.png";
-		def.tiles[5] = "signs_lib_blank.png";
-		def.tiles[6] = "signs_lib_blank.png";
 
 		core.register_node(":" + name, def);
 		lbm_restore_nodes.add(name);
