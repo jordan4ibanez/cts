@@ -12,6 +12,7 @@
       "./minetest-api"
     ],
     "strict": true,
+    // "noUnusedLocals": true,
     "outDir": "mods/",
     "rootDir": "source/",
     "sourceMap": false,
