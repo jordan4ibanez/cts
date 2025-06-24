@@ -194,7 +194,7 @@ namespace sign {
 		initial_properties = {
 			collisionbox: [0, 0, 0, 0, 0, 0],
 			visual: EntityVisual.mesh,
-			mesh: "signs_lib_standard_sign_entity_wall.obj",
+			mesh: "crafter_standard_sign_entity_wall.obj",
 			textures: [],
 			static_save: false,
 			backface_culling: false,
@@ -332,7 +332,7 @@ namespace sign {
 			"style_type[field;border=false;font_size=41;textcolor=black;font=mono]" +
 			"style_type[label;font_size=32;font=mono]" +
 			"label[2.25,1;Edit sign message:]" +
-			"image[1.595,2;4.3125,4.25;signs_lib_sign_wall_wooden_inv.png;]" +
+			"image[1.595,2;4.3125,4.25;crafter_sign_wall_wooden_inv.png;]" +
 			"field[1.875,2.545;3.75,0.5;line0;;${line0}]" +
 			"field[1.875,3.075;3.75,0.5;line1;;${line1}]" +
 			"field[1.875,3.6;3.75,0.5;line2;;${line2}]" +
@@ -564,14 +564,14 @@ namespace sign {
 			selection_box: cbox,
 			node_box: cbox,
 			sunlight_propagates: true,
-			inventory_image: "signs_lib_sign_wall_wooden_inv.png",
-			wield_image: "signs_lib_sign_wall_wooden_inv.png",
+			inventory_image: "crafter_sign_wall_wooden_inv.png",
+			wield_image: "crafter_sign_wall_wooden_inv.png",
 			tiles: [
-				"signs_lib_sign_wall_wooden.png",
-				"signs_lib_sign_wall_wooden_edges.png",
-				"signs_lib_blank.png",
-				"signs_lib_blank.png",
-				"signs_lib_blank.png",
+				"crafter_sign_wall_wooden.png",
+				"crafter_sign_wall_wooden_edges.png",
+				"crafter_sign_blank.png",
+				"crafter_sign_blank.png",
+				"crafter_sign_blank.png",
 			],
 		};
 
@@ -641,7 +641,7 @@ namespace sign {
 			throw new Error("Logic error 5");
 		}
 
-		hanging_def.tiles[2] = "signs_lib_hangers.png";
+		hanging_def.tiles[2] = "crafter_sign_hangers.png";
 
 		hanging_def.mesh = "crafter_sign_hanging.obj";
 
