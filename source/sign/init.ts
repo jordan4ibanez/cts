@@ -130,6 +130,76 @@ namespace sign {
 		"^": vector.create2d(8, 8),
 	};
 
+	function createCharComponent(x: number, y: number, char: string): string {
+		if (char.length > 1) {
+			core.log(
+				LogLevel.error,
+				`Malformed char? Unicode? What is this: [${char}]`
+			);
+			char = "?";
+		}
+
+		// Short circuit to question mark.
+		const value: Vec2 = charDictionary[char] || { x: 8, y: 2 };
+
+		// print(char, dump(value));
+
+		return `^(([combine:${size}:${x},${y}=(crafter_sign_font.png\\^[sheet\\:9x9\\:${value.y},${value.x})))`;
+	}
+
+	function createLine(lineText: string, line: number): string {
+		const literalY: number = line * 15 + 5;
+		let literalX: number = 0;
+		let outputString: string = "";
+		let count: number = 0;
+		const charWidth: number = 6;
+
+		// Safety.
+		if (line < 0 || line > 3) {
+			throw new Error("Sign line out of range.");
+		}
+
+		// No need to do anything.
+		if (lineText.length == 0) {
+			return "";
+		}
+
+		for (const char of lineText) {
+			outputString += createCharComponent(literalX, literalY, char);
+
+			literalX += charWidth;
+			count++;
+			if (count >= 16) {
+				core.log(
+					LogLevel.warning,
+					`Missing text filtering. Line: ${line}`
+				);
+				break;
+			}
+		}
+
+		return outputString;
+	}
+
+	const size: string = "96x64";
+
+	function createSignEntityTexture(data: string[]): string {
+		if (data.length != 4) {
+			core.log(
+				LogLevel.error,
+				`Sign api error: data array at length [${data.length}]. Bailing.`
+			);
+		}
+
+		let signTextureData: string = `([combine:${size}^[fill:${size}:0,0:red)`;
+
+		for (const i of $range(0, 3)) {
+			signTextureData += createLine(data[i], i);
+		}
+
+		return signTextureData;
+	}
+
 	// Entity handling.
 	class SignTextEntity extends types.Entity {
 		name: string = "crafter_sign:text";
@@ -145,84 +215,6 @@ namespace sign {
 		internalTimer = 0;
 		set: boolean = false;
 		on_step(delta: number, moveResult: MoveResult | null): void {
-			const size = "96x64";
-
-			function createCharComponent(
-				x: number,
-				y: number,
-				char: string
-			): string {
-				if (char.length > 1) {
-					core.log(
-						LogLevel.error,
-						`Malformed char? Unicode? What is this: [${char}]`
-					);
-					char = "?";
-				}
-
-				// Short circuit to question mark.
-				const value: Vec2 = charDictionary[char] || { x: 8, y: 2 };
-
-				// print(char, dump(value));
-
-				return `^(([combine:${size}:${x},${y}=(crafter_sign_font.png\\^[sheet\\:9x9\\:${value.y},${value.x})))`;
-			}
-
-			function createLine(lineText: string, line: number): string {
-				const literalY: number = line * 15 + 5;
-				let literalX: number = 0;
-				let outputString: string = "";
-				let count: number = 0;
-				const charWidth: number = 6;
-
-				// Safety.
-				if (line < 0 || line > 3) {
-					throw new Error("Sign line out of range.");
-				}
-
-				// No need to do anything.
-				if (lineText.length == 0) {
-					return "";
-				}
-
-				for (const char of lineText) {
-					outputString += createCharComponent(
-						literalX,
-						literalY,
-						char
-					);
-
-					literalX += charWidth;
-					count++;
-					if (count >= 16) {
-						core.log(
-							LogLevel.warning,
-							`Missing text filtering. Line: ${line}`
-						);
-						break;
-					}
-				}
-
-				return outputString;
-			}
-
-			function createSignEntityTexture(data: string[]): string {
-				if (data.length != 4) {
-					core.log(
-						LogLevel.error,
-						`Sign api error: data array at length [${data.length}]. Bailing.`
-					);
-				}
-
-				let signTextureData: string = `([combine:${size}^[fill:${size}:0,0:red)`;
-
-				for (const i of $range(0, 3)) {
-					signTextureData += createLine(data[i], i);
-				}
-
-				return signTextureData;
-			}
-
 			if (!this.set) {
 				this.set = true;
 
