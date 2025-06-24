@@ -93,6 +93,7 @@ if (CREATE_RELEASE) {
 	})();
 
 	const buildFolder: string = "crafter_build/";
+	const releaseOutputFolder: string = "release_build/";
 
 	// Set up the release build folder.
 	console.log(`Creating [${versionInfo}] release.`);
@@ -101,6 +102,13 @@ if (CREATE_RELEASE) {
 	// 	console.log("Deleting old zip.");
 	// 	FS.rmSync(zipFileName);
 	// }
+
+	if (FS.existsSync(releaseOutputFolder)) {
+		console.log("Removing old release output folder.");
+		FS.rmSync(releaseOutputFolder, { recursive: true, force: true });
+	}
+
+	FS.mkdirSync(releaseOutputFolder);
 
 	if (FS.existsSync(buildFolder)) {
 		console.log("Removing old build folder.");
