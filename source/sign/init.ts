@@ -102,6 +102,35 @@ namespace sign {
 		z: vector.create2d(5, 7),
 		// This isn't necessary, but, I'd rather it be complete.
 		" ": vector.create2d(5, 8),
+
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+		0: vector.create2d(0, 0),
+
 	};
 
 	// Entity handling.
