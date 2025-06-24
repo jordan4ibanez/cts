@@ -372,7 +372,7 @@ namespace sign {
 	): [string, number] {
 		let width: number = 0;
 		let maxw: number = 0;
-		print(font_size);
+
 		let font_name: string = "signs_lib_font_" + font_size + "px";
 
 		interface TempData {
