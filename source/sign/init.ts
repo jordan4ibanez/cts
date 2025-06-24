@@ -198,7 +198,7 @@ namespace sign {
 	}
 	utility.registerTSEntity(SignTextEntity);
 
-	function delete_objects(pos: Vec3) {
+	function deleteObjects(pos: Vec3) {
 		const objects: ObjectRef[] = core.get_objects_inside_radius(pos, 0.5);
 
 		for (const [_, v] of ipairs(objects)) {
@@ -312,13 +312,13 @@ namespace sign {
 		}
 	}
 
-	function set_obj_text(pos: Vec3, data: string[]): void {
-		delete_objects(pos);
+	function setSignObjectText(pos: Vec3, data: string[]): void {
+		deleteObjects(pos);
 		spawn_entity(pos, createSignEntityTexture(data));
 	}
 
-	function destruct_sign(pos: Vec3) {
-		delete_objects(pos);
+	function destroySign(pos: Vec3) {
+		deleteObjects(pos);
 	}
 
 	function construct_sign(pos: Vec3) {
@@ -351,7 +351,7 @@ namespace sign {
 		meta.set_string("line2", data[2]);
 		meta.set_string("line3", data[3]);
 
-		set_obj_text(pos, data);
+		setSignObjectText(pos, data);
 	}
 
 	function receive_fields(
@@ -524,7 +524,7 @@ namespace sign {
 			on_construct: construct_sign,
 			after_place_node: after_place_node,
 			on_rightclick: construct_sign,
-			on_destruct: destruct_sign,
+			on_destruct: destroySign,
 			on_receive_fields: receive_fields,
 			paramtype: ParamType1.light,
 			drawtype: Drawtype.mesh,
