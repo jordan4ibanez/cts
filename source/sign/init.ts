@@ -380,7 +380,7 @@ namespace sign {
 				LogLevel.action,
 				`${sender.get_player_name()} wrote: \n[${fields.line0}]\n[${
 					fields.line1
-				}]\n[${fields.line2}]\n[${fields.line3}]\n to sign at (${
+				}]\n[${fields.line2}]\n[${fields.line3}]\nto sign at: (${
 					pos.x
 				}, ${pos.y}, ${pos.z})`
 			);
