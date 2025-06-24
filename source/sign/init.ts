@@ -175,8 +175,14 @@ namespace sign {
 				let count: number = 0;
 				const charWidth: number = 6;
 
+				// Safety.
 				if (line < 0 || line > 3) {
 					throw new Error("Sign line out of range.");
+				}
+
+				// No need to do anything.
+				if (lineText.length == 0) {
+					return "";
 				}
 
 				for (const char of lineText) {
