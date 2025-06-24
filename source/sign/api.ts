@@ -212,12 +212,6 @@ namespace sign {
 		}
 	}
 
-	interface SignNodeDefinition extends NodeDefinition {
-		// entity_info?: {
-		// 	mesh: string;
-		// };
-	}
-
 	export function spawn_entity(pos: Vec3, texture?: string) {
 		const node: NodeTable = core.get_node(pos);
 		const def: SignNodeDefinition | undefined =
