@@ -325,9 +325,9 @@ namespace sign {
 		let form =
 			"formspec_version[9]" +
 			"size[8,8]" +
-			"style_type[field;border=false;font_size=32;textcolor=black]" +
-			"style_type[label;font_size=32]" +
-			"label[2.5,1;Edit sign message:]" +
+			"style_type[field;border=false;font_size=41;textcolor=black;font=mono]" +
+			"style_type[label;font_size=32;font=mono]" +
+			"label[2.25,1;Edit sign message:]" +
 			"image[1.595,2;4.3125,4.25;signs_lib_sign_wall_wooden_inv.png;]" +
 			"field[1.875,2.545;3.75,0.5;line0;;${line0}]" +
 			"field[1.875,3.075;3.75,0.5;line1;;${line1}]" +
