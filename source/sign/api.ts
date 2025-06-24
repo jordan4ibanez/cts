@@ -1031,8 +1031,7 @@ namespace sign {
 		const controls: PlayerControlObject = placer.get_player_control();
 		const signname: string = itemstack.get_name();
 		const no_wall_name: string = string.gsub(signname, "_wall", "")[0];
-		const def: NodeDefinition | undefined =
-			core.registered_items[signname];
+		const def: NodeDefinition | undefined = core.registered_items[signname];
 		if (def == null) {
 			core.log(
 				LogLevel.error,
@@ -1107,12 +1106,6 @@ namespace sign {
 		) {
 			core.swap_node(pos, { name: signname, param2: 4 });
 		}
-
-		// if (locked) {
-		// 	local meta = core.get_meta(pos)
-		// 	meta:set_string("owner", playername)
-		// 	meta:set_string("infotext", S("Locked sign, owned by @1\n", playername))
-		// }
 	}
 
 	// This seems to be using the decorator pattern.
