@@ -150,7 +150,7 @@ if (CREATE_RELEASE) {
 	zip.generateAsync({ type: "blob" }).then((content: Blob) => {
 		content.arrayBuffer().then((data: ArrayBuffer) => {
 			FS.writeFileSync(
-				`crafter_release_${versionInfo}.zip`,
+				`release_build/crafter_release_${versionInfo}.zip`,
 				new DataView(data)
 			);
 		});
