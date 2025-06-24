@@ -185,7 +185,7 @@ namespace sign {
 		if (node.name.endsWith("_wall")) {
 			const newYaw: number | undefined = onWallYaw[node.param2];
 			if (newYaw == null) {
-				throw new Error("onstick yaw error.");
+				throw new Error("wall yaw error.");
 			}
 			yaw = newYaw;
 			obj.set_properties({
