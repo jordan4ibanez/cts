@@ -212,35 +212,7 @@ namespace sign {
 					textures: [signTextureData],
 				});
 			}
-			// print(this.object.get_properties().mesh);
-			// print("hi");
-			// this.object.set_yaw(0);
-			// print(this.object.get_properties().mesh);
-			// const pos: Vec3 = this.object.get_pos();
-			// this.internalTimer += delta;
-			// if (this.internalTimer > 1.0) {
-			// 	this.internalTimer = 0;
-			// 	this.object.set_yaw(this.object.get_yaw() + math.pi / 2);
-			// }
-			// core.add_particle({
-			// 	pos: pos,
-			// 	velocity: vector.create3d(0, 0, 0),
-			// 	acceleration: vector.create3d(0, 10, 0),
-			// 	expirationtime: 5 * 3,
-			// 	size: 3,
-			// 	collisiondetection: false,
-			// 	vertical: true,
-			// 	texture: "torch_animated.png",
-			// 	animation: {
-			// 		type: TileAnimationType.vertical_frames,
-			// 		aspect_w: 16,
-			// 		// Width of a frame in pixels
-			// 		aspect_h: 16,
-			// 		// Height of a frame in pixels
-			// 		length: 0.2,
-			// 		// Full loop length
-			// 	},
-			// });
+
 		}
 	}
 	utility.registerTSEntity(SignTextEntity);
