@@ -808,8 +808,10 @@ namespace sign {
 	}
 
 	// This seems to be using the decorator pattern.
-	export function register_sign(name: string, def: NodeDefinition) {
-		name += "_wall";
+	export function register_sign() {
+		const name: string = "crafter_sign:sign_wall";
+
+		const def: NodeDefinition = {}
 
 		def.description = "Sign";
 		def.node_placement_prediction = "";
