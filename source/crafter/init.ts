@@ -1,4 +1,6 @@
 namespace crafter {
+	export const version: string = "0.0.8a";
+
 	const path: string | null = core.get_modpath("crafter");
 	if (!path) {
 		throw new Error("crafter doesn't exist!?");
