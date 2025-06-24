@@ -1,14 +1,12 @@
 namespace sign {
 	const lbm_restore_nodes = new Set<string>();
-	const old_fenceposts = {};
-	const old_fenceposts_replacement_signs = {};
-	const old_fenceposts_with_signs = {};
+
 	// Settings used for a standard wood or steel wall sign.
 	const standard_lines: number = 6;
 	const standard_hscale: number = 1;
 	const standard_vscale: number = 1;
 	const standard_lspace: number = 1;
-	const standard_fsize: number = 15;
+
 	const standard_xoffs: number = 4;
 	const standard_yoffs: number = 0;
 	const standard_cpl: number = 35;
