@@ -175,6 +175,10 @@ namespace sign {
 				let count: number = 0;
 				const charWidth: number = 6;
 
+				if (line < 0 || line > 3) {
+					throw new Error("Sign line out of range.");
+				}
+
 				for (const char of lineText) {
 					outputString += createCharComponent(
 						literalX,
