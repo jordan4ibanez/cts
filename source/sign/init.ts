@@ -11,8 +11,11 @@ namespace sign {
 			type: HudElementType.image,
 			// position: { x: -8, y: -8 },
 			alignment: { x: 1, y: 1 },
-			scale: { x: 16, y: 16 },
-			text: "dirt.png",
+			scale: { x: 4, y: 4 },
+			text:
+				`([combine:${size}^[fill:${size}:0,0:red)` +
+				`^(([combine:${size}:0,0=(crafter_sign_font.png\\^[sheet\\:9x9\\:0,0)))` +
+				`^(([combine:${size}:6,0=(crafter_sign_font.png\\^[sheet\\:9x9\\:1,0)))`,
 			z_index: 1000,
 		});
 	});
