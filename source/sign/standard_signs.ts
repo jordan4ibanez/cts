@@ -9,11 +9,6 @@ namespace sign {
 			// items 3 - 5 are not set, so signs_lib will use its standard pole
 			// mount, hanging, and yard sign stick textures.
 		],
-		// allow_hanging = true,
-		// allow_widefont = true,
-		// allow_onpole = true,
-		// allow_onpole_horizontal = true,
-		// allow_yard = true
 	});
 
 	core.register_craft({
