@@ -351,6 +351,8 @@ namespace sign {
 			fields?.line3 || meta.get_string("line3"),
 		];
 
+		assert(data.length == 4, "I have no idea how this happened.");
+
 		meta.set_string("line0", data[0]);
 		meta.set_string("line1", data[1]);
 		meta.set_string("line2", data[2]);
