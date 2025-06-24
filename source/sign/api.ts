@@ -811,7 +811,6 @@ namespace sign {
 	export function register_sign() {
 		const name: string = "crafter_sign:sign_wall";
 
-		const def: NodeDefinition = {}
 		const def: NodeDefinition = {};
 
 		def.description = "Sign";
