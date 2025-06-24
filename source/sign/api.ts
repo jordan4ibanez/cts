@@ -884,8 +884,8 @@ namespace sign {
 		// }
 	}
 
-	// // make selection boxes
-	// // sizex/sizey specified in inches because that's what MUTCD uses.
+	// Make selection boxes.
+	// sizex/sizey specified in inches because that's what MUTCD uses.
 	function make_selection_boxes(
 		sizex: number,
 		sizey: number,
