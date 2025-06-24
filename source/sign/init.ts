@@ -27,15 +27,14 @@ namespace sign {
 		if (data == null) {
 			throw new Error("Logic error.");
 		}
-		return table.copy(data as any as LuaTable) as any as Dictionary<
-			string,
-			number
-		>;
-	})();
+		const finalData = table.copy(
+			data as any as LuaTable
+		) as any as Dictionary<string, number>;
 
-	standard_wood_groups.sign = 1;
-	// todo: Why?
-	standard_wood_groups.attached_node = 0;
+		finalData.sign = 1;
+		finalData.attached_node = 1;
+		return finalData;
+	})();
 
 	const standard_wood_sign_sounds = (() => {
 		const data = core.registered_nodes["crafter:wood"]?.sounds;
