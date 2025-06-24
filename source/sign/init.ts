@@ -153,7 +153,7 @@ namespace sign {
 
 			literalX += charWidth;
 			count++;
-			if (count >= 16) {
+			if (count > 16) {
 				core.log(
 					LogLevel.warning,
 					`Missing text filtering. Line: ${line}`
