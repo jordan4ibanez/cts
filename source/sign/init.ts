@@ -353,6 +353,13 @@ namespace sign {
 
 		assert(data.length == 4, "I have no idea how this happened.");
 
+		for (const i of $range(0, 3)) {
+			const thisLine: string = data[i];
+			if (thisLine.length > 16) {
+				data[i] = thisLine.substring(0, 16);
+			}
+		}
+
 		meta.set_string("line0", data[0]);
 		meta.set_string("line1", data[1]);
 		meta.set_string("line2", data[2]);
