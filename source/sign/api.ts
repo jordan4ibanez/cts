@@ -1,24 +1,24 @@
 namespace sign {
-	export const lbm_restore_nodes = new Set<string>();
-	export const old_fenceposts = {};
-	export const old_fenceposts_replacement_signs = {};
-	export const old_fenceposts_with_signs = {};
+	const lbm_restore_nodes = new Set<string>();
+	const old_fenceposts = {};
+	const old_fenceposts_replacement_signs = {};
+	const old_fenceposts_with_signs = {};
 	// Settings used for a standard wood or steel wall sign.
-	export const standard_lines: number = 6;
-	export const standard_hscale: number = 1;
-	export const standard_vscale: number = 1;
-	export const standard_lspace: number = 1;
-	export const standard_fsize: number = 15;
-	export const standard_xoffs: number = 4;
-	export const standard_yoffs: number = 0;
-	export const standard_cpl: number = 35;
+	const standard_lines: number = 6;
+	const standard_hscale: number = 1;
+	const standard_vscale: number = 1;
+	const standard_lspace: number = 1;
+	const standard_fsize: number = 15;
+	const standard_xoffs: number = 4;
+	const standard_yoffs: number = 0;
+	const standard_cpl: number = 35;
 
 	const path: string | null = core.get_modpath("crafter_textures");
 	if (path == null) {
 		throw new Error("How did this happen?");
 	}
 
-	export const standard_wood_groups: Dictionary<string, number> = (() => {
+	const standard_wood_groups: Dictionary<string, number> = (() => {
 		const data: Dictionary<string, number> | undefined =
 			core.registered_items["crafter:wood"]?.groups;
 		if (data == null) {
@@ -34,7 +34,7 @@ namespace sign {
 	// todo: Why?
 	standard_wood_groups.attached_node = 0;
 
-	export const standard_wood_sign_sounds = (() => {
+	const standard_wood_sign_sounds = (() => {
 		const data = core.registered_nodes["crafter:wood"]?.sounds;
 		if (data == null) {
 			throw new Error("Logic error.");
@@ -45,54 +45,54 @@ namespace sign {
 		>;
 	})();
 
-	export const default_text_scale: Vec2 = { x: 10, y: 10 };
+	const default_text_scale: Vec2 = { x: 10, y: 10 };
 
-	export const block_list = new Set<number>();
+	const block_list = new Set<number>();
 	let totalblocks: number = 0;
 
-	export const wallmounted_yaw: Dictionary<number, number> = {
+	const wallmounted_yaw: Dictionary<number, number> = {
 		0: math.pi,
 		1: math.pi / 2,
 		2: 0,
 		3: math.pi / -2,
 	};
 
-	export const fdir_to_back: number[][] = [
+	const fdir_to_back: number[][] = [
 		[0, -1],
 		[-1, 0],
 		[0, 1],
 		[1, 0],
 	];
 
-	export const fdir_flip_to_back: Dictionary<number, number[]> = {
+	const fdir_flip_to_back: Dictionary<number, number[]> = {
 		[0]: [0, 2],
 		[1]: [2, 0],
 		[2]: [0, -2],
 		[3]: [-2, 0],
 	};
 
-	export const wall_fdir_flip_to_back: Dictionary<number, number[]> = {
+	const wall_fdir_flip_to_back: Dictionary<number, number[]> = {
 		[2]: [2, 0],
 		[3]: [-2, 0],
 		[4]: [0, 2],
 		[5]: [0, -2],
 	};
 
-	export const fdir_to_back_left: Dictionary<number, number[]> = {
+	const fdir_to_back_left: Dictionary<number, number[]> = {
 		[0]: [-1, 1],
 		[1]: [1, 1],
 		[2]: [1, -1],
 		[3]: [-1, -1],
 	};
 
-	export const wall_fdir_to_back_left: Dictionary<number, number[]> = {
+	const wall_fdir_to_back_left: Dictionary<number, number[]> = {
 		[2]: [1, 1],
 		[3]: [-1, -1],
 		[4]: [-1, 1],
 		[5]: [1, -1],
 	};
 
-	export const rotate_walldir: Dictionary<number, number> = {
+	const rotate_walldir: Dictionary<number, number> = {
 		[0]: 4,
 		[1]: 0,
 		[2]: 5,
@@ -101,7 +101,7 @@ namespace sign {
 		[5]: 3,
 	};
 
-	export const rotate_walldir_simple: Dictionary<number, number> = {
+	const rotate_walldir_simple: Dictionary<number, number> = {
 		[0]: 4,
 		[1]: 4,
 		[2]: 5,
@@ -109,7 +109,7 @@ namespace sign {
 		[4]: 2,
 		[5]: 3,
 	};
-	export const rotate_facedir: Dictionary<number, number> = {
+	const rotate_facedir: Dictionary<number, number> = {
 		[0]: 1,
 		[1]: 2,
 		[2]: 3,
@@ -118,7 +118,7 @@ namespace sign {
 		[5]: 6,
 		[6]: 0,
 	};
-	export const rotate_facedir_simple: Dictionary<number, number> = {
+	const rotate_facedir_simple: Dictionary<number, number> = {
 		[0]: 1,
 		[1]: 2,
 		[2]: 3,
@@ -127,7 +127,7 @@ namespace sign {
 		[5]: 0,
 	};
 
-	export const flip_facedir: Dictionary<number, number> = {
+	const flip_facedir: Dictionary<number, number> = {
 		[0]: 2,
 		[1]: 3,
 		[2]: 0,
@@ -137,7 +137,7 @@ namespace sign {
 		[6]: 4,
 	};
 
-	export const flip_walldir: Dictionary<number, number> = {
+	const flip_walldir: Dictionary<number, number> = {
 		[0]: 1,
 		[1]: 0,
 		[2]: 3,
@@ -195,7 +195,7 @@ namespace sign {
 	}
 	utility.registerTSEntity(SignTextEntity);
 
-	export function delete_objects(pos: Vec3) {
+	function delete_objects(pos: Vec3) {
 		const objects: ObjectRef[] = core.get_objects_inside_radius(pos, 0.5);
 
 		for (const [_, v] of ipairs(objects)) {
@@ -212,7 +212,7 @@ namespace sign {
 		}
 	}
 
-	export function spawn_entity(pos: Vec3, texture?: string) {
+	function spawn_entity(pos: Vec3, texture?: string) {
 		const node: NodeTable = core.get_node(pos);
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
@@ -294,7 +294,7 @@ namespace sign {
 		}
 	}
 
-	export function set_obj_text(pos: Vec3, text: string): void {
+	function set_obj_text(pos: Vec3, text: string): void {
 		delete_objects(pos);
 		spawn_entity(
 			pos,
@@ -303,7 +303,7 @@ namespace sign {
 	}
 
 	// Rotation.
-	export function handle_rotation(
+	function handle_rotation(
 		pos: Vec3,
 		node: NodeTable,
 		user: ObjectRef
