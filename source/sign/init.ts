@@ -57,8 +57,21 @@ namespace sign {
 			static_save: false,
 			backface_culling: false,
 		};
+
 		internalTimer = 0;
+		set: boolean = false;
 		on_step(delta: number, moveResult: MoveResult | null): void {
+			const size = "96x64";
+
+			function create(x: number, y: number): string {
+				return `^(([combine:${size}:${x},${y}=(crafter_sign_font.png\\^[sheet\\:9x9\\:0,0)))`;
+			}
+
+			this.object.set_properties({
+				textures: [
+					`([combine:${size}^[fill:${size}:0,0:red)` + create(0, 0),
+				],
+			});
 			// print(this.object.get_properties().mesh);
 			// print("hi");
 			// this.object.set_yaw(0);
