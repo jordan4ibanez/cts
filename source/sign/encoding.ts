@@ -164,11 +164,9 @@ namespace sign {
 				a = a - 1;
 				j = b;
 			} else if (a == 1) {
-				if (utf8_decode[j] != null) {
-					if (utf8_decode[j]![b] != null) {
-						a = a - 1;
-						r = r + utf8_decode[j]![b];
-					}
+				if (utf8_decode[j] != null && utf8_decode[j]![b] != null) {
+					a = a - 1;
+					r = r + utf8_decode[j]![b];
 				}
 			} else if (b == 226) {
 				a = 2;
