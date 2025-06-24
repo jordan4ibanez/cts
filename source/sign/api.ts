@@ -767,23 +767,6 @@ namespace sign {
 					ty + yo,
 					tx + xo,
 				],
-				//? These two are unused.
-				wall_top: [
-					-tx - xo,
-					0.5 + zo,
-					-ty + yo,
-					tx - xo,
-					0.4375 + zo,
-					ty + yo,
-				],
-				wall_bottom: [
-					-tx - xo,
-					-0.5 + zo,
-					-ty + yo,
-					tx - xo,
-					-0.4375 + zo,
-					ty + yo,
-				],
 			};
 		} else {
 			return {
