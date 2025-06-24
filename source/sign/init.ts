@@ -369,10 +369,18 @@ namespace sign {
 			return;
 		}
 
-		if (fields.text != null && fields.ok != null) {
+		if (
+			fields.line0 != null &&
+			fields.line1 != null &&
+			fields.line2 != null &&
+			fields.line3 != null &&
+			fields.ok != null
+		) {
 			core.log(
 				LogLevel.action,
-				`${sender.get_player_name()} wrote ${fields.text} to sign at (${
+				`${sender.get_player_name()} wrote: \n[${fields.line0}]\n[${
+					fields.line1
+				}]\n[${fields.line2}]\n[${fields.line3}]\n to sign at (${
 					pos.x
 				}, ${pos.y}, ${pos.z})`
 			);
