@@ -1,6 +1,4 @@
 namespace sign {
-	utility.loadFiles(["encoding"]);
-
 	const lbm_restore_nodes = new Set<string>();
 
 	// todo: Sign on stick will be an invisible node with an entity.
