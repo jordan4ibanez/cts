@@ -263,7 +263,7 @@ namespace sign {
 
 		if (node.name.endsWith("_yard")) {
 			obj.set_properties({
-				mesh: "signs_lib_standard_sign_entity_onpole.obj",
+				mesh: "crafter_sign_text_entity_onstick.obj",
 			});
 		}
 
