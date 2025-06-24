@@ -73,6 +73,7 @@ namespace sign {
 		X: vector.create2d(2, 5),
 		Y: vector.create2d(2, 6),
 		Z: vector.create2d(2, 7),
+		"-": vector.create2d(2, 8),
 	};
 
 	// Entity handling.
