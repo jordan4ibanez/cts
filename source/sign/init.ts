@@ -175,7 +175,8 @@ namespace sign {
 			);
 		}
 
-		let signTextureData: string = `([combine:${size}^[fill:${size}:0,0:red)`;
+		// debug: `([combine:${size}^[fill:${size}:0,0:red)`
+		let signTextureData: string = `([combine:${size})`;
 
 		for (const i of $range(0, 3)) {
 			signTextureData += createLine(data[i], i);
