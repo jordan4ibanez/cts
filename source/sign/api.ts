@@ -261,10 +261,13 @@ namespace sign {
 
 		let yaw: number = wallmounted_yaw[node.param2 || 0] || 0;
 
-		if (
-			string.find(node.name, "onpole")[0] == null &&
-			string.find(node.name, "hanging")[0] == null
-		) {
+		if (node.name.endsWith("_yard")) {
+			obj.set_properties({
+				mesh: "signs_lib_standard_sign_entity_onpole.obj",
+			});
+		}
+
+		if (node.name.endsWith("hanging")) {
 			const rot90: number = math.pi / 2;
 			if (def.paramtype2 == ParamType2.wallmounted) {
 				// On floor.
