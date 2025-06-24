@@ -452,7 +452,7 @@ namespace sign {
 				}
 				i = i + 1;
 			}
-			width = width + (cwidth_tab[" "] || 0) + 1;
+			width = width + (cwidth_tab[" "] || 0);
 			maxw = math.max(width, maxw);
 			words.push({ chars: chars, w: ch_offs });
 		}
