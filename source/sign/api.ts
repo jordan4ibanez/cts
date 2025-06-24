@@ -261,7 +261,7 @@ namespace sign {
 
 		let yaw: number = wallmounted_yaw[node.param2 || 0] || 0;
 
-		if (node.name.endsWith("_yard")) {
+		if (node.name.endsWith("_onstick")) {
 			obj.set_properties({
 				mesh: "crafter_sign_text_entity_onstick.obj",
 			});
@@ -1044,7 +1044,7 @@ namespace sign {
 				placer.get_look_dir()
 			);
 			core.swap_node(pos, {
-				name: no_wall_name + "_yard",
+				name: no_wall_name + "_onstick",
 				param2: newparam2,
 			});
 		} else if (
@@ -1235,13 +1235,13 @@ namespace sign {
 			""
 		)[0];
 
-		core.register_node(":" + no_wall_name + "_yard", ydef);
-		lbm_restore_nodes.add(no_wall_name + "_yard");
+		core.register_node(":" + no_wall_name + "_onstick", ydef);
+		lbm_restore_nodes.add(no_wall_name + "_onstick");
 
 		// table.insert(old_widefont_signs, name+"_widefont")
 		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
 		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
-		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_yard")
+		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_onstick")
 	}
 
 	// Restore signs' text after /clearobjects and the like, the next time
