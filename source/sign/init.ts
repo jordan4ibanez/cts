@@ -610,12 +610,13 @@ namespace sign {
 
 	function construct_sign(pos: Vec3) {
 		let form =
-			"size[6,4]" +
-			"textarea[0,-0.3;6.5,3;text;;${text}]" +
-			"background[-0.5,-0.5;7,5;signs_lib_sign_bg.jpg]" +
-			"button_exit[2,3.4;2,1;ok;" +
-			"Write" +
-			"]";
+			"formspec_version[9]" +
+			"size[8,8]" +
+			"style_type[field;noclip=false;font_size=32]" +
+			"image[1.5,1.5;5,5;signs_lib_sign_wall_wooden_inv.png;]" +
+			"field[1.875,3;4.25,0.5;text;;${text}]" +
+			"bgcolor[;both;]" +
+			"button_exit[2,3.4;3,0.5;ok;Done]";
 		core.get_meta(pos).set_string("formspec", form);
 	}
 
