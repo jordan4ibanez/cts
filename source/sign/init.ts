@@ -5,6 +5,8 @@ namespace sign {
 	// todo: The entity will rotate in 16 different positions.
 
 	core.register_on_joinplayer((player: ObjectRef) => {
+		const size = "128x32";
+
 		player.hud_add({
 			type: HudElementType.image,
 			// position: { x: -8, y: -8 },
