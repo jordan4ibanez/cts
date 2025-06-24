@@ -806,32 +806,6 @@ namespace sign {
 		return false;
 	}
 
-	function check_for_horizontal_pole(
-		pos: Vec3,
-		pointed_thing: PointedThing
-	): boolean {
-		const ppos: Vec3 | null =
-			core.get_pointed_thing_position(pointed_thing);
-		if (ppos == null) {
-			return false;
-		}
-		const pnode: NodeTable = core.get_node(ppos);
-		const pdef: NodeDefinition | undefined =
-			core.registered_items[pnode.name];
-
-		if (pdef == null) {
-			return false;
-		}
-		if (
-			check_for_ceiling(pointed_thing) ||
-			check_for_floor(pointed_thing)
-		) {
-			return false;
-		}
-
-		return false;
-	}
-
 	function check_for_ceiling(pointed_thing: PointedThing): boolean {
 		if (pointed_thing.above == null || pointed_thing.under == null) {
 			return false;
