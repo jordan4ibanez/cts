@@ -183,10 +183,13 @@ namespace sign {
 		let yaw: number = 0;
 
 		if (node.name.endsWith("_wall")) {
-			// 2 4 5 3
-			print(node.param2);
+			const newYaw: number | undefined = onWallYaw[node.param2];
+			if (newYaw == null) {
+				throw new Error("onstick yaw error.");
+			}
+			yaw = newYaw;
 			obj.set_properties({
-				mesh: "crafter_sign_text_entity_onstick.obj",
+				mesh: "crafter_sign_text_entity_wall.obj",
 			});
 		} else if (node.name.endsWith("_onstick")) {
 			const newYaw: number | undefined = onStickYaw[node.param2];
