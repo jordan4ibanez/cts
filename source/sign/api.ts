@@ -204,18 +204,6 @@ namespace sign {
 			throw new Error(`Undefined sign: ${node.name}`);
 		}
 
-		if (node.name.endsWith("hanging")) {
-			if (def.paramtype2 == ParamType2.wallmounted) {
-				// On floor.
-				if (node.param2 == 1) {
-					yaw = 0;
-					// On ceiling.
-				} else if (node.param2 == 0) {
-					yaw = math.pi;
-				}
-			}
-		}
-
 		obj.set_yaw(yaw);
 
 		if (texture == null) {
