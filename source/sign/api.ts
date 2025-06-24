@@ -182,7 +182,7 @@ namespace sign {
 
 		let yaw: number = 0;
 
-		if (node.name.endsWith("sign")) {
+		if (node.name.endsWith("_wall")) {
 			// 2 4 5 3
 			print(node.param2);
 			obj.set_properties({
