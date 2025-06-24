@@ -833,9 +833,9 @@ namespace sign {
 		if (fields.text != null && fields.ok != null) {
 			core.log(
 				LogLevel.action,
-				`${sender.get_player_name()} wrote ${fields.text} to sign at ${
+				`${sender.get_player_name()} wrote ${fields.text} to sign at (${
 					pos.x
-				} ${pos.y} ${pos.z}`
+				}, ${pos.y}, ${pos.z})`
 			);
 			update_sign(pos, fields);
 		}
