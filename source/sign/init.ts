@@ -457,7 +457,7 @@ namespace sign {
 			words.push({ chars: chars, w: ch_offs });
 		}
 
-		// Okay, we actually build the "line texture" here.
+		//? Okay, we actually build the "line texture" here.
 		const texture: string[] = [];
 		const start_xpos: number =
 			math.floor((line_width - maxw) / 2) + standard_xoffs;
