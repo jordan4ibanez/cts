@@ -2,6 +2,8 @@ import * as FS from "node:fs";
 import * as Exec from "node:child_process";
 import Zip from "jszip";
 
+
+
 //? Check if the project should be fully rebuilt.
 const [REBUILD_CODE, COPY_MEDIA, CREATE_RELEASE] = (() => {
     let rebuild: boolean = false;
@@ -64,6 +66,29 @@ FS.readdirSync("source/", { recursive: false }).forEach((item: string | Buffer) 
 //? Create a release zip file for this to be deployed on github.
 //~ This is the most time consuming option.
 if (CREATE_RELEASE) {
+
+
+    function getVersionInfo(): string {
+	let versionInfo: string | null = null;
+
+	for (const line of FS.readFileSync(
+		"./source/crafter/init.ts",
+		"utf-8"
+	).split("\n")) {
+		if (line.trim().startsWith("export const version: string = ")) {
+			console.log("HIT");
+			const foundData: string[] = line.split(" ");
+
+			versionInfo = foundData[foundData.length - 1].slice(0, -1);
+			break;
+		}
+	}
+	if (versionInfo === null) {
+		throw new Error("Could not find version info!");
+	}
+	return versionInfo;
+}
+
     const releaseFolder: string = "crafter/";
     // Set up the release build folder.
     console.log("Creating release.");
