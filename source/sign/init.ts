@@ -6,6 +6,7 @@ namespace sign {
 	// todo: add other characters, like <> and whatnot.
 	// fixme: the game filters out \, so that needs to be fixed.
 	// fixme: hanging signs instantly fall off.
+	// fixme: The text does not scale with the window and I don't think I can fix that. :(
 
 	const default_text_scale: Vec2 = { x: 10, y: 10 };
 
