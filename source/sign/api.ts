@@ -807,25 +807,7 @@ namespace sign {
 			core.registered_items[node.name];
 		const meta: MetaRef = core.get_meta(pos);
 
-		// 	if def.allow_widefont then
-		// let state: string = "off";
-		// if (meta.get_int("widefont") == 1) {
-		// 	state = "on";
-		// }
-		// form =
-		// 	form +
-		// 	"label[1,3.4;Use wide font]" +
-		// 	"image_button[1.1,3.7;1,0.6;signs_lib_switch_" +
-		// 	state +
-		// 	".png;" +
-		// 	state +
-		// 	";;;false;signs_lib_switch_interm.png]" +
-		// 	"button_exit[3,3.4;2,1;ok;" +
-		// 	"Write" +
-		// 	"]";
-		// 	else
 		form = form + "button_exit[2,3.4;2,1;ok;" + "Write" + "]";
-		// 	end
 
 		meta.set_string("formspec", form);
 	}
