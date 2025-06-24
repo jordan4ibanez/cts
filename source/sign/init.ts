@@ -406,7 +406,6 @@ namespace sign {
 	function make_selection_boxes(
 		sizex: number,
 		sizey: number,
-		foo?: number | null | boolean,
 		xoffs?: number,
 		yoffs?: number,
 		zoffs?: number,
@@ -633,7 +632,7 @@ namespace sign {
 
 		hanging_def.use_texture_alpha = TextureAlpha.clip;
 		hanging_def.paramtype2 = ParamType2.facedir;
-		const hcbox = make_selection_boxes(35, 32, null, 0, 3, -18.5, true);
+		const hcbox = make_selection_boxes(35, 32, 0, 3, -18.5, true);
 		hanging_def.selection_box = hcbox;
 		hanging_def.node_box = hcbox;
 
@@ -652,15 +651,7 @@ namespace sign {
 			def as any as LuaTable
 		) as any as NodeDefinition;
 		ydef.paramtype2 = ParamType2.facedir;
-		const ycbox = make_selection_boxes(
-			35,
-			34.5,
-			false,
-			0,
-			-1.25,
-			-19.69,
-			true
-		);
+		const ycbox = make_selection_boxes(35, 34.5, 0, -1.25, -19.69, true);
 		ydef.selection_box = ycbox;
 		if (ydef.tiles == null) {
 			throw new Error("Logic error 6");
