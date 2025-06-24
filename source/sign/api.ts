@@ -1148,21 +1148,6 @@ namespace sign {
 		});
 	});
 
-	// Convert widefont sign nodes to use one base node with meta flag to select wide mode.
-	// core.register_lbm({
-	// 	nodenames = signs_lib.old_widefont_signs,
-	// 	name = "crafter_sign:convert_widefont_signs",
-	// 	label = "Convert widefont sign nodes",
-	// 	run_at_every_load = false,
-	// 	action = function(pos, node)
-	// 		local basename = string.gsub(node.name, "_widefont", "")
-	// 		core.swap_node(pos, {name = basename, param2 = node.param2})
-	// 		local meta = core.get_meta(pos)
-	// 		meta:set_int("widefont", 1)
-	// 		signs_lib.update_sign(pos)
-	// 	end
-	// })
-
 	// Maintain a list of currently-loaded blocks.
 	core.register_lbm({
 		nodenames: ["group:sign"],
