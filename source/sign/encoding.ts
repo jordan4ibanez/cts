@@ -214,28 +214,6 @@ namespace sign {
 		[124]: "|",
 	};
 
-	export function AnsiToUtf8(s: string): string {
-		let r: string = "";
-		for (const i of $range(1, s.length || 0)) {
-			const b: number = string.byte(s, i);
-
-			if (b < 128) {
-				r += string.char(b);
-			} else {
-				if (b > 239) {
-					r = r + st(209) + string.char(b - 112);
-				} else if (b > 191) {
-					r = r + st(208) + string.char(b - 48);
-				} else if (ansi_decode[b] != null) {
-					r = r + ansi_decode[b];
-				} else {
-					r = r + "_";
-				}
-			}
-		}
-		return r;
-	}
-
 	export function Utf8ToAnsi(s: string): string {
 		let a: number = 0;
 		let j: number = 0;
