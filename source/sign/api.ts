@@ -123,6 +123,11 @@ namespace sign {
 
 	function spawn_entity(pos: Vec3, texture?: string) {
 		const node: NodeTable = core.get_node(pos);
+
+		if (node.param2 == null) {
+			throw new Error("This node should have param2 data.");
+		}
+
 		const def: NodeDefinition | undefined =
 			core.registered_items[node.name];
 
