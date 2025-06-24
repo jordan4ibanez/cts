@@ -1033,11 +1033,7 @@ namespace sign {
 		hanging_def.tiles[5] = "signs_lib_blank.png";
 		hanging_def.tiles[6] = "signs_lib_blank.png";
 
-		hanging_def.mesh = string.gsub(
-			string.gsub(hanging_def.mesh || "", "wall.obj$", "hanging.obj")[0],
-			"_facedir",
-			""
-		)[0];
+		hanging_def.mesh = "crafter_sign_hanging.obj";
 
 		core.register_node(":" + no_wall_name + "_hanging", hanging_def);
 		lbm_restore_nodes.add(no_wall_name + "_hanging");
