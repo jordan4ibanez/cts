@@ -15,11 +15,6 @@ namespace sign {
 	const standard_yoffs: number = 0;
 	const standard_cpl: number = 35;
 
-	const path: string | null = core.get_modpath("crafter_textures");
-	if (path == null) {
-		throw new Error("How did this happen?");
-	}
-
 	const default_text_scale: Vec2 = { x: 10, y: 10 };
 
 	const block_list = new Set<number>();
@@ -220,6 +215,12 @@ namespace sign {
 	}
 
 	// CONSTANTS
+
+	const path: string | null = core.get_modpath("crafter_textures");
+	if (path == null) {
+		throw new Error("How did this happen?");
+	}
+
 	// Path to the textures.
 	const TP = path + "/textures/sign";
 	// Font file formatter.
@@ -237,9 +238,6 @@ namespace sign {
 		0x1a,
 		0x0a
 	);
-	// Check if a file does exist.
-	// To avoid reopening file after checking again
-	// pass TRUE as second argument.
 
 	function getFile(name: string, mode: string): LuaFile | undefined {
 		const [f] = io.open(name, mode);
