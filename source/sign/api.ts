@@ -845,7 +845,7 @@ namespace sign {
 			],
 		};
 
-		core.register_node(":" + name, def);
+		core.register_node(name, def);
 		lbm_restore_nodes.add(name);
 
 		const no_wall_name = name.replaceAll("_wall", "");
@@ -915,7 +915,7 @@ namespace sign {
 
 		hanging_def.mesh = "crafter_sign_hanging.obj";
 
-		core.register_node(":" + no_wall_name + "_hanging", hanging_def);
+		core.register_node(no_wall_name + "_hanging", hanging_def);
 		lbm_restore_nodes.add(no_wall_name + "_hanging");
 
 		const ydef: NodeDefinition = table.copy(
@@ -945,7 +945,7 @@ namespace sign {
 			""
 		)[0];
 
-		core.register_node(":" + no_wall_name + "_onstick", ydef);
+		core.register_node(no_wall_name + "_onstick", ydef);
 		lbm_restore_nodes.add(no_wall_name + "_onstick");
 	})();
 
