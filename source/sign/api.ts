@@ -254,8 +254,8 @@ namespace sign {
 		let pitch: number = 0;
 
 		if (
-			string.find(node.name, "onpole") == null &&
-			string.find(node.name, "hanging") == null
+			string.find(node.name, "onpole")[0] == null &&
+			string.find(node.name, "hanging")[0] == null
 		) {
 			const rot90: number = math.pi / 2;
 			if (def.paramtype2 == ParamType2.wallmounted) {
