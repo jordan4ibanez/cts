@@ -221,6 +221,15 @@ namespace sign {
 			return;
 		}
 
+		// Ensure the sign is part of this mod.
+		if (!node.name.startsWith("crafter_sign:")) {
+			core.log(
+				LogLevel.error,
+				`A sign was created at an incorrect node: [${node.name}]. Bailing out.`
+			);
+			return;
+		}
+
 		const text_scale: Vec2 = default_text_scale;
 
 		const objects: ObjectRef[] = core.get_objects_inside_radius(pos, 0.5);
