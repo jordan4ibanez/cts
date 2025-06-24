@@ -318,53 +318,7 @@ namespace sign {
 			return false;
 		}
 
-		if (string.match(node.name, "_onpole") != null) {
-			if (string.match(node.name, "_horiz") == null) {
-				newparam2 = rotate_walldir_simple[node.param2 || 0] || 4;
-				let t: Dictionary<number, number[]> = wall_fdir_to_back_left;
-
-				if (def.paramtype2 != ParamType2.wallmounted) {
-					newparam2 = rotate_facedir_simple[node.param2 || 0] || 0;
-					t = fdir_to_back_left;
-				}
-
-				const newData: number[] = t[node.param2 || 0] || [0, 0];
-				tpos = vector.create3d({
-					x: pos.x + (newData[0] || 0),
-					y: pos.y,
-					z: pos.z + newData[1],
-				});
-			} else {
-				// Flip the sign to the other side of the horizontal pole.
-				newparam2 = flip_walldir[node.param2 || 0] || 4;
-				let t: Dictionary<number, number[]> = wall_fdir_flip_to_back;
-				if (def.paramtype2 != ParamType2.wallmounted) {
-					newparam2 = flip_facedir[node.param2 || 0] || 0;
-					t = fdir_flip_to_back;
-				}
-
-				const newData: number[] = t[node.param2 || 0] || [0, 0];
-
-				tpos = vector.create3d({
-					x: pos.x + newData[0],
-					y: pos.y,
-					z: pos.z + newData[1],
-				});
-			}
-
-			const node2: NodeTable = core.get_node(tpos);
-			const def2: NodeDefinition | undefined =
-				core.registered_items[node2.name];
-			// Undefined, or not buildable_to.
-			if (def2 == null || !def2.buildable_to) {
-				return true;
-			}
-			core.set_node(tpos, { name: node.name, param2: newparam2 });
-			core.get_meta(tpos).from_table(core.get_meta(pos).to_table());
-
-			core.remove_node(pos);
-			delete_objects(pos);
-		} else if (
+		if (
 			string.match(node.name, "_hanging") != null ||
 			string.match(node.name, "yard") != null
 		) {
@@ -1004,34 +958,7 @@ namespace sign {
 			return;
 		}
 
-		if (!controls.sneak && check_for_pole(pos, pointed_thing)) {
-			let newparam2: number;
-			const lookdir: Vec3 = core.yaw_to_dir(placer.get_look_horizontal());
-			if (def.paramtype2 == ParamType2.wallmounted) {
-				newparam2 = core.dir_to_wallmounted(lookdir);
-			} else {
-				newparam2 = core.dir_to_facedir(lookdir);
-			}
-			core.swap_node(pos, {
-				name: no_wall_name + "_onpole",
-				param2: newparam2,
-			});
-		} else if (
-			!controls.sneak &&
-			check_for_horizontal_pole(pos, pointed_thing)
-		) {
-			let newparam2: number;
-			const lookdir: Vec3 = core.yaw_to_dir(placer.get_look_horizontal());
-			if (def.paramtype2 == ParamType2.wallmounted) {
-				newparam2 = core.dir_to_wallmounted(lookdir);
-			} else {
-				newparam2 = core.dir_to_facedir(lookdir);
-			}
-			core.swap_node(pos, {
-				name: no_wall_name + "_onpole_horiz",
-				param2: newparam2,
-			});
-		} else if (!controls.sneak && check_for_ceiling(pointed_thing)) {
+		if (!controls.sneak && check_for_ceiling(pointed_thing)) {
 			const newparam2: number = core.dir_to_facedir(
 				placer.get_look_dir()
 			);
@@ -1203,7 +1130,6 @@ namespace sign {
 		lbm_restore_nodes.add(no_wall_name + "_onstick");
 
 		// table.insert(old_widefont_signs, name+"_widefont")
-		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_onpole")
 		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_hanging")
 		// table.insert(signs_lib.old_widefont_signs, name+"_widefont_onstick")
 	}
