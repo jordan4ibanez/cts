@@ -811,6 +811,7 @@ namespace sign {
 	export function register_sign(name: string, def: NodeDefinition) {
 		name += "_wall";
 
+		def.description = "Sign";
 		def.node_placement_prediction = "";
 		def.on_construct = construct_sign;
 		def.after_place_node = after_place_node;
