@@ -144,7 +144,7 @@ namespace sign {
 		}
 
 		// No need to do anything.
-		if (lineText.length == 0) {
+		if (lineText.length == 0 || lineText.trim().length == 0) {
 			return "";
 		}
 
