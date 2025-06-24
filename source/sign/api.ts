@@ -200,8 +200,9 @@ namespace sign {
 			obj.set_properties({
 				mesh: "crafter_sign_text_entity_onstick.obj",
 			});
+		} else {
+			throw new Error(`Undefined sign: ${node.name}`);
 		}
-		print(node.name);
 
 		if (node.name.endsWith("hanging")) {
 			if (def.paramtype2 == ParamType2.wallmounted) {
