@@ -168,15 +168,53 @@ namespace sign {
 				return `^(([combine:${size}:${x},${y}=(crafter_sign_font.png\\^[sheet\\:9x9\\:${value.y},${value.x})))`;
 			}
 
-			this.object.set_properties({
-				textures: [
-					`([combine:${size}^[fill:${size}:0,0:red)` +
-						createCharComponent(0, 5, "h") +
-						createCharComponent(0, 20, "e") +
-						createCharComponent(0, 35, "y") +
-						createCharComponent(0, 50, "!"),
-				],
-			});
+			function createLine(lineText: string, line: number): string {
+				const literalY: number = line * 15 + 5;
+				let literalX: number = 0;
+				let outputString: string = "";
+				let count: number = 0;
+				const charWidth: number = 6;
+
+				for (const char of lineText) {
+					outputString += createCharComponent(
+						literalX,
+						literalY,
+						char
+					);
+
+					literalX += charWidth;
+					count++;
+					if (count >= 16) {
+						core.log(
+							LogLevel.warning,
+							`Missing text filtering. Line: ${line}`
+						);
+						break;
+					}
+				}
+
+				return outputString;
+			}
+
+			if (!this.set) {
+				this.set = true;
+
+				// createLine("hello there", 0);
+				// createLine("hello there", 1);
+				// createLine("hello there", 2);
+				// createLine("hello there", 3);
+				this.object.set_properties({
+					textures: [
+						`([combine:${size}^[fill:${size}:0,0:red)` +
+							createLine("hello, world!", 0) +
+							createLine(":D", 1) +
+							createLine("I am a sign.", 2) +
+							createLine("there is some te", 3),
+
+						// createCharComponent(0, 5, "h") +
+					],
+				});
+			}
 			// print(this.object.get_properties().mesh);
 			// print("hi");
 			// this.object.set_yaw(0);
