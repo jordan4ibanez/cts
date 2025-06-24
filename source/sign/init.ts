@@ -164,7 +164,7 @@ namespace sign {
 				// Short circuit to question mark.
 				const value: Vec2 = charDictionary[char] || { x: 8, y: 2 };
 
-				print(char, dump(value));
+				// print(char, dump(value));
 
 				return `^(([combine:${size}:${x},${y}=(crafter_sign_font.png\\^[sheet\\:9x9\\:${value.y},${value.x})))`;
 			}
