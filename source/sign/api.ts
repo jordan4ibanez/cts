@@ -978,6 +978,7 @@ namespace sign {
 		return false;
 	}
 
+	//! Functions properly.
 	function after_place_node(
 		pos: Vec3,
 		placer: ObjectRef,
