@@ -69,7 +69,11 @@ namespace sign {
 
 			this.object.set_properties({
 				textures: [
-					`([combine:${size}^[fill:${size}:0,0:red)` + create(0, 0),
+					`([combine:${size}^[fill:${size}:0,0:red)` +
+						create(0, 5) +
+						create(0, 20) +
+						create(0, 35) + 
+						create(0, 50) 
 				],
 			});
 			// print(this.object.get_properties().mesh);
