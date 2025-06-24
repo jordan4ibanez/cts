@@ -4,22 +4,6 @@ namespace sign {
 	// todo: Sign on stick will be an invisible node with an entity.
 	// todo: The entity will rotate in 16 different positions.
 
-	core.register_on_joinplayer((player: ObjectRef) => {
-		const size = "128x32";
-
-		player.hud_add({
-			type: HudElementType.image,
-			// position: { x: -8, y: -8 },
-			alignment: { x: 1, y: 1 },
-			scale: { x: 4, y: 4 },
-			text:
-				`([combine:${size}^[fill:${size}:0,0:red)` +
-				`^(([combine:${size}:0,0=(crafter_sign_font.png\\^[sheet\\:9x9\\:0,0)))` +
-				`^(([combine:${size}:6,0=(crafter_sign_font.png\\^[sheet\\:9x9\\:1,0)))`,
-			z_index: 1000,
-		});
-	});
-
 	const default_text_scale: Vec2 = { x: 10, y: 10 };
 
 	const block_list = new Set<number>();
