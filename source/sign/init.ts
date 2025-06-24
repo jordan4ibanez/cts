@@ -102,7 +102,6 @@ namespace sign {
 		z: vector.create2d(5, 7),
 		// This isn't necessary, but, I'd rather it be complete.
 		" ": vector.create2d(5, 8),
-
 		0: vector.create2d(6, 0),
 		1: vector.create2d(6, 1),
 		2: vector.create2d(6, 2),
@@ -112,7 +111,6 @@ namespace sign {
 		6: vector.create2d(6, 6),
 		7: vector.create2d(6, 7),
 		8: vector.create2d(6, 8),
-
 		9: vector.create2d(7, 0),
 		".": vector.create2d(7, 1),
 		",": vector.create2d(7, 2),
@@ -122,7 +120,6 @@ namespace sign {
 		"#": vector.create2d(7, 6),
 		"'": vector.create2d(7, 7),
 		"!": vector.create2d(7, 8),
-
 		'"': vector.create2d(8, 0),
 		"/": vector.create2d(8, 1),
 		"?": vector.create2d(8, 2),
