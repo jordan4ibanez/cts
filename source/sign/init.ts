@@ -195,25 +195,6 @@ namespace sign {
 			static_save: false,
 			backface_culling: false,
 		};
-
-		internalTimer = 0;
-		set: boolean = false;
-		on_step(delta: number, moveResult: MoveResult | null): void {
-			if (!this.set) {
-				this.set = true;
-
-				const signTextureData = createSignEntityTexture([
-					"test 123",
-					"hello",
-					"hi",
-					":)",
-				]);
-				this.object.set_properties({
-					textures: [signTextureData],
-				});
-			}
-
-		}
 	}
 	utility.registerTSEntity(SignTextEntity);
 
