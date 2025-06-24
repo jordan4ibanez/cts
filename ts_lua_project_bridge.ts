@@ -98,11 +98,7 @@ if (CREATE_RELEASE) {
 	// Set up the release build folder.
 	console.log(`Creating [${versionInfo}] release.`);
 
-	// if (FS.existsSync(zipFileName)) {
-	// 	console.log("Deleting old zip.");
-	// 	FS.rmSync(zipFileName);
-	// }
-
+	// Remove the old release folder and create a new one.
 	if (FS.existsSync(releaseOutputFolder)) {
 		console.log("Removing old release output folder.");
 		FS.rmSync(releaseOutputFolder, { recursive: true, force: true });
@@ -110,6 +106,7 @@ if (CREATE_RELEASE) {
 
 	FS.mkdirSync(releaseOutputFolder);
 
+	// Remove the old build folder and create a new one.
 	if (FS.existsSync(buildFolder)) {
 		console.log("Removing old build folder.");
 		FS.rmSync(buildFolder, { recursive: true, force: true });
