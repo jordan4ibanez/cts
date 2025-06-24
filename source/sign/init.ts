@@ -148,17 +148,34 @@ namespace sign {
 		on_step(delta: number, moveResult: MoveResult | null): void {
 			const size = "96x64";
 
-			function create(x: number, y: number): string {
-				return `^(([combine:${size}:${x},${y}=(crafter_sign_font.png\\^[sheet\\:9x9\\:0,0)))`;
+			function createCharComponent(
+				x: number,
+				y: number,
+				char: string
+			): string {
+				if (char.length > 1) {
+					core.log(
+						LogLevel.error,
+						`Malformed char? Unicode? What is this: [${char}]`
+					);
+					char = "?";
+				}
+
+				// Short circuit to question mark.
+				const value: Vec2 = charDictionary[char] || { x: 8, y: 2 };
+
+				print(char, dump(value));
+
+				return `^(([combine:${size}:${x},${y}=(crafter_sign_font.png\\^[sheet\\:9x9\\:${value.y},${value.x})))`;
 			}
 
 			this.object.set_properties({
 				textures: [
 					`([combine:${size}^[fill:${size}:0,0:red)` +
-						create(0, 5) +
-						create(0, 20) +
-						create(0, 35) +
-						create(0, 50),
+						createCharComponent(0, 5, "h") +
+						createCharComponent(0, 20, "e") +
+						createCharComponent(0, 35, "y") +
+						createCharComponent(0, 50, "!"),
 				],
 			});
 			// print(this.object.get_properties().mesh);
