@@ -831,10 +831,6 @@ namespace sign {
 		def.node_box = cbox;
 		def.sunlight_propagates = true;
 
-		if (def.tiles == null) {
-			throw new Error("incorrect tiles.");
-		}
-
 		def.tiles[3] = "signs_lib_blank.png";
 		def.tiles[4] = "signs_lib_blank.png";
 		def.tiles[5] = "signs_lib_blank.png";
