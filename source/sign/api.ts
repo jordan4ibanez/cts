@@ -239,6 +239,8 @@ namespace sign {
 			}
 		}
 
+		//! // fixme: This is where the problem begins.
+
 		if (obj == null) {
 			obj = core.add_entity(pos, "crafter_sign:text");
 			if (obj == null) {
