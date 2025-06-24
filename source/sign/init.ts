@@ -340,14 +340,7 @@ namespace sign {
 		c = c || "0";
 		let tex: string[] = [];
 		for (const xx of $range(0, math.max(0, w), colorbgw)) {
-			tex.push(
-				string.format(
-					":%d,%d=signs_lib_color_" + font_size + "px_%s.png",
-					x + xx,
-					y,
-					c
-				)
-			);
+			tex.push(`:${x + xx},${y}=signs_lib_color_${font_size}px_${c}.png`);
 		}
 		return table.concat(tex);
 	}
