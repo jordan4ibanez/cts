@@ -55,6 +55,13 @@ namespace sign {
 		3: math.pi / -2,
 	};
 
+	const onWallYaw: Dictionary<number, number> = {
+		2: math.pi / -2,
+		3: math.pi / 2,
+		4: 0,
+		5: math.pi,
+	};
+
 	// Initialize character texture cache.
 	const ctexcache: Dictionary<string, string> = {};
 
