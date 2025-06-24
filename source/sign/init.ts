@@ -21,21 +21,6 @@ namespace sign {
 		throw new Error("How did this happen?");
 	}
 
-	const standard_wood_groups: Dictionary<string, number> = (() => {
-		const data: Dictionary<string, number> | undefined =
-			core.registered_items["crafter:wood"]?.groups;
-		if (data == null) {
-			throw new Error("Logic error.");
-		}
-		const finalData = table.copy(
-			data as any as LuaTable
-		) as any as Dictionary<string, number>;
-
-		finalData.sign = 1;
-		finalData.attached_node = 1;
-		return finalData;
-	})();
-
 	const standard_wood_sign_sounds = (() => {
 		const data = core.registered_nodes["crafter:wood"]?.sounds;
 		if (data == null) {
@@ -813,6 +798,21 @@ namespace sign {
 
 	// This seems to be using the decorator pattern.
 	(() => {
+		const standard_wood_groups: Dictionary<string, number> = (() => {
+			const data: Dictionary<string, number> | undefined =
+				core.registered_items["crafter:wood"]?.groups;
+			if (data == null) {
+				throw new Error("Logic error.");
+			}
+			const finalData = table.copy(
+				data as any as LuaTable
+			) as any as Dictionary<string, number>;
+
+			finalData.sign = 1;
+			finalData.attached_node = 1;
+			return finalData;
+		})();
+
 		const name: string = "crafter_sign:sign_wall";
 		const cbox = make_selection_boxes(35, 25);
 		const def: NodeDefinition = {
