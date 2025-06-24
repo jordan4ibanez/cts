@@ -830,6 +830,14 @@ namespace sign {
 		def.selection_box = cbox;
 		def.node_box = cbox;
 		def.sunlight_propagates = true;
+		def.inventory_image = "signs_lib_sign_wall_wooden_inv.png";
+		def.wield_image = "signs_lib_sign_wall_wooden_inv.png";
+		def.tiles = [
+			"signs_lib_sign_wall_wooden.png",
+			"signs_lib_sign_wall_wooden_edges.png",
+			// items 3 - 5 are not set, so signs_lib will use its standard pole
+			// mount, hanging, and yard sign stick textures.
+		];
 
 		def.tiles[3] = "signs_lib_blank.png";
 		def.tiles[4] = "signs_lib_blank.png";
