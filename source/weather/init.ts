@@ -1,19 +1,18 @@
 namespace weather {
-	// local minetest,vector,math = minetest,vector,math
-	// local weather_channel = minetest.mod_channel_join("weather_type")
-	// local weather_intake = minetest.mod_channel_join("weather_intake")
-	// local weather_nodes_channel = minetest.mod_channel_join("weather_nodes")
+	const weather_channel = core.mod_channel_join("weather_type")
+	// local weather_intake = core.mod_channel_join("weather_intake")
+	// local weather_nodes_channel = core.mod_channel_join("weather_nodes")
 	// weather_channel:send_all("")
 	// weather_intake:send_all("")
 	// weather_nodes_channel:send_all("")
 	// local weather_max = 2
-	// local mod_storage = minetest.get_mod_storage()
+	// local mod_storage = core.get_mod_storage()
 	// weather_type = mod_storage:get_int("weather_type")
-	// local path = minetest.get_modpath(minetest.get_current_modname())
+	// local path = core.get_modpath(core.get_current_modname())
 	// dofile(path.."/commands.lua")
 	// --this updates players skys since it cannot be done clientside
 	// update_player_sky = function()
-	// 	for _,player in ipairs(minetest.get_connected_players()) do
+	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		if weather_type ~= 0 then
 	// 			player:set_sky({
 	// 				base_color="#808080",
@@ -52,8 +51,8 @@ namespace weather {
 	// end
 	// --index all mods
 	// local all_nodes = {}
-	// minetest.register_on_mods_loaded(function()
-	// 	for name in pairs(minetest.registered_items) do
+	// core.register_on_mods_loaded(function()
+	// 	for name in pairs(core.registered_items) do
 	// 		if name ~= "air" and name ~= "ignore" then
 	// 			table.insert(all_nodes,name)
 	// 		end
@@ -62,21 +61,21 @@ namespace weather {
 	// --this sends the client all nodes that weather can be on top of
 	// --(everything)
 	// --have the client send the server the ready signal
-	// minetest.register_on_modchannel_message(function(channel_name, sender, message)
+	// core.register_on_modchannel_message(function(channel_name, sender, message)
 	// 	if channel_name == "weather_intake" then
-	// 		minetest.after(0,function()
+	// 		core.after(0,function()
 	// 		--print("sending player weather")
 	// 		--for some reason this variable assignment does not work outside the scope of this function
-	// 		local all_nodes_serialized = minetest.serialize(all_nodes)
+	// 		local all_nodes_serialized = core.serialize(all_nodes)
 	// 		weather_nodes_channel:send_all(all_nodes_serialized)
 	// 		function_send_weather_type()
 	// 		update_player_sky()
 	// 		end)
 	// 	end
 	// end)
-	// minetest.register_on_joinplayer(function(player)
-	// 	minetest.after(3,function()
-	// 		local all_nodes_serialized = minetest.serialize(all_nodes)
+	// core.register_on_joinplayer(function(player)
+	// 	core.after(3,function()
+	// 		local all_nodes_serialized = core.serialize(all_nodes)
 	// 		weather_nodes_channel:send_all(all_nodes_serialized)
 	// 		function_send_weather_type()
 	// 		update_player_sky()
@@ -97,23 +96,23 @@ namespace weather {
 	// local subber = vector.subtract
 	// local adder  = vector.add
 	// local area_index
-	// local under_air = minetest.find_nodes_in_area_under_air
+	// local under_air = core.find_nodes_in_area_under_air
 	// local round_it = vector.round
 	// local n_vec = vector.new
 	// local lightlevel
-	// local get_light = minetest.get_node_light
-	// local g_node = minetest.get_node
+	// local get_light = core.get_node_light
+	// local g_node = core.get_node
 	// local node_name
 	// local def
 	// --local buildable
 	// local drawtype
 	// local walkable
 	// local liquid
-	// local r_nodes = minetest.registered_nodes
+	// local r_nodes = core.registered_nodes
 	// local bulk_list
 	// local ice_list
 	// local spawn_table
-	// local mass_set = minetest.bulk_set_node
+	// local mass_set = core.bulk_set_node
 	// local inserter = table.insert
 	// local temp_pos
 	// local floor, ceil = math.floor, math.ceil
@@ -182,16 +181,16 @@ namespace weather {
 	// end
 	// local function do_snow()
 	// 	if weather_type == 1 then
-	// 		for _,player in ipairs(minetest.get_connected_players()) do
+	// 		for _,player in ipairs(core.get_connected_players()) do
 	// 			--this is debug
-	// 			--local t0 = minetest.get_us_time()/1000000
+	// 			--local t0 = core.get_us_time()/1000000
 	// 			pos = round_it(player:get_pos())
 	// 			min = subber(pos, snow_radius)
 	// 			max = adder(pos, snow_radius)
 	// 			area_index = under_air(min, max, all_nodes)
-	// 			--local node_search_time = math.ceil((minetest.get_us_time()/1000000 - t0) * 1000)
+	// 			--local node_search_time = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
 	// 			spawn_table = {}
-	// 			--the highest value is always indexed last in minetest.find_nodes_in_area_under_air,
+	// 			--the highest value is always indexed last in core.find_nodes_in_area_under_air,
 	// 			--so all that is needed is to iterate through it backwards and hook into the first
 	// 			--y value on the x and y and ignore the rest
 	// 			under_air_count = 0
@@ -279,7 +278,7 @@ namespace weather {
 	// 			end
 	// 			--this is debug
 	// 			--[[
-	// 			local chugent = math.ceil((minetest.get_us_time()/1000000 - t0) * 1000)
+	// 			local chugent = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
 	// 			print("---------------------------------")
 	// 			print("find_nodes_in_area_under_air() time: " .. node_search_time .. " ms")
 	// 			print("New Snow generation time:            " .. chugent .. " ms  [" .. (chugent - node_search_time) .. " ms]")
@@ -295,17 +294,17 @@ namespace weather {
 	// 			print(dump(average))
 	// 			a = a / get_table_size(average)
 	// 			print("average = "..a.."ms")
-	// 			minetest.chat_send_all("total nodes under air: " .. under_air_count .. ", LFSR iterations: " .. lsfr_steps_count .. ", under-air hits (nodes tested): " .. under_air_iterations .. "        Snow added: " .. (#bulk_list + #ice_list)  .. ", snow already there (catchup): " .. catchup_steps)
+	// 			core.chat_send_all("total nodes under air: " .. under_air_count .. ", LFSR iterations: " .. lsfr_steps_count .. ", under-air hits (nodes tested): " .. under_air_iterations .. "        Snow added: " .. (#bulk_list + #ice_list)  .. ", snow already there (catchup): " .. catchup_steps)
 	// 			--print("---------------------------------")
 	// 			--]]--
 	// 		end
 	// 	end
-	// 	minetest.after(3, function()
+	// 	core.after(3, function()
 	// 		do_snow()
 	// 	end)
 	// end
-	// minetest.register_on_mods_loaded(function()
-	// 	minetest.after(0,function()
+	// core.register_on_mods_loaded(function()
+	// 	core.after(0,function()
 	// 		do_snow()
 	// 	end)
 	// end)
@@ -326,12 +325,12 @@ namespace weather {
 	// 	end
 	// 	function_send_weather_type()
 	// 	update_player_sky()
-	// 	minetest.after((math.random(15,20)+math.random())*60, function()
+	// 	core.after((math.random(15,20)+math.random())*60, function()
 	// 		randomize_weather()
 	// 	end)
 	// end
-	// minetest.register_on_mods_loaded(function()
-	// 	minetest.after(0,function()
+	// core.register_on_mods_loaded(function()
+	// 	core.after(0,function()
 	// 	if mod_storage:get_int("weather_initialized") == 0 then
 	// 		mod_storage:set_int("weather_initialized",1)
 	// 		weather_type = math.random(0,weather_max)
@@ -341,7 +340,7 @@ namespace weather {
 	// 	randomize_weather()
 	// 	end)
 	// end)
-	// minetest.register_on_shutdown(function()
+	// core.register_on_shutdown(function()
 	// 	mod_storage:set_int("weather_type", weather_type)
 	// 	mod_storage:set_int("weather_snowState", weather_snowState)
 	// end)
@@ -349,9 +348,9 @@ namespace weather {
 	// 	local pos = player:get_pos()
 	// 	pos.y = pos.y + 1.625
 	// 	--let other players hear the noise too
-	// 	minetest.sound_play("woosh",{to_player=player:get_player_name(), pitch = math.random(80,100)/100})
-	// 	minetest.sound_play("woosh",{pos=pos, exclude_player = player:get_player_name(), pitch = math.random(80,100)/100})
-	// 	local snowball = minetest.add_entity(pos,"weather:snowball")
+	// 	core.sound_play("woosh",{to_player=player:get_player_name(), pitch = math.random(80,100)/100})
+	// 	core.sound_play("woosh",{pos=pos, exclude_player = player:get_player_name(), pitch = math.random(80,100)/100})
+	// 	local snowball = core.add_entity(pos,"weather:snowball")
 	// 	if snowball then
 	// 		local vel = player:get_player_velocity()
 	// 		snowball:set_velocity(vector.add(vel,vector.multiply(player:get_look_dir(),20)))
@@ -360,7 +359,7 @@ namespace weather {
 	// 	end
 	// 	return(false)
 	// end
-	// minetest.register_node("weather:snow", {
+	// core.register_node("weather:snow", {
 	//     description = "Snow",
 	//     tiles = {"snow_block.png"},
 	//     groups = {pathable = 1,snow = 1, falling_node=1},
@@ -398,7 +397,7 @@ namespace weather {
 	// 		}
 	// 	},
 	// })
-	// minetest.register_node("weather:snow_block", {
+	// core.register_node("weather:snow_block", {
 	//     description = "Snow",
 	//     tiles = {"snow_block.png"},
 	//     groups = {pathable = 1,snow = 1},
@@ -425,7 +424,7 @@ namespace weather {
 	// 			},
 	// 		},
 	// })
-	// minetest.register_abm({
+	// core.register_abm({
 	// 	label = "snow and ice melt",
 	// 	nodenames = {"weather:snow","main:ice"},
 	// 	neighbors = {"air"},
@@ -434,11 +433,11 @@ namespace weather {
 	// 	catch_up = true,
 	// 	action = function(pos)
 	// 		if weather_type ~= 1 then
-	// 			minetest.remove_node(pos)
+	// 			core.remove_node(pos)
 	// 		end
 	// 	end,
 	// })
-	// minetest.register_craftitem("weather:snowball", {
+	// core.register_craftitem("weather:snowball", {
 	// 	description = "Snowball",
 	// 	inventory_image = "snowball.png",
 	// 	--stack_max = 1,
@@ -483,7 +482,7 @@ namespace weather {
 	// 	local hit = false
 	// 	local pos = self.object:get_pos()
 	// 	--hit object with the snowball
-	// 	for _,object in ipairs(minetest.get_objects_inside_radius(pos, 1)) do
+	// 	for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
 	// 		if (object:is_player() and object:get_hp() > 0 and object:get_player_name() ~= self.thrower) or (object:get_luaentity() and object:get_luaentity().mob == true and object ~= self.owner) then
 	// 			object:punch(self.object, 2,
 	// 				{
@@ -500,8 +499,8 @@ namespace weather {
 	// 			self.object:remove()
 	// 			tnt(pos,4)
 	// 		else
-	// 			minetest.sound_play("wool",{pos=pos, pitch = math.random(80,100)/100})
-	// 			minetest.add_particlespawner({
+	// 			core.sound_play("wool",{pos=pos, pitch = math.random(80,100)/100})
+	// 			core.add_particlespawner({
 	// 				amount = 20,
 	// 				-- Number of particles spawned over the time period `time`.
 	// 				time = 0.001,
@@ -531,5 +530,5 @@ namespace weather {
 	// 	end
 	// 	self.oldvel = vel
 	// end
-	// minetest.register_entity("weather:snowball", snowball)
+	// core.register_entity("weather:snowball", snowball)
 }
