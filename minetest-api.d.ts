@@ -1232,7 +1232,7 @@ declare global {
 	}
 
 	/** @noSelf **/ interface LBMDefinition {
-		label: string;
+		label?: string;
 		name: string;
 		nodenames: string[];
 		run_at_every_load: boolean;
