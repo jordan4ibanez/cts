@@ -432,84 +432,62 @@ namespace hopper {
 			timerTrigger(pos);
 		},
 	});
-	// core.register_node("crafter_hopper:hopper_side", {
-	// 	description: "Side Hopper",
-	// 	drop: "crafter_hopper:hopper",
-	// 	groups: hopperGroups,
-	// 	sounds: crafter.stoneSound(),
-	// 	drawtype: Drawtype.nodebox,
-	// 	paramtype: ParamType1.light,
-	// 	paramtype2: ParamType2.facedir,
-	// 	tiles: [
-	// 		"hopper_top_16.png",
-	// 		"hopper_bottom_16.png",
-	// 		"hopper_back_16.png",
-	// 		"hopper_side_16.png",
-	// 		"hopper_back_16.png",
-	// 		"hopper_back_16.png",
-	// 	],
-	// 	node_box: {
-	// 		type: Nodeboxtype.fixed,
-	// 		fixed: [
-	// 			//funnel walls
-	// 			[-0.5, 0.0, 0.4, 0.5, 0.5, 0.5],
-	// 			[0.4, 0.0, -0.5, 0.5, 0.5, 0.5],
-	// 			[-0.5, 0.0, -0.5, -0.4, 0.5, 0.5],
-	// 			[-0.5, 0.0, -0.5, 0.5, 0.5, -0.4],
-	// 			//funnel base
-	// 			[-0.5, 0.0, -0.5, 0.5, 0.1, 0.5],
-	// 			//spout
-	// 			[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
-	// 			[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
-	// 		],
-	// 	},
-	// 	selection_box: {
-	// 		type: Nodeboxtype.fixed,
-	// 		fixed: [
-	// 			//funnel
-	// 			[-0.5, 0.0, -0.5, 0.5, 0.5, 0.5],
-	// 			//spout
-	// 			[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
-	// 			[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
-	// 		],
-	// 	},
-	// 	on_construct: (pos: Vec3) => {
-	// 		const inv: InvRef = core.get_meta(pos).get_inventory();
-	// 		inv.set_size("main", 4 * 4);
-	// 	},
-	// 	on_place: (
-	// 		itemstack: ItemStackObject,
-	// 		placer: ObjectRef,
-	// 		pointed_thing: PointedThing
-	// 	) => {
-	// 		return hopper_on_place(
-	// 			itemstack,
-	// 			placer,
-	// 			pointed_thing,
-	// 			"crafter_hopper:hopper_side"
-	// 		);
-	// 	},
-	// 	can_dig: (pos: Vec3, player: ObjectRef) => {
-	// 		const inv: InvRef = core.get_meta(pos).get_inventory();
-	// 		return inv.is_empty("main");
-	// 	},
-	// 	on_rightclick: (
-	// 		pos: Vec3,
-	// 		node: NodeTable,
-	// 		clicker: ObjectRef,
-	// 		itemstack: ItemStackObject
-	// 	) => {
-	// 		if (
-	// 			core.is_protected(pos, clicker.get_player_name()) &&
-	// 			!core.check_player_privs(clicker, "protection_bypass")
-	// 		) {
-	// 			return;
-	// 		}
-	// 		core.show_formspec(
-	// 			clicker.get_player_name(),
-	// 			"hopper_formspec:" + core.pos_to_string(pos),
-	// 			get_hopper_formspec(pos)
-	// 		);
-	// 	},
-	// });
+	core.register_node("crafter_hopper:hopper_side", {
+		description: "Side Hopper",
+		drop: "crafter_hopper:hopper",
+		groups: hopperGroups,
+		sounds: crafter.stoneSound(),
+		drawtype: Drawtype.nodebox,
+		paramtype: ParamType1.light,
+		paramtype2: ParamType2.facedir,
+		tiles: [
+			"hopper_top_16.png",
+			"hopper_bottom_16.png",
+			"hopper_back_16.png",
+			"hopper_side_16.png",
+			"hopper_back_16.png",
+			"hopper_back_16.png",
+		],
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				//funnel walls
+				[-0.5, 0.0, 0.4, 0.5, 0.5, 0.5],
+				[0.4, 0.0, -0.5, 0.5, 0.5, 0.5],
+				[-0.5, 0.0, -0.5, -0.4, 0.5, 0.5],
+				[-0.5, 0.0, -0.5, 0.5, 0.5, -0.4],
+				//funnel base
+				[-0.5, 0.0, -0.5, 0.5, 0.1, 0.5],
+				//spout
+				[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
+				[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
+			],
+		},
+		selection_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				//funnel
+				[-0.5, 0.0, -0.5, 0.5, 0.5, 0.5],
+				//spout
+				[-0.3, -0.3, -0.3, 0.3, 0.0, 0.3],
+				[-0.7, -0.3, -0.15, 0.15, 0.0, 0.15],
+			],
+		},
+
+		on_punch: timerTriggerRegistrationWrapper,
+		on_construct: onConstruct,
+		on_destruct: onDestruct,
+		on_timer: onTimer,
+		on_metadata_inventory_put: timerTriggerRegistrationWrapper,
+		on_metadata_inventory_take: timerTriggerRegistrationWrapper,
+		on_metadata_inventory_move: timerTriggerRegistrationWrapper,
+
+		on_rightclick: (pos: Vec3, node: NodeTable, clicker: ObjectRef) => {
+			core.show_formspec(
+				clicker.get_player_name(),
+				"hopper_formspec:" + core.pos_to_string(pos),
+				getHopperFormspec(pos)
+			);
+		},
+	});
 }
