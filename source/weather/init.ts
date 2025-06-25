@@ -158,12 +158,10 @@ namespace weather {
 		while (num1 > 0 || num2 > 0) {
 			const rem1: number = num1 % 2;
 			const rem2: number = num2 % 2;
-
 			if (rem1 != rem2) {
 				// Set each bit.
 				res = res + exp;
 			}
-
 			num1 = (num1 - rem1) / 2;
 			num2 = (num2 - rem2) / 2;
 			exp = exp * 2;
