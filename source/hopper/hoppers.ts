@@ -190,14 +190,27 @@ namespace hopper {
 			const data: ContainerData | undefined =
 				containers[core.get_node(outputPosition).name];
 
-			if (
-				data == null ||
-				(isSide && data.side == null) ||
-				(!isSide && data.top == null)
-			) {
+			if (data == null) {
 				return;
 			}
-			
+
+			let stringInvOutput: string | null = null;
+
+			if (isSide) {
+				if (data.side == null) {
+					return;
+				}
+				stringInvOutput = data.side;
+			} else {
+				if (data.top == null) {
+					return;
+				}
+				stringInvOutput = data.top;
+			}
+
+			if (stringInvOutput == null) {
+				throw new Error("Logic failure.");
+			}
 		})();
 
 		print("still running :)");
