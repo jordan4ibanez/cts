@@ -90,8 +90,9 @@ namespace hopper {
 		}
 
 		const sneak: boolean = placer.get_player_control().sneak;
+		const nodeName: string = core.get_node(pos).name;
 		const noddef: NodeDefinition | undefined =
-			core.registered_nodes[core.get_node(pos).name];
+			core.registered_nodes[nodeName];
 		if (!sneak && noddef?.on_rightclick) {
 			core.item_place(itemstack, placer, pointed_thing);
 			return;
@@ -101,15 +102,19 @@ namespace hopper {
 		let returned_stack;
 		let success: Vec3 | null = null;
 
-		if (x == 0 && z == 0) {
-		} else {
-			let node_name: string = "crafter_hopper:hopper";
-			[returned_stack, success] = core.item_place_node(
-				ItemStack(node_name),
-				placer,
-				pointed_thing
-			);
+		let node_name: string = "crafter_hopper:hopper";
+
+		if (x != 0 || z != 0) {
+			const data: ContainerData | undefined = containers[nodeName];
+			if (data != null) {
+				node_name = "crafter_hopper:hopper_side";
+			}
 		}
+		[returned_stack, success] = core.item_place_node(
+			ItemStack(node_name),
+			placer,
+			pointed_thing
+		);
 
 		if (success != null) {
 			const meta: MetaRef = core.get_meta(pos2);
