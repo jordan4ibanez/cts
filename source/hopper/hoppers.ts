@@ -369,7 +369,7 @@ namespace hopper {
 		sounds: crafter.stoneSound(),
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
-		paramtype2: ParamType2.facedir,
+		paramtype2: ParamType2["4dir"],
 		tiles: [
 			"hopper_top_16.png",
 			"hopper_top_16.png",
