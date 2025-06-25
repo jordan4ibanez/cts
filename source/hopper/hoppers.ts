@@ -107,6 +107,8 @@ namespace hopper {
 		}
 
 		print("timer running.");
+
+		timerTrigger(pos);
 	}
 
 	function onConstruct(pos: Vec3) {
