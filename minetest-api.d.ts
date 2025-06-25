@@ -1692,13 +1692,13 @@ declare global {
 	}
 
 	/** @noSelf **/ interface SkyParameters {
-		base_color: DynamicColorSpec;
-		body_orbit_tilt: number;
-		type: SkyParametersType;
-		textures: string[];
-		clouds: boolean;
-		sky_color: SkyParametersColor;
-		fog: SkyParametersFog;
+		base_color?: DynamicColorSpec;
+		body_orbit_tilt?: number;
+		type?: SkyParametersType;
+		textures?: string[];
+		clouds?: boolean;
+		sky_color?: SkyParametersColor;
+		fog?: SkyParametersFog;
 	}
 
 	/** @noSelf **/ interface SunParameters {
