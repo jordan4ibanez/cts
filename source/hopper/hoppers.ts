@@ -150,15 +150,34 @@ namespace hopper {
 	// 	return itemstack;
 	// }
 
+	const workerVec: Vec3 = vector.create3d();
+
+	function getOutputPosition(pos: Vec3): Vec3 {
+		const currentName: string = core.get_node(pos).name;
+		if (currentName == "crafter_hopper:hopper") {
+			workerVec.x = 0;
+			workerVec.y = -1;
+			workerVec.z = 0;
+			return vector.add(pos, workerVec);
+		} else if (currentName == "crafter_hopper:hopper_side") {
+			throw new Error("unimplemented");
+		} else {
+			core.log(
+				LogLevel.error,
+				`A non-hopper was in position at (${pos.x}, ${pos.y}, ${pos.z})`
+			);
+			throw new Error("dead end reached.");
+		}
+	}
+
 	function onTimer(pos: Vec3, elapsed: number): void {
 		const inv: InvRef = core.get_meta(pos).get_inventory();
 
-		// todo: re-enable this safety check.
-		// if (inv.is_empty(inventoryName)) {
-		// 	return;
-		// }
+		let loopAgain: boolean = false;
 
-		print("timer running.");
+		// First, try to empty itself to make room.
+		if (!inv.is_empty(inventoryName)) {
+		}
 
 		timerTrigger(pos);
 	}
