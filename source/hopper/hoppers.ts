@@ -415,10 +415,6 @@ namespace hopper {
 		// 		"crafter_hopper:hopper"
 		// 	);
 		// },
-		// can_dig: (pos: Vec3, player: ObjectRef) => {
-		// 	const inv: InvRef = core.get_meta(pos).get_inventory();
-		// 	return inv.is_empty("main");
-		// },
 		on_rightclick: (pos, node, clicker, itemstack) => {
 			core.show_formspec(
 				clicker.get_player_name(),
