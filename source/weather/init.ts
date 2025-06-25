@@ -72,9 +72,8 @@ namespace weather {
 		}
 	});
 
-	// //this sends the client all nodes that weather can be on top of
-	// //(everything)
-	// //have the client send the server the ready signal
+	// This sends the client all nodes that weather (particles) can be on top of, which is literally everything.
+	// Have the client send the server the ready signal.
 	// core.register_on_modchannel_message(function(channel_name, sender, message)
 	// 	if channel_name == "weather_intake" then
 	// 		core.after(0,function()
