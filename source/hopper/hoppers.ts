@@ -344,14 +344,6 @@ namespace hopper {
 		timer.start(fastMode ? 0 : 3 + math.random());
 	}
 
-	function hopperPlacement(
-		itemStack: ItemStackObject,
-		placer: ObjectRef,
-		pointedThing: PointedThing
-	): ItemStackObject | void {
-		print("hi");
-	}
-
 	const hopperGroups: Dictionary<string, number> = {
 		stone: 1,
 		hard: 1,
