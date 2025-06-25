@@ -152,13 +152,18 @@ namespace hopper {
 
 	const workerVec: Vec3 = vector.create3d();
 
-	function getOutputPosition(pos: Vec3): Vec3 {
+	/**
+	 * Get the output position of a hopper.
+	 * @param pos The current position.
+	 * @returns [position, is side]
+	 */
+	function getOutputPosition(pos: Vec3): [Vec3, boolean] {
 		const currentName: string = core.get_node(pos).name;
 		if (currentName == "crafter_hopper:hopper") {
 			workerVec.x = 0;
 			workerVec.y = -1;
 			workerVec.z = 0;
-			return vector.add(pos, workerVec);
+			return [vector.add(pos, workerVec), false];
 		} else if (currentName == "crafter_hopper:hopper_side") {
 			throw new Error("unimplemented");
 		} else {
@@ -176,8 +181,26 @@ namespace hopper {
 		let loopAgain: boolean = false;
 
 		// First, try to empty itself to make room.
-		if (!inv.is_empty(inventoryName)) {
-		}
+		(() => {
+			if (inv.is_empty(inventoryName)) {
+				return;
+			}
+			const [outputPosition, isSide] = getOutputPosition(pos);
+
+			const data: ContainerData | undefined =
+				containers[core.get_node(outputPosition).name];
+
+			if (
+				data == null ||
+				(isSide && data.side == null) ||
+				(!isSide && data.top == null)
+			) {
+				return;
+			}
+			
+		})();
+
+		print("still running :)");
 
 		timerTrigger(pos);
 	}
