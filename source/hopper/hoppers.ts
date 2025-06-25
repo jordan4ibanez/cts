@@ -253,16 +253,29 @@ namespace hopper {
 		})();
 
 		// Next, try to pull out of the input. (The top)
+		// All hoppers input from the top. They work by gravity, after all!
 		(() => {
 			workerVec.x = pos.x;
 			workerVec.y = pos.y + 1;
 			workerVec.z = pos.z;
 
-			if (
-				core.get_item_group(core.get_node(workerVec).name, "hopper") <=
-				0
-			) {
+			const data: ContainerData | undefined =
+				containers[core.get_node(workerVec).name];
+
+			if (data == null) {
 				return;
+			}
+
+			let stringInvInput: string | null = null;
+
+			if (data.bottom == null) {
+				return;
+			}
+
+			stringInvInput = data.bottom;
+
+			if (stringInvInput == null) {
+				throw new Error("How did this even happen?");
 			}
 		})();
 
