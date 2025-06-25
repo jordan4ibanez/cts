@@ -266,7 +266,7 @@ namespace tnt {
 		// print("took: ", (end - start) / 1000000, "sec");
 	}
 
-	export function internalTNT(pos: Vec3, range: number) {
+	function internalTNT(pos: Vec3, range: number) {
 		const in_node: string = core.get_node(pos).name;
 		const in_water =
 			in_node == "crafter:water" || in_node == "crafter:waterflow";
