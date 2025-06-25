@@ -134,7 +134,10 @@ namespace hopper {
 	 * @returns [position, is side]
 	 */
 	function getOutputPosition(pos: Vec3): [Vec3, boolean] {
-		const currentName: string = core.get_node(pos).name;
+		const currentNode: NodeTable = core.get_node(pos);
+		const currentName: string = currentNode.name;
+		const param2: number = currentNode.param2 || 0;
+
 		if (currentName == "crafter_hopper:hopper") {
 			workerVec.x = 0;
 			workerVec.y = -1;
