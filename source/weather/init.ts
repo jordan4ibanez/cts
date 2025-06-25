@@ -72,6 +72,8 @@ namespace weather {
 		}
 	});
 
+	// todo: Why is this sending twice?
+
 	// This sends the client all nodes that weather (particles) can be on top of, which is literally everything.
 	// Have the client send the server the ready signal.
 	core.register_on_modchannel_message(
@@ -90,14 +92,15 @@ namespace weather {
 		}
 	);
 
-	// core.register_on_joinplayer(function(player)
-	// 	core.after(3,function()
-	// 		local all_nodes_serialized = core.serialize(all_nodes)
-	// 		weather_nodes_channel:send_all(all_nodes_serialized)
-	// 		function_send_weather_type()
-	// 		update_player_sky()
-	// 	end)
-	// end)
+	core.register_on_joinplayer((player: ObjectRef) => {
+		core.after(3, () => {
+			const all_nodes_serialized: string = core.serialize(all_nodes);
+			weather_nodes_channel.send_all(all_nodes_serialized);
+			function_send_weather_type();
+			update_player_sky();
+		});
+	});
+
 	// //spawn snow nodes
 	// local cDoSnow_call_count_for_blanket_coverage  = 50 // how many calls of do_snow() are required for blanket snow coverage
 	// local cDoSnow_call_count_for_snowState_catchup = 20 // how many calls of do_snow() (at most) before weather_snowState will catch up to the pattern on the ground (e.g. if player went somewhere else while it was snowing then came back)
