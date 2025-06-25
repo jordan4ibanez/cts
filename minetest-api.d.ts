@@ -1702,12 +1702,12 @@ declare global {
 	}
 
 	/** @noSelf **/ interface SunParameters {
-		visible: boolean;
-		texture: string;
-		tonemap: string;
-		sunrise: string;
-		sunrise_visible: boolean;
-		scale: number;
+		visible?: boolean;
+		texture?: string;
+		tonemap?: string;
+		sunrise?: string;
+		sunrise_visible?: boolean;
+		scale?: number;
 	}
 
 	/** @noSelf **/ interface MoonParameters {
