@@ -248,6 +248,8 @@ namespace hopper {
 
 			// And, it adds it into that other inventory.
 			outputInv.add_item(stringInvOutput, itemStackName);
+			
+			timerTrigger(outputPosition);
 
 			outputSuccess = true;
 		})();
