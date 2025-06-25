@@ -181,38 +181,39 @@ namespace hopper {
 
 			if (data == null) {
 				// Attempt to throw an item out of the hopper if it is has a free space to do so.
-				const nodeDef: NodeDefinition | undefined =
-					core.registered_nodes[outputNodeName];
+				//? This is disabled because it will cause a lot of lag.
+				// const nodeDef: NodeDefinition | undefined =
+				// 	core.registered_nodes[outputNodeName];
 
-				if (nodeDef == null) {
-					throw new Error(
-						`Undefined node in output at ${outputPosition}`
-					);
-				}
+				// if (nodeDef == null) {
+				// 	throw new Error(
+				// 		`Undefined node in output at ${outputPosition}`
+				// 	);
+				// }
 
-				if (!nodeDef.walkable) {
-					let itemStackName: string = "";
-					for (const itemObject of inv.get_list(
-						hopperInventoryName
-					)) {
-						const stackName: string = itemObject.get_name();
-						if (stackName != "") {
-							itemStackName = stackName;
-							break;
-						}
-					}
+				// if (!nodeDef.walkable) {
+				// 	let itemStackName: string = "";
+				// 	for (const itemObject of inv.get_list(
+				// 		hopperInventoryName
+				// 	)) {
+				// 		const stackName: string = itemObject.get_name();
+				// 		if (stackName != "") {
+				// 			itemStackName = stackName;
+				// 			break;
+				// 		}
+				// 	}
 
-					if (itemStackName == "") {
-						throw new Error("Logic error.");
-					}
+				// 	if (itemStackName == "") {
+				// 		throw new Error("Logic error.");
+				// 	}
 
-					inv.remove_item(hopperInventoryName, itemStackName);
+				// 	inv.remove_item(hopperInventoryName, itemStackName);
 
-					// todo: make this nicer. This is really lame.
-					core.add_item(outputPosition, itemStackName);
+				// 	// todo: make this nicer. This is really lame.
+				// 	core.add_item(outputPosition, itemStackName);
 
-					outputSuccess = true;
-				}
+				// 	outputSuccess = true;
+				// }
 
 				return;
 			}
