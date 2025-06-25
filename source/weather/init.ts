@@ -9,9 +9,11 @@ namespace weather {
 	weather_intake.send_all("");
 	weather_nodes_channel.send_all("");
 
-	// local weather_max = 2
-	// local mod_storage = core.get_mod_storage()
-	// weather_type = mod_storage:get_int("weather_type")
+	const weather_max: number = 2;
+	const mod_storage: MetaRef = core.get_mod_storage();
+
+	const weather_type: number = mod_storage.get_int("weather_type");
+
 	// local path = core.get_modpath(core.get_current_modname())
 	// dofile(path.."/commands.lua")
 	// //this updates players skys since it cannot be done clientside
