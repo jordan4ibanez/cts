@@ -342,8 +342,7 @@ namespace bed {
 
 		on_rightclick: (pos, node, clicker, itemstack, pointed_thing) => {
 			if (pos.y <= -10033) {
-				// todo: depends on the tnt mod.
-				// tnt(pos,10)
+				tnt.tnt(pos, 10);
 				return;
 			}
 			const param2: number = core.get_node(pos).param2 || 0;
