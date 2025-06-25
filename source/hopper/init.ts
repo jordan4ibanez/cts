@@ -12,13 +12,13 @@ namespace hopper {
 	// }
 
 	utility.loadFiles([
-		"api",
-		"utility",
-		"nodes/hoppers",
-		"nodes/chute",
-		"nodes/sorter",
-		"crafts",
-		"abms",
+		// "api",
+		// "utility",
+		"hoppers",
+		// "nodes/chute",
+		// "nodes/sorter",
+		// "crafts",
+		// "abms",
 	]);
 
 	// Formspec handling.
