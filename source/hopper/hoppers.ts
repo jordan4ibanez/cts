@@ -182,6 +182,7 @@ namespace hopper {
 		//? as well as at an irratic pace. But it is more sound.
 
 		let outputSuccess: boolean = false;
+		let inputSuccess: boolean = false;
 
 		// First, try to empty itself to make room.
 		(() => {
@@ -249,6 +250,20 @@ namespace hopper {
 			outputInv.add_item(stringInvOutput, itemStackName);
 
 			outputSuccess = true;
+		})();
+
+		// Next, try to pull out of the input. (The top)
+		(() => {
+			workerVec.x = pos.x;
+			workerVec.y = pos.y + 1;
+			workerVec.z = pos.z;
+
+			if (
+				core.get_item_group(core.get_node(workerVec).name, "hopper") <=
+				0
+			) {
+				return;
+			}
 		})();
 
 		print("still running :)");
