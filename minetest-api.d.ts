@@ -1718,11 +1718,11 @@ declare global {
 	}
 
 	/** @noSelf **/ interface StarParameters {
-		visible: boolean;
-		day_opacity: number;
-		count: number;
-		star_color: DynamicColorSpec;
-		scale: number;
+		visible?: boolean;
+		day_opacity?: number;
+		count?: number;
+		star_color?: DynamicColorSpec;
+		scale?: number;
 	}
 
 	/** @noSelf **/ interface CloudParameters {
