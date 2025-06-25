@@ -18,40 +18,41 @@ namespace weather {
 
 	// todo: check if this is still true.
 	// This updates players skys since it cannot be done clientside.
-	// update_player_sky = function()
-	// 	for _,player in ipairs(core.get_connected_players()) do
-	// 		if weather_type ~= 0 then
-	// 			player:set_sky({
-	// 				base_color="#808080",
-	// 				type="plain",
-	// 				clouds=false,
-	// 				day_sky = "#808080",
-	// 				dawn_horizon = "#808080",
-	// 				dawn_sky = "#808080",
-	// 				fog_sun_tint = "#808080",
-	// 				night_sky="#808080",
-	// 				night_horizon="#808080"
-	// 			})
-	// 			player:set_sun({visible=false,sunrise_visible=false})
-	// 			player:set_moon({visible=false})
-	// 			player:set_stars({visible=false})
-	// 		else
-	// 			player:set_sky({
-	// 				base_color="#8cbafa",
-	// 				type="regular",
-	// 				clouds=true,
-	// 				day_sky = "#8cbafa",
-	// 				dawn_horizon = "#bac1f0",
-	// 				dawn_sky = "#b4bafa",
-	// 				night_sky="#006aff",
-	// 				night_horizon="#4090ff"
-	// 			})
-	// 			player:set_sun({visible=true,sunrise_visible=true})
-	// 			player:set_moon({visible=true})
-	// 			player:set_stars({visible=true})
-	// 		end
-	// 	end
-	// end
+	function update_player_sky() {
+		for (const [_, player] of ipairs(core.get_connected_players())) {
+			// 		if weather_type ~= 0 then
+			// 			player:set_sky({
+			// 				base_color="#808080",
+			// 				type="plain",
+			// 				clouds=false,
+			// 				day_sky = "#808080",
+			// 				dawn_horizon = "#808080",
+			// 				dawn_sky = "#808080",
+			// 				fog_sun_tint = "#808080",
+			// 				night_sky="#808080",
+			// 				night_horizon="#808080"
+			// 			})
+			// 			player:set_sun({visible=false,sunrise_visible=false})
+			// 			player:set_moon({visible=false})
+			// 			player:set_stars({visible=false})
+			// 		else
+			// 			player:set_sky({
+			// 				base_color="#8cbafa",
+			// 				type="regular",
+			// 				clouds=true,
+			// 				day_sky = "#8cbafa",
+			// 				dawn_horizon = "#bac1f0",
+			// 				dawn_sky = "#b4bafa",
+			// 				night_sky="#006aff",
+			// 				night_horizon="#4090ff"
+			// 			})
+			// 			player:set_sun({visible=true,sunrise_visible=true})
+			// 			player:set_moon({visible=true})
+			// 			player:set_stars({visible=true})
+			// 		end
+		}
+	}
+
 	// //this tells the client mod to update the weather type
 	// function_send_weather_type = function()
 	// 	weather_channel:send_all(tostring(weather_type))
