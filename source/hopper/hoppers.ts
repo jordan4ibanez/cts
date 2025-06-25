@@ -391,11 +391,11 @@ namespace hopper {
 				[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
 			],
 		},
-		on_punch: timerTrigger,
+		on_punch: timerTriggerRegistrationWrapper,
 		on_construct: onConstruct,
 		on_timer: onTimer,
-		on_metadata_inventory_put: timerTrigger,
-		on_metadata_inventory_take: timerTrigger,
+		on_metadata_inventory_put: timerTriggerRegistrationWrapper,
+		on_metadata_inventory_take: timerTriggerRegistrationWrapper,
 		// on_place: (itemstack, placer, pointed_thing) => {
 		// 	return hopper_on_place(
 		// 		itemstack,
