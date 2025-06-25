@@ -1,6 +1,11 @@
 namespace hopper {
 	const inventoryName: string = "main";
 
+	/**
+	 * top: The hopper is on top of the node.
+	 * bottom: The hopper is below the node.
+	 * side: The hopper is on the side of the node.
+	 */
 	interface ContainerData {
 		top?: string;
 		bottom?: string;
