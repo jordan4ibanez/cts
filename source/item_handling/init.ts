@@ -221,6 +221,8 @@ namespace itemHandling {
 		vector.create3d({ x: 0, y: 0, z: -1 }),
 	];
 
+	const workerVec: Vec3 = vector.create3d();
+
 	export class CrafterItemEntity extends types.Entity {
 		name: string = ":__builtin:item";
 		itemstring: string = "";
@@ -401,6 +403,29 @@ namespace itemHandling {
 					// The collector doesn't exist.
 					this.object.remove();
 					return;
+				}
+			}
+
+			workerVec.x = pos.x;
+			workerVec.y = pos.y - 0.22;
+			workerVec.z = pos.z;
+
+			const nodeBelow: NodeTable = core.get_node(workerVec);
+			const nodeBelowDef: NodeDefinition | undefined =
+				core.registered_nodes[nodeBelow.name];
+			if (nodeBelowDef != null) {
+				print(1, nodeBelow.name);
+				if (nodeBelowDef.groups?.hopper || 0 > 0) {
+					print(2);
+					const inv: InvRef = core
+						.get_meta(workerVec)
+						.get_inventory();
+					if (inv.room_for_item("main", this.itemstring)) {
+						print(3);
+						inv.add_item("main", this.itemstring);
+						this.object.remove();
+						return;
+					}
 				}
 			}
 
