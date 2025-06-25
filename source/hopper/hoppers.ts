@@ -136,7 +136,6 @@ namespace hopper {
 	function getOutputPosition(pos: Vec3): [Vec3, boolean] {
 		const currentNode: NodeTable = core.get_node(pos);
 		const currentName: string = currentNode.name;
-		const param2: number = currentNode.param2 || 0;
 
 		if (currentName == "crafter_hopper:hopper") {
 			workerVec.x = 0;
@@ -144,7 +143,13 @@ namespace hopper {
 			workerVec.z = 0;
 			return [vector.add(pos, workerVec), false];
 		} else if (currentName == "crafter_hopper:hopper_side") {
-			throw new Error("unimplemented");
+			const param2: number | undefined = currentNode.param2;
+
+			if (param2 == null) {
+				throw new Error("Param2 implementation error.");
+			}
+
+			return [vector.add(pos, core.fourdir_to_dir(param2)), true];
 		} else {
 			core.log(
 				LogLevel.error,
