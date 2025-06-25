@@ -7,6 +7,8 @@ namespace hopper {
 	// { neighborNode: "crafter_hopper:chute", inv: "main" },
 	// { neighborNode: "crafter_hopper:sorter", inv: "main" },
 
+	const keySet: (keyof ContainerData)[] = ["top", "bottom", "side"];
+
 	/**
 	 * top: The hopper is on top of the node.
 	 * bottom: The hopper is below the node.
