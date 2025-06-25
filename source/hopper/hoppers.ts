@@ -1,6 +1,30 @@
 namespace hopper {
 	const inventoryName: string = "main";
 
+	interface ContainerData {
+		top?: string;
+		bottom?: string;
+		side?: string;
+	}
+
+	const containers: Dictionary<string, ContainerData> = {
+		["crafter_hopper:hopper"]: {
+			top: "main",
+			bottom: "main",
+			side: "main",
+		},
+		["crafter_chest:chest"]: {
+			top: "main",
+			bottom: "main",
+			side: "main",
+		},
+		["crafter_chest:chest_open"]: {
+			top: "main",
+			bottom: "main",
+			side: "main",
+		},
+	};
+
 	// Formspec.
 	const formspec_bg: string =
 		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]";
