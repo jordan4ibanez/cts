@@ -152,9 +152,11 @@ namespace hopper {
 
 	function onTimer(pos: Vec3, elapsed: number): void {
 		const inv: InvRef = core.get_meta(pos).get_inventory();
-		if (inv.is_empty(inventoryName)) {
-			return;
-		}
+
+		// todo: re-enable this safety check.
+		// if (inv.is_empty(inventoryName)) {
+		// 	return;
+		// }
 
 		print("timer running.");
 
