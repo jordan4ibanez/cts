@@ -283,7 +283,13 @@ namespace hopper {
 				throw new Error("How did this even happen?");
 			}
 
-			const inputInv: InvRef = core.get_meta(inputPos).get_inventory();
+			const inputInv: InvRef | null = core
+				.get_meta(inputPos)
+				.get_inventory();
+
+			if (inputInv == null) {
+				throw new Error(`Missing inventory at ${inputPos}`);
+			}
 
 			// Can't pull from an empty inventory.
 			if (inputInv.is_empty(stringInvInput)) {
