@@ -322,9 +322,8 @@ namespace hopper {
 		print("Hopper running!");
 
 		// If nothing is done, nothing needs to be done.
-		if (inputSuccess || outputSuccess) {
-			timerTrigger(pos);
-		}
+		// So it will set fast mode to false.
+		timerTrigger(pos, inputSuccess || outputSuccess);
 	}
 
 	function onConstruct(pos: Vec3) {
