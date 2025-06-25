@@ -417,6 +417,15 @@ namespace hopper {
 			);
 		},
 	});
+
+	core.register_lbm({
+		name: "crafter_hopper:fix_engine_issue",
+		nodenames: ["crafter_hopper:hopper"],
+		run_at_every_load: true,
+		action: (pos: Vec3) => {
+			timerTrigger(pos);
+		},
+	});
 	// core.register_node("crafter_hopper:hopper_side", {
 	// 	description: "Side Hopper",
 	// 	drop: "crafter_hopper:hopper",
