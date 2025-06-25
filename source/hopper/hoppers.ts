@@ -396,6 +396,7 @@ namespace hopper {
 		on_timer: onTimer,
 		on_metadata_inventory_put: timerTriggerRegistrationWrapper,
 		on_metadata_inventory_take: timerTriggerRegistrationWrapper,
+		on_metadata_inventory_move: timerTriggerRegistrationWrapper,
 		// on_place: (itemstack, placer, pointed_thing) => {
 		// 	return hopper_on_place(
 		// 		itemstack,
