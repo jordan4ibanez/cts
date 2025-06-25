@@ -131,8 +131,9 @@ namespace weather {
 		"allfaces",
 		"allfaces_optional",
 	]);
-	// //this is debug
-	// //local average = {}
+
+	//? This is debug.
+	//local average = {}
 	// function XOR( num1, num2 )
 	// 	// This XOR function is excerpted from the Bitwise Operations Mod v1.2, by Leslie E. Krause
 	// 	// which is provided under the MIT License (MIT)
