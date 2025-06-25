@@ -319,7 +319,7 @@ namespace hopper {
 			inputSuccess = true;
 		})();
 
-		print("still running :)");
+		print("Hopper running!");
 
 		// If nothing is done, nothing needs to be done.
 		if (inputSuccess || outputSuccess) {
