@@ -102,58 +102,28 @@ namespace weather {
 	});
 
 	// Spawn snow nodes.
-	const cDoSnow_call_count_for_blanket_coverage = 50; // how many calls of do_snow() are required for blanket snow coverage
-	const cDoSnow_call_count_for_snowState_catchup = 20; // how many calls of do_snow() (at most) before weather_snowState will catch up to the pattern on the ground (e.g. if player went somewhere else while it was snowing then came back)
+	const cDoSnow_call_count_for_blanket_coverage: number = 50; // how many calls of do_snow() are required for blanket snow coverage
+	const cDoSnow_call_count_for_snowState_catchup: number = 20; // how many calls of do_snow() (at most) before weather_snowState will catch up to the pattern on the ground (e.g. if player went somewhere else while it was snowing then came back)
 	// Fizzlefade constants for the shortest maximum length LFSR that can cover an 80 x 80 area (i.e. has a length larger than 6400)
-	const cSnowState_LFSR_taps = 0x100d;
-	const cSnowState_LFSR_length = 8191;
-	const cSnow_length_x = 80; // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
-	const cSnow_length_y = 80;
-	const cSnow_length_z = 80; // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
-	const snow_area = vector.create3d(
+	const cSnowState_LFSR_taps: number = 0x100d;
+	const cSnowState_LFSR_length: number = 8191;
+	const cSnow_length_x: number = 80; // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
+	const cSnow_length_y: number = 80;
+	const cSnow_length_z: number = 80; // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
+	const snow_area: Vec3 = vector.create3d(
 		cSnow_length_x,
 		cSnow_length_y,
 		cSnow_length_z
 	);
-	const snow_radius = vector.divide(snow_area, 2);
-	// local pos
-	// local min
-	// local max
-	// local subber = vector.subtract
-	// local adder  = vector.add
-	// local area_index
-	// local under_air = core.find_nodes_in_area_under_air
-	// local round_it = vector.round
-	// local n_vec = vector.new
-	// local lightlevel
-	// local get_light = core.get_node_light
-	// local g_node = core.get_node
-	// local node_name
-	// local def
-	// //local buildable
-	// local drawtype
-	// local walkable
-	// local liquid
-	// local r_nodes = core.registered_nodes
-	// local bulk_list
-	// local ice_list
-	// local spawn_table
-	// local mass_set = core.bulk_set_node
-	// local inserter = table.insert
-	// local temp_pos
-	// local floor, ceil = math.floor, math.ceil
-	// local weather_snowState
-	// local snowState_iterations_per_call  = ceil(cSnowState_LFSR_length / cDoSnow_call_count_for_blanket_coverage)
-	// local snowState_max_catchup_per_call = ceil(cSnowState_LFSR_length / cDoSnow_call_count_for_snowState_catchup)
-	// local under_air_iterations
-	// local catchup_steps
-	// local lsfr_steps_count
-	// local lsb
-	// local location_bits
-	// local relative_x
-	// local relative_z
-	// local under_air_count
-	// local x, y, z
+	const snow_radius: Vec3 = vector.divide(snow_area, 2);
+
+	const snowState_iterations_per_call: number = math.ceil(
+		cSnowState_LFSR_length / cDoSnow_call_count_for_blanket_coverage
+	);
+	const snowState_max_catchup_per_call: number = math.ceil(
+		cSnowState_LFSR_length / cDoSnow_call_count_for_snowState_catchup
+	);
+
 	// local acceptable_drawtypes = {
 	// 	["normal"] = true,
 	// 	["glasslike"] = true,
