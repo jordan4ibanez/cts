@@ -222,8 +222,7 @@ namespace crafter {
 				core.get_node(pointed_thing.under).name == "crafter_tnt:tnt"
 			) {
 				core.remove_node(pointed_thing.under);
-				// fixme: this was calling the TNT mod.
-				// tnt(pointed_thing.under,7)
+				tnt.tnt(pointed_thing.under, 7);
 				itemstack.replace(ItemStack("crafter:bucket"));
 				return itemstack;
 			}
