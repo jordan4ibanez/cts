@@ -31,7 +31,7 @@ namespace playerMechanics {
 	core.register_on_dieplayer(
 		(player: ObjectRef, reason: HPChangeReasonDefinition) => {
 			const pos: Vec3 = player.get_pos();
-			pos.y += 0.5;
+			pos.y += 0.75;
 			const inv: InvRef | null = player.get_inventory();
 			if (inv == null) {
 				throw new Error("Not a player.");
