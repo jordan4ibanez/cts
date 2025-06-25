@@ -1,7 +1,8 @@
 namespace weather {
-	const weather_channel = core.mod_channel_join("weather_type")
-	// local weather_intake = core.mod_channel_join("weather_intake")
+	const weather_channel: ModChannel = core.mod_channel_join("weather_type")
+	const weather_intake: ModChannel = core.mod_channel_join("weather_intake")
 	// local weather_nodes_channel = core.mod_channel_join("weather_nodes")
+	
 	// weather_channel:send_all("")
 	// weather_intake:send_all("")
 	// weather_nodes_channel:send_all("")
