@@ -1,22 +1,30 @@
 namespace hopper {
+	const inventoryName: string = "main";
+
 	// Formspec.
-	// function get_hopper_formspec(pos: Vec3): string {
-	// 	const spos: string = hopper.get_string_pos(pos);
-	// 	return (
-	// 		"size[8,9]" +
-	// 		hopper.formspec_bg +
-	// 		"list[nodemeta:" +
-	// 		spos +
-	// 		";main;2,0.3;4,4;]" +
-	// 		hopper.get_eject_button_texts(pos, 7, 2) +
-	// 		"list[current_player;main;0,4.85;8,1;]" +
-	// 		"list[current_player;main;0,6.08;8,3;8]" +
-	// 		"listring[nodemeta:" +
-	// 		spos +
-	// 		";main]" +
-	// 		"listring[current_player;main]"
-	// 	);
-	// }
+	const formspec_bg: string =
+		"background[-0.19,-0.25;9.41,9.49;gui_hb_bg.png]";
+
+	function getStringPos(pos: Vec3): string {
+		return `${pos.x},${pos.y},${pos.z}`;
+	}
+	function getHopperFormspec(pos: Vec3): string {
+		const spos: string = getStringPos(pos);
+		return (
+			"size[8,9]" +
+			formspec_bg +
+			"list[nodemeta:" +
+			spos +
+			";main;2,0.3;4,4;]" +
+			"list[current_player;main;0,4.85;8,1;]" +
+			"list[current_player;main;0,6.08;8,3;8]" +
+			"listring[nodemeta:" +
+			spos +
+			";main]" +
+			"listring[current_player;main]"
+		);
+	}
+
 	// function hopper_on_place(
 	// 	itemstack: ItemStackObject,
 	// 	placer: ObjectRef,
@@ -91,6 +99,23 @@ namespace hopper {
 	// 	}
 	// 	return itemstack;
 	// }
+
+	function onTimer(pos: Vec3, elapsed: number): void {
+		const inv: InvRef = core.get_meta(pos).get_inventory();
+		if (inv.is_empty(inventoryName)) {
+			return;
+		}
+
+		print("timer running.");
+	}
+
+	function onConstruct(pos: Vec3) {
+		const inv: InvRef = core.get_meta(pos).get_inventory();
+		inv.set_size("main", 4 * 4);
+	}
+
+	function timerTrigger(pos: Vec3): void {}
+
 	// Hoppers
 	core.register_node("crafter_hopper:hopper", {
 		drop: "crafter_hopper:hopper",
@@ -130,10 +155,10 @@ namespace hopper {
 				[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
 			],
 		},
-		on_construct: (pos) => {
-			const inv: InvRef = core.get_meta(pos).get_inventory();
-			inv.set_size("main", 4 * 4);
-		},
+		on_construct: onConstruct,
+		on_timer: onTimer,
+		on_metadata_inventory_put: timerTrigger,
+		on_metadata_inventory_take: timerTrigger,
 		// on_place: (itemstack, placer, pointed_thing) => {
 		// 	return hopper_on_place(
 		// 		itemstack,
@@ -142,23 +167,17 @@ namespace hopper {
 		// 		"crafter_hopper:hopper"
 		// 	);
 		// },
-		can_dig: (pos: Vec3, player: ObjectRef) => {
-			const inv: InvRef = core.get_meta(pos).get_inventory();
-			return inv.is_empty("main");
-		},
-		// on_rightclick: (pos, node, clicker, itemstack) => {
-		// 	if (
-		// 		core.is_protected(pos, clicker.get_player_name()) &&
-		// 		!core.check_player_privs(clicker, "protection_bypass")
-		// 	) {
-		// 		return;
-		// 	}
-		// 	core.show_formspec(
-		// 		clicker.get_player_name(),
-		// 		"hopper_formspec:" + core.pos_to_string(pos),
-		// 		get_hopper_formspec(pos)
-		// 	);
+		// can_dig: (pos: Vec3, player: ObjectRef) => {
+		// 	const inv: InvRef = core.get_meta(pos).get_inventory();
+		// 	return inv.is_empty("main");
 		// },
+		on_rightclick: (pos, node, clicker, itemstack) => {
+			core.show_formspec(
+				clicker.get_player_name(),
+				"hopper_formspec:" + core.pos_to_string(pos),
+				getHopperFormspec(pos)
+			);
+		},
 	});
 	// core.register_node("crafter_hopper:hopper_side", {
 	// 	description: "Side Hopper",
