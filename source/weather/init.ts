@@ -57,19 +57,21 @@ namespace weather {
 		}
 	}
 
-	// //this tells the client mod to update the weather type
-	// function_send_weather_type = function()
-	// 	weather_channel:send_all(tostring(weather_type))
-	// end
-	// //index all mods
-	// local all_nodes = {}
-	// core.register_on_mods_loaded(function()
-	// 	for name in pairs(core.registered_items) do
-	// 		if name ~= "air" and name ~= "ignore" then
-	// 			table.insert(all_nodes,name)
-	// 		end
-	// 	end
-	// end)
+	// This tells the client mod to update the weather type.
+	function function_send_weather_type() {
+		weather_channel.send_all(tostring(weather_type));
+	}
+	// Index all mods.
+	const all_nodes: string[] = [];
+
+	core.register_on_mods_loaded(() => {
+		for (const [name, _] of pairs(core.registered_items)) {
+			if (name != "air" && name != "ignore") {
+				all_nodes.push(name);
+			}
+		}
+	});
+
 	// //this sends the client all nodes that weather can be on top of
 	// //(everything)
 	// //have the client send the server the ready signal
