@@ -1,6 +1,12 @@
 namespace hopper {
 	const inventoryName: string = "main";
 
+	// todo: Maybe, implement these.
+	// { neighborNode: "crafter_hopper:chute", inv: "main" },
+	// { neighborNode: "crafter_hopper:sorter", inv: "main" },
+	// { neighborNode: "crafter_hopper:chute", inv: "main" },
+	// { neighborNode: "crafter_hopper:sorter", inv: "main" },
+
 	/**
 	 * top: The hopper is on top of the node.
 	 * bottom: The hopper is below the node.
