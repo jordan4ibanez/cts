@@ -244,6 +244,7 @@ namespace itemHandling {
 		old_magnet_distance: number = 0;
 		poll_timer: number = 0;
 		magnet_trigger: boolean = false;
+		hopperPollTimer = 0;
 		initial_properties = {
 			hp_max: 1,
 			visual: EntityVisual.wielditem,
@@ -406,24 +407,29 @@ namespace itemHandling {
 				}
 			}
 
-			workerVec.x = pos.x;
-			workerVec.y = pos.y - 0.22;
-			workerVec.z = pos.z;
+			// This eases the server load.
+			this.hopperPollTimer += dtime;
+			if (this.hopperPollTimer >= 0.3) {
+				workerVec.x = pos.x;
+				workerVec.y = pos.y - 0.22;
+				workerVec.z = pos.z;
 
-			const nodeBelow: NodeTable = core.get_node(workerVec);
-			const nodeBelowDef: NodeDefinition | undefined =
-				core.registered_nodes[nodeBelow.name];
-			if (nodeBelowDef != null) {
-				if (nodeBelowDef.groups?.hopper || 0 > 0) {
-					const inv: InvRef = core
-						.get_meta(workerVec)
-						.get_inventory();
-					if (inv.room_for_item("main", this.itemstring)) {
-						inv.add_item("main", this.itemstring);
-						this.object.remove();
-						return;
+				const nodeBelow: NodeTable = core.get_node(workerVec);
+				const nodeBelowDef: NodeDefinition | undefined =
+					core.registered_nodes[nodeBelow.name];
+				if (nodeBelowDef != null) {
+					if (nodeBelowDef.groups?.hopper || 0 > 0) {
+						const inv: InvRef = core
+							.get_meta(workerVec)
+							.get_inventory();
+						if (inv.room_for_item("main", this.itemstring)) {
+							inv.add_item("main", this.itemstring);
+							this.object.remove();
+							return;
+						}
 					}
 				}
+				this.hopperPollTimer -= 0.3;
 			}
 
 			// Allow entity to be collected after timer.
