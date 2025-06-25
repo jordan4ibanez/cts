@@ -1,3 +1,4 @@
+namespace weather {
 // local minetest,vector,math = minetest,vector,math
 // local weather_channel = minetest.mod_channel_join("weather_type")
 // local weather_intake = minetest.mod_channel_join("weather_intake")
@@ -605,3 +606,4 @@
 // 	self.oldvel = vel
 // end
 // minetest.register_entity("weather:snowball", snowball)
+}
