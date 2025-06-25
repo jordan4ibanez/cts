@@ -352,6 +352,15 @@ namespace hopper {
 		timerTrigger(pos);
 	}
 
+	function onDestruct(pos: Vec3) {
+		const inv: InvRef = core.get_meta(pos).get_inventory();
+		for (const itemStackObject of inv.get_list(hopperInventoryName)) {
+			if (itemStackObject.get_name() != "") {
+				itemHandling.throw_item(pos, itemStackObject);
+			}
+		}
+	}
+
 	// Hoppers
 	core.register_node("crafter_hopper:hopper", {
 		drop: "crafter_hopper:hopper",
@@ -393,6 +402,7 @@ namespace hopper {
 		},
 		on_punch: timerTriggerRegistrationWrapper,
 		on_construct: onConstruct,
+		on_destruct: onDestruct,
 		on_timer: onTimer,
 		on_metadata_inventory_put: timerTriggerRegistrationWrapper,
 		on_metadata_inventory_take: timerTriggerRegistrationWrapper,
