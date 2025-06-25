@@ -414,14 +414,11 @@ namespace itemHandling {
 			const nodeBelowDef: NodeDefinition | undefined =
 				core.registered_nodes[nodeBelow.name];
 			if (nodeBelowDef != null) {
-				print(1, nodeBelow.name);
 				if (nodeBelowDef.groups?.hopper || 0 > 0) {
-					print(2);
 					const inv: InvRef = core
 						.get_meta(workerVec)
 						.get_inventory();
 					if (inv.room_for_item("main", this.itemstring)) {
-						print(3);
 						inv.add_item("main", this.itemstring);
 						this.object.remove();
 						return;
