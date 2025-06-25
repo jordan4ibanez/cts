@@ -1711,10 +1711,10 @@ declare global {
 	}
 
 	/** @noSelf **/ interface MoonParameters {
-		visible: boolean;
-		texture: string;
-		tonemap: string;
-		scale: number;
+		visible?: boolean;
+		texture?: string;
+		tonemap?: string;
+		scale?: number;
 	}
 
 	/** @noSelf **/ interface StarParameters {
