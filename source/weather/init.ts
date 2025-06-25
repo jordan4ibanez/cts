@@ -1,11 +1,14 @@
 namespace weather {
-	const weather_channel: ModChannel = core.mod_channel_join("weather_type")
-	const weather_intake: ModChannel = core.mod_channel_join("weather_intake")
-	// local weather_nodes_channel = core.mod_channel_join("weather_nodes")
-	
-	// weather_channel:send_all("")
-	// weather_intake:send_all("")
-	// weather_nodes_channel:send_all("")
+	const weather_channel: ModChannel = core.mod_channel_join("weather_type");
+	const weather_intake: ModChannel = core.mod_channel_join("weather_intake");
+	const weather_nodes_channel: ModChannel =
+		core.mod_channel_join("weather_nodes");
+
+	// todo: Why is this doing this?
+	weather_channel.send_all("");
+	weather_intake.send_all("");
+	weather_nodes_channel.send_all("");
+
 	// local weather_max = 2
 	// local mod_storage = core.get_mod_storage()
 	// weather_type = mod_storage:get_int("weather_type")
