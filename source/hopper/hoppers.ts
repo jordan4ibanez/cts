@@ -124,11 +124,19 @@ namespace hopper {
 		timer.start(0.5);
 	}
 
+	const hopperGroups: Dictionary<string, number> = {
+		stone: 1,
+		hard: 1,
+		pickaxe: 1,
+		hand: 4,
+		pathable: 1,
+	};
+
 	// Hoppers
 	core.register_node("crafter_hopper:hopper", {
 		drop: "crafter_hopper:hopper",
 		description: "Hopper",
-		groups: { stone: 1, hard: 1, pickaxe: 1, hand: 4, pathable: 1 },
+		groups: hopperGroups,
 		sounds: crafter.stoneSound(),
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
@@ -190,7 +198,7 @@ namespace hopper {
 	// core.register_node("crafter_hopper:hopper_side", {
 	// 	description: "Side Hopper",
 	// 	drop: "crafter_hopper:hopper",
-	// 	groups: { stone: 1, hard: 1, pickaxe: 1, hand: 4, pathable: 1 },
+	// 	groups: hopperGroups,
 	// 	sounds: crafter.stoneSound(),
 	// 	drawtype: Drawtype.nodebox,
 	// 	paramtype: ParamType1.light,
