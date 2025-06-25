@@ -176,11 +176,7 @@ namespace hopper {
 	}
 
 	function onTimer(pos: Vec3, elapsed: number): void {
-		const inv: InvRef | null = core.get_meta(pos).get_inventory();
-
-		if (inv == null) {
-			throw new Error(`Missing inventory at ${pos}`);
-		}
+		const inv: InvRef = core.get_meta(pos).get_inventory();
 
 		//? Note: This logic technically makes the hopper function twice as fast,
 		//? as well as at an irratic pace. But it is more sound.
@@ -283,13 +279,7 @@ namespace hopper {
 				throw new Error("How did this even happen?");
 			}
 
-			const inputInv: InvRef | null = core
-				.get_meta(inputPos)
-				.get_inventory();
-
-			if (inputInv == null) {
-				throw new Error(`Missing inventory at ${inputPos}`);
-			}
+			const inputInv: InvRef = core.get_meta(inputPos).get_inventory();
 
 			// Can't pull from an empty inventory.
 			if (inputInv.is_empty(stringInvInput)) {
