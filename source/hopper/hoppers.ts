@@ -378,6 +378,7 @@ namespace hopper {
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
+		node_placement_prediction: "",
 		tiles: [
 			"hopper_top_16.png",
 			"hopper_top_16.png",
