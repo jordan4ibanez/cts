@@ -439,7 +439,7 @@ namespace hopper {
 
 	core.register_lbm({
 		name: "crafter_hopper:fix_engine_issue",
-		nodenames: ["crafter_hopper:hopper"],
+		nodenames: ["crafter_hopper:hopper", "crafter_hopper:hopper_side"],
 		run_at_every_load: true,
 		action: (pos: Vec3) => {
 			timerTrigger(pos);
