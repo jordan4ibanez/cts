@@ -10,7 +10,7 @@ namespace weather {
 	// weather_type = mod_storage:get_int("weather_type")
 	// local path = core.get_modpath(core.get_current_modname())
 	// dofile(path.."/commands.lua")
-	// --this updates players skys since it cannot be done clientside
+	// //this updates players skys since it cannot be done clientside
 	// update_player_sky = function()
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		if weather_type ~= 0 then
@@ -45,11 +45,11 @@ namespace weather {
 	// 		end
 	// 	end
 	// end
-	// --this tells the client mod to update the weather type
+	// //this tells the client mod to update the weather type
 	// function_send_weather_type = function()
 	// 	weather_channel:send_all(tostring(weather_type))
 	// end
-	// --index all mods
+	// //index all mods
 	// local all_nodes = {}
 	// core.register_on_mods_loaded(function()
 	// 	for name in pairs(core.registered_items) do
@@ -58,14 +58,14 @@ namespace weather {
 	// 		end
 	// 	end
 	// end)
-	// --this sends the client all nodes that weather can be on top of
-	// --(everything)
-	// --have the client send the server the ready signal
+	// //this sends the client all nodes that weather can be on top of
+	// //(everything)
+	// //have the client send the server the ready signal
 	// core.register_on_modchannel_message(function(channel_name, sender, message)
 	// 	if channel_name == "weather_intake" then
 	// 		core.after(0,function()
-	// 		--print("sending player weather")
-	// 		--for some reason this variable assignment does not work outside the scope of this function
+	// 		//print("sending player weather")
+	// 		//for some reason this variable assignment does not work outside the scope of this function
 	// 		local all_nodes_serialized = core.serialize(all_nodes)
 	// 		weather_nodes_channel:send_all(all_nodes_serialized)
 	// 		function_send_weather_type()
@@ -81,13 +81,13 @@ namespace weather {
 	// 		update_player_sky()
 	// 	end)
 	// end)
-	// --spawn snow nodes
-	// local cDoSnow_call_count_for_blanket_coverage  = 50 -- how many calls of do_snow() are required for blanket snow coverage
-	// local cDoSnow_call_count_for_snowState_catchup = 20 -- how many calls of do_snow() (at most) before weather_snowState will catch up to the pattern on the ground (e.g. if player went somewhere else while it was snowing then came back)
-	// local cSnowState_LFSR_taps, cSnowState_LFSR_length = 0x100D, 8191 -- Fizzlefade constants for the shortest maximum length LFSR that can cover an 80 x 80 area (i.e. has a length larger than 6400)
-	// local cSnow_length_x = 80 -- (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
+	// //spawn snow nodes
+	// local cDoSnow_call_count_for_blanket_coverage  = 50 // how many calls of do_snow() are required for blanket snow coverage
+	// local cDoSnow_call_count_for_snowState_catchup = 20 // how many calls of do_snow() (at most) before weather_snowState will catch up to the pattern on the ground (e.g. if player went somewhere else while it was snowing then came back)
+	// local cSnowState_LFSR_taps, cSnowState_LFSR_length = 0x100D, 8191 // Fizzlefade constants for the shortest maximum length LFSR that can cover an 80 x 80 area (i.e. has a length larger than 6400)
+	// local cSnow_length_x = 80 // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
 	// local cSnow_length_y = 80
-	// local cSnow_length_z = 80 -- (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
+	// local cSnow_length_z = 80 // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
 	// local snow_area = vector.new(cSnow_length_x, cSnow_length_y, cSnow_length_z)
 	// local snow_radius = vector.divide(snow_area, 2)
 	// local pos
@@ -104,7 +104,7 @@ namespace weather {
 	// local g_node = core.get_node
 	// local node_name
 	// local def
-	// --local buildable
+	// //local buildable
 	// local drawtype
 	// local walkable
 	// local liquid
@@ -136,41 +136,41 @@ namespace weather {
 	// 	["allfaces"] = true,
 	// 	["allfaces_optional"] = true,
 	// }
-	// --this is debug
-	// --local average = {}
+	// //this is debug
+	// //local average = {}
 	// function XOR( num1, num2 )
-	// 	-- This XOR function is excerpted from the Bitwise Operations Mod v1.2, by Leslie E. Krause
-	// 	-- which is provided under the MIT License (MIT)
-	// 	--
-	// 	-- The MIT License (MIT)
-	// 	--
-	// 	-- Copyright (c) 2020, Leslie Krause (leslie@searstower.org)
-	// 	--
-	// 	-- Permission is hereby granted, free of charge, to any person obtaining a copy of this
-	// 	-- software and associated documentation files (the "Software"), to deal in the Software
-	// 	-- without restriction, including without limitation the rights to use, copy, modify, merge,
-	// 	-- publish, distribute, sublicense, and/or sell copies of the Software, and to permit
-	// 	-- persons to whom the Software is furnished to do so, subject to the following conditions:
-	// 	--
-	// 	-- The above copyright notice and this permission notice shall be included in all copies or
-	// 	-- substantial portions of the Software.
-	// 	--
-	// 	-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-	// 	-- INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
-	// 	-- PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
-	// 	-- FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-	// 	-- OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-	// 	-- DEALINGS IN THE SOFTWARE.
-	// 	--
-	// 	-- For more details:
-	// 	-- https://opensource.org/licenses/MIT
+	// 	// This XOR function is excerpted from the Bitwise Operations Mod v1.2, by Leslie E. Krause
+	// 	// which is provided under the MIT License (MIT)
+	// 	//
+	// 	// The MIT License (MIT)
+	// 	//
+	// 	// Copyright (c) 2020, Leslie Krause (leslie@searstower.org)
+	// 	//
+	// 	// Permission is hereby granted, free of charge, to any person obtaining a copy of this
+	// 	// software and associated documentation files (the "Software"), to deal in the Software
+	// 	// without restriction, including without limitation the rights to use, copy, modify, merge,
+	// 	// publish, distribute, sublicense, and/or sell copies of the Software, and to permit
+	// 	// persons to whom the Software is furnished to do so, subject to the following conditions:
+	// 	//
+	// 	// The above copyright notice and this permission notice shall be included in all copies or
+	// 	// substantial portions of the Software.
+	// 	//
+	// 	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+	// 	// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+	// 	// PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+	// 	// FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	// 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	// 	// DEALINGS IN THE SOFTWARE.
+	// 	//
+	// 	// For more details:
+	// 	// https://opensource.org/licenses/MIT
 	// 	local exp = 1
 	// 	local res = 0
 	// 	while num1 > 0 or num2 > 0 do
 	// 		local rem1 = num1 % 2
 	// 		local rem2 = num2 % 2
 	// 		if rem1 ~= rem2 then
-	// 			-- set each bit
+	// 			// set each bit
 	// 			res = res + exp
 	// 		end
 	// 		num1 = ( num1 - rem1 ) / 2
@@ -182,17 +182,17 @@ namespace weather {
 	// local function do_snow()
 	// 	if weather_type == 1 then
 	// 		for _,player in ipairs(core.get_connected_players()) do
-	// 			--this is debug
-	// 			--local t0 = core.get_us_time()/1000000
+	// 			//this is debug
+	// 			//local t0 = core.get_us_time()/1000000
 	// 			pos = round_it(player:get_pos())
 	// 			min = subber(pos, snow_radius)
 	// 			max = adder(pos, snow_radius)
 	// 			area_index = under_air(min, max, all_nodes)
-	// 			--local node_search_time = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
+	// 			//local node_search_time = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
 	// 			spawn_table = {}
-	// 			--the highest value is always indexed last in core.find_nodes_in_area_under_air,
-	// 			--so all that is needed is to iterate through it backwards and hook into the first
-	// 			--y value on the x and y and ignore the rest
+	// 			//the highest value is always indexed last in core.find_nodes_in_area_under_air,
+	// 			//so all that is needed is to iterate through it backwards and hook into the first
+	// 			//y value on the x and y and ignore the rest
 	// 			under_air_count = 0
 	// 			for key = #area_index,1,-1 do
 	// 				temp_pos = area_index[key]
@@ -202,66 +202,66 @@ namespace weather {
 	// 					under_air_count = under_air_count + 1
 	// 				end
 	// 			end
-	// 			--save old method just in case useful or turns out it's faster after all
-	// 			--for _,index in pairs(area_index) do
-	// 			--	if not spawn_table[index.x] then spawn_table[index.x] = {} end
-	// 			--	if not spawn_table[index.x][index.z] then
-	// 			--		spawn_table[index.x][index.z] = index.y
-	// 			--	elseif spawn_table[index.x][index.z] < index.y then
-	// 			--		spawn_table[index.x][index.z] = index.y
-	// 			--	end
-	// 			--end
+	// 			//save old method just in case useful or turns out it's faster after all
+	// 			//for _,index in pairs(area_index) do
+	// 			//	if not spawn_table[index.x] then spawn_table[index.x] = {} end
+	// 			//	if not spawn_table[index.x][index.z] then
+	// 			//		spawn_table[index.x][index.z] = index.y
+	// 			//	elseif spawn_table[index.x][index.z] < index.y then
+	// 			//		spawn_table[index.x][index.z] = index.y
+	// 			//	end
+	// 			//end
 	// 			bulk_list            = {}
 	// 			ice_list             = {}
 	// 			under_air_iterations = 0
 	// 			catchup_steps        = 0
 	// 			lsfr_steps_count     = 0
 	// 			repeat
-	// 				-- "fizzelfade" in the snow with a Linear Feedback Shift Register (LFSR)
-	// 				-- https://fabiensanglard.net/fizzlefade/index.php
-	// 				lsb = weather_snowState % 2 -- Get the output bit.
-	// 				weather_snowState = floor(weather_snowState / 2) -- Shift register
+	// 				// "fizzelfade" in the snow with a Linear Feedback Shift Register (LFSR)
+	// 				// https://fabiensanglard.net/fizzlefade/index.php
+	// 				lsb = weather_snowState % 2 // Get the output bit.
+	// 				weather_snowState = floor(weather_snowState / 2) // Shift register
 	// 				if lsb == 1 then
 	// 					weather_snowState = XOR(weather_snowState, cSnowState_LFSR_taps)
 	// 				end
 	// 				lsfr_steps_count = lsfr_steps_count + 1
-	// 				location_bits = weather_snowState - 1 -- LFSR values start at 1, but we want snow to be able to fall on (0, 0)
+	// 				location_bits = weather_snowState - 1 // LFSR values start at 1, but we want snow to be able to fall on (0, 0)
 	// 				relative_x = location_bits % cSnow_length_x
 	// 				relative_z = floor(location_bits / cSnow_length_x)
 	// 				if relative_z < cSnow_length_z then
-	// 					x = (floor(min.x / cSnow_length_x) * cSnow_length_x) + relative_x -- align fizzelfade coords world-global
-	// 					if x < min.x then x = x + cSnow_length_x end -- ensure it falls in the same space as area_index
+	// 					x = (floor(min.x / cSnow_length_x) * cSnow_length_x) + relative_x // align fizzelfade coords world-global
+	// 					if x < min.x then x = x + cSnow_length_x end // ensure it falls in the same space as area_index
 	// 					local x_index = spawn_table[x]
 	// 					if x_index ~= nil then
-	// 						z = (floor(min.z / cSnow_length_z) * cSnow_length_z) + relative_z -- align fizzelfade coords world-global
-	// 						if z < min.z then z = z + cSnow_length_z end -- ensure it falls in the same space as area_index
+	// 						z = (floor(min.z / cSnow_length_z) * cSnow_length_z) + relative_z // align fizzelfade coords world-global
+	// 						if z < min.z then z = z + cSnow_length_z end // ensure it falls in the same space as area_index
 	// 						y = x_index[z]
 	// 						if y ~= nil then
-	// 							-- We hit a location that's in the spawn_table
+	// 							// We hit a location that's in the spawn_table
 	// 							under_air_iterations = under_air_iterations + 1
 	// 							lightlevel = get_light(n_vec(x,y+1,z), 0.5)
 	// 							if lightlevel >= 14 then
-	// 								-- daylight is above or near this node, so snow can fall on it
+	// 								// daylight is above or near this node, so snow can fall on it
 	// 								node_name = g_node(n_vec(x,y,z)).name
 	// 								def = r_nodes[node_name]
-	// 								--buildable = def.buildable_to
+	// 								//buildable = def.buildable_to
 	// 								drawtype = acceptable_drawtypes[def.drawtype]
 	// 								walkable = def.walkable
 	// 								liquid = (def.liquidtype ~= "none")
 	// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
-	// 									--if buildable then
-	// 									--	if node_name ~= "weather:snow" then
-	// 									--		inserter(bulk_list, n_vec(x,y,z))
-	// 									--	else
-	// 									--		catchup_steps = catchup_steps + 1 -- we've already snowed on this spot
-	// 									--	end
-	// 									--elseif walkable then
+	// 									//if buildable then
+	// 									//	if node_name ~= "weather:snow" then
+	// 									//		inserter(bulk_list, n_vec(x,y,z))
+	// 									//	else
+	// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+	// 									//	end
+	// 									//elseif walkable then
 	// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
 	// 											inserter(bulk_list, n_vec(x,y+1,z))
 	// 										else
-	// 											catchup_steps = catchup_steps + 1 -- we've already snowed on this spot
+	// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
 	// 										end
-	// 									--end
+	// 									//end
 	// 								elseif node_name == "main:water" then
 	// 									inserter(ice_list, n_vec(x,y,z))
 	// 								end
@@ -276,15 +276,15 @@ namespace weather {
 	// 			if ice_list then
 	// 				mass_set(ice_list, {name="main:ice"})
 	// 			end
-	// 			--this is debug
-	// 			--[[
+	// 			//this is debug
+	// 			//[[
 	// 			local chugent = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
-	// 			print("---------------------------------")
+	// 			print("////////////////////////////////-")
 	// 			print("find_nodes_in_area_under_air() time: " .. node_search_time .. " ms")
 	// 			print("New Snow generation time:            " .. chugent .. " ms  [" .. (chugent - node_search_time) .. " ms]")
 	// 			inserter(average, chugent)
 	// 			local a = 0
-	// 			--don't cause memory leak
+	// 			//don't cause memory leak
 	// 			if get_table_size(average) > 10 then
 	// 				table.remove(average,1)
 	// 			end
@@ -295,8 +295,8 @@ namespace weather {
 	// 			a = a / get_table_size(average)
 	// 			print("average = "..a.."ms")
 	// 			core.chat_send_all("total nodes under air: " .. under_air_count .. ", LFSR iterations: " .. lsfr_steps_count .. ", under-air hits (nodes tested): " .. under_air_iterations .. "        Snow added: " .. (#bulk_list + #ice_list)  .. ", snow already there (catchup): " .. catchup_steps)
-	// 			--print("---------------------------------")
-	// 			--]]--
+	// 			//print("////////////////////////////////-")
+	// 			//]]//
 	// 		end
 	// 	end
 	// 	core.after(3, function()
@@ -308,7 +308,7 @@ namespace weather {
 	// 		do_snow()
 	// 	end)
 	// end)
-	// --this sets random weather
+	// //this sets random weather
 	// local initial_run = true
 	// local new_weather
 	// local function randomize_weather()
@@ -347,7 +347,7 @@ namespace weather {
 	// local snowball_throw = function(player)
 	// 	local pos = player:get_pos()
 	// 	pos.y = pos.y + 1.625
-	// 	--let other players hear the noise too
+	// 	//let other players hear the noise too
 	// 	core.sound_play("woosh",{to_player=player:get_player_name(), pitch = math.random(80,100)/100})
 	// 	core.sound_play("woosh",{pos=pos, exclude_player = player:get_player_name(), pitch = math.random(80,100)/100})
 	// 	local snowball = core.add_entity(pos,"weather:snowball")
@@ -440,8 +440,8 @@ namespace weather {
 	// core.register_craftitem("weather:snowball", {
 	// 	description = "Snowball",
 	// 	inventory_image = "snowball.png",
-	// 	--stack_max = 1,
-	// 	--range = 0,
+	// 	//stack_max = 1,
+	// 	//range = 0,
 	// 	on_place = function(itemstack, placer, pointed_thing)
 	// 		local worked = snowball_throw(placer)
 	// 		if worked then
@@ -475,13 +475,13 @@ namespace weather {
 	// snowball.on_activate = function(self)
 	// 	self.object:set_acceleration(vector.new(0,-9.81,0))
 	// end
-	// --make this as efficient as possible
-	// --make it so you can hit one snowball with another
+	// //make this as efficient as possible
+	// //make it so you can hit one snowball with another
 	// snowball.on_step = function(self, dtime)
 	// 	local vel = self.object:get_velocity()
 	// 	local hit = false
 	// 	local pos = self.object:get_pos()
-	// 	--hit object with the snowball
+	// 	//hit object with the snowball
 	// 	for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
 	// 		if (object:is_player() and object:get_hp() > 0 and object:get_player_name() ~= self.thrower) or (object:get_luaentity() and object:get_luaentity().mob == true and object ~= self.owner) then
 	// 			object:punch(self.object, 2,
@@ -494,7 +494,7 @@ namespace weather {
 	// 		end
 	// 	end
 	// 	if (self.oldvel and ((vel.x == 0 and self.oldvel.x ~= 0) or (vel.y == 0 and self.oldvel.y ~= 0) or (vel.z == 0 and self.oldvel.z ~= 0))) or hit == true then
-	// 		--snowballs explode in the nether
+	// 		//snowballs explode in the nether
 	// 		if pos.y <= -10033 and pos.y >= -20000 then
 	// 			self.object:remove()
 	// 			tnt(pos,4)
@@ -502,11 +502,11 @@ namespace weather {
 	// 			core.sound_play("wool",{pos=pos, pitch = math.random(80,100)/100})
 	// 			core.add_particlespawner({
 	// 				amount = 20,
-	// 				-- Number of particles spawned over the time period `time`.
+	// 				// Number of particles spawned over the time period `time`.
 	// 				time = 0.001,
-	// 				-- Lifespan of spawner in seconds.
-	// 				-- If time is 0 spawner has infinite lifespan and spawns the `amount` on
-	// 				-- a per-second basis.
+	// 				// Lifespan of spawner in seconds.
+	// 				// If time is 0 spawner has infinite lifespan and spawns the `amount` on
+	// 				// a per-second basis.
 	// 				minpos = pos,
 	// 				maxpos = pos,
 	// 				minvel = {x=-2, y=3, z=-2},
@@ -517,9 +517,9 @@ namespace weather {
 	// 				maxexptime = 3,
 	// 				minsize = 1,
 	// 				maxsize = 1,
-	// 				-- The particles' properties are random values between the min and max
-	// 				-- values.
-	// 				-- pos, velocity, acceleration, expirationtime, size
+	// 				// The particles' properties are random values between the min and max
+	// 				// values.
+	// 				// pos, velocity, acceleration, expirationtime, size
 	// 				collisiondetection = true,
 	// 				collision_removal = true,
 	// 				object_collision = false,
