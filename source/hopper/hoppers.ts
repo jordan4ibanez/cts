@@ -114,7 +114,13 @@ namespace hopper {
 		inv.set_size("main", 4 * 4);
 	}
 
-	function timerTrigger(pos: Vec3): void {}
+	function timerTrigger(pos: Vec3): void {
+		const timer: NodeTimerObject = core.get_node_timer(pos);
+		if (timer.is_started()) {
+			return;
+		}
+		timer.start(0.5);
+	}
 
 	// Hoppers
 	core.register_node("crafter_hopper:hopper", {
