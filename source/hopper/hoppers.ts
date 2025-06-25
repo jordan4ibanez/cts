@@ -259,7 +259,6 @@ namespace hopper {
 			}
 
 			if (!outputInv.room_for_item(stringInvOutput, itemStackName)) {
-				print("no room!");
 				return;
 			}
 
@@ -323,7 +322,6 @@ namespace hopper {
 			// Now, let's see if it can fit this item.
 
 			if (!inv.room_for_item(hopperInventoryName, itemStackName)) {
-				print("no room!");
 				return;
 			}
 
