@@ -178,7 +178,10 @@ namespace hopper {
 	function onTimer(pos: Vec3, elapsed: number): void {
 		const inv: InvRef = core.get_meta(pos).get_inventory();
 
-		let loopAgain: boolean = false;
+		//? Note: This logic technically makes the hopper function twice as fast,
+		//? as well as at an irratic pace. But it is more sound.
+
+		let outputSuccess: boolean = false;
 
 		// First, try to empty itself to make room.
 		(() => {
@@ -244,6 +247,8 @@ namespace hopper {
 
 			// And, it adds it into that other inventory.
 			outputInv.add_item(stringInvOutput, itemStackName);
+
+			outputSuccess = true;
 		})();
 
 		print("still running :)");
