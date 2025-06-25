@@ -248,7 +248,8 @@ namespace hopper {
 
 			// And, it adds it into that other inventory.
 			outputInv.add_item(stringInvOutput, itemStackName);
-			
+
+			// Kickstart the output.
 			timerTrigger(outputPosition);
 
 			outputSuccess = true;
@@ -279,6 +280,43 @@ namespace hopper {
 			}
 
 			const inputInv: InvRef = core.get_meta(inputPos).get_inventory();
+
+			// Can't pull from an empty inventory.
+			if (inputInv.is_empty(stringInvInput)) {
+				return;
+			}
+
+			let itemStackName: string | null = null;
+
+			for (const itemObject of inputInv.get_list(stringInvInput)) {
+				const stackName: string = itemObject.get_name();
+				if (stackName != "") {
+					itemStackName = stackName;
+					break;
+				}
+			}
+
+			if (itemStackName == null) {
+				throw new Error("Item poll logic failure");
+			}
+
+			// Now, let's see if it can fit this item.
+
+			if (!inv.room_for_item(hopperInventoryName, itemStackName)) {
+				print("no room!");
+				return;
+			}
+
+			// Then finally, do the transfer.
+
+			inputInv.remove_item(stringInvInput, itemStackName);
+
+			inv.add_item(hopperInventoryName, itemStackName);
+
+			// Kickstart the input.
+			timerTrigger(inputPos);
+
+			inputSuccess = true;
 		})();
 
 		print("still running :)");
