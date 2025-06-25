@@ -2097,7 +2097,7 @@ declare global {
 		equals(other: MetaRef): boolean;
 		// fixme: USE INHERITANCE! <- inherit from what?
 		// node
-		get_inventory(): InvRef | null;
+		get_inventory(): InvRef;
 		mark_as_private(nameOrArray: string | string[]): void;
 		// timer
 		set(timeOut: number, elapsed: number): void;
