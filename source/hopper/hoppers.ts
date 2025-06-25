@@ -340,6 +340,14 @@ namespace hopper {
 		timer.start(fastMode ? 0 : 3 + math.random());
 	}
 
+	function hopperPlacement(
+		itemStack: ItemStackObject,
+		placer: ObjectRef,
+		pointedThing: PointedThing
+	): ItemStackObject | void {
+		print("hi");
+	}
+
 	const hopperGroups: Dictionary<string, number> = {
 		stone: 1,
 		hard: 1,
@@ -407,14 +415,7 @@ namespace hopper {
 		on_metadata_inventory_put: timerTriggerRegistrationWrapper,
 		on_metadata_inventory_take: timerTriggerRegistrationWrapper,
 		on_metadata_inventory_move: timerTriggerRegistrationWrapper,
-		// on_place: (itemstack, placer, pointed_thing) => {
-		// 	return hopper_on_place(
-		// 		itemstack,
-		// 		placer,
-		// 		pointed_thing,
-		// 		"crafter_hopper:hopper"
-		// 	);
-		// },
+		on_place: hopperPlacement,
 		on_rightclick: (pos, node, clicker, itemstack) => {
 			core.show_formspec(
 				clicker.get_player_name(),
