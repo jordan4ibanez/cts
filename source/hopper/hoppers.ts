@@ -175,10 +175,42 @@ namespace hopper {
 			}
 			const [outputPosition, isSide] = getOutputPosition(pos);
 
+			const outputNodeName: string = core.get_node(outputPosition).name;
 			const data: ContainerData | undefined =
 				containers[core.get_node(outputPosition).name];
 
 			if (data == null) {
+				// Attempt to throw an item out of the hopper if it is has a free space to do so.
+				const nodeDef: NodeDefinition | undefined =
+					core.registered_nodes[outputNodeName];
+
+				if (nodeDef == null) {
+					throw new Error(
+						`Undefined node in output at ${outputPosition}`
+					);
+				}
+
+				if (!nodeDef.walkable) {
+					let itemStackName: string = "";
+					for (const itemObject of inv.get_list(
+						hopperInventoryName
+					)) {
+						const stackName: string = itemObject.get_name();
+						if (stackName != "") {
+							itemStackName = stackName;
+							break;
+						}
+					}
+
+					if (itemStackName == "") {
+						throw new Error("Logic error.");
+					}
+
+					inv.remove_item(hopperInventoryName, itemStackName);
+
+					core.add_item(outputPosition, itemStackName);
+				}
+
 				return;
 			}
 
