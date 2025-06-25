@@ -268,7 +268,10 @@ namespace hopper {
 
 		print("still running :)");
 
-		timerTrigger(pos);
+		// If nothing is done, nothing needs to be done.
+		if (inputSuccess || outputSuccess) {
+			timerTrigger(pos);
+		}
 	}
 
 	function onConstruct(pos: Vec3) {
