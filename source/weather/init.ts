@@ -101,15 +101,21 @@ namespace weather {
 		});
 	});
 
-	// //spawn snow nodes
-	// local cDoSnow_call_count_for_blanket_coverage  = 50 // how many calls of do_snow() are required for blanket snow coverage
-	// local cDoSnow_call_count_for_snowState_catchup = 20 // how many calls of do_snow() (at most) before weather_snowState will catch up to the pattern on the ground (e.g. if player went somewhere else while it was snowing then came back)
-	// local cSnowState_LFSR_taps, cSnowState_LFSR_length = 0x100D, 8191 // Fizzlefade constants for the shortest maximum length LFSR that can cover an 80 x 80 area (i.e. has a length larger than 6400)
-	// local cSnow_length_x = 80 // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
-	// local cSnow_length_y = 80
-	// local cSnow_length_z = 80 // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
-	// local snow_area = vector.new(cSnow_length_x, cSnow_length_y, cSnow_length_z)
-	// local snow_radius = vector.divide(snow_area, 2)
+	// Spawn snow nodes.
+	const cDoSnow_call_count_for_blanket_coverage = 50; // how many calls of do_snow() are required for blanket snow coverage
+	const cDoSnow_call_count_for_snowState_catchup = 20; // how many calls of do_snow() (at most) before weather_snowState will catch up to the pattern on the ground (e.g. if player went somewhere else while it was snowing then came back)
+	// Fizzlefade constants for the shortest maximum length LFSR that can cover an 80 x 80 area (i.e. has a length larger than 6400)
+	const cSnowState_LFSR_taps = 0x100d;
+	const cSnowState_LFSR_length = 8191;
+	const cSnow_length_x = 80; // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
+	const cSnow_length_y = 80;
+	const cSnow_length_z = 80; // (cSnow_length_x * cSnow_length_z) MUST be less than cSnowState_LFSR_length
+	const snow_area = vector.create3d(
+		cSnow_length_x,
+		cSnow_length_y,
+		cSnow_length_z
+	);
+	const snow_radius = vector.divide(snow_area, 2);
 	// local pos
 	// local min
 	// local max
