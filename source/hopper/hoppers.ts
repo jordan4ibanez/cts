@@ -387,6 +387,7 @@ namespace hopper {
 				[-0.15, -0.3, -0.15, 0.15, -0.7, 0.15],
 			],
 		},
+		on_punch: timerTrigger,
 		on_construct: onConstruct,
 		on_timer: onTimer,
 		on_metadata_inventory_put: timerTrigger,
