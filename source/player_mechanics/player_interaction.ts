@@ -343,24 +343,24 @@ namespace playerMechanics {
 		}
 	);
 
-	//? Punch direct neighbors as an update when a node is placed.
-	const directions: Vec3[] = [
-		vector.create3d(-1, 0, 0),
-		vector.create3d(1, 0, 0),
-		vector.create3d(0, -1, 0),
-		vector.create3d(0, 1, 0),
-		vector.create3d(0, 0, -1),
-		vector.create3d(0, 0, 1),
-	];
-	const workerVec: Vec3 = vector.create3d();
-	core.register_on_placenode((pos: Vec3) => {
-		for (const dir of directions) {
-			workerVec.x = pos.x + dir.x;
-			workerVec.y = pos.y + dir.y;
-			workerVec.z = pos.z + dir.z;
-			core.punch_node(workerVec);
-		}
-	});
+	// //? Punch direct neighbors as an update when a node is placed.
+	// const directions: Vec3[] = [
+	// 	vector.create3d(-1, 0, 0),
+	// 	vector.create3d(1, 0, 0),
+	// 	vector.create3d(0, -1, 0),
+	// 	vector.create3d(0, 1, 0),
+	// 	vector.create3d(0, 0, -1),
+	// 	vector.create3d(0, 0, 1),
+	// ];
+	// const workerVec: Vec3 = vector.create3d();
+	// core.register_on_placenode((pos: Vec3) => {
+	// 	for (const dir of directions) {
+	// 		workerVec.x = pos.x + dir.x;
+	// 		workerVec.y = pos.y + dir.y;
+	// 		workerVec.z = pos.z + dir.z;
+	// 		core.punch_node(workerVec);
+	// 	}
+	// });
 
 	core.register_on_respawnplayer((player) => {
 		player.add_velocity(multiply_vec(player.get_velocity(), -1));
