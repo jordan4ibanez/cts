@@ -185,8 +185,7 @@ namespace crafter {
 					core.after(
 						1.5,
 						function (pos) {
-							//fixme: needs the TNT mod.
-							// tnt(pos, 5);
+							tnt.tnt(pos, 5);
 						},
 						pos
 					);
@@ -526,8 +525,7 @@ namespace crafter {
 				// create_aether_portal(pos)
 			} else if (pos.y <= -10033) {
 				core.remove_node(pos);
-				// todo: depends on the tnt mod.
-				// tnt(pos,10)
+				tnt.tnt(pos, 10);
 			}
 		},
 	});
