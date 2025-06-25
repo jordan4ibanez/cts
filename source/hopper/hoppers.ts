@@ -75,80 +75,52 @@ namespace hopper {
 		);
 	}
 
-	// function hopper_on_place(
-	// 	itemstack: ItemStackObject,
-	// 	placer: ObjectRef,
-	// 	pointed_thing: PointedThing,
-	// 	node_name: string
-	// ) {
-	// 	if (pointed_thing.type == PointedThingType.object) {
-	// 		return;
-	// 	}
-	// 	const pos: Vec3 | undefined = pointed_thing.under;
-	// 	const pos2: Vec3 | undefined = pointed_thing.above;
-	// 	if (pos == null || pos2 == null) {
-	// 		throw new Error("engine issue?");
-	// 	}
-	// 	const sneak: boolean = placer.get_player_control().sneak;
-	// 	const noddef: NodeDefinition | undefined =
-	// 		core.registered_nodes[core.get_node(pos).name];
-	// 	if (!sneak && noddef?.on_rightclick) {
-	// 		core.item_place(itemstack, placer, pointed_thing);
-	// 		return;
-	// 	}
-	// 	const x: number = pos.x - pos2.x;
-	// 	const z: number = pos.z - pos2.z;
-	// 	let returned_stack;
-	// 	let success;
-	// 	// Unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
-	// 	// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
-	// 	// the default item_place_node orientation code will not orient them pointing toward the selected surface.
-	// 	if (x == -1 && node_name == "crafter_hopper:hopper_side") {
-	// 		[returned_stack, success] = core.item_place_node(
-	// 			ItemStack("crafter_hopper:hopper_side"),
-	// 			placer,
-	// 			pointed_thing,
-	// 			0
-	// 		);
-	// 	} else if (x == 1 && node_name == "crafter_hopper:hopper_side") {
-	// 		[returned_stack, success] = core.item_place_node(
-	// 			ItemStack("crafter_hopper:hopper_side"),
-	// 			placer,
-	// 			pointed_thing,
-	// 			2
-	// 		);
-	// 	} else if (z == -1 && node_name == "crafter_hopper:hopper_side") {
-	// 		[returned_stack, success] = core.item_place_node(
-	// 			ItemStack("crafter_hopper:hopper_side"),
-	// 			placer,
-	// 			pointed_thing,
-	// 			3
-	// 		);
-	// 	} else if (z == 1 && node_name == "crafter_hopper:hopper_side") {
-	// 		[returned_stack, success] = core.item_place_node(
-	// 			ItemStack("crafter_hopper:hopper_side"),
-	// 			placer,
-	// 			pointed_thing,
-	// 			1
-	// 		);
-	// 	} else {
-	// 		// For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories.
-	// 		node_name = "crafter_hopper:hopper";
-	// 		[returned_stack, success] = core.item_place_node(
-	// 			ItemStack(node_name),
-	// 			placer,
-	// 			pointed_thing
-	// 		);
-	// 	}
-	// 	if (success) {
-	// 		const meta: MetaRef = core.get_meta(pos2);
-	// 		meta.set_string("placer", placer.get_player_name());
-	// 		if (!core.settings.get_bool("creative_mode")) {
-	// 			itemstack.take_item();
-	// 		}
-	// 	}
-	// 	return itemstack;
-	// }
+	function hopperPlacement(
+		itemstack: ItemStackObject,
+		placer: ObjectRef,
+		pointed_thing: PointedThing
+	) {
+		if (pointed_thing.type == PointedThingType.object) {
+			return;
+		}
+		const pos: Vec3 | undefined = pointed_thing.under;
+		const pos2: Vec3 | undefined = pointed_thing.above;
+		if (pos == null || pos2 == null) {
+			throw new Error("engine issue?");
+		}
+
+		const sneak: boolean = placer.get_player_control().sneak;
+		const noddef: NodeDefinition | undefined =
+			core.registered_nodes[core.get_node(pos).name];
+		if (!sneak && noddef?.on_rightclick) {
+			core.item_place(itemstack, placer, pointed_thing);
+			return;
+		}
+		const x: number = pos.x - pos2.x;
+		const z: number = pos.z - pos2.z;
+		let returned_stack;
+		let success;
+		// Unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
+		// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
+		// the default item_place_node orientation code will not orient them pointing toward the selected surface.
+
+		// For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories.
+		let node_name: string = "crafter_hopper:hopper";
+		[returned_stack, success] = core.item_place_node(
+			ItemStack(node_name),
+			placer,
+			pointed_thing
+		);
+
+		if (success) {
+			const meta: MetaRef = core.get_meta(pos2);
+			meta.set_string("placer", placer.get_player_name());
+			if (!core.settings.get_bool("creative_mode")) {
+				itemstack.take_item();
+			}
+		}
+		return itemstack;
+	}
 
 	const workerVec: Vec3 = vector.create3d();
 
@@ -319,7 +291,7 @@ namespace hopper {
 			inputSuccess = true;
 		})();
 
-		print("Hopper running!");
+		// print("Hopper running!");
 
 		// If nothing is done, nothing needs to be done.
 		// So it will set fast mode to false.
