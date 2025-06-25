@@ -354,7 +354,9 @@ namespace hopper {
 
 	function onDestruct(pos: Vec3) {
 		const inv: InvRef = core.get_meta(pos).get_inventory();
-		for (const itemStackObject of inv.get_list(hopperInventoryName)) {
+		for (const [_, itemStackObject] of ipairs(
+			inv.get_list(hopperInventoryName)
+		)) {
 			if (itemStackObject.get_name() != "") {
 				itemHandling.throw_item(pos, itemStackObject);
 			}
