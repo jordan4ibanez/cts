@@ -361,6 +361,7 @@ namespace hopper {
 		pickaxe: 1,
 		hand: 4,
 		pathable: 1,
+		hopper: 1,
 	};
 
 	function timerTriggerRegistrationWrapper(pos: Vec3) {
