@@ -1674,16 +1674,16 @@ declare global {
 	}
 
 	/** @noSelf **/ interface SkyParametersColor {
-		day_sky: DynamicColorSpec;
-		day_horizon: DynamicColorSpec;
-		dawn_sky: DynamicColorSpec;
-		dawn_horizon: DynamicColorSpec;
-		night_horizon: DynamicColorSpec;
-		indoors: DynamicColorSpec;
-		fog_sun_tint: DynamicColorSpec;
-		fog_moon_tint: DynamicColorSpec;
-		fog_tint_type: SkyParametersFogTintType;
+		day_sky?: DynamicColorSpec;
+		day_horizon?: DynamicColorSpec;
+		dawn_sky?: DynamicColorSpec;
+		dawn_horizon?: DynamicColorSpec;
 		night_sky?: DynamicColorSpec;
+		night_horizon?: DynamicColorSpec;
+		indoors?: DynamicColorSpec;
+		fog_sun_tint?: DynamicColorSpec;
+		fog_moon_tint?: DynamicColorSpec;
+		fog_tint_type?: SkyParametersFogTintType;
 	}
 
 	/** @noSelf **/ interface SkyParametersFog {
