@@ -99,20 +99,19 @@ namespace hopper {
 		const x: number = pos.x - pos2.x;
 		const z: number = pos.z - pos2.z;
 		let returned_stack;
-		let success;
-		// Unfortunately param2 overrides are needed for side hoppers even in the non-single-craftable-item case
-		// because they are literally *side* hoppers - their spouts point to the side rather than to the front, so
-		// the default item_place_node orientation code will not orient them pointing toward the selected surface.
+		let success: Vec3 | null = null;
 
-		// For cases where single_craftable_item was set on an existing world and there are still side hoppers in player inventories.
-		let node_name: string = "crafter_hopper:hopper";
-		[returned_stack, success] = core.item_place_node(
-			ItemStack(node_name),
-			placer,
-			pointed_thing
-		);
+		if (x == 0 && z == 0) {
+		} else {
+			let node_name: string = "crafter_hopper:hopper";
+			[returned_stack, success] = core.item_place_node(
+				ItemStack(node_name),
+				placer,
+				pointed_thing
+			);
+		}
 
-		if (success) {
+		if (success != null) {
 			const meta: MetaRef = core.get_meta(pos2);
 			meta.set_string("placer", placer.get_player_name());
 			if (!core.settings.get_bool("creative_mode")) {
