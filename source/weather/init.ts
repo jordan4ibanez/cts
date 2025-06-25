@@ -74,18 +74,22 @@ namespace weather {
 
 	// This sends the client all nodes that weather (particles) can be on top of, which is literally everything.
 	// Have the client send the server the ready signal.
-	// core.register_on_modchannel_message(function(channel_name, sender, message)
-	// 	if channel_name == "weather_intake" then
-	// 		core.after(0,function()
-	// 		//print("sending player weather")
-	// 		//for some reason this variable assignment does not work outside the scope of this function
-	// 		local all_nodes_serialized = core.serialize(all_nodes)
-	// 		weather_nodes_channel:send_all(all_nodes_serialized)
-	// 		function_send_weather_type()
-	// 		update_player_sky()
-	// 		end)
-	// 	end
-	// end)
+	core.register_on_modchannel_message(
+		(channel_name: string, sender: string, message: string) => {
+			if (channel_name != "weather_intake") {
+				return;
+			}
+			core.after(0, () => {
+				//print("sending player weather")
+				// todo: figure out what this comment means: for some reason this variable assignment does not work outside the scope of this function
+				const all_nodes_serialized: string = core.serialize(all_nodes);
+				weather_nodes_channel.send_all(all_nodes_serialized);
+				function_send_weather_type();
+				update_player_sky();
+			});
+		}
+	);
+
 	// core.register_on_joinplayer(function(player)
 	// 	core.after(3,function()
 	// 		local all_nodes_serialized = core.serialize(all_nodes)
