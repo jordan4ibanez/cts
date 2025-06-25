@@ -13,6 +13,9 @@ namespace hopper {
 			bottom: "main",
 			side: "main",
 		},
+		["crafter_hopper:hopper_side"]: {
+			side: "main",
+		},
 		["crafter_chest:chest"]: {
 			top: "main",
 			bottom: "main",
@@ -22,6 +25,16 @@ namespace hopper {
 			top: "main",
 			bottom: "main",
 			side: "main",
+		},
+		["crafter_furnace:furnace"]: {
+			top: "src",
+			bottom: "dst",
+			side: "fuel",
+		},
+		["crafter_furnace:furnace_active"]: {
+			top: "src",
+			bottom: "dst",
+			side: "fuel",
 		},
 	};
 
