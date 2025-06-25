@@ -116,7 +116,6 @@ namespace weather {
 		cSnow_length_z
 	);
 	const snow_radius: Vec3 = vector.divide(snow_area, 2);
-
 	const snowState_iterations_per_call: number = math.ceil(
 		cSnowState_LFSR_length / cDoSnow_call_count_for_blanket_coverage
 	);
@@ -124,14 +123,14 @@ namespace weather {
 		cSnowState_LFSR_length / cDoSnow_call_count_for_snowState_catchup
 	);
 
-	// local acceptable_drawtypes = {
-	// 	["normal"] = true,
-	// 	["glasslike"] = true,
-	// 	["glasslike_framed"] = true,
-	// 	["glasslike_framed_optional"] = true,
-	// 	["allfaces"] = true,
-	// 	["allfaces_optional"] = true,
-	// }
+	const acceptable_drawtypes = new Set<string>([
+		"normal",
+		"glasslike",
+		"glasslike_framed",
+		"glasslike_framed_optional",
+		"allfaces",
+		"allfaces_optional",
+	]);
 	// //this is debug
 	// //local average = {}
 	// function XOR( num1, num2 )
