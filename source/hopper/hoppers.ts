@@ -255,12 +255,10 @@ namespace hopper {
 		// Next, try to pull out of the input. (The top)
 		// All hoppers input from the top. They work by gravity, after all!
 		(() => {
-			workerVec.x = pos.x;
-			workerVec.y = pos.y + 1;
-			workerVec.z = pos.z;
+			const inputPos: Vec3 = vector.create3d(pos.x, pos.y + 1, pos.z);
 
 			const data: ContainerData | undefined =
-				containers[core.get_node(workerVec).name];
+				containers[core.get_node(inputPos).name];
 
 			if (data == null) {
 				return;
@@ -277,6 +275,8 @@ namespace hopper {
 			if (stringInvInput == null) {
 				throw new Error("How did this even happen?");
 			}
+
+			const inputInv: InvRef = core.get_meta(inputPos).get_inventory();
 		})();
 
 		print("still running :)");
