@@ -208,7 +208,10 @@ namespace hopper {
 
 					inv.remove_item(hopperInventoryName, itemStackName);
 
+					// todo: make this nicer. This is really lame.
 					core.add_item(outputPosition, itemStackName);
+
+					outputSuccess = true;
 				}
 
 				return;
