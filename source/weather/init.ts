@@ -14,9 +14,10 @@ namespace weather {
 
 	const weather_type: number = mod_storage.get_int("weather_type");
 
-	// local path = core.get_modpath(core.get_current_modname())
-	// dofile(path.."/commands.lua")
-	// //this updates players skys since it cannot be done clientside
+	utility.loadFiles(["commands"]);
+
+	// todo: check if this is still true.
+	// This updates players skys since it cannot be done clientside.
 	// update_player_sky = function()
 	// 	for _,player in ipairs(core.get_connected_players()) do
 	// 		if weather_type ~= 0 then
