@@ -1,5 +1,5 @@
 namespace hopper {
-	const inventoryName: string = "main";
+	const hopperInventoryName: string = "main";
 
 	// todo: Maybe, implement these.
 	// { neighborNode: "crafter_hopper:chute", inv: "main" },
@@ -182,7 +182,7 @@ namespace hopper {
 
 		// First, try to empty itself to make room.
 		(() => {
-			if (inv.is_empty(inventoryName)) {
+			if (inv.is_empty(hopperInventoryName)) {
 				return;
 			}
 			const [outputPosition, isSide] = getOutputPosition(pos);
@@ -211,6 +211,39 @@ namespace hopper {
 			if (stringInvOutput == null) {
 				throw new Error("Logic failure.");
 			}
+
+			const outputInv: InvRef = core
+				.get_meta(outputPosition)
+				.get_inventory();
+
+			// So now, this hopper's inventory has at least 1 item.
+			// This now has conformation that there is an inventory to output to.
+			// The final step is to check that this hopper can output to that inventory.
+
+			let itemStackName: string | null = null;
+
+			for (const itemObject of inv.get_list(hopperInventoryName)) {
+				const stackName: string = itemObject.get_name();
+				if (stackName != "") {
+					itemStackName = stackName;
+					break;
+				}
+			}
+
+			if (itemStackName == null) {
+				throw new Error("Item poll logic failure");
+			}
+
+			if (!outputInv.room_for_item(stringInvOutput, itemStackName)) {
+				print("no room!");
+				return;
+			}
+
+			// So now, this hopper takes 1 from itself.
+			inv.remove_item(hopperInventoryName, itemStackName);
+
+			// And, it adds it into that other inventory.
+			outputInv.add_item(stringInvOutput, itemStackName);
 		})();
 
 		print("still running :)");
@@ -228,7 +261,7 @@ namespace hopper {
 		if (timer.is_started()) {
 			return;
 		}
-		timer.start(0.5);
+		timer.start(0);
 	}
 
 	const hopperGroups: Dictionary<string, number> = {
