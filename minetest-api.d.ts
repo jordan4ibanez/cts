@@ -1678,12 +1678,12 @@ declare global {
 		day_horizon: DynamicColorSpec;
 		dawn_sky: DynamicColorSpec;
 		dawn_horizon: DynamicColorSpec;
-		nigh_sky: DynamicColorSpec;
 		night_horizon: DynamicColorSpec;
 		indoors: DynamicColorSpec;
 		fog_sun_tint: DynamicColorSpec;
 		fog_moon_tint: DynamicColorSpec;
 		fog_tint_type: SkyParametersFogTintType;
+		night_sky?: DynamicColorSpec;
 	}
 
 	/** @noSelf **/ interface SkyParametersFog {
