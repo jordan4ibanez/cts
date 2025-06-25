@@ -348,6 +348,10 @@ namespace hopper {
 		pathable: 1,
 	};
 
+	function timerTriggerRegistrationWrapper(pos: Vec3) {
+		timerTrigger(pos);
+	}
+
 	// Hoppers
 	core.register_node("crafter_hopper:hopper", {
 		drop: "crafter_hopper:hopper",
