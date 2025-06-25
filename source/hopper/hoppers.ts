@@ -339,11 +339,8 @@ namespace hopper {
 			inputSuccess = true;
 		})();
 
-		// print("Hopper running!");
-
 		// If nothing is done, nothing needs to be done.
-		// So it will set fast mode to false.
-		timerTrigger(pos, inputSuccess || outputSuccess);
+		timerTrigger(pos);
 	}
 
 	function onConstruct(pos: Vec3) {
@@ -351,13 +348,13 @@ namespace hopper {
 		inv.set_size("main", 4 * 4);
 	}
 
-	function timerTrigger(pos: Vec3, fastMode?: boolean): void {
+	function timerTrigger(pos: Vec3): void {
 		const timer: NodeTimerObject = core.get_node_timer(pos);
 		if (timer.is_started()) {
 			return;
 		}
 
-		timer.start(fastMode ? 0 : 3 + math.random());
+		timer.start(0.4);
 	}
 
 	const hopperGroups: Dictionary<string, number> = {
