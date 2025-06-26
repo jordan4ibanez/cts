@@ -266,9 +266,14 @@ namespace weather {
 						}
 						const y: number | undefined = x_index[z];
 						if (y != null) {
-							// 							// We hit a location that's in the spawn_table
-							// 							under_air_iterations = under_air_iterations + 1
-							// 							lightlevel = get_light(n_vec(x,y+1,z), 0.5)
+							// We hit a location that's in the spawn_table.
+							under_air_iterations = under_air_iterations + 1;
+							const lightlevel: number =
+								core.get_node_light(
+									vector.create3d(x, y + 1, z),
+									0.5
+								) || 0;
+
 							// 							if lightlevel >= 14 then
 							// 								// daylight is above or near this node, so snow can fall on it
 							// 								node_name = g_node(n_vec(x,y,z)).name
