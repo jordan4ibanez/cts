@@ -8,6 +8,7 @@ namespace weather {
 	weather_channel.send_all("");
 	weather_intake.send_all("");
 	weather_nodes_channel.send_all("");
+	let weather_snowState: number = 0;
 
 	const weather_max: number = 2;
 	const mod_storage: MetaRef = core.get_mod_storage();
@@ -205,7 +206,7 @@ namespace weather {
 			for (const key of $range(area_index.length, 1, -1)) {
 				const temp_pos: Vec3 = area_index[key];
 
-				let current: Dictionary<number, number> =
+				const current: Dictionary<number, number> =
 					spawn_table[temp_pos.x] || (spawn_table[temp_pos.x] = {});
 
 				if (current[temp_pos.z] == null) {
@@ -221,17 +222,24 @@ namespace weather {
 			let lsfr_steps_count = 0;
 
 			do {
-				// 				// "fizzelfade" in the snow with a Linear Feedback Shift Register (LFSR)
-				// 				// https://fabiensanglard.net/fizzlefade/index.php
-				// 				lsb = weather_snowState % 2 // Get the output bit.
-				// 				weather_snowState = floor(weather_snowState / 2) // Shift register
-				// 				if lsb == 1 then
-				// 					weather_snowState = XOR(weather_snowState, cSnowState_LFSR_taps)
-				// 				end
-				// 				lsfr_steps_count = lsfr_steps_count + 1
-				// 				location_bits = weather_snowState - 1 // LFSR values start at 1, but we want snow to be able to fall on (0, 0)
-				// 				relative_x = location_bits % cSnow_length_x
-				// 				relative_z = floor(location_bits / cSnow_length_x)
+				// "fizzelfade" in the snow with a Linear Feedback Shift Register (LFSR)
+				// https://fabiensanglard.net/fizzlefade/index.php
+
+				const lsb: number = weather_snowState % 2; // Get the output bit.
+				weather_snowState = math.floor(weather_snowState / 2); // Shift register
+				if (lsb == 1) {
+					weather_snowState = XOR(
+						weather_snowState,
+						cSnowState_LFSR_taps
+					);
+				}
+
+				lsfr_steps_count = lsfr_steps_count + 1;
+				const location_bits: number = weather_snowState - 1; // LFSR values start at 1, but we want snow to be able to fall on (0, 0)
+				const relative_x: number = location_bits % cSnow_length_x;
+				const relative_z: number = math.floor(
+					location_bits / cSnow_length_x
+				);
 				// 				if relative_z < cSnow_length_z then
 				// 					x = (floor(min.x / cSnow_length_x) * cSnow_length_x) + relative_x // align fizzelfade coords world-global
 				// 					if x < min.x then x = x + cSnow_length_x end // ensure it falls in the same space as area_index
