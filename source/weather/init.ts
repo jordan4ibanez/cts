@@ -205,18 +205,13 @@ namespace weather {
 			for (const key of $range(area_index.length, 1, -1)) {
 				const temp_pos = area_index[key];
 
-				let current: Dictionary<number, number> | undefined =
-					spawn_table[temp_pos.x];
+				let current: Dictionary<number, number> =
+					spawn_table[temp_pos.x] || (spawn_table[temp_pos.x] = {});
 
-				if (current == null) {
-					current = spawn_table[temp_pos.x] = {};
+				if (current[temp_pos.z] == null) {
+					current[temp_pos.z] = temp_pos.y;
+					under_air_count++;
 				}
-
-				// spawn_table[temp_pos.x];
-				// if (spawn_table[temp_pos.x][temp_pos.z]) then;
-				// 					spawn_table[temp_pos.x][temp_pos.z] = temp_pos.y
-				// 					under_air_count = under_air_count + 1
-				// 				end
 			}
 
 			// 			bulk_list            = {}
