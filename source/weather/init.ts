@@ -255,11 +255,15 @@ namespace weather {
 
 					if (x_index != null) {
 						// Align fizzelfade coords world-global.
-						const z: number =
+						let z: number =
 							math.floor(min.z / cSnow_length_z) *
 								cSnow_length_z +
 							relative_z;
-						// 						if z < min.z then z = z + cSnow_length_z end // ensure it falls in the same space as area_index
+
+						// Ensure it falls in the same space as area_index.
+						if (z < min.z) {
+							z = z + cSnow_length_z;
+						}
 						// 						y = x_index[z]
 						// 						if y ~= nil then
 						// 							// We hit a location that's in the spawn_table
