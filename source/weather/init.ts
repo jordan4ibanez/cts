@@ -205,10 +205,15 @@ namespace weather {
 			for (const key of $range(area_index.length, 1, -1)) {
 				const temp_pos = area_index[key];
 
-				if (spawn_table[temp_pos.x] == null) {
-					spawn_table[temp_pos.x] = {};
+				let current: Dictionary<number, number> | undefined =
+					spawn_table[temp_pos.x];
+
+				if (current == null) {
+					current = spawn_table[temp_pos.x] = {};
 				}
-				// 				if not spawn_table[temp_pos.x][temp_pos.z] then
+
+				// spawn_table[temp_pos.x];
+				// if (spawn_table[temp_pos.x][temp_pos.z]) then;
 				// 					spawn_table[temp_pos.x][temp_pos.z] = temp_pos.y
 				// 					under_air_count = under_air_count + 1
 				// 				end
