@@ -191,21 +191,28 @@ namespace weather {
 				(core.get_us_time() / 1000000 - t0) * 1000
 			);
 
-			// 			spawn_table = {}
+			const spawn_table: Dictionary<
+				number,
+				Dictionary<number, number>
+			> = {};
 
 			// The highest value is always indexed last in core.find_nodes_in_area_under_air,
 			// so all that is needed is to iterate through it backwards and hook into the first
 			// y value on the x and y and ignore the rest.
 
-			// 			under_air_count = 0
-			// 			for key = #area_index,1,-1 do
-			// 				temp_pos = area_index[key]
-			// 				if not spawn_table[temp_pos.x] then spawn_table[temp_pos.x] = {} end
-			// 				if not spawn_table[temp_pos.x][temp_pos.z] then
-			// 					spawn_table[temp_pos.x][temp_pos.z] = temp_pos.y
-			// 					under_air_count = under_air_count + 1
-			// 				end
-			// 			end
+			let under_air_count: number = 0;
+
+			for (const key of $range(area_index.length, 1, -1)) {
+				const temp_pos = area_index[key];
+
+				if (spawn_table[temp_pos.x] == null) {
+					spawn_table[temp_pos.x] = {};
+				}
+				// 				if not spawn_table[temp_pos.x][temp_pos.z] then
+				// 					spawn_table[temp_pos.x][temp_pos.z] = temp_pos.y
+				// 					under_air_count = under_air_count + 1
+				// 				end
+			}
 
 			// 			bulk_list            = {}
 			// 			ice_list             = {}
