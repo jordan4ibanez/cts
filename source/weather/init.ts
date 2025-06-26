@@ -275,10 +275,15 @@ namespace weather {
 								) || 0;
 
 							if (lightlevel >= 14) {
-								// 								// daylight is above or near this node, so snow can fall on it
-								// 								node_name = g_node(n_vec(x,y,z)).name
-								// 								def = r_nodes[node_name]
-								// 								//buildable = def.buildable_to
+								// Daylight is above or near this node, so snow can fall on it.
+								const node_name = core.get_node(
+									vector.create3d(x, y, z)
+								).name;
+								const def: NodeDefinition | undefined =
+									core.registered_nodes[node_name];
+
+								// // buildable = def.buildable_to
+
 								// 								drawtype = acceptable_drawtypes[def.drawtype]
 								// 								walkable = def.walkable
 								// 								liquid = (def.liquidtype ~= "none")
