@@ -169,7 +169,7 @@ namespace weather {
 		return res;
 	}
 
-	// local function do_snow()
+	 function do_snow(){
 	// 	if weather_type == 1 then
 	// 		for _,player in ipairs(core.get_connected_players()) do
 	// 			//this is debug
@@ -288,7 +288,8 @@ namespace weather {
 	// 			//print("////////////////////////////////-")
 	// 			//]]//
 	// 		end
-	// 	end
+	 }
+
 	// 	core.after(3, function()
 	// 		do_snow()
 	// 	end)
