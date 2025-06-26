@@ -169,136 +169,139 @@ namespace weather {
 		return res;
 	}
 
-	 function do_snow(){
-	// 	if weather_type == 1 then
-	// 		for _,player in ipairs(core.get_connected_players()) do
-	// 			//this is debug
-	// 			//local t0 = core.get_us_time()/1000000
-	// 			pos = round_it(player:get_pos())
-	// 			min = subber(pos, snow_radius)
-	// 			max = adder(pos, snow_radius)
-	// 			area_index = under_air(min, max, all_nodes)
-	// 			//local node_search_time = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
-	// 			spawn_table = {}
-	// 			//the highest value is always indexed last in core.find_nodes_in_area_under_air,
-	// 			//so all that is needed is to iterate through it backwards and hook into the first
-	// 			//y value on the x and y and ignore the rest
-	// 			under_air_count = 0
-	// 			for key = #area_index,1,-1 do
-	// 				temp_pos = area_index[key]
-	// 				if not spawn_table[temp_pos.x] then spawn_table[temp_pos.x] = {} end
-	// 				if not spawn_table[temp_pos.x][temp_pos.z] then
-	// 					spawn_table[temp_pos.x][temp_pos.z] = temp_pos.y
-	// 					under_air_count = under_air_count + 1
-	// 				end
-	// 			end
-	// 			//save old method just in case useful or turns out it's faster after all
-	// 			//for _,index in pairs(area_index) do
-	// 			//	if not spawn_table[index.x] then spawn_table[index.x] = {} end
-	// 			//	if not spawn_table[index.x][index.z] then
-	// 			//		spawn_table[index.x][index.z] = index.y
-	// 			//	elseif spawn_table[index.x][index.z] < index.y then
-	// 			//		spawn_table[index.x][index.z] = index.y
-	// 			//	end
-	// 			//end
-	// 			bulk_list            = {}
-	// 			ice_list             = {}
-	// 			under_air_iterations = 0
-	// 			catchup_steps        = 0
-	// 			lsfr_steps_count     = 0
-	// 			repeat
-	// 				// "fizzelfade" in the snow with a Linear Feedback Shift Register (LFSR)
-	// 				// https://fabiensanglard.net/fizzlefade/index.php
-	// 				lsb = weather_snowState % 2 // Get the output bit.
-	// 				weather_snowState = floor(weather_snowState / 2) // Shift register
-	// 				if lsb == 1 then
-	// 					weather_snowState = XOR(weather_snowState, cSnowState_LFSR_taps)
-	// 				end
-	// 				lsfr_steps_count = lsfr_steps_count + 1
-	// 				location_bits = weather_snowState - 1 // LFSR values start at 1, but we want snow to be able to fall on (0, 0)
-	// 				relative_x = location_bits % cSnow_length_x
-	// 				relative_z = floor(location_bits / cSnow_length_x)
-	// 				if relative_z < cSnow_length_z then
-	// 					x = (floor(min.x / cSnow_length_x) * cSnow_length_x) + relative_x // align fizzelfade coords world-global
-	// 					if x < min.x then x = x + cSnow_length_x end // ensure it falls in the same space as area_index
-	// 					local x_index = spawn_table[x]
-	// 					if x_index ~= nil then
-	// 						z = (floor(min.z / cSnow_length_z) * cSnow_length_z) + relative_z // align fizzelfade coords world-global
-	// 						if z < min.z then z = z + cSnow_length_z end // ensure it falls in the same space as area_index
-	// 						y = x_index[z]
-	// 						if y ~= nil then
-	// 							// We hit a location that's in the spawn_table
-	// 							under_air_iterations = under_air_iterations + 1
-	// 							lightlevel = get_light(n_vec(x,y+1,z), 0.5)
-	// 							if lightlevel >= 14 then
-	// 								// daylight is above or near this node, so snow can fall on it
-	// 								node_name = g_node(n_vec(x,y,z)).name
-	// 								def = r_nodes[node_name]
-	// 								//buildable = def.buildable_to
-	// 								drawtype = acceptable_drawtypes[def.drawtype]
-	// 								walkable = def.walkable
-	// 								liquid = (def.liquidtype ~= "none")
-	// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
-	// 									//if buildable then
-	// 									//	if node_name ~= "weather:snow" then
-	// 									//		inserter(bulk_list, n_vec(x,y,z))
-	// 									//	else
-	// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
-	// 									//	end
-	// 									//elseif walkable then
-	// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
-	// 											inserter(bulk_list, n_vec(x,y+1,z))
-	// 										else
-	// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
-	// 										end
-	// 									//end
-	// 								elseif node_name == "main:water" then
-	// 									inserter(ice_list, n_vec(x,y,z))
-	// 								end
-	// 							end
-	// 						end
-	// 					end
-	// 				end
-	// 			until (lsfr_steps_count - catchup_steps) >= snowState_iterations_per_call or catchup_steps >= snowState_max_catchup_per_call
-	// 			if bulk_list then
-	// 				mass_set(bulk_list, {name="weather:snow"})
-	// 			end
-	// 			if ice_list then
-	// 				mass_set(ice_list, {name="main:ice"})
-	// 			end
-	// 			//this is debug
-	// 			//[[
-	// 			local chugent = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
-	// 			print("////////////////////////////////-")
-	// 			print("find_nodes_in_area_under_air() time: " .. node_search_time .. " ms")
-	// 			print("New Snow generation time:            " .. chugent .. " ms  [" .. (chugent - node_search_time) .. " ms]")
-	// 			inserter(average, chugent)
-	// 			local a = 0
-	// 			//don't cause memory leak
-	// 			if get_table_size(average) > 10 then
-	// 				table.remove(average,1)
-	// 			end
-	// 			for _,i in ipairs(average) do
-	// 				a = a + i
-	// 			end
-	// 			print(dump(average))
-	// 			a = a / get_table_size(average)
-	// 			print("average = "..a.."ms")
-	// 			core.chat_send_all("total nodes under air: " .. under_air_count .. ", LFSR iterations: " .. lsfr_steps_count .. ", under-air hits (nodes tested): " .. under_air_iterations .. "        Snow added: " .. (#bulk_list + #ice_list)  .. ", snow already there (catchup): " .. catchup_steps)
-	// 			//print("////////////////////////////////-")
-	// 			//]]//
-	// 		end
-	 }
+	function do_snow() {
+		if (weather_type != 1) {
+			return;
+		}
 
-	// 	core.after(3, function()
-	// 		do_snow()
-	// 	end)
-	// end
+		// 		for _,player in ipairs(core.get_connected_players()) do
+		// 			//this is debug
+		// 			//local t0 = core.get_us_time()/1000000
+		// 			pos = round_it(player:get_pos())
+		// 			min = subber(pos, snow_radius)
+		// 			max = adder(pos, snow_radius)
+		// 			area_index = under_air(min, max, all_nodes)
+		// 			//local node_search_time = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
+		// 			spawn_table = {}
+		// 			//the highest value is always indexed last in core.find_nodes_in_area_under_air,
+		// 			//so all that is needed is to iterate through it backwards and hook into the first
+		// 			//y value on the x and y and ignore the rest
+		// 			under_air_count = 0
+		// 			for key = #area_index,1,-1 do
+		// 				temp_pos = area_index[key]
+		// 				if not spawn_table[temp_pos.x] then spawn_table[temp_pos.x] = {} end
+		// 				if not spawn_table[temp_pos.x][temp_pos.z] then
+		// 					spawn_table[temp_pos.x][temp_pos.z] = temp_pos.y
+		// 					under_air_count = under_air_count + 1
+		// 				end
+		// 			end
+		// 			//save old method just in case useful or turns out it's faster after all
+		// 			//for _,index in pairs(area_index) do
+		// 			//	if not spawn_table[index.x] then spawn_table[index.x] = {} end
+		// 			//	if not spawn_table[index.x][index.z] then
+		// 			//		spawn_table[index.x][index.z] = index.y
+		// 			//	elseif spawn_table[index.x][index.z] < index.y then
+		// 			//		spawn_table[index.x][index.z] = index.y
+		// 			//	end
+		// 			//end
+		// 			bulk_list            = {}
+		// 			ice_list             = {}
+		// 			under_air_iterations = 0
+		// 			catchup_steps        = 0
+		// 			lsfr_steps_count     = 0
+		// 			repeat
+		// 				// "fizzelfade" in the snow with a Linear Feedback Shift Register (LFSR)
+		// 				// https://fabiensanglard.net/fizzlefade/index.php
+		// 				lsb = weather_snowState % 2 // Get the output bit.
+		// 				weather_snowState = floor(weather_snowState / 2) // Shift register
+		// 				if lsb == 1 then
+		// 					weather_snowState = XOR(weather_snowState, cSnowState_LFSR_taps)
+		// 				end
+		// 				lsfr_steps_count = lsfr_steps_count + 1
+		// 				location_bits = weather_snowState - 1 // LFSR values start at 1, but we want snow to be able to fall on (0, 0)
+		// 				relative_x = location_bits % cSnow_length_x
+		// 				relative_z = floor(location_bits / cSnow_length_x)
+		// 				if relative_z < cSnow_length_z then
+		// 					x = (floor(min.x / cSnow_length_x) * cSnow_length_x) + relative_x // align fizzelfade coords world-global
+		// 					if x < min.x then x = x + cSnow_length_x end // ensure it falls in the same space as area_index
+		// 					local x_index = spawn_table[x]
+		// 					if x_index ~= nil then
+		// 						z = (floor(min.z / cSnow_length_z) * cSnow_length_z) + relative_z // align fizzelfade coords world-global
+		// 						if z < min.z then z = z + cSnow_length_z end // ensure it falls in the same space as area_index
+		// 						y = x_index[z]
+		// 						if y ~= nil then
+		// 							// We hit a location that's in the spawn_table
+		// 							under_air_iterations = under_air_iterations + 1
+		// 							lightlevel = get_light(n_vec(x,y+1,z), 0.5)
+		// 							if lightlevel >= 14 then
+		// 								// daylight is above or near this node, so snow can fall on it
+		// 								node_name = g_node(n_vec(x,y,z)).name
+		// 								def = r_nodes[node_name]
+		// 								//buildable = def.buildable_to
+		// 								drawtype = acceptable_drawtypes[def.drawtype]
+		// 								walkable = def.walkable
+		// 								liquid = (def.liquidtype ~= "none")
+		// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
+		// 									//if buildable then
+		// 									//	if node_name ~= "weather:snow" then
+		// 									//		inserter(bulk_list, n_vec(x,y,z))
+		// 									//	else
+		// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+		// 									//	end
+		// 									//elseif walkable then
+		// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
+		// 											inserter(bulk_list, n_vec(x,y+1,z))
+		// 										else
+		// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+		// 										end
+		// 									//end
+		// 								elseif node_name == "main:water" then
+		// 									inserter(ice_list, n_vec(x,y,z))
+		// 								end
+		// 							end
+		// 						end
+		// 					end
+		// 				end
+		// 			until (lsfr_steps_count - catchup_steps) >= snowState_iterations_per_call or catchup_steps >= snowState_max_catchup_per_call
+		// 			if bulk_list then
+		// 				mass_set(bulk_list, {name="weather:snow"})
+		// 			end
+		// 			if ice_list then
+		// 				mass_set(ice_list, {name="main:ice"})
+		// 			end
+		// 			//this is debug
+		// 			//[[
+		// 			local chugent = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
+		// 			print("////////////////////////////////-")
+		// 			print("find_nodes_in_area_under_air() time: " .. node_search_time .. " ms")
+		// 			print("New Snow generation time:            " .. chugent .. " ms  [" .. (chugent - node_search_time) .. " ms]")
+		// 			inserter(average, chugent)
+		// 			local a = 0
+		// 			//don't cause memory leak
+		// 			if get_table_size(average) > 10 then
+		// 				table.remove(average,1)
+		// 			end
+		// 			for _,i in ipairs(average) do
+		// 				a = a + i
+		// 			end
+		// 			print(dump(average))
+		// 			a = a / get_table_size(average)
+		// 			print("average = "..a.."ms")
+		// 			core.chat_send_all("total nodes under air: " .. under_air_count .. ", LFSR iterations: " .. lsfr_steps_count .. ", under-air hits (nodes tested): " .. under_air_iterations .. "        Snow added: " .. (#bulk_list + #ice_list)  .. ", snow already there (catchup): " .. catchup_steps)
+		// 			//print("////////////////////////////////-")
+		// 			//]]//
+		// 		end
+		// 	core.after(3, function()
+		// 		do_snow()
+		// 	end)
+	}
+
 	// core.register_on_mods_loaded(function()
 	// 	core.after(0,function()
 	// 		do_snow()
 	// 	end)
 	// end)
+	
 	// //this sets random weather
 	// local initial_run = true
 	// local new_weather
