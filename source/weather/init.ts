@@ -264,38 +264,38 @@ namespace weather {
 						if (z < min.z) {
 							z = z + cSnow_length_z;
 						}
-						// 						y = x_index[z]
-						// 						if y ~= nil then
-						// 							// We hit a location that's in the spawn_table
-						// 							under_air_iterations = under_air_iterations + 1
-						// 							lightlevel = get_light(n_vec(x,y+1,z), 0.5)
-						// 							if lightlevel >= 14 then
-						// 								// daylight is above or near this node, so snow can fall on it
-						// 								node_name = g_node(n_vec(x,y,z)).name
-						// 								def = r_nodes[node_name]
-						// 								//buildable = def.buildable_to
-						// 								drawtype = acceptable_drawtypes[def.drawtype]
-						// 								walkable = def.walkable
-						// 								liquid = (def.liquidtype ~= "none")
-						// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
-						// 									//if buildable then
-						// 									//	if node_name ~= "weather:snow" then
-						// 									//		inserter(bulk_list, n_vec(x,y,z))
-						// 									//	else
-						// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
-						// 									//	end
-						// 									//elseif walkable then
-						// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
-						// 											inserter(bulk_list, n_vec(x,y+1,z))
-						// 										else
-						// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
-						// 										end
-						// 									//end
-						// 								elseif node_name == "main:water" then
-						// 									inserter(ice_list, n_vec(x,y,z))
-						// 								end
-						// 							end
-						// 						end
+						const y: number | undefined = x_index[z];
+						if (y != null) {
+							// 							// We hit a location that's in the spawn_table
+							// 							under_air_iterations = under_air_iterations + 1
+							// 							lightlevel = get_light(n_vec(x,y+1,z), 0.5)
+							// 							if lightlevel >= 14 then
+							// 								// daylight is above or near this node, so snow can fall on it
+							// 								node_name = g_node(n_vec(x,y,z)).name
+							// 								def = r_nodes[node_name]
+							// 								//buildable = def.buildable_to
+							// 								drawtype = acceptable_drawtypes[def.drawtype]
+							// 								walkable = def.walkable
+							// 								liquid = (def.liquidtype ~= "none")
+							// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
+							// 									//if buildable then
+							// 									//	if node_name ~= "weather:snow" then
+							// 									//		inserter(bulk_list, n_vec(x,y,z))
+							// 									//	else
+							// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+							// 									//	end
+							// 									//elseif walkable then
+							// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
+							// 											inserter(bulk_list, n_vec(x,y+1,z))
+							// 										else
+							// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+							// 										end
+							// 									//end
+							// 								elseif node_name == "main:water" then
+							// 									inserter(ice_list, n_vec(x,y,z))
+							// 								end
+							// 							end
+						}
 					}
 				}
 			} while (
