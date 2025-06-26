@@ -254,7 +254,11 @@ namespace weather {
 						spawn_table[x];
 
 					if (x_index != null) {
-						// 						z = (floor(min.z / cSnow_length_z) * cSnow_length_z) + relative_z // align fizzelfade coords world-global
+						// Align fizzelfade coords world-global.
+						const z: number =
+							math.floor(min.z / cSnow_length_z) *
+								cSnow_length_z +
+							relative_z;
 						// 						if z < min.z then z = z + cSnow_length_z end // ensure it falls in the same space as area_index
 						// 						y = x_index[z]
 						// 						if y ~= nil then
