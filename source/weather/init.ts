@@ -636,7 +636,10 @@ namespace weather {
 					tnt.tnt(pos, 4);
 					return;
 				} else {
-					// 			core.sound_play("wool",{pos=pos, pitch = math.random(80,100)/100})
+					core.sound_play("wool", {
+						pos: pos,
+						pitch: math.random(80, 100) / 100,
+					});
 					// 			core.add_particlespawner({
 					// 				amount = 20,
 					// 				// Number of particles spawned over the time period `time`.
@@ -660,7 +663,7 @@ namespace weather {
 					// 				collisiondetection = true,
 					// 				collision_removal = true,
 					// 				object_collision = false,
-					// 				texture = "snowflake_"..math.random(1,2)..".png",
+					// 				texture = "snowflake_"+math.random(1,2)+".png",
 					// 			})
 					// 			this.object.remove()
 				}
