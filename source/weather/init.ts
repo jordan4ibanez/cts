@@ -592,8 +592,8 @@ namespace weather {
 		on_activate() {
 			this.object.set_acceleration(vector.create3d(0, -9.81, 0));
 		}
-		// //make this as efficient as possible
-		// //make it so you can hit one snowball with another
+		// Make this as efficient as possible.
+		// Make it so you can hit one snowball with another.
 		// snowball.on_step = function(self, dtime)
 		// 	local vel = this.object.get_velocity()
 		// 	local hit = false
