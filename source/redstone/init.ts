@@ -128,8 +128,10 @@ namespace redstone {
 				pos.x
 			] || (pool[pos.x] = {});
 
-			// 		if not pool[pos.x][pos.y] then pool[pos.x][pos.y] = {} end
-			// 		pool[pos.x][pos.y][pos.z] = data
+			const yDict: Dictionary<number, any> =
+				xDict[pos.y] || (xDict[pos.y] = {});
+
+			yDict[pos.z] = data;
 			// 		//instructions = instructions + 1
 			// 		//print("building 3d memory")
 			// 	//delete data from 3d memory
