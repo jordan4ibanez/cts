@@ -501,33 +501,33 @@ namespace weather {
 		},
 	});
 
-	// core.register_node("crafter_weather:snow_block", {
-	//     description = "Snow",
-	//     tiles = {"snow_block.png"},
-	//     groups = {pathable = 1,snow = 1},
-	//     sounds = main.woolSound(),
-	//     drop = {
-	// 			max_items = 5,
-	// 			items= {
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					rarity = 5,
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 			},
-	// 		},
-	// })
+	core.register_node("crafter_weather:snow_block", {
+		description: "Snow",
+		tiles: ["snow_block.png"],
+		groups: { pathable: 1, snow: 1 },
+		sounds: crafter.woolSound(),
+		//     drop = {
+		// 			max_items = 5,
+		// 			items= {
+		// 				{
+		// 					items = ["crafter_weather:snowball"],
+		// 				},
+		// 				{
+		// 					items = ["crafter_weather:snowball"],
+		// 				},
+		// 				{
+		// 					items = ["crafter_weather:snowball"],
+		// 				},
+		// 				{
+		// 					items = ["crafter_weather:snowball"],
+		// 				},
+		// 				{
+		// 					rarity = 5,
+		// 					items = ["crafter_weather:snowball"],
+		// 				},
+		// 			},
+		// 		},
+	});
 	// core.register_abm({
 	// 	label = "snow and ice melt",
 	// 	nodenames = {"crafter_weather:snow","crafter:ice"},
