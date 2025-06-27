@@ -548,14 +548,22 @@ namespace weather {
 		inventory_image: "snowball.png",
 		// 	//stack_max = 1,
 		// 	//range = 0,
-		on_place: (itemstack, placer, pointed_thing) => {
+		on_place: (
+			itemstack: ItemStackObject,
+			placer: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
 			const worked: boolean = snowball_throw(placer);
 			if (worked) {
 				itemstack.take_item();
 			}
 			return itemstack;
 		},
-		on_secondary_use: (itemstack, user, pointed_thing) => {
+		on_secondary_use: (
+			itemstack: ItemStackObject,
+			user: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
 			const worked: boolean = snowball_throw(user);
 			if (worked) {
 				itemstack.take_item();
