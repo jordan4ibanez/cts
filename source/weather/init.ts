@@ -576,19 +576,18 @@ namespace weather {
 		name: string = "crafter_weather:snowball";
 		thrower: string | null = null;
 
-		// snowball.initial_properties = {
-		// 	hp_max = 1,
-		// 	physical = true,
-		// 	collide_with_objects = false,
-		// 	collisionbox = {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
-		// 	visual = "sprite",
-		// 	visual_size = {x = 0.5, y = 0.5},
-		// 	textures = {
-		// 		"snowball.png"
-		// 	},
-		// 	is_visible = true,
-		// 	pointable = false,
-		// }
+		initial_properties: ObjectProperties = {
+			hp_max: 1,
+			physical: true,
+			collide_with_objects: false,
+			collisionbox: [-0.1, -0.1, -0.1, 0.1, 0.1, 0.1],
+			visual: EntityVisual.sprite,
+			visual_size: { x: 0.5, y: 0.5 },
+			textures: ["snowball.png"],
+			is_visible: true,
+			pointable: false,
+		};
+
 		// snowball.snowball = true
 		// snowball.on_activate = function(self)
 		// 	self.object:set_acceleration(vector.new(0,-9.81,0))
