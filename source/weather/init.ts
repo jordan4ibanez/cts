@@ -412,10 +412,11 @@ namespace weather {
 		});
 	});
 
-	// core.register_on_shutdown(function()
-	// 	mod_storage:set_int("weather_type", weather_type)
-	// 	mod_storage:set_int("weather_snowState", weather_snowState)
-	// end)
+	core.register_on_shutdown(() => {
+		mod_storage.set_int("weather_type", weather_type);
+		mod_storage.set_int("weather_snowState", weather_snowState);
+	});
+
 	// local snowball_throw = function(player)
 	// 	local pos = player:get_pos()
 	// 	pos.y = pos.y + 1.625
