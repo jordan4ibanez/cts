@@ -588,7 +588,7 @@ namespace weather {
 			pointable: false,
 		};
 
-		// snowball.snowball = true
+		snowball: boolean = true;
 		// snowball.on_activate = function(self)
 		// 	self.object:set_acceleration(vector.new(0,-9.81,0))
 		// end
