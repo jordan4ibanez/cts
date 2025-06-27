@@ -1,11 +1,11 @@
-// --if you attempt to read this, god bless you
+// //if you attempt to read this, god bless you
 
 // local
 // minetest,vector,math,table,pairs,next
 // =
 // minetest,vector,math,table,pairs,next
 
-// -- minetest class
+// // minetest class
 // local get_node        = core.get_node
 // local get_item_group  = core.get_item_group
 // local get_meta        = core.get_meta
@@ -21,27 +21,27 @@
 // 	registered_nodes  = core.registered_nodes
 // end)
 
-// -- math class
+// // math class
 // local abs   = math.abs
 // local floor = math.floor
 // local ceil   = math.ceil
 
-// -- vector library
+// // vector library
 // local new_vec         = vector.new
 // local add_vec         = vector.add
 // local sub_vec         = vector.subtract
 // local vector_distance = vector.distance
 // local vec_equals      = vector.equals
 
-// local activator_table = {} -- this holds the translation data of activator tables (activator functions)
+// local activator_table = {} // this holds the translation data of activator tables (activator functions)
 // local capacitor_table = {}
 // local player_detection_table = {}
-// --local instructions = 0
+// //local instructions = 0
 
-// -- redstone class
+// // redstone class
 // redstone = {}
 
-// redstone.max_state = 9 -- the limit to power transmission
+// redstone.max_state = 9 // the limit to power transmission
 
 // redstone.player_detector_add = function(pos)
 // 	player_detection_table[core.serialize(pos)] = pos
@@ -51,7 +51,7 @@
 // 	player_detection_table[core.serialize(pos)] = nil
 // end
 
-// -- enables mods to create data functions
+// // enables mods to create data functions
 // function redstone.register_activator(data)
 // 	activator_table[data.name] = {
 // 		activate   = data.activate,
@@ -59,7 +59,7 @@
 // 	}
 // end
 
-// -- enables mods to create data functions
+// // enables mods to create data functions
 // function redstone.register_capacitor(data)
 // 	capacitor_table[data.name] = {
 // 		off = data.off,
@@ -75,20 +75,20 @@
 // dofile(path.."/repeater.lua")
 // dofile(path.."/light.lua")
 // dofile(path.."/piston.lua")
-// --dofile(path.."/comparator.lua")
+// //dofile(path.."/comparator.lua")
 // dofile(path.."/craft.lua")
 // dofile(path.."/ore.lua")
 // dofile(path.."/inverter.lua")
 // dofile(path.."/player_detector.lua")
 // dofile(path.."/space_maker.lua")
-// --dofile(path.."/pressure_plate.lua")
+// //dofile(path.."/pressure_plate.lua")
 // dofile(path.."/capacitors.lua")
 // dofile(path.."/breaker.lua")
 // dofile(path.."/detector.lua")
-// --dofile(path.."/dispenser.lua")
+// //dofile(path.."/dispenser.lua")
 
-// --this is written out manually so that
-// --math.abs is not needed
+// //this is written out manually so that
+// //math.abs is not needed
 // local order = {
 // 	{x= 0,y= 0,z= 0},
 // 	{x= 1,y= 0,z= 0},
@@ -107,39 +107,39 @@
 // 	{x= 0,y=-1,z=-1},
 // 	}
 
-// --thanks to RhodiumToad for helping me figure out a good method to do this
+// //thanks to RhodiumToad for helping me figure out a good method to do this
 
-// local pool = {} -- this holds all redstone data (literal 3d virtual memory map)
+// local pool = {} // this holds all redstone data (literal 3d virtual memory map)
 
 // local function data_injection(pos,data)
-// 	--instructions = instructions + 1
-// 	-- add data into 3d memory
+// 	//instructions = instructions + 1
+// 	// add data into 3d memory
 // 	if data then
 // 		if not pool[pos.x] then pool[pos.x] = {} end
 // 		if not pool[pos.x][pos.y] then pool[pos.x][pos.y] = {} end
 // 		pool[pos.x][pos.y][pos.z] = data
-// 		--instructions = instructions + 1
-// 		--print("building 3d memory")
-// 	--delete data from 3d memory
+// 		//instructions = instructions + 1
+// 		//print("building 3d memory")
+// 	//delete data from 3d memory
 // 	else
 // 		if pool and pool[pos.x] and pool[pos.x][pos.y] then
 // 			pool[pos.x][pos.y][pos.z] = data
-// 			--instructions = instructions + 1
-// 			--print("deleting 3d memory")
+// 			//instructions = instructions + 1
+// 			//print("deleting 3d memory")
 // 			if pool[pos.x][pos.y] and not next(pool[pos.x][pos.y]) then
 // 				pool[pos.x][pos.y] = nil
-// 				--instructions = instructions + 1
-// 				-- only run this if y axis is empty
+// 				//instructions = instructions + 1
+// 				// only run this if y axis is empty
 // 				if pool[pos.x] and not next(pool[pos.x]) then
 // 					pool[pos.x] = nil
-// 					--instructions = instructions + 1
+// 					//instructions = instructions + 1
 // 				end
 // 			end
 // 		end
 // 	end
 // end
 
-// --[[
+// //[[
 //                                          _ __
 //         ___                             | '  \
 //    ___  \ /  ___         ,'\_           | .-. \        /|
@@ -148,10 +148,10 @@
 // // | |  | |____| | | |\_|| |__    //    |     | ,'_`. | | '-. .-',' `. ,'\_
 // \\_| |_,' .-, _  | | |   | |\ \  //    .| |\_/ | / \ || |   | | / |\  \|   \
 //  `-. .-'| |/ / | | | |   | | \ \//     |  |    | | | || |   | | | |_\ || |\_|
-//    | |  | || \_| | | |   /_\  \ /      | |`    | | | || |   | | | .---'| |
+//    | |  | || \_| | | |   /_\  \ /      | |`    | | | || |   | | | .//-'| |
 //    | |  | |\___,_\ /_\ _      //       | |     | \_/ || |   | | | |  /\| |
 //    /_\  | |           //_____//       .||`  _   `._,' | |   | | \ `-' /| |
-//         /_\           `------'        \ |  /-\ND _     `.\  | |  `._,' /_\
+//         /_\           `//////'        \ |  /-\ND _     `.\  | |  `._,' /_\
 //                                        \|        |HE         `.\
 //                                       __        _           _   __  _
 //                                      /   |__|  /_\  |\  /| |_) |_  |_)
@@ -159,25 +159,25 @@
 //                                              _  _
 // 											(_)|-   ___     __     __ __
 // 													 |  /\ |__)|  |_ (_
-// 													 | /--\|__)|__|____)
-// ]]--
+// 													 | ///\|__)|__|____)
+// ]]//
 
 // local table_3d
 // local temp_pool
 // local r_max = redstone.max_state
 // local function create_boundary_box(pos)
-// 	--instructions = instructions + 1
+// 	//instructions = instructions + 1
 // 	table_3d = {}
 // 	for x = pos.x-r_max,pos.x+r_max do
-// 		--instructions = instructions + 1
+// 		//instructions = instructions + 1
 // 		if pool[x] then
 // 			for y = pos.y-r_max,pos.y+r_max do
-// 				--instructions = instructions + 1
+// 				//instructions = instructions + 1
 // 				if pool[x][y] then
 // 					for z = pos.z-r_max,pos.z+r_max do
-// 						--instructions = instructions + 1
+// 						//instructions = instructions + 1
 // 						temp_pool = pool[x][y][z]
-// 						--instructions = instructions + 1
+// 						//instructions = instructions + 1
 // 						if temp_pool then
 // 							if not table_3d[x] then table_3d[x] = {} end
 // 							if not table_3d[x][y] then table_3d[x][y] = {} end
@@ -270,7 +270,7 @@
 // 	end
 // end
 
-// -- activators
+// // activators
 // local n_pos
 // local temp_pool
 // local temp_pool2
@@ -301,7 +301,7 @@
 // 	end
 // end
 
-// -- directional activators
+// // directional activators
 // local n_pos
 // local temp_pool
 // local temp_pool2
@@ -352,7 +352,7 @@
 // 	end
 // end
 
-// --make redstone wire pass on current one level lower than it is
+// //make redstone wire pass on current one level lower than it is
 // local i
 // local index
 // local passed_on_level
@@ -361,7 +361,7 @@
 
 // 	power = power - 1
 
-// 	--directional torches
+// 	//directional torches
 // 	if output then
 // 		x=output.x
 // 		y=output.y
@@ -373,9 +373,9 @@
 // 			end
 // 		end
 // 	else
-// 		--redstone and torch
+// 		//redstone and torch
 // 		for _,order in pairs(order) do
-// 			--instructions = instructions + 1
+// 			//instructions = instructions + 1
 // 			i = add_vec(pos,order)
 // 			x=i.x
 // 			y=i.y
@@ -391,7 +391,7 @@
 // 	return(mem_map)
 // end
 
-// --[[
+// //[[
 //                      ,
 //                 ,.  | \
 //                |: \ ; :\
@@ -404,24 +404,24 @@
 //         _,' _o\  ,::.`:' ;  ;   . '
 //     _,-'           `:.          ;""\,
 //  ,-'                     ,:         `-;,
-//  \,                       ;:           ;--._
-//   `.______,-,----._     ,' ;:        ,/ ,  ,`
+//  \,                       ;:           ;//._
+//   `.______,-,////._     ,' ;:        ,/ ,  ,`
 //          / /,-';'  \     ; `:      ,'/,::.:::
-//        ,',;-'-'_,--;    ;   :.   ,',',;::::::
+//        ,',;-'-'_,//;    ;   :.   ,',',;::::::
 //       ( /___,-'     `.     ;::,,'o/  ,:::::::
 //        `'             )    ;:,'o /  ;"-   -::
 //                       \__ _,'o ,'         ,::
-//                          ) `--'       ,..::::
+//                          ) `//'       ,..::::
 //                          ; `.        ,:::::::
 //                           ;  ``::.    :::::::
-// ]]-- sic em boy!
+// ]]// sic em boy!
 // local i
 // local index
 // local function dust_sniff(pos,mem_map,boundary,single,origin,ignore)
 // 	if not single then
-// 		--print("all position index--")
+// 		//print("all position index//")
 // 		for _,order in pairs(order) do
-// 			--instructions = instructions + 1
+// 			//instructions = instructions + 1
 // 			i = add_vec(pos,order)
 
 // 			if not mem_map[i.x] then mem_map[i.x] = {} end
@@ -483,7 +483,7 @@
 // 			end
 // 		end
 // 	else
-// 		--print("single position index")
+// 		//print("single position index")
 
 // 		i = pos
 
@@ -547,7 +547,7 @@
 // 	return mem_map
 // end
 
-// --make all power sources push power out
+// //make all power sources push power out
 // local pos
 // local node
 // local power
@@ -576,7 +576,7 @@
 // 			end
 // 		end
 
-// 		-- sniff all possible dust within boundaries
+// 		// sniff all possible dust within boundaries
 // 		if not directional then
 // 			dust_sniff(pos,dust_map,boundary)
 // 			for _,pos2 in pairs(order) do
@@ -602,7 +602,7 @@
 // 				dust_sniff(output,dust_map,boundary,true,pos)
 // 			end
 // 		end
-// 		--do torches
+// 		//do torches
 // 		for x,datax in pairs(dust_map.torch) do
 // 			for y,datay in pairs(datax) do
 // 				for z,data in pairs(datay) do
@@ -617,7 +617,7 @@
 // 			end
 // 		end
 
-// 		--set dust, set pool memory
+// 		//set dust, set pool memory
 // 		for x,datax in pairs(dust_map.dust) do
 // 			for y,datay in pairs(datax) do
 // 				for z,data in pairs(datay) do
@@ -629,8 +629,8 @@
 // 			end
 // 		end
 
-// 		--activators
-// 		--this must be run at the end
+// 		//activators
+// 		//this must be run at the end
 // 		for x,datax in pairs(dust_map.activator) do
 // 			for y,datay in pairs(datax) do
 // 				for z,data in pairs(datay) do
@@ -695,7 +695,7 @@
 // 	end
 // 	recursion_check[s_pos] = recursion_check[s_pos] + 1
 // 	if recursion_check[s_pos] > 25 then
-// 		--print(recursion_check[s_pos])
+// 		//print(recursion_check[s_pos])
 // 		core.after(0,function()
 // 			bad_node = core.get_node(pos).name
 // 			bad_node = core.get_node_drops(bad_node, "main:rubypick")
@@ -715,7 +715,7 @@
 // core.register_globalstep(function(dtime)
 // 	player_detector_calculation()
 // 	recursion_check = {}
-// 	--[[
+// 	//[[
 // 	if dtime > dtime_goal then
 // 		sleep = dtime - dtime_goal
 // 	end
@@ -734,14 +734,14 @@
 // 			sleep = 0
 // 		end
 // 	end
-// 	]]--
-// 	--if instructions and instructions > 0 then
-// 	--	print(instructions)
-// 	--end
-// 	--instructions = 0
+// 	]]//
+// 	//if instructions and instructions > 0 then
+// 	//	print(instructions)
+// 	//end
+// 	//instructions = 0
 // end)
 
-// ----------------------------------------------------------------------------
+// ////////////////////////////////////////////////////////////////////////////
 
 // local instruction_order = {
 // 	{x= 1,y= 0,z= 0},
@@ -760,7 +760,7 @@
 // 	{x= 0,y=-1,z=-1},
 // 	}
 
-// -- this is used for dynamic instruction set rebuilds
+// // this is used for dynamic instruction set rebuilds
 // local function instruction_rebuild(pos,delete)
 // 	if not delete then
 // 		local instruction_set = {}
@@ -779,7 +779,7 @@
 // 	print(dump(instruction_set))
 // end
 
-// -- this is used for creating fast data for the game to utilize
+// // this is used for creating fast data for the game to utilize
 // local function initial_instruction_build(pos)
 // 	local instruction_set = {}
 // 	for _,pos2 in pairs(instruction_order) do
@@ -791,12 +791,12 @@
 // 	pool[pos.x][pos.y][pos.z].instruction_set = instruction_set
 // end
 
-// --[[
+// //[[
 //        / .'
-//  .---. \/
+//  .//-. \/
 // (._.' \()
 //  ^"""^"
-// ]]--
+// ]]//
 
 // core.register_craftitem("redstone:dust", {
 // 	description = "Redstone Dust",
@@ -823,7 +823,7 @@
 // 	end,
 // })
 
-// --power levels r_max-1 being the highest
+// //power levels r_max-1 being the highest
 // local d_max = r_max-1
 // for i = 0,d_max do
 
@@ -852,12 +852,12 @@
 // 		drop="redstone:dust",
 // 		on_construct = function(pos)
 // 			data_injection(pos,{dust=i})
-// 			--instruction_rebuild(pos)
+// 			//instruction_rebuild(pos)
 // 			calculate(pos)
 // 		end,
 // 		after_destruct = function(pos)
 // 			data_injection(pos,nil)
-// 			--instruction_rebuild(pos,true)
+// 			//instruction_rebuild(pos,true)
 // 			calculate(pos)
 // 		end,
 // 		connects_to = {"group:redstone"},
@@ -869,9 +869,9 @@
 // 		run_at_every_load = true,
 //         action = function(pos)
 // 			data_injection(pos,{dust=i})
-// 			--core.after(0,function()
-// 				--initial_instruction_build(pos)
-// 			--end)
+// 			//core.after(0,function()
+// 				//initial_instruction_build(pos)
+// 			//end)
 //         end,
 //     })
 // end
