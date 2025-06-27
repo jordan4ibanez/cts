@@ -13,7 +13,7 @@ namespace weather {
 	const weather_max: number = 2;
 	const mod_storage: MetaRef = core.get_mod_storage();
 
-	const weather_type: number = mod_storage.get_int("weather_type");
+	let weather_type: number = mod_storage.get_int("weather_type");
 
 	utility.loadFiles(["commands"]);
 
@@ -379,22 +379,22 @@ namespace weather {
 	let initial_run: boolean = true;
 
 	function randomize_weather() {
-		// 	if not initial_run then
-		// 		new_weather = math.random(0,weather_max)
-		// 		if new_weather ~= weather_type or not weather_type then
-		// 			weather_type = new_weather
-		// 		else
-		// 			weather_type = 0
-		// 		end
-		// 		mod_storage:set_int("weather_type", weather_type)
-		// 	else
-		// 		initial_run = false
-		// 	end
-		// 	function_send_weather_type()
-		// 	update_player_sky()
-		// 	core.after((math.random(15,20)+math.random())*60, function()
-		// 		randomize_weather()
-		// 	end)
+		if (!initial_run) {
+			const new_weather: number = math.random(0, weather_max);
+			if (new_weather != weather_type) {
+				weather_type = new_weather;
+			} else {
+				weather_type = 0;
+			}
+			mod_storage.set_int("weather_type", weather_type);
+		} else {
+			initial_run = false;
+		}
+		function_send_weather_type();
+		update_player_sky();
+		core.after((math.random(15, 20) + math.random()) * 60, () => {
+			randomize_weather();
+		});
 	}
 
 	// core.register_on_mods_loaded(function()
