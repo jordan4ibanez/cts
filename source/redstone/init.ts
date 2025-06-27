@@ -74,27 +74,25 @@ namespace redstone {
 		});
 	}
 	utility.loadFiles([
-	// local path = core.get_modpath("redstone")
-
-	// dofile(path+"/functions.lua")
-	// dofile(path+"/torch.lua")
-	// dofile(path+"/lever.lua")
-	// dofile(path+"/button.lua")
-	// dofile(path+"/repeater.lua")
-	// dofile(path+"/light.lua")
-	// dofile(path+"/piston.lua")
-	// //dofile(path+"/comparator.lua")
-	// dofile(path+"/craft.lua")
-	// dofile(path+"/ore.lua")
-	// dofile(path+"/inverter.lua")
-	// dofile(path+"/player_detector.lua")
-	// dofile(path+"/space_maker.lua")
-	// //dofile(path+"/pressure_plate.lua")
-	// dofile(path+"/capacitors.lua")
-	// dofile(path+"/breaker.lua")
-	// dofile(path+"/detector.lua")
-	// //dofile(path+"/dispenser.lua")
-	])
+		"functions",
+		"torch",
+		"lever",
+		"button",
+		"repeater",
+		"light",
+		"piston",
+		// //dofile(path+"/comparator",
+		"craft",
+		"ore",
+		"inverter",
+		"player_detector",
+		"space_maker",
+		"pressure_plate",
+		"capacitors",
+		"breaker",
+		"detector",
+		"dispenser",
+	]);
 
 	// //this is written out manually so that
 	// //math.abs is not needed
