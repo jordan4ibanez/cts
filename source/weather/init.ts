@@ -375,27 +375,28 @@ namespace weather {
 		});
 	});
 
-	// //this sets random weather
-	// local initial_run = true
-	// local new_weather
-	// local function randomize_weather()
-	// 	if not initial_run then
-	// 		new_weather = math.random(0,weather_max)
-	// 		if new_weather ~= weather_type or not weather_type then
-	// 			weather_type = new_weather
-	// 		else
-	// 			weather_type = 0
-	// 		end
-	// 		mod_storage:set_int("weather_type", weather_type)
-	// 	else
-	// 		initial_run = false
-	// 	end
-	// 	function_send_weather_type()
-	// 	update_player_sky()
-	// 	core.after((math.random(15,20)+math.random())*60, function()
-	// 		randomize_weather()
-	// 	end)
-	// end
+	// This sets random weather.
+	let initial_run: boolean = true;
+
+	function randomize_weather() {
+		// 	if not initial_run then
+		// 		new_weather = math.random(0,weather_max)
+		// 		if new_weather ~= weather_type or not weather_type then
+		// 			weather_type = new_weather
+		// 		else
+		// 			weather_type = 0
+		// 		end
+		// 		mod_storage:set_int("weather_type", weather_type)
+		// 	else
+		// 		initial_run = false
+		// 	end
+		// 	function_send_weather_type()
+		// 	update_player_sky()
+		// 	core.after((math.random(15,20)+math.random())*60, function()
+		// 		randomize_weather()
+		// 	end)
+	}
+
 	// core.register_on_mods_loaded(function()
 	// 	core.after(0,function()
 	// 	if mod_storage:get_int("weather_initialized") == 0 then
