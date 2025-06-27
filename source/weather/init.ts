@@ -18,6 +18,7 @@ namespace weather {
 	export function setWeatherType(newWeatherType: number): void {
 		weather_type = newWeatherType;
 		function_send_weather_type();
+		update_player_sky();
 	}
 
 	utility.loadFiles(["commands"]);
