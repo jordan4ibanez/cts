@@ -577,7 +577,7 @@ namespace weather {
 		thrower: string | null = null;
 	
 
-	// snowball = {}
+	
 	// snowball.initial_properties = {
 	// 	hp_max = 1,
 	// 	physical = true,
