@@ -587,6 +587,7 @@ namespace weather {
 			pointable: false,
 		};
 
+		owner: ObjectRef | null = null;
 		thrower: string | null = null;
 		snowball: boolean = true;
 
@@ -603,16 +604,23 @@ namespace weather {
 			for (const [_, object] of ipairs(
 				core.get_objects_inside_radius(pos, 1)
 			)) {
-				// todo: cast this into a mob.
-				// 		if (object:is_player() and object:get_hp() > 0 and object:get_player_name() ~= self.thrower) or (object:get_luaentity() and object:get_luaentity().mob == true and object ~= self.owner) then
-				// 			object:punch(self.object, 2,
-				// 				{
-				// 				full_punch_interval=1.5,
-				// 				damage_groups = {damage=0,fleshy=0},
-				// 			})
-				// 			hit = true
-				// 			break
-				// 		end
+				if (
+					(object.is_player() &&
+						object.get_hp() > 0 &&
+						object.get_player_name() != this.thrower) ||
+					(object.get_luaentity() &&
+						// todo: cast this into a mob.
+						(object.get_luaentity() as any).mob == true &&
+						object != this.owner)
+				) {
+					// 			object:punch(self.object, 2,
+					// 				{
+					// 				full_punch_interval=1.5,
+					// 				damage_groups = {damage=0,fleshy=0},
+					// 			})
+					// 			hit = true
+					// 			break
+				}
 			}
 
 			// 	if (self.oldvel and ((vel.x == 0 and self.oldvel.x ~= 0) or (vel.y == 0 and self.oldvel.y ~= 0) or (vel.z == 0 and self.oldvel.z ~= 0))) or hit == true then
