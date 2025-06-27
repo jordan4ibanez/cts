@@ -575,7 +575,7 @@ namespace weather {
 	class SnowBallEntity extends types.Entity {
 		name: string = "crafter_weather:snowball";
 		thrower: string | null = null;
-	}
+	
 
 	// snowball = {}
 	// snowball.initial_properties = {
@@ -650,5 +650,6 @@ namespace weather {
 	// 	end
 	// 	self.oldvel = vel
 	// end
-	// core.register_entity("crafter_weather:snowball", snowball)
+	
+	}
 }
