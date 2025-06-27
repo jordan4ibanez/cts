@@ -189,28 +189,27 @@ namespace redstone {
 	// 	return(table_3d)
 	// end
 
-	// local i
-	// local index
-	// local function capacitor_pathfind(source,mem_map)
-	// 	for _,order in pairs(order) do
-	// 		i = add_vec(source,order)
-	// 		if not mem_map[i.x] then mem_map[i.x] = {} end
-	// 		if not mem_map[i.x][i.y] then mem_map[i.x][i.y] = {} end
-	// 		if not mem_map[i.x][i.y][i.z] then
-	// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
-	// 				index = pool[i.x][i.y][i.z]
-	// 				if index.capacitor then
-	// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
-	// 					if index.source then
-	// 						mem_map.found = true
-	// 					end
-	// 					capacitor_pathfind(i,mem_map)
-	// 				end
-	// 			end
-	// 		end
-	// 	end
-	// 	return mem_map
-	// end
+	function capacitor_pathfind(source: Vec3, mem_map: Vec3[]) {
+		// 	for _,order in pairs(order) do
+		// 		i = add_vec(source,order)
+		// 		if not mem_map[i.x] then mem_map[i.x] = {} end
+		// 		if not mem_map[i.x][i.y] then mem_map[i.x][i.y] = {} end
+		// 		if not mem_map[i.x][i.y][i.z] then
+		// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
+		// 				index = pool[i.x][i.y][i.z]
+		// 				if index.capacitor then
+		// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
+		// 					if index.source then
+		// 						mem_map.found = true
+		// 					end
+		// 					capacitor_pathfind(i,mem_map)
+		// 				end
+		// 			end
+		// 		end
+		// 	end
+		// 	return mem_map
+	}
+
 	// local table_3d
 	// local found
 	// local temp_pool
