@@ -1,5 +1,5 @@
 namespace redstone {
-	// // minetest class
+	
 	const get_node        = core.get_node
 	const get_item_group  = core.get_item_group
 	const get_meta        = core.get_meta
