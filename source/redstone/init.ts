@@ -115,36 +115,36 @@ namespace redstone {
 		vector.create3d({ x: 0, y: -1, z: -1 }),
 	];
 
-	// //thanks to RhodiumToad for helping me figure out a good method to do this
-	// local pool = {} // this holds all redstone data (literal 3d virtual memory map)
-	// local function data_injection(pos,data)
+	// Thanks to RhodiumToad for helping me figure out a good method to do this.
+	// This holds all redstone data (literal 3d virtual memory map).
+	const pool = {};
+	function data_injection(pos: Vec3, data: any) {
+		// add data into 3d memory
+		// 	if data then
+		// 		if not pool[pos.x] then pool[pos.x] = {} end
+		// 		if not pool[pos.x][pos.y] then pool[pos.x][pos.y] = {} end
+		// 		pool[pos.x][pos.y][pos.z] = data
+		// 		//instructions = instructions + 1
+		// 		//print("building 3d memory")
+		// 	//delete data from 3d memory
+		// 	else
+		// 		if pool and pool[pos.x] and pool[pos.x][pos.y] then
+		// 			pool[pos.x][pos.y][pos.z] = data
+		// 			//instructions = instructions + 1
+		// 			//print("deleting 3d memory")
+		// 			if pool[pos.x][pos.y] and not next(pool[pos.x][pos.y]) then
+		// 				pool[pos.x][pos.y] = nil
+		// 				//instructions = instructions + 1
+		// 				// only run this if y axis is empty
+		// 				if pool[pos.x] and not next(pool[pos.x]) then
+		// 					pool[pos.x] = nil
+		// 					//instructions = instructions + 1
+		// 				end
+		// 			end
+		// 		end
+		// 	end
+	}
 
-	// 	//instructions = instructions + 1
-	// 	// add data into 3d memory
-	// 	if data then
-	// 		if not pool[pos.x] then pool[pos.x] = {} end
-	// 		if not pool[pos.x][pos.y] then pool[pos.x][pos.y] = {} end
-	// 		pool[pos.x][pos.y][pos.z] = data
-	// 		//instructions = instructions + 1
-	// 		//print("building 3d memory")
-	// 	//delete data from 3d memory
-	// 	else
-	// 		if pool and pool[pos.x] and pool[pos.x][pos.y] then
-	// 			pool[pos.x][pos.y][pos.z] = data
-	// 			//instructions = instructions + 1
-	// 			//print("deleting 3d memory")
-	// 			if pool[pos.x][pos.y] and not next(pool[pos.x][pos.y]) then
-	// 				pool[pos.x][pos.y] = nil
-	// 				//instructions = instructions + 1
-	// 				// only run this if y axis is empty
-	// 				if pool[pos.x] and not next(pool[pos.x]) then
-	// 					pool[pos.x] = nil
-	// 					//instructions = instructions + 1
-	// 				end
-	// 			end
-	// 		end
-	// 	end
-	// end
 	// //[[
 	//                                          _ __
 	//         ___                             | '  \
