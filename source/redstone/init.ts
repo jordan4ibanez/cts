@@ -73,7 +73,9 @@ namespace redstone {
 			on: data.on,
 		});
 	}
+	utility.loadFiles([
 	// local path = core.get_modpath("redstone")
+
 	// dofile(path+"/functions.lua")
 	// dofile(path+"/torch.lua")
 	// dofile(path+"/lever.lua")
@@ -92,8 +94,11 @@ namespace redstone {
 	// dofile(path+"/breaker.lua")
 	// dofile(path+"/detector.lua")
 	// //dofile(path+"/dispenser.lua")
+	])
+
 	// //this is written out manually so that
 	// //math.abs is not needed
+
 	// local order = {
 	// 	{x= 0,y= 0,z= 0},
 	// 	{x= 1,y= 0,z= 0},
@@ -111,9 +116,11 @@ namespace redstone {
 	// 	{x= 0,y=-1,z= 1},
 	// 	{x= 0,y=-1,z=-1},
 	// 	}
+
 	// //thanks to RhodiumToad for helping me figure out a good method to do this
 	// local pool = {} // this holds all redstone data (literal 3d virtual memory map)
 	// local function data_injection(pos,data)
+
 	// 	//instructions = instructions + 1
 	// 	// add data into 3d memory
 	// 	if data then
