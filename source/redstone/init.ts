@@ -136,8 +136,22 @@ namespace redstone {
 			// 		//print("building 3d memory")
 			// 	//delete data from 3d memory
 		} else {
-			// 		if pool and pool[pos.x] and pool[pos.x][pos.y] then
+			const xDict:
+				| Dictionary<number, Dictionary<number, any>>
+				| undefined = pool[pos.x];
+			if (xDict == null) {
+				return;
+			}
+
+			const yDict: Dictionary<number, any> | undefined = xDict[pos.y];
+
+			if (yDict == null) {
+				return;
+			}
+
+			
 			// 			pool[pos.x][pos.y][pos.z] = data
+			
 			// 			//instructions = instructions + 1
 			// 			//print("deleting 3d memory")
 			// 			if pool[pos.x][pos.y] and not next(pool[pos.x][pos.y]) then
@@ -149,7 +163,7 @@ namespace redstone {
 			// 					//instructions = instructions + 1
 			// 				end
 			// 			end
-			// 		end
+			
 		}
 	}
 
