@@ -434,7 +434,7 @@ namespace weather {
 		if (snowball == null) {
 			core.log(
 				LogLevel.error,
-				`Failed to add snowball entity to ${player.get_player_name()}`
+				`Failed to add snowball entity by ${player.get_player_name()}`
 			);
 			return false;
 		}
@@ -446,6 +446,14 @@ namespace weather {
 
 		const luaEntity: SnowBallEntity | null =
 			snowball.get_luaentity() as SnowBallEntity | null;
+
+		if (luaEntity == null) {
+			core.log(
+				LogLevel.error,
+				`Snowball entity was null when being thrown by ${player.get_player_name()}`
+			);
+			return false;
+		}
 
 		// .thrower = player.get_player_name();
 		return true;
