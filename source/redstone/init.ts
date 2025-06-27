@@ -1,3 +1,4 @@
+namespace redstone {
 // //if you attempt to read this, god bless you
 
 // local
@@ -875,3 +876,4 @@
 //         end,
 //     })
 // end
+}
