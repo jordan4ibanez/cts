@@ -124,13 +124,13 @@ namespace weather {
 		cSnowState_LFSR_length / cDoSnow_call_count_for_snowState_catchup
 	);
 
-	const acceptable_drawtypes = new Set<string>([
-		"normal",
-		"glasslike",
-		"glasslike_framed",
-		"glasslike_framed_optional",
-		"allfaces",
-		"allfaces_optional",
+	const acceptable_drawtypes = new Set<Drawtype>([
+		Drawtype.normal,
+		Drawtype.glasslike,
+		Drawtype.glasslike_framed,
+		Drawtype.glasslike_framed_optional,
+		Drawtype.allfaces,
+		Drawtype.allfaces_optional,
 	]);
 
 	//? This is debug.
@@ -284,7 +284,12 @@ namespace weather {
 
 								if (def != null) {
 									// // buildable = def.buildable_to
-									// 								drawtype = acceptable_drawtypes[def.drawtype]
+									const drawtype: boolean =
+										(def.drawtype &&
+											acceptable_drawtypes.has(
+												def.drawtype
+											)) ||
+										false;
 									// 								walkable = def.walkable
 									// 								liquid = (def.liquidtype ~= "none")
 									// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
