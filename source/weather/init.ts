@@ -177,7 +177,7 @@ namespace weather {
 
 		for (const [_, player] of ipairs(core.get_connected_players())) {
 			//? This is debug.
-			const t0: number = core.get_us_time() / 1000000;
+			// const t0: number = core.get_us_time() / 1000000;
 
 			const pos: Vec3 = vector.round(player.get_pos());
 			const min: Vec3 = vector.subtract(pos, snow_radius);
@@ -188,9 +188,9 @@ namespace weather {
 				all_nodes
 			);
 
-			const node_search_time: number = math.ceil(
-				(core.get_us_time() / 1000000 - t0) * 1000
-			);
+			// const node_search_time: number = math.ceil(
+			// 	(core.get_us_time() / 1000000 - t0) * 1000
+			// );
 
 			const spawn_table: Dictionary<
 				number,
