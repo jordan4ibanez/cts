@@ -19,7 +19,7 @@ namespace weather {
 					"Possible weather types are: 0,clear,1,snow,2,rain"
 				);
 			} else {
-				minetest.chat_send_player(
+				core.chat_send_player(
 					name,
 					'"' + weather + '"' + " is not a registered weather type!"
 				);
