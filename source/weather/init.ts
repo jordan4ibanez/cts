@@ -399,13 +399,16 @@ namespace weather {
 
 	core.register_on_mods_loaded(() => {
 		core.after(0, () => {
-			// 	if mod_storage:get_int("weather_initialized") == 0 then
-			// 		mod_storage:set_int("weather_initialized",1)
-			// 		weather_type = math.random(0,weather_max)
-			// 		mod_storage:set_int("weather_type", weather_type)
-			// 	end
-			// 	weather_snowState = math.max(mod_storage:get_int("weather_snowState"), 1)
-			// 	randomize_weather()
+			if (mod_storage.get_int("weather_initialized") == 0) {
+				mod_storage.set_int("weather_initialized", 1);
+				weather_type = math.random(0, weather_max);
+				mod_storage.set_int("weather_type", weather_type);
+			}
+			weather_snowState = math.max(
+				mod_storage.get_int("weather_snowState"),
+				1
+			);
+			randomize_weather();
 		});
 	});
 
