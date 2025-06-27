@@ -215,7 +215,7 @@ namespace weather {
 				}
 			}
 
-			const bulk_list = {};
+			const bulk_list: Vec3[] = [];
 			const ice_list = {};
 			let under_air_iterations = 0;
 			let catchup_steps = 0;
@@ -313,9 +313,8 @@ namespace weather {
 												vector.create3d(x, y + 1, z)
 											).name != "weather:snow"
 										) {
-											inserter(
-												bulk_list,
-												n_vec(x, y + 1, z)
+											bulk_list.push(
+												vector.create3d(x, y + 1, z)
 											);
 										} else {
 											catchup_steps = catchup_steps + 1; // we've already snowed on this spot
