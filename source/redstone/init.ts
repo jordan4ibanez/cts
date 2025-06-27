@@ -135,13 +135,9 @@ namespace redstone {
 		}
 	}
 
-	// todo: reserve this???
-
-	const table_3d = (() => {
+	const table_3d: Map<number, RedstoneData> = (() => {
 		const newData = new Map<number, RedstoneData>();
-
 		const tempVec: Vec3 = vector.create3d();
-
 		for (const x of $range(-max_state, max_state)) {
 			for (const y of $range(-max_state, max_state)) {
 				for (const z of $range(-max_state, max_state)) {
@@ -153,13 +149,7 @@ namespace redstone {
 				}
 			}
 		}
-
-		print(dump(newData.keys()));
-
-		print(
-			"Size:",
-			newData.has(core.hash_node_position(vector.create3d(1, 2, 3)))
-		);
+		return newData;
 	})();
 
 	// local function create_boundary_box(pos)
