@@ -598,8 +598,8 @@ namespace weather {
 		on_step(dtime: number) {
 			const vel: Vec3 = this.object.get_velocity();
 			let hit: boolean = false;
-			// 	local pos = this.object.get_pos()
-			// 	//hit object with the snowball
+			const pos: Vec3 = this.object.get_pos();
+			// Hit object with the snowball.
 			// 	for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
 			// 		if (object:is_player() and object:get_hp() > 0 and object:get_player_name() ~= self.thrower) or (object:get_luaentity() and object:get_luaentity().mob == true and object ~= self.owner) then
 			// 			object:punch(self.object, 2,
