@@ -431,10 +431,13 @@ namespace weather {
 			pos,
 			"crafter_weather:snowball"
 		);
+
+		const name: string = player.get_player_name();
+
 		if (snowball == null) {
 			core.log(
 				LogLevel.error,
-				`Failed to add snowball entity by ${player.get_player_name()}`
+				`Failed to add snowball entity by ${name}`
 			);
 			return false;
 		}
@@ -450,15 +453,14 @@ namespace weather {
 		if (luaEntity == null) {
 			core.log(
 				LogLevel.error,
-				`Snowball entity was null when being thrown by ${player.get_player_name()}`
+				`Snowball entity was null when being thrown by ${name}`
 			);
 			return false;
 		}
 
-		// .thrower = player.get_player_name();
-		return true;
+		luaEntity.thrower = name;
 
-		return false;
+		return true;
 	}
 
 	// core.register_node("crafter_weather:snow", {
