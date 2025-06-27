@@ -1,31 +1,31 @@
 namespace redstone {
 	// // minetest class
-	// local get_node        = core.get_node
-	// local get_item_group  = core.get_item_group
-	// local get_meta        = core.get_meta
-	// local facedir_to_dir  = core.facedir_to_dir
-	// local content_id      = core.get_name_from_content_id
-	// local get_content_id  = core.get_content_id
-	// local get_voxel_manip = core.get_voxel_manip
-	// local after           = core.after
-	// local swap_node       = core.swap_node
-	// local registered_nodes
+	// const get_node        = core.get_node
+	// const get_item_group  = core.get_item_group
+	// const get_meta        = core.get_meta
+	// const facedir_to_dir  = core.facedir_to_dir
+	// const content_id      = core.get_name_from_content_id
+	// const get_content_id  = core.get_content_id
+	// const get_voxel_manip = core.get_voxel_manip
+	// const after           = core.after
+	// const swap_node       = core.swap_node
+	// const registered_nodes
 	// core.register_on_mods_loaded(function()
 	// 	registered_nodes  = core.registered_nodes
 	// end)
 	// // math class
-	// local abs   = math.abs
-	// local floor = math.floor
-	// local ceil   = math.ceil
+	// const abs   = math.abs
+	// const floor = math.floor
+	// const ceil   = math.ceil
 	// // vector library
-	// local new_vec         = vector.new
-	// local add_vec         = vector.add
-	// local sub_vec         = vector.subtract
-	// local vector_distance = vector.distance
-	// local vec_equals      = vector.equals
-	// local activator_table = {} // this holds the translation data of activator tables (activator functions)
-	// local capacitor_table = {}
-	// local player_detection_table = {}
+	// const new_vec         = vector.new
+	// const add_vec         = vector.add
+	// const sub_vec         = vector.subtract
+	// const vector_distance = vector.distance
+	// const vec_equals      = vector.equals
+	// const activator_table = {} // this holds the translation data of activator tables (activator functions)
+	// const capacitor_table = {}
+	// const player_detection_table = {}
 	// //local instructions = 0
 	// // redstone class
 	// redstone = {}
