@@ -308,11 +308,11 @@ namespace weather {
 										// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
 										// 									//	end
 										// 									//elseif walkable then
-										// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
-										// 											inserter(bulk_list, n_vec(x,y+1,z))
-										// 										else
-										// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
-										// 										end
+																				if (core.get_node(vector.create3d(x,y+1,z)).name != "weather:snow") {
+																					inserter(bulk_list, n_vec(x,y+1,z))
+																				}else {
+																					catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+																				}
 										// 									//end
 									} else if (node_name == "main:water") {
 										// 									inserter(ice_list, n_vec(x,y,z))
