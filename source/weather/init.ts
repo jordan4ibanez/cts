@@ -494,13 +494,11 @@ namespace weather {
 			],
 		},
 
-		//     buildable_to = true,
-		//     node_box = {
-		// 		type = "fixed",
-		// 		fixed = {
-		// 		{-8/16, -8/16, -8/16, 8/16, -6/16, 8/16},
-		// 		}
-		// 	},
+		buildable_to: true,
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [[-8 / 16, -8 / 16, -8 / 16, 8 / 16, -6 / 16, 8 / 16]],
+		},
 	});
 
 	// core.register_node("crafter_weather:snow_block", {
