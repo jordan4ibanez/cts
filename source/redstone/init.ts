@@ -25,20 +25,20 @@ namespace redstone {
 	// This holds the translation data of activator tables (activator functions).
 	const activator_table = {};
 	const capacitor_table = {};
-	const player_detection_table = {};
+	const player_detection_table = new Set<Vec3>();
 
 	//? Redstone.
 
 	// The limit of power transmission.
 	export const max_state: number = 9;
-	// redstone.player_detector_add = function(pos)
-	// 	player_detection_table[core.serialize(pos)] = pos
-	// end
+	export function player_detector_add(pos: Vec3): void {
+		player_detection_table.add(pos);
+	}
 
 	// redstone.player_detector_remove = function(pos)
 	// 	player_detection_table[core.serialize(pos)] = nil
 	// end
-	
+
 	// // enables mods to create data functions
 	// function redstone.register_activator(data)
 	// 	activator_table[data.name] = {
