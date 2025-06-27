@@ -574,7 +574,6 @@ namespace weather {
 
 	class SnowBallEntity extends types.Entity {
 		name: string = "crafter_weather:snowball";
-		thrower: string | null = null;
 
 		initial_properties: ObjectProperties = {
 			hp_max: 1,
@@ -588,15 +587,17 @@ namespace weather {
 			pointable: false,
 		};
 
+		thrower: string | null = null;
 		snowball: boolean = true;
+
 		on_activate() {
 			this.object.set_acceleration(vector.create3d(0, -9.81, 0));
 		}
 		// Make this as efficient as possible.
 		// Make it so you can hit one snowball with another.
 		on_step(dtime: number) {
-			// 	local vel = this.object.get_velocity()
-			// 	local hit = false
+			const vel: Vec3 = this.object.get_velocity();
+			let hit: boolean = false;
 			// 	local pos = this.object.get_pos()
 			// 	//hit object with the snowball
 			// 	for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
