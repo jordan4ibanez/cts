@@ -640,31 +640,31 @@ namespace weather {
 						pos: pos,
 						pitch: math.random(80, 100) / 100,
 					});
-					// 			core.add_particlespawner({
-					// 				amount = 20,
-					// 				// Number of particles spawned over the time period `time`.
-					// 				time = 0.001,
-					// 				// Lifespan of spawner in seconds.
-					// 				// If time is 0 spawner has infinite lifespan and spawns the `amount` on
-					// 				// a per-second basis.
-					// 				minpos = pos,
-					// 				maxpos = pos,
-					// 				minvel = {x=-2, y=3, z=-2},
-					// 				maxvel = {x=2, y=5, z=2},
-					// 				minacc = {x=0, y=-9.81, z=0},
-					// 				maxacc = {x=0, y=-9.81, z=0},
-					// 				minexptime = 1,
-					// 				maxexptime = 3,
-					// 				minsize = 1,
-					// 				maxsize = 1,
-					// 				// The particles' properties are random values between the min and max
-					// 				// values.
-					// 				// pos, velocity, acceleration, expirationtime, size
-					// 				collisiondetection = true,
-					// 				collision_removal = true,
-					// 				object_collision = false,
-					// 				texture = "snowflake_"+math.random(1,2)+".png",
-					// 			})
+					core.add_particlespawner({
+						amount: 20,
+						// Number of particles spawned over the time period `time`.
+						time: 0.001,
+						// Lifespan of spawner in seconds.
+						// If time is 0 spawner has infinite lifespan and spawns the `amount` on
+						// a per-second basis.
+						minpos: pos,
+						maxpos: pos,
+						minvel: { x: -2, y: 3, z: -2 },
+						maxvel: { x: 2, y: 5, z: 2 },
+						minacc: { x: 0, y: -9.81, z: 0 },
+						maxacc: { x: 0, y: -9.81, z: 0 },
+						minexptime: 1,
+						maxexptime: 3,
+						minsize: 1,
+						maxsize: 1,
+						// The particles' properties are random values between the min and max
+						// values.
+						// pos, velocity, acceleration, expirationtime, size
+						collisiondetection: true,
+						collision_removal: true,
+						object_collision: false,
+						texture: "snowflake_" + math.random(1, 2) + ".png",
+					});
 					// 			this.object.remove()
 				}
 			}
