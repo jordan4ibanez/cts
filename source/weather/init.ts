@@ -210,7 +210,7 @@ namespace weather {
 			let under_air_count: number = 0;
 
 			for (const key of $range(area_index.length, 1, -1)) {
-				const temp_pos: Vec3 = area_index[key];
+				const temp_pos: Vec3 = area_index[key - 1];
 
 				const current: Dictionary<number, number> =
 					spawn_table[temp_pos.x] || (spawn_table[temp_pos.x] = {});
