@@ -22,12 +22,18 @@ namespace redstone {
 	const sub_vec = vector.subtract;
 	const vector_distance = vector.distance;
 	const vec_equals = vector.equals;
-	// This holds the translation data of activator tables (activator functions).
-	const activator_table = new Map<string, RestoneActivator>();
-	const capacitor_table = {};
-	const player_detection_table = new Set<Vec3>();
 
 	//? Redstone.
+
+	// This holds the translation data of activator tables (activator functions).
+	const activator_table = new Map<string, RestoneActivator>();
+	const capacitor_table = new Map<string, RedstoneCapacitor>();
+	const player_detection_table = new Set<Vec3>();
+
+	interface RedstoneCapacitor {
+		off: (pos: Vec3) => void;
+		on: (pos: Vec3) => void;
+	}
 
 	interface RestoneActivator {
 		activate: (pos: Vec3) => void;
@@ -56,13 +62,17 @@ namespace redstone {
 		});
 	}
 
-	// // enables mods to create data functions
-	// function redstone.register_capacitor(data)
-	// 	capacitor_table[data.name] = {
-	// 		off = data.off,
-	// 		on  = data.on
-	// 	}
-	// end
+	// Enables mods to create capacitors.
+	export function register_capacitor(data: {
+		name: string;
+		off: (pos: Vec3) => void;
+		on: (pos: Vec3) => void;
+	}) {
+		capacitor_table.set(data.name, {
+			off: data.off,
+			on: data.on,
+		});
+	}
 	// local path = core.get_modpath("redstone")
 	// dofile(path+"/functions.lua")
 	// dofile(path+"/torch.lua")
