@@ -320,7 +320,7 @@ namespace weather {
 											catchup_steps = catchup_steps + 1; // we've already snowed on this spot
 										}
 										// 									//end
-									} else if (node_name == "main:water") {
+									} else if (node_name == "crafter:water") {
 										ice_list.push(vector.create3d(x, y, z));
 									}
 								}
@@ -338,7 +338,7 @@ namespace weather {
 				core.bulk_set_node(bulk_list, { name: "crafter_weather:snow" });
 			}
 			if (ice_list.length > 0) {
-				core.bulk_set_node(ice_list, { name: "main:ice" });
+				core.bulk_set_node(ice_list, { name: "crafter:ice" });
 			}
 			// 			//this is debug
 			// 			//[[
@@ -507,7 +507,7 @@ namespace weather {
 	// })
 	// core.register_abm({
 	// 	label = "snow and ice melt",
-	// 	nodenames = {"crafter_weather:snow","main:ice"},
+	// 	nodenames = {"crafter_weather:snow","crafter:ice"},
 	// 	neighbors = {"air"},
 	// 	interval = 3,
 	// 	chance = 10,
