@@ -216,7 +216,7 @@ namespace weather {
 			}
 
 			const bulk_list: Vec3[] = [];
-			const ice_list = {};
+			const ice_list: Vec3[] = [];
 			let under_air_iterations = 0;
 			let catchup_steps = 0;
 			let lsfr_steps_count = 0;
@@ -321,7 +321,7 @@ namespace weather {
 										}
 										// 									//end
 									} else if (node_name == "main:water") {
-										// 									inserter(ice_list, n_vec(x,y,z))
+										ice_list.push(vector.create3d(x, y, z));
 									}
 								}
 							}
