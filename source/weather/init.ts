@@ -362,9 +362,9 @@ namespace weather {
 			// 			//print("////////////////////////////////-")
 			// 			//]]//
 		}
-		// 	core.after(3, function()
-		// 		do_snow()
-		// 	end)
+		core.after(3, () => {
+			do_snow();
+		});
 	}
 
 	// core.register_on_mods_loaded(function()
