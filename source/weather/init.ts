@@ -528,19 +528,21 @@ namespace weather {
 			],
 		},
 	});
-	// core.register_abm({
-	// 	label = "snow and ice melt",
-	// 	nodenames = {"crafter_weather:snow","crafter:ice"},
-	// 	neighbors = {"air"},
-	// 	interval = 3,
-	// 	chance = 10,
-	// 	catch_up = true,
-	// 	action = function(pos)
-	// 		if weather_type ~= 1 then
-	// 			core.remove_node(pos)
-	// 		end
-	// 	end,
-	// })
+
+	core.register_abm({
+		label: "snow and ice melt",
+		nodenames: ["crafter_weather:snow", "crafter:ice"],
+		neighbors: ["air"],
+		interval: 3,
+		chance: 10,
+		catch_up: true,
+		action: (pos: Vec3) => {
+			if (weather_type != 1) {
+				core.remove_node(pos);
+			}
+		},
+	});
+
 	// core.register_craftitem("crafter_weather:snowball", {
 	// 	description = "Snowball",
 	// 	inventory_image = "snowball.png",
