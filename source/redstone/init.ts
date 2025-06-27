@@ -1,9 +1,5 @@
 namespace redstone {
 	// //if you attempt to read this, god bless you
-	// local
-	// minetest,vector,math,table,pairs,next
-	// =
-	// minetest,vector,math,table,pairs,next
 	// // minetest class
 	// local get_node        = core.get_node
 	// local get_item_group  = core.get_item_group
