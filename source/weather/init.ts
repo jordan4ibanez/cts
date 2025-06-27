@@ -575,81 +575,78 @@ namespace weather {
 	class SnowBallEntity extends types.Entity {
 		name: string = "crafter_weather:snowball";
 		thrower: string | null = null;
-	
 
-	
-	// snowball.initial_properties = {
-	// 	hp_max = 1,
-	// 	physical = true,
-	// 	collide_with_objects = false,
-	// 	collisionbox = {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
-	// 	visual = "sprite",
-	// 	visual_size = {x = 0.5, y = 0.5},
-	// 	textures = {
-	// 		"snowball.png"
-	// 	},
-	// 	is_visible = true,
-	// 	pointable = false,
-	// }
-	// snowball.snowball = true
-	// snowball.on_activate = function(self)
-	// 	self.object:set_acceleration(vector.new(0,-9.81,0))
-	// end
-	// //make this as efficient as possible
-	// //make it so you can hit one snowball with another
-	// snowball.on_step = function(self, dtime)
-	// 	local vel = self.object:get_velocity()
-	// 	local hit = false
-	// 	local pos = self.object:get_pos()
-	// 	//hit object with the snowball
-	// 	for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
-	// 		if (object:is_player() and object:get_hp() > 0 and object:get_player_name() ~= self.thrower) or (object:get_luaentity() and object:get_luaentity().mob == true and object ~= self.owner) then
-	// 			object:punch(self.object, 2,
-	// 				{
-	// 				full_punch_interval=1.5,
-	// 				damage_groups = {damage=0,fleshy=0},
-	// 			})
-	// 			hit = true
-	// 			break
-	// 		end
-	// 	end
-	// 	if (self.oldvel and ((vel.x == 0 and self.oldvel.x ~= 0) or (vel.y == 0 and self.oldvel.y ~= 0) or (vel.z == 0 and self.oldvel.z ~= 0))) or hit == true then
-	// 		//snowballs explode in the nether
-	// 		if pos.y <= -10033 and pos.y >= -20000 then
-	// 			self.object:remove()
-	// 			tnt(pos,4)
-	// 		else
-	// 			core.sound_play("wool",{pos=pos, pitch = math.random(80,100)/100})
-	// 			core.add_particlespawner({
-	// 				amount = 20,
-	// 				// Number of particles spawned over the time period `time`.
-	// 				time = 0.001,
-	// 				// Lifespan of spawner in seconds.
-	// 				// If time is 0 spawner has infinite lifespan and spawns the `amount` on
-	// 				// a per-second basis.
-	// 				minpos = pos,
-	// 				maxpos = pos,
-	// 				minvel = {x=-2, y=3, z=-2},
-	// 				maxvel = {x=2, y=5, z=2},
-	// 				minacc = {x=0, y=-9.81, z=0},
-	// 				maxacc = {x=0, y=-9.81, z=0},
-	// 				minexptime = 1,
-	// 				maxexptime = 3,
-	// 				minsize = 1,
-	// 				maxsize = 1,
-	// 				// The particles' properties are random values between the min and max
-	// 				// values.
-	// 				// pos, velocity, acceleration, expirationtime, size
-	// 				collisiondetection = true,
-	// 				collision_removal = true,
-	// 				object_collision = false,
-	// 				texture = "snowflake_"..math.random(1,2)..".png",
-	// 			})
-	// 			self.object:remove()
-	// 		end
-	// 	end
-	// 	self.oldvel = vel
-	// end
-	
+		// snowball.initial_properties = {
+		// 	hp_max = 1,
+		// 	physical = true,
+		// 	collide_with_objects = false,
+		// 	collisionbox = {-0.1, -0.1, -0.1, 0.1, 0.1, 0.1},
+		// 	visual = "sprite",
+		// 	visual_size = {x = 0.5, y = 0.5},
+		// 	textures = {
+		// 		"snowball.png"
+		// 	},
+		// 	is_visible = true,
+		// 	pointable = false,
+		// }
+		// snowball.snowball = true
+		// snowball.on_activate = function(self)
+		// 	self.object:set_acceleration(vector.new(0,-9.81,0))
+		// end
+		// //make this as efficient as possible
+		// //make it so you can hit one snowball with another
+		// snowball.on_step = function(self, dtime)
+		// 	local vel = self.object:get_velocity()
+		// 	local hit = false
+		// 	local pos = self.object:get_pos()
+		// 	//hit object with the snowball
+		// 	for _,object in ipairs(core.get_objects_inside_radius(pos, 1)) do
+		// 		if (object:is_player() and object:get_hp() > 0 and object:get_player_name() ~= self.thrower) or (object:get_luaentity() and object:get_luaentity().mob == true and object ~= self.owner) then
+		// 			object:punch(self.object, 2,
+		// 				{
+		// 				full_punch_interval=1.5,
+		// 				damage_groups = {damage=0,fleshy=0},
+		// 			})
+		// 			hit = true
+		// 			break
+		// 		end
+		// 	end
+		// 	if (self.oldvel and ((vel.x == 0 and self.oldvel.x ~= 0) or (vel.y == 0 and self.oldvel.y ~= 0) or (vel.z == 0 and self.oldvel.z ~= 0))) or hit == true then
+		// 		//snowballs explode in the nether
+		// 		if pos.y <= -10033 and pos.y >= -20000 then
+		// 			self.object:remove()
+		// 			tnt(pos,4)
+		// 		else
+		// 			core.sound_play("wool",{pos=pos, pitch = math.random(80,100)/100})
+		// 			core.add_particlespawner({
+		// 				amount = 20,
+		// 				// Number of particles spawned over the time period `time`.
+		// 				time = 0.001,
+		// 				// Lifespan of spawner in seconds.
+		// 				// If time is 0 spawner has infinite lifespan and spawns the `amount` on
+		// 				// a per-second basis.
+		// 				minpos = pos,
+		// 				maxpos = pos,
+		// 				minvel = {x=-2, y=3, z=-2},
+		// 				maxvel = {x=2, y=5, z=2},
+		// 				minacc = {x=0, y=-9.81, z=0},
+		// 				maxacc = {x=0, y=-9.81, z=0},
+		// 				minexptime = 1,
+		// 				maxexptime = 3,
+		// 				minsize = 1,
+		// 				maxsize = 1,
+		// 				// The particles' properties are random values between the min and max
+		// 				// values.
+		// 				// pos, velocity, acceleration, expirationtime, size
+		// 				collisiondetection = true,
+		// 				collision_removal = true,
+		// 				object_collision = false,
+		// 				texture = "snowflake_"..math.random(1,2)..".png",
+		// 			})
+		// 			self.object:remove()
+		// 		end
+		// 	end
+		// 	self.oldvel = vel
+		// end
 	}
 }
