@@ -115,19 +115,52 @@ namespace redstone {
 		vector.create3d({ x: 0, y: -1, z: -1 }),
 	];
 
+	const hashVector = core.hash_node_position;
+
+	interface RedstoneData {
+		torch?: number;
+		dust?: number;
+		origin?: number;
+	}
+
 	// Thanks to RhodiumToad for helping me figure out a good method to do this.
 	// This holds all redstone data (literal 3d virtual memory map).
-	const pool = new Map<Vec3, any>();
+	const pool = new Map<number, any>();
 
 	function data_injection(pos: Vec3, data: any) {
 		if (data != null) {
-			pool.set(pos, data);
+			pool.set(hashVector(pos), data);
 		} else {
-			pool.delete(pos);
+			pool.delete(hashVector(pos));
 		}
 	}
 
 	// todo: reserve this???
+
+	const table_3d = (() => {
+		const newData = new Map<number, RedstoneData>();
+
+		const tempVec: Vec3 = vector.create3d();
+
+		for (const x of $range(-max_state, max_state)) {
+			for (const y of $range(-max_state, max_state)) {
+				for (const z of $range(-max_state, max_state)) {
+					tempVec.x = x;
+					tempVec.y = y;
+					tempVec.z = z;
+
+					newData.set(core.hash_node_position(tempVec), { torch: 1 });
+				}
+			}
+		}
+
+		print(dump(newData.keys()));
+
+		print(
+			"Size:",
+			newData.has(core.hash_node_position(vector.create3d(1, 2, 3)))
+		);
+	})();
 
 	// local function create_boundary_box(pos)
 	// 	//instructions = instructions + 1
