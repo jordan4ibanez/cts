@@ -117,7 +117,10 @@ namespace redstone {
 
 	// Thanks to RhodiumToad for helping me figure out a good method to do this.
 	// This holds all redstone data (literal 3d virtual memory map).
-	const pool = {};
+	const pool: Dictionary<
+		number,
+		Dictionary<number, Dictionary<number, any>>
+	> = {};
 	function data_injection(pos: Vec3, data: any) {
 		// Add data into 3d memory.
 		if (data != null) {
