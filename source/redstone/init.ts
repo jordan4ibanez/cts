@@ -14,29 +14,31 @@ namespace redstone {
 		(registered_nodes as Dictionary<string, NodeDefinition>) =
 			core.registered_nodes;
 	});
-	// // math class
-	// const abs   = math.abs
-	// const floor = math.floor
-	// const ceil   = math.ceil
-	// // vector library
-	// const new_vec         = vector.new
-	// const add_vec         = vector.add
-	// const sub_vec         = vector.subtract
-	// const vector_distance = vector.distance
-	// const vec_equals      = vector.equals
-	// const activator_table = {} // this holds the translation data of activator tables (activator functions)
-	// const capacitor_table = {}
-	// const player_detection_table = {}
-	// //local instructions = 0
-	// // redstone class
-	// redstone = {}
-	// redstone.max_state = 9 // the limit to power transmission
+	const abs = math.abs;
+	const floor = math.floor;
+	const ceil = math.ceil;
+	const new_vec = vector.create3d;
+	const add_vec = vector.add;
+	const sub_vec = vector.subtract;
+	const vector_distance = vector.distance;
+	const vec_equals = vector.equals;
+	// This holds the translation data of activator tables (activator functions).
+	const activator_table = {};
+	const capacitor_table = {};
+	const player_detection_table = {};
+
+	//? Redstone.
+
+	// The limit of power transmission.
+	export const max_state: number = 9;
 	// redstone.player_detector_add = function(pos)
 	// 	player_detection_table[core.serialize(pos)] = pos
 	// end
+
 	// redstone.player_detector_remove = function(pos)
 	// 	player_detection_table[core.serialize(pos)] = nil
 	// end
+	
 	// // enables mods to create data functions
 	// function redstone.register_activator(data)
 	// 	activator_table[data.name] = {
