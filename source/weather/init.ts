@@ -368,17 +368,20 @@ namespace weather {
 			// 			//print("////////////////////////////////-")
 			// 			//]]//
 		}
-		core.after(3, () => {
-			do_snow();
-		});
 	}
 
-	// todo: make this just global step
+	let snowTimer: number = 0;
+	core.register_globalstep((delta: number) => {
+		if (weather_type == 0) {
+			return;
+		}
+		snowTimer += delta;
+		if (snowTimer < 3) {
+			return;
+		}
+		snowTimer -= 3;
 
-	core.register_on_mods_loaded(() => {
-		core.after(0, () => {
-			do_snow();
-		});
+		do_snow();
 	});
 
 	// This sets random weather.
