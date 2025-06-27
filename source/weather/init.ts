@@ -302,7 +302,7 @@ namespace weather {
 										node_name != "crafter:ice"
 									) {
 										// 									//if buildable then
-										// 									//	if node_name ~= "weather:snow" then
+										// 									//	if node_name ~= "crafter_weather:snow" then
 										// 									//		inserter(bulk_list, n_vec(x,y,z))
 										// 									//	else
 										// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
@@ -311,7 +311,7 @@ namespace weather {
 										if (
 											core.get_node(
 												vector.create3d(x, y + 1, z)
-											).name != "weather:snow"
+											).name != "crafter_weather:snow"
 										) {
 											bulk_list.push(
 												vector.create3d(x, y + 1, z)
@@ -335,7 +335,7 @@ namespace weather {
 			);
 
 			if (bulk_list.length > 0) {
-				core.bulk_set_node(bulk_list, { name: "weather:snow" });
+				core.bulk_set_node(bulk_list, { name: "crafter_weather:snow" });
 			}
 			if (ice_list.length > 0) {
 				core.bulk_set_node(ice_list, { name: "main:ice" });
@@ -427,7 +427,10 @@ namespace weather {
 			pitch: math.random(80, 100) / 100,
 		});
 
-		// 	local snowball = core.add_entity(pos,"weather:snowball")
+		const snowball: ObjectRef | null = core.add_entity(
+			pos,
+			"crafter_weather:snowball"
+		);
 		// 	if snowball then
 		// 		local vel = player:get_player_velocity()
 		// 		snowball:set_velocity(vector.add(vel,vector.multiply(player:get_look_dir(),20)))
@@ -437,7 +440,7 @@ namespace weather {
 		return false;
 	}
 
-	// core.register_node("weather:snow", {
+	// core.register_node("crafter_weather:snow", {
 	//     description = "Snow",
 	//     tiles = {"snow_block.png"},
 	//     groups = {pathable = 1,snow = 1, falling_node=1},
@@ -450,20 +453,20 @@ namespace weather {
 	// 			max_items = 5,
 	// 			items= {
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
 	// 					rarity = 5,
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 			},
 	// 		},
@@ -475,7 +478,7 @@ namespace weather {
 	// 		}
 	// 	},
 	// })
-	// core.register_node("weather:snow_block", {
+	// core.register_node("crafter_weather:snow_block", {
 	//     description = "Snow",
 	//     tiles = {"snow_block.png"},
 	//     groups = {pathable = 1,snow = 1},
@@ -484,27 +487,27 @@ namespace weather {
 	// 			max_items = 5,
 	// 			items= {
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 				{
 	// 					rarity = 5,
-	// 					items = {"weather:snowball"},
+	// 					items = {"crafter_weather:snowball"},
 	// 				},
 	// 			},
 	// 		},
 	// })
 	// core.register_abm({
 	// 	label = "snow and ice melt",
-	// 	nodenames = {"weather:snow","main:ice"},
+	// 	nodenames = {"crafter_weather:snow","main:ice"},
 	// 	neighbors = {"air"},
 	// 	interval = 3,
 	// 	chance = 10,
@@ -515,7 +518,7 @@ namespace weather {
 	// 		end
 	// 	end,
 	// })
-	// core.register_craftitem("weather:snowball", {
+	// core.register_craftitem("crafter_weather:snowball", {
 	// 	description = "Snowball",
 	// 	inventory_image = "snowball.png",
 	// 	//stack_max = 1,
@@ -608,5 +611,5 @@ namespace weather {
 	// 	end
 	// 	self.oldvel = vel
 	// end
-	// core.register_entity("weather:snowball", snowball)
+	// core.register_entity("crafter_weather:snowball", snowball)
 }
