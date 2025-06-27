@@ -418,11 +418,15 @@ namespace weather {
 	});
 
 	function snowball_throw(player: ObjectRef): boolean {
-		// 	local pos = player:get_pos()
-		// 	pos.y = pos.y + 1.625
-		// 	//let other players hear the noise too
-		// 	core.sound_play("woosh",{to_player=player:get_player_name(), pitch = math.random(80,100)/100})
-		// 	core.sound_play("woosh",{pos=pos, exclude_player = player:get_player_name(), pitch = math.random(80,100)/100})
+		const pos: Vec3 = player.get_pos();
+
+		pos.y = pos.y + 1.625;
+		// Let other players hear the noise too.
+		core.sound_play("woosh", {
+			object: player,
+			pitch: math.random(80, 100) / 100,
+		});
+
 		// 	local snowball = core.add_entity(pos,"weather:snowball")
 		// 	if snowball then
 		// 		local vel = player:get_player_velocity()
