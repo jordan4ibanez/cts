@@ -1,8 +1,7 @@
 // local minetest,vector,math = minetest,vector,math
 
-
 // for i = 0,16 do
-// 	minetest.register_node("redstone:comparator_"..i, {
+// 	core.register_node("redstone:comparator_"..i, {
 // 		description = "Redstone Comparator",
 // 		tiles = {"repeater_on.png"},
 // 		groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,attached_node = 1,redstone_activation_directional=1,torch_directional=1,redstone_power=i,comparator=i},
@@ -32,5 +31,3 @@
 // 	})
 
 // end
-
-

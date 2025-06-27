@@ -13,7 +13,7 @@
 
 // --this allows for a more pale off state so players have more freedom to create different colors
 // for _,color in pairs(colors) do
-//   minetest.register_node("redstone:light_on_"..color, {
+//   core.register_node("redstone:light_on_"..color, {
 //       description = color:gsub("^%l", string.upper).." Redstone Light",
 //       tiles = {"redstone_light.png^[colorize:"..color..":200"},
 //       drawtype = "normal",
@@ -30,7 +30,7 @@
 //           name = "redstone:light_on_"..color,
 //           activator = true,
 //         })
-//         minetest.after(0,function()
+//         core.after(0,function()
 //           redstone.update(pos)
 //         end)
 //       end,
@@ -43,7 +43,7 @@
 //     name = "redstone:light_on_"..color,
 //     deactivate = function(pos)
 
-//       minetest.swap_node(pos,{name="redstone:light_off_"..color})
+//       core.swap_node(pos,{name="redstone:light_off_"..color})
 
 //       redstone.inject(pos,{
 //         name = "redstone:light_off_"..color,
@@ -52,7 +52,7 @@
 //     end
 //   })
 
-//   minetest.register_lbm({
+//   core.register_lbm({
 //     name = "redstone:light_on_"..color,
 //     nodenames = {"redstone:light_on_"..color},
 //     run_at_every_load = true,
@@ -62,15 +62,13 @@
 //         activator = true,
 //       })
 
-//       minetest.after(0,function()
+//       core.after(0,function()
 //         redstone.update(pos)
 //       end)
 //     end,
 //   })
 
-
-
-//   minetest.register_node("redstone:light_off_"..color, {
+//   core.register_node("redstone:light_off_"..color, {
 //       description = color:gsub("^%l", string.upper).." Redstone Light",
 //       tiles = {"redstone_light.png^[colorize:"..color..":100"},
 //       drawtype = "normal",
@@ -80,7 +78,6 @@
 //           dug =  {name = "break_glass", gain = 0.4},
 //     }),
 //       drop = "redstone:light_off_"..color,
-      
 
 //       on_construct = function(pos)
 //         redstone.inject(pos,{
@@ -88,11 +85,11 @@
 //           activator = true,
 //         })
 
-//         minetest.after(0,function()
+//         core.after(0,function()
 //           redstone.update(pos)
 //         end)
 //       end,
-      
+
 //       after_destruct = function(pos, oldnode)
 //           redstone.inject(pos,nil)
 //       end,
@@ -101,12 +98,11 @@
 //       end
 //   })
 
-
 //   redstone.register_activator({
 //     name = "redstone:light_off_"..color,
 //     activate = function(pos)
 
-//       minetest.swap_node(pos,{name="redstone:light_on_"..color})
+//       core.swap_node(pos,{name="redstone:light_on_"..color})
 
 //       redstone.inject(pos,{
 //         name = "redstone:light_on_"..color,
@@ -115,7 +111,7 @@
 //     end
 //   })
 
-//   minetest.register_lbm({
+//   core.register_lbm({
 //     name = "redstone:light_off_"..color,
 //     nodenames = {"redstone:light_off_"..color},
 //     run_at_every_load = true,
@@ -125,15 +121,13 @@
 //         activator = true,
 //       })
 
-//       minetest.after(0,function()
+//       core.after(0,function()
 //         redstone.update(pos)
 //       end)
 //     end,
 //   })
 
-
-
-//   minetest.register_craft({
+//   core.register_craft({
 //     output = "redstone:light_off_"..color,
 //     type = "shapeless",
 //     recipe = {"main:glass","redstone:dust","dye:"..color},

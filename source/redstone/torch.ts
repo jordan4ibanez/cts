@@ -3,7 +3,7 @@
 // local r_max = redstone.max_state
 
 // -- Item definitions
-// minetest.register_craftitem("redstone:torch", {
+// core.register_craftitem("redstone:torch", {
 // 	description = "Redstone Torch",
 // 	inventory_image = "redstone_torch.png",
 // 	wield_image = "redstone_torch.png",
@@ -14,7 +14,7 @@
 // 			return itemstack
 // 		end
 
-// 		local wdir = minetest.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
+// 		local wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
 
 // 		local fakestack = itemstack
 // 		local retval = false
@@ -28,18 +28,18 @@
 // 		if not retval then
 // 			return itemstack
 // 		end
-// 		itemstack, retval = minetest.item_place(fakestack, placer, pointed_thing, wdir)
+// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
 // 		itemstack:set_name("redstone:torch")
 
 // 		if retval then
-// 			minetest.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
+// 			core.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
 // 		end
 
 // 		return itemstack
 // 	end
 // })
 
-// minetest.register_node("redstone:torch_floor", {
+// core.register_node("redstone:torch_floor", {
 // 	inventory_image = "redstone_torch.png",
 // 	wield_image = "redstone_torch.png",
 // 	wield_scale = {x = 1, y = 1, z = 1 + 2/16},
@@ -58,7 +58,7 @@
 // 		type = "fixed",
 // 		fixed = {-1/16, -0.5, -1/16, 1/16, 2/16, 1/16},
 // 	},
-	
+
 // 	on_construct = function(pos)
 // 		redstone.inject(pos,{torch=r_max})
 // 		redstone.update(pos)
@@ -70,7 +70,7 @@
 // 	sounds = main.woodSound(),
 // })
 
-// minetest.register_node("redstone:torch_wall", {
+// core.register_node("redstone:torch_wall", {
 // 	inventory_image = "redstone_torch.png",
 // 	wield_image = "redstone_torch.png",
 // 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
@@ -101,8 +101,7 @@
 // 	sounds = main.woodSound(),
 // })
 
-
-// minetest.register_lbm({
+// core.register_lbm({
 // 	name = "redstone:torch_init",
 // 	nodenames = {"redstone:torch_wall","redstone:torch_floor"},
 // 	run_at_every_load = true,

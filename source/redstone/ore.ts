@@ -8,19 +8,19 @@
 // 	if i == 0 then
 // 		groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,pathable = 1}
 // 		--on_punch = function(pos, node, puncher, pointed_thing)
-// 		--	minetest.set_node(pos, {name="redstone:ore_1"})
+// 		--	core.set_node(pos, {name="redstone:ore_1"})
 // 		--	redstone.collect_info(pos)
-// 		--	local timer = minetest.get_node_timer(pos)
+// 		--	local timer = core.get_node_timer(pos)
 // 		--	timer:start(math.random(10,50))
 // 		--end
 // 	else
 // 		groups = {stone = 2, hard = 1, pickaxe = 1, hand = 4,pathable = 1,redstone=1,redstone_torch=1,redstone_power=9,experience=8}
 // 		--on_timer = function(pos, elapsed)
-// 		--	minetest.set_node(pos, {name="redstone:ore_0"})
+// 		--	core.set_node(pos, {name="redstone:ore_0"})
 // 		--	redstone.collect_info(pos)
 // 		--end
 // 	end
-// 	minetest.register_node("redstone:ore_"..i, {
+// 	core.register_node("redstone:ore_"..i, {
 // 		description = "Redstone Ore",
 // 		tiles = {"stone.png^redstone_ore.png"},
 // 		groups = groups,
@@ -63,7 +63,7 @@
 // 		--end,
 // 	})
 // 	if i == 0 then
-// 		minetest.register_node(":nether:redstone_ore", {
+// 		core.register_node(":nether:redstone_ore", {
 // 			description = "Nether Redstone Ore",
 // 			tiles = {"netherrack.png^redstone_ore.png"},
 // 			groups = {netherrack = 2, hard = 1, pickaxe = 1, hand = 4,pathable = 1},
@@ -71,8 +71,8 @@
 // 			light_source = 7,
 // 			after_destruct = function(pos, oldnode)
 // 				if math.random() > 0.95 then
-// 					minetest.sound_play("tnt_ignite",{pos=pos,max_hear_distance=64})
-// 					minetest.after(1.5, function(pos)
+// 					core.sound_play("tnt_ignite",{pos=pos,max_hear_distance=64})
+// 					core.after(1.5, function(pos)
 // 						tnt(pos,5)
 // 					end,pos)
 // 				end
@@ -111,7 +111,7 @@
 // 	end
 // end
 // --redstone ore
-// minetest.register_ore({
+// core.register_ore({
 // 	ore_type	 = "scatter",
 // 	ore		= "redstone:ore_0",
 // 	wherein	  = "main:stone",
@@ -122,7 +122,7 @@
 // 	y_min	    = 1025,
 // })
 
-// minetest.register_ore({
+// core.register_ore({
 // 	ore_type	 = "scatter",
 // 	ore		= "redstone:ore_0",
 // 	wherein	  = "main:stone",
@@ -133,7 +133,7 @@
 // 	y_min	    = -31000,
 // })
 
-// minetest.register_ore({
+// core.register_ore({
 // 	ore_type	 = "scatter",
 // 	ore		= "redstone:ore_0",
 // 	wherein	  = "main:stone",

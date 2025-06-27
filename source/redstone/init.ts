@@ -1,24 +1,24 @@
 // --if you attempt to read this, god bless you
 
-// local 
+// local
 // minetest,vector,math,table,pairs,next
 // =
 // minetest,vector,math,table,pairs,next
 
 // -- minetest class
-// local get_node        = minetest.get_node
-// local get_item_group  = minetest.get_item_group
-// local get_meta        = minetest.get_meta
-// local facedir_to_dir  = minetest.facedir_to_dir
-// local content_id      = minetest.get_name_from_content_id
-// local get_content_id  = minetest.get_content_id
-// local get_voxel_manip = minetest.get_voxel_manip
-// local after           = minetest.after
+// local get_node        = core.get_node
+// local get_item_group  = core.get_item_group
+// local get_meta        = core.get_meta
+// local facedir_to_dir  = core.facedir_to_dir
+// local content_id      = core.get_name_from_content_id
+// local get_content_id  = core.get_content_id
+// local get_voxel_manip = core.get_voxel_manip
+// local after           = core.after
 
-// local swap_node       = minetest.swap_node
+// local swap_node       = core.swap_node
 // local registered_nodes
-// minetest.register_on_mods_loaded(function()
-// 	registered_nodes  = minetest.registered_nodes
+// core.register_on_mods_loaded(function()
+// 	registered_nodes  = core.registered_nodes
 // end)
 
 // -- math class
@@ -44,13 +44,12 @@
 // redstone.max_state = 9 -- the limit to power transmission
 
 // redstone.player_detector_add = function(pos)
-// 	player_detection_table[minetest.serialize(pos)] = pos
+// 	player_detection_table[core.serialize(pos)] = pos
 // end
 
 // redstone.player_detector_remove = function(pos)
-// 	player_detection_table[minetest.serialize(pos)] = nil
+// 	player_detection_table[core.serialize(pos)] = nil
 // end
-
 
 // -- enables mods to create data functions
 // function redstone.register_activator(data)
@@ -68,7 +67,7 @@
 // 	}
 // end
 
-// local path = minetest.get_modpath("redstone")
+// local path = core.get_modpath("redstone")
 // dofile(path.."/functions.lua")
 // dofile(path.."/torch.lua")
 // dofile(path.."/lever.lua")
@@ -88,7 +87,6 @@
 // dofile(path.."/detector.lua")
 // --dofile(path.."/dispenser.lua")
 
-
 // --this is written out manually so that
 // --math.abs is not needed
 // local order = {
@@ -99,7 +97,7 @@
 // 	{x= 0,y= 0,z=-1},
 // 	{x= 0,y= 1,z= 0},
 // 	{x= 0,y=-1,z= 0},
-// 	{x= 1,y= 1,z= 0}, 
+// 	{x= 1,y= 1,z= 0},
 // 	{x=-1,y= 1,z= 0},
 // 	{x= 0,y= 1,z= 1},
 // 	{x= 0,y= 1,z=-1},
@@ -112,7 +110,6 @@
 // --thanks to RhodiumToad for helping me figure out a good method to do this
 
 // local pool = {} -- this holds all redstone data (literal 3d virtual memory map)
-
 
 // local function data_injection(pos,data)
 // 	--instructions = instructions + 1
@@ -159,12 +156,11 @@
 //                                       __        _           _   __  _
 //                                      /   |__|  /_\  |\  /| |_) |_  |_)
 //                                      \__ |  | /   \ | \/ | |_) |__ | \
-//                                              _  _  
-// 											(_)|-   ___     __     __ __ 
-// 													 |  /\ |__)|  |_ (_  
-// 													 | /--\|__)|__|____) 
+//                                              _  _
+// 											(_)|-   ___     __     __ __
+// 													 |  /\ |__)|  |_ (_
+// 													 | /--\|__)|__|____)
 // ]]--
-
 
 // local table_3d
 // local temp_pool
@@ -186,9 +182,9 @@
 // 							if not table_3d[x] then table_3d[x] = {} end
 // 							if not table_3d[x][y] then table_3d[x][y] = {} end
 
-// 							if (x == pos.x-r_max or x == pos.x+r_max or 
-// 							y == pos.y-r_max or y == pos.y+r_max or 
-// 							z == pos.z-r_max or z == pos.z+r_max) and 
+// 							if (x == pos.x-r_max or x == pos.x+r_max or
+// 							y == pos.y-r_max or y == pos.y+r_max or
+// 							z == pos.z-r_max or z == pos.z+r_max) and
 // 							temp_pool.dust and temp_pool.dust > 1 then
 // 								table_3d[x][y][z] = {torch=temp_pool.dust}
 // 							else
@@ -211,7 +207,7 @@
 // local index
 // local function capacitor_pathfind(source,mem_map)
 // 	for _,order in pairs(order) do
-		
+
 // 		i = add_vec(source,order)
 // 		if not mem_map[i.x] then mem_map[i.x] = {} end
 // 		if not mem_map[i.x][i.y] then mem_map[i.x][i.y] = {} end
@@ -274,8 +270,6 @@
 // 	end
 // end
 
-
-
 // -- activators
 // local n_pos
 // local temp_pool
@@ -289,8 +283,8 @@
 // 				if pool[n_pos.x] and pool[n_pos.x][n_pos.y] and pool[n_pos.x][n_pos.y][n_pos.z] then
 // 					temp_pool2 = pool[n_pos.x][n_pos.y][n_pos.z]
 // 					if temp_pool2 then
-// 						if (not temp_pool2.directional_activator and temp_pool2.torch) or 
-// 						(temp_pool2.dust and temp_pool2.dust > 0) or 
+// 						if (not temp_pool2.directional_activator and temp_pool2.torch) or
+// 						(temp_pool2.dust and temp_pool2.dust > 0) or
 // 						(temp_pool2.torch_directional and vector.equals(temp_pool2.output, pos)) then
 // 							if activator_table[temp_pool.name] and activator_table[temp_pool.name].activate then
 // 								activator_table[temp_pool.name].activate(pos)
@@ -299,7 +293,7 @@
 // 						end
 // 					end
 // 				end
-// 			end	
+// 			end
 // 			if activator_table[temp_pool.name] and activator_table[temp_pool.name].deactivate then
 // 				activator_table[temp_pool.name].deactivate(pos)
 // 			end
@@ -314,16 +308,16 @@
 // local input
 // local ignore
 // local directional_activator = function(pos)
-	
+
 // 	ignore = false
 // 	input = nil
 // 	temp_pool = nil
 // 	temp_pool2 = nil
 
 // 	if not (pool[pos.x] and pool[pos.x][pos.y] and pool[pos.x][pos.y][pos.z]) then return end
-	
+
 // 	temp_pool = pool[pos.x][pos.y][pos.z]
-	
+
 // 	if not temp_pool then ignore = true end
 
 // 	if not ignore then
@@ -344,7 +338,7 @@
 
 // 	if not temp_pool2 then ignore = true end
 
-// 	if not ignore and ((temp_pool2.dust and temp_pool2.dust > 0) or (temp_pool2.torch and temp_pool2.directional_activator and temp_pool2.dir == temp_pool.dir) or 
+// 	if not ignore and ((temp_pool2.dust and temp_pool2.dust > 0) or (temp_pool2.torch and temp_pool2.directional_activator and temp_pool2.dir == temp_pool.dir) or
 // 	(not temp_pool2.directional_activator and temp_pool2.torch) or (temp_pool2.capacitor and temp_pool2.capacitor > 0))  then
 // 		if  activator_table[temp_pool.name] and activator_table[temp_pool.name].activate then
 // 			activator_table[temp_pool.name].activate(pos)
@@ -397,30 +391,29 @@
 // 	return(mem_map)
 // end
 
-
 // --[[
-//                      , 
-//                 ,.  | \ 
-//                |: \ ; :\ 
-//                :' ;\| ::\ 
-//                 \ : | `::\ 
-//                 _)  |   `:`. 
-//               ,' , `.    ;: ; 
-//             ,' ;:  ;"'  ,:: |_ 
-//            /,   ` .    ;::: |:`-.__ 
-//         _,' _o\  ,::.`:' ;  ;   . ' 
-//     _,-'           `:.          ;""\, 
-//  ,-'                     ,:         `-;, 
-//  \,                       ;:           ;--._ 
-//   `.______,-,----._     ,' ;:        ,/ ,  ,` 
-//          / /,-';'  \     ; `:      ,'/,::.::: 
-//        ,',;-'-'_,--;    ;   :.   ,',',;:::::: 
-//       ( /___,-'     `.     ;::,,'o/  ,::::::: 
-//        `'             )    ;:,'o /  ;"-   -:: 
-//                       \__ _,'o ,'         ,:: 
-//                          ) `--'       ,..:::: 
-//                          ; `.        ,::::::: 
-//                           ;  ``::.    ::::::: 
+//                      ,
+//                 ,.  | \
+//                |: \ ; :\
+//                :' ;\| ::\
+//                 \ : | `::\
+//                 _)  |   `:`.
+//               ,' , `.    ;: ;
+//             ,' ;:  ;"'  ,:: |_
+//            /,   ` .    ;::: |:`-.__
+//         _,' _o\  ,::.`:' ;  ;   . '
+//     _,-'           `:.          ;""\,
+//  ,-'                     ,:         `-;,
+//  \,                       ;:           ;--._
+//   `.______,-,----._     ,' ;:        ,/ ,  ,`
+//          / /,-';'  \     ; `:      ,'/,::.:::
+//        ,',;-'-'_,--;    ;   :.   ,',',;::::::
+//       ( /___,-'     `.     ;::,,'o/  ,:::::::
+//        `'             )    ;:,'o /  ;"-   -::
+//                       \__ _,'o ,'         ,::
+//                          ) `--'       ,..::::
+//                          ; `.        ,:::::::
+//                           ;  ``::.    :::::::
 // ]]-- sic em boy!
 // local i
 // local index
@@ -448,10 +441,10 @@
 // 						mem_map.dust[i.x][i.y][i.z] = index
 
 // 						dust_sniff(i,mem_map,boundary)
-					
+
 // 					elseif index.torch and index.torch > 1 then
 // 						if index.torch_directional and vec_equals(pos,index.output) then
-							
+
 // 							mem_map[i.x][i.y][i.z] = true
 
 // 							if not mem_map.torch[i.x] then mem_map.torch[i.x] = {} end
@@ -459,7 +452,6 @@
 
 // 							mem_map.torch[i.x][i.y][i.z] = index
 
-							
 // 						elseif not index.torch_directional then
 
 // 							mem_map[i.x][i.y][i.z] = true
@@ -492,9 +484,8 @@
 // 		end
 // 	else
 // 		--print("single position index")
-		
-// 		i = pos
 
+// 		i = pos
 
 // 		if not mem_map[i.x] then mem_map[i.x] = {} end
 // 		if not mem_map[i.x][i.y] then mem_map[i.x][i.y] = {} end
@@ -512,10 +503,10 @@
 // 					mem_map.dust[i.x][i.y][i.z] = index
 
 // 					dust_sniff(i,mem_map,boundary)
-				
+
 // 				elseif index.torch and index.torch > 1 then
 // 					if index.torch_directional and (vec_equals(origin,index.output) or ignore) then
-						
+
 // 						mem_map[i.x][i.y][i.z] = true
 
 // 						if not mem_map.torch[i.x] then mem_map.torch[i.x] = {} end
@@ -523,7 +514,6 @@
 
 // 						mem_map.torch[i.x][i.y][i.z] = index
 
-						
 // 					elseif not index.torch_directional then
 
 // 						mem_map[i.x][i.y][i.z] = true
@@ -638,7 +628,7 @@
 // 				end
 // 			end
 // 		end
-		
+
 // 		--activators
 // 		--this must be run at the end
 // 		for x,datax in pairs(dust_map.activator) do
@@ -657,12 +647,9 @@
 // 	end
 // end
 
-
 // function redstone.inject(pos,data)
 // 	data_injection(pos,data)
 // end
-
-
 
 // local level
 // local pos2
@@ -672,7 +659,7 @@
 // 	for _,pos in pairs(player_detection_table) do
 // 		level = pool[pos.x][pos.y][pos.z].torch
 // 		max = 0
-// 		for _,player in ipairs(minetest.get_connected_players()) do
+// 		for _,player in ipairs(core.get_connected_players()) do
 // 			pos2 = player:get_pos()
 // 			power = floor(11-vector_distance(pos2,pos))
 // 			if power > r_max then
@@ -697,26 +684,25 @@
 // 	end
 // end
 
-
 // local recursion_check = {}
 // local bad_node
 // local queue = {}
 // function redstone.update(pos,is_capacitor)
 // 	local count = table.getn(queue)
-// 	local s_pos = minetest.serialize(pos)
+// 	local s_pos = core.serialize(pos)
 // 	if not recursion_check[s_pos] then
 // 		recursion_check[s_pos] = 0
 // 	end
 // 	recursion_check[s_pos] = recursion_check[s_pos] + 1
 // 	if recursion_check[s_pos] > 25 then
 // 		--print(recursion_check[s_pos])
-// 		minetest.after(0,function()
-// 			bad_node = minetest.get_node(pos).name
-// 			bad_node = minetest.get_node_drops(bad_node, "main:rubypick")
+// 		core.after(0,function()
+// 			bad_node = core.get_node(pos).name
+// 			bad_node = core.get_node_drops(bad_node, "main:rubypick")
 // 			for _,nodey in pairs(bad_node) do
-// 				minetest.throw_item(pos,nodey)
+// 				core.throw_item(pos,nodey)
 // 			end
-// 			minetest.remove_node(pos)
+// 			core.remove_node(pos)
 // 			data_injection(pos,nil)
 // 			redstone.update(pos)
 // 		end)
@@ -726,7 +712,7 @@
 // end
 // local dtime_goal = 0.02
 // local sleep = 0
-// minetest.register_globalstep(function(dtime)
+// core.register_globalstep(function(dtime)
 // 	player_detector_calculation()
 // 	recursion_check = {}
 // 	--[[
@@ -741,7 +727,7 @@
 // 		end
 
 // 		queue = {}
-		
+
 // 	else
 // 		sleep = sleep - dtime
 // 		if sleep <= 0 then
@@ -755,10 +741,7 @@
 // 	--instructions = 0
 // end)
 
-
 // ----------------------------------------------------------------------------
-
-
 
 // local instruction_order = {
 // 	{x= 1,y= 0,z= 0},
@@ -767,7 +750,7 @@
 // 	{x= 0,y= 0,z=-1},
 // 	{x= 0,y= 1,z= 0},
 // 	{x= 0,y=-1,z= 0},
-// 	{x= 1,y= 1,z= 0}, 
+// 	{x= 1,y= 1,z= 0},
 // 	{x=-1,y= 1,z= 0},
 // 	{x= 0,y= 1,z= 1},
 // 	{x= 0,y= 1,z=-1},
@@ -776,7 +759,6 @@
 // 	{x= 0,y=-1,z= 1},
 // 	{x= 0,y=-1,z=-1},
 // 	}
-
 
 // -- this is used for dynamic instruction set rebuilds
 // local function instruction_rebuild(pos,delete)
@@ -790,14 +772,12 @@
 // 		end
 // 	else
 // 		for _,pos2 in pairs(instruction_order) do
-		
+
 // 		end
 // 	end
-	
+
 // 	print(dump(instruction_set))
 // end
-
-
 
 // -- this is used for creating fast data for the game to utilize
 // local function initial_instruction_build(pos)
@@ -811,7 +791,6 @@
 // 	pool[pos.x][pos.y][pos.z].instruction_set = instruction_set
 // end
 
-
 // --[[
 //        / .'
 //  .---. \/
@@ -819,22 +798,7 @@
 //  ^"""^"
 // ]]--
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// minetest.register_craftitem("redstone:dust", {
+// core.register_craftitem("redstone:dust", {
 // 	description = "Redstone Dust",
 // 	inventory_image = "redstone_dust_item.png",
 // 	wield_image = "redstone_dust_item.png",
@@ -843,15 +807,15 @@
 // 	on_place = function(itemstack, placer, pointed_thing)
 // 		if not pointed_thing.type == "node" then
 // 			return
-// 		end		
+// 		end
 // 		local sneak = placer:get_player_control().sneak
 // 		local noddef = registered_nodes[get_node(pointed_thing.under).name]
 // 		if not sneak and noddef.on_rightclick then
-// 			minetest.item_place(itemstack, placer, pointed_thing)
+// 			core.item_place(itemstack, placer, pointed_thing)
 // 			return
 // 		end
-		
-// 		local _,worked = minetest.item_place(ItemStack("redstone:dust_0"), placer, pointed_thing)
+
+// 		local _,worked = core.item_place(ItemStack("redstone:dust_0"), placer, pointed_thing)
 // 		if worked then
 // 			itemstack:take_item()
 // 			return(itemstack)
@@ -864,8 +828,8 @@
 // for i = 0,d_max do
 
 // 	local color = floor(255 * (i/d_max))
-	
-// 	minetest.register_node("redstone:dust_"..i,{
+
+// 	core.register_node("redstone:dust_"..i,{
 // 		description = "Redstone Dust",
 // 		wield_image = "redstone_dust_item.png",
 // 		tiles = {
@@ -891,7 +855,7 @@
 // 			--instruction_rebuild(pos)
 // 			calculate(pos)
 // 		end,
-// 		after_destruct = function(pos)			
+// 		after_destruct = function(pos)
 // 			data_injection(pos,nil)
 // 			--instruction_rebuild(pos,true)
 // 			calculate(pos)
@@ -899,13 +863,13 @@
 // 		connects_to = {"group:redstone"},
 // 	})
 
-// 	minetest.register_lbm({
+// 	core.register_lbm({
 //         name = "redstone:"..i,
 // 		nodenames = {"redstone:dust_"..i},
 // 		run_at_every_load = true,
 //         action = function(pos)
 // 			data_injection(pos,{dust=i})
-// 			--minetest.after(0,function()
+// 			--core.after(0,function()
 // 				--initial_instruction_build(pos)
 // 			--end)
 //         end,
