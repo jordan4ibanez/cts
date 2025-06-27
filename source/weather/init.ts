@@ -472,27 +472,28 @@ namespace weather {
 		drawtype: Drawtype.nodebox,
 		walkable: false,
 		floodable: true,
-		//     drop : {
-		// 			max_items = 5,
-		// 			items= {
-		// 				{
-		// 					items = {"crafter_weather:snowball"},
-		// 				},
-		// 				{
-		// 					items = {"crafter_weather:snowball"},
-		// 				},
-		// 				{
-		// 					items = {"crafter_weather:snowball"},
-		// 				},
-		// 				{
-		// 					items = {"crafter_weather:snowball"},
-		// 				},
-		// 				{
-		// 					rarity = 5,
-		// 					items = {"crafter_weather:snowball"},
-		// 				},
-		// 			},
-		// 		},
+		drop: {
+			max_items: 5,
+			items: [
+				{
+					items: ["crafter_weather:snowball"],
+				},
+				{
+					items: ["crafter_weather:snowball"],
+				},
+				{
+					items: ["crafter_weather:snowball"],
+				},
+				{
+					items: ["crafter_weather:snowball"],
+				},
+				{
+					rarity: 5,
+					items: ["crafter_weather:snowball"],
+				},
+			],
+		},
+
 		//     buildable_to = true,
 		//     node_box = {
 		// 		type = "fixed",
