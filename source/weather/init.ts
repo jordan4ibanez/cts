@@ -543,26 +543,26 @@ namespace weather {
 		},
 	});
 
-	// core.register_craftitem("crafter_weather:snowball", {
-	// 	description = "Snowball",
-	// 	inventory_image = "snowball.png",
-	// 	//stack_max = 1,
-	// 	//range = 0,
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		local worked = snowball_throw(placer)
-	// 		if worked then
-	// 			itemstack:take_item()
-	// 		end
-	// 		return(itemstack)
-	// 	end,
-	// 	on_secondary_use = function(itemstack, user, pointed_thing)
-	// 		local worked = snowball_throw(user)
-	// 		if worked then
-	// 			itemstack:take_item()
-	// 		end
-	// 		return(itemstack)
-	// 	end,
-	// })
+	core.register_craftitem("crafter_weather:snowball", {
+		description: "Snowball",
+		inventory_image: "snowball.png",
+		// 	//stack_max = 1,
+		// 	//range = 0,
+		on_place: (itemstack, placer, pointed_thing) => {
+			const worked: boolean = snowball_throw(placer);
+			if (worked) {
+				itemstack.take_item();
+			}
+			return itemstack;
+		},
+		on_secondary_use: (itemstack, user, pointed_thing) => {
+			const worked: boolean = snowball_throw(user);
+			if (worked) {
+				itemstack.take_item();
+			}
+			return itemstack;
+		},
+	});
 
 	class SnowBallEntity extends types.Entity {
 		name: string = "crafter_weather:snowball";
