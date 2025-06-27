@@ -56,24 +56,24 @@ namespace redstone {
 	// 	}
 	// end
 	// local path = core.get_modpath("redstone")
-	// dofile(path.."/functions.lua")
-	// dofile(path.."/torch.lua")
-	// dofile(path.."/lever.lua")
-	// dofile(path.."/button.lua")
-	// dofile(path.."/repeater.lua")
-	// dofile(path.."/light.lua")
-	// dofile(path.."/piston.lua")
-	// //dofile(path.."/comparator.lua")
-	// dofile(path.."/craft.lua")
-	// dofile(path.."/ore.lua")
-	// dofile(path.."/inverter.lua")
-	// dofile(path.."/player_detector.lua")
-	// dofile(path.."/space_maker.lua")
-	// //dofile(path.."/pressure_plate.lua")
-	// dofile(path.."/capacitors.lua")
-	// dofile(path.."/breaker.lua")
-	// dofile(path.."/detector.lua")
-	// //dofile(path.."/dispenser.lua")
+	// dofile(path+"/functions.lua")
+	// dofile(path+"/torch.lua")
+	// dofile(path+"/lever.lua")
+	// dofile(path+"/button.lua")
+	// dofile(path+"/repeater.lua")
+	// dofile(path+"/light.lua")
+	// dofile(path+"/piston.lua")
+	// //dofile(path+"/comparator.lua")
+	// dofile(path+"/craft.lua")
+	// dofile(path+"/ore.lua")
+	// dofile(path+"/inverter.lua")
+	// dofile(path+"/player_detector.lua")
+	// dofile(path+"/space_maker.lua")
+	// //dofile(path+"/pressure_plate.lua")
+	// dofile(path+"/capacitors.lua")
+	// dofile(path+"/breaker.lua")
+	// dofile(path+"/detector.lua")
+	// //dofile(path+"/dispenser.lua")
 	// //this is written out manually so that
 	// //math.abs is not needed
 	// local order = {
@@ -370,7 +370,7 @@ namespace redstone {
 	//       ( /___,-'     `.     ;::,,'o/  ,:::::::
 	//        `'             )    ;:,'o /  ;"-   -::
 	//                       \__ _,'o ,'         ,::
-	//                          ) `//'       ,..::::
+	//                          ) `//'       ,+::::
 	//                          ; `.        ,:::::::
 	//                           ;  ``::.    :::::::
 	// ]]// sic em boy!
@@ -530,7 +530,7 @@ namespace redstone {
 	// 			for y,datay in pairs(datax) do
 	// 				for z,data in pairs(datay) do
 	// 					if data.dust and data.dust ~= data.origin then
-	// 						swap_node(new_vec(x,y,z),{name="redstone:dust_"..data.dust})
+	// 						swap_node(new_vec(x,y,z),{name="redstone:dust_"+data.dust})
 	// 						data_injection(new_vec(x,y,z),data)
 	// 					end
 	// 				end
@@ -577,9 +577,9 @@ namespace redstone {
 	// 			end
 	// 		end
 	// 		if max ~= level then
-	// 			swap_node(pos,{name="redstone:player_detector_"..max})
+	// 			swap_node(pos,{name="redstone:player_detector_"+max})
 	// 			redstone.inject(pos,{
-	// 				name = "redstone:player_detector_"..max,
+	// 				name = "redstone:player_detector_"+max,
 	// 				torch = max,
 	// 			})
 	// 			redstone.update(pos)
@@ -715,12 +715,12 @@ namespace redstone {
 	// local d_max = r_max-1
 	// for i = 0,d_max do
 	// 	local color = floor(255 * (i/d_max))
-	// 	core.register_node("redstone:dust_"..i,{
+	// 	core.register_node("redstone:dust_"+i,{
 	// 		description = "Redstone Dust",
 	// 		wield_image = "redstone_dust_item.png",
 	// 		tiles = {
-	// 			"redstone_dust_main.png^[colorize:red:"..color, "redstone_turn.png^[colorize:red:"..color,
-	// 			"redstone_t.png^[colorize:red:"..color, "redstone_cross.png^[colorize:red:"..color
+	// 			"redstone_dust_main.png^[colorize:red:"+color, "redstone_turn.png^[colorize:red:"+color,
+	// 			"redstone_t.png^[colorize:red:"+color, "redstone_cross.png^[colorize:red:"+color
 	// 		},
 	// 		power=i,
 	// 		drawtype = "raillike",
@@ -749,8 +749,8 @@ namespace redstone {
 	// 		connects_to = {"group:redstone"},
 	// 	})
 	// 	core.register_lbm({
-	//         name = "redstone:"..i,
-	// 		nodenames = {"redstone:dust_"..i},
+	//         name = "redstone:"+i,
+	// 		nodenames = {"redstone:dust_"+i},
 	// 		run_at_every_load = true,
 	//         action = function(pos)
 	// 			data_injection(pos,{dust=i})
