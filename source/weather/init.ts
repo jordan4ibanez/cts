@@ -597,7 +597,7 @@ namespace weather {
 		}
 		// Make this as efficient as possible.
 		// Make it so you can hit one snowball with another.
-		on_step(dtime: number) {
+		on_step(dtime: number, moveResult: MoveResult) {
 			const vel: Vec3 = this.object.get_velocity();
 			let hit: boolean = false;
 			const pos: Vec3 = this.object.get_pos();
@@ -624,12 +624,7 @@ namespace weather {
 				}
 			}
 
-			if (
-				(vel.x == 0 && this.oldvel.x != 0) ||
-				(vel.y == 0 && this.oldvel.y != 0) ||
-				(vel.z == 0 && this.oldvel.z != 0) ||
-				hit == true
-			) {
+			if (moveResult.collides || hit == true) {
 				// Snowballs explode in the nether.
 				if (pos.y <= -10033 && pos.y >= -20000) {
 					this.object.remove();
@@ -665,7 +660,8 @@ namespace weather {
 						object_collision: false,
 						texture: "snowflake_" + math.random(1, 2) + ".png",
 					});
-					// 			this.object.remove()
+					this.object.remove();
+					return;
 				}
 			}
 			this.oldvel = vel;
