@@ -367,11 +367,13 @@ namespace weather {
 		});
 	}
 
-	// core.register_on_mods_loaded(function()
-	// 	core.after(0,function()
-	// 		do_snow()
-	// 	end)
-	// end)
+	// todo: make this just global step
+
+	core.register_on_mods_loaded(() => {
+		core.after(0, () => {
+			do_snow();
+		});
+	});
 
 	// //this sets random weather
 	// local initial_run = true
