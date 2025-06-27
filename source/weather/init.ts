@@ -463,44 +463,45 @@ namespace weather {
 		return true;
 	}
 
-	// core.register_node("crafter_weather:snow", {
-	//     description = "Snow",
-	//     tiles = {"snow_block.png"},
-	//     groups = {pathable = 1,snow = 1, falling_node=1},
-	//     sounds = main.woolSound(),
-	//     paramtype = "light",
-	// 	drawtype = "nodebox",
-	// 	walkable = false,
-	// 	floodable = true,
-	//     drop = {
-	// 			max_items = 5,
-	// 			items= {
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 				{
-	// 					rarity = 5,
-	// 					items = {"crafter_weather:snowball"},
-	// 				},
-	// 			},
-	// 		},
-	//     buildable_to = true,
-	//     node_box = {
-	// 		type = "fixed",
-	// 		fixed = {
-	// 		{-8/16, -8/16, -8/16, 8/16, -6/16, 8/16},
-	// 		}
-	// 	},
-	// })
+	core.register_node("crafter_weather:snow", {
+		description: "Snow",
+		tiles: ["snow_block.png"],
+		groups: { pathable: 1, snow: 1, falling_node: 1 },
+		sounds: crafter.woolSound(),
+		paramtype: ParamType1.light,
+		drawtype: Drawtype.nodebox,
+		walkable: false,
+		floodable: true,
+		//     drop : {
+		// 			max_items = 5,
+		// 			items= {
+		// 				{
+		// 					items = {"crafter_weather:snowball"},
+		// 				},
+		// 				{
+		// 					items = {"crafter_weather:snowball"},
+		// 				},
+		// 				{
+		// 					items = {"crafter_weather:snowball"},
+		// 				},
+		// 				{
+		// 					items = {"crafter_weather:snowball"},
+		// 				},
+		// 				{
+		// 					rarity = 5,
+		// 					items = {"crafter_weather:snowball"},
+		// 				},
+		// 			},
+		// 		},
+		//     buildable_to = true,
+		//     node_box = {
+		// 		type = "fixed",
+		// 		fixed = {
+		// 		{-8/16, -8/16, -8/16, 8/16, -6/16, 8/16},
+		// 		}
+		// 	},
+	});
+
 	// core.register_node("crafter_weather:snow_block", {
 	//     description = "Snow",
 	//     tiles = {"snow_block.png"},
