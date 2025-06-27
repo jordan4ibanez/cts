@@ -127,9 +127,8 @@ namespace redstone {
 		}
 	}
 
-	// local table_3d
-	// local temp_pool
-	// local r_max = redstone.max_state
+	// todo: reserve this???
+
 	// local function create_boundary_box(pos)
 	// 	//instructions = instructions + 1
 	// 	table_3d = {}
@@ -166,6 +165,7 @@ namespace redstone {
 	// 	end
 	// 	return(table_3d)
 	// end
+
 	// local i
 	// local index
 	// local function capacitor_pathfind(source,mem_map)
