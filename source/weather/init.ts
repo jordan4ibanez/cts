@@ -15,6 +15,11 @@ namespace weather {
 
 	let weather_type: number = mod_storage.get_int("weather_type");
 
+	export function setWeatherType(newWeatherType: number): void {
+		weather_type = newWeatherType;
+		function_send_weather_type();
+	}
+
 	utility.loadFiles(["commands"]);
 
 	// todo: check if this is still true.
