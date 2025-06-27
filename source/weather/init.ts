@@ -282,28 +282,29 @@ namespace weather {
 								const def: NodeDefinition | undefined =
 									core.registered_nodes[node_name];
 
-								// // buildable = def.buildable_to
-
-								// 								drawtype = acceptable_drawtypes[def.drawtype]
-								// 								walkable = def.walkable
-								// 								liquid = (def.liquidtype ~= "none")
-								// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
-								// 									//if buildable then
-								// 									//	if node_name ~= "weather:snow" then
-								// 									//		inserter(bulk_list, n_vec(x,y,z))
-								// 									//	else
-								// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
-								// 									//	end
-								// 									//elseif walkable then
-								// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
-								// 											inserter(bulk_list, n_vec(x,y+1,z))
-								// 										else
-								// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
-								// 										end
-								// 									//end
-								// 								elseif node_name == "main:water" then
-								// 									inserter(ice_list, n_vec(x,y,z))
-								// 								end
+								if (def != null) {
+									// // buildable = def.buildable_to
+									// 								drawtype = acceptable_drawtypes[def.drawtype]
+									// 								walkable = def.walkable
+									// 								liquid = (def.liquidtype ~= "none")
+									// 								if not liquid and walkable and drawtype and node_name ~= "main:ice" then
+									// 									//if buildable then
+									// 									//	if node_name ~= "weather:snow" then
+									// 									//		inserter(bulk_list, n_vec(x,y,z))
+									// 									//	else
+									// 									//		catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+									// 									//	end
+									// 									//elseif walkable then
+									// 										if g_node(n_vec(x,y+1,z)).name ~= "weather:snow" then
+									// 											inserter(bulk_list, n_vec(x,y+1,z))
+									// 										else
+									// 											catchup_steps = catchup_steps + 1 // we've already snowed on this spot
+									// 										end
+									// 									//end
+									// 								elseif node_name == "main:water" then
+									// 									inserter(ice_list, n_vec(x,y,z))
+									// 								end
+								}
 							}
 						}
 					}
