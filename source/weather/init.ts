@@ -334,12 +334,12 @@ namespace weather {
 				catchup_steps >= snowState_max_catchup_per_call
 			);
 
-			// 			if bulk_list then
-			// 				mass_set(bulk_list, {name="weather:snow"})
-			// 			end
-			// 			if ice_list then
-			// 				mass_set(ice_list, {name="main:ice"})
-			// 			end
+			if (bulk_list.length > 0) {
+				core.bulk_set_node(bulk_list, { name: "weather:snow" });
+			}
+			if (ice_list.length > 0) {
+				core.bulk_set_node(ice_list, { name: "main:ice" });
+			}
 			// 			//this is debug
 			// 			//[[
 			// 			local chugent = math.ceil((core.get_us_time()/1000000 - t0) * 1000)
