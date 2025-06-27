@@ -124,7 +124,10 @@ namespace redstone {
 	function data_injection(pos: Vec3, data: any) {
 		// Add data into 3d memory.
 		if (data != null) {
-			// 		if not pool[pos.x] then pool[pos.x] = {} end
+			const xDict: Dictionary<number, Dictionary<number, any>> = pool[
+				pos.x
+			] || (pool[pos.x] = {});
+
 			// 		if not pool[pos.x][pos.y] then pool[pos.x][pos.y] = {} end
 			// 		pool[pos.x][pos.y][pos.z] = data
 			// 		//instructions = instructions + 1
