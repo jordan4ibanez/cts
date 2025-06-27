@@ -431,12 +431,25 @@ namespace weather {
 			pos,
 			"crafter_weather:snowball"
 		);
-		// 	if snowball then
-		// 		local vel = player:get_player_velocity()
-		// 		snowball:set_velocity(vector.add(vel,vector.multiply(player:get_look_dir(),20)))
-		// 		snowball:get_luaentity().thrower = player:get_player_name()
-		// 		return(true)
-		// 	end
+		if (snowball == null) {
+			core.log(
+				LogLevel.error,
+				`Failed to add snowball entity to ${player.get_player_name()}`
+			);
+			return false;
+		}
+
+		const vel: Vec3 = player.get_velocity();
+		snowball.set_velocity(
+			vector.add(vel, vector.multiply(player.get_look_dir(), 20))
+		);
+
+		const luaEntity: SnowBallEntity | null =
+			snowball.get_luaentity() as SnowBallEntity | null;
+
+		// .thrower = player.get_player_name();
+		return true;
+
 		return false;
 	}
 
@@ -538,6 +551,12 @@ namespace weather {
 	// 		return(itemstack)
 	// 	end,
 	// })
+
+	class SnowBallEntity extends types.Entity {
+		name: string = "crafter_weather:snowball";
+		thrower: string | null = null;
+	}
+
 	// snowball = {}
 	// snowball.initial_properties = {
 	// 	hp_max = 1,
