@@ -1,18 +1,19 @@
 namespace redstone {
 	// // minetest class
-	// const get_node        = core.get_node
-	// const get_item_group  = core.get_item_group
-	// const get_meta        = core.get_meta
-	// const facedir_to_dir  = core.facedir_to_dir
-	// const content_id      = core.get_name_from_content_id
-	// const get_content_id  = core.get_content_id
-	// const get_voxel_manip = core.get_voxel_manip
-	// const after           = core.after
-	// const swap_node       = core.swap_node
-	// const registered_nodes
-	// core.register_on_mods_loaded(function()
-	// 	registered_nodes  = core.registered_nodes
-	// end)
+	const get_node        = core.get_node
+	const get_item_group  = core.get_item_group
+	const get_meta        = core.get_meta
+	const facedir_to_dir  = core.facedir_to_dir
+	const content_id      = core.get_name_from_content_id
+	const get_content_id  = core.get_content_id
+	const get_voxel_manip = core.get_voxel_manip
+	const after           = core.after
+	const swap_node       = core.swap_node
+	const registered_nodes
+
+	core.register_on_mods_loaded(function()
+		registered_nodes  = core.registered_nodes
+	end)
 	// // math class
 	// const abs   = math.abs
 	// const floor = math.floor
