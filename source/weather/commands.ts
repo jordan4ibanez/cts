@@ -3,7 +3,7 @@ namespace weather {
 		params: "<mobname>",
 		description: "Spawn a mob",
 		privs: { server: true },
-		func: (name, weather) => {
+		func: (name: string, weather: string) => {
 			// 		if weather == "0" or weather == "clear" then
 			// 			weather_type = 0
 			// 			function_send_weather_type()
