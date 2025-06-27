@@ -23,11 +23,16 @@ namespace redstone {
 	const vector_distance = vector.distance;
 	const vec_equals = vector.equals;
 	// This holds the translation data of activator tables (activator functions).
-	const activator_table = {};
+	const activator_table = new Map<string, RestoneActivator>();
 	const capacitor_table = {};
 	const player_detection_table = new Set<Vec3>();
 
 	//? Redstone.
+
+	interface RestoneActivator {
+		activate: (pos: Vec3) => void;
+		deactivate: (pos: Vec3) => void;
+	}
 
 	// The limit of power transmission.
 	export const max_state: number = 9;
@@ -35,17 +40,22 @@ namespace redstone {
 		player_detection_table.add(pos);
 	}
 
-	// redstone.player_detector_remove = function(pos)
-	// 	player_detection_table[core.serialize(pos)] = nil
-	// end
+	export function player_detector_remove(pos: Vec3): void {
+		player_detection_table.delete(pos);
+	}
 
-	// // enables mods to create data functions
-	// function redstone.register_activator(data)
-	// 	activator_table[data.name] = {
-	// 		activate   = data.activate,
-	// 		deactivate = data.deactivate
-	// 	}
-	// end
+	// Enables mods to create data functions.
+	export function register_activator(data: {
+		name: string;
+		activate: (pos: Vec3) => void;
+		deactivate: (pos: Vec3) => void;
+	}) {
+		activator_table.set(data.name, {
+			activate: data.activate,
+			deactivate: data.deactivate,
+		});
+	}
+
 	// // enables mods to create data functions
 	// function redstone.register_capacitor(data)
 	// 	capacitor_table[data.name] = {
