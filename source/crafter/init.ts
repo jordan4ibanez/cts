@@ -1,5 +1,5 @@
 namespace crafter {
-	export const version: string = "0.0.8b";
+	export const version: string = "0.0.8c";
 
 	const path: string | null = core.get_modpath("crafter");
 	if (!path) {
