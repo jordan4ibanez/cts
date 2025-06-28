@@ -122,6 +122,7 @@ namespace redstone {
 			wall_bottom: [-0.1, -0.5, -0.1, 0.1, 0.1, 0.1],
 			wall_side: [-0.5, -0.3, -0.1, -0.2, 0.3, 0.1],
 		},
+		sounds: crafter.woodSound(),
 		// 	on_construct = function(pos)
 		// 		redstone.inject(pos,{torch=r_max})
 		// 		redstone.update(pos)
@@ -130,7 +131,6 @@ namespace redstone {
 		// 		redstone.inject(pos,nil)
 		// 		redstone.update(pos)
 		// 	end,
-		// 	sounds = main.woodSound(),
 	});
 
 	// core.register_lbm({
