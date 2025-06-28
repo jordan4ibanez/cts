@@ -1,164 +1,165 @@
 namespace redstone {
-	const get_node = core.get_node;
-	const get_item_group = core.get_item_group;
-	const get_meta = core.get_meta;
-	const facedir_to_dir = core.facedir_to_dir;
-	const content_id = core.get_name_from_content_id;
-	const get_content_id = core.get_content_id;
-	const get_voxel_manip = core.get_voxel_manip;
-	const after = core.after;
-	const swap_node = core.swap_node;
-	const registered_nodes: Dictionary<string, NodeDefinition> = {};
-	core.register_on_mods_loaded(() => {
-		// Hackjob to unconst a const.
-		(registered_nodes as Dictionary<string, NodeDefinition>) =
-			core.registered_nodes;
-	});
-	const abs = math.abs;
-	const floor = math.floor;
-	const ceil = math.ceil;
-	const new_vec = vector.create3d;
-	const add_vec = vector.add;
-	const sub_vec = vector.subtract;
-	const vector_distance = vector.distance;
-	const vec_equals = vector.equals;
+	// const get_node = core.get_node;
+	// const get_item_group = core.get_item_group;
+	// const get_meta = core.get_meta;
+	// const facedir_to_dir = core.facedir_to_dir;
+	// const content_id = core.get_name_from_content_id;
+	// const get_content_id = core.get_content_id;
+	// const get_voxel_manip = core.get_voxel_manip;
+	// const after = core.after;
+	// const swap_node = core.swap_node;
+	// const registered_nodes: Dictionary<string, NodeDefinition> = {};
+	// core.register_on_mods_loaded(() => {
+	// 	// Hackjob to unconst a const.
+	// 	(registered_nodes as Dictionary<string, NodeDefinition>) =
+	// 		core.registered_nodes;
+	// });
+	// const abs = math.abs;
+	// const floor = math.floor;
+	// const ceil = math.ceil;
+	// const new_vec = vector.create3d;
+	// const add_vec = vector.add;
+	// const sub_vec = vector.subtract;
+	// const vector_distance = vector.distance;
+	// const vec_equals = vector.equals;
 
-	//? Redstone.
+	// //? Redstone.
 
-	// This holds the translation data of activator tables (activator functions).
-	const activator_table = new Map<string, RestoneActivator>();
-	const capacitor_table = new Map<string, RedstoneCapacitor>();
-	const player_detection_table = new Set<Vec3>();
+	// // This holds the translation data of activator tables (activator functions).
+	// const activator_table = new Map<string, RestoneActivator>();
+	// const capacitor_table = new Map<string, RedstoneCapacitor>();
+	// const player_detection_table = new Set<Vec3>();
 
-	interface RedstoneCapacitor {
-		off: (pos: Vec3) => void;
-		on: (pos: Vec3) => void;
-	}
+	// interface RedstoneCapacitor {
+	// 	off: (pos: Vec3) => void;
+	// 	on: (pos: Vec3) => void;
+	// }
 
-	interface RestoneActivator {
-		activate: (pos: Vec3) => void;
-		deactivate: (pos: Vec3) => void;
-	}
+	// interface RestoneActivator {
+	// 	activate: (pos: Vec3) => void;
+	// 	deactivate: (pos: Vec3) => void;
+	// }
 
-	// The limit of power transmission.
-	export const max_state: number = 9;
-	export function player_detector_add(pos: Vec3): void {
-		player_detection_table.add(pos);
-	}
+	// // The limit of power transmission.
+	// export const max_state: number = 9;
+	// export function player_detector_add(pos: Vec3): void {
+	// 	player_detection_table.add(pos);
+	// }
 
-	export function player_detector_remove(pos: Vec3): void {
-		player_detection_table.delete(pos);
-	}
+	// export function player_detector_remove(pos: Vec3): void {
+	// 	player_detection_table.delete(pos);
+	// }
 
-	// Enables mods to create data functions.
-	export function register_activator(data: {
-		name: string;
-		activate: (pos: Vec3) => void;
-		deactivate: (pos: Vec3) => void;
-	}) {
-		activator_table.set(data.name, {
-			activate: data.activate,
-			deactivate: data.deactivate,
-		});
-	}
+	// // Enables mods to create data functions.
+	// export function register_activator(data: {
+	// 	name: string;
+	// 	activate: (pos: Vec3) => void;
+	// 	deactivate: (pos: Vec3) => void;
+	// }) {
+	// 	activator_table.set(data.name, {
+	// 		activate: data.activate,
+	// 		deactivate: data.deactivate,
+	// 	});
+	// }
 
-	// Enables mods to create capacitors.
-	export function register_capacitor(data: {
-		name: string;
-		off: (pos: Vec3) => void;
-		on: (pos: Vec3) => void;
-	}) {
-		capacitor_table.set(data.name, {
-			off: data.off,
-			on: data.on,
-		});
-	}
+	// // Enables mods to create capacitors.
+	// export function register_capacitor(data: {
+	// 	name: string;
+	// 	off: (pos: Vec3) => void;
+	// 	on: (pos: Vec3) => void;
+	// }) {
+	// 	capacitor_table.set(data.name, {
+	// 		off: data.off,
+	// 		on: data.on,
+	// 	});
+	// }
+
 	utility.loadFiles([
 		"functions",
 		"torch",
-		"lever",
-		"button",
-		"repeater",
-		"light",
-		"piston",
-		// //dofile(path+"/comparator",
-		"craft",
-		"ore",
-		"inverter",
-		"player_detector",
-		"space_maker",
-		"pressure_plate",
-		"capacitors",
-		"breaker",
-		"detector",
-		"dispenser",
+		// "lever",
+		// "button",
+		// "repeater",
+		// "light",
+		// "piston",
+		// // //dofile(path+"/comparator",
+		// "craft",
+		// "ore",
+		// "inverter",
+		// "player_detector",
+		// "space_maker",
+		// "pressure_plate",
+		// "capacitors",
+		// "breaker",
+		// "detector",
+		// "dispenser",
 	]);
 
 	// This is written out manually so that
 	// math.abs is not needed.
 
-	// This was: order
-	const directions: Vec3[] = [
-		vector.create3d({ x: 0, y: 0, z: 0 }),
-		vector.create3d({ x: 1, y: 0, z: 0 }),
-		vector.create3d({ x: -1, y: 0, z: 0 }),
-		vector.create3d({ x: 0, y: 0, z: 1 }),
-		vector.create3d({ x: 0, y: 0, z: -1 }),
-		vector.create3d({ x: 0, y: 1, z: 0 }),
-		vector.create3d({ x: 0, y: -1, z: 0 }),
-		vector.create3d({ x: 1, y: 1, z: 0 }),
-		vector.create3d({ x: -1, y: 1, z: 0 }),
-		vector.create3d({ x: 0, y: 1, z: 1 }),
-		vector.create3d({ x: 0, y: 1, z: -1 }),
-		vector.create3d({ x: 1, y: -1, z: 0 }),
-		vector.create3d({ x: -1, y: -1, z: 0 }),
-		vector.create3d({ x: 0, y: -1, z: 1 }),
-		vector.create3d({ x: 0, y: -1, z: -1 }),
-	];
+	// // This was: order
+	// const directions: Vec3[] = [
+	// 	vector.create3d({ x: 0, y: 0, z: 0 }),
+	// 	vector.create3d({ x: 1, y: 0, z: 0 }),
+	// 	vector.create3d({ x: -1, y: 0, z: 0 }),
+	// 	vector.create3d({ x: 0, y: 0, z: 1 }),
+	// 	vector.create3d({ x: 0, y: 0, z: -1 }),
+	// 	vector.create3d({ x: 0, y: 1, z: 0 }),
+	// 	vector.create3d({ x: 0, y: -1, z: 0 }),
+	// 	vector.create3d({ x: 1, y: 1, z: 0 }),
+	// 	vector.create3d({ x: -1, y: 1, z: 0 }),
+	// 	vector.create3d({ x: 0, y: 1, z: 1 }),
+	// 	vector.create3d({ x: 0, y: 1, z: -1 }),
+	// 	vector.create3d({ x: 1, y: -1, z: 0 }),
+	// 	vector.create3d({ x: -1, y: -1, z: 0 }),
+	// 	vector.create3d({ x: 0, y: -1, z: 1 }),
+	// 	vector.create3d({ x: 0, y: -1, z: -1 }),
+	// ];
 
-	const hashVector = core.hash_node_position;
+	// const hashVector = core.hash_node_position;
 
-	interface RedstoneData {
-		name?: string;
-		source?: number;
-		torch?: number;
-		dust?: number;
-		origin?: number;
-		capacitor?: number;
-	}
+	// interface RedstoneData {
+	// 	name?: string;
+	// 	source?: number;
+	// 	torch?: number;
+	// 	dust?: number;
+	// 	origin?: number;
+	// 	capacitor?: number;
+	// }
 
-	// Thanks to RhodiumToad for helping me figure out a good method to do this.
-	// This holds all redstone data (literal 3d virtual memory map).
-	const pool = new Map<number, RedstoneData>();
+	// // Thanks to RhodiumToad for helping me figure out a good method to do this.
+	// // This holds all redstone data (literal 3d virtual memory map).
+	// const pool = new Map<number, RedstoneData>();
 
-	function data_injection(pos: Vec3, data: any) {
-		if (data != null) {
-			pool.set(hashVector(pos), data);
-		} else {
-			pool.delete(hashVector(pos));
-		}
-	}
+	// function data_injection(pos: Vec3, data: any) {
+	// 	if (data != null) {
+	// 		pool.set(hashVector(pos), data);
+	// 	} else {
+	// 		pool.delete(hashVector(pos));
+	// 	}
+	// }
 
-	const workerVec: Vec3 = vector.create3d();
+	// const workerVec: Vec3 = vector.create3d();
 
-	const table_3d: Map<number, RedstoneData> = (() => {
-		const newData = new Map<number, RedstoneData>();
+	// const table_3d: Map<number, RedstoneData> = (() => {
+	// 	const newData = new Map<number, RedstoneData>();
 
-		for (const x of $range(-max_state, max_state)) {
-			for (const y of $range(-max_state, max_state)) {
-				for (const z of $range(-max_state, max_state)) {
-					workerVec.x = x;
-					workerVec.y = y;
-					workerVec.z = z;
+	// 	for (const x of $range(-max_state, max_state)) {
+	// 		for (const y of $range(-max_state, max_state)) {
+	// 			for (const z of $range(-max_state, max_state)) {
+	// 				workerVec.x = x;
+	// 				workerVec.y = y;
+	// 				workerVec.z = z;
 
-					newData.set(core.hash_node_position(workerVec), {
-						torch: 0,
-					});
-				}
-			}
-		}
-		return newData;
-	})();
+	// 				newData.set(core.hash_node_position(workerVec), {
+	// 					torch: 0,
+	// 				});
+	// 			}
+	// 		}
+	// 	}
+	// 	return newData;
+	// })();
 
 	// local function create_boundary_box(pos)
 	// 	//instructions = instructions + 1
@@ -197,51 +198,51 @@ namespace redstone {
 	// 	return(table_3d)
 	// end
 
-	//? This is working around a TSTL bug.
-	class RedstoneBool {
-		private value: boolean;
-		constructor(newVal: boolean = false) {
-			this.value = newVal;
-		}
-		set(newVal: boolean): void {
-			this.value = newVal;
-		}
-		get(): boolean {
-			return this.value;
-		}
-	}
+	// //? This is working around a TSTL bug.
+	// class RedstoneBool {
+	// 	private value: boolean;
+	// 	constructor(newVal: boolean = false) {
+	// 		this.value = newVal;
+	// 	}
+	// 	set(newVal: boolean): void {
+	// 		this.value = newVal;
+	// 	}
+	// 	get(): boolean {
+	// 		return this.value;
+	// 	}
+	// }
 
-	// This might stack overflow.
-	function capacitor_pathfind(
-		source: Vec3,
-		mem_map: Dictionary<number, RedstoneData>,
-		found: RedstoneBool
-	): void {
-		for (const order of directions) {
-			const i: Vec3 = add_vec(source, order);
-			const hashedPosition: number = hashVector(i);
-			if (mem_map[hashedPosition] == null) {
-				const index: RedstoneData | undefined =
-					pool.get(hashedPosition);
+//	// This might stack overflow.
+	// function capacitor_pathfind(
+	// 	source: Vec3,
+	// 	mem_map: Dictionary<number, RedstoneData>,
+	// 	found: RedstoneBool
+	// ): void {
+	// 	for (const order of directions) {
+	// 		const i: Vec3 = add_vec(source, order);
+	// 		const hashedPosition: number = hashVector(i);
+	// 		if (mem_map[hashedPosition] == null) {
+	// 			const index: RedstoneData | undefined =
+	// 				pool.get(hashedPosition);
 
-				if (index != null) {
-					if (index.capacitor) {
-						mem_map[hashedPosition] = {
-							name: index.name,
-							capacitor: 0,
-							source: index.source,
-						};
-						if (index.source) {
-							found.set(true);
-						}
-						return capacitor_pathfind(i, mem_map, found);
-					}
-				}
-			}
-		}
-	}
+	// 			if (index != null) {
+	// 				if (index.capacitor) {
+	// 					mem_map[hashedPosition] = {
+	// 						name: index.name,
+	// 						capacitor: 0,
+	// 						source: index.source,
+	// 					};
+	// 					if (index.source) {
+	// 						found.set(true);
+	// 					}
+	// 					return capacitor_pathfind(i, mem_map, found);
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
 
-	function capacitor_sniff(pos: Vec3) {
+	// function capacitor_sniff(pos: Vec3) {
 
 			// table_3d = {}
 			// const found = new RedstoneBool(false)
@@ -283,7 +284,7 @@ namespace redstone {
 		// 			end
 		// 		end
 		// 	end
-	}
+	// }
 
 	// // activators
 	// local n_pos
