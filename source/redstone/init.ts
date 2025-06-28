@@ -1,6 +1,7 @@
 namespace redstone {
 	// todo: Retool this entire mod as "bluestone" so I don't hear any complaints about mc
 	const hashPosition = core.hash_node_position;
+	const workerVec: Vec3 = vector.create3d();
 
 	export const maxState: number = 9;
 
@@ -8,6 +9,7 @@ namespace redstone {
 	// todo: Serialize the virtual machine AND the update queue so that it continues on after server restarts.
 
 	interface RedstoneData {
+		exists?: boolean;
 		powerSource?: number;
 	}
 
@@ -55,6 +57,29 @@ namespace redstone {
 	function enqueueUpdate(positionHashed: number): void {
 		updateQueue.push(positionHashed);
 	}
+
+	//? Update map.
+
+	// The max cubic width an update can have is: [(maxState * 2) + 1]
+	// This data is trapped inside of a persistent cube,
+	// The data begins it's life as completely blank data.
+	// This data is then copied from the virtual machine memory map into originating
+	// at the update position.
+	// You can think of this cube as moving around the map invisibly. It is everywhere, and nowhere.
+	const updateMap: Map<number, RedstoneData> = (() => {
+		const virtualMap = new Map<number, RedstoneData>();
+		for (const x of $range(-maxState, maxState)) {
+			for (const y of $range(-maxState, maxState)) {
+				for (const z of $range(-maxState, maxState)) {
+					workerVec.x = x;
+					workerVec.y = y;
+					workerVec.z = z;
+					virtualMap.set(hashPosition(workerVec), { exists: false });
+				}
+			}
+		}
+		return virtualMap;
+	})();
 
 	utility.loadFiles([
 		// "functions",
