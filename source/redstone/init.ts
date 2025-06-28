@@ -242,10 +242,16 @@ namespace redstone {
 	}
 
 	function capacitor_sniff(pos: Vec3) {
-		// 	table_3d = {}
-		// 	table_3d = capacitor_pathfind(pos,table_3d)
+
+			// table_3d = {}
+			// const found = new RedstoneBool(false)
+
+			// capacitor_pathfind(pos,table_3d)
+
 		// 	found = table_3d.found
+		
 		// 	table_3d.found = nil
+
 		// 	if found then
 		// 		for x,datax in pairs(table_3d) do
 		// 			for y,datay in pairs(datax) do
