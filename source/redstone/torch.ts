@@ -130,13 +130,4 @@ namespace redstone {
 			deleteData(pos);
 		},
 	});
-
-	// core.register_lbm({
-	// 	name = "crafter_redstone:torch_init",
-	// 	nodenames = {"crafter_redstone:torch_wall","crafter_redstone:torch_floor"},
-	// 	run_at_every_load = true,
-	// 	action = function(pos)
-	// 		redstone.inject(pos,{torch=r_max})
-	// 	end,
-	// })
 }
