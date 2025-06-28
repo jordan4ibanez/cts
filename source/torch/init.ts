@@ -135,7 +135,7 @@ namespace torch {
 				return itemstack;
 			}
 
-			const [newItemStack, newDir] = core.item_place(
+			const [newItemStack, _] = core.item_place(
 				fakestack,
 				placer,
 				pointed_thing,
