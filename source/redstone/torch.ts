@@ -85,14 +85,13 @@ namespace redstone {
 			type: Nodeboxtype.fixed,
 			fixed: [-1 / 16, -0.5, -1 / 16, 1 / 16, 2 / 16, 1 / 16],
 		},
-		on_construct: (pos) => {
+		on_construct: (pos: Vec3) => {
 			addData(pos, { powerSource: maxState });
 		},
-		// 	after_destruct = function(pos, oldnode)
-		// 		redstone.inject(pos,nil)
-		// 		redstone.update(pos)
-		// 	end,
-		// 	sounds = main.woodSound(),
+		after_destruct: (pos: Vec3) => {
+			deleteData(pos);
+		},
+		sounds: crafter.woodSound(),
 	});
 
 	// core.register_node("crafter_redstone:torch_wall", {
