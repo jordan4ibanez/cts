@@ -81,6 +81,10 @@ namespace redstone {
 		return virtualMap;
 	})();
 
+	function copyMemoryMapIntoUpdateMap(pos: Vec3): void {
+		// todo: Any dust at the borders is a power source, if powered.
+	}
+
 	utility.loadFiles([
 		// "functions",
 		"torch",
