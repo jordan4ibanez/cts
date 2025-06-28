@@ -94,36 +94,44 @@ namespace redstone {
 		},
 	});
 
-	// core.register_node("crafter_redstone:torch_wall", {
-	// 	inventory_image = "redstone_torch.png",
-	// 	wield_image = "redstone_torch.png",
-	// 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
-	// 	drawtype = "mesh",
-	// 	mesh = "torch_wall.obj",
-	// 	tiles = {"redstone_torch.png"},
-	// 	paramtype = "light",
-	// 	paramtype2 = "wallmounted",
-	// 	sunlight_propagates = true,
-	// 	walkable = false,
-	// 	light_source = 13,
-	// 	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1,redstone=1,},
-	// 	drop = "crafter_redstone:torch",
-	// 	selection_box = {
-	// 		type = "wallmounted",
-	// 		wall_top = {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
-	// 		wall_bottom = {-0.1, -0.5, -0.1, 0.1, 0.1, 0.1},
-	// 		wall_side = {-0.5, -0.3, -0.1, -0.2, 0.3, 0.1},
-	// 	},
-	// 	on_construct = function(pos)
-	// 		redstone.inject(pos,{torch=r_max})
-	// 		redstone.update(pos)
-	// 	end,
-	// 	after_destruct = function(pos, oldnode)
-	// 		redstone.inject(pos,nil)
-	// 		redstone.update(pos)
-	// 	end,
-	// 	sounds = main.woodSound(),
-	// })
+	core.register_node("crafter_redstone:torch_wall", {
+		inventory_image: "redstone_torch.png",
+		wield_image: "redstone_torch.png",
+		wield_scale: vector.create3d({ x: 1, y: 1, z: 1 + 1 / 16 }),
+		drawtype: Drawtype.mesh,
+		mesh: "torch_wall.obj",
+		tiles: ["redstone_torch.png"],
+		paramtype: ParamType1.light,
+		paramtype2: ParamType2.wallmounted,
+		sunlight_propagates: true,
+		walkable: false,
+		light_source: 13,
+		groups: {
+			choppy: 2,
+			dig_immediate: 3,
+			flammable: 1,
+			not_in_creative_inventory: 1,
+			attached_node: 1,
+			torch: 1,
+			redstone: 1,
+		},
+		drop: "crafter_redstone:torch",
+		// 	selection_box = {
+		// 		type = "wallmounted",
+		// 		wall_top = {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
+		// 		wall_bottom = {-0.1, -0.5, -0.1, 0.1, 0.1, 0.1},
+		// 		wall_side = {-0.5, -0.3, -0.1, -0.2, 0.3, 0.1},
+		// 	},
+		// 	on_construct = function(pos)
+		// 		redstone.inject(pos,{torch=r_max})
+		// 		redstone.update(pos)
+		// 	end,
+		// 	after_destruct = function(pos, oldnode)
+		// 		redstone.inject(pos,nil)
+		// 		redstone.update(pos)
+		// 	end,
+		// 	sounds = main.woodSound(),
+	});
 
 	// core.register_lbm({
 	// 	name = "crafter_redstone:torch_init",
