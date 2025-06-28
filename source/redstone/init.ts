@@ -236,7 +236,7 @@ namespace redstone {
 						if (index.source) {
 							found.set(true);
 						}
-						// 					capacitor_pathfind(i,mem_map)
+						capacitor_pathfind(i, mem_map, found);
 					}
 				}
 			}
