@@ -5,6 +5,7 @@ namespace redstone {
 	export const maxState: number = 9;
 
 	// todo: Add a change queue. Reflect changes onto the map once every 0.2 seconds.
+	// todo: Serialize the virtual machine AND the update queue so that it continues on after server restarts.
 
 	interface RedstoneData {
 		powerSource?: number;
