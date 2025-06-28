@@ -205,16 +205,16 @@ namespace redstone {
 			const hashedPosition: number = hashVector(i);
 
 			if (mem_map[hashedPosition] == null) {
-				// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
-				// 				index = pool[i.x][i.y][i.z]
-				// 				if index.capacitor then
-				// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
-				// 					if index.source then
-				// 						mem_map.found = true
-				// 					end
-				// 					capacitor_pathfind(i,mem_map)
-				// 				end
-				// 			end
+				if (pool.has(hashedPosition)) {
+					// 				index = pool[i.x][i.y][i.z]
+					// 				if index.capacitor then
+					// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
+					// 					if index.source then
+					// 						mem_map.found = true
+					// 					end
+					// 					capacitor_pathfind(i,mem_map)
+					// 				end
+				}
 			}
 		}
 		return mem_map;
