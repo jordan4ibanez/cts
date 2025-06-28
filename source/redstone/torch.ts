@@ -55,7 +55,7 @@ namespace redstone {
 				pointed_thing,
 				wdir
 			);
-			newItemStack.set_name("crafter_redstone:torch_torch");
+			newItemStack.set_name("crafter_redstone:torch");
 			return itemstack;
 		},
 	});
@@ -73,6 +73,7 @@ namespace redstone {
 		drop: "crafter_redstone:torch",
 		walkable: false,
 		light_source: 13,
+		use_texture_alpha: TextureAlpha.clip,
 		sounds: crafter.woodSound(),
 		groups: {
 			choppy: 2,
@@ -106,6 +107,7 @@ namespace redstone {
 		sunlight_propagates: true,
 		walkable: false,
 		light_source: 13,
+		use_texture_alpha: TextureAlpha.clip,
 		groups: {
 			choppy: 2,
 			dig_immediate: 3,
