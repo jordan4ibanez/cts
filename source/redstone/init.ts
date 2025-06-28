@@ -194,23 +194,26 @@ namespace redstone {
 	// 	return(table_3d)
 	// end
 
-	function capacitor_pathfind(source: Vec3, mem_map: Vec3[]): Vec3[] {
+	// This might stack overflow.
+	function capacitor_pathfind(
+		source: Vec3,
+		mem_map: Dictionary<number, number>
+	): Dictionary<number, number> {
 		for (const order of directions) {
 			const i: Vec3 = add_vec(source, order);
-			// 		if not mem_map[i.x] then mem_map[i.x] = {} end
-			// 		if not mem_map[i.x][i.y] then mem_map[i.x][i.y] = {} end
-			// 		if not mem_map[i.x][i.y][i.z] then
-			// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
-			// 				index = pool[i.x][i.y][i.z]
-			// 				if index.capacitor then
-			// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
-			// 					if index.source then
-			// 						mem_map.found = true
-			// 					end
-			// 					capacitor_pathfind(i,mem_map)
-			// 				end
-			// 			end
-			// 		end
+
+			if (mem_map[hashVector(i)] == null) {
+				// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
+				// 				index = pool[i.x][i.y][i.z]
+				// 				if index.capacitor then
+				// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
+				// 					if index.source then
+				// 						mem_map.found = true
+				// 					end
+				// 					capacitor_pathfind(i,mem_map)
+				// 				end
+				// 			end
+			}
 		}
 		return mem_map;
 	}
