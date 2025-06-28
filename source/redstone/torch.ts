@@ -63,34 +63,41 @@ namespace redstone {
 	});
 
 	core.register_node("crafter_redstone:torch_floor", {
-	// 	inventory_image = "redstone_torch.png",
-	// 	wield_image = "redstone_torch.png",
-	// 	wield_scale = {x = 1, y = 1, z = 1 + 2/16},
-	// 	drawtype = "mesh",
-	// 	mesh = "torch_floor.obj",
-	// 	tiles = {"redstone_torch.png"},
-	// 	paramtype = "light",
-	// 	paramtype2 = "none",
-	// 	sunlight_propagates = true,
-	// 	drop = "crafter_redstone:torch",
-	// 	walkable = false,
-	// 	light_source = 13,
-	// 	groups = {choppy=2, dig_immediate=3, not_in_creative_inventory=1, attached_node=1, torch=1,redstone=1,},
-	// 	legacy_wallmounted = true,
-	// 	selection_box = {
-	// 		type = "fixed",
-	// 		fixed = {-1/16, -0.5, -1/16, 1/16, 2/16, 1/16},
-	// 	},
-	// 	on_construct = function(pos)
-	// 		redstone.inject(pos,{torch=r_max})
-	// 		redstone.update(pos)
-	// 	end,
-	// 	after_destruct = function(pos, oldnode)
-	// 		redstone.inject(pos,nil)
-	// 		redstone.update(pos)
-	// 	end,
-	// 	sounds = main.woodSound(),
-	// })
+		inventory_image: "redstone_torch.png",
+		wield_image: "redstone_torch.png",
+		wield_scale: vector.create3d({ x: 1, y: 1, z: 1 + 2 / 16 }),
+		drawtype: Drawtype.mesh,
+		mesh: "torch_floor.obj",
+		tiles: ["redstone_torch.png"],
+		paramtype: ParamType1.light,
+		paramtype2: ParamType2.none,
+		sunlight_propagates: true,
+		drop: "crafter_redstone:torch",
+		walkable: false,
+		light_source: 13,
+		groups: {
+			choppy: 2,
+			dig_immediate: 3,
+			not_in_creative_inventory: 1,
+			attached_node: 1,
+			torch: 1,
+			redstone: 1,
+		},
+		// 	legacy_wallmounted = true,
+		// 	selection_box = {
+		// 		type = "fixed",
+		// 		fixed = {-1/16, -0.5, -1/16, 1/16, 2/16, 1/16},
+		// 	},
+		// 	on_construct = function(pos)
+		// 		redstone.inject(pos,{torch=r_max})
+		// 		redstone.update(pos)
+		// 	end,
+		// 	after_destruct = function(pos, oldnode)
+		// 		redstone.inject(pos,nil)
+		// 		redstone.update(pos)
+		// 	end,
+		// 	sounds = main.woodSound(),
+	});
 
 	// core.register_node("crafter_redstone:torch_wall", {
 	// 	inventory_image = "redstone_torch.png",
