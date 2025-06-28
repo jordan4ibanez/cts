@@ -44,7 +44,7 @@ namespace redstone {
 
 	/**
 	 * Create an update in the virtual machine. Use [core.hash_node_position] to interface with this.
-	 * @param positionHashed The hashed position of the update. 
+	 * @param positionHashed The hashed position of the update.
 	 */
 	function enqueueUpdate(positionHashed: number): void {
 		updateQueue.push(positionHashed);
