@@ -1,7 +1,5 @@
 namespace redstone {
-	// local minetest,vector = minetest,vector
-
-	// // Item definitions
+	// Item definitions.
 	core.register_craftitem("crafter_redstone:torch", {
 		description: "Redstone Torch",
 		inventory_image: "redstone_torch.png",
@@ -87,10 +85,11 @@ namespace redstone {
 			type: Nodeboxtype.fixed,
 			fixed: [-1 / 16, -0.5, -1 / 16, 1 / 16, 2 / 16, 1 / 16],
 		},
-		// 	on_construct = function(pos)
-		// 		redstone.inject(pos,{torch=r_max})
-		// 		redstone.update(pos)
-		// 	end,
+		on_construct: (pos) => {
+			update(pos, maxState);
+			redstone.inject(pos, { torch = r_max });
+			redstone.update(pos);
+		},
 		// 	after_destruct = function(pos, oldnode)
 		// 		redstone.inject(pos,nil)
 		// 		redstone.update(pos)
