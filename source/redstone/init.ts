@@ -219,9 +219,7 @@ namespace redstone {
 	): void {
 		for (const order of directions) {
 			const i: Vec3 = add_vec(source, order);
-
 			const hashedPosition: number = hashVector(i);
-
 			if (mem_map[hashedPosition] == null) {
 				const index: RedstoneData | undefined =
 					pool.get(hashedPosition);
