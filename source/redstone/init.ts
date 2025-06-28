@@ -227,14 +227,17 @@ namespace redstone {
 					pool.get(hashedPosition);
 
 				if (index != null) {
-					// 				index = pool[i.x][i.y][i.z]
-					// 				if index.capacitor then
-					// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
-					// 					if index.source then
-					// 						mem_map.found = true
-					// 					end
-					// 					capacitor_pathfind(i,mem_map)
-					// 				end
+					if (index.capacitor) {
+						mem_map[hashedPosition] = {
+							name: index.name,
+							capacitor: 0,
+							source: index.source,
+						};
+						if (index.source) {
+							found.set(true);
+						}
+						// 					capacitor_pathfind(i,mem_map)
+					}
 				}
 			}
 		}
