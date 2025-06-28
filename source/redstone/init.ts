@@ -25,11 +25,8 @@ namespace redstone {
 
 	export function deleteData(pos: Vec3): void {}
 
-	
-
-	function enqueueUpdate(hashedPosition: number): void {
-
-	}
+	const updateQueue = new utility.QueueFIFO<number>();
+	function enqueueUpdate(hashedPosition: number): void {}
 
 	utility.loadFiles([
 		// "functions",
