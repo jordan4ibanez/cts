@@ -214,8 +214,9 @@ namespace redstone {
 	// This might stack overflow.
 	function capacitor_pathfind(
 		source: Vec3,
-		mem_map: Dictionary<number, number>
-	): Dictionary<number, number> {
+		mem_map: Dictionary<number, RedstoneData>,
+		found: RedstoneBool
+	): Dictionary<number, RedstoneData> {
 		for (const order of directions) {
 			const i: Vec3 = add_vec(source, order);
 
