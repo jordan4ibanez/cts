@@ -123,14 +123,12 @@ namespace redstone {
 			wall_side: [-0.5, -0.3, -0.1, -0.2, 0.3, 0.1],
 		},
 		sounds: crafter.woodSound(),
-		// 	on_construct = function(pos)
-		// 		redstone.inject(pos,{torch=r_max})
-		// 		redstone.update(pos)
-		// 	end,
-		// 	after_destruct = function(pos, oldnode)
-		// 		redstone.inject(pos,nil)
-		// 		redstone.update(pos)
-		// 	end,
+		on_construct: (pos: Vec3) => {
+			addData(pos, { powerSource: maxState });
+		},
+		after_destruct: (pos: Vec3) => {
+			deleteData(pos);
+		},
 	});
 
 	// core.register_lbm({
