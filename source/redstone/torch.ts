@@ -2,7 +2,7 @@ namespace redstone {
 	// local minetest,vector = minetest,vector
 
 	// // Item definitions
-	core.register_craftitem("redstone:torch", {
+	core.register_craftitem("crafter_redstone:torch", {
 		description: "Redstone Torch",
 		inventory_image: "redstone_torch.png",
 		wield_image: "redstone_torch.png",
@@ -62,7 +62,7 @@ namespace redstone {
 		},
 	});
 
-	// core.register_node("redstone:torch_floor", {
+	core.register_node("crafter_redstone:torch_floor", {
 	// 	inventory_image = "redstone_torch.png",
 	// 	wield_image = "redstone_torch.png",
 	// 	wield_scale = {x = 1, y = 1, z = 1 + 2/16},
@@ -72,7 +72,7 @@ namespace redstone {
 	// 	paramtype = "light",
 	// 	paramtype2 = "none",
 	// 	sunlight_propagates = true,
-	// 	drop = "redstone:torch",
+	// 	drop = "crafter_redstone:torch",
 	// 	walkable = false,
 	// 	light_source = 13,
 	// 	groups = {choppy=2, dig_immediate=3, not_in_creative_inventory=1, attached_node=1, torch=1,redstone=1,},
@@ -92,7 +92,7 @@ namespace redstone {
 	// 	sounds = main.woodSound(),
 	// })
 
-	// core.register_node("redstone:torch_wall", {
+	// core.register_node("crafter_redstone:torch_wall", {
 	// 	inventory_image = "redstone_torch.png",
 	// 	wield_image = "redstone_torch.png",
 	// 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
@@ -105,7 +105,7 @@ namespace redstone {
 	// 	walkable = false,
 	// 	light_source = 13,
 	// 	groups = {choppy=2, dig_immediate=3, flammable=1, not_in_creative_inventory=1, attached_node=1, torch=1,redstone=1,},
-	// 	drop = "redstone:torch",
+	// 	drop = "crafter_redstone:torch",
 	// 	selection_box = {
 	// 		type = "wallmounted",
 	// 		wall_top = {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
@@ -124,8 +124,8 @@ namespace redstone {
 	// })
 
 	// core.register_lbm({
-	// 	name = "redstone:torch_init",
-	// 	nodenames = {"redstone:torch_wall","redstone:torch_floor"},
+	// 	name = "crafter_redstone:torch_init",
+	// 	nodenames = {"crafter_redstone:torch_wall","crafter_redstone:torch_floor"},
 	// 	run_at_every_load = true,
 	// 	action = function(pos)
 	// 		redstone.inject(pos,{torch=r_max})
