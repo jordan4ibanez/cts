@@ -16,7 +16,7 @@ namespace redstone {
 	const memoryMap = new Map<number, RedstoneData>();
 
 	/**
-	 * Add data into the
+	 * Add data into the memory map. This will trigger an update.
 	 * @param pos The position where this data is to be added.
 	 * @param data The data of the position. This can be dust, or a power source, etc.
 	 */
@@ -26,6 +26,10 @@ namespace redstone {
 		enqueueUpdate(index);
 	}
 
+	/**
+	 * Delete data from the memory map. This will trigger an update.
+	 * @param pos The position where this data is to be deleted.
+	 */
 	export function deleteData(pos: Vec3): void {
 		const index: number = hashPosition(pos);
 		memoryMap.delete(index);
