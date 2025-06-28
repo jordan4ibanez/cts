@@ -10,11 +10,10 @@ namespace redstone {
 		powerSource?: number;
 	}
 
+	//? Virtual machine.
+
 	// The entirety of redstone data is simulated in memory and reflected into the map in a designated interval (if any changes).
 	const memoryMap = new Map<number, RedstoneData>();
-
-	// Updates exist in a FIFO queue to ensure that the side effects are exactly ordered as they were created.
-	const updateQueue = new utility.QueueFIFO<number>();
 
 	/**
 	 * Add data into the
@@ -24,15 +23,22 @@ namespace redstone {
 	export function addData(pos: Vec3, data: RedstoneData): void {
 		const index: number = hashPosition(pos);
 		memoryMap.set(index, data);
+		enqueueUpdate(index);
 	}
 
-	export function deleteData(pos: Vec3): void {}
+	export function deleteData(pos: Vec3): void {
+		const index: number = hashPosition(pos);
+		memoryMap.delete(index);
+		enqueueUpdate(index);
+	}
 
-	
+	//? Update queue.
 
+	// Updates exist in a FIFO queue to ensure that the side effects are exactly ordered as they were created.
+	const updateQueue = new utility.QueueFIFO<number>();
 
-	function enqueueUpdate(positionHash: number): void {
-		updateQueue.push(positionHash);
+	function enqueueUpdate(positionHashed: number): void {
+		updateQueue.push(positionHashed);
 	}
 
 	utility.loadFiles([
