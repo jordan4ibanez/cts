@@ -83,11 +83,10 @@ namespace redstone {
 			torch: 1,
 			redstone: 1,
 		},
-		// 	legacy_wallmounted = true,
-		// 	selection_box = {
-		// 		type = "fixed",
-		// 		fixed = {-1/16, -0.5, -1/16, 1/16, 2/16, 1/16},
-		// 	},
+		selection_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [-1 / 16, -0.5, -1 / 16, 1 / 16, 2 / 16, 1 / 16],
+		},
 		// 	on_construct = function(pos)
 		// 		redstone.inject(pos,{torch=r_max})
 		// 		redstone.update(pos)
