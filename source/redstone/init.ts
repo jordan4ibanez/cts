@@ -212,7 +212,7 @@ namespace redstone {
 	// 	}
 	// }
 
-//	// This might stack overflow.
+	//	// This might stack overflow.
 	// function capacitor_pathfind(
 	// 	source: Vec3,
 	// 	mem_map: Dictionary<number, RedstoneData>,
@@ -244,46 +244,46 @@ namespace redstone {
 
 	// function capacitor_sniff(pos: Vec3) {
 
-			// table_3d = {}
-			// const found = new RedstoneBool(false)
+	// table_3d = {}
+	// const found = new RedstoneBool(false)
 
-			// capacitor_pathfind(pos,table_3d)
+	// capacitor_pathfind(pos,table_3d)
 
-		// 	found = table_3d.found
-		
-		// 	table_3d.found = nil
+	// 	found = table_3d.found
 
-		// 	if found then
-		// 		for x,datax in pairs(table_3d) do
-		// 			for y,datay in pairs(datax) do
-		// 				for z,data in pairs(datay) do
-		// 					temp_pool = pool[x][y][z]
-		// 					if temp_pool then
-		// 						temp_pool.capacitor = 1
-		// 						if capacitor_table[temp_pool.name] then
-		// 							swap_node(new_vec(x,y,z),{name=capacitor_table[temp_pool.name].on})
-		// 							redstone.update(new_vec(x,y,z))
-		// 						end
-		// 					end
-		// 				end
-		// 			end
-		// 		end
-		// 	else
-		// 		for x,datax in pairs(table_3d) do
-		// 			for y,datay in pairs(datax) do
-		// 				for z,data in pairs(datay) do
-		// 					temp_pool = pool[x][y][z]
-		// 					if temp_pool then
-		// 						temp_pool.capacitor = 0
-		// 						if capacitor_table[temp_pool.name] then
-		// 							swap_node(new_vec(x,y,z),{name=capacitor_table[temp_pool.name].off})
-		// 							redstone.update(new_vec(x,y,z))
-		// 						end
-		// 					end
-		// 				end
-		// 			end
-		// 		end
-		// 	end
+	// 	table_3d.found = nil
+
+	// 	if found then
+	// 		for x,datax in pairs(table_3d) do
+	// 			for y,datay in pairs(datax) do
+	// 				for z,data in pairs(datay) do
+	// 					temp_pool = pool[x][y][z]
+	// 					if temp_pool then
+	// 						temp_pool.capacitor = 1
+	// 						if capacitor_table[temp_pool.name] then
+	// 							swap_node(new_vec(x,y,z),{name=capacitor_table[temp_pool.name].on})
+	// 							redstone.update(new_vec(x,y,z))
+	// 						end
+	// 					end
+	// 				end
+	// 			end
+	// 		end
+	// 	else
+	// 		for x,datax in pairs(table_3d) do
+	// 			for y,datay in pairs(datax) do
+	// 				for z,data in pairs(datay) do
+	// 					temp_pool = pool[x][y][z]
+	// 					if temp_pool then
+	// 						temp_pool.capacitor = 0
+	// 						if capacitor_table[temp_pool.name] then
+	// 							swap_node(new_vec(x,y,z),{name=capacitor_table[temp_pool.name].off})
+	// 							redstone.update(new_vec(x,y,z))
+	// 						end
+	// 					end
+	// 				end
+	// 			end
+	// 		end
+	// 	end
 	// }
 
 	// // activators
