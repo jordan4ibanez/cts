@@ -41,6 +41,10 @@ namespace redstone {
 	// Updates exist in a FIFO queue to ensure that the side effects are exactly ordered as they were created.
 	const updateQueue = new utility.QueueFIFO<number>();
 
+	/**
+	 * Create an update in the virtual machine. Use [core.hash_node_position] to interface with this.
+	 * @param positionHashed The hashed position of the update. 
+	 */
 	function enqueueUpdate(positionHashed: number): void {
 		updateQueue.push(positionHashed);
 	}
