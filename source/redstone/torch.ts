@@ -86,9 +86,7 @@ namespace redstone {
 			fixed: [-1 / 16, -0.5, -1 / 16, 1 / 16, 2 / 16, 1 / 16],
 		},
 		on_construct: (pos) => {
-			update(pos, maxState);
-			redstone.inject(pos, { torch = r_max });
-			redstone.update(pos);
+			addData(pos, { powerSource: maxState });
 		},
 		// 	after_destruct = function(pos, oldnode)
 		// 		redstone.inject(pos,nil)
