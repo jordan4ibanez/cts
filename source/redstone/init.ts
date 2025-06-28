@@ -1,4 +1,6 @@
 namespace redstone {
+	export const maxState: number = 9;
+
 	utility.loadFiles([
 		// "functions",
 		"torch",
