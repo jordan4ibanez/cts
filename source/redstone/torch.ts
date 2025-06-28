@@ -73,6 +73,7 @@ namespace redstone {
 		drop: "crafter_redstone:torch",
 		walkable: false,
 		light_source: 13,
+		sounds: crafter.woodSound(),
 		groups: {
 			choppy: 2,
 			dig_immediate: 3,
@@ -91,7 +92,6 @@ namespace redstone {
 		after_destruct: (pos: Vec3) => {
 			deleteData(pos);
 		},
-		sounds: crafter.woodSound(),
 	});
 
 	// core.register_node("crafter_redstone:torch_wall", {
