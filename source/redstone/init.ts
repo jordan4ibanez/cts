@@ -197,6 +197,20 @@ namespace redstone {
 	// 	return(table_3d)
 	// end
 
+	//? This is working around a TSTL bug.
+	class RedstoneBool {
+		private value: boolean;
+		constructor(newVal: boolean = false) {
+			this.value = newVal;
+		}
+		set(newVal: boolean): void {
+			this.value = newVal;
+		}
+		get(): boolean {
+			return this.value;
+		}
+	}
+
 	// This might stack overflow.
 	function capacitor_pathfind(
 		source: Vec3,
