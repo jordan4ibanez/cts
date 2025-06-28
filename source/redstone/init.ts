@@ -202,7 +202,9 @@ namespace redstone {
 		for (const order of directions) {
 			const i: Vec3 = add_vec(source, order);
 
-			if (mem_map[hashVector(i)] == null) {
+			const hashedPosition: number = hashVector(i);
+
+			if (mem_map[hashedPosition] == null) {
 				// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
 				// 				index = pool[i.x][i.y][i.z]
 				// 				if index.capacitor then
