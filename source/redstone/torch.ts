@@ -1,38 +1,67 @@
 namespace redstone {
 	// local minetest,vector = minetest,vector
-	// local r_max = redstone.max_state
-	// -- Item definitions
-	// core.register_craftitem("redstone:torch", {
-	// 	description = "Redstone Torch",
-	// 	inventory_image = "redstone_torch.png",
-	// 	wield_image = "redstone_torch.png",
-	// 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
-	// 	liquids_pointable = false,
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		if pointed_thing.type ~= "node" then
-	// 			return itemstack
-	// 		end
-	// 		local wdir = core.dir_to_wallmounted(vector.subtract(pointed_thing.under,pointed_thing.above))
-	// 		local fakestack = itemstack
-	// 		local retval = false
-	// 		if wdir < 1 then
-	// 			return itemstack
-	// 		elseif wdir == 1 then
-	// 			retval = fakestack:set_name("redstone:torch_floor")
-	// 		else
-	// 			retval = fakestack:set_name("redstone:torch_wall")
-	// 		end
-	// 		if not retval then
-	// 			return itemstack
-	// 		end
-	// 		itemstack, retval = core.item_place(fakestack, placer, pointed_thing, wdir)
-	// 		itemstack:set_name("redstone:torch")
-	// 		if retval then
-	// 			core.sound_play("wood", {pos=pointed_thing.above, gain = 1.0})
-	// 		end
-	// 		return itemstack
-	// 	end
-	// })
+
+	// // Item definitions
+	core.register_craftitem("redstone:torch", {
+		description: "Redstone Torch",
+		inventory_image: "redstone_torch.png",
+		wield_image: "redstone_torch.png",
+		wield_scale: vector.create3d({ x: 1, y: 1, z: 1 + 1 / 16 }),
+		liquids_pointable: false,
+
+		on_place: (
+			itemstack: ItemStackObject,
+			placer: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			if (pointed_thing.type == PointedThingType.object) {
+				return itemstack;
+			}
+			if (pointed_thing.under == null || pointed_thing.above == null) {
+				return itemstack;
+			}
+			const buildable: boolean =
+				core.registered_nodes[core.get_node(pointed_thing.under).name]
+					?.buildable_to || false;
+
+			let wdir: number = 0;
+			if (buildable) {
+				wdir = core.dir_to_wallmounted(
+					vector.subtract(pointed_thing.under, pointed_thing.under)
+				);
+			} else {
+				wdir = core.dir_to_wallmounted(
+					vector.subtract(pointed_thing.under, pointed_thing.above)
+				);
+			}
+
+			const fakestack: ItemStackObject = itemstack;
+
+			let retval: boolean = false;
+			if (buildable && wdir == 4) {
+				retval = fakestack.set_name("crafter_redstone:torch_floor");
+			} else if (wdir < 1) {
+				return itemstack;
+			} else if (wdir == 1) {
+				retval = fakestack.set_name("crafter_redstone:torch_floor");
+			} else {
+				retval = fakestack.set_name("crafter_redstone:torch_wall");
+			}
+			if (!retval) {
+				return itemstack;
+			}
+
+			const [newItemStack, _] = core.item_place(
+				fakestack,
+				placer,
+				pointed_thing,
+				wdir
+			);
+			newItemStack.set_name("crafter_redstone:torch_torch");
+			return itemstack;
+		},
+	});
+
 	// core.register_node("redstone:torch_floor", {
 	// 	inventory_image = "redstone_torch.png",
 	// 	wield_image = "redstone_torch.png",
@@ -62,6 +91,7 @@ namespace redstone {
 	// 	end,
 	// 	sounds = main.woodSound(),
 	// })
+
 	// core.register_node("redstone:torch_wall", {
 	// 	inventory_image = "redstone_torch.png",
 	// 	wield_image = "redstone_torch.png",
@@ -92,6 +122,7 @@ namespace redstone {
 	// 	end,
 	// 	sounds = main.woodSound(),
 	// })
+
 	// core.register_lbm({
 	// 	name = "redstone:torch_init",
 	// 	nodenames = {"redstone:torch_wall","redstone:torch_floor"},
