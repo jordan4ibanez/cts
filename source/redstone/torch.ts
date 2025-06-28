@@ -116,12 +116,12 @@ namespace redstone {
 			redstone: 1,
 		},
 		drop: "crafter_redstone:torch",
-		// 	selection_box = {
-		// 		type = "wallmounted",
-		// 		wall_top = {-0.1, -0.1, -0.1, 0.1, 0.5, 0.1},
-		// 		wall_bottom = {-0.1, -0.5, -0.1, 0.1, 0.1, 0.1},
-		// 		wall_side = {-0.5, -0.3, -0.1, -0.2, 0.3, 0.1},
-		// 	},
+		selection_box: {
+			type: Nodeboxtype.wallmounted,
+			wall_top: [-0.1, -0.1, -0.1, 0.1, 0.5, 0.1],
+			wall_bottom: [-0.1, -0.5, -0.1, 0.1, 0.1, 0.1],
+			wall_side: [-0.5, -0.3, -0.1, -0.2, 0.3, 0.1],
+		},
 		// 	on_construct = function(pos)
 		// 		redstone.inject(pos,{torch=r_max})
 		// 		redstone.update(pos)
