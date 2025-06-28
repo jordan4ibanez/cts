@@ -119,9 +119,12 @@ namespace redstone {
 	const hashVector = core.hash_node_position;
 
 	interface RedstoneData {
+		name?: string;
+		source?: number;
 		torch?: number;
 		dust?: number;
 		origin?: number;
+		capacitor?: number;
 	}
 
 	// Thanks to RhodiumToad for helping me figure out a good method to do this.
