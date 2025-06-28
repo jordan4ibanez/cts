@@ -97,7 +97,8 @@ namespace redstone {
 	// This is written out manually so that
 	// math.abs is not needed.
 
-	const order: Vec3[] = [
+	// This was: order
+	const directions: Vec3[] = [
 		vector.create3d({ x: 0, y: 0, z: 0 }),
 		vector.create3d({ x: 1, y: 0, z: 0 }),
 		vector.create3d({ x: -1, y: 0, z: 0 }),
@@ -135,17 +136,21 @@ namespace redstone {
 		}
 	}
 
+	const workerVec: Vec3 = vector.create3d();
+
 	const table_3d: Map<number, RedstoneData> = (() => {
 		const newData = new Map<number, RedstoneData>();
-		const tempVec: Vec3 = vector.create3d();
+
 		for (const x of $range(-max_state, max_state)) {
 			for (const y of $range(-max_state, max_state)) {
 				for (const z of $range(-max_state, max_state)) {
-					tempVec.x = x;
-					tempVec.y = y;
-					tempVec.z = z;
+					workerVec.x = x;
+					workerVec.y = y;
+					workerVec.z = z;
 
-					newData.set(core.hash_node_position(tempVec), { torch: 1 });
+					newData.set(core.hash_node_position(workerVec), {
+						torch: 0,
+					});
 				}
 			}
 		}
@@ -189,25 +194,25 @@ namespace redstone {
 	// 	return(table_3d)
 	// end
 
-	function capacitor_pathfind(source: Vec3, mem_map: Vec3[]) {
-		// 	for _,order in pairs(order) do
-		// 		i = add_vec(source,order)
-		// 		if not mem_map[i.x] then mem_map[i.x] = {} end
-		// 		if not mem_map[i.x][i.y] then mem_map[i.x][i.y] = {} end
-		// 		if not mem_map[i.x][i.y][i.z] then
-		// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
-		// 				index = pool[i.x][i.y][i.z]
-		// 				if index.capacitor then
-		// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
-		// 					if index.source then
-		// 						mem_map.found = true
-		// 					end
-		// 					capacitor_pathfind(i,mem_map)
-		// 				end
-		// 			end
-		// 		end
-		// 	end
-		// 	return mem_map
+	function capacitor_pathfind(source: Vec3, mem_map: Vec3[]): Vec3[] {
+		for (const order of directions) {
+			const i: Vec3 = add_vec(source, order);
+			// 		if not mem_map[i.x] then mem_map[i.x] = {} end
+			// 		if not mem_map[i.x][i.y] then mem_map[i.x][i.y] = {} end
+			// 		if not mem_map[i.x][i.y][i.z] then
+			// 			if i and pool and pool[i.x] and pool[i.x][i.y] and pool[i.x][i.y][i.z] then
+			// 				index = pool[i.x][i.y][i.z]
+			// 				if index.capacitor then
+			// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
+			// 					if index.source then
+			// 						mem_map.found = true
+			// 					end
+			// 					capacitor_pathfind(i,mem_map)
+			// 				end
+			// 			end
+			// 		end
+		}
+		return mem_map;
 	}
 
 	// local table_3d
