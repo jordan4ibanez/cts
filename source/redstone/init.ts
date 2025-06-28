@@ -216,7 +216,7 @@ namespace redstone {
 		source: Vec3,
 		mem_map: Dictionary<number, RedstoneData>,
 		found: RedstoneBool
-	): Dictionary<number, RedstoneData> {
+	): void {
 		for (const order of directions) {
 			const i: Vec3 = add_vec(source, order);
 
@@ -236,12 +236,11 @@ namespace redstone {
 						if (index.source) {
 							found.set(true);
 						}
-						capacitor_pathfind(i, mem_map, found);
+						return capacitor_pathfind(i, mem_map, found);
 					}
 				}
 			}
 		}
-		return mem_map;
 	}
 
 	// local table_3d
