@@ -13,6 +13,9 @@ namespace redstone {
 	// The entirety of redstone data is simulated in memory and reflected into the map in a designated interval (if any changes).
 	const memoryMap = new Map<number, RedstoneData>();
 
+	// Updates exist in a FIFO queue to ensure that the side effects are exactly ordered as they were created.
+	const updateQueue = new utility.QueueFIFO<number>();
+
 	/**
 	 * Add data into the
 	 * @param pos The position where this data is to be added.
@@ -25,8 +28,12 @@ namespace redstone {
 
 	export function deleteData(pos: Vec3): void {}
 
-	const updateQueue = new utility.QueueFIFO<number>();
-	function enqueueUpdate(hashedPosition: number): void {}
+	
+
+
+	function enqueueUpdate(positionHash: number): void {
+		updateQueue.push(positionHash);
+	}
 
 	utility.loadFiles([
 		// "functions",
