@@ -126,7 +126,7 @@ namespace redstone {
 
 	// Thanks to RhodiumToad for helping me figure out a good method to do this.
 	// This holds all redstone data (literal 3d virtual memory map).
-	const pool = new Map<number, any>();
+	const pool = new Map<number, RedstoneData>();
 
 	function data_injection(pos: Vec3, data: any) {
 		if (data != null) {
@@ -205,7 +205,10 @@ namespace redstone {
 			const hashedPosition: number = hashVector(i);
 
 			if (mem_map[hashedPosition] == null) {
-				if (pool.has(hashedPosition)) {
+				const index: RedstoneData | undefined =
+					pool.get(hashedPosition);
+
+				if (index != null) {
 					// 				index = pool[i.x][i.y][i.z]
 					// 				if index.capacitor then
 					// 					mem_map[i.x][i.y][i.z] = {name = index.name, capacitor = 0, source = index.source}
