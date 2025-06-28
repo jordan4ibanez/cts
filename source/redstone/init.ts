@@ -1,4 +1,5 @@
 namespace redstone {
+	// Retool this entire mod as "bluestone" so I don't hear any complaints about mc
 	export const maxState: number = 9;
 
 	utility.loadFiles([
