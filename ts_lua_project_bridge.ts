@@ -39,9 +39,47 @@ if (REBUILD_CODE) {
 //? Copy media assets into the build.
 //~ Only if specified.
 if (COPY_MEDIA) {
+	const acceptableExtensions = new Set<string>([
+		"png",
+		"ogg",
+		"b3d",
+		"x",
+		"obj",
+		"gltf",
+		"mts",
+	]);
 	["models", "sounds", "schematics", "textures"].forEach((id: string) => {
 		FS.cpSync(`source/${id}/${id}`, `mods/${id}/${id}`, {
 			recursive: true,
+			filter: (source: string) => {
+				const thisData: FS.Stats = FS.lstatSync(source);
+				if (thisData.isDirectory()) {
+					return true;
+				}
+
+				const extension: string | undefined = source.split(".").pop();
+
+				// I do not know how this would happen, but I would like to be informed.
+				if (extension === undefined) {
+					console.warn(`Undefined extension: [${source}]`);
+					return false;
+				}
+
+				// Make sure the sublicenses get copied over.
+				if (extension.endsWith("LICENSE")) {
+					return true;
+				}
+
+				// Predefined acceptable media has been reached.
+				if (acceptableExtensions.has(extension)) {
+					return true;
+				}
+
+				//? This is kept here as a debugging tool.
+				// console.log(extension);
+
+				return false;
+			},
 		});
 	});
 }
