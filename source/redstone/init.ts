@@ -184,6 +184,7 @@ namespace redstone {
 							updateData.powerSource = worldData.powerSource;
 							updateData.isDust = worldData.isDust;
 							updateData.dust = 0;
+							updateData.wasPowered = worldData.dust > 0;
 						}
 					}
 				}
