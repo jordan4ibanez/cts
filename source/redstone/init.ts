@@ -95,6 +95,8 @@ namespace redstone {
 		return virtualMap;
 	})();
 
+	const powerSources = new utility.QueueFIFO<number>();
+
 	function clearUpdateMap(): void {
 		// const start: number = core.get_us_time() / 1_000_000;
 
@@ -178,7 +180,11 @@ namespace redstone {
 							updateData.powerSource = worldData.dust;
 							updateData.isDust = worldData.isDust;
 							updateData.dust = worldData.dust;
+							powerSources.push(updateMapPositionHash);
 						} else {
+							if (worldData.isPowerSource) {
+								powerSources.push(updateMapPositionHash);
+							}
 							updateData.isPowerSource = worldData.isPowerSource;
 							updateData.powerSource = worldData.powerSource;
 							updateData.isDust = worldData.isDust;
