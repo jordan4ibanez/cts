@@ -1,6 +1,6 @@
 namespace redstone {
 
-		// core.register_craftitem("redstone:dust", {
+		// core.register_craftitem("crafter_redstone:dust", {
 	// 	description = "Redstone Dust",
 	// 	inventory_image = "redstone_dust_item.png",
 	// 	wield_image = "redstone_dust_item.png",
@@ -16,7 +16,7 @@ namespace redstone {
 	// 			core.item_place(itemstack, placer, pointed_thing)
 	// 			return
 	// 		end
-	// 		local _,worked = core.item_place(ItemStack("redstone:dust_0"), placer, pointed_thing)
+	// 		local _,worked = core.item_place(ItemStack("crafter_redstone:dust_0"), placer, pointed_thing)
 	// 		if worked then
 	// 			itemstack:take_item()
 	// 			return(itemstack)
@@ -28,7 +28,7 @@ namespace redstone {
 	// local d_max = r_max-1
 	// for i = 0,d_max do
 	// 	local color = floor(255 * (i/d_max))
-	// 	core.register_node("redstone:dust_"+i,{
+	// 	core.register_node("crafter_redstone:dust_"+i,{
 	// 		description = "Redstone Dust",
 	// 		wield_image = "redstone_dust_item.png",
 	// 		tiles = {
@@ -48,7 +48,7 @@ namespace redstone {
 	// 		},
 	// 		sounds = main.stoneSound(),
 	// 		groups={dig_immediate=1,attached_node=1,redstone_dust=1,redstone=1,redstone_power=i},
-	// 		drop="redstone:dust",
+	// 		drop="crafter_redstone:dust",
 	// 		on_construct = function(pos)
 	// 			data_injection(pos,{dust=i})
 	// 			//instruction_rebuild(pos)
@@ -62,8 +62,8 @@ namespace redstone {
 	// 		connects_to = {"group:redstone"},
 	// 	})
 	// 	core.register_lbm({
-	//         name = "redstone:"+i,
-	// 		nodenames = {"redstone:dust_"+i},
+	//         name = "crafter_redstone:"+i,
+	// 		nodenames = {"crafter_redstone:dust_"+i},
 	// 		run_at_every_load = true,
 	//         action = function(pos)
 	// 			data_injection(pos,{dust=i})
