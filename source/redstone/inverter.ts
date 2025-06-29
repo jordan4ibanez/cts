@@ -68,25 +68,18 @@ namespace redstone {
 			});
 			const dir: Vec3 = core.fourdir_to_dir(param2);
 
-			// addData(pos,{
-
-			// 	torch  = r_max,
-			// 	torch_directional = true,
-			// 	directional_activator = true,
-			// 	input  = vector.subtract(pos,dir),
-			// 	output = vector.add(pos,dir),
-			// 	dir = dir
-			// })
+			addData(pos, {
+				isDirectionalPowerSource: false,
+				isPowerSource: false,
+				powerSource: 0,
+				isDust: false,
+				dust: 0,
+				directional_activator: true,
+				input: core.hash_node_position(vector.subtract(pos, dir)),
+				output: core.hash_node_position(vector.add(pos, dir)),
+			});
 		},
 	});
-
-	// redstone.register_activator({
-	// 	name = "crafter_redstone:inverter_on",
-	// 	deactivate = function(pos)
-
-	// 		//redstone.update(pos)
-	// 		redstone.update(vector.add(pos,dir))
-	// 	end
 
 	//? Off.
 
