@@ -35,9 +35,9 @@ namespace redstone {
 			}
 			const dir = core.fourdir_to_dir(param2);
 			addData(pos, {
-				isDirectionalPowerSource: true,
+				isDirectionalPowerSource: false,
 				isPowerSource: false,
-				powerSource: maxState,
+				powerSource: 0,
 				isDust: false,
 				dust: 0,
 				directional_activator: true,
