@@ -174,7 +174,7 @@ namespace redstone {
 							updateData.isPowerSource = true;
 							updateData.powerSource = worldData.dust;
 							updateData.isDust = true;
-							updateData.dust = 0;
+							updateData.dust = worldData.dust;
 							powerSources.push(updateMapPositionHash);
 						} else {
 							if (worldData.isPowerSource) {
