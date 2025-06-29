@@ -312,17 +312,16 @@ namespace redstone {
 		// A player placed a torch.
 		if (atPosition && currentData.isPowerSource) {
 			triggerSideEffectsAllSides(realWorldHash, RedstoneTrigger.on);
-
 			return;
 		}
 
 		// Redstone getting turned on or off.
 		if (currentData.wasPowered && currentData.dust <= 0) {
-			print("turned off at ");
+			// print("turned off at ", unhashPosition(realWorldHash));
 			triggerSideEffectsAllSides(realWorldHash, RedstoneTrigger.off);
 		} else if (!currentData.wasPowered && currentData.dust > 0) {
-			triggerSideEffectsAllSides(realWorldHash, RedstoneTrigger.on);
 			// print("turned on at ", unhashPosition(realWorldHash));
+			triggerSideEffectsAllSides(realWorldHash, RedstoneTrigger.on);
 		}
 	}
 
