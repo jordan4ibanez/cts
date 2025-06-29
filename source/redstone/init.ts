@@ -171,10 +171,19 @@ namespace redstone {
 							absolute(z) == maxState;
 
 						updateData.exists = true;
-						updateData.isPowerSource = worldData.isPowerSource;
-						updateData.powerSource = worldData.powerSource;
-						updateData.isDust = worldData.isDust;
-						updateData.dust = worldData.dust;
+
+						// If the dust is on the edge of the update map, it is now a power source calculation wise.
+						if (border && worldData.isDust && worldData.dust > 1) {
+							updateData.isPowerSource = true;
+							updateData.powerSource = worldData.dust;
+							updateData.isDust = worldData.isDust;
+							updateData.dust = worldData.dust;
+						} else {
+							updateData.isPowerSource = worldData.isPowerSource;
+							updateData.powerSource = worldData.powerSource;
+							updateData.isDust = worldData.isDust;
+							updateData.dust = worldData.dust;
+						}
 					}
 				}
 			}
