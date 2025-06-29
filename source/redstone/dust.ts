@@ -92,17 +92,5 @@ namespace redstone {
 				deleteData(pos);
 			},
 		});
-
-		// 	core.register_lbm({
-		//         name = "crafter_redstone:"+i,
-		// 		nodenames = {"crafter_redstone:dust_"+i},
-		// 		run_at_every_load = true,
-		//         action = function(pos)
-		// 			data_injection(pos,{dust=i})
-		// 			//core.after(0,function()
-		// 				//initial_instruction_build(pos)
-		// 			//end)
-		//         end,
-		//     })
 	}
 }
