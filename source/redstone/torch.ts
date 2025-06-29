@@ -88,7 +88,12 @@ namespace redstone {
 			fixed: [-1 / 16, -0.5, -1 / 16, 1 / 16, 2 / 16, 1 / 16],
 		},
 		on_construct: (pos: Vec3) => {
-			addData(pos, { powerSource: maxState });
+			addData(pos, {
+				isPowerSource: true,
+				powerSource: maxState,
+				isDust: false,
+				dust: 0,
+			});
 		},
 		after_destruct: (pos: Vec3) => {
 			deleteData(pos);
@@ -126,7 +131,12 @@ namespace redstone {
 		},
 		sounds: crafter.woodSound(),
 		on_construct: (pos: Vec3) => {
-			addData(pos, { powerSource: maxState });
+			addData(pos, {
+				isPowerSource: true,
+				powerSource: maxState,
+				isDust: false,
+				dust: 0,
+			});
 		},
 		after_destruct: (pos: Vec3) => {
 			deleteData(pos);
