@@ -80,23 +80,7 @@
 	// math.abs is not needed.
 
 	// // This was: order
-	// const directions: Vec3[] = [
-	// 	vector.create3d({ x: 0, y: 0, z: 0 }),
-	// 	vector.create3d({ x: 1, y: 0, z: 0 }),
-	// 	vector.create3d({ x: -1, y: 0, z: 0 }),
-	// 	vector.create3d({ x: 0, y: 0, z: 1 }),
-	// 	vector.create3d({ x: 0, y: 0, z: -1 }),
-	// 	vector.create3d({ x: 0, y: 1, z: 0 }),
-	// 	vector.create3d({ x: 0, y: -1, z: 0 }),
-	// 	vector.create3d({ x: 1, y: 1, z: 0 }),
-	// 	vector.create3d({ x: -1, y: 1, z: 0 }),
-	// 	vector.create3d({ x: 0, y: 1, z: 1 }),
-	// 	vector.create3d({ x: 0, y: 1, z: -1 }),
-	// 	vector.create3d({ x: 1, y: -1, z: 0 }),
-	// 	vector.create3d({ x: -1, y: -1, z: 0 }),
-	// 	vector.create3d({ x: 0, y: -1, z: 1 }),
-	// 	vector.create3d({ x: 0, y: -1, z: -1 }),
-	// ];
+
 
 	// const hashVector = core.hash_node_position;
 
