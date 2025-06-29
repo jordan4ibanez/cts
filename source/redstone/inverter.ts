@@ -67,24 +67,6 @@ namespace redstone {
 		// 	end
 	});
 
-	// core.register_lbm({
-	// 	name = "redstone:startupinverter",
-	// 	nodenames = {"redstone:inverter_on"},
-	// 	run_at_every_load = true,
-	// 	action = function(pos)
-	// 		local dir = core.facedir_to_dir(core.get_node(pos).param2)
-	// 		redstone.inject(pos,{
-	// 			name = "redstone:inverter_on",
-	// 			directional_activator = true,
-	// 			input  = vector.subtract(pos,dir),
-	// 			output = vector.add(pos,dir),
-	// 			dir = dir
-	// 		})
-	// 		//redstone.update(pos)
-	// 		redstone.update(vector.add(pos,dir))
-	// 	end,
-	// })
-
 	//? Off.
 
 	// core.register_node("redstone:inverter_off", {
