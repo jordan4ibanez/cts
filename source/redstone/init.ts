@@ -192,7 +192,25 @@ namespace redstone {
 		}
 	}
 
-	
+	/**
+	 * All power sources reflect outwards.
+	 */
+	function doLogic() {
+		while (powerSources.length() > 0) {
+			const sourceHash: number | undefined = powerSources.pop();
+			if (sourceHash == null) {
+				throw new Error("Logic issue.");
+			}
+
+			const data: UpdateMapData | undefined = updateMap.get(sourceHash);
+
+			if (data == null) {
+				throw new Error("Map poll logic error.");
+			}
+
+			// unhashPosition()
+		}
+	}
 
 	//? This is how the logic is unwrapped and side effects are run.
 	core.register_globalstep((delta: number) => {
