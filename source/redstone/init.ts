@@ -34,7 +34,7 @@ namespace redstone {
 	export function addData(pos: Vec3, data: RedstoneData): void {
 		const positionHash: number = hashPosition(pos);
 		memoryMap.set(positionHash, data);
-		enqueueUpdate(positionHash);
+		enqueueUpdate(positionHash, false);
 	}
 
 	/**
@@ -44,20 +44,29 @@ namespace redstone {
 	export function deleteData(pos: Vec3): void {
 		const positionHash: number = hashPosition(pos);
 		memoryMap.delete(positionHash);
-		enqueueUpdate(positionHash);
+
+		enqueueUpdate(positionHash, true);
 	}
 
 	//? Update queue.
 
+	interface UpdateComponent {
+		positionHash: number;
+		ghostUnpower: boolean;
+	}
+
 	// Updates exist in a FIFO queue to ensure that the side effects are exactly ordered as they were created.
-	const updateQueue = new utility.QueueFIFO<number>();
+	const updateQueue = new utility.QueueFIFO<UpdateComponent>();
 
 	/**
 	 * Create an update in the virtual machine. Use [core.hash_node_position] to interface with this.
 	 * @param positionHash The hashed position of the update.
 	 */
-	function enqueueUpdate(positionHash: number): void {
-		updateQueue.push(positionHash);
+	function enqueueUpdate(positionHash: number, ghostUnpower: boolean): void {
+		updateQueue.push({
+			positionHash: positionHash,
+			ghostUnpower: ghostUnpower,
+		});
 	}
 
 	//? Update map.
@@ -283,7 +292,7 @@ namespace redstone {
 	/**
 	 * All power sources reflect outwards.
 	 */
-	function doLogic() {
+	function doLogic(ghostUnpower: boolean) {
 		while (powerSources.length() > 0) {
 			const sourceHash: number | undefined = powerSources.pop();
 			if (sourceHash == null) {
@@ -295,6 +304,8 @@ namespace redstone {
 			if (data == null) {
 				throw new Error("Map poll logic error.");
 			}
+
+			print(dump(data));
 
 			if (data.isPowerSource) {
 				const sourcePosition: Vec3 = unhashPosition(sourceHash);
@@ -484,19 +495,17 @@ namespace redstone {
 		if (updateQueue.length() <= 0) {
 			return;
 		}
-		const data: number | undefined = updateQueue.pop();
+		const data: UpdateComponent | undefined = updateQueue.pop();
 		if (data == null) {
 			throw new Error("Logic issue.");
 		}
 
-		const updatePosition: Vec3 = unhashPosition(data);
-
-		// print(`update at: ${updatePosition}`);
+		const updatePosition: Vec3 = unhashPosition(data.positionHash);
 
 		const start: number = core.get_us_time() / 1_000_000;
 
 		copyMemoryMapIntoUpdateMap(updatePosition);
-		doLogic();
+		doLogic(data.ghostUnpower);
 		writeBack();
 		debugOutputVisual();
 
