@@ -195,8 +195,7 @@ namespace redstone {
 		}
 	}
 
-	const directions: readonly Vec3[] = [
-		vector.create3d({ x: 0, y: 0, z: 0 }),
+	const dustDirections: readonly Vec3[] = [
 		vector.create3d({ x: 1, y: 0, z: 0 }),
 		vector.create3d({ x: -1, y: 0, z: 0 }),
 		vector.create3d({ x: 0, y: 0, z: 1 }),
