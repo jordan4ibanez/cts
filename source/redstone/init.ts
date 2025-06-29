@@ -12,7 +12,7 @@ namespace redstone {
 
 	interface RedstoneData {
 		isDirectionalPowerSource: boolean;
-		powerOutput: number,
+		powerOutput: number;
 		isPowerSource: boolean;
 		powerSource: number;
 		isDust: boolean;
@@ -84,8 +84,9 @@ namespace redstone {
 					workerVec.y = y;
 					workerVec.z = z;
 					virtualMap.set(hashPosition(workerVec), {
-						isDirectionalPowerSource: false,
 						exists: false,
+						isDirectionalPowerSource: false,
+						powerOutput: 0,
 						isPowerSource: false,
 						powerSource: 0,
 						isDust: false,
@@ -162,8 +163,10 @@ namespace redstone {
 						} else {
 							updateData.dust = 0;
 						}
+
 						updateData.isDirectionalPowerSource =
 							worldData.isDirectionalPowerSource;
+						updateData.powerOutput = worldData.powerOutput;
 						updateData.isPowerSource = worldData.isPowerSource;
 						updateData.powerSource = worldData.powerSource;
 						updateData.isDust = worldData.isDust;
@@ -419,6 +422,7 @@ namespace redstone {
 
 					worldData.isDirectionalPowerSource =
 						currentData.isDirectionalPowerSource;
+					worldData.powerOutput = currentData.powerOutput;
 					worldData.isPowerSource = currentData.isPowerSource;
 					worldData.powerSource = currentData.powerSource;
 					worldData.isDust = currentData.isDust;
