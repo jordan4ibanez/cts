@@ -252,6 +252,11 @@ namespace redstone {
 			}
 
 			if (forwardData.isDust) {
+				forwardData.dust = thisData.powerSource - 1;
+				// And now, the recursion will begin.
+				// This function will attempt to sniff out any other dust within range and transmit.
+				// Power reduction is equal to one node per unit.
+				
 			}
 		}
 	}
