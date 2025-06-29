@@ -294,6 +294,7 @@ namespace redstone {
 		const worldPos: Vec3 = unhashPosition(updateMapworldPosition);
 
 		for (const dir of allSidesDirections) {
+			print(dir);
 			const hashedPos: number = hashPosition(dir);
 
 			const data: UpdateMapData | undefined = updateMap.get(hashedPos);
@@ -303,14 +304,41 @@ namespace redstone {
 			}
 
 			if (data.directional_activator) {
-				print("got one");
-
 				const inputPos: Vec3 = unhashPosition(data.input);
+
 				inputPos.x -= worldPos.x;
 				inputPos.y -= worldPos.y;
 				inputPos.z -= worldPos.z;
 
 				if (inputPos.x == 0 && inputPos.y == 0 && inputPos.z == 0) {
+					const realPos: Vec3 = vector.create3d();
+
+					realPos.x = worldPos.x + dir.x;
+					realPos.y = worldPos.y + dir.y;
+					realPos.z = worldPos.z + dir.z;
+
+					const nodeName: string = core.get_node(realPos).name;
+
+					print(nodeName);
+					const def: NodeDefinition | undefined =
+						core.registered_nodes[nodeName];
+
+					print(1);
+
+					if (def == null) {
+						core.log(
+							LogLevel.error,
+							`Undefined node at: ${realPos}`
+						);
+						continue;
+					}
+					print(2);
+
+					if (def.redstone_deactivation) {
+						print("wat");
+						def.redstone_deactivation(realPos);
+					}
+					print(3);
 				}
 			}
 		}
