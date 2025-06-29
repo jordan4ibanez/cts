@@ -1,6 +1,7 @@
 namespace redstone {
 	// todo: Retool this entire mod as "bluestone" so I don't hear any complaints about mc
 	const hashPosition = core.hash_node_position;
+	const unhashPosition = core.get_position_from_hash;
 	const workerVec: Vec3 = vector.create3d();
 	const absolute = math.abs;
 
@@ -19,7 +20,7 @@ namespace redstone {
 	//? Virtual machine.
 
 	function debugMap(pos?: Vec3): void {
-		print(memoryMap.size);
+		// print(memoryMap.size);
 	}
 
 	// The entirety of redstone data is simulated in memory and reflected into the map in a designated interval (if any changes).
@@ -98,8 +99,6 @@ namespace redstone {
 	const powerSources = new utility.QueueFIFO<number>();
 
 	function clearUpdateMap(): void {
-		// const start: number = core.get_us_time() / 1_000_000;
-
 		let positionHash: number = 0;
 		let data: UpdateMapData | undefined = undefined;
 
@@ -122,10 +121,6 @@ namespace redstone {
 				}
 			}
 		}
-
-		// const end: number = core.get_us_time() / 1_000_000;
-		// const total: number = end - start;
-		// print("took: ", total);
 	}
 
 	/**
@@ -194,8 +189,29 @@ namespace redstone {
 		}
 	}
 
+	
+
+	//? This is how the logic is unwrapped and side effects are run.
 	core.register_globalstep((delta: number) => {
-		print(updateQueue.length());
+		if (updateQueue.length() <= 0) {
+			return;
+		}
+		const data: number | undefined = updateQueue.pop();
+		if (data == null) {
+			throw new Error("Logic issue.");
+		}
+
+		const updatePosition: Vec3 = unhashPosition(data);
+
+		print(`update at: ${updatePosition}`);
+
+		const start: number = core.get_us_time() / 1_000_000;
+
+		copyMemoryMapIntoUpdateMap(updatePosition);
+
+		const end: number = core.get_us_time() / 1_000_000;
+		const total: number = end - start;
+		print("took: ", total);
 	});
 
 	utility.loadFiles([
