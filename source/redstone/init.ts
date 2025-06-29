@@ -294,7 +294,6 @@ namespace redstone {
 		const worldPos: Vec3 = unhashPosition(updateMapworldPosition);
 
 		for (const dir of allSidesDirections) {
-			print(dir);
 			const hashedPos: number = hashPosition(dir);
 
 			const data: UpdateMapData | undefined = updateMap.get(hashedPos);
@@ -319,11 +318,8 @@ namespace redstone {
 
 					const nodeName: string = core.get_node(realPos).name;
 
-					print(nodeName);
 					const def: NodeDefinition | undefined =
 						core.registered_nodes[nodeName];
-
-					print(1);
 
 					if (def == null) {
 						core.log(
@@ -332,13 +328,10 @@ namespace redstone {
 						);
 						continue;
 					}
-					print(2);
 
 					if (def.redstone_deactivation) {
-						print("wat");
 						def.redstone_deactivation(realPos);
 					}
-					print(3);
 				}
 			}
 		}
