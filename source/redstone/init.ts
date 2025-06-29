@@ -329,16 +329,16 @@ namespace redstone {
 			}
 
 			if (data.directional_activator) {
-				const def: NodeDefinition | undefined =
-					core.registered_nodes[core.get_node(workerVec).name];
-				if (def == null) {
-					core.log(
-						LogLevel.warning,
-						`Undefined activator at ${workerVec}`
-					);
+				if (data.input == positionHash) {
+					const def: NodeDefinition | undefined =
+						core.registered_nodes[core.get_node(workerVec).name];
+					if (def == null) {
+						core.log(
+							LogLevel.warning,
+							`Undefined activator at ${workerVec}`
+						);
+					}
 				}
-
-				print("found you");
 			}
 		}
 	}
