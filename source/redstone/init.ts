@@ -236,7 +236,9 @@ namespace redstone {
 		const currentPosition: Vec3 = unhashPosition(positionHash);
 
 		for (const dir of dustDirections) {
-			
+			workerVec.x = currentPosition.x + dir.x;
+			workerVec.y = currentPosition.y + dir.y;
+			workerVec.z = currentPosition.z + dir.z;
 		}
 	}
 
