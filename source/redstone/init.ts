@@ -227,7 +227,7 @@ namespace redstone {
 
 		const updatePosition: Vec3 = unhashPosition(data);
 
-		print(`update at: ${updatePosition}`);
+		// print(`update at: ${updatePosition}`);
 
 		const start: number = core.get_us_time() / 1_000_000;
 
