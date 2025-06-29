@@ -27,9 +27,9 @@ namespace redstone {
 	 * @param data The data of the position. This can be dust, or a power source, etc.
 	 */
 	export function addData(pos: Vec3, data: RedstoneData): void {
-		const index: number = hashPosition(pos);
-		memoryMap.set(index, data);
-		enqueueUpdate(index);
+		const positionHash: number = hashPosition(pos);
+		memoryMap.set(positionHash, data);
+		enqueueUpdate(positionHash);
 		debugMap();
 	}
 
@@ -38,9 +38,9 @@ namespace redstone {
 	 * @param pos The position where this data is to be deleted.
 	 */
 	export function deleteData(pos: Vec3): void {
-		const index: number = hashPosition(pos);
-		memoryMap.delete(index);
-		enqueueUpdate(index);
+		const positionHash: number = hashPosition(pos);
+		memoryMap.delete(positionHash);
+		enqueueUpdate(positionHash);
 		debugMap();
 	}
 
@@ -51,10 +51,10 @@ namespace redstone {
 
 	/**
 	 * Create an update in the virtual machine. Use [core.hash_node_position] to interface with this.
-	 * @param positionHashed The hashed position of the update.
+	 * @param positionHash The hashed position of the update.
 	 */
-	function enqueueUpdate(positionHashed: number): void {
-		updateQueue.push(positionHashed);
+	function enqueueUpdate(positionHash: number): void {
+		updateQueue.push(positionHash);
 	}
 
 	//? Update map.
@@ -123,6 +123,9 @@ namespace redstone {
 					workerVec.x = pos.x + x;
 					workerVec.y = pos.y + y;
 					workerVec.z = pos.z + z;
+
+					
+
 				}
 			}
 		}
