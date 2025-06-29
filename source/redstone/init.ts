@@ -220,6 +220,14 @@ namespace redstone {
 		vector.create3d({ x: 0, y: 1, z: 0 }),
 		vector.create3d({ x: 0, y: -1, z: 0 }),
 	];
+
+	function trasmitThroughDust(): void {}
+
+	function allDirectionalPowerSourceTrigger(sourcePosition: Vec3): void {
+		for (const dir of allDirectionalPowerSourceDirections) {
+		}
+	}
+
 	/**
 	 * All power sources reflect outwards.
 	 */
@@ -242,11 +250,7 @@ namespace redstone {
 
 			const sourcePosition: Vec3 = unhashPosition(sourceHash);
 
-			print(
-				`Power source at: ${sourcePosition} | ${updateMapworldPosition}`
-			);
-
-			// unhashPosition()
+			allDirectionalPowerSourceTrigger(sourcePosition);
 		}
 	}
 
