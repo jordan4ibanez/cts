@@ -117,13 +117,15 @@ namespace redstone {
 		// todo: Any dust at the borders is a power source, if powered.
 		clearUpdateMap();
 
-		const minX: number = pos.x - maxState;
-		const minY: number = pos.y - maxState;
-		const minZ: number = pos.z - maxState;
-
-		const manX: number = pos.x + maxState;
-		const manY: number = pos.y + maxState;
-		const manZ: number = pos.z + maxState;
+		for (const x of $range(-maxState, maxState)) {
+			for (const y of $range(-maxState, maxState)) {
+				for (const z of $range(-maxState, maxState)) {
+					workerVec.x = pos.x + x;
+					workerVec.y = pos.y + y;
+					workerVec.z = pos.z + z;
+				}
+			}
+		}
 	}
 
 	utility.loadFiles([
