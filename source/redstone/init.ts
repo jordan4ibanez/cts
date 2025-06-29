@@ -91,6 +91,8 @@ namespace redstone {
 	function clearUpdateMap(): void {
 		const start: number = core.get_us_time() / 1_000_000;
 
+		let positionHash: number = 0;
+
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
 				for (const z of $range(-maxState, maxState)) {
@@ -98,7 +100,7 @@ namespace redstone {
 					workerVec.y = y;
 					workerVec.z = z;
 
-					const positionHash: number = hashPosition(workerVec);
+					positionHash = hashPosition(workerVec);
 
 					const data: RedstoneUpdateMapData | undefined =
 						updateMap.get(positionHash);
