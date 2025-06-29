@@ -9,16 +9,23 @@ namespace redstone {
 
 	//inverts redstone signal
 	core.register_node("redstone:inverter_on", {
-		//     description = "Redstone Inverter",
-		//     tiles = {"repeater_on.png"},
-		//     groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,attached_node = 1,redstone_activation_directional=1},
-		//     sounds = main.stoneSound(),
-		//     paramtype = "light",
-		// 	paramtype2 = "facedir",
-		// 	sunlight_propagates = true,
-		// 	walkable = false,
-		// 	drawtype= "nodebox",
-		// 	drop="redstone:inverter_off",
+		description: "Redstone Inverter",
+		tiles: ["repeater_on.png"],
+		groups: {
+			stone: 1,
+			hard: 1,
+			pickaxe: 1,
+			hand: 4,
+			attached_node: 1,
+			redstone_activation_directional: 1,
+		},
+		sounds: main.stoneSound(),
+		paramtype: "light",
+		paramtype2: "facedir",
+		sunlight_propagates: true,
+		walkable: false,
+		drawtype: "nodebox",
+		drop: "redstone:inverter_off",
 		// 	node_box = {
 		// 		type = "fixed",
 		// 		fixed = {
