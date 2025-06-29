@@ -89,8 +89,8 @@ namespace redstone {
 						dust: 0,
 						wasPowered: false,
 						directional_activator: false,
-						input: vector.create3d(),
-						output: vector.create3d(),
+						input: 0,
+						output: 0,
 					});
 				}
 			}
@@ -164,11 +164,11 @@ namespace redstone {
 						updateData.isPowerSource = worldData.isPowerSource;
 						updateData.powerSource = worldData.powerSource;
 						updateData.isDust = worldData.isDust;
+						updateData.wasPowered = worldData.dust > 0;
 						updateData.directional_activator =
 							worldData.directional_activator;
 						updateData.input = worldData.input;
 						updateData.output = worldData.output;
-						updateData.wasPowered = worldData.dust > 0;
 					}
 				}
 			}
