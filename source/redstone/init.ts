@@ -161,6 +161,8 @@ namespace redstone {
 						} else {
 							updateData.dust = 0;
 						}
+						updateData.isDirectionalPowerSource =
+							worldData.isDirectionalPowerSource;
 						updateData.isPowerSource = worldData.isPowerSource;
 						updateData.powerSource = worldData.powerSource;
 						updateData.isDust = worldData.isDust;
@@ -343,7 +345,6 @@ namespace redstone {
 					);
 					continue;
 				}
-				
 			}
 		}
 	}
