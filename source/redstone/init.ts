@@ -346,6 +346,18 @@ namespace redstone {
 					);
 					continue;
 				}
+
+				if (
+					sideEffect == RedstoneTrigger.on &&
+					def.redstone_activation
+				) {
+					def.redstone_activation(workerVec);
+				} else if (
+					sideEffect == RedstoneTrigger.off &&
+					def.redstone_deactivation
+				) {
+					def.redstone_deactivation(workerVec);
+				}
 			}
 		}
 	}
