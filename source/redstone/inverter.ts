@@ -139,17 +139,23 @@ namespace redstone {
 				throw new Error("Param 2 error 4");
 			}
 
-			// 		core.swap_node(pos,{name="crafter_redstone:inverter_on",param2=param2})
+			core.swap_node(pos, {
+				name: "crafter_redstone:inverter_on",
+				param2: param2,
+			});
 
-			// 		local dir = core.facedir_to_dir(param2)
+			const dir: Vec3 = core.fourdir_to_dir(param2);
 
-			// 		redstone.inject(pos,{
-			// 			name = "crafter_redstone:inverter_on",
-			// 			directional_activator = true,
-			// 			input  = vector.subtract(pos,dir),
-			// 			output = vector.add(pos,dir),
-			// 			dir = dir
-			// 		})
+			addData(pos, {
+				isDirectionalPowerSource: true,
+				isPowerSource: false,
+				powerSource: maxState,
+				isDust: false,
+				dust: 0,
+				directional_activator: true,
+				input: core.hash_node_position(vector.subtract(pos, dir)),
+				output: core.hash_node_position(vector.add(pos, dir)),
+			});
 		},
 	});
 }
