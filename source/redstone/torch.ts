@@ -93,6 +93,9 @@ namespace redstone {
 				powerSource: maxState,
 				isDust: false,
 				dust: 0,
+				directional_activator: false,
+				input: vector.create3d(),
+				output: vector.create3d(),
 			});
 		},
 		after_destruct: (pos: Vec3) => {
@@ -136,6 +139,9 @@ namespace redstone {
 				powerSource: maxState,
 				isDust: false,
 				dust: 0,
+				directional_activator: false,
+				input: vector.create3d(),
+				output: vector.create3d(),
 			});
 		},
 		after_destruct: (pos: Vec3) => {
