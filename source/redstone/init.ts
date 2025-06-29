@@ -211,6 +211,16 @@ namespace redstone {
 				throw new Error("Map poll logic error.");
 			}
 
+			if (!data.isPowerSource) {
+				throw new Error("Power source implementation issue.");
+			}
+
+			const sourcePosition: Vec3 = unhashPosition(sourceHash);
+
+			print(
+				`Power source at: ${sourcePosition} | ${updateMapworldPosition}`
+			);
+
 			// unhashPosition()
 		}
 	}
