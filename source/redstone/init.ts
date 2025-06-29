@@ -240,6 +240,8 @@ namespace redstone {
 
 		const currentPosition: Vec3 = unhashPosition(positionHash);
 
+		const outputPower: number = currentData.dust - 1;
+
 		for (const dir of dustDirections) {
 			workerVec.x = currentPosition.x + dir.x;
 			workerVec.y = currentPosition.y + dir.y;
@@ -254,7 +256,14 @@ namespace redstone {
 				continue;
 			}
 
-			if (forwardData.dust) {
+			if (forwardData.isDust && forwardData.dust < outputPower) {
+				forwardData.dust = outputPower;
+
+				// There is no need to continue at power level 1.
+				// It would transmit 0.
+				if (outputPower > 1) {
+					transmitThroughDust(forwardPositionHash);
+				}
 			}
 		}
 	}
