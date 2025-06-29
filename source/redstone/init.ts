@@ -59,6 +59,10 @@ namespace redstone {
 
 	//? Update map.
 
+	interface RedstoneUpdateMapData extends RedstoneData {
+		exists: boolean;
+	}
+
 	// The max cubic width an update can have is: [(maxState * 2) + 1]
 	// This data is trapped inside of a persistent cube,
 	// The data begins it's life as completely blank data.
