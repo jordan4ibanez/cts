@@ -83,6 +83,7 @@ namespace redstone {
 			on_construct: (pos) => {
 				addData(pos, {
 					isDirectionalPowerSource: false,
+					powerOutput: 0,
 					isPowerSource: false,
 					powerSource: 0,
 					isDust: true,
