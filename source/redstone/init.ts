@@ -289,10 +289,42 @@ namespace redstone {
 		}
 	}
 
+	// This shall always take place at [0,0,0] in the update map.
+	function ghostUnpowerComponents(): void {
+		const worldPos: Vec3 = unhashPosition(updateMapworldPosition);
+
+		for (const dir of allSidesDirections) {
+			const hashedPos: number = hashPosition(dir);
+
+			const data: UpdateMapData | undefined = updateMap.get(hashedPos);
+
+			if (data == null || data.exists == false) {
+				continue;
+			}
+
+			if (data.directional_activator) {
+				print("got one");
+
+				const inputPos: Vec3 = unhashPosition(data.input);
+				inputPos.x -= worldPos.x;
+				inputPos.y -= worldPos.y;
+				inputPos.z -= worldPos.z;
+
+				if (inputPos.x == 0 && inputPos.y == 0 && inputPos.z == 0) {
+				}
+			}
+		}
+	}
+
 	/**
 	 * All power sources reflect outwards.
 	 */
-	function doLogic(ghostUnpower: boolean) {
+	function doLogic(ghostUnpower: boolean): void {
+		if (ghostUnpower) {
+			// This triggers first in case I overlooked something and it gets a repower.
+			ghostUnpowerComponents();
+		}
+
 		while (powerSources.length() > 0) {
 			const sourceHash: number | undefined = powerSources.pop();
 			if (sourceHash == null) {
@@ -304,8 +336,6 @@ namespace redstone {
 			if (data == null) {
 				throw new Error("Map poll logic error.");
 			}
-
-			print(dump(data));
 
 			if (data.isPowerSource) {
 				const sourcePosition: Vec3 = unhashPosition(sourceHash);
