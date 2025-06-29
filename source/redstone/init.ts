@@ -148,7 +148,7 @@ namespace redstone {
 
 						if (
 							worldData.isPowerSource ||
-							(border && worldData.isDust && worldData.dust > 1)
+							(border && worldData.isDust && worldData.dust > 0)
 						) {
 							powerSources.push(updateMapPositionHash);
 							updateData.dust = worldData.dust;
@@ -196,18 +196,17 @@ namespace redstone {
 		const currentData: UpdateMapData | undefined =
 			updateMap.get(positionHash);
 
-		if (
-			currentData == null ||
-			!currentData.exists ||
-			!currentData.isDust ||
-			currentData.dust <= 1
-		) {
+		if (currentData == null || !currentData.exists || !currentData.isDust) {
 			throw new Error("Logic error at dust.");
 		}
 
-		const currentPosition: Vec3 = unhashPosition(positionHash);
-
 		const outputPower: number = currentData.dust - 1;
+
+		if (outputPower <= 0) {
+			return;
+		}
+
+		const currentPosition: Vec3 = unhashPosition(positionHash);
 
 		for (const dir of dustDirections) {
 			workerVec.x = currentPosition.x + dir.x;
