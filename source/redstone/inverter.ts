@@ -83,14 +83,9 @@ namespace redstone {
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end,
 	// })
-	// --[[
-	//  ██████╗ ███████╗███████╗
-	// ██╔═══██╗██╔════╝██╔════╝
-	// ██║   ██║█████╗  █████╗
-	// ██║   ██║██╔══╝  ██╔══╝
-	// ╚██████╔╝██║     ██║
-	//  ╚═════╝ ╚═╝     ╚═╝
-	// ]]--
+	
+	//? Off.
+
 	// core.register_node("redstone:inverter_off", {
 	//     description = "Redstone Inverter",
 	//     tiles = {"repeater_off.png"},
