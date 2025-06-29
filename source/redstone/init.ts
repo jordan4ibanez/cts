@@ -98,7 +98,10 @@ namespace redstone {
 		return virtualMap;
 	})();
 
+	/** Where the update map currently exists in the world. */
 	let updateMapworldPosition: number = 0;
+
+	/** The power sources that exist in the update map. */
 	const powerSources = new utility.QueueFIFO<number>();
 
 	function clearUpdateMap(): void {
@@ -221,9 +224,17 @@ namespace redstone {
 		vector.create3d({ x: 0, y: -1, z: 0 }),
 	];
 
+	// Recursive.
 	function trasmitThroughDust(): void {}
 
 	function allDirectionalPowerSourceTrigger(sourcePosition: Vec3): void {
+		const thisData: UpdateMapData | undefined = updateMap.get(
+			hashPosition(sourcePosition)
+		);
+		if (thisData == null) {
+			throw new Error("Logic error at all directional power source.");
+		}
+
 		for (const dir of allDirectionalPowerSourceDirections) {
 			workerVec.x = sourcePosition.x + dir.x;
 			workerVec.y = sourcePosition.y + dir.y;
@@ -240,7 +251,8 @@ namespace redstone {
 				continue;
 			}
 
-			print(`Found: ${dump(forwardData)}`);
+			if (forwardData.isDust) {
+			}
 		}
 	}
 
