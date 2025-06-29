@@ -87,6 +87,27 @@ namespace redstone {
 		return virtualMap;
 	})();
 
+	function clearUpdateMap(): void {
+		for (const x of $range(-maxState, maxState)) {
+			for (const y of $range(-maxState, maxState)) {
+				for (const z of $range(-maxState, maxState)) {
+					workerVec.x = x;
+					workerVec.y = y;
+					workerVec.z = z;
+
+					const data: RedstoneUpdateMapData | undefined =
+						updateMap.get(hashPosition(workerVec));
+
+					if (data == null) {
+						throw new Error("Update map logic error.");
+					}
+
+					data.exists = false;
+				}
+			}
+		}
+	}
+
 	function copyMemoryMapIntoUpdateMap(pos: Vec3): void {
 		// todo: Any dust at the borders is a power source, if powered.
 	}
