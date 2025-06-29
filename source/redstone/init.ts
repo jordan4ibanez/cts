@@ -225,7 +225,20 @@ namespace redstone {
 	];
 
 	// Recursive.
-	function trasmitThroughDust(): void {}
+	function transmitThroughDust(positionHash: number): void {
+		const currentData: UpdateMapData | undefined =
+			updateMap.get(positionHash);
+
+		if (currentData == null || !currentData.exists || !currentData.isDust) {
+			throw new Error("Logic error at dust.");
+		}
+
+		const currentPosition: Vec3 = unhashPosition(positionHash);
+
+		for (const dir of dustDirections) {
+			
+		}
+	}
 
 	function allDirectionalPowerSourceTrigger(sourcePosition: Vec3): void {
 		const thisData: UpdateMapData | undefined = updateMap.get(
@@ -240,11 +253,10 @@ namespace redstone {
 			workerVec.y = sourcePosition.y + dir.y;
 			workerVec.z = sourcePosition.z + dir.z;
 
-			const hashedForwardDirection: number = hashPosition(workerVec);
+			const forwardPositionHash: number = hashPosition(workerVec);
 
-			const forwardData: UpdateMapData | undefined = updateMap.get(
-				hashedForwardDirection
-			);
+			const forwardData: UpdateMapData | undefined =
+				updateMap.get(forwardPositionHash);
 
 			// Either out of bounds, or, hit the edge of the update map.
 			if (forwardData == null || !forwardData.exists) {
@@ -256,7 +268,7 @@ namespace redstone {
 				// And now, the recursion will begin.
 				// This function will attempt to sniff out any other dust within range and transmit.
 				// Power reduction is equal to one node per unit.
-				
+				transmitThroughDust(forwardPositionHash);
 			}
 		}
 	}
