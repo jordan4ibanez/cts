@@ -236,9 +236,11 @@ namespace redstone {
 			);
 
 			// Either out of bounds, or, hit the edge of the update map.
-			if (forwardData == null) {
+			if (forwardData == null || !forwardData.exists) {
 				continue;
 			}
+
+			print(`Found: ${dump(forwardData)}`);
 		}
 	}
 
