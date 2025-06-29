@@ -132,22 +132,19 @@ namespace redstone {
 		// 		//redstone.update(pos)
 		// 		redstone.update(vector.add(pos,dir))
 		// 	end
-		// })
-		// redstone.register_activator({
-		// 	name = "crafter_redstone:inverter_off",
-		// 	activate = function(pos)
-		// 		local param2 = core.get_node(pos).param2
-		// 		core.swap_node(pos,{name="crafter_redstone:inverter_on",param2=param2})
-		// 		local dir = core.facedir_to_dir(param2)
-		// 		redstone.inject(pos,{
-		// 			name = "crafter_redstone:inverter_on",
-		// 			directional_activator = true,
-		// 			input  = vector.subtract(pos,dir),
-		// 			output = vector.add(pos,dir),
-		// 			dir = dir
-		// 		})
-		// 		//redstone.update(pos)
-		// 		redstone.update(vector.add(pos,dir))
-		// 	end
+
+		redstone_activation: (pos: Vec3) => {
+			// 	activate = function(pos)
+			// 		local param2 = core.get_node(pos).param2
+			// 		core.swap_node(pos,{name="crafter_redstone:inverter_on",param2=param2})
+			// 		local dir = core.facedir_to_dir(param2)
+			// 		redstone.inject(pos,{
+			// 			name = "crafter_redstone:inverter_on",
+			// 			directional_activator = true,
+			// 			input  = vector.subtract(pos,dir),
+			// 			output = vector.add(pos,dir),
+			// 			dir = dir
+			// 		})
+		},
 	});
 }
