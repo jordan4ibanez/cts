@@ -12,6 +12,7 @@ namespace redstone {
 
 	interface RedstoneData {
 		isDirectionalPowerSource: boolean;
+		powerOutput: number,
 		isPowerSource: boolean;
 		powerSource: number;
 		isDust: boolean;
