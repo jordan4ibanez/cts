@@ -36,8 +36,9 @@ namespace redstone {
 		},
 		after_place_node: (pos: Vec3) => {
 			const param2: number | undefined = core.get_node(pos).param2;
+
 			if (param2 == null) {
-				throw new Error("param2 error");
+				throw new Error("param2 error 1");
 			}
 			const dir = core.fourdir_to_dir(param2);
 
@@ -54,23 +55,34 @@ namespace redstone {
 		after_destruct: (pos: Vec3) => {
 			deleteData(pos);
 		},
+		redstone_deactivation: (pos: Vec3) => {
+			const param2: number | undefined = core.get_node(pos).param2;
+			if (param2 == null) {
+				throw new Error("Param2 error 2");
+			}
+
+			core.swap_node(pos, {
+				name: "crafter_redstone:inverter_off",
+				param2: param2,
+			});
+			const dir: Vec3 = core.fourdir_to_dir(param2);
+
+			// addData(pos,{
+
+			// 	torch  = r_max,
+			// 	torch_directional = true,
+			// 	directional_activator = true,
+			// 	input  = vector.subtract(pos,dir),
+			// 	output = vector.add(pos,dir),
+			// 	dir = dir
+			// })
+		},
 	});
 
 	// redstone.register_activator({
 	// 	name = "crafter_redstone:inverter_on",
 	// 	deactivate = function(pos)
-	// 		local param2 = core.get_node(pos).param2
-	// 		core.swap_node(pos,{name="crafter_redstone:inverter_off",param2=param2})
-	// 		local dir = core.facedir_to_dir(param2)
-	// 		redstone.inject(pos,{
-	// 			name = "crafter_redstone:inverter_off",
-	// 			torch  = r_max,
-	// 			torch_directional = true,
-	// 			directional_activator = true,
-	// 			input  = vector.subtract(pos,dir),
-	// 			output = vector.add(pos,dir),
-	// 			dir = dir
-	// 		})
+
 	// 		//redstone.update(pos)
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end
