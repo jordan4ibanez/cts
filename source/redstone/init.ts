@@ -109,8 +109,6 @@ namespace redstone {
 	 * @param pos The real world position.
 	 */
 	function copyMemoryMapIntoUpdateMap(pos: Vec3): void {
-		// clearUpdateMap();
-
 		updateMapworldPosition = hashPosition(pos);
 
 		for (const x of $range(-maxState, maxState)) {
