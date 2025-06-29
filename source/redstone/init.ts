@@ -63,6 +63,7 @@ namespace redstone {
 		exists: boolean;
 	}
 
+	// The update map is very simple in concept.
 	// The max cubic width an update can have is: [(maxState * 2) + 1]
 	// This data is trapped inside of a persistent cube,
 	// The data begins it's life as completely blank data.
@@ -108,8 +109,21 @@ namespace redstone {
 		}
 	}
 
+	/**
+	 * This will copy the virtual machine memory into the update map memory.
+	 * @param pos The real world position.
+	 */
 	function copyMemoryMapIntoUpdateMap(pos: Vec3): void {
 		// todo: Any dust at the borders is a power source, if powered.
+		clearUpdateMap();
+
+		const minX: number = pos.x - maxState;
+		const minY: number = pos.y - maxState;
+		const minZ: number = pos.z - maxState;
+
+		const manX: number = pos.x + maxState;
+		const manY: number = pos.y + maxState;
+		const manZ: number = pos.z + maxState;
 	}
 
 	utility.loadFiles([
