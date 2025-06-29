@@ -98,8 +98,10 @@ namespace redstone {
 					workerVec.y = y;
 					workerVec.z = z;
 
+					const positionHash: number = hashPosition(workerVec);
+
 					const data: RedstoneUpdateMapData | undefined =
-						updateMap.get(hashPosition(workerVec));
+						updateMap.get(positionHash);
 
 					if (data == null) {
 						throw new Error("Update map logic error.");
