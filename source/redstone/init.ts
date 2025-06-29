@@ -338,9 +338,7 @@ namespace redstone {
 					);
 				}
 
-				
-
-				
+				print("found you");
 			}
 		}
 	}
@@ -498,7 +496,7 @@ namespace redstone {
 		// // //dofile(path+"/comparator",
 		// "craft",
 		// "ore",
-		// "inverter",
+		"inverter",
 		// "player_detector",
 		// "space_maker",
 		// "pressure_plate",
