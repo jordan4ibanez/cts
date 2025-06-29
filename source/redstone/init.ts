@@ -232,6 +232,7 @@ namespace redstone {
 		const start: number = core.get_us_time() / 1_000_000;
 
 		copyMemoryMapIntoUpdateMap(updatePosition);
+		doLogic();
 
 		const end: number = core.get_us_time() / 1_000_000;
 		const total: number = end - start;
