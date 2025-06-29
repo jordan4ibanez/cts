@@ -152,7 +152,7 @@ globalEnvironment.ParamType2 = {
 	flowingliquid: "flowingliquid",
 	wallmounted: "wallmounted",
 	facedir: "facedir",
-	fourdir: "4dir",
+	["4dir"]: "4dir",
 	leveled: "leveled",
 	degrotate: "degrotate",
 	meshoptions: "meshoptions",
