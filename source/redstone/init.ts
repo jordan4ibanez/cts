@@ -98,6 +98,7 @@ namespace redstone {
 		return virtualMap;
 	})();
 
+	let updateMapworldPosition: number = 0;
 	const powerSources = new utility.QueueFIFO<number>();
 
 	function clearUpdateMap(): void {
@@ -131,6 +132,8 @@ namespace redstone {
 	 */
 	function copyMemoryMapIntoUpdateMap(pos: Vec3): void {
 		// clearUpdateMap();
+
+		updateMapworldPosition = hashPosition(pos);
 
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
