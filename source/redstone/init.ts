@@ -302,7 +302,9 @@ namespace redstone {
 	function triggerSideEffectsAllSides(
 		positionHash: number,
 		sideEffect: RedstoneTrigger
-	): void {}
+	): void {
+		// todo: this lol
+	}
 
 	function writeBackSideEffects(
 		currentData: UpdateMapData,
