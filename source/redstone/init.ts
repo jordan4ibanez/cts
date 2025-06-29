@@ -130,17 +130,22 @@ namespace redstone {
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
 				for (const z of $range(-maxState, maxState)) {
-					workerVec.x = pos.x + x;
-					workerVec.y = pos.y + y;
-					workerVec.z = pos.z + z;
+					workerVec.x = x;
+					workerVec.y = y;
+					workerVec.z = z;
+
+					const updateMapPositionHash: number =
+						hashPosition(workerVec);
+
+					workerVec.x += pos.x;
+					workerVec.y += pos.y;
+					workerVec.z += pos.z;
+
+					const worldPositionHash: number = hashPosition(workerVec);
 				}
 			}
 		}
 	}
-
-	core.register_globalstep(() => {
-		clearUpdateMap();
-	});
 
 	utility.loadFiles([
 		// "functions",
