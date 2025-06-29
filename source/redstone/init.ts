@@ -387,6 +387,10 @@ namespace redstone {
 					worldData.powerSource = currentData.powerSource;
 					worldData.isDust = currentData.isDust;
 					worldData.dust = currentData.dust;
+					worldData.directional_activator =
+						currentData.directional_activator;
+					worldData.input = currentData.input;
+					worldData.output = currentData.output;
 				}
 			}
 		}
