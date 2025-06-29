@@ -299,7 +299,7 @@ namespace redstone {
 		off,
 	}
 
-	function triggerSideEffects(
+	function triggerSideEffectsAllSides(
 		positionHash: number,
 		sideEffect: RedstoneTrigger
 	): void {}
@@ -311,16 +311,18 @@ namespace redstone {
 	): void {
 		// A player placed a torch.
 		if (atPosition && currentData.isPowerSource) {
-			print("torchy");
+			triggerSideEffectsAllSides(realWorldHash, RedstoneTrigger.on);
 
 			return;
 		}
 
 		// Redstone getting turned on or off.
 		if (currentData.wasPowered && currentData.dust <= 0) {
-			print("turned off at ", unhashPosition(realWorldHash));
+			print("turned off at ");
+			triggerSideEffectsAllSides(realWorldHash, RedstoneTrigger.off);
 		} else if (!currentData.wasPowered && currentData.dust > 0) {
-			print("turned on at ", unhashPosition(realWorldHash));
+			triggerSideEffectsAllSides(realWorldHash, RedstoneTrigger.on);
+			// print("turned on at ", unhashPosition(realWorldHash));
 		}
 	}
 
