@@ -92,6 +92,7 @@ namespace redstone {
 		const start: number = core.get_us_time() / 1_000_000;
 
 		let positionHash: number = 0;
+		let data: RedstoneUpdateMapData | undefined = undefined;
 
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
@@ -102,8 +103,7 @@ namespace redstone {
 
 					positionHash = hashPosition(workerVec);
 
-					const data: RedstoneUpdateMapData | undefined =
-						updateMap.get(positionHash);
+					data = updateMap.get(positionHash);
 
 					if (data == null) {
 						throw new Error("Update map logic error.");
