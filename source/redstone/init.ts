@@ -9,7 +9,10 @@ namespace redstone {
 	// todo: Serialize the virtual machine AND the update queue so that it continues on after server restarts.
 
 	interface RedstoneData {
+		isPowerSource: boolean;
 		powerSource: number;
+		isDust: boolean;
+		dust: number;
 	}
 
 	//? Virtual machine.
@@ -80,7 +83,10 @@ namespace redstone {
 					workerVec.z = z;
 					virtualMap.set(hashPosition(workerVec), {
 						exists: false,
+						isPowerSource: false,
 						powerSource: 0,
+						isDust: false,
+						dust: 0,
 					});
 				}
 			}
@@ -155,6 +161,11 @@ namespace redstone {
 					}
 
 					if (worldData == null) {
+						updateData.exists = false;
+					} else {
+						updateData.powerSource = worldData.powerSource;
+
+						// todo: check if this is the border.
 					}
 				}
 			}
