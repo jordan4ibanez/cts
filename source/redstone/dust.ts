@@ -86,6 +86,9 @@ namespace redstone {
 					powerSource: 0,
 					isDust: true,
 					dust: i,
+					directional_activator: false,
+					input: vector.create3d(),
+					output: vector.create3d(),
 				});
 			},
 			after_destruct: (pos: Vec3) => {
