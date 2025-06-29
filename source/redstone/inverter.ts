@@ -8,7 +8,7 @@ namespace redstone {
 	//? On.
 
 	//inverts redstone signal
-	core.register_node("redstone:inverter_on", {
+	core.register_node("crafter_redstone:inverter_on", {
 		description: "Redstone Inverter",
 		tiles: ["repeater_on.png"],
 		groups: {
@@ -25,7 +25,7 @@ namespace redstone {
 		sunlight_propagates: true,
 		walkable: false,
 		drawtype: Drawtype.nodebox,
-		drop: "redstone:inverter_off",
+		drop: "crafter_redstone:inverter_off",
 		// 	node_box = {
 		// 		type = "fixed",
 		// 		fixed = {
@@ -37,7 +37,7 @@ namespace redstone {
 		// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		// 		local dir = core.facedir_to_dir(core.get_node(pos).param2)
 		// 		redstone.inject(pos,{
-		// 			name = "redstone:inverter_on",
+		// 			name = "crafter_redstone:inverter_on",
 		// 			directional_activator = true,
 		// 			input  = vector.subtract(pos,dir),
 		// 			output = vector.add(pos,dir),
@@ -55,13 +55,13 @@ namespace redstone {
 		// 	end
 		// })
 		// redstone.register_activator({
-		// 	name = "redstone:inverter_on",
+		// 	name = "crafter_redstone:inverter_on",
 		// 	deactivate = function(pos)
 		// 		local param2 = core.get_node(pos).param2
-		// 		core.swap_node(pos,{name="redstone:inverter_off",param2=param2})
+		// 		core.swap_node(pos,{name="crafter_redstone:inverter_off",param2=param2})
 		// 		local dir = core.facedir_to_dir(param2)
 		// 		redstone.inject(pos,{
-		// 			name = "redstone:inverter_off",
+		// 			name = "crafter_redstone:inverter_off",
 		// 			torch  = r_max,
 		// 			torch_directional = true,
 		// 			directional_activator = true,
@@ -76,7 +76,7 @@ namespace redstone {
 
 	//? Off.
 
-	core.register_node("redstone:inverter_off", {
+	core.register_node("crafter_redstone:inverter_off", {
 		//     description = "Redstone Inverter",
 		//     tiles = {"repeater_off.png"},
 		//     groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,attached_node = 1,redstone_activation_directional=1,torch_directional=1,redstone_power=r_max},
@@ -86,7 +86,7 @@ namespace redstone {
 		// 	sunlight_propagates = true,
 		// 	walkable = false,
 		// 	drawtype= "nodebox",
-		// 	drop="redstone:inverter_off",
+		// 	drop="crafter_redstone:inverter_off",
 		// 	node_box = {
 		// 		type = "fixed",
 		// 		fixed = {
@@ -98,7 +98,7 @@ namespace redstone {
 		// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		// 		local dir = core.facedir_to_dir(core.get_node(pos).param2)
 		// 		redstone.inject(pos,{
-		// 			name = "redstone:inverter_off",
+		// 			name = "crafter_redstone:inverter_off",
 		// 			torch  = r_max,
 		// 			torch_directional = true,
 		// 			directional_activator = true,
@@ -118,13 +118,13 @@ namespace redstone {
 		// 	end
 		// })
 		// redstone.register_activator({
-		// 	name = "redstone:inverter_off",
+		// 	name = "crafter_redstone:inverter_off",
 		// 	activate = function(pos)
 		// 		local param2 = core.get_node(pos).param2
-		// 		core.swap_node(pos,{name="redstone:inverter_on",param2=param2})
+		// 		core.swap_node(pos,{name="crafter_redstone:inverter_on",param2=param2})
 		// 		local dir = core.facedir_to_dir(param2)
 		// 		redstone.inject(pos,{
-		// 			name = "redstone:inverter_on",
+		// 			name = "crafter_redstone:inverter_on",
 		// 			directional_activator = true,
 		// 			input  = vector.subtract(pos,dir),
 		// 			output = vector.add(pos,dir),
