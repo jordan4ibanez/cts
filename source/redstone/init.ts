@@ -11,6 +11,7 @@ namespace redstone {
 	// todo: Serialize the virtual machine AND the update queue so that it continues on after server restarts.
 
 	interface RedstoneData {
+		isDirectionalPowerSource: boolean;
 		isPowerSource: boolean;
 		powerSource: number;
 		isDust: boolean;
