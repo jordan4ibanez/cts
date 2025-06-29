@@ -145,22 +145,20 @@ namespace redstone {
 						updateData.exists = true;
 
 						// If the dust is on the edge of the update map, it is now a power source calculation wise.
-						if (border && worldData.isDust && worldData.dust > 1) {
-							updateData.isPowerSource = true;
-							updateData.powerSource = worldData.dust;
-							updateData.isDust = true;
-							updateData.dust = worldData.dust;
+
+						if (
+							worldData.isPowerSource ||
+							(border && worldData.isDust && worldData.dust > 1)
+						) {
 							powerSources.push(updateMapPositionHash);
+							updateData.dust = worldData.dust;
 						} else {
-							if (worldData.isPowerSource) {
-								powerSources.push(updateMapPositionHash);
-							}
-							updateData.isPowerSource = worldData.isPowerSource;
-							updateData.powerSource = worldData.powerSource;
-							updateData.isDust = worldData.isDust;
 							updateData.dust = 0;
-							updateData.wasPowered = worldData.dust > 0;
 						}
+						updateData.isPowerSource = worldData.isPowerSource;
+						updateData.powerSource = worldData.powerSource;
+						updateData.isDust = worldData.isDust;
+						updateData.wasPowered = worldData.dust > 0;
 					}
 				}
 			}
