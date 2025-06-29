@@ -82,6 +82,7 @@ namespace redstone {
 			drop: "crafter_redstone:dust",
 			on_construct: (pos) => {
 				addData(pos, {
+					isDirectionalPowerSource: false,
 					isPowerSource: false,
 					powerSource: 0,
 					isDust: true,
