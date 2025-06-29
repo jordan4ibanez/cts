@@ -225,6 +225,20 @@ namespace redstone {
 
 	function allDirectionalPowerSourceTrigger(sourcePosition: Vec3): void {
 		for (const dir of allDirectionalPowerSourceDirections) {
+			workerVec.x = sourcePosition.x + dir.x;
+			workerVec.y = sourcePosition.y + dir.y;
+			workerVec.z = sourcePosition.z + dir.z;
+
+			const hashedForwardDirection: number = hashPosition(workerVec);
+
+			const forwardData: UpdateMapData | undefined = updateMap.get(
+				hashedForwardDirection
+			);
+
+			// Either out of bounds, or, hit the edge of the update map.
+			if (forwardData == null) {
+				continue;
+			}
 		}
 	}
 
