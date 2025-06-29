@@ -36,7 +36,7 @@ namespace redstone {
 		},
 
 		after_place_node: (pos, placer, itemstack, pointed_thing) => {
-			// local dir = core.facedir_to_dir(core.get_node(pos).param2)
+			const dir = core.facedir_to_dir(core.get_node(pos).param2 || 0);
 			// redstone.inject(pos,{
 			// 	name = "crafter_redstone:inverter_on",
 			// 	directional_activator = true,
@@ -44,6 +44,7 @@ namespace redstone {
 			// 	output = vector.add(pos,dir),
 			// 	dir = dir
 			// })
+			
 			// redstone.update(pos)
 			// redstone.update(vector.add(pos,dir))
 		},
