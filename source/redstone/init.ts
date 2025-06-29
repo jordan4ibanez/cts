@@ -327,6 +327,41 @@ namespace redstone {
 		}
 	}
 
+	//! This is debug ONLY.
+	function debugOutputVisual() {
+		const worldPos = unhashPosition(updateMapworldPosition);
+
+		for (const x of $range(-maxState, maxState)) {
+			for (const y of $range(-maxState, maxState)) {
+				for (const z of $range(-maxState, maxState)) {
+					workerVec.x = x;
+					workerVec.y = y;
+					workerVec.z = z;
+
+					const currentPositionHash: number = hashPosition(workerVec);
+
+					const currentData: UpdateMapData | undefined =
+						updateMap.get(currentPositionHash);
+
+					// Either out of bounds, or, hit the edge of the update map.
+					if (currentData == null || !currentData.exists) {
+						continue;
+					}
+
+					if (currentData.isDust) {
+						workerVec.x += worldPos.x;
+						workerVec.y += worldPos.y;
+						workerVec.z += worldPos.z;
+
+						core.swap_node(workerVec, {
+							name: `crafter_redstone:dust_${currentData.dust}`,
+						});
+					}
+				}
+			}
+		}
+	}
+
 	//? This is how the logic is unwrapped and side effects are run.
 	core.register_globalstep((delta: number) => {
 		if (updateQueue.length() <= 0) {
@@ -345,6 +380,7 @@ namespace redstone {
 
 		copyMemoryMapIntoUpdateMap(updatePosition);
 		doLogic();
+		debugOutputVisual();
 
 		const end: number = core.get_us_time() / 1_000_000;
 		const total: number = end - start;
