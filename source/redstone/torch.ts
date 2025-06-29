@@ -90,6 +90,7 @@ namespace redstone {
 		on_construct: (pos: Vec3) => {
 			addData(pos, {
 				isDirectionalPowerSource: false,
+				powerOutput: 0,
 				isPowerSource: true,
 				powerSource: maxState,
 				isDust: false,
@@ -137,6 +138,7 @@ namespace redstone {
 		on_construct: (pos: Vec3) => {
 			addData(pos, {
 				isDirectionalPowerSource: false,
+				powerOutput: 0,
 				isPowerSource: true,
 				powerSource: maxState,
 				isDust: false,
