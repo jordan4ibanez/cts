@@ -66,6 +66,7 @@ namespace redstone {
 
 	interface UpdateMapData extends RedstoneData {
 		exists: boolean;
+		wasPowered: boolean;
 	}
 
 	// The update map is very simple in concept.
