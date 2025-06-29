@@ -416,6 +416,8 @@ namespace redstone {
 						atPosition
 					);
 
+					worldData.isDirectionalPowerSource =
+						currentData.isDirectionalPowerSource;
 					worldData.isPowerSource = currentData.isPowerSource;
 					worldData.powerSource = currentData.powerSource;
 					worldData.isDust = currentData.isDust;
