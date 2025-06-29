@@ -21,7 +21,7 @@ namespace redstone {
 		},
 		sounds: crafter.stoneSound(),
 		paramtype: ParamType1.light,
-		paramtype2: ParamType2.facedir,
+		paramtype2: ParamType2["4dir"],
 		sunlight_propagates: true,
 		walkable: false,
 		drawtype: Drawtype.nodebox,
@@ -34,48 +34,42 @@ namespace redstone {
 				[-0.2, -0.5, 0.2, 0.2, 0.1, 0.4], //output post
 			],
 		},
-
-		after_place_node: (pos, placer, itemstack, pointed_thing) => {
+		after_place_node: (pos: Vec3) => {
 			const dir = core.facedir_to_dir(core.get_node(pos).param2 || 0);
-			// redstone.inject(pos,{
-			// 	name = "crafter_redstone:inverter_on",
-			// 	directional_activator = true,
-			// 	input  = vector.subtract(pos,dir),
-			// 	output = vector.add(pos,dir),
-			// 	dir = dir
-			// })
-			
-			// redstone.update(pos)
-			// redstone.update(vector.add(pos,dir))
-		},
 
-		// 	after_destruct = function(pos, oldnode)
-		// 		local param2 = oldnode.param2
-		// 		local dir = core.facedir_to_dir(param2)
-		// 		redstone.inject(pos,nil)
-		// 		//redstone.update(pos)
-		// 		redstone.update(vector.add(pos,dir))
-		// 	end
-		// })
-		// redstone.register_activator({
-		// 	name = "crafter_redstone:inverter_on",
-		// 	deactivate = function(pos)
-		// 		local param2 = core.get_node(pos).param2
-		// 		core.swap_node(pos,{name="crafter_redstone:inverter_off",param2=param2})
-		// 		local dir = core.facedir_to_dir(param2)
-		// 		redstone.inject(pos,{
-		// 			name = "crafter_redstone:inverter_off",
-		// 			torch  = r_max,
-		// 			torch_directional = true,
-		// 			directional_activator = true,
-		// 			input  = vector.subtract(pos,dir),
-		// 			output = vector.add(pos,dir),
-		// 			dir = dir
-		// 		})
-		// 		//redstone.update(pos)
-		// 		redstone.update(vector.add(pos,dir))
-		// 	end
+			addData(pos, {
+				isPowerSource: false,
+				powerSource: 0,
+				isDust: false,
+				dust: 0,
+				directional_activator: true,
+				input: core.hash_node_position(vector.subtract(pos, dir)),
+				output: core.hash_node_position(vector.add(pos, dir)),
+			});
+		},
+		after_destruct: (pos: Vec3) => {
+			deleteData(pos);
+		},
 	});
+
+	// redstone.register_activator({
+	// 	name = "crafter_redstone:inverter_on",
+	// 	deactivate = function(pos)
+	// 		local param2 = core.get_node(pos).param2
+	// 		core.swap_node(pos,{name="crafter_redstone:inverter_off",param2=param2})
+	// 		local dir = core.facedir_to_dir(param2)
+	// 		redstone.inject(pos,{
+	// 			name = "crafter_redstone:inverter_off",
+	// 			torch  = r_max,
+	// 			torch_directional = true,
+	// 			directional_activator = true,
+	// 			input  = vector.subtract(pos,dir),
+	// 			output = vector.add(pos,dir),
+	// 			dir = dir
+	// 		})
+	// 		//redstone.update(pos)
+	// 		redstone.update(vector.add(pos,dir))
+	// 	end
 
 	//? Off.
 
