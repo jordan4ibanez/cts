@@ -132,20 +132,16 @@ namespace redstone {
 		after_destruct: (pos: Vec3) => {
 			deleteData(pos);
 		},
-
 		redstone_activation: (pos: Vec3) => {
 			const param2: number | undefined = core.get_node(pos).param2;
 			if (param2 == null) {
 				throw new Error("Param 2 error 4");
 			}
-
 			core.swap_node(pos, {
 				name: "crafter_redstone:inverter_on",
 				param2: param2,
 			});
-
 			const dir: Vec3 = core.fourdir_to_dir(param2);
-
 			addData(pos, {
 				isDirectionalPowerSource: true,
 				isPowerSource: false,
