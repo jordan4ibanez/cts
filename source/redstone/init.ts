@@ -236,7 +236,7 @@ namespace redstone {
 
 		const end: number = core.get_us_time() / 1_000_000;
 		const total: number = end - start;
-		print("took: ", total);
+		// print("took: ", total);
 	});
 
 	utility.loadFiles([
