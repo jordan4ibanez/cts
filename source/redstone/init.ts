@@ -19,9 +19,9 @@ namespace redstone {
 
 	//? Virtual machine.
 
-	function debugMap(pos?: Vec3): void {
+	// function debugMap(pos?: Vec3): void {
 		// print(memoryMap.size);
-	}
+	// }
 
 	// The entirety of redstone data is simulated in memory and reflected into the map in a designated interval (if any changes).
 	const memoryMap = new Map<number, RedstoneData>();
@@ -35,7 +35,7 @@ namespace redstone {
 		const positionHash: number = hashPosition(pos);
 		memoryMap.set(positionHash, data);
 		enqueueUpdate(positionHash);
-		debugMap();
+		// debugMap();
 	}
 
 	/**
@@ -46,7 +46,7 @@ namespace redstone {
 		const positionHash: number = hashPosition(pos);
 		memoryMap.delete(positionHash);
 		enqueueUpdate(positionHash);
-		debugMap();
+		// debugMap();
 	}
 
 	//? Update queue.
