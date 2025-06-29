@@ -5,21 +5,42 @@ namespace redstone {
 		wield_image: "redstone_dust_item.png",
 		wield_scale: vector.create3d({ x: 1, y: 1, z: 1 + 1 / 16 }),
 		liquids_pointable: false,
-		on_place: (itemstack, placer, pointed_thing) => {
-			// 		if not pointed_thing.type == "node" then
-			// 			return
-			// 		end
-			// 		local sneak = placer:get_player_control().sneak
-			// 		local noddef = registered_nodes[get_node(pointed_thing.under).name]
-			// 		if not sneak and noddef.on_rightclick then
-			// 			core.item_place(itemstack, placer, pointed_thing)
-			// 			return
-			// 		end
-			// 		local _,worked = core.item_place(ItemStack("crafter_redstone:dust_0"), placer, pointed_thing)
-			// 		if worked then
-			// 			itemstack:take_item()
-			// 			return(itemstack)
-			// 		end
+		on_place: (
+			itemstack: ItemStackObject,
+			placer: ObjectRef,
+			pointed_thing: PointedThing
+		) => {
+			if (pointed_thing.type != PointedThingType.node) {
+				return;
+			}
+			if (pointed_thing.under == null) {
+				throw new Error("engine issue?");
+			}
+			const sneak = placer.get_player_control().sneak;
+			const noddef: NodeDefinition | undefined =
+				core.registered_nodes[core.get_node(pointed_thing.under).name];
+
+			if (noddef == null) {
+				core.log(
+					LogLevel.error,
+					`Undefined node at: ${pointed_thing.under}`
+				);
+				return;
+			}
+			if (!sneak && noddef.on_rightclick) {
+				core.item_place(itemstack, placer, pointed_thing);
+				return;
+			}
+
+			const [_, worked] = core.item_place(
+				ItemStack("crafter_redstone:dust_0"),
+				placer,
+				pointed_thing
+			);
+			if (worked) {
+				itemstack.take_item();
+			}
+			return itemstack;
 		},
 	});
 
