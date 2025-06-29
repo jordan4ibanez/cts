@@ -195,6 +195,23 @@ namespace redstone {
 		}
 	}
 
+	const directions: readonly Vec3[] = [
+		vector.create3d({ x: 0, y: 0, z: 0 }),
+		vector.create3d({ x: 1, y: 0, z: 0 }),
+		vector.create3d({ x: -1, y: 0, z: 0 }),
+		vector.create3d({ x: 0, y: 0, z: 1 }),
+		vector.create3d({ x: 0, y: 0, z: -1 }),
+		vector.create3d({ x: 0, y: 1, z: 0 }),
+		vector.create3d({ x: 0, y: -1, z: 0 }),
+		vector.create3d({ x: 1, y: 1, z: 0 }),
+		vector.create3d({ x: -1, y: 1, z: 0 }),
+		vector.create3d({ x: 0, y: 1, z: 1 }),
+		vector.create3d({ x: 0, y: 1, z: -1 }),
+		vector.create3d({ x: 1, y: -1, z: 0 }),
+		vector.create3d({ x: -1, y: -1, z: 0 }),
+		vector.create3d({ x: 0, y: -1, z: 1 }),
+		vector.create3d({ x: 0, y: -1, z: -1 }),
+	];
 	/**
 	 * All power sources reflect outwards.
 	 */
