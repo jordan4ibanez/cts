@@ -26,14 +26,15 @@ namespace redstone {
 		walkable: false,
 		drawtype: Drawtype.nodebox,
 		drop: "crafter_redstone:inverter_off",
-		// 	node_box = {
-		// 		type = "fixed",
-		// 		fixed = {
-		// 				//left  front  bottom right back top
-		// 				{-0.5, -0.5,  -0.5, 0.5,  -0.3, 0.5}, //base
-		// 				{-0.2, -0.5,  0.2, 0.2,  0.1, 0.4}, //output post
-		// 			},
-		// 		},
+		node_box: {
+			type: Nodeboxtype.fixed,
+			fixed: [
+				//left  front  bottom right back top
+				[-0.5, -0.5, -0.5, 0.5, -0.3, 0.5], //base
+				[-0.2, -0.5, 0.2, 0.2, 0.1, 0.4], //output post
+			],
+		},
+
 		// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
 		// 		local dir = core.facedir_to_dir(core.get_node(pos).param2)
 		// 		redstone.inject(pos,{
