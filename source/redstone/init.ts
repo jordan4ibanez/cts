@@ -15,6 +15,9 @@ namespace redstone {
 		powerSource: number;
 		isDust: boolean;
 		dust: number;
+		directional_activator: boolean;
+		input: Vec3;
+		output: Vec3;
 	}
 
 	//? Virtual machine.
@@ -85,6 +88,9 @@ namespace redstone {
 						isDust: false,
 						dust: 0,
 						wasPowered: false,
+						directional_activator: false,
+						input: vector.create3d(),
+						output: vector.create3d(),
 					});
 				}
 			}
