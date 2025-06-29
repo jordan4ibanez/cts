@@ -163,9 +163,12 @@ namespace redstone {
 					if (worldData == null) {
 						updateData.exists = false;
 					} else {
-						updateData.powerSource = worldData.powerSource;
-
 						// todo: check if this is the border.
+						updateData.exists = true;
+						updateData.isPowerSource = worldData.isPowerSource;
+						updateData.powerSource = worldData.powerSource;
+						updateData.isDust = worldData.isDust;
+						updateData.dust = worldData.dust;
 					}
 				}
 			}
