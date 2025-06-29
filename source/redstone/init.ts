@@ -311,9 +311,13 @@ namespace redstone {
 		positionHash: number,
 		sideEffect: RedstoneTrigger
 	): void {
-		
+		const currentPosition: Vec3 = unhashPosition(positionHash);
 
-
+		for (const dir of allSidesDirections) {
+			workerVec.x = currentPosition.x + dir.x;
+			workerVec.y = currentPosition.y + dir.y;
+			workerVec.z = currentPosition.z + dir.z;
+		}
 	}
 
 	function writeBackSideEffects(
