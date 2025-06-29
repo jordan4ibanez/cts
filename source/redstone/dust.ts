@@ -70,6 +70,7 @@ namespace redstone {
 				type: Nodeboxtype.fixed,
 				fixed: [-1 / 2, -1 / 2, -1 / 2, 1 / 2, -1 / 2 + 1 / 16, 1 / 2],
 			},
+			connects_to: ["group:redstone"],
 			sounds: crafter.stoneSound(),
 			groups: {
 				dig_immediate: 1,
@@ -79,18 +80,17 @@ namespace redstone {
 				redstone_power: i,
 			},
 			drop: "crafter_redstone:dust",
-
-			// 		on_construct = function(pos)
-			// 			data_injection(pos,{dust=i})
-			// 			//instruction_rebuild(pos)
-			// 			calculate(pos)
-			// 		end,
-			// 		after_destruct = function(pos)
-			// 			data_injection(pos,nil)
-			// 			//instruction_rebuild(pos,true)
-			// 			calculate(pos)
-			// 		end,
-			// 		connects_to = {"group:redstone"},
+			on_construct: (pos) => {
+				addData(pos, {
+					isPowerSource: false,
+					powerSource: 0,
+					isDust: true,
+					dust: i,
+				});
+			},
+			after_destruct: (pos: Vec3) => {
+				deleteData(pos);
+			},
 		});
 
 		// 	core.register_lbm({
