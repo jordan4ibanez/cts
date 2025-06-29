@@ -1,28 +1,27 @@
 namespace redstone {
-
-		// core.register_craftitem("crafter_redstone:dust", {
-	// 	description = "Redstone Dust",
-	// 	inventory_image = "redstone_dust_item.png",
-	// 	wield_image = "redstone_dust_item.png",
-	// 	wield_scale = {x = 1, y = 1, z = 1 + 1/16},
-	// 	liquids_pointable = false,
-	// 	on_place = function(itemstack, placer, pointed_thing)
-	// 		if not pointed_thing.type == "node" then
-	// 			return
-	// 		end
-	// 		local sneak = placer:get_player_control().sneak
-	// 		local noddef = registered_nodes[get_node(pointed_thing.under).name]
-	// 		if not sneak and noddef.on_rightclick then
-	// 			core.item_place(itemstack, placer, pointed_thing)
-	// 			return
-	// 		end
-	// 		local _,worked = core.item_place(ItemStack("crafter_redstone:dust_0"), placer, pointed_thing)
-	// 		if worked then
-	// 			itemstack:take_item()
-	// 			return(itemstack)
-	// 		end
-	// 	end,
-	// })
+	core.register_craftitem("crafter_redstone:dust", {
+		description: "Redstone Dust",
+		inventory_image: "redstone_dust_item.png",
+		wield_image: "redstone_dust_item.png",
+		wield_scale: vector.create3d({ x: 1, y: 1, z: 1 + 1 / 16 }),
+		liquids_pointable: false,
+		// 	on_place = function(itemstack, placer, pointed_thing)
+		// 		if not pointed_thing.type == "node" then
+		// 			return
+		// 		end
+		// 		local sneak = placer:get_player_control().sneak
+		// 		local noddef = registered_nodes[get_node(pointed_thing.under).name]
+		// 		if not sneak and noddef.on_rightclick then
+		// 			core.item_place(itemstack, placer, pointed_thing)
+		// 			return
+		// 		end
+		// 		local _,worked = core.item_place(ItemStack("crafter_redstone:dust_0"), placer, pointed_thing)
+		// 		if worked then
+		// 			itemstack:take_item()
+		// 			return(itemstack)
+		// 		end
+		// 	end,
+	});
 
 	// //power levels r_max-1 being the highest
 	// local d_max = r_max-1
