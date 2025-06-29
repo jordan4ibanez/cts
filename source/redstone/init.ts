@@ -294,10 +294,29 @@ namespace redstone {
 
 	//? Writeback.
 
+	enum RedstoneTrigger {
+		on,
+		off,
+	}
+
+	function triggerSideEffects(
+		positionHash: number,
+		sideEffect: RedstoneTrigger
+	): void {}
+
 	function writeBackSideEffects(
 		currentData: UpdateMapData,
-		realWorldHash: number
+		realWorldHash: number,
+		atPosition: boolean
 	): void {
+		// A player placed a torch.
+		if (atPosition && currentData.isPowerSource) {
+			print("torchy");
+
+			return;
+		}
+
+		// Redstone getting turned on or off.
 		if (currentData.wasPowered && currentData.dust <= 0) {
 			print("turned off at ", unhashPosition(realWorldHash));
 		} else if (!currentData.wasPowered && currentData.dust > 0) {
@@ -344,7 +363,12 @@ namespace redstone {
 						throw new Error("Writeback world poll logic error.");
 					}
 
-					writeBackSideEffects(currentData, worldPositionHash);
+					const atPosition: boolean = x == 0 && y == 0 && z == 0;
+					writeBackSideEffects(
+						currentData,
+						worldPositionHash,
+						atPosition
+					);
 
 					worldData.isPowerSource = currentData.isPowerSource;
 					worldData.powerSource = currentData.powerSource;
