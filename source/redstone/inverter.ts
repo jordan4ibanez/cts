@@ -4,14 +4,9 @@ namespace redstone {
 	// =
 	// minetest,vector
 	// local r_max = redstone.max_state
-	// --[[
-	//  ██████╗ ███╗   ██╗
-	// ██╔═══██╗████╗  ██║
-	// ██║   ██║██╔██╗ ██║
-	// ██║   ██║██║╚██╗██║
-	// ╚██████╔╝██║ ╚████║
-	//  ╚═════╝ ╚═╝  ╚═══╝
-	// ]]--
+	
+	//? On.
+
 	// --inverts redstone signal
 	// core.register_node("redstone:inverter_on", {
 	//     description = "Redstone Inverter",
