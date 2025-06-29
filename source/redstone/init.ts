@@ -317,6 +317,31 @@ namespace redstone {
 			workerVec.x = currentPosition.x + dir.x;
 			workerVec.y = currentPosition.y + dir.y;
 			workerVec.z = currentPosition.z + dir.z;
+
+			const hashedForwardPosition: number = hashPosition(workerVec);
+
+			const data: RedstoneData | undefined = memoryMap.get(
+				hashedForwardPosition
+			);
+
+			if (data == undefined) {
+				continue;
+			}
+
+			if (data.directional_activator) {
+				const def: NodeDefinition | undefined =
+					core.registered_nodes[core.get_node(workerVec).name];
+				if (def == null) {
+					core.log(
+						LogLevel.warning,
+						`Undefined activator at ${workerVec}`
+					);
+				}
+
+				
+
+				
+			}
 		}
 	}
 
