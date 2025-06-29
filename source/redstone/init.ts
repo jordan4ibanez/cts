@@ -19,10 +19,6 @@ namespace redstone {
 
 	//? Virtual machine.
 
-	// function debugMap(pos?: Vec3): void {
-		// print(memoryMap.size);
-	// }
-
 	// The entirety of redstone data is simulated in memory and reflected into the map in a designated interval (if any changes).
 	const memoryMap = new Map<number, RedstoneData>();
 
@@ -35,7 +31,6 @@ namespace redstone {
 		const positionHash: number = hashPosition(pos);
 		memoryMap.set(positionHash, data);
 		enqueueUpdate(positionHash);
-		// debugMap();
 	}
 
 	/**
@@ -46,7 +41,6 @@ namespace redstone {
 		const positionHash: number = hashPosition(pos);
 		memoryMap.delete(positionHash);
 		enqueueUpdate(positionHash);
-		// debugMap();
 	}
 
 	//? Update queue.
@@ -103,31 +97,6 @@ namespace redstone {
 
 	/** The power sources that exist in the update map. */
 	const powerSources = new utility.QueueFIFO<number>();
-
-	function clearUpdateMap(): void {
-		let positionHash: number = 0;
-		let data: UpdateMapData | undefined = undefined;
-
-		for (const x of $range(-maxState, maxState)) {
-			for (const y of $range(-maxState, maxState)) {
-				for (const z of $range(-maxState, maxState)) {
-					workerVec.x = x;
-					workerVec.y = y;
-					workerVec.z = z;
-
-					positionHash = hashPosition(workerVec);
-
-					data = updateMap.get(positionHash);
-
-					if (data == null) {
-						throw new Error("Update map logic error.");
-					}
-
-					data.exists = false;
-				}
-			}
-		}
-	}
 
 	/**
 	 * This will copy the virtual machine memory into the update map memory.
