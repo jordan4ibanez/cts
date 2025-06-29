@@ -133,8 +133,7 @@ namespace redstone {
 	 * @param pos The real world position.
 	 */
 	function copyMemoryMapIntoUpdateMap(pos: Vec3): void {
-		// todo: Any dust at the borders is a power source, if powered.
-		clearUpdateMap();
+		// clearUpdateMap();
 
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
@@ -166,7 +165,6 @@ namespace redstone {
 					if (worldData == null) {
 						updateData.exists = false;
 					} else {
-						// todo: check if this is the border.
 						const border: boolean =
 							absolute(x) == maxState ||
 							absolute(y) == maxState ||
@@ -195,6 +193,10 @@ namespace redstone {
 			}
 		}
 	}
+
+	core.register_globalstep((delta: number) => {
+		print(updateQueue.length());
+	});
 
 	utility.loadFiles([
 		// "functions",
