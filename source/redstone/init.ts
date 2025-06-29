@@ -82,6 +82,7 @@ namespace redstone {
 					workerVec.y = y;
 					workerVec.z = z;
 					virtualMap.set(hashPosition(workerVec), {
+						isDirectionalPowerSource: false,
 						exists: false,
 						isPowerSource: false,
 						powerSource: 0,
