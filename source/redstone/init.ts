@@ -16,8 +16,8 @@ namespace redstone {
 		isDust: boolean;
 		dust: number;
 		directional_activator: boolean;
-		input: Vec3;
-		output: Vec3;
+		input: number;
+		output: number;
 	}
 
 	//? Virtual machine.
