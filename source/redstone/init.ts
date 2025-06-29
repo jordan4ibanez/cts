@@ -90,6 +90,7 @@ namespace redstone {
 						powerSource: 0,
 						isDust: false,
 						dust: 0,
+						wasPowered: false,
 					});
 				}
 			}
