@@ -178,7 +178,7 @@ namespace redstone {
 						if (border && worldData.isDust && worldData.dust > 1) {
 							updateData.isPowerSource = true;
 							updateData.powerSource = worldData.dust;
-							updateData.isDust = worldData.isDust;
+							updateData.isDust = true;
 							updateData.dust = 0;
 							powerSources.push(updateMapPositionHash);
 						} else {
@@ -188,7 +188,7 @@ namespace redstone {
 							updateData.isPowerSource = worldData.isPowerSource;
 							updateData.powerSource = worldData.powerSource;
 							updateData.isDust = worldData.isDust;
-							updateData.dust = worldData.dust;
+							updateData.dust = 0;
 						}
 					}
 				}
