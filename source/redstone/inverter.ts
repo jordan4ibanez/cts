@@ -134,10 +134,15 @@ namespace redstone {
 		// 	end
 
 		redstone_activation: (pos: Vec3) => {
-			// 	activate = function(pos)
-			// 		local param2 = core.get_node(pos).param2
+			const param2: number | undefined = core.get_node(pos).param2;
+			if (param2 == null) {
+				throw new Error("Param 2 error 4");
+			}
+
 			// 		core.swap_node(pos,{name="crafter_redstone:inverter_on",param2=param2})
+
 			// 		local dir = core.facedir_to_dir(param2)
+
 			// 		redstone.inject(pos,{
 			// 			name = "crafter_redstone:inverter_on",
 			// 			directional_activator = true,
