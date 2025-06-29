@@ -4,68 +4,69 @@ namespace redstone {
 	// =
 	// minetest,vector
 	// local r_max = redstone.max_state
-	
+
 	//? On.
 
-	// //inverts redstone signal
-	// core.register_node("redstone:inverter_on", {
-	//     description = "Redstone Inverter",
-	//     tiles = {"repeater_on.png"},
-	//     groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,attached_node = 1,redstone_activation_directional=1},
-	//     sounds = main.stoneSound(),
-	//     paramtype = "light",
-	// 	paramtype2 = "facedir",
-	// 	sunlight_propagates = true,
-	// 	walkable = false,
-	// 	drawtype= "nodebox",
-	// 	drop="redstone:inverter_off",
-	// 	node_box = {
-	// 		type = "fixed",
-	// 		fixed = {
-	// 				//left  front  bottom right back top
-	// 				{-0.5, -0.5,  -0.5, 0.5,  -0.3, 0.5}, //base
-	// 				{-0.2, -0.5,  0.2, 0.2,  0.1, 0.4}, //output post
-	// 			},
-	// 		},
-	// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
-	// 		local dir = core.facedir_to_dir(core.get_node(pos).param2)
-	// 		redstone.inject(pos,{
-	// 			name = "redstone:inverter_on",
-	// 			directional_activator = true,
-	// 			input  = vector.subtract(pos,dir),
-	// 			output = vector.add(pos,dir),
-	// 			dir = dir
-	// 		})
-	// 		redstone.update(pos)
-	// 		redstone.update(vector.add(pos,dir))
-	// 	end,
-	// 	after_destruct = function(pos, oldnode)
-	// 		local param2 = oldnode.param2
-	// 		local dir = core.facedir_to_dir(param2)
-	// 		redstone.inject(pos,nil)
-	// 		//redstone.update(pos)
-	// 		redstone.update(vector.add(pos,dir))
-	// 	end
-	// })
-	// redstone.register_activator({
-	// 	name = "redstone:inverter_on",
-	// 	deactivate = function(pos)
-	// 		local param2 = core.get_node(pos).param2
-	// 		core.swap_node(pos,{name="redstone:inverter_off",param2=param2})
-	// 		local dir = core.facedir_to_dir(param2)
-	// 		redstone.inject(pos,{
-	// 			name = "redstone:inverter_off",
-	// 			torch  = r_max,
-	// 			torch_directional = true,
-	// 			directional_activator = true,
-	// 			input  = vector.subtract(pos,dir),
-	// 			output = vector.add(pos,dir),
-	// 			dir = dir
-	// 		})
-	// 		//redstone.update(pos)
-	// 		redstone.update(vector.add(pos,dir))
-	// 	end
-	// })
+	//inverts redstone signal
+	core.register_node("redstone:inverter_on", {
+		//     description = "Redstone Inverter",
+		//     tiles = {"repeater_on.png"},
+		//     groups = {stone = 1, hard = 1, pickaxe = 1, hand = 4,attached_node = 1,redstone_activation_directional=1},
+		//     sounds = main.stoneSound(),
+		//     paramtype = "light",
+		// 	paramtype2 = "facedir",
+		// 	sunlight_propagates = true,
+		// 	walkable = false,
+		// 	drawtype= "nodebox",
+		// 	drop="redstone:inverter_off",
+		// 	node_box = {
+		// 		type = "fixed",
+		// 		fixed = {
+		// 				//left  front  bottom right back top
+		// 				{-0.5, -0.5,  -0.5, 0.5,  -0.3, 0.5}, //base
+		// 				{-0.2, -0.5,  0.2, 0.2,  0.1, 0.4}, //output post
+		// 			},
+		// 		},
+		// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		// 		local dir = core.facedir_to_dir(core.get_node(pos).param2)
+		// 		redstone.inject(pos,{
+		// 			name = "redstone:inverter_on",
+		// 			directional_activator = true,
+		// 			input  = vector.subtract(pos,dir),
+		// 			output = vector.add(pos,dir),
+		// 			dir = dir
+		// 		})
+		// 		redstone.update(pos)
+		// 		redstone.update(vector.add(pos,dir))
+		// 	end,
+		// 	after_destruct = function(pos, oldnode)
+		// 		local param2 = oldnode.param2
+		// 		local dir = core.facedir_to_dir(param2)
+		// 		redstone.inject(pos,nil)
+		// 		//redstone.update(pos)
+		// 		redstone.update(vector.add(pos,dir))
+		// 	end
+		// })
+		// redstone.register_activator({
+		// 	name = "redstone:inverter_on",
+		// 	deactivate = function(pos)
+		// 		local param2 = core.get_node(pos).param2
+		// 		core.swap_node(pos,{name="redstone:inverter_off",param2=param2})
+		// 		local dir = core.facedir_to_dir(param2)
+		// 		redstone.inject(pos,{
+		// 			name = "redstone:inverter_off",
+		// 			torch  = r_max,
+		// 			torch_directional = true,
+		// 			directional_activator = true,
+		// 			input  = vector.subtract(pos,dir),
+		// 			output = vector.add(pos,dir),
+		// 			dir = dir
+		// 		})
+		// 		//redstone.update(pos)
+		// 		redstone.update(vector.add(pos,dir))
+		// 	end
+	});
+
 	// core.register_lbm({
 	// 	name = "redstone:startupinverter",
 	// 	nodenames = {"redstone:inverter_on"},
@@ -83,7 +84,7 @@ namespace redstone {
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end,
 	// })
-	
+
 	//? Off.
 
 	// core.register_node("redstone:inverter_off", {
