@@ -52,26 +52,34 @@ namespace redstone {
 		const color: number = math.floor(255 * (i / (maxState - 1)));
 
 		core.register_node("crafter_redstone:dust_" + i, {
-			// 		description = "Redstone Dust",
-			// 		wield_image = "redstone_dust_item.png",
-			// 		tiles = {
-			// 			"redstone_dust_main.png^[colorize:red:"+color, "redstone_turn.png^[colorize:red:"+color,
-			// 			"redstone_t.png^[colorize:red:"+color, "redstone_cross.png^[colorize:red:"+color
-			// 		},
-			// 		power=i,
-			// 		drawtype = "raillike",
-			// 		paramtype = "light",
-			// 		sunlight_propagates = true,
-			// 		is_ground_content = false,
-			// 		walkable = false,
-			// 		node_placement_prediction = "",
-			// 		selection_box = {
-			// 			type = "fixed",
-			// 			fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
-			// 		},
-			// 		sounds = main.stoneSound(),
-			// 		groups={dig_immediate=1,attached_node=1,redstone_dust=1,redstone=1,redstone_power=i},
-			// 		drop="crafter_redstone:dust",
+			description: "Redstone Dust",
+			wield_image: "redstone_dust_item.png",
+			tiles: [
+				"redstone_dust_main.png^[colorize:red:" + color,
+				"redstone_turn.png^[colorize:red:" + color,
+				"redstone_t.png^[colorize:red:" + color,
+				"redstone_cross.png^[colorize:red:" + color,
+			],
+			drawtype: Drawtype.raillike,
+			paramtype: ParamType1.light,
+			sunlight_propagates: true,
+			is_ground_content: false,
+			walkable: false,
+			node_placement_prediction: "",
+			selection_box: {
+				type: Nodeboxtype.fixed,
+				fixed: [-1 / 2, -1 / 2, -1 / 2, 1 / 2, -1 / 2 + 1 / 16, 1 / 2],
+			},
+			sounds: crafter.stoneSound(),
+			groups: {
+				dig_immediate: 1,
+				attached_node: 1,
+				redstone_dust: 1,
+				redstone: 1,
+				redstone_power: i,
+			},
+			drop: "crafter_redstone:dust",
+
 			// 		on_construct = function(pos)
 			// 			data_injection(pos,{dust=i})
 			// 			//instruction_rebuild(pos)
