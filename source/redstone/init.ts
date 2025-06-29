@@ -69,15 +69,18 @@ namespace redstone {
 	// This data is then copied from the virtual machine memory map into originating
 	// at the update position.
 	// You can think of this cube as moving around the map invisibly. It is everywhere, and nowhere.
-	const updateMap: Map<number, RedstoneData> = (() => {
-		const virtualMap = new Map<number, RedstoneData>();
+	const updateMap: Map<number, RedstoneUpdateMapData> = (() => {
+		const virtualMap = new Map<number, RedstoneUpdateMapData>();
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
 				for (const z of $range(-maxState, maxState)) {
 					workerVec.x = x;
 					workerVec.y = y;
 					workerVec.z = z;
-					virtualMap.set(hashPosition(workerVec), { exists: false });
+					virtualMap.set(hashPosition(workerVec), {
+						exists: false,
+						powerSource: 0,
+					});
 				}
 			}
 		}
