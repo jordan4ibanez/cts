@@ -94,8 +94,8 @@ namespace redstone {
 				isDust: false,
 				dust: 0,
 				directional_activator: false,
-				input: vector.create3d(),
-				output: vector.create3d(),
+				input: 0,
+				output: 0,
 			});
 		},
 		after_destruct: (pos: Vec3) => {
@@ -140,8 +140,8 @@ namespace redstone {
 				isDust: false,
 				dust: 0,
 				directional_activator: false,
-				input: vector.create3d(),
-				output: vector.create3d(),
+				input: 0,
+				output: 0,
 			});
 		},
 		after_destruct: (pos: Vec3) => {
