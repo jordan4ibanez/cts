@@ -49,40 +49,42 @@ namespace redstone {
 	// local d_max = r_max-1
 
 	for (const i of $range(0, maxState - 1)) {
-		// 	local color = floor(255 * (i/d_max))
-		// 	core.register_node("crafter_redstone:dust_"+i,{
-		// 		description = "Redstone Dust",
-		// 		wield_image = "redstone_dust_item.png",
-		// 		tiles = {
-		// 			"redstone_dust_main.png^[colorize:red:"+color, "redstone_turn.png^[colorize:red:"+color,
-		// 			"redstone_t.png^[colorize:red:"+color, "redstone_cross.png^[colorize:red:"+color
-		// 		},
-		// 		power=i,
-		// 		drawtype = "raillike",
-		// 		paramtype = "light",
-		// 		sunlight_propagates = true,
-		// 		is_ground_content = false,
-		// 		walkable = false,
-		// 		node_placement_prediction = "",
-		// 		selection_box = {
-		// 			type = "fixed",
-		// 			fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
-		// 		},
-		// 		sounds = main.stoneSound(),
-		// 		groups={dig_immediate=1,attached_node=1,redstone_dust=1,redstone=1,redstone_power=i},
-		// 		drop="crafter_redstone:dust",
-		// 		on_construct = function(pos)
-		// 			data_injection(pos,{dust=i})
-		// 			//instruction_rebuild(pos)
-		// 			calculate(pos)
-		// 		end,
-		// 		after_destruct = function(pos)
-		// 			data_injection(pos,nil)
-		// 			//instruction_rebuild(pos,true)
-		// 			calculate(pos)
-		// 		end,
-		// 		connects_to = {"group:redstone"},
-		// 	})
+		const color: number = math.floor(255 * (i / (maxState - 1)));
+
+		core.register_node("crafter_redstone:dust_" + i, {
+			// 		description = "Redstone Dust",
+			// 		wield_image = "redstone_dust_item.png",
+			// 		tiles = {
+			// 			"redstone_dust_main.png^[colorize:red:"+color, "redstone_turn.png^[colorize:red:"+color,
+			// 			"redstone_t.png^[colorize:red:"+color, "redstone_cross.png^[colorize:red:"+color
+			// 		},
+			// 		power=i,
+			// 		drawtype = "raillike",
+			// 		paramtype = "light",
+			// 		sunlight_propagates = true,
+			// 		is_ground_content = false,
+			// 		walkable = false,
+			// 		node_placement_prediction = "",
+			// 		selection_box = {
+			// 			type = "fixed",
+			// 			fixed = {-1/2, -1/2, -1/2, 1/2, -1/2+1/16, 1/2},
+			// 		},
+			// 		sounds = main.stoneSound(),
+			// 		groups={dig_immediate=1,attached_node=1,redstone_dust=1,redstone=1,redstone_power=i},
+			// 		drop="crafter_redstone:dust",
+			// 		on_construct = function(pos)
+			// 			data_injection(pos,{dust=i})
+			// 			//instruction_rebuild(pos)
+			// 			calculate(pos)
+			// 		end,
+			// 		after_destruct = function(pos)
+			// 			data_injection(pos,nil)
+			// 			//instruction_rebuild(pos,true)
+			// 			calculate(pos)
+			// 		end,
+			// 		connects_to = {"group:redstone"},
+		});
+
 		// 	core.register_lbm({
 		//         name = "crafter_redstone:"+i,
 		// 		nodenames = {"crafter_redstone:dust_"+i},
