@@ -89,6 +89,8 @@ namespace redstone {
 	})();
 
 	function clearUpdateMap(): void {
+		const start: number = core.get_us_time() / 1_000_000;
+
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
 				for (const z of $range(-maxState, maxState)) {
@@ -107,6 +109,10 @@ namespace redstone {
 				}
 			}
 		}
+
+		const end: number = core.get_us_time() / 1_000_000;
+		const total: number = end - start;
+		print("took: ", total);
 	}
 
 	/**
@@ -123,13 +129,14 @@ namespace redstone {
 					workerVec.x = pos.x + x;
 					workerVec.y = pos.y + y;
 					workerVec.z = pos.z + z;
-
-					
-
 				}
 			}
 		}
 	}
+
+	core.register_globalstep(() => {
+		clearUpdateMap();
+	});
 
 	utility.loadFiles([
 		// "functions",
