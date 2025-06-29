@@ -89,7 +89,7 @@ namespace redstone {
 	})();
 
 	function clearUpdateMap(): void {
-		// const start: number = core.get_us_time() / 1_000_000;
+		const start: number = core.get_us_time() / 1_000_000;
 
 		let positionHash: number = 0;
 		let data: RedstoneUpdateMapData | undefined = undefined;
@@ -114,9 +114,9 @@ namespace redstone {
 			}
 		}
 
-		// const end: number = core.get_us_time() / 1_000_000;
-		// const total: number = end - start;
-		// print("took: ", total);
+		const end: number = core.get_us_time() / 1_000_000;
+		const total: number = end - start;
+		print("took: ", total);
 	}
 
 	/**
