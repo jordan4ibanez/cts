@@ -129,13 +129,9 @@ namespace redstone {
 				output: core.hash_node_position(vector.add(pos, dir)),
 			});
 		},
-		// 	after_destruct = function(pos, oldnode)
-		// 		local param2 = oldnode.param2
-		// 		local dir = core.facedir_to_dir(param2)
-		// 		redstone.inject(pos,nil)
-		// 		//redstone.update(pos)
-		// 		redstone.update(vector.add(pos,dir))
-		// 	end
+		after_destruct: (pos: Vec3) => {
+			deleteData(pos);
+		},
 
 		redstone_activation: (pos: Vec3) => {
 			const param2: number | undefined = core.get_node(pos).param2;
