@@ -190,7 +190,7 @@ namespace redstone {
 		vector.create3d({ x: 0, y: -1, z: -1 }),
 	];
 
-	const allDirectionalPowerSourceDirections: readonly Vec3[] = [
+	const allSidesDirections: readonly Vec3[] = [
 		vector.create3d({ x: 1, y: 0, z: 0 }),
 		vector.create3d({ x: -1, y: 0, z: 0 }),
 		vector.create3d({ x: 0, y: 0, z: 1 }),
@@ -250,7 +250,7 @@ namespace redstone {
 			throw new Error("Logic error at all directional power source.");
 		}
 
-		for (const dir of allDirectionalPowerSourceDirections) {
+		for (const dir of allSidesDirections) {
 			workerVec.x = sourcePosition.x + dir.x;
 			workerVec.y = sourcePosition.y + dir.y;
 			workerVec.z = sourcePosition.z + dir.z;
@@ -311,7 +311,9 @@ namespace redstone {
 		positionHash: number,
 		sideEffect: RedstoneTrigger
 	): void {
-		// todo: this lol
+		
+
+
 	}
 
 	function writeBackSideEffects(
