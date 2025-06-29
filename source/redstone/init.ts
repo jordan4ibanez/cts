@@ -2,6 +2,7 @@ namespace redstone {
 	// todo: Retool this entire mod as "bluestone" so I don't hear any complaints about mc
 	const hashPosition = core.hash_node_position;
 	const workerVec: Vec3 = vector.create3d();
+	const absolute = math.abs;
 
 	export const maxState: number = 9;
 
@@ -164,6 +165,11 @@ namespace redstone {
 						updateData.exists = false;
 					} else {
 						// todo: check if this is the border.
+						const border: boolean =
+							absolute(x) == maxState ||
+							absolute(y) == maxState ||
+							absolute(z) == maxState;
+
 						updateData.exists = true;
 						updateData.isPowerSource = worldData.isPowerSource;
 						updateData.powerSource = worldData.powerSource;
