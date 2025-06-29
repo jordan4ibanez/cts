@@ -1,10 +1,4 @@
 namespace redstone {
-	// local
-	// minetest,vector
-	// =
-	// minetest,vector
-	// local r_max = redstone.max_state
-
 	//? On.
 
 	//inverts redstone signal
@@ -36,12 +30,10 @@ namespace redstone {
 		},
 		after_place_node: (pos: Vec3) => {
 			const param2: number | undefined = core.get_node(pos).param2;
-
 			if (param2 == null) {
 				throw new Error("param2 error 1");
 			}
 			const dir = core.fourdir_to_dir(param2);
-
 			addData(pos, {
 				isDirectionalPowerSource: true,
 				isPowerSource: false,
@@ -61,13 +53,11 @@ namespace redstone {
 			if (param2 == null) {
 				throw new Error("Param2 error 2");
 			}
-
 			core.swap_node(pos, {
 				name: "crafter_redstone:inverter_off",
 				param2: param2,
 			});
 			const dir: Vec3 = core.fourdir_to_dir(param2);
-
 			addData(pos, {
 				isDirectionalPowerSource: false,
 				isPowerSource: false,
