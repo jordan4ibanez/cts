@@ -35,7 +35,11 @@ namespace redstone {
 			],
 		},
 		after_place_node: (pos: Vec3) => {
-			const dir = core.facedir_to_dir(core.get_node(pos).param2 || 0);
+			const param2: number | undefined = core.get_node(pos).param2;
+			if (param2 == null) {
+				throw new Error("param2 error");
+			}
+			const dir = core.fourdir_to_dir(param2);
 
 			addData(pos, {
 				isPowerSource: false,
