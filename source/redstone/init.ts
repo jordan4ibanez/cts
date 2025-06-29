@@ -143,8 +143,19 @@ namespace redstone {
 
 					const worldPositionHash: number = hashPosition(workerVec);
 
-					
+					const worldData: RedstoneData | undefined =
+						memoryMap.get(worldPositionHash);
 
+					const updateData: UpdateMapData | undefined = updateMap.get(
+						updateMapPositionHash
+					);
+
+					if (updateData == null) {
+						throw new Error(`Logic error of ${x}, ${y}, ${z}`);
+					}
+
+					if (worldData == null) {
+					}
 				}
 			}
 		}
