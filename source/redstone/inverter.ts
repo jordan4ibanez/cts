@@ -7,7 +7,7 @@ namespace redstone {
 	
 	//? On.
 
-	// --inverts redstone signal
+	// //inverts redstone signal
 	// core.register_node("redstone:inverter_on", {
 	//     description = "Redstone Inverter",
 	//     tiles = {"repeater_on.png"},
@@ -22,9 +22,9 @@ namespace redstone {
 	// 	node_box = {
 	// 		type = "fixed",
 	// 		fixed = {
-	// 				--left  front  bottom right back top
-	// 				{-0.5, -0.5,  -0.5, 0.5,  -0.3, 0.5}, --base
-	// 				{-0.2, -0.5,  0.2, 0.2,  0.1, 0.4}, --output post
+	// 				//left  front  bottom right back top
+	// 				{-0.5, -0.5,  -0.5, 0.5,  -0.3, 0.5}, //base
+	// 				{-0.2, -0.5,  0.2, 0.2,  0.1, 0.4}, //output post
 	// 			},
 	// 		},
 	// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
@@ -43,7 +43,7 @@ namespace redstone {
 	// 		local param2 = oldnode.param2
 	// 		local dir = core.facedir_to_dir(param2)
 	// 		redstone.inject(pos,nil)
-	// 		--redstone.update(pos)
+	// 		//redstone.update(pos)
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end
 	// })
@@ -62,7 +62,7 @@ namespace redstone {
 	// 			output = vector.add(pos,dir),
 	// 			dir = dir
 	// 		})
-	// 		--redstone.update(pos)
+	// 		//redstone.update(pos)
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end
 	// })
@@ -79,7 +79,7 @@ namespace redstone {
 	// 			output = vector.add(pos,dir),
 	// 			dir = dir
 	// 		})
-	// 		--redstone.update(pos)
+	// 		//redstone.update(pos)
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end,
 	// })
@@ -100,9 +100,9 @@ namespace redstone {
 	// 	node_box = {
 	// 		type = "fixed",
 	// 		fixed = {
-	// 				--left  front  bottom right back top
-	// 				{-0.5, -0.5,  -0.5, 0.5,  -0.3, 0.5}, --base
-	// 				{-0.2, -0.5,  0.2, 0.2,  0.1, 0.4}, --output post
+	// 				//left  front  bottom right back top
+	// 				{-0.5, -0.5,  -0.5, 0.5,  -0.3, 0.5}, //base
+	// 				{-0.2, -0.5,  0.2, 0.2,  0.1, 0.4}, //output post
 	// 			},
 	// 		},
 	// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
@@ -123,7 +123,7 @@ namespace redstone {
 	// 		local param2 = oldnode.param2
 	// 		local dir = core.facedir_to_dir(param2)
 	// 		redstone.inject(pos,nil)
-	// 		--redstone.update(pos)
+	// 		//redstone.update(pos)
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end
 	// })
@@ -140,7 +140,7 @@ namespace redstone {
 	// 			output = vector.add(pos,dir),
 	// 			dir = dir
 	// 		})
-	// 		--redstone.update(pos)
+	// 		//redstone.update(pos)
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end
 	// })
@@ -159,7 +159,7 @@ namespace redstone {
 	// 			output = vector.add(pos,dir),
 	// 			dir    = dir
 	// 		})
-	// 		--redstone.update(pos)
+	// 		//redstone.update(pos)
 	// 		redstone.update(vector.add(pos,dir))
 	// 	end,
 	// })
