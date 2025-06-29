@@ -284,13 +284,12 @@ namespace redstone {
 				throw new Error("Map poll logic error.");
 			}
 
-			if (!data.isPowerSource) {
-				throw new Error("Power source implementation issue.");
+			if (data.isPowerSource) {
+				const sourcePosition: Vec3 = unhashPosition(sourceHash);
+				allDirectionalPowerSourceTrigger(sourcePosition);
+			} else {
+				transmitThroughDust(sourceHash);
 			}
-
-			const sourcePosition: Vec3 = unhashPosition(sourceHash);
-
-			allDirectionalPowerSourceTrigger(sourcePosition);
 		}
 	}
 
