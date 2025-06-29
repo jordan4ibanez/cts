@@ -59,7 +59,7 @@ namespace redstone {
 
 	//? Update map.
 
-	interface RedstoneUpdateMapData extends RedstoneData {
+	interface UpdateMapData extends RedstoneData {
 		exists: boolean;
 	}
 
@@ -70,8 +70,8 @@ namespace redstone {
 	// This data is then copied from the virtual machine memory map into originating
 	// at the update position.
 	// You can think of this cube as moving around the map invisibly. It is everywhere, and nowhere.
-	const updateMap: Map<number, RedstoneUpdateMapData> = (() => {
-		const virtualMap = new Map<number, RedstoneUpdateMapData>();
+	const updateMap: Map<number, UpdateMapData> = (() => {
+		const virtualMap = new Map<number, UpdateMapData>();
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
 				for (const z of $range(-maxState, maxState)) {
@@ -92,7 +92,7 @@ namespace redstone {
 		// const start: number = core.get_us_time() / 1_000_000;
 
 		let positionHash: number = 0;
-		let data: RedstoneUpdateMapData | undefined = undefined;
+		let data: UpdateMapData | undefined = undefined;
 
 		for (const x of $range(-maxState, maxState)) {
 			for (const y of $range(-maxState, maxState)) {
@@ -142,6 +142,9 @@ namespace redstone {
 					workerVec.z += pos.z;
 
 					const worldPositionHash: number = hashPosition(workerVec);
+
+					
+
 				}
 			}
 		}
