@@ -111,20 +111,25 @@ namespace redstone {
 				[-0.2, -0.5, 0.2, 0.2, 0.1, 0.4], //output post
 			],
 		},
-		// 	after_place_node = function(pos, placer, itemstack, pointed_thing)
-		// 		local dir = core.facedir_to_dir(core.get_node(pos).param2)
-		// 		redstone.inject(pos,{
-		// 			name = "crafter_redstone:inverter_off",
-		// 			torch  = r_max,
-		// 			torch_directional = true,
-		// 			directional_activator = true,
-		// 			input  = vector.subtract(pos,dir),
-		// 			output = vector.add(pos,dir),
-		// 			dir = dir
-		// 		})
-		// 		redstone.update(pos)
-		// 		redstone.update(vector.add(pos,dir))
-		// 	end,
+		after_place_node: (pos, placer, itemstack, pointed_thing) => {
+			const param2: number | undefined = core.get_node(pos).param2;
+
+			if (param2 == null) {
+				throw new Error("param2 error 1");
+			}
+			const dir = core.fourdir_to_dir(param2);
+			// 		redstone.inject(pos,{
+			// 			name = "crafter_redstone:inverter_off",
+			// 			torch  = r_max,
+			// 			torch_directional = true,
+			// 			directional_activator = true,
+			// 			input  = vector.subtract(pos,dir),
+			// 			output = vector.add(pos,dir),
+			// 			dir = dir
+			// 		})
+			// 		redstone.update(pos)
+			// 		redstone.update(vector.add(pos,dir))
+		},
 		// 	after_destruct = function(pos, oldnode)
 		// 		local param2 = oldnode.param2
 		// 		local dir = core.facedir_to_dir(param2)
