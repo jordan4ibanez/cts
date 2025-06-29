@@ -292,8 +292,18 @@ namespace redstone {
 		}
 	}
 
-
 	//? Writeback.
+
+	function writeBackSideEffects(
+		currentData: UpdateMapData,
+		realWorldHash: number
+	): void {
+		if (currentData.wasPowered && currentData.dust <= 0) {
+			print("turned off at ", unhashPosition(realWorldHash));
+		} else if (!currentData.wasPowered && currentData.dust > 0) {
+			print("turned on at ", unhashPosition(realWorldHash));
+		}
+	}
 
 	/**
 	 * Write the update map back into the memory map.
@@ -333,6 +343,8 @@ namespace redstone {
 					if (worldData == null) {
 						throw new Error("Writeback world poll logic error.");
 					}
+
+					writeBackSideEffects(currentData, worldPositionHash);
 
 					worldData.isPowerSource = currentData.isPowerSource;
 					worldData.powerSource = currentData.powerSource;
