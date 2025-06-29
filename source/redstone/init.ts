@@ -296,8 +296,56 @@ namespace redstone {
 		}
 	}
 
+	/**
+	 * Write the update map back into the memory map.
+	 */
+	function writeBack(): void {
+		const worldPos = unhashPosition(updateMapworldPosition);
+
+		for (const x of $range(-maxState, maxState)) {
+			for (const y of $range(-maxState, maxState)) {
+				for (const z of $range(-maxState, maxState)) {
+					workerVec.x = x;
+					workerVec.y = y;
+					workerVec.z = z;
+
+					const currentPositionHash = hashPosition(workerVec);
+
+					const currentData: UpdateMapData | undefined =
+						updateMap.get(currentPositionHash);
+
+					if (currentData == null) {
+						throw new Error("Writeback logic error.");
+					}
+
+					if (!currentData.exists) {
+						continue;
+					}
+
+					workerVec.x += worldPos.x;
+					workerVec.y += worldPos.y;
+					workerVec.z += worldPos.z;
+
+					const worldPositionHash: number = hashPosition(workerVec);
+
+					const worldData: RedstoneData | undefined =
+						memoryMap.get(worldPositionHash);
+
+					if (worldData == null) {
+						throw new Error("Writeback world poll logic error.");
+					}
+
+					worldData.isPowerSource = currentData.isPowerSource;
+					worldData.powerSource = currentData.powerSource;
+					worldData.isDust = currentData.isDust;
+					worldData.dust = currentData.dust;
+				}
+			}
+		}
+	}
+
 	//! This is debug ONLY.
-	function debugOutputVisual() {
+	function debugOutputVisual(): void {
 		const worldPos = unhashPosition(updateMapworldPosition);
 
 		for (const x of $range(-maxState, maxState)) {
@@ -349,6 +397,7 @@ namespace redstone {
 
 		copyMemoryMapIntoUpdateMap(updatePosition);
 		doLogic();
+		writeBack();
 		debugOutputVisual();
 
 		const end: number = core.get_us_time() / 1_000_000;
