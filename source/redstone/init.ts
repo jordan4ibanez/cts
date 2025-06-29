@@ -229,7 +229,12 @@ namespace redstone {
 		const currentData: UpdateMapData | undefined =
 			updateMap.get(positionHash);
 
-		if (currentData == null || !currentData.exists || !currentData.isDust) {
+		if (
+			currentData == null ||
+			!currentData.exists ||
+			!currentData.isDust ||
+			currentData.dust <= 1
+		) {
 			throw new Error("Logic error at dust.");
 		}
 
@@ -239,6 +244,18 @@ namespace redstone {
 			workerVec.x = currentPosition.x + dir.x;
 			workerVec.y = currentPosition.y + dir.y;
 			workerVec.z = currentPosition.z + dir.z;
+
+			const forwardPositionHash: number = hashPosition(workerVec);
+			const forwardData: UpdateMapData | undefined =
+				updateMap.get(forwardPositionHash);
+
+			// Either out of bounds, or, hit the edge of the update map.
+			if (forwardData == null || !forwardData.exists) {
+				continue;
+			}
+
+			if (forwardData.dust) {
+			}
 		}
 	}
 
