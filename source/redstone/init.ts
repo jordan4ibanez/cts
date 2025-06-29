@@ -199,6 +199,7 @@ namespace redstone {
 	utility.loadFiles([
 		// "functions",
 		"torch",
+		"dust",
 		// "lever",
 		// "button",
 		// "repeater",
