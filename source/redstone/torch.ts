@@ -89,6 +89,7 @@ namespace redstone {
 		},
 		on_construct: (pos: Vec3) => {
 			addData(pos, {
+				isDirectionalPowerSource: false,
 				isPowerSource: true,
 				powerSource: maxState,
 				isDust: false,
@@ -135,6 +136,7 @@ namespace redstone {
 		sounds: crafter.woodSound(),
 		on_construct: (pos: Vec3) => {
 			addData(pos, {
+				isDirectionalPowerSource: false,
 				isPowerSource: true,
 				powerSource: maxState,
 				isDust: false,
