@@ -37,6 +37,9 @@ namespace steam {
 		// 	// this.object.set_animation({ x: 0, y: 1 }, newSpeed, 0, true);
 		// }
 	}
-
 	utility.registerTSEntity(SteamEngine);
+
+	
+
+	
 }
