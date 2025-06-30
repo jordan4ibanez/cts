@@ -51,7 +51,7 @@ namespace steam {
 	core.register_node("crafter_steam:firebox", {
 		drawtype: Drawtype.mesh,
 		mesh: "steam_firebox.gltf",
-		tiles: ["steam_boiler.png"],
+		tiles: ["dirt.png"],
 		paramtype2: ParamType2["4dir"],
 		groups: { stone: 1, pathable: 1 },
 		sounds: crafter.stoneSound(),
