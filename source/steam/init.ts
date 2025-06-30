@@ -60,14 +60,17 @@ namespace steam {
 			paramtype2: ParamType2["4dir"],
 			groups: { stone: 1, pathable: 1 },
 			sounds: crafter.stoneSound(),
+
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
 				const newIndex = (index + 1) % 2;
-
 				const newState = states[newIndex];
-
 				core.swap_node(position, {
 					name: "crafter_steam:firebox_" + newState,
 					param2: node.param2,
+				});
+				core.sound_play("steam_boiler_door", {
+					pos: pointedThing.under!,
+					pitch: (math.random(80, 99) + math.random()) / 100,
 				});
 			},
 		});
