@@ -30,7 +30,9 @@ namespace steam {
 		): void {
 			const newSpeed = math.random(0, 3) + math.random();
 			core.chat_send_all(tostring(newSpeed));
-			this.object.set_animation({ x: 0, y: 1 }, newSpeed, 0, true);
+
+			this.object.set_animation_frame_speed(newSpeed)
+			// this.object.set_animation({ x: 0, y: 1 }, newSpeed, 0, true);
 		}
 	}
 
