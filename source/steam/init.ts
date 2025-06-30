@@ -39,7 +39,9 @@ namespace steam {
 	}
 	utility.registerTSEntity(SteamEngine);
 
-	
-
-	
+	core.register_node("crafter_steam:boiler", {
+		drawtype: Drawtype.mesh,
+		mesh: "steam_boiler.gltf",
+		groups: { stone: 1, pathable: 1 },
+	});
 }
