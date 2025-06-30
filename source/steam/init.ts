@@ -43,6 +43,16 @@ namespace steam {
 		drawtype: Drawtype.mesh,
 		mesh: "steam_boiler.gltf",
 		tiles: ["steam_boiler.png"],
+		paramtype2: ParamType2["4dir"],
+		groups: { stone: 1, pathable: 1 },
+		sounds: crafter.stoneSound(),
+	});
+
+	core.register_node("crafter_steam:firebox", {
+		drawtype: Drawtype.mesh,
+		mesh: "steam_firebox.gltf",
+		tiles: ["steam_boiler.png"],
+		paramtype2: ParamType2["4dir"],
 		groups: { stone: 1, pathable: 1 },
 		sounds: crafter.stoneSound(),
 	});
