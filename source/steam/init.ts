@@ -9,27 +9,20 @@ namespace steam {
 			textures: [
 				"steam_engine_base.png",
 				"steam_engine_steam_inlet.png",
-				"stone.png",
-				"stone.png",
-				"stone.png",
-				"stone.png",
-				"stone.png",
-				"stone.png",
-
-				// "steam_engine_flywheel.png",
+				"steam_engine_connecting_rod.png",
+				"steam_engine_flywheel_spokes.png",
+				"steam_engine_flywheel.png",
+				"steam_engine_piston.png",
 			],
 		};
 
-		// on_activate(staticData: string, delta: number): void {
-		// 	const pos = vector.floor(this.object.get_pos());
-		// 	pos.y += 0.5;
-		// 	this.object.set_pos(pos);
-		// 	this.object.set_animation({ x: 0, y: 1 }, 1, 0, true);
-		// }
-
-		on_step(delta: number, moveResult: MoveResult | null): void {
-			print(this.object.get_pos())
+		on_activate(staticData: string, delta: number): void {
+			const pos = vector.floor(this.object.get_pos());
+			pos.y += 0.5;
+			this.object.set_pos(pos);
+			this.object.set_animation({ x: 0, y: 1 }, 1, 0, true);
 		}
+
 		// on_punch(
 		// 	puncher: ObjectRef | null,
 		// 	timeFromLastPunch: number | null,
