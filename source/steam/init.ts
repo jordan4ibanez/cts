@@ -46,9 +46,8 @@ namespace steam {
 		drawtype: Drawtype.normal,
 		paramtype: ParamType1.light,
 		sunlight_propagates: false,
-		on_place(itemStack, placer, pointedThing) {
-			print(placer);
-		},
+
+		on_timer(position, elapsed) {},
 	});
 
 	core.register_node("crafter_steam:engine_item", {
@@ -70,14 +69,30 @@ namespace steam {
 			if (
 				pointedThing.type != PointedThingType.node ||
 				pointedThing.above == null ||
-				pointedThing.under == null
+				pointedThing.under == null ||
+				placer == null
 			) {
 				return;
 			}
 
-			core.place_node(pointedThing.above, {
-				name: "crafter_steam:engine_logic_controller",
-			});
+			// So first, bolt the look direction into 4 possible segments.
+			const dir4 = core.dir_to_fourdir(placer.get_look_dir());
+
+			// Next, transfer this into yaw.
+			const yaw = core.dir_to_yaw(core.fourdir_to_dir(dir4));
+
+			// The controller will always sit to the left, so, -90 degrees.
+			const controllerDir = core.yaw_to_dir(yaw - math.pi / 2);
+
+			//? Grease point 1 will sit at the current position.
+
+			//? Grease point 2 will sit to the right, so, 90 degrees.
+			const greasePoint2 = core.yaw_to_dir(yaw + math.pi / 2);
+			
+
+			// core.place_node(pointedThing.above, {
+			// 	name: "crafter_steam:engine_logic_controller",
+			// });
 		},
 	});
 
