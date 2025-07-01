@@ -83,7 +83,10 @@ namespace steam {
 
 	//? Steam pipes.
 	const pixel: number = 1 / 16;
+	/** Pipe Diameter. */
 	const pD: number = pixel;
+	/** Flange Diameter */
+	const fD: number = pD * 2;
 
 	core.register_node("crafter_steam:pipe", {
 		connects_to: ["group:steam"],
@@ -101,13 +104,13 @@ namespace steam {
 				// Pipe.
 				[-pD, -pD, -pD, pD, pD, pD * 8],
 				// Flange right X axis.
-				[pD, -pD, pD * 7, pD * 2, pD, pD * 8],
+				[pD, -pD, pD * 7, fD, pD, pD * 8],
 				// Flange left X axis.
-				[-pD * 2, -pD, pD * 7, -pD, pD, pD * 8],
+				[-fD, -pD, pD * 7, -pD, pD, pD * 8],
 				// Flange top.
-				[-pD * 2, pD, pD * 7, pD * 2, pD * 2, pD * 8],
+				[-fD, pD, pD * 7, fD, fD, pD * 8],
 				// Flange bottom.
-				[-pD * 2, -pD * 2, pD * 7, pD * 2, -pD, pD * 8],
+				[-fD, -fD, pD * 7, fD, -pD, pD * 8],
 			],
 			// connect_left: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
 		},
