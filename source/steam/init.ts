@@ -46,6 +46,9 @@ namespace steam {
 		drawtype: Drawtype.normal,
 		paramtype: ParamType1.light,
 		sunlight_propagates: false,
+		on_place(itemStack, placer, pointedThing) {
+			print(placer);
+		},
 	});
 
 	core.register_node("crafter_steam:engine_item", {
@@ -72,7 +75,9 @@ namespace steam {
 				return;
 			}
 
-			print(placer);
+			core.place_node(pointedThing.above, {
+				name: "crafter_steam:engine_logic_controller",
+			});
 		},
 	});
 
