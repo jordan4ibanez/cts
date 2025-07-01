@@ -21,12 +21,10 @@ namespace steam {
 			],
 		};
 
-		// on_activate(staticData: string, delta: number): void {
-		// 	const pos = vector.floor(this.object.get_pos());
-		// 	pos.y += 0.5;
-		// 	this.object.set_pos(pos);
-		// 	this.object.set_animation({ x: 0, y: 1 }, 1, 0, true);
-		// }
+		on_activate(): void {
+			// This will perpetually have 1 animation played at different speeds.
+			this.object.set_animation({ x: 0, y: 1 }, 0, 0, true);
+		}
 
 		// on_punch(
 		// 	puncher: ObjectRef | null,
@@ -79,11 +77,22 @@ namespace steam {
 		on_timer(position, elapsed) {
 			core.get_node_timer(position).start(1);
 
-			const hash = core.hash_node_position(position);
-			const ent = steamEngineEntityMap.get(hash);
-			if (ent == null || !ent.is_valid()) {
-			}
 			print("tick");
+
+			const hash = core.hash_node_position(position);
+
+			const ent = steamEngineEntityMap.get(hash);
+
+			if (ent == null || !ent.is_valid()) {
+				const param2 = core.get_node(position).param2;
+
+				if (param2 == null) {
+					core.log(LogLevel.error, `No param2 at ${position}`);
+					return;
+				}
+
+				addSteamEngineEntity(position, param2);
+			}
 		},
 
 		on_construct(position) {
