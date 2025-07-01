@@ -16,7 +16,7 @@ namespace steam {
 		connects_to: ["group:steam"],
 		tiles: ["steam_pipe.png"],
 		sounds: crafter.stoneSound(),
-		groups: { stone: 1, pathable: 1, steam: 1 },
+		groups: { stone: 2, steam: 1 },
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
 		sunlight_propagates: true,
