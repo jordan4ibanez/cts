@@ -157,6 +157,16 @@ namespace steam {
 				// Flange bottom.
 				[-pE, -pD, -fD, -pL, -fD, fD],
 			],
+			// -Y.
+			connect_bottom: [
+				// Pipe.
+				[-pE, -pD, -pD, pD, pD, pD],
+				// Flange.
+				[-pE, -pD, pD, -pL, pD, fD],
+				[-pE, -pD, -fD, -pL, pD, -pD],
+				[-pE, pD, -fD, -pL, fD, fD],
+				[-pE, -pD, -fD, -pL, -fD, fD],
+			],
 		},
 	});
 }
