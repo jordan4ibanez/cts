@@ -1077,7 +1077,7 @@ declare global {
 		node_placement_prediction?: string;
 		on_place?(
 			itemStack: ItemStackObject,
-			placer: ObjectRef,
+			placer: ObjectRef | null,
 			pointedThing: PointedThing
 		): ItemStackObject | void;
 		overlay_tiles?: string[];
