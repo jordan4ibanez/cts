@@ -81,7 +81,7 @@ namespace steam {
 
 			const hash = core.hash_node_position(position);
 
-			const ent = steamEngineEntityMap.get(hash);
+			let ent = steamEngineEntityMap.get(hash);
 
 			if (ent == null || !ent.is_valid()) {
 				const param2 = core.get_node(position).param2;
@@ -92,7 +92,16 @@ namespace steam {
 				}
 
 				addSteamEngineEntity(position, param2);
+
+				ent = steamEngineEntityMap.get(hash);
+
+				// Can only fight to get the entity to show up so much.
+				if (ent == null || !ent.is_valid()) {
+					return;
+				}
 			}
+
+			print("valid entity.");
 		},
 
 		on_construct(position) {
