@@ -102,6 +102,8 @@ namespace steam {
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
 		sunlight_propagates: true,
+		wield_image: "steam_pipe_item.png",
+		inventory_image: "steam_pipe_item.png",
 
 		collision_box: {
 			type: Nodeboxtype.connected,
