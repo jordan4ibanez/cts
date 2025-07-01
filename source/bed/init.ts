@@ -297,6 +297,9 @@ namespace bed {
 		},
 
 		on_rightclick: (pos, node, clicker, itemstack, pointed_thing) => {
+			if (clicker == null) {
+				return;
+			}
 			if (pos.y <= -10033) {
 				tnt.tnt(pos, 10);
 				return;
@@ -342,6 +345,9 @@ namespace bed {
 		},
 
 		on_rightclick: (pos, node, clicker, itemstack, pointed_thing) => {
+			if (clicker == null) {
+				return;
+			}
 			if (pos.y <= -10033) {
 				tnt.tnt(pos, 10);
 				return;

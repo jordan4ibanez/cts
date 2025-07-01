@@ -428,6 +428,9 @@ namespace hopper {
 		on_metadata_inventory_move: timerTriggerRegistrationWrapper,
 		on_place: hopperPlacement,
 		on_rightclick: (pos, node, clicker, itemstack) => {
+			if (clicker == null) {
+				return;
+			}
 			core.show_formspec(
 				clicker.get_player_name(),
 				"hopper_formspec:" + core.pos_to_string(pos),
