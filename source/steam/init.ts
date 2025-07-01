@@ -58,9 +58,9 @@ namespace steam {
 		tiles: [
 			"steam_engine_base.png",
 			"steam_engine_steam_inlet.png",
-			"steam_engine_connecting_rod.png",
-			"steam_engine_flywheel_spokes.png",
 			"steam_engine_flywheel.png",
+			"steam_engine_flywheel_spokes.png",
+			"steam_engine_connecting_rod.png",
 			"steam_engine_piston.png",
 		],
 		node_dig_prediction: "",
