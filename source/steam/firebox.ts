@@ -1,4 +1,6 @@
 namespace steam {
+	const timerStart = kickOnSteamNodeTimer;
+
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
 		const currentState = states[index];
@@ -10,6 +12,14 @@ namespace steam {
 			paramtype2: ParamType2["4dir"],
 			groups: { stone: 1, pathable: 1 },
 			sounds: crafter.stoneSound(),
+
+			on_timer(position, elapsed) {
+				timerStart(position);
+			},
+
+			on_construct(position) {
+				timerStart(position);
+			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
 				const newIndex = (index + 1) % 2;

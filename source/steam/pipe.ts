@@ -1,4 +1,6 @@
 namespace steam {
+	const timerStart = kickOnSteamNodeTimer;
+
 	//? Steam pipes.
 	const pixel: number = 1 / 16;
 	/** Pipe End. */
@@ -22,6 +24,14 @@ namespace steam {
 		sunlight_propagates: true,
 		wield_image: "steam_pipe_item.png",
 		inventory_image: "steam_pipe_item.png",
+
+		on_timer(position, elapsed) {
+			timerStart(position);
+		},
+
+		on_construct(position) {
+			timerStart(position);
+		},
 
 		collision_box: {
 			type: Nodeboxtype.connected,

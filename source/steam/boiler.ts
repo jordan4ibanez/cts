@@ -9,6 +9,9 @@ namespace steam {
 		groups: { stone: 1, pathable: 1, steam: 1 },
 		sounds: crafter.stoneSound(),
 
+		on_timer(position, elapsed) {
+			timerStart(position);
+		},
 		on_construct(position) {
 			timerStart(position);
 		},
