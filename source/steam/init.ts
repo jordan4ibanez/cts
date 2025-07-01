@@ -98,11 +98,21 @@ namespace steam {
 			connect_back: [
 				// Pipe.
 				[-pixel, -pixel, -pixel, pixel, pixel, pixel * 8],
-				
 				// Flange right X axis.
 				[pixel, -pixel, pixel * 7, pixel * 2, pixel, pixel * 8],
 				// Flange left X axis.
-				[pixel, -pixel, pixel * 7, pixel * 2, pixel, pixel * 8],
+				[-pixel * 2, -pixel, pixel * 7, -pixel, pixel, pixel * 8],
+				// Flange top.
+				[-pixel * 2, pixel, pixel * 7, pixel * 2, pixel * 2, pixel * 8],
+				// Flange bottom.
+				[
+					-pixel * 2,
+					-pixel * 2,
+					pixel * 7,
+					pixel * 2,
+					-pixel,
+					pixel * 8,
+				],
 			],
 			// connect_left: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
 		},
