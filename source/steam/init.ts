@@ -120,19 +120,19 @@ namespace steam {
 			// 	[-fD, -fD, fS, fD, -pD, pL],
 			// ],
 
-			// // -Z.
-			// connect_front: [
-			// 	// Pipe.
-			// 	[-pD, -pD, -pE, pD, pD, pD],
-			// 	// Flange right X axis.
-			// 	[pD, -pD, -pL, fD, pD, -fS],
-			// 	// Flange left X axis.
-			// 	[-fD, -pD, -pL, -pD, pD, -fS],
-			// 	// Flange top.
-			// 	[-fD, pD, -pL, fD, fD, -fS],
-			// 	// Flange bottom.
-			// 	[-fD, -fD, -pL, fD, -pD, -fS],
-			// ],
+			// -Z.
+			connect_front: [
+				// Pipe.
+				[-pD, -pD, -pE, pD, pD, pD],
+				// Flange right X axis.
+				[pD, -pD, -pL, fD, pD, -fS],
+				// Flange left X axis.
+				[-fD, -pD, -pL, -pD, pD, -fS],
+				// Flange top.
+				[-fD, pD, -pL, fD, fD, -fS],
+				// Flange bottom.
+				[-fD, -fD, -pL, fD, -pD, -fS],
+			],
 
 			// +X.
 			connect_right: [
