@@ -818,11 +818,17 @@ declare global {
 		wall_top?: box | boxTable;
 		wall_bottom?: box | boxTable;
 		wall_side?: box | boxTable;
+		/** +Y */
 		connect_top?: box | boxTable;
+		/** -Y */
 		connect_bottom?: box | boxTable;
+		/** -Z */
 		connect_front?: box | boxTable;
-		connect_left?: box | boxTable;
+		/** +Z */
 		connect_back?: box | boxTable;
+		/** -X */
+		connect_left?: box | boxTable;
+		/** +X */
 		connect_right?: box | boxTable;
 		disconnected_top?: box | boxTable;
 		disconnected_bottom?: box | boxTable;
