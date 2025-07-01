@@ -1138,7 +1138,7 @@ declare global {
 		): void;
 		after_place_node?(
 			position: Vec3,
-			placer: ObjectRef,
+			placer: ObjectRef | null,
 			itemStack: ItemStackObject,
 			pointedThing: PointedThing
 		): void;
@@ -1146,29 +1146,33 @@ declare global {
 			position: Vec3,
 			oldNode: NodeTable,
 			oldMeta: string,
-			digger: ObjectRef
+			digger: ObjectRef | null
 		): void;
 		can_dig?(position: Vec3, canDig: ObjectRef): boolean;
 		on_punch?(
 			position: Vec3,
 			node: NodeTable,
-			puncher: ObjectRef,
+			puncher: ObjectRef | null,
 			pointedThing: PointedThing
 		): void;
 		on_rightclick?(
 			position: Vec3,
 			node: NodeTable,
-			clicker: ObjectRef,
+			clicker: ObjectRef | null,
 			itemStack: ItemStackObject,
 			pointedThing: PointedThing
 		): void;
-		on_dig?(position: Vec3, node: NodeTable, digger: ObjectRef): void;
+		on_dig?(
+			position: Vec3,
+			node: NodeTable,
+			digger: ObjectRef | null
+		): void;
 		on_timer?(position: Vec3, elapsed: number): void;
 		on_receive_fields?(
 			position: Vec3,
 			formName: string,
 			fields: Dictionary<string, any>,
-			sender: ObjectRef
+			sender: ObjectRef | null
 		): void;
 		allow_metadata_inventory_move?(
 			position: Vec3,
@@ -1177,21 +1181,21 @@ declare global {
 			toList: string,
 			toIndex: number,
 			count: number,
-			player: ObjectRef
+			player: ObjectRef | null
 		): void;
 		allow_metadata_inventory_put?(
 			position: Vec3,
 			listName: string,
 			index: number,
 			stack: ItemStackObject,
-			player: ObjectRef
+			player: ObjectRef | null
 		): number;
 		allow_metadata_inventory_take?(
 			position: Vec3,
 			listName: string,
 			index: number,
 			stack: ItemStackObject,
-			player: ObjectRef
+			player: ObjectRef | null
 		): number;
 		on_metadata_inventory_move?(
 			position: Vec3,
@@ -1200,21 +1204,21 @@ declare global {
 			toList: string,
 			toIndex: number,
 			count: number,
-			player: ObjectRef
+			player: ObjectRef | null
 		): void;
 		on_metadata_inventory_put?(
 			position: Vec3,
 			listName: string,
 			index: number,
 			stack: ItemStackObject,
-			player: ObjectRef
+			player: ObjectRef | null
 		): void;
 		on_metadata_inventory_take?(
 			position: Vec3,
 			listName: string,
 			index: number,
 			stack: ItemStackObject,
-			player: ObjectRef
+			player: ObjectRef | null
 		): void;
 		on_blast?(position: Vec3, intensity: number): void;
 		mod_origin?: string;
