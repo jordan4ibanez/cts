@@ -151,9 +151,9 @@ namespace steam {
 				[-pD, -pE, -pD, pD, pD, pD],
 				// Flange.
 				[-fD, -pL, -pD, -pD, -pE, pD],
-				// [-pE, -pD, -fD, -pL, pD, -pD],
-				// [-pE, pD, -fD, -pL, fD, fD],
-				// [-pE, -pD, -fD, -pL, -fD, fD],
+				[pD, -pL, -pD, fD, -pE, pD],
+				[-fD, -pL, -fD, fD, -pE, -pD],
+				[-fD, -pL, pD, fD, -pE, fD],
 			],
 		},
 	});
