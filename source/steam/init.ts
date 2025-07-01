@@ -41,11 +41,18 @@ namespace steam {
 	}
 	utility.registerTSEntity(SteamEngine);
 
+	core.register_node("crafter_steam:engine_logic_controller", {
+		// drawtype: Drawtype.airlike,
+		drawtype: Drawtype.normal,
+		paramtype: ParamType1.light,
+		sunlight_propagates: false,
+	});
+
 	core.register_node("crafter_steam:engine_item", {
 		mesh: "steam_engine.gltf",
 		drawtype: Drawtype.mesh,
 		visual_scale: 0.5,
-		
+		paramtype2: ParamType2["4dir"],
 		tiles: [
 			"steam_engine_base.png",
 			"steam_engine_steam_inlet.png",
@@ -55,7 +62,18 @@ namespace steam {
 			"steam_engine_piston.png",
 		],
 		node_dig_prediction: "",
+		node_placement_prediction: "",
+		on_place(itemStack, placer, pointedThing) {
+			if (
+				pointedThing.type != PointedThingType.node ||
+				pointedThing.above == null ||
+				pointedThing.under == null
+			) {
+				return;
+			}
 
+			print(placer);
+		},
 	});
 
 	utility.loadFiles(["boiler", "firebox", "pipe"]);
