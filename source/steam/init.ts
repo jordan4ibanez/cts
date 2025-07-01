@@ -75,6 +75,35 @@ namespace steam {
 				return;
 			}
 
+			// This is a 3 segment node, so things are a bit complicated.
+
+			let currentPosTarget: Vec3;
+
+			{
+				const aboveDef =
+					core.registered_nodes[
+						core.get_node(pointedThing.above).name
+					];
+
+				const underDef =
+					core.registered_nodes[
+						core.get_node(pointedThing.above).name
+					];
+
+				if (aboveDef == null || underDef == null) {
+					return;
+				}
+
+				if (underDef.buildable_to) {
+					currentPosTarget = pointedThing.under;
+				} else if (aboveDef.buildable_to) {
+					currentPosTarget = pointedThing.above;
+				} else {
+					// Can't build to nothing!
+					return;
+				}
+			}
+
 			// So first, bolt the look direction into 4 possible segments.
 			const dir4 = core.dir_to_fourdir(placer.get_look_dir());
 
@@ -85,10 +114,11 @@ namespace steam {
 			const controllerDir = core.yaw_to_dir(yaw - math.pi / 2);
 
 			//? Grease point 1 will sit at the current position.
+			// This is just set like this to add clarity to what's going on.
+			const greasePosition1 = vector.copy(pointedThing.above);
 
 			//? Grease point 2 will sit to the right, so, 90 degrees.
 			const greasePoint2 = core.yaw_to_dir(yaw + math.pi / 2);
-			
 
 			// core.place_node(pointedThing.above, {
 			// 	name: "crafter_steam:engine_logic_controller",
