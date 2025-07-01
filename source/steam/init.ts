@@ -129,6 +129,15 @@ namespace steam {
 			const targetPos2 = vector.add(position, vector.multiply(dir, 2));
 			core.remove_node(targetPos1);
 			core.remove_node(targetPos2);
+
+			const entity = steamEngineEntityMap.get(
+				core.hash_node_position(position)
+			);
+
+			if (entity != null) {
+				entity.remove();
+			}
+			steamEngineEntityMap.delete(core.hash_node_position(position));
 		},
 	});
 
