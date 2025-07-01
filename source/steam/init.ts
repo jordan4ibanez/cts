@@ -116,7 +116,7 @@ namespace steam {
 
 			//? Grease point 1 will sit at the current position.
 			// This is just set like this to add clarity to what's going on.
-			const greasePosition1 = vector.copy(pointedThing.above);
+			const greasePosition1 = currentPosTarget;
 
 			//? Grease point 2 will sit to the right, so, 90 degrees.
 			const greasePoint2 = core.yaw_to_dir(yaw + math.pi / 2);
