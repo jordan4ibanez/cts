@@ -101,6 +101,19 @@ namespace steam {
 		},
 	});
 
+	//? This is working around an issue where the node timers get corrupted.
+	core.register_lbm({
+		name: "crafter_steam:engine_kicker",
+		nodenames: ["crafter_steam:engine_logic_controller"],
+		run_at_every_load: true,
+		action: function (pos: Vec3, node: NodeTable, delta: number): void {
+			const timer = core.get_node_timer(pos);
+			if (!timer.is_started()) {
+				timer.start(1);
+			}
+		},
+	});
+
 	core.register_node("crafter_steam:engine_grease_point_1", {
 		drawtype: Drawtype.airlike,
 		paramtype: ParamType1.light,
