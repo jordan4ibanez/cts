@@ -83,12 +83,14 @@ namespace steam {
 
 	//? Steam pipes.
 	const pixel: number = 1 / 16;
+	/** Pipe End. */
+	const pE: number = pixel * 7;
 	/** Pipe Diameter. */
 	const pD: number = pixel;
 	/** Pipe Length. */
 	const pL: number = pD * 8;
 	/** Flange Start. */
-	const fS: number = pD * 7;
+	const fS: number = pE;
 	/** Flange Diameter. */
 	const fD: number = pD * 2;
 
@@ -107,7 +109,7 @@ namespace steam {
 			// +Z.
 			// connect_back: [
 			// 	// Pipe.
-			// 	[-pD, -pD, -pD, pD, pD, pL],
+			// 	[-pD, -pD, -pD, pD, pD, pE],
 			// 	// Flange right X axis.
 			// 	[pD, -pD, fS, fD, pD, pL],
 			// 	// Flange left X axis.
@@ -119,18 +121,18 @@ namespace steam {
 			// ],
 
 			// -Z.
-			connect_front: [
-				// Pipe.
-				[-pD, -pD, -pD, pD, pD, pL],
-				// 	// Flange right X axis.
-				// 	[pD, -pD, fS, fD, pD, pL],
-				// 	// Flange left X axis.
-				// 	[-fD, -pD, fS, -pD, pD, pL],
-				// 	// Flange top.
-				// 	[-fD, pD, fS, fD, fD, pL],
-				// 	// Flange bottom.
-				// 	[-fD, -fD, fS, fD, -pD, pL],
-			],
+			// connect_front: [
+			// 	// Pipe.
+			// 	[-pD, -pD, -pE, pD, pD, pD],
+			// 	// 	// Flange right X axis.
+			// 	[pD, -pD, -pL, fD, pD, -fS],
+			// 	// 	// Flange left X axis.
+			// 	[-fD, -pD, -pL, -pD, pD, -fS],
+			// 	// 	// Flange top.
+			// 	[-fD, pD, -pL, fD, fD, -fS],
+			// 	// 	// Flange bottom.
+			// 	[-fD, -fD, -pL, fD, -pD, -fS],
+			// ],
 
 			// connect_left: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
 		},
