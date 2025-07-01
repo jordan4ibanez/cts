@@ -56,16 +56,12 @@ namespace steam {
 				core.log(LogLevel.error, `Missing param2 at ${position}`);
 				return;
 			}
-
 			const yaw =
 				core.dir_to_yaw(core.fourdir_to_dir(oldNode.param2)) -
 				math.pi / 2;
-
 			const dir = core.yaw_to_dir(yaw);
-
 			const targetPos1 = vector.add(position, dir);
 			const targetPos2 = vector.add(position, vector.multiply(dir, 2));
-
 			core.remove_node(targetPos1);
 			core.remove_node(targetPos2);
 		},
@@ -85,15 +81,11 @@ namespace steam {
 				core.log(LogLevel.error, `Missing param2 at ${position}`);
 				return;
 			}
-
 			const yaw = core.dir_to_yaw(core.fourdir_to_dir(oldNode.param2));
-
 			const dir1 = core.yaw_to_dir(yaw - math.pi / 2);
 			const dir2 = core.yaw_to_dir(yaw + math.pi / 2);
-
 			const targetPos1 = vector.add(position, dir1);
 			const targetPos2 = vector.add(position, dir2);
-
 			core.remove_node(targetPos1);
 			core.remove_node(targetPos2);
 		},
@@ -113,16 +105,12 @@ namespace steam {
 				core.log(LogLevel.error, `Missing param2 at ${position}`);
 				return;
 			}
-
 			const yaw =
 				core.dir_to_yaw(core.fourdir_to_dir(oldNode.param2)) +
 				math.pi / 2;
-
 			const dir = core.yaw_to_dir(yaw);
-
 			const targetPos1 = vector.add(position, dir);
 			const targetPos2 = vector.add(position, vector.multiply(dir, 2));
-
 			core.remove_node(targetPos1);
 			core.remove_node(targetPos2);
 		},
