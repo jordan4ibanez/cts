@@ -49,7 +49,6 @@ namespace steam {
 		sounds: crafter.stoneSound(),
 		sunlight_propagates: false,
 		drop: "",
-		node_dig_prediction: "",
 		node_placement_prediction: "",
 		on_timer(position, elapsed) {},
 		after_destruct(position, oldNode) {
@@ -79,7 +78,6 @@ namespace steam {
 		groups: { stone: 1 },
 		sounds: crafter.stoneSound(),
 		drop: "",
-		node_dig_prediction: "",
 		node_placement_prediction: "",
 		sunlight_propagates: false,
 		after_destruct(position, oldNode) {
@@ -108,7 +106,6 @@ namespace steam {
 		groups: { stone: 1 },
 		sounds: crafter.stoneSound(),
 		drop: "",
-		node_dig_prediction: "",
 		node_placement_prediction: "",
 		sunlight_propagates: false,
 	});
