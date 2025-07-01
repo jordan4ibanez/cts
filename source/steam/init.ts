@@ -150,9 +150,6 @@ namespace steam {
 			}
 
 			// There is room! Hooray!
-			
-
-			print(vector.add(greasePosition1, dirController));
 
 			core.swap_node(controllerPosition, {
 				name: "crafter:glass",
