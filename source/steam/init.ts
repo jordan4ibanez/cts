@@ -1,6 +1,8 @@
 namespace steam {
 	//? Stationary steam engine.
 
+	const steamEngineEntityMap = new Map<number, ObjectRef>();
+
 	class SteamEngine extends types.Entity {
 		name: string = "crafter_steam:engine";
 
@@ -8,6 +10,7 @@ namespace steam {
 			visual: EntityVisual.mesh,
 			mesh: "steam_engine.gltf",
 			visual_size: { x: 1, y: 1 },
+			static_save: false,
 			textures: [
 				"steam_engine_base.png",
 				"steam_engine_steam_inlet.png",
@@ -18,12 +21,12 @@ namespace steam {
 			],
 		};
 
-		on_activate(staticData: string, delta: number): void {
-			const pos = vector.floor(this.object.get_pos());
-			pos.y += 0.5;
-			this.object.set_pos(pos);
-			this.object.set_animation({ x: 0, y: 1 }, 1, 0, true);
-		}
+		// on_activate(staticData: string, delta: number): void {
+		// 	const pos = vector.floor(this.object.get_pos());
+		// 	pos.y += 0.5;
+		// 	this.object.set_pos(pos);
+		// 	this.object.set_animation({ x: 0, y: 1 }, 1, 0, true);
+		// }
 
 		// on_punch(
 		// 	puncher: ObjectRef | null,
@@ -46,12 +49,42 @@ namespace steam {
 		drawtype: Drawtype.airlike,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
-		groups: { stone: 1 },
+		groups: { stone: 1, steam: 1 },
 		sounds: crafter.stoneSound(),
 		sunlight_propagates: false,
 		drop: "",
 		node_placement_prediction: "",
-		on_timer(position, elapsed) {},
+		on_timer(position, elapsed) {
+			core.get_node_timer(position).start(1);
+		},
+
+		on_construct(position) {
+			const node = core.get_node(position);
+
+			if (node.param2 == null) {
+				core.log(LogLevel.error, `Missing param2 at ${position}`);
+				return;
+			}
+			const yaw =
+				core.dir_to_yaw(core.fourdir_to_dir(node.param2)) - math.pi / 2;
+			const dir = core.yaw_to_dir(yaw);
+			const targetPos = vector.add(position, dir);
+
+			const entity = core.add_entity(targetPos, "crafter_steam:engine");
+
+			if (entity == null) {
+				core.log(
+					LogLevel.error,
+					`Failed to add steam engine entity at ${targetPos}`
+				);
+				return;
+			}
+
+			entity.set_yaw(yaw + math.pi);
+
+			// steamEngineEntityMap.set(core.hash_node_position(position), null)
+		},
+
 		after_destruct(position, oldNode) {
 			if (oldNode.param2 == null) {
 				core.log(LogLevel.error, `Missing param2 at ${position}`);
