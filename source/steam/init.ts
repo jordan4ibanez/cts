@@ -117,6 +117,7 @@ namespace steam {
 			}
 
 			addSteamEngineEntity(position, node.param2);
+			kickOnSteamNodeTimer(position);
 		},
 
 		after_destruct(position, oldNode) {
