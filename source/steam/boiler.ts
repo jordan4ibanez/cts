@@ -1,5 +1,5 @@
 namespace steam {
-	const timerStart = kickOnNodeTimer;
+	const timerStart = kickOnSteamNodeTimer;
 
 	core.register_node("crafter_steam:boiler", {
 		drawtype: Drawtype.mesh,

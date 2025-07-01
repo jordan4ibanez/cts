@@ -3,7 +3,7 @@ namespace steam {
 
 	const steamEngineEntityMap = new Map<number, ObjectRef>();
 
-	export function kickOnNodeTimer(pos: Vec3): void {
+	export function kickOnSteamNodeTimer(pos: Vec3): void {
 		const timer = core.get_node_timer(pos);
 		if (!timer.is_started()) {
 			timer.start(1);
@@ -298,7 +298,7 @@ namespace steam {
 		nodenames: ["group:steam"],
 		run_at_every_load: true,
 		action: function (pos: Vec3, node: NodeTable, delta: number): void {
-			kickOnNodeTimer(pos);
+			kickOnSteamNodeTimer(pos);
 		},
 	});
 }
