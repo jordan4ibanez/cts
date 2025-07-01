@@ -83,6 +83,8 @@ namespace steam {
 
 	//? Steam pipes.
 	const pixel: number = 1 / 16;
+	const pD: number = pixel;
+
 	core.register_node("crafter_steam:pipe", {
 		connects_to: ["group:steam"],
 		tiles: ["stone.png"],
@@ -93,26 +95,19 @@ namespace steam {
 		sunlight_propagates: true,
 		node_box: {
 			type: Nodeboxtype.connected,
-			fixed: [-pixel, -pixel, -pixel, pixel, pixel, pixel],
+			fixed: [-pD, -pD, -pD, pD, pD, pD],
 
 			connect_back: [
 				// Pipe.
-				[-pixel, -pixel, -pixel, pixel, pixel, pixel * 8],
+				[-pD, -pD, -pD, pD, pD, pD * 8],
 				// Flange right X axis.
-				[pixel, -pixel, pixel * 7, pixel * 2, pixel, pixel * 8],
+				[pD, -pD, pD * 7, pD * 2, pD, pD * 8],
 				// Flange left X axis.
-				[-pixel * 2, -pixel, pixel * 7, -pixel, pixel, pixel * 8],
+				[-pD * 2, -pD, pD * 7, -pD, pD, pD * 8],
 				// Flange top.
-				[-pixel * 2, pixel, pixel * 7, pixel * 2, pixel * 2, pixel * 8],
+				[-pD * 2, pD, pD * 7, pD * 2, pD * 2, pD * 8],
 				// Flange bottom.
-				[
-					-pixel * 2,
-					-pixel * 2,
-					pixel * 7,
-					pixel * 2,
-					-pixel,
-					pixel * 8,
-				],
+				[-pD * 2, -pD * 2, pD * 7, pD * 2, -pD, pD * 8],
 			],
 			// connect_left: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
 		},
