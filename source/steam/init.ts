@@ -88,7 +88,7 @@ namespace steam {
 
 				const underDef =
 					core.registered_nodes[
-						core.get_node(pointedThing.above).name
+						core.get_node(pointedThing.under).name
 					];
 
 				if (aboveDef == null || underDef == null) {
