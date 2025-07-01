@@ -41,17 +41,6 @@ namespace steam {
 	}
 	utility.registerTSEntity(SteamEngine);
 
-	//? Boiler.
-
-	core.register_node("crafter_steam:boiler", {
-		drawtype: Drawtype.mesh,
-		mesh: "steam_boiler.gltf",
-		tiles: ["steam_boiler.png"],
-		paramtype2: ParamType2["4dir"],
-		groups: { stone: 1, pathable: 1, steam: 1 },
-		sounds: crafter.stoneSound(),
-	});
-
 	//? Firebox.
 
 	const states = ["open", "closed"];
@@ -81,5 +70,5 @@ namespace steam {
 		});
 	}
 
-	utility.loadFiles(["pipe"]);
+	utility.loadFiles(["boiler", "pipe"]);
 }
