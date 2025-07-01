@@ -146,14 +146,25 @@ namespace steam {
 				[-pE, -pD, -fD, -pL, -fD, fD],
 			],
 			// -Y.
-			connect_bottom: [
+			// connect_bottom: [
+			// 	// Pipe.
+			// 	[-pD, -pE, -pD, pD, pD, pD],
+			// 	// Flange.
+			// 	[-fD, -pL, -pD, -pD, -pE, pD],
+			// 	[pD, -pL, -pD, fD, -pE, pD],
+			// 	[-fD, -pL, -fD, fD, -pE, -pD],
+			// 	[-fD, -pL, pD, fD, -pE, fD],
+			// ],
+
+			// +Y.
+			connect_top: [
 				// Pipe.
-				[-pD, -pE, -pD, pD, pD, pD],
+				[-pD, -pD, -pD, pD, pE, pD],
 				// Flange.
-				[-fD, -pL, -pD, -pD, -pE, pD],
-				[pD, -pL, -pD, fD, -pE, pD],
-				[-fD, -pL, -fD, fD, -pE, -pD],
-				[-fD, -pL, pD, fD, -pE, fD],
+				[-fD, pE, -pD, -pD, pL, pD],
+				[pD, pE, -pD, fD, pL, pD],
+				[-fD, pE, -fD, fD, pL, -pD],
+				[-fD, pE, pD, fD, pL, fD],
 			],
 		},
 	});
