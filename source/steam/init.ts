@@ -122,7 +122,7 @@ namespace steam {
 				return;
 			}
 			const yaw =
-				core.dir_to_yaw(core.fourdir_to_dir(oldNode.param2)) -
+				core.dir_to_yaw(core.fourdir_to_dir(oldNode.param2)) +
 				math.pi / 2;
 			const dir = core.yaw_to_dir(yaw);
 			const targetPos1 = vector.add(position, dir);
