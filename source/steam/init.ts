@@ -1,4 +1,6 @@
 namespace steam {
+	//? Stationary steam engine.
+
 	class SteamEngine extends types.Entity {
 		name: string = "crafter_steam:engine";
 
@@ -39,17 +41,20 @@ namespace steam {
 	}
 	utility.registerTSEntity(SteamEngine);
 
+	//? Boiler.
+
 	core.register_node("crafter_steam:boiler", {
 		drawtype: Drawtype.mesh,
 		mesh: "steam_boiler.gltf",
 		tiles: ["steam_boiler.png"],
 		paramtype2: ParamType2["4dir"],
-		groups: { stone: 1, pathable: 1 },
+		groups: { stone: 1, pathable: 1, steam: 1 },
 		sounds: crafter.stoneSound(),
 	});
 
-	const states = ["open", "closed"];
+	//? Firebox.
 
+	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
 		const currentState = states[index];
 		core.register_node("crafter_steam:firebox_" + currentState, {
@@ -58,7 +63,7 @@ namespace steam {
 			mesh: `steam_firebox_${currentState}.gltf`,
 			tiles: ["steam_firebox.png", "steam_firebox_doors.png"],
 			paramtype2: ParamType2["4dir"],
-			groups: { stone: 1, pathable: 1 },
+			groups: { stone: 1, pathable: 1, steam: 1 },
 			sounds: crafter.stoneSound(),
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
@@ -75,4 +80,31 @@ namespace steam {
 			},
 		});
 	}
+
+	//? Steam pipes.
+	const pixel: number = 1 / 16;
+	core.register_node("crafter_steam:pipe", {
+		connects_to: ["group:steam"],
+		tiles: ["stone.png"],
+		sounds: crafter.stoneSound(),
+		groups: { stone: 1, pathable: 1, steam: 1 },
+		drawtype: Drawtype.nodebox,
+		paramtype: ParamType1.light,
+		sunlight_propagates: true,
+		node_box: {
+			type: Nodeboxtype.connected,
+			fixed: [-pixel, -pixel, -pixel, pixel, pixel, pixel],
+
+			connect_back: [
+				// Pipe.
+				[-pixel, -pixel, -pixel, pixel, pixel, pixel * 8],
+				
+				// Flange right X axis.
+				[pixel, -pixel, pixel * 7, pixel * 2, pixel, pixel * 8],
+				// Flange left X axis.
+				[pixel, -pixel, pixel * 7, pixel * 2, pixel, pixel * 8],
+			],
+			// connect_left: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
+		},
+	});
 }
