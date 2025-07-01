@@ -44,6 +44,28 @@ namespace steam {
 	}
 	utility.registerTSEntity(SteamEngine);
 
+	function addSteamEngineEntity(
+		logicControllerPos: Vec3,
+		param2: number
+	): void {
+		const yaw = core.dir_to_yaw(core.fourdir_to_dir(param2)) - math.pi / 2;
+		const dir = core.yaw_to_dir(yaw);
+		const targetPos = vector.add(logicControllerPos, dir);
+		const entity = core.add_entity(targetPos, "crafter_steam:engine");
+		if (entity == null) {
+			core.log(
+				LogLevel.error,
+				`Failed to add steam engine entity at ${targetPos}`
+			);
+			return;
+		}
+		entity.set_yaw(yaw + math.pi);
+		steamEngineEntityMap.set(
+			core.hash_node_position(logicControllerPos),
+			entity
+		);
+	}
+
 	// This also functions as the steam inlet.
 	core.register_node("crafter_steam:engine_logic_controller", {
 		drawtype: Drawtype.airlike,
@@ -55,9 +77,13 @@ namespace steam {
 		drop: "",
 		node_placement_prediction: "",
 		on_timer(position, elapsed) {
-			print("tick");
-
 			core.get_node_timer(position).start(1);
+
+			const hash = core.hash_node_position(position);
+			const ent = steamEngineEntityMap.get(hash);
+			if (ent == null || !ent.is_valid()) {
+			}
+			print("tick");
 		},
 
 		on_construct(position) {
@@ -67,20 +93,8 @@ namespace steam {
 				core.log(LogLevel.error, `Missing param2 at ${position}`);
 				return;
 			}
-			const yaw =
-				core.dir_to_yaw(core.fourdir_to_dir(node.param2)) - math.pi / 2;
-			const dir = core.yaw_to_dir(yaw);
-			const targetPos = vector.add(position, dir);
-			const entity = core.add_entity(targetPos, "crafter_steam:engine");
-			if (entity == null) {
-				core.log(
-					LogLevel.error,
-					`Failed to add steam engine entity at ${targetPos}`
-				);
-				return;
-			}
-			entity.set_yaw(yaw + math.pi);
-			steamEngineEntityMap.set(core.hash_node_position(position), entity);
+
+			addSteamEngineEntity(position, node.param2);
 		},
 
 		after_destruct(position, oldNode) {
