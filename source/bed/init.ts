@@ -211,7 +211,8 @@ namespace bed {
 			if (
 				pointed_thing.type != PointedThingType.node ||
 				pointed_thing.above == null ||
-				pointed_thing.under == null
+				pointed_thing.under == null ||
+				placer == null
 			) {
 				return;
 			}
