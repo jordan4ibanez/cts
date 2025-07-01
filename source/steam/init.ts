@@ -78,8 +78,6 @@ namespace steam {
 		on_timer(position, elapsed) {
 			core.get_node_timer(position).start(1);
 
-			print("tick");
-
 			const hash = core.hash_node_position(position);
 
 			let ent = steamEngineEntityMap.get(hash);
@@ -101,8 +99,6 @@ namespace steam {
 					return;
 				}
 			}
-
-			print("valid entity.");
 		},
 
 		on_construct(position) {
