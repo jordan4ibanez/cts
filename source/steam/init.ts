@@ -3,6 +3,13 @@ namespace steam {
 
 	const steamEngineEntityMap = new Map<number, ObjectRef>();
 
+	export function kickOnNodeTimer(pos: Vec3): void {
+		const timer = core.get_node_timer(pos);
+		if (!timer.is_started()) {
+			timer.start(1);
+		}
+	}
+
 	class SteamEngine extends types.Entity {
 		name: string = "crafter_steam:engine";
 
@@ -291,10 +298,7 @@ namespace steam {
 		nodenames: ["group:steam"],
 		run_at_every_load: true,
 		action: function (pos: Vec3, node: NodeTable, delta: number): void {
-			const timer = core.get_node_timer(pos);
-			if (!timer.is_started()) {
-				timer.start(1);
-			}
+			kickOnNodeTimer(pos);
 		},
 	});
 }
