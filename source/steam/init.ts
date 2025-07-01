@@ -41,8 +41,9 @@ namespace steam {
 	}
 	utility.registerTSEntity(SteamEngine);
 
+	// This also functions as the steam inlet.
 	core.register_node("crafter_steam:engine_logic_controller", {
-		// drawtype: Drawtype.airlike,
+		drawtype: Drawtype.airlike,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
 		groups: { stone: 1 },
@@ -68,7 +69,7 @@ namespace steam {
 	});
 
 	core.register_node("crafter_steam:engine_grease_point_1", {
-		// drawtype: Drawtype.airlike,
+		drawtype: Drawtype.airlike,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
 		groups: { stone: 1 },
@@ -92,7 +93,7 @@ namespace steam {
 	});
 
 	core.register_node("crafter_steam:engine_grease_point_2", {
-		// drawtype: Drawtype.airlike,
+		drawtype: Drawtype.airlike,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
 		groups: { stone: 1 },
