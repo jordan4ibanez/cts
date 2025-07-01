@@ -109,13 +109,10 @@ namespace steam {
 			connect_back: [
 				// Pipe.
 				[-pD, -pD, -pD, pD, pD, pE],
-				// Flange right X axis.
+				// Flange.
 				[pD, -pD, fS, fD, pD, pL],
-				// Flange left X axis.
 				[-fD, -pD, fS, -pD, pD, pL],
-				// Flange top.
 				[-fD, pD, fS, fD, fD, pL],
-				// Flange bottom.
 				[-fD, -fD, fS, fD, -pD, pL],
 			],
 			// -Z.
