@@ -41,5 +41,22 @@ namespace steam {
 	}
 	utility.registerTSEntity(SteamEngine);
 
-	utility.loadFiles(["boiler", "pipe"]);
+	core.register_node("crafter_steam:engine_item", {
+		mesh: "steam_engine.gltf",
+		drawtype: Drawtype.mesh,
+		visual_scale: 0.5,
+		
+		tiles: [
+			"steam_engine_base.png",
+			"steam_engine_steam_inlet.png",
+			"steam_engine_connecting_rod.png",
+			"steam_engine_flywheel_spokes.png",
+			"steam_engine_flywheel.png",
+			"steam_engine_piston.png",
+		],
+		node_dig_prediction: "",
+
+	});
+
+	utility.loadFiles(["boiler", "firebox", "pipe"]);
 }
