@@ -108,6 +108,24 @@ namespace steam {
 		drop: "",
 		node_placement_prediction: "",
 		sunlight_propagates: false,
+		after_destruct(position, oldNode) {
+			if (oldNode.param2 == null) {
+				core.log(LogLevel.error, `Missing param2 at ${position}`);
+				return;
+			}
+
+			const yaw =
+				core.dir_to_yaw(core.fourdir_to_dir(oldNode.param2)) +
+				math.pi / 2;
+
+			const dir = core.yaw_to_dir(yaw);
+
+			const targetPos1 = vector.add(position, dir);
+			const targetPos2 = vector.add(position, vector.multiply(dir, 2));
+
+			core.remove_node(targetPos1);
+			core.remove_node(targetPos2);
+		},
 	});
 
 	core.register_node("crafter_steam:engine_item", {
