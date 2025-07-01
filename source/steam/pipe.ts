@@ -1,5 +1,5 @@
 namespace steam {
-		//? Steam pipes.
+	//? Steam pipes.
 	const pixel: number = 1 / 16;
 	/** Pipe End. */
 	const pE: number = pixel * 7;
