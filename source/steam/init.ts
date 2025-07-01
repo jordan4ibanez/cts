@@ -46,6 +46,9 @@ namespace steam {
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
 		sunlight_propagates: false,
+		groups: { stone: 1 },
+		sounds: crafter.stoneSound(),
+		drop: "",
 		on_timer(position, elapsed) {},
 	});
 
@@ -53,6 +56,8 @@ namespace steam {
 		// drawtype: Drawtype.airlike,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
+		groups: { stone: 1 },
+		sounds: crafter.stoneSound(),
 		sunlight_propagates: false,
 	});
 
@@ -60,6 +65,8 @@ namespace steam {
 		// drawtype: Drawtype.airlike,
 		paramtype: ParamType1.light,
 		paramtype2: ParamType2["4dir"],
+		groups: { stone: 1 },
+		sounds: crafter.stoneSound(),
 		sunlight_propagates: false,
 	});
 
