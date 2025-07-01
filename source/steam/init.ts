@@ -124,13 +124,13 @@ namespace steam {
 			// connect_front: [
 			// 	// Pipe.
 			// 	[-pD, -pD, -pE, pD, pD, pD],
-			// 	// 	// Flange right X axis.
+			// 	// Flange right X axis.
 			// 	[pD, -pD, -pL, fD, pD, -fS],
-			// 	// 	// Flange left X axis.
+			// 	// Flange left X axis.
 			// 	[-fD, -pD, -pL, -pD, pD, -fS],
-			// 	// 	// Flange top.
+			// 	// Flange top.
 			// 	[-fD, pD, -pL, fD, fD, -fS],
-			// 	// 	// Flange bottom.
+			// 	// Flange bottom.
 			// 	[-fD, -fD, -pL, fD, -pD, -fS],
 			// ],
 
