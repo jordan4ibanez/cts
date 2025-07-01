@@ -111,19 +111,24 @@ namespace steam {
 			// Next, transfer this into yaw.
 			const yaw = core.dir_to_yaw(core.fourdir_to_dir(dir4));
 
-			// The controller will always sit to the left, so, -90 degrees.
-			const controllerDir = core.yaw_to_dir(yaw - math.pi / 2);
+			//? The controller will always sit to the left, so, +90 degrees.
+			const controllerDir = core.yaw_to_dir(yaw + math.pi / 2);
 
 			//? Grease point 1 will sit at the current position.
 			// This is just set like this to add clarity to what's going on.
 			const greasePosition1 = currentPosTarget;
 
-			//? Grease point 2 will sit to the right, so, 90 degrees.
-			const greasePoint2 = core.yaw_to_dir(yaw + math.pi / 2);
+			//? Grease point 2 will sit to the right, so, -90 degrees.
+			const greasePoint2 = core.yaw_to_dir(yaw - math.pi / 2);
 
-			// core.place_node(pointedThing.above, {
-			// 	name: "crafter_steam:engine_logic_controller",
-			// });
+			// So now, we have where things need to go.
+			// This should not be destroying random things that are not buildable to.
+			// It must check if it can replace them or else bail out.
+
+			print(vector.add(greasePosition1, controllerDir));
+			core.swap_node(vector.add(greasePosition1, controllerDir), {
+				name: "crafter:stone",
+			});
 		},
 	});
 
