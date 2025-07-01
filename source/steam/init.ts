@@ -47,7 +47,7 @@ namespace steam {
 		logicControllerPos: Vec3,
 		param2: number
 	): void {
-		const yaw = core.dir_to_yaw(core.fourdir_to_dir(param2)) - math.pi / 2;
+		const yaw = core.dir_to_yaw(core.fourdir_to_dir(param2)) + math.pi / 2;
 		const dir = core.yaw_to_dir(yaw);
 		const targetPos = vector.add(logicControllerPos, dir);
 		const entity = core.add_entity(targetPos, "crafter_steam:engine");
