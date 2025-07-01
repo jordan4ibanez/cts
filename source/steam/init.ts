@@ -140,27 +140,21 @@ namespace steam {
 			) {
 				return;
 			}
-
 			// This is a 3 segment node, so things are a bit complicated.
-
 			let currentPosTarget: Vec3;
-
 			// Are we trying to place this thing above, or are we replacing what we're pointing at?
 			{
 				const aboveDef =
 					core.registered_nodes[
 						core.get_node(pointedThing.above).name
 					];
-
 				const underDef =
 					core.registered_nodes[
 						core.get_node(pointedThing.under).name
 					];
-
 				if (aboveDef == null || underDef == null) {
 					return;
 				}
-
 				if (underDef.buildable_to) {
 					currentPosTarget = pointedThing.under;
 				} else if (aboveDef.buildable_to) {
@@ -170,34 +164,24 @@ namespace steam {
 					return;
 				}
 			}
-
 			// So first, bolt the look direction into 4 possible segments.
 			const dir4 = core.dir_to_fourdir(placer.get_look_dir());
-
 			// Next, transfer this into yaw.
 			const yaw = core.dir_to_yaw(core.fourdir_to_dir(dir4));
-
 			//? The controller will always sit to the left, so, +90 degrees.
 			const dirController = core.yaw_to_dir(yaw + math.pi / 2);
-
 			//? Grease point 1 will sit at the current position.
-
 			//? Grease point 2 will sit to the right, so, -90 degrees.
 			const grease2Dir = core.yaw_to_dir(yaw - math.pi / 2);
-
 			// So now, we have where things need to go.
 			// This should not be destroying random things that are not buildable to.
 			// It must check if it can replace them or else bail out.
-
 			const greasePosition1 = currentPosTarget;
-
 			const controllerPosition = vector.add(
 				greasePosition1,
 				dirController
 			);
-
 			const greasePosition2 = vector.add(greasePosition1, grease2Dir);
-
 			// Check for the room to build this thing.
 			{
 				let def =
@@ -207,26 +191,21 @@ namespace steam {
 				if (def == null || def.buildable_to != true) {
 					return;
 				}
-
 				def =
 					core.registered_nodes[core.get_node(greasePosition2).name];
 				if (def == null || def.buildable_to != true) {
 					return;
 				}
 			}
-
 			// There is room! Hooray!
-
 			core.set_node(controllerPosition, {
 				name: "crafter_steam:engine_logic_controller",
 				param2: dir4,
 			});
-
 			core.set_node(greasePosition1, {
 				name: "crafter_steam:engine_grease_point_1",
 				param2: dir4,
 			});
-
 			core.set_node(greasePosition2, {
 				name: "crafter_steam:engine_grease_point_2",
 				param2: dir4,
