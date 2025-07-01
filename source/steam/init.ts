@@ -132,8 +132,25 @@ namespace steam {
 
 			const greasePosition2 = vector.add(greasePosition1, grease2Dir);
 
+			// Check for the room to build this thing.
 			{
+				let def =
+					core.registered_nodes[
+						core.get_node(controllerPosition).name
+					];
+				if (def == null || def.buildable_to != true) {
+					return;
+				}
+
+				def =
+					core.registered_nodes[core.get_node(greasePosition2).name];
+				if (def == null || def.buildable_to != true) {
+					return;
+				}
 			}
+
+			// There is room! Hooray!
+			
 
 			print(vector.add(greasePosition1, dirController));
 
