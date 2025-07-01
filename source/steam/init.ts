@@ -105,7 +105,7 @@ namespace steam {
 
 		selection_box: {
 			type: Nodeboxtype.connected,
-			fixed: [-fD, -fD, -fD, fD, fD, fD],
+			disconnected: [-fD, -fD, -fD, fD, fD, fD],
 			// +Z.
 			connect_back: [-fD, -fD, -fD, fD, fD, pL],
 			// -Z.
@@ -122,7 +122,7 @@ namespace steam {
 
 		node_box: {
 			type: Nodeboxtype.connected,
-			fixed: [-pD, -pD, -pD, pD, pD, pD],
+			disconnected: [-pD, -pD, -pD, pD, pD, pD],
 			// +Z.
 			connect_back: [
 				// Pipe.
