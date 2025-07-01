@@ -103,6 +103,23 @@ namespace steam {
 		paramtype: ParamType1.light,
 		sunlight_propagates: true,
 
+		collision_box: {
+			type: Nodeboxtype.connected,
+			disconnected: [-fD, -fD, -fD, fD, fD, fD],
+			// +Z.
+			connect_back: [-fD, -fD, -fD, fD, fD, pL],
+			// -Z.
+			connect_front: [-fD, -fD, -pL, fD, fD, fD],
+			// +X.
+			connect_right: [-fD, -fD, -fD, pL, fD, fD],
+			// -X.
+			connect_left: [-pL, -fD, -fD, fD, fD, fD],
+			// -Y.
+			connect_bottom: [-fD, -pL, -fD, fD, fD, fD],
+			// +Y.
+			connect_top: [-fD, -fD, -fD, fD, pL, fD],
+		},
+
 		selection_box: {
 			type: Nodeboxtype.connected,
 			disconnected: [-fD, -fD, -fD, fD, fD, fD],
