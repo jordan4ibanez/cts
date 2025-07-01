@@ -87,6 +87,8 @@ namespace steam {
 	const pD: number = pixel;
 	/** Pipe Length. */
 	const pL: number = pD * 8;
+	/** Flange Start. */
+	const fS: number = pD * 7;
 	/** Flange Diameter. */
 	const fD: number = pD * 2;
 
@@ -106,13 +108,13 @@ namespace steam {
 				// Pipe.
 				[-pD, -pD, -pD, pD, pD, pL],
 				// Flange right X axis.
-				[pD, -pD, pD * 7, fD, pD, pL],
+				[pD, -pD, fS, fD, pD, pL],
 				// Flange left X axis.
-				[-fD, -pD, pD * 7, -pD, pD, pL],
+				[-fD, -pD, fS, -pD, pD, pL],
 				// Flange top.
-				[-fD, pD, pD * 7, fD, fD, pL],
+				[-fD, pD, fS, fD, fD, pL],
 				// Flange bottom.
-				[-fD, -fD, pD * 7, fD, -pD, pL],
+				[-fD, -fD, fS, fD, -pD, pL],
 			],
 			// connect_left: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
 		},
