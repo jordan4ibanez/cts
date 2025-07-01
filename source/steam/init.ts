@@ -104,18 +104,34 @@ namespace steam {
 			type: Nodeboxtype.connected,
 			fixed: [-pD, -pD, -pD, pD, pD, pD],
 
-			connect_back: [
+			// +Z.
+			// connect_back: [
+			// 	// Pipe.
+			// 	[-pD, -pD, -pD, pD, pD, pL],
+			// 	// Flange right X axis.
+			// 	[pD, -pD, fS, fD, pD, pL],
+			// 	// Flange left X axis.
+			// 	[-fD, -pD, fS, -pD, pD, pL],
+			// 	// Flange top.
+			// 	[-fD, pD, fS, fD, fD, pL],
+			// 	// Flange bottom.
+			// 	[-fD, -fD, fS, fD, -pD, pL],
+			// ],
+
+			// -Z.
+			connect_front: [
 				// Pipe.
 				[-pD, -pD, -pD, pD, pD, pL],
-				// Flange right X axis.
-				[pD, -pD, fS, fD, pD, pL],
-				// Flange left X axis.
-				[-fD, -pD, fS, -pD, pD, pL],
-				// Flange top.
-				[-fD, pD, fS, fD, fD, pL],
-				// Flange bottom.
-				[-fD, -fD, fS, fD, -pD, pL],
+				// 	// Flange right X axis.
+				// 	[pD, -pD, fS, fD, pD, pL],
+				// 	// Flange left X axis.
+				// 	[-fD, -pD, fS, -pD, pD, pL],
+				// 	// Flange top.
+				// 	[-fD, pD, fS, fD, fD, pL],
+				// 	// Flange bottom.
+				// 	[-fD, -fD, fS, fD, -pD, pL],
 			],
+
 			// connect_left: [-0.5, -0.5, -0.5, 0.5, 0.5, 0.5],
 		},
 	});
