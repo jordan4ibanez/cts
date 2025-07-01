@@ -105,7 +105,6 @@ namespace steam {
 		node_box: {
 			type: Nodeboxtype.connected,
 			fixed: [-pD, -pD, -pD, pD, pD, pD],
-
 			// +Z.
 			connect_back: [
 				// Pipe.
@@ -119,7 +118,6 @@ namespace steam {
 				// Flange bottom.
 				[-fD, -fD, fS, fD, -pD, pL],
 			],
-
 			// -Z.
 			connect_front: [
 				// Pipe.
@@ -133,7 +131,6 @@ namespace steam {
 				// Flange bottom.
 				[-fD, -fD, -pL, fD, -pD, -fS],
 			],
-
 			// +X.
 			connect_right: [
 				// Pipe.
@@ -147,7 +144,6 @@ namespace steam {
 				// Flange bottom.
 				[pL, -pD, -fD, fS, -fD, fD],
 			],
-
 			// -X.
 			connect_left: [
 				// Pipe.
