@@ -11,6 +11,7 @@ namespace steam {
 			mesh: "steam_engine.gltf",
 			visual_size: { x: 1, y: 1 },
 			static_save: false,
+			pointable: false,
 			textures: [
 				"steam_engine_base.png",
 				"steam_engine_steam_inlet.png",
