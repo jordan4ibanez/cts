@@ -126,7 +126,16 @@ namespace steam {
 			// It must check if it can replace them or else bail out.
 
 			print(vector.add(greasePosition1, controllerDir));
+
 			core.swap_node(vector.add(greasePosition1, controllerDir), {
+				name: "crafter:glass",
+			});
+
+			core.swap_node(greasePosition1, {
+				name: "crafter:stone",
+			});
+
+			core.swap_node(vector.add(greasePosition1, greasePoint2), {
 				name: "crafter:stone",
 			});
 		},
