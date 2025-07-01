@@ -102,6 +102,24 @@ namespace steam {
 		drawtype: Drawtype.nodebox,
 		paramtype: ParamType1.light,
 		sunlight_propagates: true,
+
+		selection_box: {
+			type: Nodeboxtype.connected,
+			fixed: [-fD, -fD, -fD, fD, fD, fD],
+			// +Z.
+			connect_back: [-fD, -fD, -fD, fD, fD, pL],
+			// -Z.
+			connect_front: [-fD, -fD, -pL, fD, fD, fD],
+			// +X.
+			connect_right: [-fD, -fD, -fD, pL, fD, fD],
+			// -X.
+			connect_left: [-pL, -fD, -fD, fD, fD, fD],
+			// -Y.
+			connect_bottom: [-fD, -pL, -fD, fD, fD, fD],
+			// +Y.
+			connect_top: [-fD, -fD, -fD, fD, pL, fD],
+		},
+
 		node_box: {
 			type: Nodeboxtype.connected,
 			fixed: [-pD, -pD, -pD, pD, pD, pD],
