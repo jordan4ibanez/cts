@@ -151,15 +151,15 @@ namespace steam {
 			// -X.
 			connect_left: [
 				// Pipe.
-				[-pD, -pD, -pD, pE, pD, pD],
+				[-pE, -pD, -pD, pD, pD, pD],
 				// Flange left Z axis.
-				[pL, -pD, pD, fS, pD, fD],
+				[-pE, -pD, pD, -pL, pD, fD],
 				// Flange right Z axis.
-				[pL, -pD, -fD, fS, pD, -pD],
+				[-pE, -pD, -fD, -pL, pD, -pD],
 				// Flange top.
-				[pL, pD, -fD, fS, fD, fD],
+				[-pE, pD, -fD, -pL, fD, fD],
 				// Flange bottom.
-				[pL, -pD, -fD, fS, -fD, fD],
+				[-pE, -pD, -fD, -pL, -fD, fD],
 			],
 		},
 	});
