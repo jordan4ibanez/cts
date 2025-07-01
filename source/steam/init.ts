@@ -96,7 +96,7 @@ namespace steam {
 
 	core.register_node("crafter_steam:pipe", {
 		connects_to: ["group:steam"],
-		tiles: ["stone.png"],
+		tiles: ["steam_pipe.png"],
 		sounds: crafter.stoneSound(),
 		groups: { stone: 1, pathable: 1, steam: 1 },
 		drawtype: Drawtype.nodebox,
