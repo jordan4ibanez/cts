@@ -6,7 +6,7 @@ namespace steam {
 	export function kickOnSteamNodeTimer(pos: Vec3): void {
 		const timer = core.get_node_timer(pos);
 		if (!timer.is_started()) {
-			timer.start(1);
+			timer.start(1 + math.random());
 		}
 	}
 
