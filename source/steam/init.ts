@@ -115,8 +115,6 @@ namespace steam {
 			const dirController = core.yaw_to_dir(yaw + math.pi / 2);
 
 			//? Grease point 1 will sit at the current position.
-			// This is just set like this to add clarity to what's going on.
-			const greasePosition1 = currentPosTarget;
 
 			//? Grease point 2 will sit to the right, so, -90 degrees.
 			const grease2Dir = core.yaw_to_dir(yaw - math.pi / 2);
@@ -124,6 +122,8 @@ namespace steam {
 			// So now, we have where things need to go.
 			// This should not be destroying random things that are not buildable to.
 			// It must check if it can replace them or else bail out.
+
+			const greasePosition1 = currentPosTarget;
 
 			const controllerPosition = vector.add(
 				greasePosition1,
