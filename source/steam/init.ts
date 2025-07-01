@@ -43,11 +43,24 @@ namespace steam {
 
 	core.register_node("crafter_steam:engine_logic_controller", {
 		// drawtype: Drawtype.airlike,
-		drawtype: Drawtype.normal,
 		paramtype: ParamType1.light,
+		paramtype2: ParamType2["4dir"],
 		sunlight_propagates: false,
-
 		on_timer(position, elapsed) {},
+	});
+
+	core.register_node("crafter_steam:engine_grease_point_1", {
+		// drawtype: Drawtype.airlike,
+		paramtype: ParamType1.light,
+		paramtype2: ParamType2["4dir"],
+		sunlight_propagates: false,
+	});
+
+	core.register_node("crafter_steam:engine_grease_point_2", {
+		// drawtype: Drawtype.airlike,
+		paramtype: ParamType1.light,
+		paramtype2: ParamType2["4dir"],
+		sunlight_propagates: false,
 	});
 
 	core.register_node("crafter_steam:engine_item", {
@@ -151,16 +164,19 @@ namespace steam {
 
 			// There is room! Hooray!
 
-			core.swap_node(controllerPosition, {
-				name: "crafter:glass",
+			core.set_node(controllerPosition, {
+				name: "crafter_steam:engine_logic_controller",
+				param2: dir4,
 			});
 
-			core.swap_node(greasePosition1, {
-				name: "crafter:diamondblock",
+			core.set_node(greasePosition1, {
+				name: "crafter_steam:engine_grease_point_1",
+				param2: dir4,
 			});
 
-			core.swap_node(greasePosition2, {
-				name: "crafter:stone",
+			core.set_node(greasePosition2, {
+				name: "crafter_steam:engine_grease_point_2",
+				param2: dir4,
 			});
 		},
 	});
