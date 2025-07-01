@@ -79,6 +79,7 @@ namespace steam {
 
 			let currentPosTarget: Vec3;
 
+			// Are we trying to place this thing above, or are we replacing what we're pointing at?
 			{
 				const aboveDef =
 					core.registered_nodes[
