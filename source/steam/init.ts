@@ -58,7 +58,7 @@ namespace steam {
 			);
 			return;
 		}
-		entity.set_yaw(yaw + math.pi);
+		entity.set_yaw(yaw);
 		steamEngineEntityMap.set(
 			core.hash_node_position(logicControllerPos),
 			entity
