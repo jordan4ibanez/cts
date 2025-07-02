@@ -55,6 +55,12 @@ namespace utility {
 		}
 	}
 
+	/**
+	 * Get a type safe metadata reference at a position in the world.
+	 * @param pos The position in the world where the metadata is.
+	 * @param clazz The advanced metadata class to encapsulate the components.
+	 * @returns An instance of the metadata clazz.
+	 */
 	export function getMeta<T extends CrafterMeta>(
 		pos: Vec3,
 		clazz: new (p: Vec3) => T
