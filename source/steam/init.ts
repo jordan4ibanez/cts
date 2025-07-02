@@ -1,4 +1,9 @@
 namespace steam {
+
+	//~ Note:
+	//~ This mod runs in imperial units.
+	//~ The technology is as old as it's units.
+
 	//? Stationary steam engine.
 
 	const steamEngineEntityMap = new Map<number, ObjectRef>();
