@@ -40,6 +40,15 @@ namespace steam {
 		"steam_firebox_fire.png",
 	];
 
+	const sootTexturing = [
+		"steam_soot_block.png",
+		"steam_soot_block.png",
+		"steam_soot_block.png",
+		"steam_soot_block.png",
+		"steam_soot_block.png",
+		"steam_soot_block.png",
+	];
+
 	class FireBoxFireEntity extends types.Entity {
 		name: string = "crafter_steam:firebox_fire_entity";
 		initial_properties: ObjectProperties = {
@@ -79,6 +88,13 @@ namespace steam {
 		const meta = core.get_meta(pos);
 		const coalLevel = meta.get_float("coal_level");
 		const onFire = meta.get_int("coal_on_fire") > 0;
+		const isSoot = meta.get_int("coal_is_soot") > 0;
+
+		if (onFire && isSoot) {
+			throw new Error(
+				`Logic error. Cannot be soot and on fire! At: ${pos}`
+			);
+		}
 
 		if (coalLevel <= 0) {
 			entity.set_properties({
@@ -87,6 +103,9 @@ namespace steam {
 		} else {
 			// todo: if on fire then change the texture.
 
+			entity.set_pos(
+				vector.create3d(pos.x, pos.y - 0.5 + coalLevel / 2, pos.z)
+			);
 			entity.set_properties({
 				visual_size: vector.create3d(
 					fireEntityWidth,
@@ -94,13 +113,16 @@ namespace steam {
 					fireEntityWidth
 				),
 			});
-			entity.set_pos(
-				vector.create3d(pos.x, pos.y - 0.5 + coalLevel / 2, pos.z)
-			);
+
 			if (onFire) {
 				entity.set_properties({
 					textures: onFireTexturing,
 					glow: 10,
+				});
+			} else {
+				entity.set_properties({
+					textures: sootTexturing,
+					glow: 0,
 				});
 			}
 		}
@@ -190,11 +212,14 @@ namespace steam {
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
 				const meta = core.get_meta(position);
 				const onFire = meta.get_int("coal_on_fire") > 0;
+				const isSoot = meta.get_int("coal_is_soot") > 0;
 				let coalLevel = meta.get_float("coal_level");
 
 				const itemStackName = itemStack.get_name();
 
+				// Basically gets disabled until you clean out the soot.
 				if (
+					!isSoot &&
 					currentState == "open" &&
 					itemStackName == "crafter:coal" &&
 					coalLevel < 0.6
@@ -212,6 +237,7 @@ namespace steam {
 					});
 					return itemStack;
 				} else if (
+					!isSoot &&
 					currentState == "open" &&
 					!onFire &&
 					core.get_item_group(itemStackName, "torch") > 0 &&
@@ -221,6 +247,15 @@ namespace steam {
 					meta.set_int("coal_on_fire", 1);
 					manipulateFireEntity(position, getOrCreateEntity(position));
 					return itemStack;
+				} else if (
+					!isSoot &&
+					itemStackName == "crafter:bucket_water" &&
+					onFire
+				) {
+					print("extinguish to soot");
+
+					meta.set_int("coal_on_fire", 0);
+					meta.set_int("coal_is_soot", 1);
 				} else {
 					const newIndex = (index + 1) % 2;
 					const newState = states[newIndex];
