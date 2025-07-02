@@ -3,6 +3,7 @@ namespace steam {
 
 	const fireboxEntities = new Map<number, ObjectRef>();
 	const fireEntityWidth = (1 / 16) * 14;
+	const coalIncrement = 0.05;
 
 	const coalTexturing = [
 		"coalblock.png",
@@ -31,6 +32,8 @@ namespace steam {
 			visual_size: vector.create3d(0, 0, 0),
 			static_save: false,
 		};
+		coalLevel: number = 0;
+		onFire: boolean = false;
 
 		// on_step(delta: number, moveResult: MoveResult | null): void {
 		// 	print("hi");
@@ -80,6 +83,17 @@ namespace steam {
 			entity.set_pos(
 				vector.create3d(pos.x, pos.y - 0.5 + coalLevel / 2, pos.z)
 			);
+			const luaEntity =
+				entity.get_luaentity() as FireBoxFireEntity | null;
+
+			if (luaEntity != null) {
+				luaEntity.coalLevel = coalLevel;
+			} else {
+				core.log(
+					LogLevel.error,
+					`Failed to set the coal level of firebox entity at ${pos}`
+				);
+			}
 		}
 	}
 
@@ -119,7 +133,7 @@ namespace steam {
 					itemStack.get_name() == "crafter:coal" &&
 					coalLevel < 0.6
 				) {
-					coalLevel += 0.05;
+					coalLevel += coalIncrement;
 					print(coalLevel);
 					meta.set_float("coal_level", coalLevel);
 
@@ -142,6 +156,26 @@ namespace steam {
 				const hash = core.hash_node_position(position);
 				const entity = fireboxEntities.get(hash);
 				if (entity != null) {
+					const luaEntity =
+						entity.get_luaentity() as FireBoxFireEntity | null;
+
+					if (luaEntity) {
+						// If you lit this on fire, say goodbye to your coal.
+						if (!luaEntity.onFire) {
+							itemHandling.throw_item(
+								position,
+								`crafter:coal ${
+									luaEntity.coalLevel / coalIncrement
+								}`
+							);
+						}
+					} else {
+						core.log(
+							LogLevel.error,
+							`Player just lost their coal at ${position}`
+						);
+					}
+
 					entity.remove();
 				}
 				fireboxEntities.delete(hash);
