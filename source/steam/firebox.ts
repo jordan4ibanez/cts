@@ -29,7 +29,7 @@ namespace steam {
 		isSoot: boolean = false;
 	}
 
-	const fbData: FireboxMeta = new FireboxMeta(vector.create3d());
+	const fireboxData: FireboxMeta = new FireboxMeta(vector.create3d());
 
 	const coalTexturing = [
 		"coalblock.png",
@@ -94,15 +94,15 @@ namespace steam {
 			return;
 		}
 
-		fbData.move(pos);
+		fireboxData.move(pos);
 
-		if (fbData.onFire && fbData.isSoot) {
+		if (fireboxData.onFire && fireboxData.isSoot) {
 			throw new Error(
 				`Logic error. Cannot be soot and on fire! At: ${pos}`
 			);
 		}
 
-		if (fbData.coalLevel <= 0) {
+		if (fireboxData.coalLevel <= 0) {
 			entity.set_properties({
 				visual_size: vector.create3d(0, 0, 0),
 			});
@@ -110,24 +110,24 @@ namespace steam {
 			entity.set_pos(
 				vector.create3d(
 					pos.x,
-					pos.y - 0.5 + fbData.coalLevel / 2,
+					pos.y - 0.5 + fireboxData.coalLevel / 2,
 					pos.z
 				)
 			);
 			entity.set_properties({
 				visual_size: vector.create3d(
 					fireEntityWidth,
-					fbData.coalLevel,
+					fireboxData.coalLevel,
 					fireEntityWidth
 				),
 			});
 
-			if (fbData.onFire) {
+			if (fireboxData.onFire) {
 				entity.set_properties({
 					textures: onFireTexturing,
 					glow: 10,
 				});
-			} else if (fbData.isSoot) {
+			} else if (fireboxData.isSoot) {
 				entity.set_properties({
 					textures: sootTexturing,
 					glow: 0,
@@ -250,23 +250,23 @@ namespace steam {
 					return;
 				}
 
-				fbData.move(position);
+				fireboxData.move(position);
 
 				// You might want to put the fire out first.
-				if (fbData.onFire) {
+				if (fireboxData.onFire) {
 					return;
 				}
 
-				if (fbData.coalLevel <= 0) {
-					fbData.coalLevel = 0;
-					fbData.isSoot = false;
-					fbData.write();
+				if (fireboxData.coalLevel <= 0) {
+					fireboxData.coalLevel = 0;
+					fireboxData.isSoot = false;
+					fireboxData.write();
 					return;
 				}
 
-				const wasSoot = fbData.isSoot;
+				const wasSoot = fireboxData.isSoot;
 
-				if (fbData.isSoot) {
+				if (fireboxData.isSoot) {
 					core.sound_play("steam_soot_shovel", {
 						pos: position,
 						pitch: (math.random(80, 99) + math.random()) / 100,
@@ -278,18 +278,18 @@ namespace steam {
 					});
 				}
 
-				fbData.coalLevel -= coalIncrement;
-				fbData.coalLevel = math.round(fbData.coalLevel * 100) / 100;
+				fireboxData.coalLevel -= coalIncrement;
+				fireboxData.coalLevel = math.round(fireboxData.coalLevel * 100) / 100;
 
 				let triggerReturn = false;
 				// That last bit is lost.
-				if (fbData.coalLevel < 0) {
+				if (fireboxData.coalLevel < 0) {
 					triggerReturn = true;
-					fbData.coalLevel = 0;
-					fbData.isSoot = false;
+					fireboxData.coalLevel = 0;
+					fireboxData.isSoot = false;
 				}
 
-				fbData.write();
+				fireboxData.write();
 				manipulateFireEntity(position, getOrCreateEntity(position));
 
 				if (triggerReturn) {
