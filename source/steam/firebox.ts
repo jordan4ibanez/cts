@@ -30,8 +30,6 @@ namespace steam {
 		temperature: number = 0;
 	}
 
-	const fireboxData: FireboxMeta = new FireboxMeta(vector.create3d());
-
 	const coalTexturing = [
 		"coalblock.png",
 		"coalblock.png",
@@ -95,7 +93,9 @@ namespace steam {
 			return;
 		}
 
-		fireboxData.move(pos);
+		const fireboxData: FireboxMeta = new FireboxMeta(pos);
+
+		print(dump(fireboxData));
 
 		if (fireboxData.onFire && fireboxData.isSoot) {
 			throw new Error(
@@ -143,7 +143,7 @@ namespace steam {
 	}
 
 	function burnFuelAndDoSideEffects(pos: Vec3, opened: boolean): void {
-		fireboxData.move(pos);
+		const fireboxData: FireboxMeta = new FireboxMeta(pos);
 
 		const hash = core.hash_node_position(pos);
 
@@ -252,7 +252,7 @@ namespace steam {
 					return;
 				}
 
-				fireboxData.move(position);
+				const fireboxData: FireboxMeta = new FireboxMeta(position);
 
 				// You might want to put the fire out first.
 				if (fireboxData.onFire) {
@@ -332,7 +332,7 @@ namespace steam {
 			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
-				fireboxData.move(position);
+				const fireboxData: FireboxMeta = new FireboxMeta(position);
 
 				const itemStackName = itemStack.get_name();
 
@@ -404,7 +404,7 @@ namespace steam {
 				const hash = core.hash_node_position(position);
 				const entity = fireboxEntities.get(hash);
 
-				fireboxData.move(position);
+				const fireboxData: FireboxMeta = new FireboxMeta(position);
 
 				if (entity != null) {
 					entity.remove();

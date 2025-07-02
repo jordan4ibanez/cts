@@ -13,14 +13,14 @@ namespace utility {
 			this.meta = core.get_meta(pos);
 		}
 
-		/**
-		 * Move this object into a new position in the world.
-		 * @param pos The new position.
-		 */
-		move(pos: Vec3) {
-			this.meta = core.get_meta(pos);
-			this.read();
-		}
+		// /**
+		//  * Move this object into a new position in the world.
+		//  * @param pos The new position.
+		//  */
+		// move(pos: Vec3) {
+		// 	this.meta = core.get_meta(pos);
+		// 	this.read();
+		// }
 
 		/**
 		 * Read the data from the world.
