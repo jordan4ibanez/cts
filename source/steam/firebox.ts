@@ -8,14 +8,22 @@ namespace steam {
 	}
 	utility.registerTSEntity(FireBoxFireEntity);
 
-	// function getOrCreateEntity(pos: Vec3): ObjectRef | null {
-	// const hash = core.hash_node_position(pos);
-	// const entity = fireboxEntities.get(hash);
+	function getOrCreateEntity(pos: Vec3): ObjectRef | null {
+		const hash = core.hash_node_position(pos);
+		let entity = fireboxEntities.get(hash) || null;
 
-	// if (entity == null) {
-
-	// }
-	// }
+		if (entity == null) {
+			entity = core.add_entity(pos, "crafter_steam:firebox_fire_entity");
+			if (entity == null) {
+				core.log(
+					LogLevel.error,
+					`Failed to add firebox entity at ${pos}`
+				);
+				return null;
+			}
+		}
+		return entity;
+	}
 
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
