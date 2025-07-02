@@ -68,10 +68,19 @@ namespace steam {
 		const coalLevel = meta.get_float("coal_level");
 		const onFire = meta.get_int("coal_on_fire") > 0;
 
+		const hash = core.hash_node_position(pos);
+
 		if (coalLevel <= 0) {
 			entity.set_properties({
 				visual_size: vector.create3d(0, 0, 0),
 			});
+
+			const soundHandle = fireBoxSounds.get(hash);
+
+			if (soundHandle != null) {
+				core.sound_stop(soundHandle);
+				// todo: play fire extinguish or something
+			}
 		} else {
 			// todo: if on fire then change the texture.
 
