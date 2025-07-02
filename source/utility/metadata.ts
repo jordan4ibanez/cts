@@ -6,27 +6,33 @@ namespace utility {
 	 * - int
 	 * - float
 	 */
-	export class CrafterMeta {
+	export class CrafterMeta
+		implements Dictionary<any, string | number | MetaRef | (() => any)>
+	{
+		[x: string]: string | number | MetaRef | (() => any) | undefined;
+
 		private meta: MetaRef;
 
-		constructor(meta: MetaRef) {
-			this.meta = meta;
+		constructor(pos: Vec3) {
+			this.meta = core.get_meta(pos);
 		}
 
 		read() {
 			for (const key of Object.keys(this)) {
-				print(key.length);
+				if (key == "meta") {
+					continue;
+				}
+				print(key);
 			}
 		}
 
 		write() {
 			for (const key of Object.keys(this)) {
-				print(key.length);
+				if (key == "meta") {
+					continue;
+				}
+				print(key);
 			}
 		}
-	}
-
-	export function getMeta<T>(pos: Vec3) {
-		const meta = core.get_meta(pos);
 	}
 }
