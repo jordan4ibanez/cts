@@ -185,19 +185,19 @@ namespace steam {
 					fireboxData.temperature += temperatureIncrementClosed;
 				}
 			}
-			meta.set_float("firebox_temperature", temperature);
+			fireboxData.write();
 		} else {
-			if (temperature > 0) {
+			if (fireboxData.temperature > 0) {
 				// Basically this is the "oh shit I ran out of fuel" control.
 				// If you close the doors the firebox will retain more heat.
-				temperature -= opened
+				fireboxData.temperature -= opened
 					? temperatureDecrementOpened
 					: temperatureDecrementClosed;
 
-				if (temperature < 0) {
-					temperature = 0;
+				if (fireboxData.temperature < 0) {
+					fireboxData.temperature = 0;
 				}
-				meta.set_float("firebox_temperature", temperature);
+				fireboxData.write();
 			}
 
 			if (soundHandle != null) {
@@ -205,9 +205,10 @@ namespace steam {
 			}
 		}
 
-		if (coalLevel < 0) {
-			meta.set_float("coal_level", 0);
-			meta.set_int("coal_on_fire", 0);
+		if (fireboxData.coalLevel < 0) {
+			fireboxData.coalLevel = 0;
+			fireboxData.onFire = false;
+			fireboxData.write();
 
 			// todo: drop down into the ash pan.
 		}
