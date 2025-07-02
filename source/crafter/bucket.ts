@@ -56,6 +56,12 @@ namespace crafter {
 
 			const nodeName: string = core.get_node(posUnder).name;
 
+			const sneak = placer.get_player_control().sneak;
+			if (!sneak && core.registered_nodes[nodeName]?.on_rightclick) {
+				core.item_place(itemstack, placer, bucketPointedThing);
+				return;
+			}
+
 			if (nodeName == "crafter:water") {
 				itemstack.replace(ItemStack("crafter:bucket_water"));
 				core.remove_node(posUnder);
@@ -131,6 +137,12 @@ namespace crafter {
 
 			const nodeUnder: string = core.get_node(posUnder).name;
 			const nodeAbove: string = core.get_node(posAbove).name;
+
+			const sneak = placer.get_player_control().sneak;
+			if (!sneak && core.registered_nodes[nodeUnder]?.on_rightclick) {
+				core.item_place(itemstack, placer, bucketPointedThing);
+				return;
+			}
 
 			const buildableUnder: boolean = (() => {
 				const def: NodeDefinition | undefined =
@@ -244,6 +256,12 @@ namespace crafter {
 
 			const nodeUnder: string = core.get_node(posUnder).name;
 			const nodeAbove: string = core.get_node(posAbove).name;
+
+			const sneak = placer.get_player_control().sneak;
+			if (!sneak && core.registered_nodes[nodeUnder]?.on_rightclick) {
+				core.item_place(itemstack, placer, bucketPointedThing);
+				return;
+			}
 
 			const buildableUnder: boolean = (() => {
 				const def: NodeDefinition | undefined =
