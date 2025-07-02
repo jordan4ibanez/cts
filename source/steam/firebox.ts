@@ -33,10 +33,6 @@ namespace steam {
 			visual_size: vector.create3d(0, 0, 0),
 			static_save: false,
 		};
-
-		// on_step(delta: number, moveResult: MoveResult | null): void {
-		// 	print("hi");
-		// }
 	}
 	utility.registerTSEntity(FireBoxFireEntity);
 
@@ -119,11 +115,13 @@ namespace steam {
 					itemStack.get_name() == "crafter:coal" &&
 					coalLevel < 0.6
 				) {
+					itemStack.take_item();
 					coalLevel += coalIncrement;
 					print(coalLevel);
 					meta.set_float("coal_level", coalLevel);
-
 					manipulateFireEntity(position, getOrCreateEntity(position));
+
+					return itemStack;
 				} else {
 					const newIndex = (index + 1) % 2;
 					const newState = states[newIndex];
@@ -150,7 +148,6 @@ namespace steam {
 				fireboxEntities.delete(hash);
 				// If you lit this on fire, say goodbye to your coal.
 				if (!onFire) {
-					print("not on fire");
 					const amount = coalLevel / coalIncrement;
 					if (amount > 0) {
 						itemHandling.throw_item(
