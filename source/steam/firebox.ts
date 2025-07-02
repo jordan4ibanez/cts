@@ -2,22 +2,32 @@ namespace steam {
 	const timerStart = kickOnSteamNodeTimer;
 
 	const fireboxEntities = new Map<number, ObjectRef>();
-
 	const fireEntityWidth = (1 / 16) * 14;
+
+	const coalTexturing = [
+		"coalblock.png",
+		"coalblock.png",
+		"coalblock.png",
+		"coalblock.png",
+		"coalblock.png",
+		"coalblock.png",
+	];
+
+	const onFireTexturing = [
+		"steam_firebox_fire.png",
+		"steam_firebox_fire.png",
+		"steam_firebox_fire.png",
+		"steam_firebox_fire.png",
+		"steam_firebox_fire.png",
+		"steam_firebox_fire.png",
+	];
 
 	class FireBoxFireEntity extends types.Entity {
 		name: string = "crafter_steam:firebox_fire_entity";
 		initial_properties: ObjectProperties = {
 			pointable: false,
 			visual: EntityVisual.cube,
-			textures: [
-				"coalblock.png",
-				"coalblock.png",
-				"coalblock.png",
-				"coalblock.png",
-				"coalblock.png",
-				"coalblock.png",
-			],
+			textures: coalTexturing,
 			visual_size: vector.create3d(0, 0, 0),
 			static_save: false,
 		};
