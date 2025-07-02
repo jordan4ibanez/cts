@@ -174,6 +174,17 @@ namespace steam {
 			}
 			meta.set_float("firebox_temperature", temperature);
 		} else {
+			if (temperature > 0) {
+				temperature -= opened
+					? temperatureDecrementOpened
+					: temperatureDecrementClosed;
+
+				if (temperature < 0) {
+					temperature = 0;
+				}
+				meta.set_float("firebox_temperature", temperature);
+			}
+
 			if (soundHandle != null) {
 				core.sound_stop(soundHandle);
 			}
