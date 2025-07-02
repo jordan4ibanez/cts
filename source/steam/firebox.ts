@@ -2,6 +2,14 @@ namespace steam {
 	const timerStart = kickOnSteamNodeTimer;
 
 	const fireboxEntities = new Map<number, ObjectRef>();
+
+	class DataFirebox {
+		coalLevel: number = 0;
+		onFire: boolean = false;
+	}
+
+	const fireBoxData = new Map<number, DataFirebox>();
+
 	const fireEntityWidth = (1 / 16) * 14;
 	const coalIncrement = 0.05;
 
@@ -32,8 +40,6 @@ namespace steam {
 			visual_size: vector.create3d(0, 0, 0),
 			static_save: false,
 		};
-		coalLevel: number = 0;
-		onFire: boolean = false;
 
 		// on_step(delta: number, moveResult: MoveResult | null): void {
 		// 	print("hi");
@@ -86,18 +92,6 @@ namespace steam {
 			entity.set_pos(
 				vector.create3d(pos.x, pos.y - 0.5 + coalLevel / 2, pos.z)
 			);
-			const luaEntity =
-				entity.get_luaentity() as FireBoxFireEntity | null;
-
-			if (luaEntity != null) {
-				luaEntity.coalLevel = coalLevel;
-				luaEntity.onFire = onFire;
-			} else {
-				core.log(
-					LogLevel.error,
-					`Failed to manipulate the data of firebox entity at ${pos}`
-				);
-			}
 		}
 	}
 
@@ -159,31 +153,29 @@ namespace steam {
 			on_destruct(position) {
 				const hash = core.hash_node_position(position);
 				const entity = fireboxEntities.get(hash);
+				const data = fireBoxData.get(hash);
 				if (entity != null) {
-					const luaEntity =
-						entity.get_luaentity() as FireBoxFireEntity | null;
-
-					if (luaEntity) {
-						// If you lit this on fire, say goodbye to your coal.
-						if (!luaEntity.onFire) {
-							const amount = luaEntity.coalLevel / coalIncrement;
-							if (amount > 0) {
-								itemHandling.throw_item(
-									position,
-									`crafter:coal ${amount}`
-								);
-							}
-						}
-					} else {
-						core.log(
-							LogLevel.error,
-							`Player just lost their coal at ${position}`
-						);
-					}
-
 					entity.remove();
 				}
 				fireboxEntities.delete(hash);
+
+				if (data != null) {
+					// If you lit this on fire, say goodbye to your coal.
+					if (!data.onFire) {
+						const amount = data.coalLevel / coalIncrement;
+						if (amount > 0) {
+							itemHandling.throw_item(
+								position,
+								`crafter:coal ${amount}`
+							);
+						}
+					}
+				} else {
+					core.log(
+						LogLevel.error,
+						`Player just lost their coal at ${position}`
+					);
+				}
 			},
 		});
 	}
