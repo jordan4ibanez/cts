@@ -282,13 +282,13 @@ namespace steam {
 
 				let triggerReturn = false;
 				// That last bit is lost.
-				if (coalLevel < 0) {
+				if (fbData.coalLevel < 0) {
 					triggerReturn = true;
-					coalLevel = 0;
-					isSoot = false;
+					fbData.coalLevel = 0;
+					fbData.isSoot = false;
 				}
-				meta.set_float("coal_level", coalLevel);
-				meta.set_int("coal_is_soot", isSoot ? 1 : 0);
+
+				fbData.write();
 				manipulateFireEntity(position, getOrCreateEntity(position));
 
 				if (triggerReturn) {
