@@ -120,9 +120,14 @@ namespace steam {
 					textures: onFireTexturing,
 					glow: 10,
 				});
-			} else {
+			} else if (isSoot) {
 				entity.set_properties({
 					textures: sootTexturing,
+					glow: 0,
+				});
+			} else {
+				entity.set_properties({
+					textures: coalTexturing,
 					glow: 0,
 				});
 			}
@@ -138,7 +143,7 @@ namespace steam {
 
 		let soundHandle = fireBoxSounds.get(hash);
 
-		print("firebox temp: ", temperature);
+		// print("firebox temp: ", temperature);
 
 		if (onFire) {
 			coalLevel -= opened ? coalBurnRateOpened : coalBurnRateClosed;
@@ -209,7 +214,7 @@ namespace steam {
 			mesh: `steam_firebox_${currentState}.gltf`,
 			tiles: ["steam_firebox.png", "steam_firebox_doors.png"],
 			paramtype2: ParamType2["4dir"],
-			groups: { stone: 1, pathable: 1 },
+			groups: { stone: 1 },
 			sounds: crafter.stoneSound(),
 
 			on_timer(position, elapsed) {
@@ -224,14 +229,53 @@ namespace steam {
 			},
 
 			on_punch(position, node, puncher, pointedThing) {
-				if (currentState == "closed") {
+				if (currentState == "closed" || puncher == null) {
+					return;
+				}
+
+				const isShovel =
+					core.get_item_group(
+						puncher.get_wielded_item().get_name(),
+						"shovel"
+					) > 0;
+
+				if (!isShovel) {
 					return;
 				}
 
 				const meta = core.get_meta(position);
+
 				const onFire = meta.get_int("coal_on_fire") > 0;
-				const isSoot = meta.get_int("coal_is_soot") > 0;
+
+				// You might want to put the fire out first.
+				if (onFire) {
+					return;
+				}
+
 				let coalLevel = meta.get_float("coal_level");
+
+				if (coalLevel <= 0) {
+					meta.set_float("coal_level", 0);
+					meta.set_int("coal_is_soot", 0);
+					return;
+				}
+
+				coalLevel -= coalIncrement;
+
+				// That last bit is lost.
+				if (coalLevel < 0) {
+					coalLevel = 0;
+				}
+				meta.set_float("coal_level", coalLevel);
+
+				manipulateFireEntity(position, getOrCreateEntity(position));
+
+				if (coalLevel <= 0) {
+					meta.set_int("coal_is_soot", 0);
+					return;
+				}
+
+				const isSoot = meta.get_int("coal_is_soot") > 0;
 
 				print("shovel this shit out");
 			},
@@ -279,10 +323,19 @@ namespace steam {
 					itemStackName == "crafter:bucket_water" &&
 					onFire
 				) {
-					print("extinguish to soot");
+					const hash = core.hash_node_position(position);
+					const data = fireBoxSounds.get(hash);
+
+					if (data != null) {
+						core.sound_stop(data);
+						fireBoxSounds.delete(hash);
+					}
 
 					meta.set_int("coal_on_fire", 0);
 					meta.set_int("coal_is_soot", 1);
+					manipulateFireEntity(position, getOrCreateEntity(position));
+
+					clicker?.set_wielded_item(ItemStack("crafter:bucket"));
 				} else {
 					const newIndex = (index + 1) % 2;
 					const newState = states[newIndex];
