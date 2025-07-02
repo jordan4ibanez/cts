@@ -223,6 +223,19 @@ namespace steam {
 				timerStart(position);
 			},
 
+			on_punch(position, node, puncher, pointedThing) {
+				if (currentState == "closed") {
+					return;
+				}
+
+				const meta = core.get_meta(position);
+				const onFire = meta.get_int("coal_on_fire") > 0;
+				const isSoot = meta.get_int("coal_is_soot") > 0;
+				let coalLevel = meta.get_float("coal_level");
+
+				print("shovel this shit out");
+			},
+
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
 				const meta = core.get_meta(position);
 				const onFire = meta.get_int("coal_on_fire") > 0;
