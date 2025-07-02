@@ -35,7 +35,11 @@ namespace steam {
 		return entity;
 	}
 
-	function manipulateFireEntity(pos: Vec3, entity: ObjectRef | null): void {}
+	function manipulateFireEntity(pos: Vec3, entity: ObjectRef | null): void {
+		if (entity == null) {
+			core.log(LogLevel.warning, `Missing firebox entity at ${pos}`);
+		}
+	}
 
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
@@ -58,10 +62,19 @@ namespace steam {
 				getOrCreateEntity(position);
 				timerStart(position);
 			},
+			on_punch(position, node, puncher, pointedThing) {
+				//? DEBUG
+				const meta = core.get_meta(position);
+				meta.set_float("coal_level", 0);
+			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
 				if (itemStack.get_name() == "crafter:coal") {
-					print("coal");
+					const meta = core.get_meta(position);
+					let coalLevel = meta.get_float("coal_level");
+					coalLevel++;
+					print(coalLevel);
+					meta.set_float("coal_level", coalLevel);
 				} else {
 					const newIndex = (index + 1) % 2;
 					const newState = states[newIndex];
