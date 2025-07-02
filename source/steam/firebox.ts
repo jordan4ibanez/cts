@@ -4,6 +4,8 @@ namespace steam {
 	const fireboxEntities = new Map<number, ObjectRef>();
 
 	const fireEntityWidth = (1 / 16) * 14;
+	const coalBurnRateOpened = 0.002;
+	const coalBurnRateClosed = 0.001;
 	const coalIncrement = 0.05;
 
 	const coalTexturing = [
@@ -90,6 +92,25 @@ namespace steam {
 		}
 	}
 
+	function burnFuelAndDoSideEffects(pos: Vec3, opened: boolean): void {
+		const meta = core.get_meta(pos);
+		const onFire = meta.get_int("coal_on_fire") > 0;
+		let coalLevel = meta.get_float("coal_level");
+
+		if (onFire) {
+			print(opened);
+			coalLevel -= coalBurnRateClosed;
+			meta.set_float("coal_level", coalLevel);
+		}
+
+		if (coalLevel < 0) {
+			meta.set_float("coal_level", 0);
+			meta.set_int("coal_on_fire", 0);
+
+			// todo: drop down into the ash pan.
+		}
+	}
+
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
 		const currentState = states[index];
@@ -103,6 +124,7 @@ namespace steam {
 			sounds: crafter.stoneSound(),
 
 			on_timer(position, elapsed) {
+				burnFuelAndDoSideEffects(position, index == 0);
 				manipulateFireEntity(position, getOrCreateEntity(position));
 				timerStart(position);
 			},
@@ -116,6 +138,7 @@ namespace steam {
 				const meta = core.get_meta(position);
 				const onFire = meta.get_int("coal_on_fire") > 0;
 				let coalLevel = meta.get_float("coal_level");
+
 				const itemStackName = itemStack.get_name();
 
 				if (
