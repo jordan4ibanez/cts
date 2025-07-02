@@ -162,12 +162,13 @@ namespace steam {
 					if (luaEntity) {
 						// If you lit this on fire, say goodbye to your coal.
 						if (!luaEntity.onFire) {
-							itemHandling.throw_item(
-								position,
-								`crafter:coal ${
-									luaEntity.coalLevel / coalIncrement
-								}`
-							);
+							const amount = luaEntity.coalLevel / coalIncrement;
+							if (amount > 0) {
+								itemHandling.throw_item(
+									position,
+									`crafter:coal ${amount}`
+								);
+							}
 						}
 					} else {
 						core.log(
