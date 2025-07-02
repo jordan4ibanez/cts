@@ -81,6 +81,12 @@ namespace steam {
 			entity.set_pos(
 				vector.create3d(pos.x, pos.y - 0.5 + coalLevel / 2, pos.z)
 			);
+			if (onFire) {
+				entity.set_properties({
+					textures: onFireTexturing,
+					glow: 10,
+				});
+			}
 		}
 	}
 
@@ -108,19 +114,31 @@ namespace steam {
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
 				const meta = core.get_meta(position);
+				const onFire = meta.get_int("coal_on_fire") > 0;
 				let coalLevel = meta.get_float("coal_level");
+				const itemStackName = itemStack.get_name();
 
 				if (
 					currentState == "open" &&
-					itemStack.get_name() == "crafter:coal" &&
+					itemStackName == "crafter:coal" &&
 					coalLevel < 0.6
 				) {
 					itemStack.take_item();
 					coalLevel += coalIncrement;
-					print(coalLevel);
+					// print(coalLevel);
 					meta.set_float("coal_level", coalLevel);
 					manipulateFireEntity(position, getOrCreateEntity(position));
-
+					return itemStack;
+				} else if (
+					currentState == "open" &&
+					!onFire &&
+					core.get_item_group(itemStackName, "torch") > 0 &&
+					coalLevel > 0
+				) {
+					itemStack.take_item();
+					meta.set_int("coal_on_fire", 1);
+					print("torch it");
+					manipulateFireEntity(position, getOrCreateEntity(position));
 					return itemStack;
 				} else {
 					const newIndex = (index + 1) % 2;
