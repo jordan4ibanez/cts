@@ -260,25 +260,45 @@ namespace steam {
 					return;
 				}
 
+				let isSoot = meta.get_int("coal_is_soot") > 0;
+				const wasSoot = isSoot;
+
+				if (isSoot) {
+					core.sound_play("steam_soot_shovel", {
+						pos: position,
+						pitch: (math.random(80, 99) + math.random()) / 100,
+					});
+				} else {
+					core.sound_play("steam_coal_add", {
+						pos: position,
+						pitch: (math.random(80, 99) + math.random()) / 100,
+					});
+				}
+
 				coalLevel -= coalIncrement;
 				coalLevel = math.round(coalLevel * 100) / 100;
 
+				let triggerReturn = false;
 				// That last bit is lost.
 				if (coalLevel < 0) {
+					triggerReturn = true;
 					coalLevel = 0;
+					isSoot = false;
 				}
 				meta.set_float("coal_level", coalLevel);
-
+				meta.set_int("coal_is_soot", isSoot ? 1 : 0);
 				manipulateFireEntity(position, getOrCreateEntity(position));
 
-				if (coalLevel <= 0) {
-					meta.set_int("coal_is_soot", 0);
+				if (triggerReturn) {
 					return;
 				}
 
-				const isSoot = meta.get_int("coal_is_soot") > 0;
-
-				print("shovel this shit out");
+				if (wasSoot) {
+					// todo: particle spawner and soot item.
+				} else {
+					// todo: particle spawner
+					itemHandling.throw_item(position, "crafter:coal");
+				}
 			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
@@ -307,6 +327,7 @@ namespace steam {
 						pos: pointedThing.under!,
 						pitch: (math.random(80, 99) + math.random()) / 100,
 					});
+
 					return itemStack;
 				} else if (
 					!isSoot &&
