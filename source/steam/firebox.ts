@@ -100,6 +100,7 @@ namespace steam {
 		const meta = core.get_meta(pos);
 		const onFire = meta.get_int("coal_on_fire") > 0;
 		let coalLevel = meta.get_float("coal_level");
+		let temperature = meta.get_float("firebox_temperature");
 		const hash = core.hash_node_position(pos);
 
 		let soundHandle = fireBoxSounds.get(hash);
@@ -123,6 +124,20 @@ namespace steam {
 				fireBoxSounds.set(hash, soundHandle);
 			}
 			core.sound_fade(soundHandle, 1, soundLevel);
+
+			if (opened) {
+				// This is a great way to blow up the boiler!
+				if (temperature < 1800) {
+					temperature += 20;
+				}
+			} else {
+				if (temperature > 700) {
+					temperature -= 5;
+				} else {
+					temperature += 10;
+				}
+			}
+			meta.set_float("firebox_temperature", temperature);
 		} else {
 			if (soundHandle != null) {
 				core.sound_stop(soundHandle);
