@@ -35,6 +35,8 @@ namespace steam {
 		return entity;
 	}
 
+	function manipulateFireEntity(pos: Vec3, entity: ObjectRef | null): void {}
+
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
 		const currentState = states[index];
@@ -48,8 +50,7 @@ namespace steam {
 			sounds: crafter.stoneSound(),
 
 			on_timer(position, elapsed) {
-				const entity = getOrCreateEntity(position);
-
+				manipulateFireEntity(position, getOrCreateEntity(position));
 				timerStart(position);
 			},
 
