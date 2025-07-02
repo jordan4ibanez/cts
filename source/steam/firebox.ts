@@ -192,7 +192,6 @@ namespace steam {
 				) {
 					itemStack.take_item();
 					meta.set_int("coal_on_fire", 1);
-					print("torch it");
 					manipulateFireEntity(position, getOrCreateEntity(position));
 					return itemStack;
 				} else {
