@@ -9,6 +9,8 @@ namespace steam {
 	const coalBurnRateOpened = 0.002;
 	const coalBurnRateClosed = 0.001;
 	const coalIncrement = 0.05;
+	const fireSoundLevelClosed = 0.8;
+	const fireSoundLevelOpened = 1.2;
 
 	const coalTexturing = [
 		"coalblock.png",
@@ -68,19 +70,10 @@ namespace steam {
 		const coalLevel = meta.get_float("coal_level");
 		const onFire = meta.get_int("coal_on_fire") > 0;
 
-		const hash = core.hash_node_position(pos);
-
 		if (coalLevel <= 0) {
 			entity.set_properties({
 				visual_size: vector.create3d(0, 0, 0),
 			});
-
-			const soundHandle = fireBoxSounds.get(hash);
-
-			if (soundHandle != null) {
-				core.sound_stop(soundHandle);
-				// todo: play fire extinguish or something
-			}
 		} else {
 			// todo: if on fire then change the texture.
 
@@ -107,11 +100,33 @@ namespace steam {
 		const meta = core.get_meta(pos);
 		const onFire = meta.get_int("coal_on_fire") > 0;
 		let coalLevel = meta.get_float("coal_level");
+		const hash = core.hash_node_position(pos);
+
+		let soundHandle = fireBoxSounds.get(hash);
 
 		if (onFire) {
 			print(opened);
 			coalLevel -= opened ? coalBurnRateOpened : coalBurnRateClosed;
 			meta.set_float("coal_level", coalLevel);
+
+			if (soundHandle == null) {
+				soundHandle = core.sound_play("steam_firebox_on_fire", {
+					pos: pos,
+					pitch: (math.random(80, 99) + math.random()) / 100,
+				});
+
+				fireBoxSounds.set(hash, soundHandle);
+			}
+
+			core.sound_fade(
+				soundHandle,
+				0.2,
+				opened ? fireSoundLevelOpened : fireSoundLevelClosed
+			);
+		} else {
+			if (soundHandle != null) {
+				core.sound_stop(soundHandle);
+			}
 		}
 
 		if (coalLevel < 0) {
@@ -157,6 +172,8 @@ namespace steam {
 					itemStackName == "crafter:coal" &&
 					coalLevel < 0.6
 				) {
+					// This is specifically designed to allow players to jam in above 0.6 as soon as the fire is lit.
+					// Never change this. It's fun.
 					itemStack.take_item();
 					coalLevel += coalIncrement;
 					// print(coalLevel);
