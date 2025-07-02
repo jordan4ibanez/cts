@@ -80,7 +80,7 @@ namespace utility {
 	// 	pos: Vec3,
 	// 	clazz: new (p: Vec3) => T
 	// ): T {
-	// 	const data = new clazz(pos);
+	// 	const data: T = new clazz(pos);
 	// 	data.read();
 	// 	return data;
 	// }
