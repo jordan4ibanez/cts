@@ -3,6 +3,8 @@ namespace steam {
 
 	const fireboxEntities = new Map<number, ObjectRef>();
 
+	const fireBoxSounds = new Map<number, number>();
+
 	const fireEntityWidth = (1 / 16) * 14;
 	const coalBurnRateOpened = 0.002;
 	const coalBurnRateClosed = 0.001;
