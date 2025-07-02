@@ -3,8 +3,19 @@ namespace steam {
 
 	const fireboxEntities = new Map<number, ObjectRef>();
 
+	const fireEntityWidth = (1 / 16) * 14;
+
 	class FireBoxFireEntity extends types.Entity {
 		name: string = "crafter_steam:firebox_fire_entity";
+		initial_properties: ObjectProperties = {
+			pointable: false,
+			visual: EntityVisual.cube,
+			visual_size: vector.create3d(0, 0, 0),
+			static_save: false,
+		};
+		// on_step(delta: number, moveResult: MoveResult | null): void {
+		// 	print("hi");
+		// }
 	}
 	utility.registerTSEntity(FireBoxFireEntity);
 
@@ -37,10 +48,13 @@ namespace steam {
 			sounds: crafter.stoneSound(),
 
 			on_timer(position, elapsed) {
+				const entity = getOrCreateEntity(position);
+
 				timerStart(position);
 			},
 
 			on_construct(position) {
+				getOrCreateEntity(position);
 				timerStart(position);
 			},
 
