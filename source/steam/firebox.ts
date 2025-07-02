@@ -17,6 +17,7 @@ namespace steam {
 	// Temperature control components.
 	const temperatureIncrementOpened = 20;
 	const temperatureIncrementClosed = 10;
+	const temperatureDecrementOpened = 10;
 	const temperatureDecrementClosed = 5;
 	const maxTempOpened = 1800 - temperatureIncrementOpened;
 	const maxTempClosed = 700;
