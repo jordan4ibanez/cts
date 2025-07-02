@@ -1,5 +1,4 @@
 namespace steam {
-
 	//~ Note:
 	//~ This mod runs in imperial units.
 	//~ The technology is as old as it's units.
@@ -11,7 +10,11 @@ namespace steam {
 	export function kickOnSteamNodeTimer(pos: Vec3): void {
 		const timer = core.get_node_timer(pos);
 		if (!timer.is_started()) {
-			timer.start(1 + math.random());
+			//~ This one is production. Attempts to ease server load.
+			// timer.start(1 + math.random());
+
+			//? This one is for debugging.
+			timer.start(1);
 		}
 	}
 
