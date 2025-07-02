@@ -13,6 +13,19 @@ namespace utility {
 			this.meta = core.get_meta(pos);
 		}
 
+		/**
+		 * Move this object into a new position in the world.
+		 * @param pos The new position.
+		 */
+		move(pos: Vec3) {
+			this.meta = core.get_meta(pos);
+			this.read();
+		}
+
+		/**
+		 * Read the data from the world.
+		 * @returns The metadata object.
+		 */
 		read<T extends CrafterMeta>(): T {
 			for (const [key, value] of Object.entries(this)) {
 				if (key == "meta") {
@@ -41,6 +54,9 @@ namespace utility {
 			return this as unknown as T;
 		}
 
+		/**
+		 * Write the data back into the world.
+		 */
 		write() {
 			for (const [key, value] of Object.entries(this)) {
 				if (key == "meta") {
