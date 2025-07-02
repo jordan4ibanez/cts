@@ -9,8 +9,8 @@ namespace steam {
 	const coalBurnRateOpened = 0.002;
 	const coalBurnRateClosed = 0.001;
 	const coalIncrement = 0.05;
-	const fireSoundLevelClosed = 0.8;
-	const fireSoundLevelOpened = 1.2;
+	const fireSoundLevelClosed = 0.4;
+	const fireSoundLevelOpened = 1.0;
 
 	const coalTexturing = [
 		"coalblock.png",
@@ -105,24 +105,24 @@ namespace steam {
 		let soundHandle = fireBoxSounds.get(hash);
 
 		if (onFire) {
-			print(opened);
 			coalLevel -= opened ? coalBurnRateOpened : coalBurnRateClosed;
 			meta.set_float("coal_level", coalLevel);
+
+			const soundLevel = opened
+				? fireSoundLevelOpened
+				: fireSoundLevelClosed;
 
 			if (soundHandle == null) {
 				soundHandle = core.sound_play("steam_firebox_on_fire", {
 					pos: pos,
 					pitch: (math.random(80, 99) + math.random()) / 100,
+					gain: soundLevel,
+					loop: true,
 				});
 
 				fireBoxSounds.set(hash, soundHandle);
 			}
-
-			core.sound_fade(
-				soundHandle,
-				0.2,
-				opened ? fireSoundLevelOpened : fireSoundLevelClosed
-			);
+			core.sound_fade(soundHandle, 1, soundLevel);
 		} else {
 			if (soundHandle != null) {
 				core.sound_stop(soundHandle);
@@ -219,14 +219,23 @@ namespace steam {
 				}
 				fireboxEntities.delete(hash);
 				// If you lit this on fire, say goodbye to your coal.
+				const amount = coalLevel / coalIncrement;
+
 				if (!onFire) {
-					const amount = coalLevel / coalIncrement;
 					if (amount > 0) {
 						itemHandling.throw_item(
 							position,
 							`crafter:coal ${amount}`
 						);
 					}
+				} else {
+					// todo: throw ash
+				}
+
+				const soundHandle = fireBoxSounds.get(hash);
+				if (soundHandle != null) {
+					core.sound_stop(soundHandle);
+					fireBoxSounds.delete(hash);
 				}
 			},
 		});
