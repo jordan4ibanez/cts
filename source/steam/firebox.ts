@@ -1,6 +1,10 @@
 namespace steam {
 	const timerStart = kickOnSteamNodeTimer;
 
+	const fireboxEntities = new Map<number, ObjectRef>();
+
+	function getOrCreateEntity(pos: Vec3): void {}
+
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
 		const currentState = states[index];
@@ -22,16 +26,29 @@ namespace steam {
 			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
-				const newIndex = (index + 1) % 2;
-				const newState = states[newIndex];
-				core.swap_node(position, {
-					name: "crafter_steam:firebox_" + newState,
-					param2: node.param2,
-				});
-				core.sound_play("steam_boiler_door", {
-					pos: pointedThing.under!,
-					pitch: (math.random(80, 99) + math.random()) / 100,
-				});
+				if (itemStack.get_name() == "crafter:coal") {
+					print("coal");
+				} else {
+					const newIndex = (index + 1) % 2;
+					const newState = states[newIndex];
+					core.swap_node(position, {
+						name: "crafter_steam:firebox_" + newState,
+						param2: node.param2,
+					});
+					core.sound_play("steam_boiler_door", {
+						pos: pointedThing.under!,
+						pitch: (math.random(80, 99) + math.random()) / 100,
+					});
+				}
+			},
+
+			on_destruct(position) {
+				const hash = core.hash_node_position(position);
+				const entity = fireboxEntities.get(hash);
+				if (entity != null) {
+					entity.remove();
+				}
+				fireboxEntities.delete(hash);
 			},
 		});
 	}
