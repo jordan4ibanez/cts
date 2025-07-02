@@ -32,6 +32,7 @@ namespace steam {
 				return null;
 			}
 		}
+		fireboxEntities.set(hash, entity);
 		return entity;
 	}
 
