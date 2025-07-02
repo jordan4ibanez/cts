@@ -66,7 +66,8 @@ namespace steam {
 		}
 
 		const meta = core.get_meta(pos);
-		let coalLevel = meta.get_float("coal_level");
+		const coalLevel = meta.get_float("coal_level");
+		const onFire = meta.get_int("coal_on_fire");
 
 		if (coalLevel <= 0) {
 			entity.set_properties({
@@ -91,7 +92,7 @@ namespace steam {
 			} else {
 				core.log(
 					LogLevel.error,
-					`Failed to set the coal level of firebox entity at ${pos}`
+					`Failed to manipulate the data of firebox entity at ${pos}`
 				);
 			}
 		}
