@@ -1,12 +1,25 @@
 namespace utility {
+	/** Metadata wrapper for type safety.
+	 *
+	 * Can only have keys of type:
+	 * - string
+	 * - int
+	 * - float
+	 */
 	export class CrafterMeta {
-		private meta: MetaRef | null = null;
+		private meta: MetaRef;
 
-		movePosition(pos: Vec3) {
-			this.meta = core.get_meta(pos);
+		constructor(meta: MetaRef) {
+			this.meta = meta;
 		}
 
-		debugKeys() {
+		read() {
+			for (const key of Object.keys(this)) {
+				print(key.length);
+			}
+		}
+
+		write() {
 			for (const key of Object.keys(this)) {
 				print(key.length);
 			}
