@@ -261,6 +261,7 @@ namespace steam {
 				}
 
 				coalLevel -= coalIncrement;
+				coalLevel = math.round(coalLevel * 100) / 100;
 
 				// That last bit is lost.
 				if (coalLevel < 0) {
