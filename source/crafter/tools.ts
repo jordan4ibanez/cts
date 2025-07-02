@@ -29,7 +29,6 @@ namespace crafter {
 	for (const [level_id, material] of ipairs(__materials)) {
 		let damage: number = 0;
 		for (const [id, tool] of ipairs(__tools)) {
-			let shovel = 0;
 			// print(id,tool,level,material)
 			let groupcaps2: { [id: string]: GroupCap } | null = null;
 			let wear: number = 0;
@@ -42,7 +41,6 @@ namespace crafter {
 			// ╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝  ╚══════╝╚══════╝
 
 			if (tool == "shovel") {
-				shovel = 1;
 				if (material == "wood") {
 					groupcaps2 = {
 						dirt: {
@@ -1427,13 +1425,14 @@ namespace crafter {
 					full_punch_interval: 0,
 					//max_drop_level=0,
 					groupcaps: groupcaps2,
-					damage_groups: { damage: damage, shovel: shovel },
+					damage_groups: { damage: damage },
 				},
 				sound: { breaks: { name: "tool_break", gain: 0.4 } }, // change this //todo: figure out what to change this to lol
 				groups: {
 					flammable: 2,
 					tool: 1,
 					treecapitator: tool == "axe" ? 1 : 0,
+					shovel: tool == "shovel" ? 1 : 0,
 				},
 				mob_hit_wear: wear,
 				// Torch rightclick - hacked in since api doesn't call on_place correctly. // todo: is this true?!
