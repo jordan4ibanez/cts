@@ -99,7 +99,7 @@ namespace steam {
 
 		if (onFire) {
 			print(opened);
-			coalLevel -= coalBurnRateClosed;
+			coalLevel -= opened ? coalBurnRateOpened : coalBurnRateClosed;
 			meta.set_float("coal_level", coalLevel);
 		}
 
