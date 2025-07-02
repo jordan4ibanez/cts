@@ -19,6 +19,7 @@ namespace utility {
 		"vector",
 		"nodebox_helper",
 		"queue",
+		"metadata",
 	]);
 
 	export function concat(...input: string[]): string {
