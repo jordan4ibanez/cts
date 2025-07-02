@@ -29,6 +29,7 @@ namespace crafter {
 	for (const [level_id, material] of ipairs(__materials)) {
 		let damage: number = 0;
 		for (const [id, tool] of ipairs(__tools)) {
+			let shovel = 0;
 			// print(id,tool,level,material)
 			let groupcaps2: { [id: string]: GroupCap } | null = null;
 			let wear: number = 0;
@@ -41,6 +42,7 @@ namespace crafter {
 			// ╚══════╝╚═╝  ╚═╝ ╚═════╝   ╚═══╝  ╚══════╝╚══════╝
 
 			if (tool == "shovel") {
+				shovel = 1;
 				if (material == "wood") {
 					groupcaps2 = {
 						dirt: {
@@ -1425,7 +1427,7 @@ namespace crafter {
 					full_punch_interval: 0,
 					//max_drop_level=0,
 					groupcaps: groupcaps2,
-					damage_groups: { damage: damage },
+					damage_groups: { damage: damage, shovel: shovel },
 				},
 				sound: { breaks: { name: "tool_break", gain: 0.4 } }, // change this //todo: figure out what to change this to lol
 				groups: {
