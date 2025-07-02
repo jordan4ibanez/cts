@@ -23,6 +23,14 @@ namespace steam {
 	const maxTempClosed = 700;
 	const maxTempIncreasingClosed = maxTempClosed - temperatureIncrementClosed;
 
+	class FireboxMeta extends utility.CrafterMeta {
+		onFire: boolean = false;
+		coalLevel: number = 0;
+		isSoot: boolean = false;
+	}
+
+	const fbData: FireboxMeta = new FireboxMeta(vector.create3d());
+
 	const coalTexturing = [
 		"coalblock.png",
 		"coalblock.png",
@@ -241,27 +249,23 @@ namespace steam {
 					return;
 				}
 
-				const meta = core.get_meta(position);
-
-				const onFire = meta.get_int("coal_on_fire") > 0;
+				fbData.move(position);
 
 				// You might want to put the fire out first.
-				if (onFire) {
+				if (fbData.onFire) {
 					return;
 				}
 
-				let coalLevel = meta.get_float("coal_level");
-
-				if (coalLevel <= 0) {
-					meta.set_float("coal_level", 0);
-					meta.set_int("coal_is_soot", 0);
+				if (fbData.coalLevel <= 0) {
+					fbData.coalLevel = 0;
+					fbData.isSoot = false;
+					fbData.write();
 					return;
 				}
 
-				let isSoot = meta.get_int("coal_is_soot") > 0;
-				const wasSoot = isSoot;
+				const wasSoot = fbData.isSoot;
 
-				if (isSoot) {
+				if (fbData.isSoot) {
 					core.sound_play("steam_soot_shovel", {
 						pos: position,
 						pitch: (math.random(80, 99) + math.random()) / 100,
@@ -273,8 +277,8 @@ namespace steam {
 					});
 				}
 
-				coalLevel -= coalIncrement;
-				coalLevel = math.round(coalLevel * 100) / 100;
+				fbData.coalLevel -= coalIncrement;
+				fbData.coalLevel = math.round(fbData.coalLevel * 100) / 100;
 
 				let triggerReturn = false;
 				// That last bit is lost.
