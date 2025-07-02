@@ -27,6 +27,7 @@ namespace steam {
 		onFire: boolean = false;
 		coalLevel: number = 0;
 		isSoot: boolean = false;
+		temperature: number = 0;
 	}
 
 	const fireboxData: FireboxMeta = new FireboxMeta(vector.create3d());
@@ -142,19 +143,19 @@ namespace steam {
 	}
 
 	function burnFuelAndDoSideEffects(pos: Vec3, opened: boolean): void {
-		const meta = core.get_meta(pos);
-		const onFire = meta.get_int("coal_on_fire") > 0;
-		let coalLevel = meta.get_float("coal_level");
-		let temperature = meta.get_float("firebox_temperature");
+		fireboxData.move(pos);
+
 		const hash = core.hash_node_position(pos);
 
 		let soundHandle = fireBoxSounds.get(hash);
 
 		// print("firebox temp: ", temperature);
 
-		if (onFire) {
-			coalLevel -= opened ? coalBurnRateOpened : coalBurnRateClosed;
-			meta.set_float("coal_level", coalLevel);
+		if (fireboxData.onFire) {
+			fireboxData.coalLevel -= opened
+				? coalBurnRateOpened
+				: coalBurnRateClosed;
+			fireboxData.write();
 
 			const soundLevel = opened
 				? fireSoundLevelOpened
@@ -174,14 +175,14 @@ namespace steam {
 
 			if (opened) {
 				// This is a great way to blow up the boiler!
-				if (temperature <= maxTempOpened) {
-					temperature += temperatureIncrementOpened;
+				if (fireboxData.temperature <= maxTempOpened) {
+					fireboxData.temperature += temperatureIncrementOpened;
 				}
 			} else {
-				if (temperature > maxTempClosed) {
-					temperature -= temperatureDecrementClosed;
-				} else if (temperature <= maxTempIncreasingClosed) {
-					temperature += temperatureIncrementClosed;
+				if (fireboxData.temperature > maxTempClosed) {
+					fireboxData.temperature -= temperatureDecrementClosed;
+				} else if (fireboxData.temperature <= maxTempIncreasingClosed) {
+					fireboxData.temperature += temperatureIncrementClosed;
 				}
 			}
 			meta.set_float("firebox_temperature", temperature);
@@ -279,7 +280,8 @@ namespace steam {
 				}
 
 				fireboxData.coalLevel -= coalIncrement;
-				fireboxData.coalLevel = math.round(fireboxData.coalLevel * 100) / 100;
+				fireboxData.coalLevel =
+					math.round(fireboxData.coalLevel * 100) / 100;
 
 				let triggerReturn = false;
 				// That last bit is lost.
