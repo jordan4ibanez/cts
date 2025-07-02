@@ -343,6 +343,7 @@ namespace steam {
 					itemStackName == "crafter:coal" &&
 					fireboxData.coalLevel < 0.6
 				) {
+					//? Add coal.
 					// This is specifically designed to allow players to jam in above 0.6 as soon as the fire is lit.
 					// Never change this. It's fun.
 					itemStack.take_item();
@@ -363,6 +364,7 @@ namespace steam {
 					core.get_item_group(itemStackName, "torch") > 0 &&
 					fireboxData.coalLevel > 0
 				) {
+					//? Light with torch.
 					itemStack.take_item();
 					fireboxData.onFire = true;
 					fireboxData.write();
@@ -373,6 +375,7 @@ namespace steam {
 					itemStackName == "crafter:bucket_water" &&
 					fireboxData.onFire
 				) {
+					//? Extinguish with water bucket.
 					const hash = core.hash_node_position(position);
 					const data = fireBoxSounds.get(hash);
 
@@ -387,6 +390,7 @@ namespace steam {
 
 					clicker?.set_wielded_item(ItemStack("crafter:bucket"));
 				} else {
+					//? Open/close doors.
 					const newIndex = (index + 1) % 2;
 					const newState = states[newIndex];
 					core.swap_node(position, {
