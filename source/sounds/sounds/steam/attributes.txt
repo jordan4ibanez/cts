@@ -1,1 +1,2 @@
 steam_boiler_door: https://freesound.org/people/egomassive/sounds/536781/ CC0
+steam_coal_add: https://freesound.org/people/Fission9/sounds/583310/ CC0
