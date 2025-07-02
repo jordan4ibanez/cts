@@ -25,7 +25,6 @@ namespace utility {
 				if (t == "number") {
 					(this as Dictionary<string, any>)[key] =
 						this.meta.get_float(key) || 0;
-					print((this as Dictionary<string, any>)[key]);
 				} else if (t == "boolean") {
 					(this as Dictionary<string, any>)[key] =
 						(this.meta.get_int(key) || 0) > 0;
@@ -54,7 +53,6 @@ namespace utility {
 				if (t == "number") {
 					(this as Dictionary<string, any>)[key] =
 						this.meta.set_float(key, value);
-					print((this as Dictionary<string, any>)[key]);
 				} else if (t == "boolean") {
 					(this as Dictionary<string, any>)[key] = this.meta.set_int(
 						key,
@@ -68,7 +66,6 @@ namespace utility {
 						`Type ${t} is not accessible in the minetest api`
 					);
 				}
-				print(key);
 			}
 		}
 	}
