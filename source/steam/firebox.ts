@@ -6,11 +6,21 @@ namespace steam {
 	const fireBoxSounds = new Map<number, number>();
 
 	const fireEntityWidth = (1 / 16) * 14;
-	const coalBurnRateOpened = 0.002;
-	const coalBurnRateClosed = 0.001;
 	const coalIncrement = 0.05;
 	const fireSoundLevelClosed = 0.4;
 	const fireSoundLevelOpened = 1.0;
+
+	// Burn rates.
+	const coalBurnRateOpened = 0.002;
+	const coalBurnRateClosed = 0.001;
+
+	// Temperature control components.
+	const temperatureIncrementOpened = 20;
+	const temperatureIncrementClosed = 10;
+	const temperatureDecrementClosed = 5;
+	const maxTempOpened = 1800 - temperatureIncrementOpened;
+	const maxTempClosed = 700;
+	const maxTempIncreasingClosed = maxTempClosed - temperatureIncrementClosed;
 
 	const coalTexturing = [
 		"coalblock.png",
@@ -105,6 +115,8 @@ namespace steam {
 
 		let soundHandle = fireBoxSounds.get(hash);
 
+		print("firebox temp: ", temperature);
+
 		if (onFire) {
 			coalLevel -= opened ? coalBurnRateOpened : coalBurnRateClosed;
 			meta.set_float("coal_level", coalLevel);
@@ -127,14 +139,14 @@ namespace steam {
 
 			if (opened) {
 				// This is a great way to blow up the boiler!
-				if (temperature < 1800) {
-					temperature += 20;
+				if (temperature <= maxTempOpened) {
+					temperature += temperatureIncrementOpened;
 				}
 			} else {
-				if (temperature > 700) {
-					temperature -= 5;
-				} else {
-					temperature += 10;
+				if (temperature > maxTempClosed) {
+					temperature -= temperatureDecrementClosed;
+				} else if (temperature <= maxTempIncreasingClosed) {
+					temperature += temperatureIncrementClosed;
 				}
 			}
 			meta.set_float("firebox_temperature", temperature);
