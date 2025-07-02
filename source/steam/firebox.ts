@@ -3,7 +3,19 @@ namespace steam {
 
 	const fireboxEntities = new Map<number, ObjectRef>();
 
-	function getOrCreateEntity(pos: Vec3): void {}
+	class FireBoxFireEntity extends types.Entity {
+		name: string = "crafter_steam:firebox_fire_entity";
+	}
+	utility.registerTSEntity(FireBoxFireEntity);
+
+	// function getOrCreateEntity(pos: Vec3): ObjectRef | null {
+	// const hash = core.hash_node_position(pos);
+	// const entity = fireboxEntities.get(hash);
+
+	// if (entity == null) {
+
+	// }
+	// }
 
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
