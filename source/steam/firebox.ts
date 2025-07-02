@@ -67,13 +67,15 @@ namespace steam {
 
 		const meta = core.get_meta(pos);
 		const coalLevel = meta.get_float("coal_level");
-		const onFire = meta.get_int("coal_on_fire");
+		const onFire = meta.get_int("coal_on_fire") > 0;
 
 		if (coalLevel <= 0) {
 			entity.set_properties({
 				visual_size: vector.create3d(0, 0, 0),
 			});
 		} else {
+			// todo: if on fire then change the texture.
+
 			entity.set_properties({
 				visual_size: vector.create3d(
 					fireEntityWidth,
@@ -89,6 +91,7 @@ namespace steam {
 
 			if (luaEntity != null) {
 				luaEntity.coalLevel = coalLevel;
+				luaEntity.onFire = onFire;
 			} else {
 				core.log(
 					LogLevel.error,
