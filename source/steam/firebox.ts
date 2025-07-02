@@ -151,6 +151,10 @@ namespace steam {
 					// print(coalLevel);
 					meta.set_float("coal_level", coalLevel);
 					manipulateFireEntity(position, getOrCreateEntity(position));
+					core.sound_play("steam_coal_add", {
+						pos: pointedThing.under!,
+						pitch: (math.random(80, 99) + math.random()) / 100,
+					});
 					return itemStack;
 				} else if (
 					currentState == "open" &&
