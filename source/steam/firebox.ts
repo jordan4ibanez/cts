@@ -332,26 +332,23 @@ namespace steam {
 			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
-				const meta = core.get_meta(position);
-				const onFire = meta.get_int("coal_on_fire") > 0;
-				const isSoot = meta.get_int("coal_is_soot") > 0;
-				let coalLevel = meta.get_float("coal_level");
+				fireboxData.move(position);
 
 				const itemStackName = itemStack.get_name();
 
 				// Basically gets disabled until you clean out the soot.
 				if (
-					!isSoot &&
+					!fireboxData.isSoot &&
 					currentState == "open" &&
 					itemStackName == "crafter:coal" &&
-					coalLevel < 0.6
+					fireboxData.coalLevel < 0.6
 				) {
 					// This is specifically designed to allow players to jam in above 0.6 as soon as the fire is lit.
 					// Never change this. It's fun.
 					itemStack.take_item();
-					coalLevel += coalIncrement;
+					fireboxData.coalLevel += coalIncrement;
 					// print(coalLevel);
-					meta.set_float("coal_level", coalLevel);
+					fireboxData.write();
 					manipulateFireEntity(position, getOrCreateEntity(position));
 					core.sound_play("steam_coal_add", {
 						pos: pointedThing.under!,
@@ -360,20 +357,21 @@ namespace steam {
 
 					return itemStack;
 				} else if (
-					!isSoot &&
+					!fireboxData.isSoot &&
 					currentState == "open" &&
-					!onFire &&
+					!fireboxData.onFire &&
 					core.get_item_group(itemStackName, "torch") > 0 &&
-					coalLevel > 0
+					fireboxData.coalLevel > 0
 				) {
 					itemStack.take_item();
-					meta.set_int("coal_on_fire", 1);
+					fireboxData.onFire = true;
+					fireboxData.write();
 					manipulateFireEntity(position, getOrCreateEntity(position));
 					return itemStack;
 				} else if (
-					!isSoot &&
+					!fireboxData.isSoot &&
 					itemStackName == "crafter:bucket_water" &&
-					onFire
+					fireboxData.onFire
 				) {
 					const hash = core.hash_node_position(position);
 					const data = fireBoxSounds.get(hash);
@@ -383,8 +381,8 @@ namespace steam {
 						fireBoxSounds.delete(hash);
 					}
 
-					meta.set_int("coal_on_fire", 0);
-					meta.set_int("coal_is_soot", 1);
+					fireboxData.onFire = false;
+					fireboxData.isSoot = true;
 					manipulateFireEntity(position, getOrCreateEntity(position));
 
 					clicker?.set_wielded_item(ItemStack("crafter:bucket"));
@@ -405,17 +403,17 @@ namespace steam {
 			on_destruct(position) {
 				const hash = core.hash_node_position(position);
 				const entity = fireboxEntities.get(hash);
-				const meta = core.get_meta(position);
-				const coalLevel = meta.get_float("coal_level");
-				const onFire = meta.get_int("coal_on_fire") > 0;
+
+				fireboxData.move(position);
+
 				if (entity != null) {
 					entity.remove();
 				}
 				fireboxEntities.delete(hash);
 				// If you lit this on fire, say goodbye to your coal.
-				const amount = coalLevel / coalIncrement;
+				const amount = fireboxData.coalLevel / coalIncrement;
 
-				if (!onFire) {
+				if (!fireboxData.onFire) {
 					if (amount > 0) {
 						itemHandling.throw_item(
 							position,
