@@ -94,39 +94,40 @@ namespace steam {
 			return;
 		}
 
-		const meta = core.get_meta(pos);
-		const coalLevel = meta.get_float("coal_level");
-		const onFire = meta.get_int("coal_on_fire") > 0;
-		const isSoot = meta.get_int("coal_is_soot") > 0;
+		fbData.move(pos);
 
-		if (onFire && isSoot) {
+		if (fbData.onFire && fbData.isSoot) {
 			throw new Error(
 				`Logic error. Cannot be soot and on fire! At: ${pos}`
 			);
 		}
 
-		if (coalLevel <= 0) {
+		if (fbData.coalLevel <= 0) {
 			entity.set_properties({
 				visual_size: vector.create3d(0, 0, 0),
 			});
 		} else {
 			entity.set_pos(
-				vector.create3d(pos.x, pos.y - 0.5 + coalLevel / 2, pos.z)
+				vector.create3d(
+					pos.x,
+					pos.y - 0.5 + fbData.coalLevel / 2,
+					pos.z
+				)
 			);
 			entity.set_properties({
 				visual_size: vector.create3d(
 					fireEntityWidth,
-					coalLevel,
+					fbData.coalLevel,
 					fireEntityWidth
 				),
 			});
 
-			if (onFire) {
+			if (fbData.onFire) {
 				entity.set_properties({
 					textures: onFireTexturing,
 					glow: 10,
 				});
-			} else if (isSoot) {
+			} else if (fbData.isSoot) {
 				entity.set_properties({
 					textures: sootTexturing,
 					glow: 0,
