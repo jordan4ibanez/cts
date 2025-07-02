@@ -70,12 +70,19 @@ namespace steam {
 			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
-				if (itemStack.get_name() == "crafter:coal") {
-					const meta = core.get_meta(position);
-					let coalLevel = meta.get_float("coal_level");
-					coalLevel++;
+				const meta = core.get_meta(position);
+				let coalLevel = meta.get_float("coal_level");
+
+				if (
+					currentState == "open" &&
+					itemStack.get_name() == "crafter:coal" &&
+					coalLevel < 0.6
+				) {
+					coalLevel += 0.05;
 					print(coalLevel);
 					meta.set_float("coal_level", coalLevel);
+
+					manipulateFireEntity(position, getOrCreateEntity(position));
 				} else {
 					const newIndex = (index + 1) % 2;
 					const newState = states[newIndex];
