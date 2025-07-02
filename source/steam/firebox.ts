@@ -3,13 +3,6 @@ namespace steam {
 
 	const fireboxEntities = new Map<number, ObjectRef>();
 
-	class DataFirebox {
-		coalLevel: number = 0;
-		onFire: boolean = false;
-	}
-
-	const fireBoxData = new Map<number, DataFirebox>();
-
 	const fireEntityWidth = (1 / 16) * 14;
 	const coalIncrement = 0.05;
 
@@ -116,11 +109,6 @@ namespace steam {
 				getOrCreateEntity(position);
 				timerStart(position);
 			},
-			on_punch(position, node, puncher, pointedThing) {
-				//? DEBUG
-				const meta = core.get_meta(position);
-				meta.set_float("coal_level", 0);
-			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
 				const meta = core.get_meta(position);
@@ -153,28 +141,23 @@ namespace steam {
 			on_destruct(position) {
 				const hash = core.hash_node_position(position);
 				const entity = fireboxEntities.get(hash);
-				const data = fireBoxData.get(hash);
+				const meta = core.get_meta(position);
+				const coalLevel = meta.get_float("coal_level");
+				const onFire = meta.get_int("coal_on_fire") > 0;
 				if (entity != null) {
 					entity.remove();
 				}
 				fireboxEntities.delete(hash);
-
-				if (data != null) {
-					// If you lit this on fire, say goodbye to your coal.
-					if (!data.onFire) {
-						const amount = data.coalLevel / coalIncrement;
-						if (amount > 0) {
-							itemHandling.throw_item(
-								position,
-								`crafter:coal ${amount}`
-							);
-						}
+				// If you lit this on fire, say goodbye to your coal.
+				if (!onFire) {
+					print("not on fire");
+					const amount = coalLevel / coalIncrement;
+					if (amount > 0) {
+						itemHandling.throw_item(
+							position,
+							`crafter:coal ${amount}`
+						);
 					}
-				} else {
-					core.log(
-						LogLevel.error,
-						`Player just lost their coal at ${position}`
-					);
 				}
 			},
 		});
