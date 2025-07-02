@@ -13,6 +13,7 @@ namespace steam {
 			visual_size: vector.create3d(0, 0, 0),
 			static_save: false,
 		};
+
 		// on_step(delta: number, moveResult: MoveResult | null): void {
 		// 	print("hi");
 		// }
@@ -38,7 +39,29 @@ namespace steam {
 
 	function manipulateFireEntity(pos: Vec3, entity: ObjectRef | null): void {
 		if (entity == null) {
+			// Cannot continue without an entity.
 			core.log(LogLevel.warning, `Missing firebox entity at ${pos}`);
+			return;
+		}
+
+		const meta = core.get_meta(pos);
+		let coalLevel = meta.get_float("coal_level");
+
+		if (coalLevel <= 0) {
+			entity.set_properties({
+				visual_size: vector.create3d(0, 0, 0),
+			});
+		} else {
+			entity.set_properties({
+				visual_size: vector.create3d(
+					fireEntityWidth,
+					coalLevel,
+					fireEntityWidth
+				),
+			});
+			entity.set_pos(
+				vector.create3d(pos.x, pos.y - 0.5 + coalLevel / 2, pos.z)
+			);
 		}
 	}
 
