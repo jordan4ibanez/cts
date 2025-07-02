@@ -175,6 +175,8 @@ namespace steam {
 			meta.set_float("firebox_temperature", temperature);
 		} else {
 			if (temperature > 0) {
+				// Basically this is the "oh shit I ran out of fuel" control.
+				// If you close the doors the firebox will retain more heat.
 				temperature -= opened
 					? temperatureDecrementOpened
 					: temperatureDecrementClosed;
