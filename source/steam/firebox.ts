@@ -10,6 +10,14 @@ namespace steam {
 		initial_properties: ObjectProperties = {
 			pointable: false,
 			visual: EntityVisual.cube,
+			textures: [
+				"coalblock.png",
+				"coalblock.png",
+				"coalblock.png",
+				"coalblock.png",
+				"coalblock.png",
+				"coalblock.png",
+			],
 			visual_size: vector.create3d(0, 0, 0),
 			static_save: false,
 		};
