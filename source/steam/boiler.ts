@@ -21,8 +21,13 @@ namespace steam {
 		pressure: number = 0;
 	}
 
+	class FireBoxShallowMeta extends utility.CrafterMeta {
+		temperature: number = 0;
+	}
+
 	function boil(pos: Vec3): void {
 		const boilerData = utility.getMeta(pos, BoilerMeta);
+
 	}
 
 	core.register_node("crafter_steam:boiler", {
