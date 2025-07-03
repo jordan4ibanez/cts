@@ -87,6 +87,28 @@ namespace steam {
 		groups: { stone: 1, pathable: 1, steam: 1 },
 		sounds: crafter.stoneSound(),
 
+		on_rightclick(position, node, clicker, itemStack, pointedThing) {
+			if (
+				clicker == null ||
+				itemStack.get_name() != "crafter:bucket_water"
+			) {
+				return;
+			}
+
+			const boilerData = utility.getMeta(position, BoilerMeta);
+
+			boilerData.waterLevel += 10;
+			if (boilerData.waterLevel > 100) {
+				boilerData.waterLevel = 100;
+			}
+
+			print("waterLevel: ", boilerData.waterLevel);
+
+			boilerData.write();
+			itemStack.set_name("crafter:bucket");
+			clicker.set_wielded_item(itemStack);
+		},
+
 		on_timer(position, elapsed) {
 			boil(position);
 			timerStart(position);
