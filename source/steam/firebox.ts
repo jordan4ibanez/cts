@@ -98,7 +98,7 @@ namespace steam {
 			return;
 		}
 
-		const fireboxData: FireboxMeta = utility.getMeta(pos, FireboxMeta);
+		const fireboxData = utility.getMeta(pos, FireboxMeta);
 
 		if (fireboxData.onFire && fireboxData.isSoot) {
 			throw new Error(
@@ -397,10 +397,7 @@ namespace steam {
 				const hash = core.hash_node_position(position);
 				const entity = fireboxEntities.get(hash);
 
-				const fireboxData: FireboxMeta = utility.getMeta(
-					position,
-					FireboxMeta
-				);
+				const fireboxData = utility.getMeta(position, FireboxMeta);
 
 				if (entity != null) {
 					entity.remove();
