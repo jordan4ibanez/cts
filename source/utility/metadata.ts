@@ -57,7 +57,7 @@ namespace utility {
 		/**
 		 * Write the data back into the world.
 		 */
-		write() {
+		write(): void {
 			for (const [key, value] of Object.entries(this)) {
 				if (key == "meta") {
 					continue;
@@ -67,16 +67,11 @@ namespace utility {
 
 				// Backups provided in case the API glitches out.
 				if (t == "number") {
-					(this as Dictionary<string, any>)[key] =
-						this.meta.set_float(key, value);
+					this.meta.set_float(key, value);
 				} else if (t == "boolean") {
-					(this as Dictionary<string, any>)[key] = this.meta.set_int(
-						key,
-						value ? 1 : 0
-					);
+					this.meta.set_int(key, value ? 1 : 0);
 				} else if (t == "string") {
-					(this as Dictionary<string, any>)[key] =
-						this.meta.set_string(key, value);
+					this.meta.set_string(key, value);
 				} else {
 					throw new Error(
 						`Type ${t} is not accessible in the minetest api`
