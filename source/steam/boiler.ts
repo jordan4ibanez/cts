@@ -1,6 +1,17 @@
 namespace steam {
 	const timerStart = kickOnSteamNodeTimer;
 
+	// PSI.
+	const maxPressure = 300;
+
+	class BoilerMeta extends utility.CrafterMeta {
+		temperature: number = 0;
+		/** Percentage. */
+		waterLevel: number = 0;
+		/** PSI. */
+		pressure: number = 0;
+	}
+
 	core.register_node("crafter_steam:boiler", {
 		drawtype: Drawtype.mesh,
 		mesh: "steam_boiler.gltf",
