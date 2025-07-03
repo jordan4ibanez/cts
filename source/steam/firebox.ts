@@ -11,8 +11,8 @@ namespace steam {
 	const fireSoundLevelOpened = 1.0;
 
 	// Burn rates.
-	const coalBurnRateOpened = 0.002;
-	const coalBurnRateClosed = 0.001;
+	const coalBurnRateOpened = 0.0005;
+	const coalBurnRateClosed = 0.00025;
 
 	// Temperature control components.
 	const temperatureIncrementOpened = 20;
