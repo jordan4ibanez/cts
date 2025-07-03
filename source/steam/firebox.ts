@@ -375,6 +375,7 @@ namespace steam {
 
 					fireboxData.onFire = false;
 					fireboxData.isSoot = true;
+					fireboxData.write();
 					manipulateFireEntity(position, getOrCreateEntity(position));
 
 					clicker?.set_wielded_item(ItemStack("crafter:bucket"));
