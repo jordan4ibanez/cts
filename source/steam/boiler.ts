@@ -44,6 +44,16 @@ namespace steam {
 			fireBoxData.write();
 		}
 
+		if (boilerData.waterLevel <= 0) {
+			boilerData.waterLevel = 0;
+
+			print("pressure:", boilerData.pressure);
+
+			if (boilerData.pressure > dryBoilExplosionPressure) {
+				core.remove_node(pos);
+				tnt.tnt(pos, 3);
+			}
+		}
 		// You better hope the boiler has water in it.
 		// Or install a sight glass.
 		if (boilerData.temperature > boilingPoint) {
@@ -65,10 +75,6 @@ namespace steam {
 				// Things might get really bad in a second lol.
 				boilerData.waterLevel = 0;
 			}
-		}
-
-		if (boilerData.waterLevel <= 0) {
-			boilerData.waterLevel = 0;
 		}
 
 		boilerData.write();
