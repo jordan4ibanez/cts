@@ -95,9 +95,7 @@ namespace steam {
 			return;
 		}
 
-		const fireboxData: FireboxMeta = new FireboxMeta(pos);
-
-		print(dump(fireboxData));
+		const fireboxData: FireboxMeta = utility.getMeta(pos, FireboxMeta);
 
 		if (fireboxData.onFire && fireboxData.isSoot) {
 			throw new Error(
@@ -145,13 +143,11 @@ namespace steam {
 	}
 
 	function burnFuelAndDoSideEffects(pos: Vec3, opened: boolean): void {
-		const fireboxData: FireboxMeta = new FireboxMeta(pos);
+		const fireboxData = utility.getMeta(pos, FireboxMeta);
 
 		const hash = core.hash_node_position(pos);
 
 		let soundHandle = fireBoxSounds.get(hash);
-
-		// print("firebox temp: ", temperature);
 
 		if (fireboxData.onFire) {
 			fireboxData.coalLevel -= opened
@@ -177,6 +173,7 @@ namespace steam {
 
 			if (opened) {
 				// This is a great way to blow up the boiler!
+				print(fireboxData.temperature);
 				if (fireboxData.temperature <= maxTempOpened) {
 					fireboxData.temperature += temperatureIncrementOpened;
 				}
@@ -254,7 +251,10 @@ namespace steam {
 					return;
 				}
 
-				const fireboxData: FireboxMeta = new FireboxMeta(position);
+				const fireboxData: FireboxMeta = utility.getMeta(
+					position,
+					FireboxMeta
+				);
 
 				// You might want to put the fire out first.
 				if (fireboxData.onFire) {
@@ -334,7 +334,10 @@ namespace steam {
 			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
-				const fireboxData: FireboxMeta = new FireboxMeta(position);
+				const fireboxData: FireboxMeta = utility.getMeta(
+					position,
+					FireboxMeta
+				);
 
 				const itemStackName = itemStack.get_name();
 
@@ -350,7 +353,6 @@ namespace steam {
 					// Never change this. It's fun.
 					itemStack.take_item();
 					fireboxData.coalLevel += coalIncrement;
-					// print(coalLevel);
 					fireboxData.write();
 					manipulateFireEntity(position, getOrCreateEntity(position));
 					core.sound_play("steam_coal_add", {
@@ -410,7 +412,10 @@ namespace steam {
 				const hash = core.hash_node_position(position);
 				const entity = fireboxEntities.get(hash);
 
-				const fireboxData: FireboxMeta = new FireboxMeta(position);
+				const fireboxData: FireboxMeta = utility.getMeta(
+					position,
+					FireboxMeta
+				);
 
 				if (entity != null) {
 					entity.remove();
