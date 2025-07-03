@@ -59,7 +59,7 @@ namespace steam {
 
 			boilerData.temperature -= temperatureDifference;
 
-			boilerData.pressure = temperatureDifference * 3;
+			boilerData.pressure += temperatureDifference * 3;
 			boilerData.waterLevel -= 1;
 			if (boilerData.waterLevel < 0) {
 				// Things might get really bad in a second lol.
