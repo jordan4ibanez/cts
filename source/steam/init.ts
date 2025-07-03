@@ -314,4 +314,10 @@ namespace steam {
 			kickOnSteamNodeTimer(pos);
 		},
 	});
+
+	tnt.addDigNodes([
+		"crafter_steam:boiler",
+		"crafter_steam:firebox_open",
+		"crafter_steam:firebox_closed",
+	]);
 }
