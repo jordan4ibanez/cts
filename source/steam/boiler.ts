@@ -10,6 +10,9 @@ namespace steam {
 	// Imperial.
 	const boilingTemp = 212;
 
+	// 1 unit water is 3 units pressure.
+	// What are these units? Well it's very simple
+
 	class BoilerMeta extends utility.CrafterMeta {
 		temperature: number = 0;
 		/** Percentage. */
