@@ -58,16 +58,11 @@ namespace steam {
 				// tnt.tnt(pos, 2);
 			}
 		}
+
 		// You better hope the boiler has water in it.
 		// Or install a sight glass.
 		if (boilerData.temperature > boilingPoint) {
 			// Just know if there's no water in here it's boiling the moisture in the air.
-			print(
-				boilerData.temperature,
-				boilerData.pressure,
-				boilingPoint,
-				boilerData.temperature % boilingPoint
-			);
 
 			const temperatureDifference = boilerData.temperature % boilingPoint;
 
