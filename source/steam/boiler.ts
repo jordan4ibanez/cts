@@ -51,7 +51,7 @@ namespace steam {
 
 			if (boilerData.pressure > dryBoilExplosionPressure) {
 				core.remove_node(pos);
-				tnt.tnt(pos, 3);
+				tnt.tnt(pos, 2);
 			}
 		}
 		// You better hope the boiler has water in it.
