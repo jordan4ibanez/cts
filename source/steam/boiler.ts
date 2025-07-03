@@ -5,7 +5,7 @@ namespace steam {
 	const maxPressure = 300;
 
 	// The boiler explodes if it's empty at this pressure.
-	const emptyExplosionPressure = 100;
+	const dryBoilExplosionPressure = 100;
 
 	// Imperial.
 	const boilingPoint = 212;
