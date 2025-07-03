@@ -303,8 +303,6 @@ namespace steam {
 		},
 	});
 
-	utility.loadFiles(["boiler", "firebox", "pipe"]);
-
 	//? This is working around an issue where the node timers get corrupted.
 	core.register_lbm({
 		name: "crafter_steam:steam_kicker",
@@ -315,9 +313,12 @@ namespace steam {
 		},
 	});
 
+	utility.loadFiles(["boiler", "firebox", "pipe", "sight_glass"]);
+
 	tnt.addDigNodes([
 		"crafter_steam:boiler",
 		"crafter_steam:firebox_open",
 		"crafter_steam:firebox_closed",
+		"crafter_steam:sight_glass",
 	]);
 }
