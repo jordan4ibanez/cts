@@ -248,19 +248,16 @@ namespace steam {
 					position,
 					FireboxMeta
 				);
-
-				// You might want to put the fire out first.
+				// Can't extract anything from a lit fire.
 				if (fireboxData.onFire) {
 					return;
 				}
-
 				if (fireboxData.coalLevel <= 0) {
 					fireboxData.coalLevel = 0;
 					fireboxData.isSoot = false;
 					fireboxData.write();
 					return;
 				}
-
 				const wasSoot = fireboxData.isSoot;
 
 				if (fireboxData.isSoot) {
