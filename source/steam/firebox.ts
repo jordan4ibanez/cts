@@ -234,13 +234,13 @@ namespace steam {
 					return;
 				}
 
-				const isShovel =
+				// If it's not a shovel don't bother.
+				if (
 					core.get_item_group(
 						puncher.get_wielded_item().get_name(),
 						"shovel"
-					) > 0;
-
-				if (!isShovel) {
+					) <= 0
+				) {
 					return;
 				}
 
