@@ -206,6 +206,7 @@ namespace steam {
 		}
 	}
 
+	// This is a really shitty marine firebox.
 	const states = ["open", "closed"];
 	for (const index of $range(0, 1)) {
 		const currentState = states[index];
