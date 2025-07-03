@@ -8,7 +8,7 @@ namespace steam {
 	const emptyExplosionPressure = 100;
 
 	// Imperial.
-	const boilingTemp = 212;
+	const boilingPoint = 212;
 
 	// 1 unit water is 3 units pressure.
 	// What are these units? Well it's very simple
@@ -30,6 +30,48 @@ namespace steam {
 	function boil(pos: Vec3): void {
 		const boilerData = utility.getMeta(pos, BoilerMeta);
 
+		const belowPos = vector.create3d(pos.x, pos.y - 1, pos.z);
+		const nodeBelow = core.get_node(belowPos);
+
+		if (core.get_item_group(nodeBelow.name, "firebox") > 0) {
+			const fireBoxData = utility.getMeta(belowPos, FireBoxShallowMeta);
+
+			// Thermodynamics is a bitch.
+			if (fireBoxData.temperature >= 2) {
+				fireBoxData.temperature -= 2;
+				boilerData.temperature += 1;
+			}
+			fireBoxData.write();
+		}
+
+		// You better hope the boiler has water in it.
+		// Or install a sight glass.
+		if (boilerData.temperature > boilingPoint) {
+			// Just know if there's no water in here it's boiling the moisture in the air.
+			print(
+				boilerData.temperature,
+				boilerData.pressure,
+				boilingPoint,
+				boilerData.temperature % boilingPoint
+			);
+
+			const temperatureDifference = boilerData.temperature % boilingPoint;
+
+			boilerData.temperature -= temperatureDifference;
+
+			boilerData.pressure = temperatureDifference * 3;
+			boilerData.waterLevel -= 1;
+			if (boilerData.waterLevel < 0) {
+				// Things might get really bad in a second lol.
+				boilerData.waterLevel = 0;
+			}
+		}
+
+		if (boilerData.waterLevel <= 0) {
+			boilerData.waterLevel = 0;
+		}
+
+		boilerData.write();
 	}
 
 	core.register_node("crafter_steam:boiler", {
