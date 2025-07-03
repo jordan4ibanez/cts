@@ -37,9 +37,9 @@ namespace steam {
 			const fireBoxData = utility.getMeta(belowPos, FireBoxShallowMeta);
 
 			// Thermodynamics is a bitch.
-			if (fireBoxData.temperature >= 2) {
-				fireBoxData.temperature -= 2;
-				boilerData.temperature += 1;
+			if (fireBoxData.temperature >= 10) {
+				fireBoxData.temperature -= 10;
+				boilerData.temperature += 2;
 			}
 			fireBoxData.write();
 		}
