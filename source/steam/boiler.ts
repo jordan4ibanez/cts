@@ -21,6 +21,8 @@ namespace steam {
 		pressure: number = 0;
 	}
 
+	// This is encapsulating the rest of the data.
+	//! DO NOT add anything else into this or change this or I will be very angry.
 	class FireBoxShallowMeta extends utility.CrafterMeta {
 		temperature: number = 0;
 	}
