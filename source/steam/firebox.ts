@@ -244,10 +244,8 @@ namespace steam {
 					return;
 				}
 
-				const fireboxData: FireboxMeta = utility.getMeta(
-					position,
-					FireboxMeta
-				);
+				const fireboxData = utility.getMeta(position, FireboxMeta);
+
 				// Can't extract anything from a lit fire.
 				if (fireboxData.onFire) {
 					return;
@@ -324,10 +322,7 @@ namespace steam {
 			},
 
 			on_rightclick(position, node, clicker, itemStack, pointedThing) {
-				const fireboxData: FireboxMeta = utility.getMeta(
-					position,
-					FireboxMeta
-				);
+				const fireboxData = utility.getMeta(position, FireboxMeta);
 
 				const itemStackName = itemStack.get_name();
 
