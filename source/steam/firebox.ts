@@ -71,10 +71,12 @@ namespace steam {
 
 	function getOrCreateEntity(pos: Vec3): ObjectRef | null {
 		const hash = core.hash_node_position(pos);
+
 		let entity = fireboxEntities.get(hash) || null;
-		if (entity == null) {
+
+		if (entity == null || !entity.is_valid()) {
 			entity = core.add_entity(pos, "crafter_steam:firebox_fire_entity");
-			if (entity == null) {
+			if (entity == null || !entity.is_valid()) {
 				core.log(
 					LogLevel.error,
 					`Failed to add firebox entity at ${pos}`
