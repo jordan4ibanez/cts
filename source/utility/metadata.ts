@@ -92,12 +92,12 @@ namespace utility {
 	 * @param clazz The advanced metadata class to encapsulate the components.
 	 * @returns An instance of the metadata clazz.
 	 */
-	// export function getMeta<T extends CrafterMeta>(
-	// 	pos: Vec3,
-	// 	clazz: new (p: Vec3) => T
-	// ): T {
-	// 	const data: T = new clazz(pos);
-	// 	data.read();
-	// 	return data;
-	// }
+	export function getMeta<T extends CrafterMeta>(
+		pos: Vec3,
+		clazz: new (p: Vec3) => T
+	): T {
+		const data: T = new clazz(pos);
+		data.read();
+		return data;
+	}
 }
