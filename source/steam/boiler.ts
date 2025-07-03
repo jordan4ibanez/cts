@@ -50,8 +50,12 @@ namespace steam {
 			print("pressure:", boilerData.pressure);
 
 			if (boilerData.pressure > dryBoilExplosionPressure) {
-				core.remove_node(pos);
-				tnt.tnt(pos, 2);
+				core.log(
+					LogLevel.warning,
+					"boiler explosions are still disabled"
+				);
+				// core.remove_node(pos);
+				// tnt.tnt(pos, 2);
 			}
 		}
 		// You better hope the boiler has water in it.
