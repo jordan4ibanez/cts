@@ -3,6 +3,10 @@ namespace steam {
 	//~ This mod runs in imperial units.
 	//~ The technology is as old as it's units.
 
+	//~ Note 2:
+	//~ Everything that can get hot will universally use the metadata identifier: temperature
+	//~ This is in fahrenheit.
+
 	//? Stationary steam engine.
 
 	const steamEngineEntityMap = new Map<number, ObjectRef>();
