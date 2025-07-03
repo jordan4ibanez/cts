@@ -31,6 +31,12 @@ namespace tnt {
 		diggingNodes.add(core.get_content_id(node));
 	}
 
+	export function addDigNodes(data: string[]): void {
+		for (const node of data) {
+			diggingNodes.add(core.get_content_id(node));
+		}
+	}
+
 	const fallingNodes = new Set<number>();
 	core.register_on_mods_loaded(() => {
 		for (const [name, def] of pairs(core.registered_nodes)) {
